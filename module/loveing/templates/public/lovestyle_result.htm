@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>爱情测试结果——真爱一生网</title>
+{template system/js_css public}
+<style type="text/css">
+@import url("module/lovestyle/templates/{$GLOBALS['style_name']}/lovestyle.css");
+</style>
+
+<body>
+  {template system/header public}
+    <div class="box">
+      <div class="add">
+         <div class="lovetop"></div>
+         <div class="lovecenter">
+            <h2>测 试 成 功</h2>
+            <p class="m30">感谢您耐心完成真爱一生网为您准备的测试题！</p>
+            <p>以下是您的测试结果：</p>
+         </div>
+         <div class="lovebottom"></div>
+      
+      </div><!--广告-->
+      <div class="clear"></div>
+      <div class="lovelast">
+      
+      <img src="module/lovestyle/templates/default/images/love4.jpg" width="163" height="44" />
+      <h2>{php echo $test_result['type'];}</h2>
+      <p>
+      {php echo $test_result['content'];}
+      </p>
+        <p style=" text-align:center">
+         <input type="submit" class="lovebtn1" value="重 新 测 试" onclick="javascript:window.location.href='index.php?n=lovestyle&h=test1&typeid={php echo $typeid;}&angin=1'"/>
+        </p>
+      </div>
+      
+    </div><!--内容结束-->
+{template system/footer public}
+</body>
+</html>

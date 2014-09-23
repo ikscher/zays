@@ -1,0 +1,110 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+
+<script type="text/javascript">
+function search_group(){
+	var keyword = $("#keyword").val();
+	if( keyword=="" ){
+		alert("搜索内容不能为空！");
+		return;
+	}
+	var url = "./ajax.php";
+    $.getJSON(url,{n:"search_group",keyword:keyword},function(data){alert(data);
+		var len = data.length;
+		$("#group").empty();
+		var optionStr = "<option value =''>搜索出 "+len+" 条结果 请选择</option>";
+		for(i=0;i<len;i++){
+			optionStr += "<option value='"+data[i]['id']+"'>"+data[i]['manage_name']+"</option>";
+		}
+		$("#group").append(optionStr);
+    });
+}
+
+function team_add_member(){
+	if($("#group").val() == ''){
+		alert("请选择一个客服");
+		return;
+	}
+	var url="./ajax.php";
+	var id = $("#group").val();
+	
+	$.get(url,{n:"judge_group",id:id},function(data){
+		if(data==1){
+			alert("该组已经在其它队中不能再添加到其它队！");
+		}else{
+			if($("#ispost").val() == 0){
+				$("#ispost").val(1);
+				$("#add").css("display","block");
+			}
+	
+			var name = $("#group option:selected").text();
+			$("#user_list").append('<input type="checkbox" name="grouparr[]" value="'+id+'" checked="checked" />&nbsp;'+name);
+		}											 
+	});
+}
+
+function group_user(){
+	if($("#ispost").val() == 0){
+		alert('请选择添加组');
+		return false;
+	}else{
+		return true;
+	}
+}
+</script>
+<h1>
+
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {if isset($group['groupname'])}{$group['groupname']}{/if}组成员添加 </span>
+<span class="action-span"><a href="index.php?action=system_adminteam&h=teammember&id={$id}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<p style="margin:0"><strong>添加客服</strong></p>
+<form method="post" action="index.php?action=system_adminteam&h=addteammember" onsubmit="return group_user()">
+	<input type="hidden" value="0" id="ispost" name="ispost" />
+    <input type="hidden" value="{$id}" id="id" name="id" />
+<div class="list-div" id="user_list">
+
+</div>
+	<input name="add" type="submit" id="add" value="添加" style="display:none" />
+</form>
+<p/>
+<div class="list-div" id="listDiv">
+<p>
+	<span class="require-field">添加队成员</span>按组ID或组名
+	<input type="text" id="keyword" name="keyword" value="">
+	<input type="button" name="search" value=" 搜索 " onclick="search_group();">
+	<select style="width:170px;" id="group" name="group">
+		<option value="">请选择</option>
+	</select>
+	<input type="button" onclick="team_add_member();" name="add_member" value="添加队成员">
+</p>
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>组ID</th>
+    <th>组名称</th>
+	<th>组长</th>
+    <th>组描述</th>
+    <th>操作</th>
+  </tr>
+  {loop $manage_list $u}
+  <tr id="user_{$u['id']}">
+    <td class="first-cell" >{$u['id']}</td>
+    <td align="left">{$u['manage_name']}</td>
+    <td align="center">{$u['leader_username']}</td>
+	<td align="center">{$u['manage_desc']}</td>
+    <td align="center">
+    	<a href="index.php?action=system_adminteam&h=del_teammember&groupid={$id}&id={$u['id']}" onclick="return confirm('确定删除吗？')">删除</a>
+		&nbsp;&nbsp;
+		<a href="index.php?action=system_adminteam&h=groupmember&id={$u['id']}" onclick="parent.addTab('查看组{$u['manage_name']}成员','index.php?action=system_adminmanage&h=groupmember&id={$u['id']}','icon');return false;">查看组成员</a>
+    </td>
+  </tr>
+  {/loop}
+  </table>
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right"> </td>
+    </tr>
+  </table>
+</div>

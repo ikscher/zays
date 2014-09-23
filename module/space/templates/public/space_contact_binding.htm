@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的绑定信息--我的真爱一生——真爱一生网</title>
+<link href="module/service/templates/default/service.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+</head>
+
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000">真爱一生首页&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=service">我的真爱一生</a></span><a href="#"></a></p>
+	<div class="content-lift">
+		<div class="c-lift-content">
+		<div class="c-lift-title">
+		我的联系情况
+		</div>
+		<div class="c-lift-content-in">
+			<dl class="leftbindtext">
+				<dt>什么是委托真爱一生绑定？</dt>
+				<dd>“委托真爱一生绑定”就是您委托真爱一生帮您联系TA与您绑定在一起。</dd>
+				<dt>会员绑定功能介绍？</dt>
+				<dd>真爱一生收到您的绑定申请的时候后，会通过电话征求对方的同意，并询问{php echo $user_bind['gender']?'她':'他';}与您的绑定意愿。当您们成功绑定之后，任何人将不能向您们发送真爱一生委托。</dd>
+				<dd>如果对方愿意与您绑定，真爱一生会尽快给您电话反馈，请耐心等候。</dd>
+			</dl>
+		</div>
+		<div class="c-lift-bottom"></div>
+		</div><!--c-lift-content-->
+		<div class="left-tips">
+			<div class="left-tips-side"></div>
+			<div class="left-tips-center">
+			<dl>
+				<dt><img src="module/service/templates/default/images/left-tips-img.gif" />
+					<p><a href="index.php?n=about&h=getsave" class="f-ed0a91-a">意见反馈</a></p>
+				</dt>
+				<dd>拨打<strong>400-678-0405</strong><br />咨询真爱一生网提供的专业征婚服务
+				</dd>
+				<dd>我们会用<strong>0551</strong>开头电话号码和您保持沟通联系
+				</dd>
+			</dl>
+			</div>
+			<div class="left-tips-side" style="background-position:right;"></div>
+		</div>
+		
+	</div><!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=service" class="r-title-black">&lt;&lt; 返回我的真爱一生</a><span class="right-title f-ed0a91">{if $statue == 1}（{php echo $user_s['isbind'] == 0 ? '申请中' : '已绑定' ;}）{/if}绑定信息</span>		
+			</div>
+			{if $statue == 0}
+			<div class="norequest">
+				您现在还没有绑定?
+				<p> 马上去 <a href="index.php?n=search">搜索心仪的TA</a>，即刻享受美好的俩人世界。</p>
+			</div>
+			{else}
+            <div class="r-center-ccontent" style="padding:0 0 60px; width:753px;">
+				<dl class="bindtwo">
+					<dt>
+                    	{if !empty($user_s['city_star'])}<a href="#" class="citystar" style="margin:-10px 0 0 -10px;"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
+						<div class="cl-photo-img">
+							<p>
+                            <a style="display:block;" href="index.php?n=space&h=viewpro&uid={$user_s['uid']}">
+									{if $user_s['images_ischeck']=='1'&& $user_s['mainimg']}
+												  <img src="{php   
+												  if(MooGetphoto($user_s['uid'],'com')) echo MooGetphoto($user_s['uid'],'com');
+												  elseif(MooGetphoto($user_s['uid'],'medium')) echo MooGetphoto($user_s['uid'],'medium');
+												  elseif($user_s['gender'] == '1')echo 'public/system/images/woman.gif';
+												  else  echo 'public/system/images/man.gif';
+												  }" onload="javascript:DrawImage(this,110,138)" />
+									{elseif $user_s['mainimg']}
+										{if $user_s['gender'] == '1'}
+											<img src="public/system/images/woman.gif"/>
+										{else}
+											<img src="public/system/images/man.gif"  />
+										{/if}
+									{else}
+											{if $user_s['gender'] == '1'}
+												<img src="public/system/images/service_nopic_woman.gif"/>
+											{else}
+												<img src="public/system/images/service_nopic_man.gif"/>
+											{/if}
+									 {/if}
+									 </a>
+                            </p>
+						</div>
+					</dt>
+					<dd> {php $nickname=$user_s['nickname']}{php echo $nickname?$nickname:'ID '.$user_s['uid']}</dd>
+					<dd class="f-ed0a91">&lt; 
+                       {if (time() - $user_s['lastvisit'])  < 600}
+					   当前在线
+					   {elseif (time()-$user_s['lastvisit'])< 3600 }一小时内登陆过 
+					   {elseif (time() - $user_s['lastvisit']) > 3600 && (time() - $user_s['lastvisit']) < (12*3600)}
+					   3小时前活跃过
+					   {elseif (time() - $user_s['lastvisit']) > 12*3600 && (time() - $user_s['lastvisit']) < (3600*24)}
+					   今天活跃过
+					   {elseif (time() - $user_s['lastvisit']) > 24*3600 && (time() - $user_s['lastvisit']) < (3600*24*30)}
+					   3天前活跃过
+					   {else}一周前活跃过
+					   {/if}
+                     &gt;</dd>
+					<dd>{if $user_s['birthyear']}{php echo (gmdate('Y', time()) - $user_s['birthyear']);}岁{else}年龄保密{/if}，<script>userdetail('{$user_s['marriage']}',marriage)</script></dd>
+					<dd>{if $user_s['province'] == '0' && {$user_s['city']} == '0'}保密{else}<script>userdetail('{$user_s['province']}',provice)</script><script>userdetail('{$user_s['city']}',city)</script>{/if}</dd>
+				</dl>
+				<img src="module/service/templates/default/images/bind-img.gif" class="fleft" />
+				<dl class="bindtwo">
+					<dt>
+						<div class="cl-photo-img">
+							<p>
+                            <a style="display:block;" href="index.php?n=space&h=viewpro&uid={$user_bind['uid']}">
+                                {if $user_bind['images_ischeck']=='1'&& $user_bind['mainimg']}
+                                  <img src="{php   
+                                  if(MooGetphoto($user_bind['uid'],'com')) echo MooGetphoto($user_bind['uid'],'com');
+                                  elseif(MooGetphoto($user_bind['uid'],'medium')) echo MooGetphoto($user_bind['uid'],'medium');
+                                  elseif($user_bind['gender'] == '1')echo 'public/system/images/woman.gif';
+                                  else  echo 'public/system/images/man.gif';
+                                  }" onload="javascript:DrawImage(this,110,138)" />
+                                {elseif $user_bind['mainimg']}
+                                    {if $user_bind['gender'] == '1'}
+                                        <img src="public/system/images/woman.gif"/>
+                                    {else}
+                                        <img src="public/system/images/man.gif"  />
+                                    {/if}
+                                {else}
+                                    {if $user_bind['gender'] == '1'}
+                                        <img src="public/system/images/service_nopic_woman.gif"/>
+                                    {else}
+                                        <img src="public/system/images/service_nopic_man.gif"/>
+                                    {/if}
+                                {/if}
+                             </a>
+                            </p>
+						</div>
+					</dt>{php $nickname=$user_bind['nickname']?$user_bind['nickname']:$user_bind['nickname']}
+					<dd>{if !empty($user_bind['city_star'])}<a class="citystar2"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if} {php echo $nickname?$nickname:'ID '.$user_bind['uid']}</dd>
+					<dd class="f-ed0a91">&lt;
+                    {if (time() - $user_bind['lastvisit'])  < 600}
+					   当前在线
+					   {elseif (time()-$user_bind['lastvisit'])< 3600 }一小时内登陆过 
+					   {elseif (time() - $user_bind['lastvisit']) > 3600 && (time() - $user_bind['lastvisit']) < (12*3600)}
+					   3小时前活跃过
+					   {elseif (time() - $user_bind['lastvisit']) > 12*3600 && (time() - $user_bind['lastvisit']) < (3600*24)}
+					   今天活跃过
+					   {elseif (time() - $user_bind['lastvisit']) > 24*3600 && (time() - $user_bind['lastvisit']) < (3600*24*30)}
+					   3天前活跃过
+					   {else}一周前活跃过
+					   {/if}
+                    &gt;</dd>
+					<dd>{if $user_bind['birthyear']}{php echo (gmdate('Y', time()) - $user_bind['birthyear']);}岁{else}年龄保密{/if}，<script>userdetail('{$user_bind['marriage']}',marriage)</script></dd>
+					<dd>{if $user_bind['province'] == '0' && {$user_bind['city']} == '0'}保密{else}<script>userdetail('{$user_bind['province']}',provice)</script><script>userdetail('{$user_bind['city']}',city)</script>{/if}</dd>
+				</dl>
+				<div class="clear"></div>
+			</div>
+            {/if}
+			<div class="r-center-bottom"></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>短信发送查询</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+function checkForm(){
+	var content = $("#content").val();
+	var tel_list = $("#tel_list").val();
+	if( !content||!tel_list){
+		alert("请将信息填写完整");
+		return false;
+	}
+}
+
+
+
+//字数
+function textCounter(field,countfieldId,leavingsfieldId,maxlimit) {
+	var countfield = document.getElementById(countfieldId);
+	var leavingsfield = document.getElementById(leavingsfieldId);
+	if (field.value.length > maxlimit) // if too long...trim it!
+	{
+		field.value = field.value.substring(0, maxlimit);
+		alert(" 限" + maxlimit + "字内！");
+	} else { 
+		leavingsfield.innerHTML=maxlimit - field.value.length;
+		countfield.innerHTML=field.value.length;
+	}
+}
+</script>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 发送短信</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<form action="index.php?action=other&h=sendmsm&post=1" method="post" onsubmit="return checkForm();">
+<div class="list-div">
+		<table width="100%">
+		<tr>
+				<td width="125" height="25" align="right">接收手机号：</td>
+				<td align="left"><input name="tel_list" value=""  style="width:830px" id="tel_list" /></td><td>以逗号分隔开,如：18223005600,13900192987</td>
+			</tr>
+			<tr>
+				<td width="125" height="25" align="right" valign="top">请输入信息：（限 140 字，目前已经输入<span id="counter2" > 0 </span>字，您还可以输入 <span  id="leavings2">140</span> 字。）</td>
+				<td align="left"><textarea id="content" name="content"  style="width:830px;height:120px;" onfocus="textCounter(this,'counter2','leavings2',140);" onblur="textCounter(this,'counter2','leavings2',140);" onkeyup="textCounter(this,'counter2','leavings2',140);"></textarea></td><td></td>
+			</tr>
+			<tr>
+				<td width="125" height="25" align="right"></td>
+				<td align="left"><input name="提交" type="submit" value="发 送" /></td><td></td>
+			</tr>
+		</table>
+</div>
+
+                    
+<p/>
+</form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+.head{height:461px; background:url(./images/head.gif) no-repeat center top;}
+.main{height:auto; border:1px solid #88AB45;}
+.title{height:30px; line-height:30px; background:#DAF3BA; color:#323733;width:968px;}
+.question{color:#2D2D2D; font-size:13px;}
+.content p .help{font-size:15px; font-weight:bold;color:#E81566;}
+.suggest{margin-left:150px;color:#2D2D2D; font-size:13px;}
+.suggest li{width:800px; line-height:180%;}
+.expert{font-size:15px; font-weight:bold;color:#E81566;top:85px; left:30px;}
+a.link{display:inline-block;zoom:1;height:55px; width:260px;right:100px;bottom:205px;}

@@ -1,0 +1,126 @@
+html body { background: none; }
+
+
+#activity_wrap { width: 982px; margin: 0 auto; }
+#activity_content { width: 754px; float: left; }
+#activity_sidebar { width: 220px; float: right; }
+.clearfix { display: inline-block; }
+#activity_wrap img { border: 0; }
+
+#activity_content .post { width: 752px; margin-bottom: 10px; border: #f585b3 solid 1px; }
+#activity_content .post_sign { width: 750px; position: relative; padding: 1px; }
+#activity_content .post_sign .round_l_t { width: 5px; height: 5px; position: absolute; left: -1px; top: -1px; }
+#activity_content .post_sign .round_r_t { width: 5px; height: 5px; position: absolute; right: -1px; top: -1px; }
+#activity_content .post_sign .round_l_b { width: 5px; height: 5px; position: absolute; left: -1px; bottom: -1px; }
+#activity_content .post_sign .round_r_b { width: 5px; height: 5px; position: absolute; right: -1px; bottom: -1px; }
+#activity_content .sign_cont { width: 750px; padding-bottom: 20px; background-color: #FEEFF5; }
+#activity_content .sign_cont h2 { font-family: SimSun-ExtB; font-size: 16px; line-height: 46px; color: #FF0066; padding: 0; margin: 0 0 0 22px; }
+#activity_content .sign { width: 243px; float: left; position: relative; margin-left: 31px; padding-right: 9px; padding-top: 88px; border-bottom: #fddfeb solid 1px; border-left: #fddfeb solid 1px; border-top: #fddfeb solid 1px; background-color: #fff; display: inline; }
+#activity_content .sign .sign_btn { position: absolute; right:9px; top: 28px; }
+#activity_content .sign .times { margin: 0; padding: 0; font-family: SimSun-ExtB; font-size: 15px; color: #000; font-weight: 700; line-height: 40px; background: url(images/activity_new/sign_line.jpg) center bottom no-repeat; text-align: center; }
+#activity_content .sign p span { color: #fe0000; }
+#activity_content .sign .number { margin: 0; padding: 0; font-family: SimSun-ExtB; font-size: 16px; color: #333; font-weight: 700; line-height: 45px; text-align: center; }
+#activity_content .sign .number span { font-size: 18px; }
+#activity_content .sign .boyandgirl { width: 190px; margin:0 0 10px 8px; padding-left: 40px; padding-top: 10px; border: #fbd686 solid 1px; background-color: #fff8e8; list-style: none; overflow: hidden; }
+#activity_content .sign .boyandgirl li { width: 58px; float: left; margin-right: 30px; font-family: SimSun-ExtB; font-size: 12px; color: #000; }
+#activity_content .sign .boyandgirl li span { font-size: 16px; color: #0066FF; font-weight: 700; margin-right: 5px; }
+#activity_content .sign .logo { width: 230px; height: 89px; margin:0 0 8px 8px; padding-left: 0; padding-bottom: 10px; border: #fbd686 solid 1px; background-color: #fff8e8; list-style: none; background: none; }
+#activity_content .sign .logo li { float: left; margin-left: 16px; margin-top: 10px; margin-right: 8px; display: inline; }
+#activity_content .sign .logo .other_sign { margin-left: 30px; *margin-top: 11px; _margin-top: 12px; margin-top: 11px\0; }
+#activity_content .sign img { display: block; }
+
+
+
+#activity_content .gallery { width: 448px; float: left; padding-right: 9px; padding-top: 10px; padding-bottom: 8px; border-bottom: #fddfeb solid 1px; border-right: #fddfeb solid 1px; border-top: #fddfeb solid 1px; background-color: #fff; }
+#activity_content .gallery img { display: block; width: 448px; height: 268px; }
+#activity_content .gallery ul { width: 448px; list-style: none; margin: 0; padding: 0; }
+#activity_content .gallery li { width: 203px; padding: 0 0 0px 20px;; margin: 10px 0 0px 0; float: left; }
+#activity_content .gallery .line { background: url(images/activity_new/gallery_line.jpg) right top repeat-y; }
+#activity_content .gallery dl { font-family: SimSun-ExtB; list-style: none; padding: 0; margin: 0; }
+#activity_content .gallery dt { font-size: 14px; font-weight: 700; color: #D60073; line-height: 30px; }
+#activity_content .gallery dd { font-size: 12px; color: #676767; line-height: 24px; margin: 0; }
+#activity_content .gallery dd span { font-weight: 700; }
+#activity_content .entry { width: 700px; margin: 0 auto; padding: 10px 0 0; *padding: 10px 0 3px; _padding: 10px 0 6px; padding: 5px 0 0\0; }
+#activity_content .entry h2 { padding: 0 20px; padding: 4px 20px 0\0; padding: 4px 20px 0\9\0; margin: 0; font-family: SimSun-ExtB; font-size: 14px; font-weight: 700; color: #fff; line-height: 26px; background: url(images/activity_new/post_h2.jpg) no-repeat; }
+#activity_content .entry .infor { margin: 10px 0; padding: 0 20px; list-style: none; }
+#activity_content .entry .infor li { font-family: SimSun-ExtB; font-size: 14px; color: #000; line-height: 26px; }
+#activity_content .entry .infor li span { color: #eb3484; }
+#activity_content .entry p { margin: 0; padding: 0 20px; font-family: SimSun-ExtB; font-size: 14px; color: #000; line-height: 26px; text-indent: 2em; }
+#activity_content .entry p span { color: #eb3484; font-size: 13px;}
+#activity_content .entry .lightspot { margin: 10px 0; padding: 0 20px; list-style: none; }
+#activity_content .entry .lightspot li { font-family: SimSun-ExtB; font-size: 14px; color: #333; line-height: 26px; }
+#activity_content .entry .lightspot li span { color: #eb3484; }
+
+#activity_sidebar .post { width: 218px; margin-bottom: 10px; position: relative; border: #f585b3 solid 1px; }
+#activity_sidebar .post .round_l_t { width: 5px; height: 5px; position: absolute; left: -1px; top: -1px; z-index: 99; }
+#activity_sidebar .post .round_r_t { width: 5px; height: 5px; position: absolute; right: -1px; top: -1px; z-index: 99; }
+#activity_sidebar .post .round_l_b { width: 5px; height: 5px; position: absolute; left: -1px; bottom: -1px; }
+#activity_sidebar .post .round_r_b { width: 5px; height: 5px; position: absolute; right: -1px; bottom: -1px; }
+#activity_sidebar .post h2 { height: 26px; margin: 0; padding: 3px 59px 0 10px; position: relative; font-family: SimSun-ExtB; font-size: 14px; color: #D60074; line-height: 26px; border-left: #fff solid 1px; border-right: #fff solid 1px; border-top: #fff solid 1px; border-bottom: #f685b3 solid 1px; background-color: #fddfeb;  }
+#activity_sidebar .post h2 #class1 { width: 50px; height: 22px; margin-right: 1px; margin-top: 4px; text-align: center; background: url(images/activity_new/sidebar_h2_thisclass.jpg) no-repeat; display: block; position: absolute; left: 60px; top: 4px; color: #de016b; text-decoration: none; }
+#activity_sidebar .post h2 #class2 { width: 50px; height: 22px; text-align: center; margin-top: 4px; background: url(images/activity_new/sidebar_h2_otherclass.jpg) no-repeat; display: block; position: absolute; left: 110px; top: 4px; color: #2b73c7; text-decoration: none; }
+#activity_sidebar .post .apply { list-style: none; margin: 0; padding: 0 3px; }
+#activity_sidebar .post .apply dt { padding: 5px 0; border-bottom: #ccc dashed 1px; font-family: SimSun-ExtB; font-size: 12px; color: #393939; display: inline-block; }
+#activity_sidebar .post .apply dd { height: 22px; margin: 0; padding: 3px 0; font-family: SimSun-ExtB; font-size: 12px; color: #393939; line-height: 22px; display: inline-block; overflow: hidden; }
+#activity_sidebar .post .apply dd a { color: #D60074; text-decoration: none; }
+#activity_sidebar .post .apply dd a:hover { text-decoration: underline; }
+#activity_sidebar .post .apply span { text-align: center; display: block; float: left; }
+#activity_sidebar .post .apply .name { width: 50px; }
+#activity_sidebar .post .apply dd .name { color: #ab0080; }
+#activity_sidebar .post .apply .sex { width: 30px; }
+#activity_sidebar .post .apply .age { width: 30px; }
+#activity_sidebar .post .apply .education { width: 100px; }
+#activity_sidebar .post .pagenav { background-color: #fddfeb; border-left: #fff solid 1px; border-right: #fff solid 1px; border-bottom: #fff solid 1px; border-top: #fabed7 solid 1px; font-family: SimSun-ExtB; font-size: 14px; line-height: 30px; color: #d70075; text-align: center; }
+#activity_sidebar .post .pagenav p { padding: 0; margin: 0; color: #d70075; }
+#activity_sidebar .post .pagenav a { color: #d70075; text-decoration: none; margin: 0 10px; }
+#activity_sidebar .post .news { list-style: none; margin: 6px 0 5px; padding: 0 10px; }
+#activity_sidebar .post .news li { height: 16px; padding: 3px 0; overflow: hidden; font-family: SimSun-ExtB; font-size: 12px; color: #666; }
+#activity_sidebar .post .news li a { color: #d60074; text-decoration: none; }
+#activity_sidebar .post .news li a:hover { text-decoration: underline; }
+#activity_sidebar .post h2 .more { position: absolute; top: 2px; right: 10px; font-family: SimSun-ExtB; font-size: 12px; color: #444; text-decoration: none; }
+#activity_sidebar .post h2 .more:hover { text-decoration: underline; }
+#activity_sidebar .post .pic_list { list-style: none; padding: 0 10px; margin: 10px auto 0; *margin:1px auto 0; }
+#activity_sidebar .post .pic_list li { text-align: center; font-family: SimSun-ExtB; font-size: 14px; color: #666; }
+#activity_sidebar .post .pic_list li img { display: block; margin: 0 auto 10px;; }
+#activity_sidebar .post .review { list-style: none; padding: 0 10px; margin: 5px 0; }
+#activity_sidebar .post .review li { font-family: SimSun-ExtB; font-size: 12px; line-height: 22px; }
+#activity_sidebar .post .review li a { color: #666; text-decoration: none; }
+#activity_sidebar .post .review li a:hover { text-decoration: underline; }
+#activity_sidebar .post .cooperation_img, #activity_sidebar .post .volunteer_img { display: block; margin: 0 auto; }
+#activity_sidebar .post .cooperation { list-style: none; padding: 0 10px; margin: 5px 0; }
+#activity_sidebar .post .cooperation li { font-family: SimSun-ExtB; font-size: 12px; line-height: 24px; color: #666; }
+#activity_sidebar .post .cooperation li a { margin-left: 10px; color: #EB3684; text-decoration: none; }
+#activity_sidebar .post .cooperation li a:hover { text-decoration: underline; }
+#activity_sidebar .post .volunteer { list-style: none; padding: 0 5px; margin: 0 auto 10px; font-family: SimSun-ExtB; color: #666; }
+#activity_sidebar .post .volunteer dt { font-size: 14px; line-height: 24px; }
+#activity_sidebar .post .volunteer dd { margin: 0; font-size: 12px; line-height: 24px; }
+#activity_sidebar .post .volunteer dd a { margin-left: 0px; color: #EB3684; text-decoration: none; }
+#activity_sidebar .post .volunteer dd a:hover { text-decoration: underline; }
+ 
+
+
+#activity_wrap .activity { width:982px; margin:0 auto 10px; }
+#activity_wrap .activity h2 { margin: 0; padding: 0; }
+#activity_wrap .activity .entry { width: 980px; margin: 0 auto; padding:15px 0px 10px; border-left:1px solid #f585b3; border-right:1px solid #f585b3; }
+#activity_wrap .activity .LeftBotton { width:17px; background:url(lnz_anniu.gif) no-repeat 0px 0; overflow:hidden; float:left; display:inline; margin:50px 0 0 5px; cursor:pointer; }
+#activity_wrap .activity .RightBotton { width:17px; background:url(lnz_anniu.gif) no-repeat -22px 0; overflow:hidden; float:left; display:inline; margin:50px 0 0 0px; cursor:pointer; }
+#activity_wrap .activity .Cont { width:936px; overflow:hidden; float:left; }
+#activity_wrap .activity .ScrCont { width:10000000px; }
+#activity_wrap .activity .Cont .pic { margin: 0 5px; float:left; text-align:center; }
+#activity_wrap .activity .Cont .pic img { display:inline; margin:0 auto; border: #f483af solid 1px; width: 222px; }
+#activity_wrap .activity .Cont a:link, #activity_wrap .activity .Cont a:visited { color:#626466; text-decoration:none; }
+#activity_wrap .activity .Cont a:hover { color:#f00; text-decoration:underline; }
+#activity_wrap .activity #List1, #activity_wrap .activity #List2 { float:left; }
+
+
+#activity_wrap .friend_link { width: 982px; }
+#activity_wrap .friend_link h2 { margin: 0; padding: 0; }
+#activity_wrap .friend_link .entry { width: 980px; border-left: #f585b3 solid 1px; border-right: #f585b3 solid 1px; }
+#activity_wrap .friend_link .entry ul { list-style: none; padding: 0; margin: 10px 0 0px 75px; }
+#activity_wrap .friend_link .entry ul li { float: left; margin-right: 19px; margin-bottom: 20px; }
+#activity_wrap .friend_link .entry ul li img { display: block; }
+
+.footer { text-align:center; }
+
+#footer { padding-top:12px; background:#FFF;}
+#footer p { color:#d83c90; margin-top:5px; text-align:center; padding-top:0px; font-size:13px;}

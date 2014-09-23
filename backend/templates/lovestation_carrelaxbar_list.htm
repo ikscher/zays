@@ -1,0 +1,146 @@
+<html>
+<head>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" xmlns="http://www.w3.org/1999/html"/>
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+    String.prototype.trim = function()    {    return this.replace(/(^\s*)|(\s*$)/g, "");    }
+
+
+    $(document).ready(function(){
+      
+        $("tr td a").click(function(){
+            var inhtml=this.innerHTML.trim();
+            if(inhtml=="删除"||inhtml=="显示"){
+                var  cf = confirm("你确定要"+inhtml);
+                if(!cf){
+                    return false;
+                }
+                var id =this.href;
+                id =id.substr(id.lastIndexOf("#")+1);
+                var deleted = $(this).next("input").val();
+                var that = this;
+                $.ajax({
+                    type: "POST",
+                    url: "index.php?action=lovestation&h=carrelaxbardelete",
+                    data: "deleted="+deleted+"&id="+id,
+                    success: function(msg){
+                        if(msg==1){
+                            that.parentNode.parentNode.parentNode.removeChild(that.parentNode.parentNode);
+                        }
+                    }
+                });
+                return false;
+            }else if( inhtml=="编辑"){
+              var content =  $(this.parentNode).prev().prev();
+               var textarea =  document.createElement("textarea");
+                textarea.value = content.html().replace(/&nbsp;/g,' ').replace(/<br>/ig,'\n');
+                textarea.rows =5;
+                textarea.cols=100;
+                content.data("content",textarea.value);
+
+                content.empty();
+                content.wrapInner(textarea);
+                this.innerHTML="确认修改/";
+                $(this).after("<a>取消</a>");
+                $(this).click(edit);
+                $(this).next("a").click(function(){
+                    var content = $(this.parentNode).prev().prev();
+                    content.html(content.data("content"));
+                    $(this).prev().unbind('click',edit);
+                    $(this).prev().html("编辑");
+                    this.parentNode.removeChild(this);
+
+                    return false;
+                });
+                return false;
+            }
+
+        });
+        $("#addrelax").click(function(){
+            $("#t2").show();
+        })
+
+    });
+
+    function edit(){
+        var con  = confirm("确认要提交修改吗");
+        if(!con){
+            return false;
+        }
+        var content = $(this.parentNode).prev().prev();
+        var contentval =content[0].childNodes[0].value;
+        var id =this.href;
+        id =id.substr(id.lastIndexOf("#")+1);
+        that =this;
+        $.ajax({
+            type: "POST",
+            url: "index.php?action=lovestation&h=carrelaxbaredit",
+            data: "content="+contentval+"&id="+id,
+            success: function(msg){
+                if(msg==1){
+                    that.innerHTML = "编辑";
+                    that.parentNode.removeChild($(that).next("a")[0]);
+                    var finalcontent = contentval.replace(/ /g,'&nbsp').replace(/\n/ig,'<br>');
+                    content.html(finalcontent);
+                }
+            }
+        });
+        $(this).unbind('click',edit);
+        return false;
+    }
+</script></head>
+<body>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 红娘休闲吧笑话列表</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<span class="action-span"><a href="#"id="addrelax">添加笑话</a></span>
+<span class="action-span"><a href="#"id="addrelaxgame"  onclick="parent.addTab('趣味游戏','index.php?action=lovestation&h=carrelaxbargame','icon')">趣味游戏</a></span>
+
+
+    <div style="clear:both"></div>
+</h1>
+<div class="list-div">
+<span class="but_a">
+
+<a href="index.php?action=lovestation&h=carrelaxbar&deleted=0">前台显示笑话</a>
+<a href="index.php?action=lovestation&h=carrelaxbar&deleted=1">删除的笑话</a>
+</span>
+</div>
+<br />
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+  	<th>序号</th>
+    <th>内容</th>
+    <th>添加时间</th>
+    <th>操作</th>
+  </tr>
+  {php $i=($page-1)*$limit+1;}
+  {loop $data $k $v}
+  <tr>
+  	<td align="center">{$i}</td>
+    <td align="left">{$v['content']}</td>
+    <td align="center">{php echo date("Y-m-d",$v['dateline']);}</td>
+    <td align="center"><a href="#{$v['id']}"  >编辑</a>
+    <a href="#{$v['id']}">{if $v['deleted']==0} 删除{/if}{if $v['deleted']==1} 显示{/if}</a><input type="hidden" value="{$v['deleted']}"></td>
+  </tr>
+  {php $i++;}
+  {/loop}
+  		<tr>
+			<td colspan="5" align="center">{$pages}</td>
+		</tr>
+  </table>
+<form action="index.php?action=lovestation&h=carrelaxbaradd" method="post" target="_self">
+    <table cellspacing='1' id="t2" style="display: none;" cellpadding='3'>
+        <tr>
+            <th >内容</th>
+        </tr>
+        <tr>
+            <td align="center" ><textarea cols="50" rows="20" name="content"> </textarea><input type="submit" value="提交"/></td>
+        </tr>
+    </table>
+    </form>
+</div></body>
+</html>

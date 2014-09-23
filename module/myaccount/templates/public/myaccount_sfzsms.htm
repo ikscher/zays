@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>诚信认证——真爱一生网</title>
+{template system/js_css public}
+<link href="module/myaccount/templates/{$GLOBALS['style_name']}/myaccount.css" rel="stylesheet" type="text/css" />
+</head>
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=myaccount">诚信认证</a>&nbsp;&gt;&gt;&nbsp;身份认证</span></p>
+	<!--content-lift end-->
+    {template system/simp_left public}
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=myaccount" class="r-title-black">&lt;&lt;返回诚信认证</a>
+			<span class="right-title f-ed0a91">身份认证</span>
+			</div>
+			<div class="r-center-ccontent">
+				<div class="cer-conter" style="position:relative;">
+                <div style="position:absolute; left:200px; top:0;"><a href="http://www.id5.cn"><img src="module/myaccount/templates/default/images/id5.jpg"></a>该业务由国政通公司提供
+                </div>
+                <h3 style="font-size: 14px;padding-bottom:10px;">联系电话：010-57310399</h3>
+				<p style="padding-top:10px;">接下来请您用刚才填写的手机号码编辑短信：</p>				
+				<div class="cer-conter-box">
+					<div class="cer-conter-box-side"></div>
+					<div class="cer-conter-box-center">
+						<dl class="box-note">
+							<dt>注意事项：</dt>
+							<dd>移动用户在以下地区无法认证：<span class="f-ed0a91">湖南、江苏。神州行大众卡无法认证</span>。</dd>
+							<dd>联通用户均可以认证。电信用户无法认证。</dd>
+							<dd>5元认证将从您的手机话费中扣除，请勿重复发送短信以免造成重复支付。</dd>
+						</dl>
+					</div>
+					<div class="cer-conter-box-side" style="background-position:bottom"></div>
+				</div>
+				<div class="cer-conter-box">
+					<div class="cer-conter-box-side"></div>
+					<div class="cer-conter-box-center">
+						<dl class="box-note">
+							<dt><strong>发送步骤</strong>：</dt>
+							<dd>第一步：编大写：<span class="f-25px f-ed0a91">KK</span> 发送到 <span class="f-25px f-ed0a91">10665110</span>，5元/条  不含通信费</dd>
+							<dd>第二步：短信发送成功后，请在5-10秒后点击以下按钮完成认证。</dd>
+							<dd class="f-ed0a91">备注：广东移动的用户，编大写的AKK发送到10665110</dd>
+						</dl>
+					</div>
+					<div class="cer-conter-box-side" style="background-position:bottom"></div>
+				</div>
+				<div class="cer-conter-box" style="margin-bottom:40px;">
+					<div class="cer-conter-box-side"></div>
+					<div class="cer-conter-box-center">
+						<dl class="box-note">
+							<dt><strong>您已发送了短信吗?</strong>：</dt>
+							<dd>
+								<p class="f-ed0a91">短信发送成功后，请在5-10秒后点击以下按钮</p>
+							</dd>
+							<dd>
+                            <form  action="./index.php?n=myaccount&h=smsindex&d=1" method="post">
+           					<input type="hidden" name="userName" value="{$_POST['userName']}" />
+           					<input type="hidden" name="userCode" value="{$_POST['userCode']}" />
+           					<input type="hidden" name="msisdn" value="{$_POST['msisdn']}" />
+           					<input type="hidden" name="CommonMember" value="youareright" />
+                            <input name="input" type="submit" class="btn btn-primary video-button" value="我已发送信息" style="margin-bottom:0px;"/>
+          </form>
+                            
+                            </dd>
+						</dl>
+					</div>
+					<div class="cer-conter-box-side" style="background-position:bottom"></div>
+				</div>
+				<div class="cer-line"></div>
+				<dl class="cer-faq">
+					<dt class="f-ed0a91">为什么要进行身份通认证？</dt>
+					<dd>真爱一生网每天有上万用户选择身份通认证，通过真爱一生回访也发现，成功认证了身份证可以让您的交友成功率提高67%</dd>
+					<dt class="f-ed0a91">什么是身份通认证？</dt>
+					<dd>身份通认证是由“全国公民身份系统”提供数据支持，安全可靠。只需要填写您的真实姓名、身份证号以及手机号码。即可以通过认证。</dd>
+				</dl>
+				<div class="cer-line"></div>
+				<dl class="cer-faq" style="font-size:14px">
+					<dt class="f-ed0a91">费用收取</dt>
+					<dd>身份通认证的费用为5元,认证费用由北京国政通公司收取，无论认证是否成功，都会收取5元认证费，所收费用和真爱一生网无关。</dd>
+				</dl>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	<!--content end-->
+    {template system/footer public}
+    <!--foot end-->
+</div><!--main end-->
+</body>
+</html>

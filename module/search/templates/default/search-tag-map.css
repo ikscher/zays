@@ -1,0 +1,263 @@
+.levelbox dl{
+	width:430px;
+	height:100px;
+	border:1px solid #ccaecc;
+	padding:15px 0px 0px 10px;
+	float:left;
+	margin-right:9px;
+	margin-top:10px;
+	}
+.levelbox dt{
+	color:#c10202;
+	width:350px;
+	float:right;
+	text-align:left
+	}
+.levelbox dd{
+	font-size:12px;
+	line-height:20px;
+
+	}
+.levelbox dd.text{
+		width:355px;
+	    float:right;
+		}
+.levelbox dd.text a{
+	color:#666;
+	margin-left:5px}
+.levelbox dd.text a:hover{
+	color:#bd0000}
+.levelbox dd.pic{
+	float:left;
+	width:60px;
+	height:90px;
+	border-right:1px dotted #ccc
+	}
+.levelbox dd.pic img{
+	margin-top:10px;}
+
+.level .levelbox{
+	border:1px solid #ccaecc;
+	border-top:none;
+	padding-top:20px;
+	background:#fff;
+	font-size:14px;
+	zoom:1
+	}
+	
+.levelbox h4{
+	background:#fdf1fd;
+	border-top:1px solid #f5d8f4;
+	border-bottom:1px solid #f5d8f4;
+	color:#a425aa;
+	font-size:14px;
+	padding-left:30px;
+	padding-top:8px;
+	font-weight:normal;
+	margin-bottom:20px;
+	height:25px;
+	}
+.levelbox h4 img{
+	margin-right:10px;
+	}
+
+
+/*----------------地图搜索----------------*/
+.map{
+	margin-top:20px;
+	width:900px;
+	margin:0 auto;
+    font-size:12px;
+
+	}
+.map_left{
+	float:left;
+
+    height:429px;
+	width:550px;
+	}
+.map_left_map{
+		background:url(images/map.jpg) no-repeat right;
+		width:515px;
+		height:429px;
+		position:relative;
+		}
+.map_left_map a{
+	color:#EA427D;
+	}
+map_left_map a:hover{
+	text-decoration:underline;}
+.map_left_map a.current{
+	color:#644b4b;
+	padding:2px 3px;
+	background:#fff;
+	border:1px solid #e22f2f;
+	font-weight:bold;
+	}
+.xinjiang{
+	position:absolute;
+	top:120px;
+	left:90px;}
+.xizang{
+	position:absolute;
+	top:220px;
+	left:100px;}
+.qinghai{
+	position:absolute;
+	top:210px;
+	left:180px;}
+.neimenggu{
+	position:absolute;
+	top:150px;
+	left:290px;}
+.ningxia{
+	position:absolute;
+	top:188px;
+	left:280px;}
+.gansu{
+	position:absolute;
+	top:215px;
+	left:260px;}
+.sichuan{
+	position:absolute;
+	top:270px;
+	left:240px;}
+.yunnan{
+	position:absolute;
+	top:335px;
+	left:230px;}
+.heilongjiang{
+	position:absolute;
+	top:60px;
+	left:440px;
+	}
+.jilin{
+	position:absolute;
+	top:100px;
+	left:440px;}
+.liaoning{
+	position:absolute;
+	top:130px;
+	left:420px;}
+.beijing{
+	position:absolute;
+	top:140px;
+	left:368px;}
+.hebei{
+	position:absolute;
+	top:170px;
+	left:360px;}
+.shangxi{
+	position:absolute;
+	top:185px;
+	left:330px;}
+.shanxi{
+	position:absolute;
+	top:225px;
+	left:300px;}
+.chongqing{
+	position:absolute;
+	top:270px;
+	left:295px;}
+.guzhou{
+	position:absolute;
+	top:310px;
+	left:290px;}
+.guangxi{
+	position:absolute;
+	top:350px;
+	left:300px;
+	}
+.hebei{
+	position:absolute;
+	top:170px;
+	left:360px;}
+.shandong{
+	position:absolute;
+	top:200px;
+	left:380px;}
+.henan{
+	position:absolute;
+	top:225px;
+	left:345px;}
+.anhui{
+	position:absolute;
+	top:250px;
+	left:385px;}
+.jiangsu{
+	position:absolute;
+	top:240px;
+	left:410px;}
+.hubei{
+	position:absolute;
+	top:260px;
+	left:340px;}
+.hunan{
+	position:absolute;
+	top:300px;
+	left:330px;}
+.jiangxi{
+	position:absolute;
+	top:300px;
+	left:370px;}
+.zhejiang{
+	position:absolute;
+	top:275px;
+	left:415px;}
+.fujiang{
+	position:absolute;
+	top:310px;
+	left:400px;}
+.guangzhou{
+	position:absolute;
+	top:345px;
+	left:355px;}
+.xianggang{
+	position:absolute;
+	top:360px;
+	left:360px;}
+.aomen{
+	position:absolute;
+	top:370px;
+	left:330px;}
+.hainan{
+	position:absolute;
+	top:400px;
+	left:315px;}
+.taiwan{
+	position:absolute;
+	top:335px;
+	left:430px;
+	}
+.map_right{
+	float:left;
+	width:345px;
+	color:#666666;
+	height:auto;
+	border:1px solid #e8e8e8
+	}
+.map_right h3{
+	height:35px;
+	line-height:35px;
+	background:#f5f5f6;
+	color:#666666;
+	border-bottom:1px dashed #ccc}
+.map_right .link{
+	line-height:25px;
+	padding-bottom:30px;
+	float:left
+	}
+.map_right .link li{
+	padding:0px 10px;
+	white-space:nowrap;
+	float:left;
+	text-align:center;
+	}
+.map_right .link li a{
+	color:#D73C90;
+	margin:0px 15px;
+	}
+.map_right .link a:hover{
+	text-decoration:underline}
+.lwth{
+width:70px}

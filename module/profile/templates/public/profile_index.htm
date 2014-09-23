@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>投诉会员——真爱一生网</title>
+<link href="module/profile/templates/{$GLOBALS['style_name']}/profile.css" type="text/css" rel="stylesheet" />
+{template system/js_css public}
+</head>
+<script>
+	//控制投诉内容
+	function textCounter(){
+		var text_content = $('#content').val().replace(/\s/g,''); 	
+		var now_len = text_content.length;
+		var last_len = 1500-now_len;
+		if(now_len > 1500){
+			$('#content').val(text_content.substring(0,1500));
+		}
+		$('#now').html(now_len);
+		$('#last').html(last_len);
+	}
+</script>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;会员投诉</span><a href="#"></a></p>
+	<div class="content-lift">
+		<div class="c-lift-content">
+		<div class="c-lift-title">
+		我的联系情况
+		</div>
+		<div class="c-lift-content-in">
+			<dl class="cl-photo-show">
+				<dt>
+					<div class="cl-photo-img">
+						<p>
+                        {if $userinfo['images_ischeck']=='1'&& !empty($userinfo['mainimg'])}
+                              <img src="{if MooGetphoto($userinfo[uid],'medium')}
+                              {php echo MooGetphoto($userinfo[uid],'medium')}
+                              {elseif MooGetphoto($userinfo[uid],'com')}
+                                  {php echo MooGetphoto($userinfo[uid],'com')}
+                              {else}
+                                {if $userinfo['gender'] == '1'}
+                                    public/system/images/woman.gif
+                                {else}
+                                    public/system/images/man.gif
+                                {/if}
+                              {/if}
+                              " onload="javascript:DrawImage(this,110,138)"  />
+       					{elseif !empty($userinfo['mainimg'])}
+                            {if $userinfo['gender'] == '1'}
+                            	<img src="public/system/images/woman.gif"  />
+                            {else}
+                            	<img src="public/system/images/man.gif"/>
+                            {/if}
+                		{else}
+                            {if $userinfo['gender'] == '1'}
+                                <img src="public/system/images/service_nopic_woman.gif"  />
+                            {else}
+                                <img src="public/system/images/service_nopic_man.gif" />
+                            {/if}
+         				{/if}
+                        </p>
+					</div>
+				</dt>
+				<dd>
+                    {if  $userinfo['s_cid']==20}
+                        <a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+                    {elseif  $userinfo['s_cid'] == 30}
+                        <a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+                    {/if}
+                   {php echo $userinfo[nickname] ? $userinfo[nickname] : 'ID '.$user_s['uid']}
+                </dd>
+				<dd class="f-ed0a91">&lt; 
+                {php  echo activetime(isset($userinfo['lastvisit'])?$userinfo['lastvisit']:'',$userinfo['usertype']);}
+                <!--
+                {if (time() - $userinfo['lastvisit'])  < 600}
+					当前在线
+				{elseif (time()-$userinfo['lastvisit'])< 3600 }
+                	一小时内登陆过 
+			    {elseif (time() - $userinfo['lastvisit']) > 3600 && (time() - $userinfo['lastvisit']) < (12*3600)}
+					3小时前活跃过
+				{elseif (time() - $userinfo['lastvisit']) > 12*3600 && (time() - $userinfo['lastvisit']) < (3600*24)}
+					今天活跃过
+				{elseif (time() - $userinfo['lastvisit']) > 24*3600 && (time() - $userinfo['lastvisit']) < (3600*24*30)}
+					3天前活跃过
+				{else}
+                	一周前活跃过
+			    {/if}
+                -->
+                 &gt;</dd>
+				<dd>{php echo $userinfo[birthyear] ? (date('Y')-$userinfo[birthyear]).'岁' : '年龄保密'}，<script>userdetail('{$userinfo[marriage]}',marriage)</script></dd>
+				<dd>{if $userinfo[province] == '0' && $userinfo[city] == '0'}保密{else}<script>userdetail('{$userinfo[province]}',provice)</script><script>userdetail('{$userinfo[city]}',city)</script>{/if}</dd>
+				<dd>照片（{$pic_num['c']}）</dd>
+			</dl>
+		</div>
+		<div class="c-lift-bottom"></div>
+		</div><!--c-lift-content-->
+		<div class="left-tips">
+			<div class="left-tips-side"></div>
+			<div class="left-tips-center">
+			<dl>
+				<dt><img src="module/service/templates/default/images/left-tips-img.gif" />
+					<p><a href="#" class="f-ed0a91-a">意见反馈</a></p>
+				</dt>
+				<dd>拨打<strong>400-8787-920</strong><br />咨询真爱一生网提供的专业征婚服务
+				</dd>
+				
+			</dl>
+			</div>
+			<div class="left-tips-side" style="background-position:right;"></div>
+		</div>
+		
+	</div><!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=space&h=viewpro" class="fright f-000" style="padding-right:15px;">&lt;&lt; 返回我的详细资料</a>
+			<a href="index.php?n=space&h=viewpro&uid={$userinfo['uid']}" class="fright f-000" style="padding-right:15px;">&lt;&lt; 返回她的详细资料</a>
+			<span class="right-title f-ed0a91">填写投诉表单</span>			
+			</div>
+            <form action="#" method="post" enctype="multipart/form-data" name="report" id="report">
+			<div class="r-center-ccontent" style="padding:0 0 40px; width:753px;">
+				<div class="r-complain-box">
+					<dl class="complain-tips">
+						<dt class="f-14x"><strong>投诉须知：</strong></dt>
+						<dd>1.请确保您提交的信息真实、准确。</dd>
+						<dd>2.您每天只能对5位不同的会员进行投诉。</dd>
+						<dd>3.两天内，您对同一会员只能投诉一次。 </dd>
+						<dd>4.<span class="f-f00">*</span>为必填项目</dd>
+					</dl>
+					<div class="clear"></div>
+					<h4>填写投诉表单</h4>
+					<ul class="complain-table f-14x">
+						<li>&nbsp;&nbsp;被投诉人：&nbsp;{php echo $userinfo['nickname']?$userinfo['nickname']:'ID '.$userinfo['uid']}</li>
+						<li><span class="f-f00">*</span> 投诉原因：
+						<script>getSelect('','forwhy','forwhy','','',warnreason)</script>
+                        </li>
+						<li><span class="f-f00">*</span> 您的邮箱：&nbsp;<input type="text" name="umail" id="umail"  value="{$user_arr['username']}" style="width:350px; height:18px;"/></li>
+						<li><span class="f-f00">*</span> 图片证据：&nbsp;
+                        <input name="pic" type="file" id="pic" style="padding:3px;"/>
+                        <input type="hidden" name="uid" id="uid" value="{$user_arr['uid']}" />
+                        <input type="hidden" name="ruid" id="ruid" value="{$userinfo['uid']}" />
+                        <font style="font-size:12px" color="#CCCCCC">照片必需为JPG,PNG,GIF或BMP格式,上传的图片大小不能超过5120KB</font>
+                        </li>
+                        <li>如何获得图片证据？</li>
+						<li>如果有会员给您发送不良信息，您可以用截屏键（Print Screen）或截图软件（例如QQ截图）截取图片提交给我们。</li>
+						<li><span class="f-f00">*</span> <strong>具体说明：</strong></li>
+						<li>
+							<textarea name="content" id="content" style="width:600px; height:300px;" onkeyup="javascript:textCounter();" onfocus="javascript:$(this).addClass('public');" onblur="javascript:$(this).removeClass('public')"></textarea>
+						</li>
+                        <li style="font-size:12px">限30-1500字，目前已输入 <strong id="now" class="f-ed0a91">0</strong> 字，您还可以输入 <strong id="last" class="f-ed0a91">1500</strong> 字。</li>
+						<li style="padding:5px;"><input id="reportbutton" name="reportbutton" type="submit" class="btn btn-default" value="发送" /></li>
+					</ul>
+				</div>				
+				<div class="clear"></div>
+			</div>
+            </form>
+			<div class="r-center-bottom">
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

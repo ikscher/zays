@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{template system/js_css public}
+<link type="text/css" rel="stylesheet" href="{MOOPHP_TEMPLATE_DIR}/default/basic.css" />
+<link type="text/css" rel="stylesheet" href="{MOOPHP_TEMPLATE_DIR}/default/car.css" />
+<script src="{MOOPHP_TEMPLATE_DIR}/default/js/car.js"></script>
+<title>真爱一生爱车会</title>
+</head>
+
+<body>
+	{template system/header public}
+		<div class="wrap w980 bc">
+    	<img src="{MOOPHP_TEMPLATE_DIR}/default/images/car.gif" />
+        <div class="main mt5" id="imgwall">
+        	<div class="display"></div>
+            <div class="up oh">
+               <div class="left fl pr" id="left">
+               <div class="pa leftBtn"><img src="{MOOPHP_TEMPLATE_DIR}/default/images/left_03.png" /></div>
+                    <ul>
+						{loop $car_list[0]['imgurl'] $key $imgurl}
+                        <li {if $key > 0}style="display:none;"{/if}>
+                            <img src="{php echo $imgurl}" />
+                        </li>
+                        {/loop}
+                    </ul>
+                <div class="pa rightBtn"><img src="{MOOPHP_TEMPLATE_DIR}/default/images/right.png" /></div>
+            </div>
+            <div class="right fl ml5 mt5">
+                <p class="title tc fb">$car_list[0]['car']</p>
+                <p class="introduce f14 lh200 tl pt20 pl15">{php echo htmlspecialchars($car_list[0]['info']);}</p>
+            </div>
+           </div>
+            <div class="cb"></div>
+           <div class="up oh" id="up">
+            <div class="left fl mt5 pr">
+            <div class="pa leftBtn2"><img src="{MOOPHP_TEMPLATE_DIR}/default/images/left_03.png" /></div>
+            	<ul>
+					{loop $car_list[1]['imgurl'] $key $imgurl}
+                    <li {if $key > 0}style="display:none;"{/if}>
+                        <img src="{php echo $imgurl}" />
+                    </li>
+					{/loop}
+               </ul>
+               <div class="pa rightBtn2"><img src="{MOOPHP_TEMPLATE_DIR}/default/images/right.png" /></div>
+            </div>
+            <div class="right fl ml5 mt5">
+            	<p class="title tc fb">$car_list[1]['car']</p>
+                <p class="introduce f14 lh200 tl pt20 pl15">{php echo htmlspecialchars($car_list[1]['info']);}</p>
+            </div>
+        </div>
+        </div>
+        <div class="cb"></div>
+		{template system/footer public}
+    </div>
+</body>
+</html>

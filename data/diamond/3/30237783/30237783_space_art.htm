@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的爱情观——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>爱情观点 <i>love view</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="l-view">
+			   <div class="l-view1"> 
+			     <p>我认为自己是一个比较乐观向上，有一点点幽默，有责任心的男孩。我喜欢乐观大方一点的女孩子，不要太漂亮、太漂亮会让我感觉有点不安全。对于工作没什么要求，只希望她的工作不要太累。</p>
+			     <p>我觉得人生就是能和相爱的人一生一世。爱情是婚姻根本。我想如果没有爱的婚姻是不幸福的，那也是不负责任的婚姻，害己害人。我觉得经营婚姻是夫妻俩人相互扶持，相互理解、相互信任。</p>
+			     <p>关于事业方面，在近几年我应该还是从事我现在的行业，会在三到五年内做一些小投资，自己不再给别人打工。爱情上希望能够早点找到一个我喜欢、喜欢我的女孩，在有一定感情基础上结婚，今年能和我一块回家过年.也让我的心不在孤单，能和你一块高兴一块愁。和心爱的你和和睦睦，相守永久。</p>
+               </div>
+   
+               
+                           
+</div>
+			  </div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

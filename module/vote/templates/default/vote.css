@@ -1,0 +1,46 @@
+body{font-size:12px}
+.content-lift,.c-lift-content,.c-lift-title,.c-lift-content-in,.c-lift-bottom{width:220px;float:left}
+.c-lift-title,.c-lift-bottom{background:url(images/left-title.gif)}
+.c-lift-title{height:27px;text-align:center;font-size:14px;color:#F52;line-height:27px;font-weight:700}
+.c-lift-bottom{height:8px;background-position:bottom;font-size:0}
+.c-lift-content-in{background:url(images/left-bg.gif)}
+.left-content-c{padding:20px 0}
+.vote-left{line-height:24px}
+.vote-left dt{font-size:50px;text-align:center;color:#d73c90}
+.vote-left dd{text-align:center}
+.vote-left dd a{color:#000}
+.vote-left dd a:hover{text-decoration:underline}
+.vote-left dd.left-showimg{text-align:left;padding-left:58px}
+.vote-left-img{width:100px;height:125px;border:1px solid #dfdbdb;padding:1px}
+.vote-left-img,.votr-photos-list{display:table-cell;overflow:hidden;position:relative;text-align:center;vertical-align:middle}
+.vote-left-img p,.votr-photos-list p{position:static;+position:absolute;top:50%;text-align:center}
+.vote-left-img p img,.votr-photos-list p img{left:-50%;position:static;+position:relative;top:-50%}
+.no-vote{padding:20px;line-height:24px}
+.no-vote dd{padding-bottom:10px}
+.no-vote dt{text-align:center}
+.vote-cnter,.vote-cnter-title,.vote-cnter-bottom{width:465px;float:left}
+.vote-cnter{display:inline;margin-left:5px}
+.vote-cnter-title,.vote-cnter-bottom{background:url(images/center-show-title.gif) no-repeat}
+.vote-cnter-title{height:27px;line-height:27px}
+.vote-cnter-bottom{height:4px;font-size:0;background-position:bottom}
+.c-center{width:463px;float:left}
+.center-mark{padding:20px 0}
+.mark-box{width:433px;height:66px;background:url(images/mark-bg.gif) no-repeat;margin:0 auto}
+.mark-box p{padding:35px 0 0 60px;*padding:35px 0 0 57px}
+.mark-box input{margin-right:14px;*margin-right:7px}
+.vote-show{width:353px;padding:0 55px 20px}
+.vote-show dd{text-align:center;padding-bottom:15px}
+.vote-show dt{line-height:24px;padding-bottom:10px}
+.vote-show img{border:1px solid #dfdbdb;padding:1px}
+.vote-copy-text{width:215px;height:20px;border:1px solid #0a307d}
+.vote-right{width:286px;height:372px;float:right;background:url(images/vote-right-bg.gif)}
+.vote-right-content,.votr-photos{padding-top:5px}
+.votr-photos{width:284px;height:80px;padding-bottom:12px;padding-left:2px}
+.votr-photos,.votr-photos li{float:left;display:inline}
+.votr-photos li{margin-left:5px}
+.votr-photos-list{width:64px;height:80px;background:url(images/right-img-bg.gif) no-repeat}
+.vote-search{padding-left:20px;width:266px;float:left;font-size:14px}
+.vote-search li{line-height:35px;height:35px}
+.search-button{background:url(images/button-bg.gif) repeat scroll 0 0 transparent}
+.search-button2{background:url(images/searching.gif) repeat scroll 0 0 transparent}
+.s67{width:67px}

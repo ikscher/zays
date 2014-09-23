@@ -1,0 +1,50 @@
+@charset "utf-8";.content-lift,.content-title{width:678px;float:left}
+.c-center{width:676px;float:left;font-size:14px}
+.content-bottom{width:677px;float:left;font-size:0}
+.c-center-data{margin-top:40px;float:left}
+.c-center-data dt{width:180px;text-align:right;line-height:38px;float:left}
+.c-center-data dd{width:480px;float:left;margin-bottom:5px;line-height:38px;height:38px}
+.c-center-data dd p{float:left;margin-left:15px;display:inline;}
+.c-center-data-text{width:158px;height:28px;border:1px solid #d8d8d8;margin-top:4px;font-size:14px;line-height:28px}
+.next-yz{display:block;color:#fff;margin-top:4px}
+.next-yz,.go-on,.go-on2{width:100px;height:28px;background:url(../images/button-bg.gif);text-align:center;line-height:28px}
+.go-on2{background:url(../images/button-bg2.gif)}
+.register-clue{width:261px;height:38px;background:url(../images/w-box.gif);padding-left:20px;font-size:12px}
+.register-clue-w{width:231px;height:38px;background:url(../images/w-box-w.gif);padding-left:50px;font-size:12px;color:#F00}
+.c-center-data dd select{border:1px solid #d8d8d8;margin-top:8px!important;*margin-top:0!important;_margin-top:8px}
+.register-clue-bottom,.r-clue-side{width:524px;float:left}
+.register-clue-bottom{margin:20px 0 0 70px;display:inline}
+.register-clue-bottom p{padding:20px 0 25px}
+.r-clue-side{background:url(../images/warning-side.gif);height:5px;font-size:0}
+.r-clue-center{border-left:1px solid #f2b876;border-right:1px solid #f2b876;background:#fffbe8;float:left;width:522px}
+.r-clue-center b{width:44px;height:66px;background:url(../images/warning-icon.gif) center center no-repeat;float:left;margin-left:20px}
+.r-clue-center ul{float:left;display:inline;padding:10px 10px 10px 30px;line-height:20px;color:#F00}
+.go-on,.go-on2{border:0;color:#fff;font-weight:700;font-size:16px;margin:0 70px;cursor:pointer}
+.centent-right,.centent-right-top,.centent-right-bottom{width:294px;float:right}
+.centent-right-side{background:url(../images/l-sied.gif);height:3px;font-size:0}
+.centent-center{width:292px;border-left:1px solid #fde0fb;border-right:1px solid #fde0fb}
+.centent-right-title{padding:15px;line-height:20px;font-weight:700;font-size:14px;color:#d73c90}
+.c-r-content{padding:5px 0 40px 15px}
+.c-r-content dt{width:266px;height:27px;background:url(../images/r-title-bg.gif);cursor:pointer}
+.c-r-content dt p.title-close,.c-r-content dt p.title-open{margin:0 30px 0 40px;line-height:27px;font-size:14px;background:url(../images/xl-icon.gif) no-repeat right center;cursor:pointer}
+.c-r-content dt p.title-open{background:url(../images/xl-icon2.gif) no-repeat right center}
+.c-r-content dd{border:1px solid #fde0fb;background:#fff3fc;padding:10px;width:244px;line-height:18px}
+.c-r-content dd p{font-size:12px;margin-bottom:10px}
+.c-r-content dd p.text-center{text-align:center}
+.mm-honor-a{color:#d73c90}
+.mm-honor-a:hover{text-decoration:underline}
+.line-title{height:1px;background:url(../images/line.gif) center no-repeat;margin-bottom:10px;font-size:0}
+.c-r-c-text{padding-left:15px;padding-bottom:30px;font-size:12px;line-height:26px}
+.c-r-c-text dt{font-size:14px}
+.public{border:#F60 1px solid}
+.ml{margin-left:120px;}
+.mr{margin-left:50px;}
+.fn_left{float:left;}
+label.gender{background-repeat: no-repeat;background-image: url(../images/gender.jpg);padding-left: 25px;height: 32px;width: 15px;display: inline;}
+label.male{background-position: 5px 5px;}
+label.female{background-position: 5px -27px;}
+.registerHeader {height: 36px;line-height:36px;background-position: 0 0;background-color: #6495C6;border: #5B88B8 1px solid;border-radius: 3px 3px 0 0;}
+.registerTitle {font-size: 12px;padding-left: 5px;width: 977px;float: left;}
+.fff{color:#fff;}
+.footer{padding-top:10px;color:#999;}
+.footer a{color:#999;text-decoration:none;}

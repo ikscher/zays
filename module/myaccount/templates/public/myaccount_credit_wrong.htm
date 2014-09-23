@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>诚信认证——真爱一生网</title>
+<link href="module/myaccount/templates/{$GLOBALS['style_name']}/myaccount.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=myaccount">诚信认证</a>&nbsp;&gt;&gt;&nbsp;身份认证</span></p>
+	<!--content-lift end-->
+    {template system/simp_left public}
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=myaccount" class="r-title-black">&lt;&lt;返回诚信认证</a>
+			<span class="right-title f-ed0a91">身份认证</span>
+			</div>
+			<div class="r-center-ccontent">
+				<div class="cer-conter">
+				<dl class="cer-faq">
+					<dt><p class="cer-card-wrong f-b-d73c90">很抱歉，认证失败，可能造成认证失败的原因如下：</p></dt>
+					<dd>1.您还未有收到国政通向您反馈的认证成功短信就点击了“我已成功认证”按钮</dd>					
+					<dd>2.您所输入的真实姓名与身份证号码不符合</dd>
+					<dd>3.您在发送的短信编辑内容错误，正确的短信内容仅为大写的字母</dd>
+					<dd>4.您曾经在其他网站成功验证身份通，且当时所验证通过的手机号码与您刚才所输入的号码不一致</dd>
+					<dd>5.验证失败，输入的姓名和身份证号不完整或格式不正确</dd>
+					<dd><input type="button" class="video-button" style="margin:20px 10px 10px" onclick="javascript:history.go(-1);" value="返回上一步"/><input type="button" class="video-button" onclick="javascript:location.href='./index.php?n=myaccount&h=smsindex';" style="margin:20px 10px 10px" value="返回重新认证"/></dd>
+				</dl>
+					<div class="cer-line"></div>
+				<dl class="cer-faq">
+					<dt class="f-ed0a91">为什么要进行身份通认证？</dt>
+					<dd>真爱一生网每天有上万用户选择身份通认证，通过真爱一生回访也发现，成功认证了身份证可以让您的交友成功率提高67%</dd>
+					<dt class="f-ed0a91">什么是身份通认证？</dt>
+					<dd>身份通认证是由“全国公民身份系统”提供数据支持，安全可靠。只需要填写您的真实姓名、身份证号以及手机号码。即可以通过认证。</dd>
+				</dl>
+				<div class="cer-line"></div>
+				<dl class="cer-faq">
+					<dd>1. 请您务必填写真实的姓名和身份证号，当您通过认证后，系统会根据您的身份证号核对您在网站的生日，如果不一致，系统会自动进行修改，并且此后您无法修改自己的生日。</dd>					
+					<dd>2. 如果您已在其他网站认证了身份通，在真爱一生网也是需要您重新认证的，请按照以上的操作提示进行填写，并保证您所输入的手机号码与当时认证的号码一致。 </dd>
+				</dl>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+    {template system/footer public}
+	<!--foot end-->
+</div><!--main end-->
+</body>
+</html>

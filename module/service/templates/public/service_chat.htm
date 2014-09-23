@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>在线聊天&mdash;&mdash;真爱一生网</title>
+<script type="text/javascript" src="./public/system/js/jquery-1.3.2.min.js"></script>
+<script src="public/system/js/sys1.js?v=1" type="text/javascript"></script>
+<script type="text/javascript" src="./module/service/templates/public/js/service_chat.js?rand={php echo rand(111111,999999);}"></script>
+ <script type="text/javascript" src="./public/system/js/new_message.js"></script> 
+<style type="text/css">
+@import url("module/service/templates/{$GLOBALS['style_name']}/chat.css");
+
+</style>
+<script type="text/javascript">
+$(function(){
+	div_height();
+	get_chat_all();
+	get_chat();
+});
+
+function checkLen(str,length){
+	var leng = myStrLen(str);
+	if(leng[1] > length){
+		alert("最多只能输入"+length+"个汉字。");
+		$('#howlen').html('0');
+		$('#content').val(str.substring(0,leng[0]));
+		return false;
+	}
+	$('#howlen').html(length - leng[1]);
+}
+</script>
+</head>
+
+<body>
+	<div class="chat" id="chat">
+	<!--chat-box 的宽度和高度需要JS控制-->
+		<div class="chat-title">
+			<div class="chat-title-left"></div>
+			<div class="chat-title-center" id="chat-title-center">
+				<img src="module/service/templates/default/images/chat-icon.gif" />
+				<span>欢迎您：{php echo $usernickname['nickname']?$usernickname['nickname']:'ID '.$usernickname['uid']}，现在您可以使用在线聊天功能</span></div>
+			<div class="chat-title-right"></div>
+			<div style="clear:both;"></div> 
+		</div><!--chat-title end-->
+		<div class="chat-content" id="chat-content">
+			<div class="chat-title-bar" id="chat-title-bar">
+				<div class="chat-uname-box">
+					<div class="chat-nav-left"></div>
+					<div class="chat-nav-con">
+						<span>{php echo $usernickname['nickname']?$usernickname['nickname']:'ID '.$usernickname['uid']}</span>
+						<a href="#"></a>
+					</div>
+					<div class="chat-nav-right"></div>
+				</div>
+				<div style="clear:both;"></div> 
+			</div><!--chat-title-bar end-->
+			<div class="chat-msg">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td>
+							<div class="chat-left" id="chat-left">
+								<div class="chat-tips">交谈中请勿轻易汇款、中奖信息，发现异常请联系客服。<a href="index.php?n=safetyguide" target="_blank">安全征婚指南</a></div>				
+								<div id="chatbox" style="height:275px;" class="chatbox"></div>
+								<div class="chat-text-box">
+									<div class="chat-text-btn">
+										<input type="button" onmouseup="button_sendMsg()" class="chat-btn" value="发送" />
+										<p>Ctrl+Enter</p>
+									</div>
+									<div class="chat-text-into" id="chat-text-into">
+										<textarea name="input" id="content" onkeyup="checkLen(this.value,150);" onfocus="checkLen(this.value,150);"></textarea>
+										 <input type="hidden" name="chatorid" id="chatorid" value="{$chatorMsg['uid']}" />
+										<input type="hidden" name="chatfromid" id="chatfromid" value="{$userid}" />
+										<input type="hidden" name="chatornickname" id="chatornickname" value="{php $nickname=$chatorMsg['nickname2']?$chatorMsg['nickname2']:$chatorMsg['nickname']}{php echo $nickname?$nickname:'ID:'.$chatorMsg['uid']}" />
+										<input type="hidden" id="chat_id" />
+									</div>
+                                    				
+									<div style="clear:both"></div>
+								</div>
+                                <p>&nbsp;您还可以输入<span style="color:#F00;" id="howlen">150</span>个汉字</p>
+                                </div><!--chat-left end-->
+							</td>
+						
+						<td width="155" valign="top">
+							<div class="chat-right">
+								<div class="pic1">
+									<div class="chat_pic2">
+										<p>
+											{if $chatorMsg['images_ischeck']=='1'&& $chatorMsg['mainimg']}
+												<img src="{php   
+												if(MooGetphoto($chatorMsg[uid],'com')) echo MooGetphoto($chatorMsg[uid],'com');
+												elseif(MooGetphoto($chatorMsg[uid],'medium')) echo MooGetphoto($chatorMsg[uid],'medium');
+												elseif($chatorMsg['gender'] == '1')echo 'public/system/images/woman.gif';
+												else  echo 'public/system/images/man.gif';
+												}"  onload="javascript:DrawImage(this,110,138)"/>
+										   {elseif $chatorMsg['mainimg']}
+												{if $chatorMsg['gender'] == '1'}
+													<img src="public/system/images/woman.gif"  />
+												{else}
+													<img src="public/system/images/man.gif" />
+												{/if}
+													
+										   {else}
+												{if $chatorMsg['gender'] == '1'}
+													<img src="public/system/images/service_nopic_woman.gif"  />
+												{else}
+													<img src="public/system/images/service_nopic_man.gif"  />
+												{/if}
+										   {/if}
+										</p>
+									</div>
+								</div><!--pic1 end-->
+								<dl class="chat-right-info">
+									<dt>{if  $chatorMsg['s_cid']==20}<img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/>{elseif  $chatorMsg['s_cid'] == 30}<img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/>{else}{/if}{php $nickname=$chatorMsg['nickname2']?$chatorMsg['nickname2']:$chatorMsg['nickname']}{php echo $nickname?$nickname:'ID:'.$chatorMsg['uid']}</dt>
+									<dd>{if $chatorMsg['birthyear']}{php echo (date('Y',time())-$chatorMsg['birthyear'])}岁{else}年龄保密{/if} {if $chatorMsg[marriage] == '0'}保密{else}<script>userdetail('$chatorMsg[marriage]',marriage)</script>{/if}</dd>
+									<dd>{if $chatorMsg['province'] == '0' || {$chatorMsg['city']} == '0'}保密{else}<script>userdetail('{$chatorMsg["province"]}',provice)</script><script>userdetail('{$chatorMsg["city"]}',city)</script>{/if}{if $chatorMsg[salary] == '0'}工资保密{else}<script>userdetail('$chatorMsg[salary]',salary1)</script>{/if}</dd>
+									<dd><a href="index.php?n=space&h=viewpro&uid={$chatorMsg['uid']}&chatfromid={$userid}" target="_blank" class="red">详细资料>></a></dd>
+								</dl>
+							</div><!--chat-right end-->
+						</td>
+					</tr>
+				</table>
+				<div style="clear:both"></div>
+				  <object width="1" height="1" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="myFlash">
+					<param value="./public/system/flash/new_message.swf" name="movie">
+					<param value="high" name="quality">
+					<param value="opaque" name="wmode">
+					<param value="9.0.45.0" name="swfversion">
+					<param value="sameDomain" name="allowScriptAccess">
+					<embed width="1" height="1" type="application/x-shockwave-flash" allowscriptaccess="sameDomain" quality="high" src="/public/system/flash/new_message.swf" name="myFlash">
+				</object>
+			</div><!--chat end-->
+		</div><!--chat-content end-->
+		<div class="chat-bottom">
+			<div class="chat-bottom-left"></div>
+			<div class="chat-bottom-center" id="chat-bottom-center"></div>
+			<div class="chat-bottom-right"></div>
+			<div style="clear:both"></div>
+		</div><!--chat-bottom end-->
+	</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的星座生肖——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">星座生肖</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Signs<br />and zodiac</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="horoscope">
+				  <div class="horoscope1">
+				  	<p>                                                                                                                                                                                                                              蛇年出生的人通常是比较隐忍的，有着超强的忍耐力，甚至可以用“卧薪尝胆”来形容。对于自己想要的东西，他会积极勇敢地去争取，这样的他往往能获得成功。</P>
+</div>
+                 <div class="horoscope2">
+				   <p>                  水瓶座的人通常是比较理智的，对社会现实看得很轻，所以比较注重实际。感情上，他会很现实的考虑两个人的将来，如果觉得没有未来，就放开。另外，水瓶是乐观的，不喜欢对人抱怨，遇事喜欢积极的面对。<br />
+				   </p> 
+				 </div>
+				 <div class="horoscope3">
+				   <p>                                                                                    水瓶座蛇年出生的缘分是一个非常坚忍的女孩，生活上工作上遇到难题受了委屈她不会哭泣，而是勇敢坚强地面对，并且她努力奋斗，希望自己变得更强大，做得更好，她是一个自尊自强的人。相信不管未来有多少风雨，她都能坚强地走过，也相信未来的她一定是老公身后强有力的支持者。</p>
+				 </div>
+			  </div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+<div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的人生经历——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">人生经历</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Life<br />Experience</b></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="s-lifetimes">
+<div class="s-lifetimes1"> 
+					<p>虽然我只有初中文化，但是我一直都相信学历并不代表一切。就连古人也说过，三百十六行，行行出状元。也许，念书只是那个恰巧并不适合我的行业。我觉得衡量一个人的标准应该是他是否“成人”，而不是那张薄薄的纸片。我一直都相信，选择一个自己喜欢并且适合自己的职业，然后一直坚定不移的走下去，总有一天，那颗叫做“成功”的树上一定会硕果累累。我一直都这么坚信着，也在这条并不坦荡的道路上不断的努力着。</p>
+					<p>我从19岁来到南昌，到现在一直都在做厨师这个职业，并且还是在同一个店里，没有跳过槽。我一直奉行着自己的原则，做事情，做事业。我并没有什么特殊的人生经历，我到现在所经过的每一个人生阶段，都是用自己的力量一步一步踏踏实实的走过来的。但是，这些别人眼里的每一个平凡日子，我都付出了自己的努力和心血。我在用自己的行动，实践着过好每一个平凡的日子，然后让这些平凡堆砌出幸福的明天。</p>
+</div></div>
+			  </div>
+			<h4>情感留言</h4>
+			
+			<div class="v_word" id="v_word">
+				<div class="w_left"></div>
+				<div class="w_center">
+					<input type="text" class="inputbox" id="comment_select" value="" readOnly=true />
+					<div class="down_div">&nbsp;</div>
+					<div class="face_img" id="picface" onclick="showFace(this,this.id,'comment_select')">
+						<img align="absmiddle" src="public/system/images/facelist.gif">				
+					</div>
+					<input type="hidden" value="" name="commentid" id="commentid" />
+					<input type="hidden" value="{$gender_value}" name="gender_value" id="gender_value" />
+					<input type="hidden" value="{$GLOBALS['style_uid']}" name="uid" id="uid" />
+					<input type="hidden" value="" name="choose_comment" id="choose_comment"/>
+					<input type="hidden" value="" name="choose_face" id="choose_face" />
+					
+					<input name="" type="button" class="mess_btn" value="发表" onclick="checkReply('','lifetimes')"/>
+					<div class="list_div" id="list_div" style="display:none">
+						<ul>
+							<!-- <li id="{$key}_{$gender_value}_{$vid}_{$GLOBALS['uid']}">$comment</li> -->
+							{loop $comment_list $key $comment}
+								<li id="{$key}">{$comment}</li>
+							{/loop}
+						</ul>
+					</div>	<!--留言 end-->
+				</div>
+				<div class="w_right"></div>
+			</div>
+				
+					{loop $life_comment $comment}
+					<div class="w_commit">
+						<a href="index.php?n=space&uid={$comment['uid']}">{$comment['nickname']} </a>
+						{php echo sdate('Y-m-d H:i',$comment['dateline']);}
+						<p>{$comment['comment']}</p>
+					</div>
+					{/loop}
+				</div>
+				<div class="page">
+					{php echo multimail($count,$pagesize,$page,$currenturl2)}
+				</div>	
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

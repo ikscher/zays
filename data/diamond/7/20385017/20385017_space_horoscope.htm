@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的星座生肖——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/03.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->  
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">星座生肖</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Signs<br />and zodiac</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="horoscope">
+				  <div class="horoscope1">
+				  	<p>丑年生人，性诚实，富有忍耐力，天生就是默默耕耘的的实践家。广博恋爱时相当谨慎，是那种既认真又诚实的类型，他不会被爱情冲昏了头，做出意气用事的事情，强烈的责任心以及独立性，都促使他三思而后行。</p>
+				  </div>
+                 <div class="horoscope2">
+                 	<p>吃苦耐劳的进取者，是对摩羯座的人的最好的诠释。就仿佛坐在金字塔前的狮身人面像史芬克斯一般，广博总以不变的稳重态度应付瞬息万变的世界。他是个脚踏实地、努力不懈使自己成为中规中矩的人，对逆境更有着极强的忍耐力。<br />
+                 		</p>
+                 </div>
+				 <div class="horoscope3">
+				 	<p style="line-height:22px;">广博的恋爱观谨慎地近乎严肃，对于他来说，宁愿迟点，一辈子的伴侣也不愿草率为之。重感情的他对待异性，有着截然不同的态度。如果喜欢某人，他便一心一意地对待，忠诚度相当高，对于不中意的人，则绝不牵就自己跟对方交往。是与非分的很清楚，不明不白、暧昧不清的现象，他是不能允许发生在自己身上的。婚姻对他来说，绝对是不折不扣的终身大事，宁可不娶也不愿草率盲目地结婚。</p>
+				 </div>				
+			  </div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+<div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

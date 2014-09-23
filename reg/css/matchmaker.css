@@ -1,0 +1,299 @@
+@charset "utf-8";
+/* CSS Document */
+body{ font-size:12px; font-family:Arial, Helvetica, sans-serif; background-color:#fce1e8; text-align:center; margin:0; padding:0;  list-style:none;}
+img{ border:0px;}
+/** 重置元素 **/ 
+ul, ol { list-style: none; } 
+h1, h2, h3, h4, h5, h6{ border:medium none;  margin:0; padding:0;}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; } 
+
+
+/*--字体颜色--*/
+.red{ color:#bc0e0e;}
+/*=======*/
+
+
+/*--列表--*/
+.regist-list{ width:296px; margin:0 auto; text-align:left;}
+.regist-list ul{ margin:0; padding:0;}
+.regist-list ul li{ line-height:32px; _margin-top:7px;}
+
+.foot-nav{ width:508px;height:25px; margin:0 auto; line-height:20px;}
+.foot-nav ul{ list-style:none; margin:0; padding:0;}
+.foot-nav ul li { float:left; padding:0;}
+.foot-nav ul li a{ float:left; display:block; color:#333; width:72px; height:20px; display:inline; text-decoration:none;}
+
+/*=======*/
+
+.wraper{ width:1000px; height:1000px;  margin:0 auto;}
+
+.header{ 
+         width:1000px;
+         height:82px;
+		 margin:0 auto;	
+		 margin-top:10px;
+	   }
+	   
+.logo{ width:143px;
+       height:84px;
+	   background-image:url(../images20101027/logo.gif);
+	   float:left;
+	   display:inline;
+	 }
+
+.service{ width:820px;
+       height:68px;	   
+	   float:left;
+	   display:inline;
+	   margin-top:10px;
+	   margin-left:30px;
+	 }
+	 
+.service-left{ width:26px;
+               height:68px;
+			   background-image:url(../images20101027/title-left.gif);
+			   float:left;
+	         }
+
+.service-right{ width:794px;
+               height:68px;
+			   background-color:#ed9ad6;			   
+			   float:left;
+	          }
+			  
+.content{ width:1000px;
+          margin-top:25px;
+		  }
+		  
+.banner{ width:490px;
+         height:360px;
+		 float:left;
+		 display:inline;
+		 margin-left:28px;
+		 background-image:url(../images20101027/banner-picture.gif);
+		 }
+
+.banner-up{ width:404px; 
+            height:171px;
+            background-image:url(../images20101027/banner0.gif);
+			}			
+			
+.banner-down{ width:404px; 
+            height:171px;
+            background-image:url(../images20101027/banner1.gif);
+			margin-top:22px;
+			}
+.login{ width:365px;
+        height:361px;
+		float:left;
+		display:inline;
+		margin-left:30px;
+	}
+
+.login-left{ width:8px;
+             height:361px;
+			 background-image:url(../images20101027/bar0-left.gif);
+			 float:left;
+			 display:inline;
+	}
+
+.login-middle{ width:349px;
+               height:361px;
+			   background:url(../images20101027/bar0-bg.gif) repeat-x;
+			   display:inline;
+			   float:left;
+	}
+	
+.login-right{ width:8px;
+              height:361px;
+			  background-image:url(../images20101027/bar0-right.gif);
+			  float:left;
+			  display:inline;
+			
+	}	
+
+.login-blank{ width:300px; height:20px;}
+
+.login-text{ width:182px;
+             height:19px;
+			 border:1px solid #666;			 
+			 vertical-align:middle;
+	}
+
+.pic{ color:#F00;
+      margin-right:5px;
+	  font-family:宋体;
+	}
+	
+.woman{ margin-left:5px;}
+.man{ margin-left:5px;}
+.radio-0{ margin-left:20px;}
+.regist-list select{ width:60px;}
+
+.regist-pic{ width:165px;
+             height:55px;
+             margin:0 auto;
+             margin-top:20px;
+			 }
+			 
+.clearfloat{ width:1000px;
+             height:10px;
+			 font-size:5px;
+			 clear:both;	
+	       }			
+
+.story{ width:588px;
+      height:475px;
+	  float:left;
+	  display:inline;
+	}
+
+.success{ margin-left:10px; margin-top:4px;}
+.story-title{
+	      width:588px;
+		  margin:0 auto;
+		  height:28px;		  
+	}
+	
+.honor-title{
+	           width:315px;
+               height:29px;
+			    background:url(../images20101027/title2-bg.gif) repeat-y;
+				margin-bottom:20px;
+			
+	        }	
+   
+.story-title-left{ width:285px;
+                  height:29px;
+				  background:url(../images20101027/title2-bg.gif) repeat-y;
+				  float:left;
+				  text-align:left;
+	             }
+
+.story-title-right{ float:left;
+                    width:auto;
+					height:29px;
+					line-height:29px;
+					margin-left:150px;
+					color:#900;
+					font-size:14px;
+					font-family:宋体;					
+	              }
+				  
+.honor-title-left{ width:225px;
+                  height:29px;				 
+				  float:left;
+				  text-align:left;
+	             }
+
+.honor-title-right{ float:left;
+                    width:auto;
+					height:29px;
+					line-height:29px;
+					margin-left:20px;
+					color:#900;
+					font-size:14px;
+					font-family:宋体;					
+	              }
+
+.honor-title-right a{ text-decoration:none; color:#900;}
+.honor-title-right a:hover{ text-decoration:none; color:#F0F;} 
+				  
+
+.story-0{ width:578px;
+          height:204x;
+		  text-align:left;		
+	    }
+
+.story-1{ width:578px;
+          height:204x;
+		  clear:both;
+		  text-align:left;		
+	    }
+
+.photo{ width:265px;
+        height:203px;
+		background-image:url(../images20101027/smallbg.jpg);
+		float:left;
+		margin-top:15px;
+		display:inline;
+		text-align:center;
+	}
+	
+.photo-blank{ width:265px;
+              height:10px;
+			  font-size:5px;
+	}
+
+.smallbag{ width:252px;
+           height:151px;
+		   /*background-image:url(../images20101027/321_medium.jpg);*/
+		   margin:0 auto;
+	}
+
+.smallbag-notes{ width:230px;
+                 height:20px;
+				 line-height:20px;
+				 margin:0 auto;
+				 margin-top:10px;
+				 text-align:left;
+				 color:#666;
+	}
+
+.regist-bt{ width:165px;
+            height:56px;
+			background-image:url(../images20101027/regist.gif);
+			border:0px;
+			cursor:pointer;
+	       }
+	
+.photo-notes{ width:280px;
+              height:185px;
+			  float:left;
+			  display:inline;
+			  margin-left:15px;
+	}
+.pohto-title{ margin-top:25px; color:#bc0e0e; font-size:14px;}
+
+.photo-notes p{ width:275px;
+                margin:0 auto;
+				line-height:20px;
+				margin-top:5px;
+				font-family:宋体;              
+	          }
+	
+.honor{ width:329px; 
+        height:420px; 
+        float:left; 
+        display:inline;
+        text-align:left;
+		font-size:14px;
+	    color:#666;
+		overflow:hidden;		
+		}
+
+.honor p{ width:329px;
+          margin-left:5px;
+          margin:0 auto;
+          margin-top:5px;
+		  line-height:25px;
+		  color:#666;
+		  }
+.story-title-right a{ color:#900; text-decoration:none;}
+.story-title-right a:hover{ color:#F0F; text-decoration:none;}
+
+.honor p a{ color:#666; text-decoration:none;}
+.honor p a:hover{ color:#F0F; text-decoration:underline;}
+
+.foot-nav a{ color:#333; text-decoration:none;}
+.foot-nav a:hover{ color:#666;}
+
+/*--footer--*/
+.foot{ width:1000px; height:100px; clear:both; }
+.foot-blank{ width:1000px; height:30px; clear:both;}
+
+
+.left{ margin-left:10px;}
+.foot-pic{ width:434px; height:27px; margin:0 auto; background-image:url(../images20101027/matchmaker_27.gif); margin-top:5px;}
+.copyright{ width:600px; height:20px; font-family:宋体; margin:0 auto; color:#333; margin-top:10px; letter-spacing:2px;}
+/*=======*/

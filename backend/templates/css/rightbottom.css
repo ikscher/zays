@@ -1,0 +1,36 @@
+/* 后台右下角提示css*/
+.online{ width:271px; color:#FFFFFF; margin-right:5px; _margin-right:0px; size:12px;  font-size:12px;}
+.tixingBox,.tixingBox3,.notimeBox{background:url(../../../public/system/images/webim_tipbg.gif) 0 -3px no-repeat;text-align:center; height:27px;line-height:27px;float:left;}
+.jiluBox{background:url(../../../public/system/images/web_tipbg.gif) 0 -3px no-repeat; height:27px;line-height:27px;float:left;}
+.tixingBox,.tixingBox3{width:80px;padding-left:29px; cursor:pointer;}
+.tixingBox2{background-position:0px -38px;}
+.tixingBox3{background-position:0px -70px; color:#9C205C; height:30px; margin-top:-3px; line-height:30px;}
+.jiluBox{width:56px;padding-left:25px;background-position:-190px -38px; float:left;cursor:pointer;}
+.jiluBox2{background-position:-190px -73px;}
+.jiluBox3{height:29px;margin-top:-2px;background-position:-190px -143px; color:#9C205C;}
+.chat-window{ display:none; }
+.chat-conv,.chat-head{ background:url(../../../public/system/images/web_tcbg.gif) 0 bottom no-repeat;}
+.chat-head{ background-position:0 top; height:25px; line-height:25px; }
+.head-name{ font-weight:bold; float:left; padding:0 5px;}
+.head-btn{ width:16px; float:right; margin:5px 5px 0 0;}
+a.minimize,a.minimize:visited{ background:url(../../../public/system/images/webim_close.gif) 0 0 no-repeat; display:block; width:16px; height:16px;}
+a.minimize:hover{ background-position:0 -16px;}
+.chat-conv{color:#000000; padding-bottom:10px; min-height:200px; _height:50px;  width:271px; float:left;padding-left:1px;padding-rght:1px;}
+.chat-conv p{ padding:10px 10px 0 10px;}
+.chat-conv p a{
+color:#cc3366;
+text-decoration:none}
+.chat-conv p a:hover{ text-decoration:underline}
+.notimeBox{color:#ffffff; width:80px; float:left;padding-left:1px;padding-rght:1px;}
+.notimeBox{background:url(../../../public/system/images/web_tipbg.gif) no-repeat scroll 0 -3px;background-position:-115px -38px;cursor:pointer;}
+.notimeBox2{ background-position:-115px -73px;}
+.notime3{height:28px;margin-top:-1px;background-position:-115px -2px; color:#9C205C;}
+.allremark{}
+.remark{margin:0px; padding:0px;}
+.remark li{list-style:none;}
+.title{height:15px;width:265px;background:#ccc;cursor:pointer;padding-left:4px;padding-top:3px;}
+ul.bgon{}
+ul.bgon li{border-bottom:1px solid #ECACF7;margin-right:3px;line-height:24px;}
+ul.bgon li a{color:#9A11B3;width:100%;text-align:left;display:block}
+ul.bgon li:hover a{background:#EDADF8;color:#333}
+.content{display:none;}

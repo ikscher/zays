@@ -1,0 +1,101 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script type="text/javascript">
+function changeFirstImg(mid,sid,obj){
+	var imgUrl = obj.value;
+	if(confirm("您真的要将此照片设为首页照吗？")){
+		$.ajax({
+			type:"post",
+			url:"index.php?action=site_story&h=edit",
+			data:"imgpost="+1+"&imgUrl="+imgUrl+"&sid="+sid+"&mid="+mid,
+			success:function res(rep){
+				if(rep){
+					location.href='index.php?action=site_story&h=edit&id='+sid;
+					alert("设为首页照成功！");
+				}
+			}
+		});
+	}
+}
+
+function delImg(sid,obj){
+	var imgUrl = obj.id;
+	if(confirm("您确定要删除此照片吗？")){
+		$.ajax({
+			type:"post",
+			url:"index.php?action=site_story&h=del",
+			data:"delpost="+1+"&imgUrl="+imgUrl+"&sid="+sid,
+			success:function res(rep){
+				if(rep){
+					location.href="index.php?action=site_story&h=edit&id="+rep;
+					alert("删除成功！");
+				}
+			}
+		});
+	}
+}
+
+//检测能否发送
+function checkStory(){
+
+}
+
+</script>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> 处理活动会员</span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<form method="post" action="index.php?action=activity&h=update" enctype="multipart/form-data" onsubmit="return checkStory()">
+<div class="list-div" id="listDiv">
+	<table cellspacing="1" cellpadding="3">
+		<tr>
+			<th colspan="2" align="left">处理活动会员</th></tr>
+		</tr>
+		<tr>
+			<td>用户名：</td>
+			<td><input type="text" name="title" value="{$username}"></td>
+		</tr>
+		
+		
+		
+		<tr>
+			<td>活动意向分类：</td>
+			<td>
+				<select name = 'purpose'>
+					  <option value='1'  {if $pur=='1'} selected="selected" {/if}>未处理</option>
+					  <option value='2'  {if $pur=='2'} selected="selected" {/if}>不能参加</option>
+					  <option value='3'  {if $pur=='3'} selected="selected" {/if}>要考虑</option>
+					  <option value='4'  {if $pur=='4'} selected="selected" {/if}>有意向</option>
+					  <option value='5'  {if $pur=='5'} selected="selected" {/if}>确定参加</option>
+					  <option value='6'  {if $pur=='6'} selected="selected" {/if}>支付环节</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>下次联系时间：</td>
+			<td>
+			
+			<script>getMonthsSelect('selectSize01','month','month','{$mouth}','0');</script>月
+			<script>getDaysSelect('selectSize011','day','day','{$day}','0');</script>日
+			</td>
+		</tr>
+		<tr>
+			<td>注记：</td>
+			<td><input type="text" name="note" value="{$note}" ></td>
+		</tr>
+		
+	</table>
+</div>
+<p/>
+<input type="hidden" name="channel" value="{$channel}">
+<input type="hidden" name="uid" value="{$uid}">
+<input type="hidden" name="id" value="{$id}">
+<input name="sid" type="hidden" value="{$sid}" />
+<input type="submit" id="addnews" name="addnews" value=" 提 交 "/>
+</form>
+<br />
+<br />﻿

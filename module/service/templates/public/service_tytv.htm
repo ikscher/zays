@@ -1,0 +1,368 @@
+<!DOCTYPE html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>太原电视台 倾城热恋</title>
+
+<link href="module/service/templates/default/tytv.css" rel="stylesheet" type="text/css" />
+<script src="public/system/js/jquery-1.3.2.min.js"></script>
+<script src="public/system/js/sys.js?v=1"></script>
+</head>
+
+
+<style>
+.photo, .video { width:950px;  background:#FFF;  }
+.photo p { text-align:right;  no-repeat center 0; width:930px; padding:30px 20px 0 0; height:24px;}
+.photo ol { width:920px; list-style:none; overflow:hidden; height:165px; margin-top:5px;}
+.photo ol li{ float:left; padding:0px 1px 0 0 ; }
+.photo ol li img {border:1px #f583b0 solid;  }
+
+.video_ul { width:940px;  float:left; padding:10px 0 0 10px; height:180px; overflow:hidden;} 
+.video_ul li {float:left; width:290px; height:212px; overflow:hidden; padding:0 10px; }	
+</style>
+<script type="text/javascript">
+  function checkForm() {
+	var username = $("#username").val();
+    var mobile = $("#mobile").val();
+    var year = $("#year").val();
+    var month = $("#month").val();
+    var workprovince = $("#workprovince").val();
+    var workcity = $("#workcity").val();
+    if(!username || username==''){
+        alert('您的用户名格式不对!');
+        return false;
+    }
+    if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(mobile)) || mobile==''){ 
+        alert('您输入的手机号格式不对!');
+        return false;
+    }
+    if(year=='-1'||year==''){
+        alert('您忘记选择出生年份');
+        return false;
+    }
+    if(month=='-1'||month==''){
+        alert('您忘记选择出生月份');
+        return false;
+    }
+    if(workprovince == '10101201' || workprovince =='10102000' || workprovince =='10103000' || workprovince =='10101002' || workprovince =='10104000' || workprovince =='10105000' || workprovince =='10132000' || workprovince =='10133000' || workprovince =='10134000'){
+        return true;
+    }else{   
+        if(workprovince == '-1' || workprovince == '' || workcity=='-1' || workcity==''){
+            alert('您忘记选择地区这项了!');
+            return false;
+        }
+    }
+    return true; 
+  }
+  $(function(){
+      $("#useryear").attr("disabled","disabled");
+      $("#usermonth").attr("disabled","disabled");
+      $("#userworkprovince").attr("disabled","disabled");
+      $("#userworkcity").attr("disabled","disabled");
+
+  });
+  function checkRemark(){
+    var content =  $("#content").val();
+    if (content.length<=1 || content==''){
+	  alert("请输入您的评论内容!");
+	  return false;
+   }
+
+
+
+ }    
+ //检测验证码是否正确
+ /*
+$(function().blur(function(){
+		var seccode = $('#seccode').val();
+	
+		var url = 'ajax.php?n=service&h=seccode&updates='+Math.random();
+		$.get(url,{seccode:seccode},function(data){							
+			if(data == '2'){
+				alert('验证码输入不正确');
+			}						
+		   
+    });
+
+  });
+
+*/
+        //分页跳转
+        function gotoPage() {
+            var page = $("#pageGo").val();
+            var page = parseInt(page);
+            
+            if(page<1) page = 1;
+            if(page>{php echo ceil($total/$page_per);})
+        
+            page = {php echo ceil($total/$page_per);};
+            window.location.href = "{$currenturl}&page="+page;
+        }
+        function enterHandler(event){
+            var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+               gotoPage();  //调用函数
+             } 
+        }
+
+</script>
+<body>
+<div class="box">
+	<div class="main">
+    	<div class="jieshao">
+			<dl>
+            	<dt><img src="module/service/templates/default/images/tytv/ty_pic.jpg"></dt>
+                <dd>
+                    <p>2011年，太原电视台百姓频道的主题是“爱尚生活”，旨在号召大家积极发现生活中的爱与美，《倾城热恋》正是为了响应这一主题而推出的，我们一定会在新年伊始为您带来一场全新的视听盛宴！《倾城热恋》采用的是舞台真人秀的形式，每场将有十二位风格迥异的女嘉宾和四位个性鲜明的男嘉宾开始他们的相亲之旅。女嘉宾中有身材窈窕的乖乖女、有学识丰富的大才女、有温文尔雅的古典女、有备受争议的选秀女、还有言辞另类的犀利女……总之，不同类型的女孩子都会出现在我们这个舞台上；男嘉宾中有黄金男、有经济适用男、才子型、帅气型、细心型、才艺型……，所有您能想到的男孩子都能在这个舞台上找到。节目不仅形式新颖独特，内容更是精彩纷呈，通过 “一见倾心”、“两情相悦”、“三定情缘”三个环节，男女嘉宾逐步进行爱情博弈，看最终能否情定今生！</p>
+                </dd>
+            </dl>
+        </div>
+    	<div class="baoming">
+        	<div><img src="module/service/templates/default/images/tytv/minge.gif"></div>
+            <div class="bm_up">
+            	<table cellpadding="0" cellspacing="0" border="0">
+                	<tr>
+                    	<td height="30" align="center" colspan="2">已报名</td>
+                        <td>人数<span>{$num}</span>人</td>
+                    	<td><a href="#liuyan"><img src="module/service/templates/default/images/tytv/liuyan.gif"></a></td>
+                    </tr>
+                	<tr>
+                    	<td colspan="2" height="30"><span>♀女：</span></td>
+                        <td><input name="" type="text" style="width:120px;" value="{$female_num}"></td>
+                    </tr>
+                	<tr>
+                    	<td colspan="2" height="30"><tt>♂男：</tt></td>
+                    	<td><input name="" type="text" style="width:120px;" value="{$male_num}"></td>
+                    </tr>
+                </table>
+            </div>
+			<form id='reguser' action='index.php?n=service&h=register&channel=9' method='post'  onsubmit="return checkForm();" >
+            <div class="bm_down">
+			  {if empty($GLOBALS['userid'])}
+			  	<p>
+                	姓&nbsp;&nbsp;名：<input name='username' id="username" type="text" style="width:55px; height:18px; border:1px #b7caf5 solid; " /> 性别：<select name="gender" style="width:40px;"> <option>男</option>
+                  <option>女</option></select>
+					
+                </p>
+                <p>
+                    出&nbsp;生：
+						 <script>getYearsSelect('','year','year','','-1');</script>
+                          <script>getMonthsSelect('','month','month','','-1');</script>
+                </p>
+                <p>手机号：<input name="mobile" id="mobile" type="text"  style="width:120px;">  </p>
+                <p>
+                    地&nbsp;区：
+						 
+						 <script>getProvinceSelect43rds('','workprovince','workprovince','workcity','','10100000');</script>                  
+                       <script>getCitySelect43rds('','workcity','workcity','','');</script>
+                </p>
+			  
+			  {else}
+			  	<p>
+                	姓&nbsp;&nbsp;名：<input name='username'  id="username" value="{php echo $user_arr['username'];}" type="text" disabled="disabled" style="width:60px;"> 性别：<select name="gender" disabled="disabled" style="width:40px;">
+					<option value='0' {if $user_arr['gender']=='0'} selected="selected" {/if} disabled="disabled">男</option>
+				  <option value='1' {if $user_arr['gender']=='1'} selected="selected" {/if} disabled="disabled">女</option>
+					</select>
+                </p>
+                <p>
+                    出&nbsp;生：<script>getYearsSelect('','useryear','year',{php echo $user_arr['birthyear'];},'-1');</script>
+						  <script>getMonthsSelect('','usermonth','month',{php echo $user_arr['birthmonth'];},'-1');</script> 
+                </p>
+                <p>手机号：<input name="mobile" id="mobile"  type="text" value="{php echo $user_arr['telphone'];}" disabled="disabled" style="width:120px;"> </p>
+                <p>
+                    地&nbsp;区：<script>getProvinceSelect43rds('','userworkprovince','workprovince','workcity','{php echo $user_arr['province'];}','10100000');</script>                  
+					   <script>getCitySelect43rds('','userworkcity','workcity','{php echo $user_arr['city'];}','');</script> 
+                </p>
+			  
+			  {/if}
+				
+                <div><input name="" type="submit" value="" style="width:178px; height:48px; background:url(module/service/templates/default/images/tytv/baoming.gif) no-repeat; border:none; "></div>
+            </div>
+			</form>   
+            <div class="clear"></div>
+        </div>
+        <div style="height:10px; overflow:hidden; clear:both;"></div>
+    	<ol class="kouhao">
+        	<li><tt></tt>节目口号：<span>青春不常在，抓紧谈恋爱！</span></li>
+         	<li><tt></tt>报名方式：<span>报名时携带本人身份证复印件、近期生活照片一张。</span></li>
+   	    	<li><tt></tt>播出时间：<span>每周四、五晚21:05分</span></li>
+        	<li><tt></tt>节目奖品：<span>1.凡是参加节目的男女嘉宾，都将获得惊喜大礼包一份。</span></li>
+        	<li><tt></tt>播出频道：<span>太原电视台百姓频道</span></li>
+			<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.如果在节目中牵手成功，港澳四日游将为您开启一段浪漫之旅。</span></li>
+        	<li><tt></tt>节目微博：<span>http://weibo.com/tyqcrl</span></li>
+			<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.如果牵手嘉宾能步入婚礼殿堂，还将获得10万元的主题婚礼。</span></li>
+            <div class="clear"></div>
+        </ol>
+        <div style="height:10px; overflow:hidden;"></div>
+    	<div class="yaoqiu">
+        	<h3>报名要求</h3>
+            <ul>
+            	<li><span>·</span>报名嘉宾请确认能参与太原的节目拍摄；</li>
+                <li><span>·</span>单身、男22岁以上、女20岁以上；</li>
+                <li><span>·</span>语言表达能力强，表现欲及表现力俱佳；</li>
+                <li><span>·</span>愿意将自己独特的世界观、人生观、恋爱观、行为特点与别人分享；</li>
+                <li><span>·</span>愿意在电视节目上展现个人风采；</li>
+                <li><span>·</span>个人出身、学历、经历、情感经历或才艺等任一方面与众不同；</li>
+                <li><span>·</span>可根据节目录制要求安排个人时间；</li>
+                <li><span>·</span>报名者需在真爱一生网上传照片，否则会失去优先面试权</li>
+                <div class="clear"></div>
+            </ul>
+			<br/>
+        	
+			
+        </div>
+        <div id="liuyan">
+		<form id='remark' action='index.php?n=service&h=tytv' method="post" onSubmit="return checkRemark();">
+       		<h3>我要留言&nbsp;&nbsp;<font>留言的字数 不超过 2000字</font></h3>
+			
+            <ul>
+            	<li><textarea name="content" id="content"  style="width:800px; height:88px;"></textarea></li>
+                <li>
+                	<br/>
+                	<br/>
+                	<p><input type="submit" value="" style="cursor:pointer; width:48px; height:24px; border:1px #999 solid; background:url(module/service/templates/default/images/tytv/fb.gif) no-repeat;"></p>
+                </li>
+                <div class="clear"></div>
+            </ul>
+			</form>
+			
+            <div class="clear"></div>
+            <ol>
+				 {loop $result  $value}
+                	<li>
+						
+                    	<div><tt>网友 <a href="#">{php echo $value['username'];}</a> 发表评论 &nbsp;{php echo $value['operationtime'];}</tt></div>
+                        <div><p>{php echo $value['remark'];}</p></div>
+                    </li>
+                 {/loop}
+                   
+                 
+            	
+                <div style="text-align:right; padding-top:10px;"> 转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onKeyDown="enterHandler(event)"/> 页 &nbsp;
+                  <input type="button"  value="跳转" class="button" onClick="gotoPage()"/></div>
+            </ol>
+        </div>
+		 <!-- 图片及视频 -->
+		 <div style="height:10px; clear:both; "></div>
+            	<div class="photo">
+                	
+                    <div style="width:948px; padding-bottom:10px; border-left:1px #f583b0 solid; border-right:1px #f583b0 solid; padding-top:5px; ">
+                        <ol>
+                            <li><img src="module/service/templates/default/images/tytv/04.jpg" /></li>
+                            <li><img src="module/service/templates/default/images/tytv/05.jpg" /></li>
+                            <li><img src="module/service/templates/default/images/tytv/06.jpg" /></li>
+                            <li><img src="module/service/templates/default/images/tytv/07.jpg" /></li>
+                        </ol>
+						 <ol>
+                            <li><img src="module/service/templates/default/images/tytv/08.jpg" /></li>
+                            <li><img src="module/service/templates/default/images/tytv/09.jpg" /></li>
+                            <li><img src="module/service/templates/default/images/tytv/10.jpg" /></li>
+                            <li><img src="module/service/templates/default/images/tytv/11.jpg" /></li>
+                        </ol>
+                       
+						
+                    </div>
+                    
+                </div>
+                <div style="height:10px; clear:both; "></div>
+                <div class="video">
+                	
+                    <div style="width:948px; padding-bottom:20px; height:200px; border-left:1px #f583b0 solid; border-right:1px #f583b0 solid; ">
+                        <ol class="video_ul">
+                            <li><div id="v1"></div></li>
+                            <li><div id="v2"></div></li>
+                            <li><div id="v3"></div></li>
+                        </ol>
+                    </div>
+                    
+                </div>
+            <!-- 图片及视频 结束 -->
+		
+    </div>
+</div>
+<div class="footer">
+    	<p><a href="index.php?n=about&h=us">关于我们</a> | <a href="index.php?n=about&h=media">媒体关注</a> | <a href="index.php?n=about&h=contact">联系我们</a> | <a href="index.php?n=about&h=links">合作伙伴</a> | <a href="index.php?n=about&h=getsave">意见反馈</a> | <a href="index.php?n=story">成功故事</a> | <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> | <a href="index.php?n=payment&h=channel">其他信息</a></p>
+        <p style="padding:10px 0; "><img src="module/service/templates/default/images/tytv/kefu.gif" /></p>
+        <p>Copyright 2005-2010 版权所有：真爱一生网 闽ICP备09064513号</p>
+		<p>真爱一生网备用域名： www.hongniangw.com | www.hongniangwang.com</p>
+</div>
+{template system/service_foot public}
+</body>
+	<script type="text/javascript" src="public/system/js/jwplayer.js"></script>
+	<script type="text/javascript">
+	var w='300px',h='212px';
+		jwplayer("v1").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/service/templates/default/images/flv/tytv/01.flv",
+			image: "module/service/templates/default/images/tytv/01.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("v2").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/service/templates/default/images/flv/tytv/02.flv",
+			image: "module/service/templates/default/images/tytv/02.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("v3").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/service/templates/default/images/flv/tytv/03.flv",
+			image: "module/service/templates/default/images/tytv/03.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+	</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

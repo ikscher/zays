@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优秀红娘介绍——真爱一生网</title>
+{template system/js_css public}
+<link href="module/hnintro/templates/default/hnintroduce.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php" class="c-title-copy">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;优秀红娘介绍</span></p>
+		<div class="clear"></div>
+		<div class="mm-top-banner">
+        	<!-- <a href="index.php?n=about&h=media" class="mk-new"></a> -->
+		</div> 
+		<div class="mm-content">
+			<div class="mm-c-left"> <!-- 修改相对定位 -->
+			<ul class="mm-list">
+				<li><a href="index.php?n=hnintro&h=index&hnid=1"><span>刘飞老师</span><img src="module/hnintro/templates/default/images/l-img01_1.jpg" /></a></li>
+				<li><a href="index.php?n=hnintro&h=index&hnid=2"><span>申田老师</span><img src="module/hnintro/templates/default/images/l-img02_1.jpg" /></a></li>
+				<li><a href="index.php?n=hnintro&h=index&hnid=3"><span>过娟老师</span><img src="module/hnintro/templates/default/images/l-img03_1.jpg" /></a></li>
+				<li><a href="index.php?n=hnintro&h=index&hnid=4"><span>赵鹏老师</span><img src="module/hnintro/templates/default/images/l-img04_1.jpg" /></a></li>
+				<li><a href="index.php?n=hnintro&h=index&hnid=5"><span>孟永春老师</span><img src="module/hnintro/templates/default/images/l-img05_1.jpg" /></a></li>
+				<li><a href="index.php?n=hnintro&h=index&hnid=6"><span>薛倩老师</span><img src="module/hnintro/templates/default/images/l-img06_1.jpg" /></a></li>
+				<li><a href="index.php?n=hnintro&h=index&hnid=7"><span>胡林老师</span><img src="module/hnintro/templates/default/images/l-img07_1.jpg" /></a></li>
+				<li><a href="index.php?n=hnintro&h=index&hnid=8"><span>周慧静老师</span><img src="module/hnintro/templates/default/images/l-img08_1.jpg" /></a></li>
+					
+			<li><a href="index.php?n=hnintro&h=index&hnid=9"><span>吴敏老师</span><img src="module/hnintro/templates/default/images/l-img09_1.jpg" /></a></li>
+			<li><a href="index.php?n=hnintro&h=index&hnid=10"><span>席娟婷老师</span><img src="module/hnintro/templates/default/images/l-img10_1.jpg" /></a></li>
+			<li><a href="index.php?n=hnintro&h=index&hnid=11"><span>许飞老师</span><img src="module/hnintro/templates/default/images/l-img11_1.jpg" /></a></li>
+
+			<li><a href="index.php?n=hnintro&h=index&hnid=12"><span>马洁老师</span><img src="module/hnintro/templates/default/images/l-img12_1.jpg" /></a></li>
+			<li><a href="index.php?n=hnintro&h=index&hnid=13"><span>黄一鸣老师</span><img src="module/hnintro/templates/default/images/l-img13_1.jpg" /></a></li>
+			<li><a href="index.php?n=hnintro&h=index&hnid=14"><span>静月老师</span><img src="module/hnintro/templates/default/images/l-img14_1.jpg" /></a></li>
+				</ul>
+			</div>
+			<div class="mmc-right-box" >
+				<div class="mmc-right-top">优秀红娘介绍</div>
+				<div class="mmc-right-content">
+					{php include MooTemplate('public/hnintro_hnid_'.$hnid, 'module');}
+					<div class="mm-bottom"></div>
+				</div>
+				<div class="mmc-right-bottom"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+
+	</div><!--content end-->
+	{template system/footer public}
+    <!--foot end-->
+</div><!--main end-->
+</body>
+</html>

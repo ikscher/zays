@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>邀请好友——真爱一生网</title>
+<link href="module/invite/templates/{$GLOBALS['style_name']}/invite.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<script type="text/javascript">
+function checkF(){
+	var mails = $.trim($('#mailadd').val());
+	mails = mails ? mails.split(',') : [] ;
+	var content = $.trim($('#content').val()).length;
+	var title = $.trim($('#title').val()).length;
+	var msg = '';
+	if(!title) msg = '请输入您的姓名';
+	if(!content || content > 450){
+		msg = content ? '您输入的邀请留言太长' : '请填写邀请留言';
+	}
+	var mCount = mails.length;
+	if(!mCount || mCount > 10){
+		msg = mCount ? '最多只能填写10个Email' : '请输入好友邮箱';
+	}
+	if(msg){alert(msg);return false;}
+	var mi = [];
+	var reg = /^([a-z0-9\+_\-\.]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
+	for(var i=0; i<mCount; i++){
+		if( mails[i] && !reg.test(mails[i])){
+			mi.push(i+1);
+		}
+	}
+	if(mi.length > 0){
+		var mlist = mi.join(',');
+		alert('您输入的邮箱格式有错误\r\n序号为：'+mlist);
+		return false;
+	}
+	return true;
+}
+</script>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;邀请好友</span></p>
+		
+			<div class="content-title">
+				<span class="right-title">填写注册信息</span>
+			</div><!--content-title end-->
+			<div class="c-center">
+			<!--导航-->
+			<div class="service-title">
+				<ul>
+					<li><a href="index.php?n=invite"><span>发送链接邀请给朋友</span></a></li>
+					<!-- <li><a href="index.php?n=invite&h=into"><span>导入MSN联系人到邀请名单</span></a></li> -->
+					<li><a href="index.php?n=invite&h=mail" class="onthis"><span>通过E-mail邀请朋友</span></a></li>
+				</ul>
+			<div class="clear"></div>
+			</div>
+			<!--导航 end-->				
+			<h4>通过Email邀请朋友</h4>
+            <form id="form1" name="form1" method="post" action="index.php?n=invite&h=mail" onsubmit="return checkF();">
+			<div class="invite-into-box">
+				<div class="invite-box-text">
+					<div class="ibt-left">对方e-mail：</div>
+					<div class="ibt-right">
+                        <textarea name="mailadd" id="mailadd" class="textarea-hw">{$mail_str}</textarea>
+						<p><span class="f-ed0a91">*</span> 一次填写多个Email地址请用逗号分隔（最多只能填写10个Email）</p>
+					</div>
+				</div>
+				<div class="invite-box-text">
+					<div class="ibt-left">邀请留言：</div>
+					<div class="ibt-right">
+                        <textarea name="content" id="content" class="textarea-hw"></textarea>
+						<p><span class="f-ed0a91">*</span> 300字以内尤佳</p>
+					</div>
+				</div>
+				<div class="invite-box-text">
+					<div class="ibt-left" style="padding-top:3px;">您的姓名：</div>
+					<div class="ibt-right">
+						<input name="title" type="text" id="title" maxlength="10" style="height:18px; width:214px; line-height:20px;"/>
+					</div>
+				</div>	
+				<p style="padding:20px 0 0 72px;" class="ibt-text">
+                <input name="actio" type="hidden" id="actio" value="1" />
+              <input name="sendid" type="hidden" id="sendid" value="{$sendid}" />
+                <input type="submit" class="btn btn-default" value="邀请好友"  style="font-weight:400"/></p>
+				<div class="clear"></div>
+			</div>
+            <!--box end-->	
+			</form>
+			<div class="clear" style="height:30px;"></div>
+			</div><!--c-center-data end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}<!--foot end-->
+</div><!--main end-->
+</body>
+</html>

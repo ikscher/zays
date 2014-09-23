@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+.main{height:1652px;}
+.left{width:722px; height:inherit;}
+.vip{height:51px; background:url(./images/vip.gif) no-repeat center top;}
+.body{height:1602px; background:url(./images/bg.gif) no-repeat center top;}
+.right{width:243px; height:922px; border:1px solid #6A1C72; border-top:none;}
+.member{height:46px; background:url(./images/mvp.gif) no-repeat center top;}
+.vipBg{width:271px; height:405px; background:url(./images/vipbg.png) no-repeat center top; margin-left:60px; margin-top:15px;}
+.vipBg2{width:271px; height:375px; background:url(./images/vipbg2.png) no-repeat center top; margin-left:60px; margin-top:10px;}
+.img{height:210px; width:155px;left:57px;top:82px;}
+.img2{height:210px; width:155px;left:57px;top:48px;}
+.info{height:76px; bottom:5px; width:250px;left:10px;}
+.info2{height:76px; bottom:5px; width:250px;left:12px;}
+.list li{float:left;margin-left:40px;height:30px;line-height:30px; color:#580F00; display:inline;}
+.list li.reduce{margin-left:77px;}
+.list li.id{width:100%;margin-left:-10px;color:black;}
+.boy{height:35px;width:121px; background:#6B04B7;line-height:35px; color:#FFFF06;}
+.girl{height:35px;width:122px; background:#450074;line-height:35px; color:#FFFF06;}
+.boyImage li{height:153px;width:117px; background:url(./images/member.png) no-repeat center top; margin-top:5px; position:relative;}
+.boyImage li img{position:absolute;left:7px; top:5px; width: 106px; height: 142px; }
+.girlImage li{height:153px;width:117px; background:url(./images/member.png) no-repeat center top; margin-top:5px; position:relative;}
+.girlImage li img{position:absolute;left:7px; top:5px; width: 106px; height: 142px; }
+.search{height:38px; width:560px; line-height:38px;}
+.vipId{border:1px solid #44104E;height:29px; width:127px; margin-left:20px;}
+.submit{cursor:pointer;}
+.end{height:100px;width:882px;}
+.page{ left: 875px; bottom: 2px; }
+.shadow{ width: 100%; margin-top: 20px; }
+.flower, .egg {	position: absolute;	width: 30px; height: 43px; cursor: pointer; }
+.flower { left: 13px; }
+.egg { right: 73px; }
+

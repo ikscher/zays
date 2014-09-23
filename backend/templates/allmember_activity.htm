@@ -1,0 +1,13 @@
+<style type="text/css">
+.clear{ clear: both; font-size:1px; width:1px; visibility: hidden; }
+h1 span.title { font-weight: bold; margin-left: 5px; color: #333; }
+</style>
+<br>
+{loop $data $k $value}
+<h1>
+	<span>序号：</span>{php echo $k+1;}<span class="title">活动主题：</span>{$value['title']}<span class="title">举行时间：</span>{php echo date('Y-m-d H:i',$value['opentime'])}<span class="title">活动地点：</span>{$value['place']}。
+</h1>
+{/loop}
+{if count($data) == 0}
+<h1>该用户还没有参加任何活动&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="parent.addTab('活动注册统计', 'index.php?action=financial_ahtv_reguser&h=list', '');">回到活动注册统计</a></h1>
+{/if}

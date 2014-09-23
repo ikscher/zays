@@ -1,0 +1,335 @@
+/* CSS Document */
+*{ margin:0; padding:0; font-size:12px; color:#000000; font-family:Verdana;}
+img{ border:0;}
+a{ text-decoration:none; color:#000000; outline:none; star:expression(this.onFocus=this.blur());}
+a:hover{ text-decoration:underline;}
+ul,li{ list-style:none;}
+#clear{	clear:both;}
+
+.select{
+	position:relative;
+	top:2px;
+	*top:1px;
+	}
+.text{
+	width:170px;
+	height:17px;
+	}
+/*top-----begin*/
+.top{
+	margin:0 auto;
+	width:1000px;
+	height:150px;
+	background:url(../images/top_bg_m.jpg);
+	}
+	.logo{
+		display:inline;
+		float:left;
+		width:205px;
+		height:125px;
+		margin-left:30px;
+		margin-top:17px;
+		}
+	.search{
+		float:left;
+		margin-left:30px;
+		margin-top:46px;
+		*margin-top:45px;
+		}
+	.search_button{
+		width:50px;
+		height:21px;
+		border:0px;
+		background:url(../images/search_button_m.gif);
+		cursor:pointer;
+		}
+/*top-----end*/
+
+/*top_content-----begin*/
+.top_content{
+	margin:0 auto;
+	width:1000px;
+	height:410px;
+	background:url(../images/top_bg_m.jpg) 0px -150px;
+	}
+	.top_content .zhuce{
+		display:inline;
+		width:310px;
+		height:370px;
+		float:right;
+		margin-top:10px;
+		margin-right:15px;
+		padding-top:15px;
+		padding-left:10px;
+		text-align:center;
+		}
+		.top_content .zhuce p{
+			color:#CC0000;
+			letter-spacing:0.1em;
+			text-indent:1em;
+			text-align:left;
+			}
+		.top_content .zhuce ul{
+			margin-top:10px;
+			text-align:left;
+			}
+		.top_content .zhuce ul li{
+			margin-bottom:13px;
+			*margin-bottom:11px;
+			}
+		.top_content .zhuce ul li span{
+			color:#FF0000;
+			font-size:12px;
+			position:relative;
+			top:3px;
+			}
+		.top_content .zhuce ul li a{
+			color:#CC0099;
+			text-decoration:underline;
+			letter-spacing:0.1em;
+			}
+		.top_content .zhuce ul li a:hover{
+			text-decoration:none;
+			}
+		.top_content .zhuce .zhuce_button{
+			border:0px;
+			background:url(../images/zhuce_button_m.gif) no-repeat;
+			width:123px;
+			height:36px;
+			text-align:center;
+			margin-top:10px;
+			cursor:pointer;
+			}
+/*top_content-----end*/
+
+/*maincontent-----begin*/
+.maincontent{
+	margin:0 auto;
+	width:950px;
+	background:#CC0000;
+	text-align:center;
+	padding-left:25px;
+	padding-right:25px;
+	}
+	.bt{
+		width:950px;
+		height:35px;
+		line-height:35px;
+		background:#fee2b3;
+		}
+		.bt img{
+			float:left;
+			}
+	.content1{
+		width:950px;
+		margin-top:10px;
+		}
+		.content1 ul{}
+		.content1 ul li{
+			width:106px;
+			height:180px;
+			float:left;
+			margin-right:14px;
+			}
+		.content1 ul li span a img{
+			border:1px solid #CCCCCC;
+			width:100px;
+			height:125px;
+			}
+		.content1 ul li span a:hover img{
+			border:1px solid #CC0000;
+			}
+		.content1 ul li a.id{
+			display:inline-block;
+			width:100px;
+			height:20px;
+			line-height:20px;
+			color:#FFFFFF;
+			font-weight:bold;
+			}
+		.content1 ul li span.from{
+			color:#FFFFFF;
+			display:inline-block;
+			width:100px;
+			height:20px;
+			line-height:20px;
+			}
+	
+	
+	.pingjia{
+		width:950px;
+		margin-bottom:10px;
+		background:#CC0000;
+		}
+		.pj_bt{
+			width:950px;
+			height:35px;
+			background:#fee2b3;
+			margin-bottom:10px;
+			}
+			.pj_bt h2{
+				float:left;
+				}
+		.pj_content{
+			width:950px;
+			}
+			.pj_list{
+				display:inline;
+				float:left;
+				width:310px;
+				text-align:left;
+				margin-bottom:10px;
+				margin-right:6px;
+				}
+				.pj_list span{
+					display:inline-block;
+					float:left;
+					margin-right:5px;
+					}
+					.pj_list span a img{
+						width:100px;
+						height:125px;
+						border:1px solid #CCCCCC;
+						}
+					.pj_list span a:hover img{
+						border:1px solid #CC0000;
+						}
+				.pj_list ul{
+					float:left;
+					width:200px;
+					}
+					.pj_list ul li{
+						line-height:20px;
+						}
+					.pj_list ul li.name{
+						font-weight:bold;
+						color:#FFFFFF;
+						}
+					.pj_list ul li.from{
+						color:#FFFFFF;
+						}
+					.pj_list ul p{
+						text-indent:2em;
+						color:#FFFFFF;
+						}
+						
+						
+	.content2{
+		width:950px;
+		margin-top:10px;
+		background:#fee2b3;
+		}	
+		.content2 .anli{
+			float:left;
+			width:550px;
+			height:310px;
+			overflow:hidden;
+			padding-left:20px;
+			padding-top:20px;
+			}
+			.content2 .anli span.anli_pic{
+					display:block;
+					float:left;
+					width:210px;
+					margin-right:10px;
+					}
+					.content2 .anli span a img{
+						width:200px;
+						height:120px;
+						padding:2px;
+						border:1px solid #CCCCCC;
+						}
+					.content2 .anli span a:hover img{
+						border:1px solid #CC0099;
+						}
+			.content2 .anli ul{
+				float:left;
+				width:320px;
+				margin-bottom:20px;
+				*margin-bottom:-10px;
+				}
+				.content2 .anli ul li{
+					text-align:left;
+					line-height:20px;
+					}
+				.content2 .anli ul li h3{
+					font-size:15px;
+					font-weight:bold;
+					color:#CC0000;
+					margin-bottom:10px;
+					}
+				.content2 .anli ul li span.text{
+					color:#CC0000;
+					}
+				.content2 .anli ul li p.neirong{
+					text-indent:2em;
+					}
+					
+					
+		.content2 .fengexian{
+			float:left;
+			width:1px;
+			height:320px;
+			border-right:1px solid #FFFFFF;
+			position:relative;
+			top:5px;
+			}
+			
+			
+		.content2 .rongyu{
+			float:left;
+			width:350px;
+			text-align:left;
+			margin-left:15px;
+			margin-top:15px;
+			}
+			.content2 .rongyu p{
+				line-height:22px;
+				letter-spacing:0.2em;
+				color:#000000;
+				}
+			.content2 .rongyu p.shurong{
+				color:#CC0000;
+				font-weight:bold;
+				margin-top:10px;
+				}
+/*maincontent-----end*/
+
+
+
+/*footer-----begin*/
+.footer{
+	margin:0 auto;
+	width:950px;
+	height:120px;
+	background:#CC0000;
+	padding-top:50px;
+	padding-left:25px;
+	padding-right:25px;
+	text-align:center;
+	}
+	.footer .friend_link{
+		width:950px;
+		text-align:center;
+		}
+		.footer .friend_link span{
+			margin-right:5px;
+			color:#FFFFFF;
+			}
+		.footer .friend_link span a{
+			color:#FFFFFF;
+			}
+	.footer .tel{
+		width:950px;
+		text-align:center;
+		margin-top:10px;
+		}
+	.footer .banquan{
+		width:950px;
+		text-align:center;
+		}
+		.footer .banquan p{
+			margin-top:10px;
+			color:#FFFFFF;
+			}
+/*footer-----end*/

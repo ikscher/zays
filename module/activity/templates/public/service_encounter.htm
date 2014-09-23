@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网-—邂逅嘉源-七夕情人节丹阳名企单身精品联谊活动</title>
+<link href="module/activity/templates/default/new_css.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+<style type="text/css">
+	.padding5em { padding-left: 5em; }
+</style>
+<script LANGUAGE="Javascript" src="module/activity/templates/public/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript">
+	function changeboxDiv(o) {
+		page.pageinfo.sex = o;
+		if (page.pageinfo.all[o] == 0) {
+			var str = '0 / 0';
+		} else {
+			var str = page.pageinfo.now[o] + ' / ' + page.pageinfo.all[o];
+		}
+		$('#now').text(str);
+		var list = o == 0 ? [2, 1] : [1, 2];
+		document.getElementById("class" + list[0]).style.background="url(module/activity/templates/default/images/activity_new/sidebar_h2_thisclass.jpg) no-repeat";
+		document.getElementById("class" + list[0]).style.color="#de016b";
+		document.getElementById("cont" + list[0]).style.display="none";
+		document.getElementById("class" + list[1]).style.background="url(module/activity/templates/default/images/activity_new/sidebar_h2_otherclass.jpg) no-repeat";
+		document.getElementById("class" + list[1]).style.color="#2b73c7";
+		document.getElementById("cont" + list[1]).style.display="";
+	}
+	
+	function page(pg) {
+		var pageinfo = page.pageinfo;
+		if (pageinfo.all[pageinfo.sex] == 0) return;
+		if (pg == 'up') {
+			if (pageinfo.now[pageinfo.sex] == 1) return;
+			pageinfo.now[pageinfo.sex]--;
+		} else if (pg == 'down') {
+			if (pageinfo.now[pageinfo.sex] == pageinfo.all[pageinfo.sex]) return;
+			pageinfo.now[pageinfo.sex]++;
+		}
+		$.get('ajax.php', { n:"activity", h:"page", sex: pageinfo.sex, page: pageinfo.now[pageinfo.sex], channel: {$channel}}, function(data){
+			$('#cont' + (page.pageinfo.sex + 1)).html(data);
+			$('#now').text(page.pageinfo.now[page.pageinfo.sex] + ' / ' + page.pageinfo.all[page.pageinfo.sex]);
+		});
+	}
+	page.pageinfo = {sex:1, now: [1, 1], all: [{$page_num[0]}, {$page_num[1]}]};
+	
+	$(document).ready(function(){
+		$("#jquery_jplayer_2").jPlayer({
+			ready: function () {
+				$(this).jPlayer("setMedia", {
+					mp3: "module/activity/templates/public/js/luck.mp3"
+				}).jPlayer("play");
+			},
+			
+			swfPath: "module/activity/templates/public/js",
+			supplied: "mp3"
+		});
+		
+	});
+
+ </script>
+
+</head>
+
+<body>
+<div id="jquery_jplayer_2"></div>
+
+<div id="activity_wrap">
+{template system/header public}
+	<div id="activity_content">
+    	<div class="category">
+        	<div class="post post_sign">
+            	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/round_l_t_bg.jpg" /></div>
+                <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/round_r_t_bg.jpg" /></div>
+                <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/round_l_b_bg.jpg" /></div>
+                <div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/round_r_b_bg.jpg" /></div>
+            	<div class="sign_cont clearfix">
+                	<h2>{$activity[0]['title']}</h2>
+                    <div class="sign">
+                    	<div class="sign_btn"><a href="index.php?n=activity&h=register&channel=29"><img src="module/activity/templates/default/images/activity_new/sign_btn.jpg" /></a></div>
+                        <p class="times">{$last_time}</p>
+                        <p class="number">已经有<span>{$num_all}</span>名会员报名参加</p>
+                        <ul class="boyandgirl clearfix">
+                        	<li>
+                            	<img src="module/activity/templates/default/images/activity_new/boy.jpg" />
+                                <span>{$qixi_regest_count[0]}</span>男士
+                            </li>
+                            <li>
+                            	<img src="module/activity/templates/default/images/activity_new/girl.jpg" />
+                                <span>{$qixi_regest_count[1]}</span>女士
+                            </li>
+                        </ul>
+                        <ul class="logo clearfix">
+                            <li class="other_sign"><a href="index.php?n=activity&h=activity"><img src="module/activity/templates/default/images/activity_new/other_sign_btn.jpg" /></a></li>
+                        </ul>
+                    </div>
+                    <div class="gallery">
+                    	<img src="module/activity/templates/default/images/encounter/activity.jpg" />
+                        <ul>
+                        	<li class="line">
+                            	<dl>
+                                	<dt>提示：</dt>
+                                    <dd><span>活动时间：</span>2012年8月26日（周日下午13:30-17:30）</dd>
+
+                                    <dd><span>活动地点：</span>嘉园首府</dd>
+                                </dl>
+                            </li>
+                            <li>
+                            	<dl>
+                                	<dt>要求：</dt>
+                                    <dd><span>特别要求：</span>男士22——40周岁，女士20——35周岁，大专及以上学历，有相对稳定工作，收入良好，严肃婚恋观的高素质单身人士</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="post activity_infor">
+            	<div class="entry">
+                	<h2>活动详情</h2>
+                    <ul class="infor">
+                        <li>主&nbsp;&nbsp;&nbsp;&nbsp;题：<span>邂逅嘉源——七夕情人节丹阳名企单身精品联谊活动</span></li>
+                    	<li>活动主办：南京电视台《旅游真好》</li>
+						<li class="padding5em">栏目南京市妇联婚姻家庭指导服务中心</li>
+						<li>承办单位：南京花香四季文化传媒有限公司（南京花香四季单身交友俱乐部</li>
+						<li class="padding5em">7651真爱一生网</li>
+						<li>支持单位：丹阳市妇联</li>
+						<li class="padding5em">丹阳团市委</li>
+						<li>特别协办：东方卫报</li>
+						<li class="padding5em">生活南京网</li>
+                        <li>聚会时间：2012年8月26日（周日下午13:30-17:30）</li>
+                        <li>活动地址：云阳镇普善路和华昌路交汇处嘉源首府接待会所（可以自行开车或者乘车过去，也可以到新民西路，省丹中对面嘉源公馆门口乘坐接送专车）</li>
+                        <li>费&nbsp;&nbsp;&nbsp;&nbsp;用：全程公益免费</li>
+                        <li>咨询热线：<span>400-678-0405</span></li>
+                        <li>报名截止：2012年8月25日（周六）中午12点</li>
+						<li>邀请人数：200人（男女各100人）</li>
+                        <li>参加对象：<span>男士22——40周岁，女士20——35周岁，大专及以上学历，有相对稳定工作，收入良好，严肃婚恋观的高素质单身人士</span></li>
+                    </ul>
+                </div>
+                <div class="entry">
+                	<h2>活动寄语</h2>
+                    <p>熙熙，皆为缘来， </p>
+					<p>攘攘，皆为缘往； </p>
+					<p>是那一世你为古刹、我为青灯的缘深？还是君住江头、我住江尾的缘浅？</p>
+					<p>2012请让一切，皆随缘！</p>
+					<p>夏去秋来，在这七夕东方情人节之际，南京电视台特地联合众多镇江、丹阳知名企业推出首场七夕名企单身联谊活动。</p>
+					<p>天下没有免费的午餐，却有免费的约会！我们只要求你足够优秀并且付出真心！</p>
+					<p>2012年8月26日！我们相约丹阳，相约嘉源公馆！</p>
+					<p>体验，不一样的相亲模式！ </p>
+					<p>感受，不一样的约会心情！ </p>
+					<p>精彩的互动活动，让您近距离接触心目中的TA </p>
+				</div>
+				<div class="entry">
+					<h2>精彩环节：</h2>
+					<p>1、现场提供小吃、饮料、点心、水果等，创造和谐、轻松、高效的交友环境； </p>
+					<p>2、精彩繁多的互动游戏，带动现场气氛，打破彼此尴尬； </p>
+					<p>3、众多真爱一生现场免费牵线搭桥，掀开爱情的面纱，踏进爱情的殿堂； </p>
+					<p>4、现场男女挑战PK，在比拼中谈情说爱； </p>
+					<p>5、奖品丰富多彩，神秘大奖等你拿； </p>
+				</div>
+            </div>
+        </div>
+    </div>
+    <div id="activity_sidebar">
+    	<div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b.jpg" /></div>
+        	<h2>已报名
+            	<a href="#" id="class2" onMouseMove="changeboxDiv(0)">男生</a>
+                <a href="#" id="class1" onMouseMove="changeboxDiv(1)">女生</a>
+				           </h2>
+			<div id="cont2" class="entry" >
+            	<dl class="apply" style="height:285px;">
+                	<dt><span class="name">呢称</span><span class="age">年龄</span><span class="education">职业</span></dt>
+					{loop $woman_qixi_regest  $key $nv}
+                    <dd><span class="name"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></span>
+					<span class="age">{php echo empty($nv[birthyear])?'保密':(date('Y')-$nv[birthyear]);}</span>
+					<span class="education">{php echo empty($occupation_list[$nv[occupation]])?'保密':$occupation_list[$nv[occupation]];}</span></dd>
+					{/loop}
+                </dl>
+            </div>
+            <div id="cont1" class="entry" style="display: none;">
+				<dl class="apply" style="height:285px;">
+                	<dt><span class="name">呢称</span><span class="age">年龄</span><span class="education">职业</span></dt>
+					{loop $man_qixi_regest  $key $nv}
+                    <dd><span class="name"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></span>
+					<!-- <span class="sex"><img src="module/activity/templates/default/images/activity_new/man.jpg" /></span> -->
+					<span class="age">{php echo empty($nv[birthyear])?'保密':(date('Y')-$nv[birthyear]);}</span>
+					<span class="education">{php echo empty($occupation_list[$nv[occupation]])?'保密':$occupation_list[$nv[occupation]];}</span></dd>
+                   {/loop}
+                </dl>
+            </div>
+			<div class="pagenav">
+			<p><a href="javascript:page('up');">上一页</a><span id="now">{php echo $page_num[1] == 0 ? 0 : 1;} / {$page_num[1]}</span><a href="javascript:page('down');">下一页</a></p>
+			 </div>
+        </div>
+        <div class="post clearfix" style="height:180px;">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>近期活动</h2>
+            <ul class="news">
+				{loop $act_con $k $v}
+				<li>{$v[time]} <a href="{$v['href']}">{$v[title]}</a><img src="module/activity/templates/default/images/activity_new/new.jpg" /></li>
+				{/loop}
+				{loop $act_con_last $k $v}
+				<li>{$v[time]} <a href="{$v['href']}">{$v[title]}</a></li>
+				{/loop}
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>往期回顾<a href="#" class="more">更多</a></h2>
+
+            <ul class="review">
+			{loop $act_con2 $k $v}
+			<li><a href="{$v['href']}">{$v[title]}</a></li>
+			{/loop}
+
+
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>活动合作</h2>
+            <img class="cooperation_img" src="module/activity/templates/default/images/activity_new/sidebar_cooperation.jpg" />
+            <ul class="cooperation">
+            	<li>希望与真爱一生网合作举办活动<a href="index.php?n=cooperation&h=company&cooptype=1">进入>></a></li>
+                <li>希望为活动赞助物品或现金<a href="index.php?n=cooperation&h=company&cooptype=2">进入>></a></li>
+                <li>让会员和您企单身员工联谊<a href="index.php?n=cooperation&h=company&cooptype=3">进入>></a></li>
+                <li>让我们策划主持您企业活动<a href="index.php?n=cooperation&h=company&cooptype=4">进入>></a></li>
+            </ul>
+        </div>
+        <div class="post" style="height:320px;">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>活动志愿者报名</h2>
+            <img class="volunteer_img" src="module/activity/templates/default/images/activity_new/sidebar_volunteer.jpg" />
+            <dl class="volunteer">
+            	<dt>我口齿伶俐思维敏捷有主持经验
+想成为志愿者</dt>
+                <dd>希望与真爱一生网提供主持服务<a href="index.php?n=cooperation&h=company&cooptype=7">点击进入>></a></dd>
+                <dd>希望为活动提供志愿者服务<a href="index.php?n=cooperation&h=personal&a=4">点击进入>></a></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="friend_link clearfix">
+    	<h2><img src="module/activity/templates/default/images/activity_new/friend_link.jpg" /></h2>
+        <div class="entry clearfix">
+        	<ul>
+            	<li><a href="http://www.sina.com.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon1.jpg" /></a></li>
+                <li><a href="http://www.sohu.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon2.jpg" /></a></li>
+                <li><a href="http://www.baidu.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon3.jpg" /></a></li>
+                <li><a href="http://www.qq.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon4.jpg" /></a></li>
+                <li><a href="http://www.k666.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon5.jpg" /></a></li>
+                <li><a href="http://www.163.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon6.jpg" /></a></li>
+                <li><a href="http://www.114la.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon7.jpg" /></a></li>
+                <li><a href="http://www.chinaunicom.com.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon8.jpg" /></a></li>
+                <li><a href="index.php?n=payment&h=ifyouaretheone_index"><img src="module/activity/templates/default/images/activity_new/friend_icon9.jpg" /></a></li>
+                <li><a href="http://www.ahtv.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon10.jpg" /></a></li>
+                <li><a href="http://www.52hbtv.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon11.jpg" /></a></li>
+            </ul>
+        </div>
+        <div><img src="module/activity/templates/default/images/activity_new/friend_bottom.jpg" /></div>
+    </div>
+</div>
+ 	{template system/footer public}
+</body>
+</html>
+

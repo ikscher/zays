@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0; margin:0 ;font-size:12px;}
+body{ background:#eeeeee; font-family:"宋体"; font-size:14px;}
+.float{ float:left;}
+.clear{ clear:both;}
+a img { border:none;}
+a { text-decoration:none;}
+a:link, a:visited { color:#000;}
+a:hover, a:active { color:#00C;}
+ol, ul{ list-style:none;}
+
+
+
+#box{width:982px; margin:0 auto;}
+#box_bg{background:url(images/title_bg.jpg) no-repeat center top;width:982px;height:549px;}
+#content{ background:#fffbe0;}
+#left_bg,#right_bg{ background:url(images/left_bg.gif) no-repeat;width:10px;height:1251px;float:left;}
+#right_bg{float:right;}
+.center{width:830px;float:left;padding:0 66px;background:url(images/bottom_bg.gif) no-repeat bottom #fffbe0;height:1251px;}
+.activity{width:742px;height:115px; background:#FFF; border-left:2px #cbeeb0 solid; border-right:2px #cbeeb0 solid;padding:10px 42px;}
+.activity h2{color:#678b1d; font-size:22px; font-family:"黑体";height:50px;line-height:50px;}
+.activity p,.activity span{font-size:14px;color:#fd397d;line-height:23px;}
+
+.condition p{ background:url(images/condition_title.gif) no-repeat;height:81px;width:830px;}
+.height{height:50px;padding-top:30px;}
+
+.awards p{ background:url(images/awards.gif) no-repeat; width:830px;height:85px;}
+.awards_conter{width:826px;height:700px;background:#FFF; border:2px #cbeeb0 solid; border-top:none;padding:25px 0;}
+.awards_conter dl{margin:9px 57px;width:712px;}
+.awards_conter dl img{margin:5px 0;}
+.awards_conter dl dt{font-size:14px;color:#030;height:50px;line-height:50px;}
+.awards_conter dl dd{font-size:14px;color:#030;line-height:28px; margin-left:25px;}
+.awards_conter dl dd span{color:#f00;font-size:14px;}
+.color{display:inline;color:#060;font-weight:700;}
+.copyright{color:#060; float:right;margin-right:40px;margin-top:5px;}
+.margin{margin-bottom:30px;}
+.button{width:200px;margin:10px auto;}
+#button{ background:url(images/register_btn.gif) no-repeat;width:200px;height:42px; border:none; cursor:pointer;}
+.bottom_bg{width:962px;height:11px; background:url(images/bottom_bg.gif) no-repeat;}
+
+
+

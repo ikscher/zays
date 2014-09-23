@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>红娘网首页</title>
+<link href="css/inx.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/jquery-1.3.2.min.js"></script>
+<script src="../public/js/sys1.js?v=1"></script>
+<script src="../module/register/templates/default/js/commonValidate.js"></script>
+<script src="../module/register/templates/default/js/syscode.js?v=1"></script>
+<script src="js/reg.js"></script>
+<script src="ip.php"></script>
+<script language="javascript">
+var tanbutan = true;
+//var popu = 'http://g.tankwb.com/union/6yw.htm';
+
+
+function changepop(){
+	tanbutan = false;
+}
+//window.onbeforeunload = function() {
+//	if(tanbutan){
+////	window.open(popu);
+//	}
+//}
+
+var c_provice = "";
+var c_city = "";
+
+len = provice.length;
+for (i = 0; i < len; i++) {
+	provice_arr = provice[i].split(",");
+
+	if (curent_area.indexOf(provice_arr[1]) != -1) {
+		c_provice = provice_arr[0];
+		break;
+	}
+}
+
+len = city.length;
+for (i = 0; i < len; i++) {
+	city_arr = city[i].split(",");
+
+	if (curent_area.indexOf(city_arr[1]) != -1) {
+		c_city = city_arr[0];
+		break;
+	}
+}
+
+function checkForm() {
+	var email = document.getElementById("username");
+	var year = document.getElementById("year");
+	var month = document.getElementById("month");
+	var day = document.getElementById("day"); 
+	var workProvince = document.getElementById("workprovincereg");
+	var workCity = document.getElementById("workcity");
+	var mysex1=document.getElementById("mysex1");
+	var mysex2=document.getElementById("mysex2");
+	var pwd = document.getElementById("password");
+	var agree = document.getElementById("agree");
+	var actio=document.getElementById("actio");
+	var pwd2=document.getElementById("password2");
+	var telphone = document.getElementById('telphone');
+	var emailmessage=document.getElementById('emailmessage');
+	var passmessage=document.getElementById('passmessage');
+	if(email.value==""){
+	  	alert("邮箱不能为空");
+	  	email.focus();
+	 	return false;
+	}
+	if(emailmessage.value!="ok"){
+	  	alert(emailmessage.value);
+	  	email.value='';
+	  	email.focus();
+	 	return false;
+	}
+	if(pwd.value==''){
+	       alert("密码不能为空");
+	       pwd.focus();
+	       return false;
+	}
+	if(pwd2.value==''){
+	       alert("密码不能为空");
+	       pwd2.focus();
+	       return false;
+	}
+	if(passmessage.value!='ok'){
+	       alert(passmessage.value);
+	       pwd.value='';
+	       pwd.focus();
+	       return false;
+	}
+	if(year.value=='-1'||year.value==''){
+		alert("请选择出生日期！");
+		year.focus();
+		return false;
+	}
+	if(month.value=='-1'||month.value==''){
+		alert("请选择出生日期！");
+		month.focus();
+		return false;
+	}
+	if(day.value=='-1'||day.value==''){
+		alert("请选择出生日期！");
+		day.focus();
+		return false;
+	}
+	
+	if(workProvince.value=='-1' && workCity.value=='-1') {
+		alert("您忘记选择“工作地区”这项了!");
+		workProvince.focus();
+		return false;	
+	}
+	if(workProvince.value !='10101201' && workProvince.value !='10102000' && workProvince.value !='10103000' && workProvince.value !='10101002' && workProvince.value !='10104000' && workProvince.value !='10105000' && workProvince.value !='10132000' && workProvince.value !='10133000' && workProvince.value !='10134000'){
+		if(workCity.value=='-1'||workCity.value==''){
+			alert("您忘记选择“工作地区”这项了!");
+			return false;
+		}
+	}
+return true;
+}
+</script>
+<script src="jump.js"></script>
+
+</head>
+
+<!--
+<body onclick="changepop()" onbeforeunload="if(tanbutan){window.open(popu);}" >
+<object id=iie width=0 height=0 classid='CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6'></object>
+-->
+<body>
+<div class="top">
+	<div class="logo">
+    	<a href="http://www.7651.com/"><img src="http://www.7651.com/pop/images/logo.jpg" /></a>
+    </div>
+    <div class="pingjia">
+    	<img src="http://www.7651.com/pop/images/pingjia_pic.jpg" />
+    </div>
+    <div class="tel">
+    	<img src="http://www.7651.com/pop/images/tel_pic.jpg" />
+    </div>
+    <div id="clear"></div>
+</div>
+
+<div class="maincontent">
+    <div class="content1">
+    	<p>迄今共有会员<span>2000</span>多万，每年<span>200</span>多万会员成功牵手,您将会是下一个...</p>
+        <div id="clear"></div>
+    	<div class="content1_content">
+    <FORM name="register_stepone" action="http://www.7651.com/index.php?n=register&h=stepone" method="post" onsubmit="return checkForm(this);">
+            <ul>
+            	<h2>快速注册会员赢取50元手机话费</h2>
+                <li>
+                	<span>&nbsp;*&nbsp;</span>
+                    注册邮箱：
+                    <input style="color:#999999;line-height:17px;" id="username" name="username" type="text" value="作为登录用户名及找回密码使用" class="text" />&nbsp;<span id="validateemailID"></span><input type="hidden" value="false" id='emailmessage' />
+                </li>
+                <li>
+                	<span>&nbsp;*&nbsp;</span>
+                    红娘密码：
+                    <input id="password" name="password" type="password" class="text" />&nbsp;<span id="pwdtip"></span><input type="hidden" value="false" id='passmessage' />
+                </li>
+                <li>
+                	<span>&nbsp;*&nbsp;</span>
+                    确认密码：
+                    <input id="password2" name="password2" type="password" class="text" />&nbsp;<span id="pwdtip2"></span>
+                </li>
+                <li>
+                	<span>&nbsp;*&nbsp;</span>
+                    性&nbsp;&nbsp;&nbsp;&nbsp;别：
+                    <input name="gender" type="radio" class="select" value="0" checked="checked" />
+                  &nbsp;男
+                    <input name="gender" type="radio" value="1" class="select" />&nbsp;女
+                </li>
+                <li>
+                	<span>&nbsp;*&nbsp;</span>
+                    出生日期：
+				<script>getYearsSelect('','year','year','0','-1');</script>
+				<script>getMonthsSelect('','month','month','0','-1');</script>
+				<script>getDaysSelect('','day','day','0','-1');</script>
+                </li>
+                <li>
+                	<span>&nbsp;*&nbsp;</span>
+                    工作地点：
+					<script>getProvinceSelect43rds('','workprovincereg','workprovincereg','workcity',c_provice,'10100000');</script>
+					<script>getCitySelect43rds('','workcity','workcity',c_city,'');</script>  
+                </li>
+           </ul>
+		   <input name="actio" type="hidden" id="actio" value="true" />
+		   <input name="agree" type="hidden" id="agree" value="1" />
+		   <input id="mustphone" type="hidden" value="0" name="mustphone"/>
+            <div id="clear"></div>
+        <input type="submit" class="zhuce_button" id="register_submitone" name="register_submitone"  value="继 续" style="display:block;width:150px;height:50px;text-indent:20em;color:transparent;margin-left:80px" />
+		</form>
+    	</div>
+    </div>
+    
+    <div class="content2">
+    	<div class="left">
+        	<div class="l_bt">
+            	<h2>成功故事</h2>
+                <span class="more"><a href="http://www.7651.com/index.php?n=story&h=list" target="_blank">查看更多＞＞</a></span>
+                <div id="clear"></div>
+            </div>
+            <div class="l_content">
+            	<span class="chenggong_pic"><a href="http://www.7651.com/index.php?n=story&h=content&sid=10" target="_blank"><img src="http://www.7651.com/data/upload/story/30_small.jpg" /></a></span>
+                <ul>
+                	<li class="biaoti">我真心的感谢“红娘”</li>
+                    <li><span>萧林</span>&nbsp;和&nbsp;<span>秋天的麦克白</span></li>
+                    <li>2009-10-1 结婚了</li>
+                </ul>
+                <div id="clear"></div>
+                <br />
+                <hr style="height:1px; border:0px; border-bottom:1px dashed #CCCCCC; margin-bottom:7px; *margin-bottom:0px; margin-top:7px; *margin-top:0px;" />
+                <br />
+                <span class="chenggong_pic"><a href="http://7651.com/index.php?n=story&h=content&sid=14" target="_blank"><img src="http://7651.com/data/upload/story/42_small.jpg" /></a></span>
+                <ul>
+                	<li class="biaoti">网络奇缘</li>
+                    <li><span>火舞碧海</span>&nbsp;和&nbsp;<span>一生有你</span></li>
+                    <li>2009-7-17 结婚了</li>
+                </ul>
+                <div id="clear"></div>
+                <br />
+                <hr style="height:1px; border:0px; border-bottom:1px dashed #CCCCCC; margin-bottom:7px; *margin-bottom:0px; margin-top:7px; *margin-top:0px;" />
+                <br />
+                <span class="chenggong_pic"><a href="http://7651.com/index.php?n=story&h=content&sid=24" target="_blank"><img src="http://7651.com/data/upload/story/72_small.jpg" /></a></span>
+                <ul>
+                	<li class="biaoti">美人鱼与奇迹海的梦幻之旅</li>
+                    <li><span>昨夜东风</span>&nbsp;和&nbsp;<span>koko</span></li>
+                    <li>2009-5-22 结婚了</li>
+                </ul>
+                <div id="clear"></div>
+                <br />
+                <hr style="height:1px; border:0px; border-bottom:1px dashed #CCCCCC; margin-bottom:7px; *margin-bottom:0px; margin-top:7px; *margin-top:0px;" />
+                <br />
+            </div>
+        </div>
+        
+        
+        <div class="right">
+        	<div class="r_bt">
+            	<h2>推荐会员</h2>
+                <span class="more"><a href="http://www.7651.com/index.php?n=search&h=basic&gender=1&agebegin=19&ageend=30&workprovince=-1&workcity=-1&photo=1&h1=-1&h2=-1&basic_search=%E5%BC%80%E5%A7%8B%E6%90%9C%E7%B4%A2" target="_blank">查看更多＞＞</a></span>
+                <div id="clear"></div>
+            </div>
+            <div class="r_content">
+            	<ul class="huiyuan">
+                	<li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001360" target="_blank"><img src="http://www.7651.com/data/upload/userimg/3004080_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001360" target="_blank" class="text">ID:1001360 20岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001384" target="_blank"><img src="http://www.7651.com/data/upload/userimg/3004152_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001384" target="_blank" class="text">灰姑娘 21岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1000781" target="_blank"><img src="http://www.7651.com/data/upload/userimg/3002343_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1000781" target="_blank" class="text">ID:1000781 20岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001317" target="_blank"><img src="http://www.7651.com/data/upload/userimg/3003951_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001317" target="_blank" class="text">apple 20岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001428" target="_blank"><img src="http://www.7651.com/data/upload/userimg/3004284_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001428" target="_blank" class="text">LiLy 21岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001658" target="_blank"><img src="http://www.7651.com/data/upload/userimg/3004974_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001658" target="_blank" class="text">ID:1001658 21岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001570" target="_blank"><img src="http://www.7651.com/data/upload/userimg/3004710_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1001570" target="_blank" class="text">ID:1001570 21岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=241697" target="_blank"><img src="http://www.7651.com/data/upload/userimg/725091_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=241697" target="_blank" class="text">ID:241697 27岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=241680" target="_blank"><img src="http://www.7651.com/data/upload/userimg/725040_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=241680" target="_blank" class="text">三个火枪手 27岁</a>
+                    </li>
+                    <li>
+                    	<span><a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1217958" target="_blank"><img src="http://www.7651.com/data/upload/userimg/3653874_mid.jpg" /></a></span>
+                        <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid=1217958" target="_blank" class="text">匆匆 23岁</a>
+                    </li>
+                </ul>
+                <div id="clear"></div>
+                <ul class="rongyu">
+                	<li class="shurong">所获殊荣</li>
+                    <li>红娘网荣获“中国信誉服务最受公众满意首选征婚网站</li>
+                    <li>中国最大的婚恋网站-红娘网荣获“2007年度婚恋交友类最佳市场占有率”</li>
+                    <li>红娘网荣获 2006中国友谊协会“用户最满意的婚恋网站”的奖项</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="clear"></div>
+</div>
+ 
+<script type="text/javascript"> 
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://mycount.7651.com/" : "http://mycount.7651.com/");
+//document.write("script src='" + pkBaseURL + "piwik.js' type='text/javascript'/script");
+//document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.php?site_id=1' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript"> 
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "cnzz.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://mycount.7651.com/cnzz.php?idsite=1" style="border:0" alt=""/></p></noscript>
+ 
+ 
+
+<div class="footer">
+	<p>客服热线：400-678-0405 (每天9:00-21:00) 客服邮箱：service@7651.com</p>
+    <p>本次活动最终解释权归红娘网所有</p></br>
+    	<a href="http://hongniangw.com" target="_blank" style="color:#5b5b5b; text-decoration:underline">hongniangw.com</a> | <a href="http://hongniangwang.com" target="_blank"  style="color:#5b5b5b; text-decoration:underline">hongniangwang.com</a>
+</div>
+</body>
+</html>

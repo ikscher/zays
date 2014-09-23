@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<title>会员登录——真爱一生网</title>
+<link rel="shortcut icon" href="image/favicon.ico" />
+<link rel="edituri" type="application/rsd+xml" title="rsd" href="xmlrpc.php?rsd=" />
+<style type="text/css">
+@import url(module/index/templates/default/style1.css);
+</style>
+
+</head>
+<body>
+
+<div id="wrap">
+
+<form id="loginform" name="loginform" action="index.php?n=index&h=submit" method="post" class="c_form">
+<table cellpadding="0" cellspacing="0" class="formtable">
+<caption>
+<h2>请登录</h2>
+<p>如果您在本站已拥有帐号，请使用已有的帐号信息直接进行登录即可，不需重复注册。</p>
+</caption>
+
+
+<tbody style="display:;">
+<tr><th width="100"><label for="username">用户名</label></th><td><input type="text" name="username" id="username" class="t_input" value="look" tabindex="2" /></td></tr>
+<tr><th width="100"><label for="password">密　码</label></th><td><input type="password" name="password" id="password" class="t_input" tabindex="3" value="" /></td></tr>
+<tr>
+<th width="100">&nbsp;</th>
+<td>
+<input type="checkbox" id="cookietime" name="cookietime" value="315360000" checked="checked" style="margin-bottom: -2px;"><label for="cookietime">下次自动登录</label>
+</td>
+</tr>
+</tbody>
+<tr><th width="100">&nbsp;</th><td>
+<input type="hidden" name="refer" value="space.php?do=home" />
+<input type="submit" id="loginsubmit" name="loginsubmit" value="登录" class="submit" tabindex="5" />
+<a href="do.php?ac=lostpasswd">忘记密码?</a>
+
+</td></tr>
+</table>
+<input type="hidden" name="formhash" value="412268a9" /></form>
+</div>

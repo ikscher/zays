@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的星座生肖——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/3/20346223/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">星座生肖</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Signs<br />and zodiac</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="horoscope">
+				  <div class="horoscope1">
+				  	<p>                                             象征着男性以及皇帝的龙，赋予了家强烈的责任心以及自尊心。她温柔也没什么架子，但在很多事情上都有着自己独到的见解，并不会三人成虎。对于歧视妇女的现象，她很厌恶，男女平等才是她所主张的原则。<br />
+				  	</P>
+</div>
+                 <div class="horoscope2">
+				   <p>                                                                                                                    有最赋有娱乐精神之称的双子座，赋予了家坦率、大大咧咧的性格。面对世俗，她不会屈服并逆来顺受，也不会装腔拿势，而是敢于在世俗浅薄的土壤里生根发芽，用自己最直白的真诚过着自己幸福的生活。</p> 
+				 </div>
+				 <div class="horoscope3">
+				   <p>                                                                                                        龙的要强以及双子的小女人情怀，造就了家多愁善感的特性。她的性格中虽有刚烈如火的一面，但也有着柔情似水的一面。她会触景生情，为花开花落而惆怅。而她的爱就像一杯白开水，不事雕琢，质朴诚挚，洗尽铅华，只愿与你执子之手与子偕老。她虽大大咧咧，即使出丑耍宝也无所谓，在别人面前永远阳光灿烂，但一个人的时候，会很忧郁，很安静。</p>
+				 </div>
+			  </div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+<div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

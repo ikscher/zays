@@ -1,0 +1,161 @@
+
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+
+<style type="text/css">
+.desc {
+    color: #333333;
+    font-weight: bold;
+}
+tr.over td {
+	background:#cfeefe;
+} 
+</style>
+<script type="text/javascript">
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{php echo ceil($total/$page_per);})
+
+	page = {php echo ceil($total/$page_per);};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+
+
+function enterHandler(event){
+    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+    if (keyCode == 13) {
+       gotoPage();  //调用函数
+     } 
+}
+
+
+
+
+
+//是否通过审核
+function isPass(id,value){
+    var isPass;
+    if($("#"+id).attr("checked")==true){
+    	 isPass=1;
+     }else{
+    	 isPass=0;
+     }
+
+     var url = "./tv_ajax.php?n=remark";
+     $.post(url,{isPass:isPass,value:value},function(data){
+         alert("Data Loaded: " + data);
+         
+     }); 
+}
+
+
+//是否通过审核
+function deleteRemark(id){
+
+     var url = "./tv_ajax.php?n=deleteremark";
+     $.post(url,{id:id},function(data){
+         alert("Data Loaded: " + data);
+         
+     });  
+
+}
+
+
+
+
+</script>
+
+<h1 style="margin-bottom:15px;">
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 活动评论审核 </span>
+	<span class="action-span"><a href="javascript:document.location.reload();">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+
+
+
+<form action="" method="post">
+		<span class="desc">查询时间：</span>
+		<input type="text" name="startdate" value="{php echo $startdate;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/> 到
+		<input type="text" name="enddate" value="{php echo $enddate;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+        
+         <select name="channel"  >
+              <option value='1'  {if $channel=='1'} selected="selected" {/if}>周日我最大</option>
+              <option value='2'  {if $channel=='2'} selected="selected" {/if}>幸福来敲门</option>
+			  <option value='3'  {if $channel=='3'} selected="selected" {/if}>相亲齐上阵</option>
+			  <option value='4'  {if $channel=='4'} selected="selected" {/if}>七夕</option>
+			  <option value='5'  {if $channel=='5'} selected="selected" {/if}>爱的表白</option>
+			  <option value='6'  {if $channel=='6'} selected="selected" {/if}>只是因为在人群中多看你一眼</option>
+			  <option value='7'  {if $channel=='7'} selected="selected" {/if}>闻香识女人</option>
+			  <option value='8'  {if $channel=='8'} selected="selected" {/if}>香水魔咒</option>
+			  <option value='9'  {if $channel=='9'} selected="selected" {/if}>倾城热恋</option>
+			  <option value='10'  {if $channel=='10'} selected="selected" {/if}>丈母娘看女婿</option>
+			  <option value='11'  {if $channel=='11'} selected="selected" {/if}>我想有一个家</option>
+			  <option value='12'  {if $channel=='12'} selected="selected" {/if}>爱的足迹</option>
+        </select>
+        
+
+        &nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" name="submit" value="搜索"  class="button" />
+		<!--  <input type="reset" value="重置" class="button" />
+        
+        
+        <a href ="./index.php?action=financial_ahtv_reguser&h=list&type=reg"  >非本站注册用户</a>-->
+    
+        
+      
+</form>
+
+
+
+<div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	 <tr>
+		<th>序号</th>
+        <th>UID</th>
+        <th>用户名</th>
+        <th>内容</th>
+        <th>时间</th>
+        <th>活动名称</th>
+        <th>审核</th>
+		<th>操作</th>
+	 </tr>
+    
+     {loop $comment $v}
+	 <tr>
+		<td align="center">{php echo $v['k'];}</td>
+		<td align="center"><a href="#" onclick="parent.addTab('{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{php echo $v['uid'];}</a></td>
+        <td align="center">{php echo $v['username'];}</td>
+		<td align="center">{php echo $v['remark'];}</td>
+        <td align="center">{php echo $v['operationtime'];}</td>
+		<td align="center">{if $v['channel']==1}周日我最大{elseif $v['channel']==2}幸福来敲门{elseif $v['channel']==3}相亲齐上阵
+		{elseif $v['channel']==4}七夕{elseif $v['channel']==5}爱的表白{elseif $v['channel']==6}只是因为在人群中多看你一眼{elseif $v['channel']==7}闻香识女人
+		{elseif $v['channel']==8}香水魔咒{elseif $v['channel']==9}倾城热恋{elseif $v['channel']==10}丈母娘看女婿{elseif $v['channel']==11}我想有一个家
+		{elseif $v['channel']==12}爱的足迹{/if}</td>
+		<td align="center"><input id="isPass{$v['id']}" type="checkbox" value="{$v['id']}" {if $v['ispass']==1} checked="checked" {/if} onclick="javascript:isPass(this.id,this.value);"  /></td>
+        <td><a href="#" id="{$v['id']}" onclick="javascript:deleteRemark(this.id);" >删除</td>
+	 </tr>
+	 {/loop}
+     
+	 </table>
+     
+         <table cellpadding="4" cellspacing="0">
+        <tr>
+          <td align="center">{$pages}
+          &nbsp;&nbsp;&nbsp;
+            转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+          <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+          </td>
+        </tr>
+      </table>
+</div>
+

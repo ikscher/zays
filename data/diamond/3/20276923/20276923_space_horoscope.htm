@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的星座生肖——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/3/20276923/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">星座生肖</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Signs<br />and zodiac</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="horoscope">
+				  <div class="horoscope1">
+				  	<p> 龙年出生的秋的幻想是一个有梦想的人，并且很有事业心，她希望在条件允许的情况下有属于自己的小事业。生活中的她待人是很真诚的，外表看起来有些严肃，有些冷傲，但却有一颗火热而脆弱的心，这只是她自我保护的一种方式而已。</P>
+</div>
+                 <div class="horoscope2">
+				   <p>                                                     水瓶座的秋的幻想是一个多愁善感的女孩，很重感情，所以也很容易受到伤害。她缺乏安全感，所以有时候情绪波动比较大。专一、可靠、有包容心的异性会比较容易得到她的青睐。</p> 
+				 </div>
+				 <div class="horoscope3">
+				   <p>                                        秋的幻想给人一种冷漠高傲的感觉，这是许多水瓶座女子都有的特点。不要责怪她们，因为这是她们保护自己的唯一方式。她们像一只刺猬，随时竖起自己身上的刺，但她们的刺不会伤人，只是用来武装自己。你所看到的坚强，只是她们在竭力掩饰的脆弱。只有在真正懂她们、爱她们、让她们觉得有安全感的人面前她们才会慢慢打开心门，随之付出。一旦付出，你就会感受到她们的热情。龙年出生的人大多有理想，有目标，并且愿意为之付出，秋的幻想也不例外。衷心希望她能够如愿以偿，实现自己的梦想。</p>
+				 </div>
+			  </div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+<div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

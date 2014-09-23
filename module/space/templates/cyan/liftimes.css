@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+.liftime{
+	padding:10px;
+	color:#666;
+	zoom:1;
+	font-size:12px;
+	line-height:25px}
+.v_word{
+	background:url(images/v_center1.jpg);
+	width:705px;
+	height:83px;
+	margin:10px}
+.v_word .w_left{
+	float:left;
+	width:7px;
+	height:83px;
+	background:url(images/v_word1.jpg);}
+.v_word .w_right{
+	float:left;
+	width:6px;
+	height:83px;
+	background:url(images/v_wordright1.jpg)}
+.w_center{
+	float:left;
+	margin:15px 0px 0px 10px;
+	display:inline;
+	width:682px;}
+.w_center textarea{
+	float:left;
+	width:590px;
+	height:50px;
+	margin-right:10px}
+.w_center .w_submit{
+	background:url(images/v_submit.jpg);
+	width:69px;
+	height:54px;
+	border:none;
+	cursor:pointer;}
+.w_center .w_submit1{
+	background:url(images/v_submit1.jpg);
+	width:69px;
+	height:54px;
+	border:none;
+	cursor:pointer;}
+.w_commit{
+	border-bottom:1px dashed #ccc;
+	padding:10px;
+	font-size:12px;
+	line-height:20px;
+	color:#666;
+	margin:0px 10px;
+	zoom:1}
+.w_commit a{ text-decoration:underline; color:#2093a2;}
+.w_commit a:hover{ text-decoration:none}
+.page{
+	float:right;
+	font-size:12px;
+	padding:10px;
+	color:#2093a2}
+.page a{
+	color:#2093a2;
+	padding:0px 5px;}
+.page a:hover{
+	text-decoration:underline}
+.w100{
+	width:120px;
+	float:left;}
+.zhengshu{
+	float:left;
+	width:600px}
+.zhengshu li{
+	float:left;
+	width:300px;}
+.jingli{
+	float:left}
+.jingli li{
+	line-height:25px;}
+.work img{
+	float:right;
+	margin-left:30px
+	}
+/*==============查看约会=============*/
+.appoint{
+	padding:20px;
+	float:left
+	}
+.appoint li{
+	float:left;
+	line-height:25px;
+	padding:0px 10px;}
+.appoint li.photo{
+	width:100px;
+	height:125px;
+	float:left;}
+.appoint li.sex{
+	float:left;
+	width:200px;
+	border-right:1px dashed #ccc;
+	}
+.appoint li.outro{
+	width:300px;
+	padding-left:20px
+	}
+.detail{
+	float:left;
+	padding-bottom:20px
+	}
+.detail li{
+	border-bottom:1px dashed #ccc;
+	height:35px;
+	line-height:35px;
+	padding-left:30px;
+	color:#333;
+	width:710px}
+.detail li span.w300{ display:block; float:left; width:300px; }
+.detail li a{ color:#c00}
+.detail li a:hover{ text-decoration:underline}
+.appoint_tips{
+	border:1px solid #e4dfbe;
+	background:#fef9e1;
+	padding:10px 20px;
+	width:662px;
+	line-height:25px;
+	margin:10px;
+	color:#666}
+
+.yingyue{
+	padding:10px 30px;
+	position:relative;
+	color:#333;
+	line-height:25px;
+	border-bottom:1px dashed #ccc;
+	font-size:12px;
+	}
+.yingyue .yingyue_btn{
+	background:url(images/yingyue.gif);
+	width:97px;
+	height:34px;
+	text-align:center;
+	color:#2093a2;
+	font-weight:bold;
+	position:absolute;
+	font-size:14px;
+	cursor:pointer;
+	border:none;
+	right:40px}
+.yingyue  a{
+	color:#2096a2;
+	text-decoration:underline}
+.yingyue a:hover{
+	text-decoration:none}

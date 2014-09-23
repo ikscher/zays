@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的亲友印象——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" /><link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3 style="padding-left:5px;"><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">亲友助阵</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px;font-weight:400;">Relatives<br />and friends</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="impression">
+				   <div class="impression1">
+					   <p>                                                                                                              在父母的眼中，我是一个孝顺、懂事的女儿，理解他们，能帮他们分担家务。对于我的人生大事，他们自然是很期待的，都希望我能早日找到自己的幸福。他们不希望我找生肖属虎的，因为我们家已经有两个属虎的了（哥哥和嫂嫂）。</p>
+                </div>
+				    
+<div class="impression3">
+					   <p>                                                                                             在同事们的眼中，我是一个外向乐观的人，比较善于沟通，人际关系处理得很好。他们也很关心我的个人问题，都希望我能早日找到自己的幸福，他们还等着吃我的喜糖呢！</p>
+                </div>  
+  
+<div class="impression4">
+					   <p>                                                    在朋友们的眼中，我是一个比较外向，比较健谈的人，很善于沟通。同时也是一个朴素的人，不会盲目追求名牌，只要穿着舒服、清爽就行了。朋友们也祝福我早日找到自己的幸福，也都等着吃我的喜糖呢！</p>
+                </div>  
+  
+<div class="impression5">
+					   <p>                                                        缘分是一个非常开朗，非常乐观的人，她善于沟通，善于交际，有着很好的人缘。生活中的她衣着朴素，从不盲目追求名牌，她是个会过日子的好女孩，相信未来的她一定会是个持家有道的贤妻良母的，这样的她红娘网上的你不要错过哦！</p>
+                </div>  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+                    
+                    
+				</div>
+			  </div>
+			
+			
+			  
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>真爱一生休闲吧——真爱一生网</title>
+    {template system/js_css public}
+    <link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+
+    <link type="text/css" rel="stylesheet" href="module/lovestation/templates/default/basic.css">
+    <link type="text/css" rel="stylesheet" href="module/lovestation/templates/default/relax.css">
+</head>
+
+ <body>
+ {template system/header public}
+ <!--头部结束-->
+  <div class="wrap bc w980">
+	<img src="module/lovestation/templates/default/images/真爱一生休闲吧1_r1_c1_s1.png">
+      <div class="main">
+      </div>
+      <div class=" w980 mtl5 pr ml10 oh" id="main">
+    	<ul class="list bc ml10">
+            {loop $data $k $v}
+            <li {php if($k==5) echo "class='last mb10'"}> {php echo ++$k;}.{$v['content']}</li>
+            {/loop}
+        </ul>
+    </div>
+    <div class="cb"></div>
+    <div class="w980 game pr mt10">
+    	<ul class="gameImage pa">
+            {loop $games $k $v}
+            <li ><a href="index.php?n=lovestation&h=carrelaxbargame&id={$v['id']}"><img src="{$v['imgfile']}"  width="180" height="200"></a></li>
+            {/loop}
+        </ul>
+    </div>
+      {template system/footer public}
+
+  </div>
+ </body>
+</html>

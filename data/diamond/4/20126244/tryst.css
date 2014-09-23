@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+/*发起约会*/
+.space_right{
+	float:right;
+	width:748px;
+	height:auto;
+	
+	}
+.space_right h3{
+	background:url(images/space_r.gif);
+	height:37px;
+	color:#2093a2;
+	font-size:14px;
+	padding-left:25px;
+	line-height:37px;
+	}
+.space_right h3 span{
+	float:right;
+	padding-right:20px;
+	}
+.space_right h3 span a{
+	color:#2093a2;
+	font-weight:normal;}
+.space_right h3 span a:hover{
+	color:#2093a2	}
+.space_rbox{
+	border:1px solid #60c1de;
+	border-top:none;
+	background:#fff}
+.space_rbox h4{
+	background:#e7f5f9 url(images/sanjiao.gif) no-repeat 30px 8px;
+	border-top:1px solid #60c1de;
+	border-bottom:1px solid #60c1de;
+	height:30px;
+	line-height:30px;
+	font-weight:normal;
+	color:#2093a2;
+	font-size:14px;
+	padding-left:40px
+	}
+.tab_tryst{
+	padding-top:20px;
+	height:24px;
+	}
+.tab_tryst li{
+	float:left;
+	margin-left:10px;
+	background:url(images/tys_li.gif);
+	border:1px solid #60c1de;
+	border-bottom:none;
+	height:24px;
+	font-size:12px;
+	line-height:24px;
+	padding:0px 10px;}
+.tab_tryst li.over{
+	background:url(images/tys_over.gif);
+	height:27px;
+	border:1px solid #60c1de;
+	border-bottom:none;
+	color:#2093a2;
+	font-size:14px;
+	font-weight:bold;
+	line-height:27px;
+	margin-top:-3px}
+.tryst table{
+	margin:10px;
+	width:720px;
+	}
+.tryst table tr td{
+	border-bottom:1px dashed #ccc;
+	padding:10px 5px;}
+.tryst table tr td.td_left{
+	text-align:right;
+	width:100px;}
+.tryst table tr td.td_left1{
+	text-align:right;
+	width:150px;}
+.ty_btn{
+	line-height:24px;
+	border:none;
+	cursor:pointer;
+	font-size:14px;
+	text-align:center;
+	color:#2093a2;
+	width:75px;
+	height:24px;
+	background:url(images/btn3.gif)}
+.ty_textarea{
+	width:300px;
+	height:70px;}
+.ty_input{ width:260px;}
+.w80{ width:80px;}

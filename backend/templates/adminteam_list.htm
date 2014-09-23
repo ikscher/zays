@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+//设置红娘币参数
+function change(uid){
+	//$.get()
+}
+function bulid_input(uid){
+	var input=new Array('interval','allot','amount','money');
+	for(var i=0;i<4;i++){
+		var commid=input[i]+'_'+uid;
+		var val=$('#td_'+commid).html();
+		var html='<input type="text" name="'+input[i]+'['+uid+']" value="'+val+'" id="'+commid+'">';
+		$('#td_'+commid).html(html);
+	}
+}
+function remove_input(uid){
+	var input=new Array('interval','allot','amount','money');
+	for(var i=0;i<4;i++){
+		var commid=input[i]+'_'+uid;
+		var val=$('#'+commid).val();
+		$('#td_'+commid).html(val);
+	}
+}
+function cheackall(){
+	alert($('#change_group_'+uid).attr('checked'));
+}
+function change_input(uid){
+	if($('#change_group_'+uid).attr('checked')){
+		bulid_input(uid);
+		$("#ok").removeAttr('disabled');
+	}else{
+		remove_input(uid);
+	}
+}
+</script>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="index.php?action=system_adminteam&h=addteam" onclick="parent.addTab('添加队','index.php?action=system_adminteam&h=addteam','icon');return false;">添加队</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 队管理列表 </span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<form action="index.php?action=system_adminteam&h=change" method="post" id="formChange" name="formChange">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>队名</th>
+    <th>队管理者</th>
+    <th>所管理的组</th>
+    <th>队说明</th>
+    <th>初始化间隔时间(月)</th>
+    <th>每日分配次数</th>
+    <th>每次分配金额</th>
+    <th>初始化金额</th>
+    <th>操作</th>
+  </tr>
+  {loop $team_list $team}
+  <tr id="group_{$team['id']}">
+    <td align="center"><input type="checkbox" name="group[]" value="{$team['id']}" id="change_group_{$team['id']}" onclick="change_input($team['id'])"  >{$team['manage_name']}</td>
+    <td align="center">{$team['leader_uid']}</td>
+    <td align="center">{$team['manage_list']}</td>
+    <td align="center">{$team['manage_desc']}</td>
+    <td align="center" id="td_interval_{$team['id']}">{$team['interval']}</td>
+    <td align="center" id="td_allot_{$team['id']}">{$team['allot']}</td>
+    <td align="center" id="td_amount_{$team['id']}">{$team['amount']}</td>
+    <td align="center" id="td_money_{$team['id']}">{$team['money']}</td>
+    <td align="center">
+    	<a href="index.php?action=system_adminteam&h=teammember&id={$team['id']}" onclick="parent.addTab('管理队{$team['manage_name']}成员','index.php?action=system_adminteam&h=teammember&id={$team['id']}','icon');return false;">管理队成员</a>&nbsp;&nbsp;
+    	<a href="index.php?action=system_adminteam&h=delteam&id={$team['id']}" onclick="return confirm('确定删除吗？');">删除队</a>&nbsp;&nbsp;
+    	<a href="index.php?action=system_adminteam&h=editteam&id={$team['id']}" onclick="parent.addTab('编辑{$team['manage_name']}组','index.php?action=system_adminteam&h=editteam&id={$team['id']}','icon');return false;">编辑队</a>
+    </td>
+  </tr>
+  {/loop}
+  </table>
+  </form>
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right"> {php echo multi($total,$limit,$page,$currenturl)}</td>
+      <td align="right"> <input type="button" value="保存设置" id="ok" disabled="disabled" onclick="document.formChange.submit()"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

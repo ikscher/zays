@@ -1,0 +1,46 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="./templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+function check_form(){
+	var msg_sid = $("#msg_sid").val();
+	var msg_username = $("#msg_username").val();
+	var msg_title = $("#msg_title").val();
+	var msg_content = $("#msg_content").val();
+	if($.trim(msg_sid)=='' && $.trim(msg_username)==''){
+		alert('ID与用户名必须填写一个');
+		return false;
+	}
+	if($.trim(msg_title) == ''){
+		alert('标题不能为空');
+		return false;
+	}
+	
+	return true;
+}
+</script>
+<h1>
+<span class="action-span1"><a href="#">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> ----- 参与活动的人员批量添加</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<form action="" method="post" onsubmit="return checkForm();">
+<div class="list-div">
+		<table width="100%">
+		<tr>
+				<td width="100" height="25" align="right">活动的项目：</td>
+				<td align="left"><select name="channel" id="channel"><option value=0>请选择活动项目</option>{loop $channels $value}<option value="{$value['id']}">{$value['title']}</option>{/loop}</select></td><td></td>
+			</tr>
+			<tr>
+				<td width="100" height="25" align="right" valign="top">接收会员ID：</td>
+
+				<td align="left"><textarea name="uid" id="uid" style="width:500px; height:80px;"></textarea></td><td>以逗号分隔开,如：1747188,1747898</td>
+			</tr>
+			<tr>
+				<td width="100" height="25" align="right"></td>
+				<td align="left"><input name="提交" type="submit" value="发 送" /></td><td></td>
+			</tr>
+		</table>
+</div>

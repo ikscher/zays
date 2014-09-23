@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+   <script type="text/javascript">
+   function textCounter(field,countfieldId,leavingsfieldId,maxlimit) {
+	    var countfield = document.getElementById(countfieldId);
+	    var leavingsfield = document.getElementById(leavingsfieldId);
+		if (field.value.length > maxlimit) // if too long...trim it!
+		{
+		  field.value = field.value.substring(0, maxlimit);
+		  alert(" 限" + maxlimit + "字内！");
+		} else { 
+		  leavingsfield.innerHTML=maxlimit - field.value.length;
+		  countfield.innerHTML=field.value.length;
+		}
+	} 
+
+
+
+   
+   //更改为全权会员，取消为全权会员
+   $(function(){
+     $("#changeToAcq").click(function(){
+        
+        var value=$(this).val();
+        var uid={$userinfo['uid']};
+        var url="./allmember_ajax.php?n=changeAcq";
+        if(confirm('你确定'+uid+'会员更改为全权会员吗？')){
+	       	$.post(url,{uid:uid,value:value},function(data){
+	               if(data=='update'){
+	                 alert("成功 更改为全权会员！");
+	                 $("#changeToAcq").attr("disabled","disabled");
+	               }else if(data=="cancel"){
+	                 alert("成功取消 此会员 为全权会员！ ");
+	               }else{
+	                 alert("您的操作失败!");
+	               }
+	         }); 
+        }else{
+            $("#changeToAcq").attr("checked",false);
+        }
+     });
+
+   });
+
+   
+   
+   function checkForm(){ 
+	   var select_usertype=$("select[name=usertype] option:selected").val();
+	   var usertype={$userinfo['usertype']};
+	   if (select_usertype==3 &&　usertype!=3){
+		   alert("不能这样修改全权会员,请点左边的更改复选框！");
+		   return false;
+	   }
+
+   }
+   
+
+    
+   </script>
+</head>
+
+<body>
+<form action="" method="post" onsubmit="return checkForm();">
+<div class="main-div">
+	<table width="100%">
+	<tr>
+		<td style="vertical-align:top;">
+			<table style="width:400px" >
+			  <tr>
+			    <td class="label">会员昵称:</td>
+			    <td> <input name="nickname" type="text" value="{$userinfo['nickname']}" {if $is_admin && !in_array($GLOBALS['groupid'],$GLOBALS['admin_all_group'])} readonly{/if}/> </td>
+			  </tr>
+			  {if in_array($GLOBALS['groupid'],$GLOBALS['system_admin'])}
+			   <tr>
+			    <td class="label">会员姓名:</td>
+			    <td> <input name="username" type="text" value="{$userinfo['username']}" /> </td>
+			  </tr>
+			  {/if}
+			  <tr>
+			    <td class="label">姓名:</td>
+			    <td> <input name="truename" type="text" value="{$userinfo['truename']}" /> </td>
+			  </tr>
+			  <tr>
+			    <td class="label">重设密码:</td>
+			    <td>				
+					<input name="password" type="password"  />
+				</td>
+			  </tr>
+			  <tr>
+			    <td class="label">手机:</td>
+			    <td><input name="telphone" {if $GLOBALS['adminid']==52}{else}value="{$userinfo['telphone']}"{/if} type="text" {if $is_admin } readonly{/if}/> </td>
+			  </tr>
+			 
+			  <tr>
+			  	<td class="label">婚姻状况:</td>
+			  	<td>{if $is_admin }不可修改{else}<script>getSelect('','marriage1','marriage1','{$userinfo[marriage]}','1',marriage);</script>{/if}</td>
+			  </tr>
+			
+			   <tr>
+			    <td class="label">身高:</td>
+			    <td>{if $is_admin }不可修改{else}<script>getSelect('','height','height','{$userinfo[height]}','0',height);</script>{/if}</td>
+			  </tr>
+			  <tr>
+			    <td class="label">月收入:</td>
+			    <td>{if $is_admin }不可修改{else} <script>getSelect('','salary','salary','{$userinfo[salary]}','0',salary1);</script>{/if}</td>
+			  </tr>
+			   <tr>
+			    <td class="label">QQ:</td>
+			    <td> <input type="text" name="qq" value="{$userfield['qq']}" /></td>
+			  </tr>
+			   <tr>
+			    <td class="label">MSN:</td>
+			    <td><input type="text" name="msn" value="{$userfield['msn']}" /></td>
+			  </tr>
+			   <tr>
+			    <td class="label">最高学历:</td>
+			    <td>{if $is_admin }不可修改{else}<script>getSelect('','education1','education1','{$userinfo[education]}','0',education);</script>{/if}</td>
+			  </tr>
+			  <tr>
+			    <td class="label">有无小孩:</td>
+			    <td><script>getSelect('','children1','children1','{$userinfo[children]}','0',children);</script></td>
+			  </tr>
+			    <tr>
+			    <td class="label">住房情况:</td>
+			    <td>{if $is_admin }不可修改{else}<script>getSelect('','house','house','{$userinfo[house]}','0',house);</script>{/if} </td>
+			  </tr>
+			  <tr>
+				<td class="label">性别：</td>
+				<td>
+				
+				<select name="gender" id="gender">
+					<option value=0 {if $userinfo['gender']==0}selected="selected"{/if}>男</option>
+					<option value=1 {if $userinfo['gender']==1}selected="selected"{/if}>女</option>
+				</select>
+				
+				</td>
+			  </tr>			  
+			  <tr>
+				<td class="label">会员等级</td>
+				<td> {if $is_admin}不可修改{else}
+							<select name="s_cid">
+								{loop $GLOBALS['member_level'] $key $member_level}
+								
+									<option value="{$key}" {if $userinfo['s_cid'] == $key}selected="selected"{/if}>{$member_level}</option>
+								
+								{/loop}
+							</select>
+					{/if}
+				</td>
+			  </tr>			 
+			  <tr>
+				<td class="label">
+				年龄
+				</td>
+				<td>{if $is_admin }不可修改{else}
+				<!--{if !isset($userinfo['birthmonth']) || !$userinfo['birthmonth']}
+					{php $userinfo['birthmonth'] = 1;}
+				{/if}
+				{if !isset($userinfo['birthday']) || !$userinfo['birthday']}
+					{php $userinfo['birthday'] = 1;}
+				{/if} -->
+				
+					<script>getYearsSelect('selectSize','year','year','{php echo date('Y',strtotime($userinfo['birth']));}','0');</script>年
+					<script>getMonthsSelect('selectSize01','month','month','{php echo  date('n',strtotime($userinfo['birth']));}','0');</script>月
+					<script>getDaysSelect('selectSize011','day','day','{php echo date('j',strtotime($userinfo['birth']));}','0');</script>日
+				
+				{/if}</td>
+			  </tr>
+			  <tr><td class="label"> 是否城市之星</td><td> {if $is_admin}不可修改{else}是：<input type="radio" name="city_star" value="1" {if $userinfo['city_star']>time()}checked{/if} />否：<input type="radio" name="city_star" value="0"  {if $userinfo['city_star']==0}checked{/if}/>{/if}</td></tr>
+			</table>
+		</td>
+		<td style="vertical-align:top;">
+			<table style="width:400px" >
+			 <tr>
+			    <td class="label">多久内找到对象:</td>
+			    <td> <script>getSelect('','expectlovedateid','oldsex','{$userinfo[oldsex]}','0',expectlovedate);</script></td>
+	 	 	</tr>
+			<tr>
+			    <td class="label">工作地区:</td>
+			    <td> {if $is_admin }不可修改{else}
+			    <script>getProvinceSelect66('','','workprovince','workCity','{$userinfo[province]}','10100000');</script>
+				省
+				<script>getCitySelect66('','workCity','workCity','{$userinfo[city]}','0');</script>
+				市{/if}
+			    </td>
+			</tr>
+		  	<tr>
+			    <td class="label">性格:</td>
+			    <td><script>getSelect('','nature3','nature3','{$userfield[nature]}','1',nature);</script></td>
+		 	</tr>
+	  	  <tr>
+		    <td class="label">体重:</td>
+		    <td>{if $is_admin }不可修改{else}<script>getSelect('selectSize','weight','weight','{$userfield[weight]}','0',weight);</script>{/if}</td>
+	  	  </tr>
+	  	  <tr>
+	    	<td class="label">体型:</td>
+	    	<td> 
+		    {if $userinfo[gender] == 0}
+				<script>getSelect('','body','body','{$userfield[body]}','1',body0);</script>
+			{else}
+				<script>getSelect('','body','body','{$userfield[body]}','1',body1);</script>
+			{/if}
+			
+	   	 	</td>
+	  	 </tr>
+		 
+		 <tr> 
+		    <td class="label">工作单位:</td>
+		    <td>{if $is_admin }不可修改{else}<script>getSelect('','corptype','corptype','{$userfield[corptype]}','0',corptype);</script>{/if}</td>
+	 	 </tr>
+		 
+		 
+	  	 <tr> 
+		    <td class="label">职业:</td>
+		    <td>{if $is_admin }不可修改{else}<script>getSelect('','occupation2','occupation2','{$userfield[occupation]}','0',occupation);</script>{/if}</td>
+	 	 </tr>
+		 
+		  <tr> 
+		    <td class="label">兄弟姐妹:</td>
+		    <td>{if $is_admin }不可修改{else}<script>getSelect('','family','family','{$userfield[family]}','0',family);</script>{/if}</td>
+	 	 </tr>
+		 
+
+		 
+	 	 <tr>
+		    <td class="label">民族:</td>
+		    <td><script>getSelect('','stock2','stock2','{$userfield[nation]}','0',stock);</script></td>
+	  	</tr>
+	   <tr>
+		    <td class="label">籍贯:</td>
+		    <td> {if $is_admin }不可修改{else}
+		    <script>getProvinceSelect66('','hometownProvince','hometownProvince','hometownCity','{$userfield[hometownprovince]}','10100000');</script>
+			<script>getCitySelect66('','hometownCity','hometownCity','{$userfield[hometowncity]}','0');</script>{/if}
+		    </td>
+	   </tr>
+	   <tr>
+	    <td class="label">是否抽烟:</td>
+	    <td>
+	    <script>getSelect('','issmoking','issmoking','{$userfield[smoking]}','0',isSmoking);</script>
+	    </td>
+	  </tr>
+	   <tr>
+	    <td class="label">是否喝酒:</td>
+	    <td>
+	    <script>getSelect('','isdrinking','isdrinking','{$userfield[drinking]}','0',isDrinking);</script>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td class="label">是否封锁:</td>
+	    <td> {if $is_admin}不可修改{else}
+	    <select name='is_lock'>
+		   	<option value='1' {if $userinfo['is_lock']==1}selected="selected"{/if}>未封锁</option>
+			<option value='0' {if $userinfo['is_lock']==0}selected="selected"{/if}>封锁</option>
+		</select>{/if}
+	    </td>
+	  </tr>
+	  <tr>
+	    <td class="label">会员来源:</td>
+	    <td> {if $is_admin }不可修改{else}
+		   <select name="usertype">
+	  			<option value="1" {if $userinfo['usertype'] == 1}selected{/if}>本站注册</option>
+	  			<option value="2" {if $userinfo['usertype'] == 2}selected{/if}>外站加入</option>
+	  			<option value="3" {if $userinfo['usertype'] == 3}selected{/if}>全权会员</option>
+	  			<option value="4" {if $userinfo['usertype'] == 4}selected{/if}>联盟会员</option>
+				<option value="5" {if $userinfo['usertype'] == 5}selected{/if}>内部会员</option>
+	  		</select>{/if}
+	    </td>
+	  </tr>
+	  
+	  <tr>
+		<td class="label">vip起始时间:</td>
+		<td> {if $is_admin }不可修改{else}
+			<input type="text" name="bgtime" value="{php if($userinfo['bgtime']) echo date('Y-m-d H:i:s',$userinfo['bgtime']);}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" {if isset($group_front) && $group_front} readonly{/if} />  {/if}
+		</td>
+	  </tr>
+	
+	  <tr>
+		<td class="label">vip到期时间:</td>
+		<td> {if $is_admin }不可修改{else}
+			<input type="text" name="endtime" value="{php if($userinfo['endtime']) echo date('Y-m-d H:i:s',$userinfo['endtime']);}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" {if isset($group_front) && $group_front} readonly{/if} />  {/if}
+		</td>
+	  </tr>
+	
+	  
+	</table>
+	</td>
+    
+    <td style="vertical-align:top;">
+      <table style="width:400px" >
+        <tr>
+          <td class="label">择偶年龄:</td><td><script>getSelect("",'spouse_age1','spouse_age1',"{$spouseinfo['age1']}",'21',age);</script>&nbsp;到&nbsp;<script>getSelect("",'spouse_age2','spouse_age2',"{$spouseinfo['age2']}",'45',age) ;</script></td>
+        </tr>
+       
+        <tr>
+          <td class="label">择偶身高:</td><td><script>getSelect('','spouse_minheight','spouse_minheight','{$spouseinfo[height1]}','-1',height);</script>&nbsp;&nbsp;到&nbsp;&nbsp;<script>getSelect('','spouse_maxheight','spouse_maxheight','{$spouseinfo[height2]}','0',height);</script></td>
+        </tr>
+        <tr>
+          <td class="label">择偶体重:</td> <td><script>getSelect('','spouse_minweight','spouse_minweight','{$spouseinfo[weight1]}','-1',weight);</script>&nbsp;&nbsp;到&nbsp;&nbsp;<script>getSelect('','spouse_maxweight','spouse_maxweight','{$spouseinfo[weight2]}','0',weight);</script></td>
+        </tr>
+        <!--<tr>
+          <td class="label">择偶体形:</td>
+        </tr>
+        --><!--<tr>
+          <td class="label">择偶民族:</td>
+        </tr>
+        -->
+        <!--<tr>
+          <td class="label">择偶职业:</td>
+        </tr>
+        --><tr>
+          <td class="label">择偶月薪:</td> <td> <script>getSelect('','spouse_salary','spouse_salary','{$spouseinfo[salary]}','0',salary1);</script></td>
+        </tr>
+		<tr>
+			<td class="label">择偶地区</td>
+			<td>
+				<script type="text/javascript">getProvinceSelect66('','','spouse_hometownprovince','spouse_hometowncity',"{$spouseinfo['hometownprovince']}",'10100000');</script>省
+				<script type="text/javascript">getCitySelect66('','spouse_hometowncity','spouse_hometowncity',"{$spouseinfo['hometowncity']}",'0')</script>市
+			</td>
+		</tr>
+        <tr>
+          <td class="label">择偶工作地址:</td>
+           <td> 
+                <script>getProvinceSelect66('','','spouse_workprovince','spouse_workCity',"{$spouseinfo['workprovince']}",'10100000');</script>
+                省
+                <script>getCitySelect66('','spouse_workCity','spouse_workCity',"{$spouseinfo['workcity']}",'0');</script>
+                市
+                </td>
+        </tr>
+        <tr>
+          <td class="label">择偶是否抽烟:</td>
+           <td>
+            <script>getSelect('','spouse_smoking','spouse_smoking',"{$spouseinfo[smoking]}",'0',isSmoking);</script>
+            </td>
+        </tr>
+        <!--
+         <tr>
+          <td class="label">择偶婚姻状况:</td>
+        </tr>
+         -->
+         <tr>
+          <td class="label">择偶教育程度:</td>
+          <td><script>getSelect('','spouse_education','spouse_education','{$spouseinfo[education]}','0',education);</script></td>
+        </tr>
+  
+         <tr>
+          <td class="label">择偶是否有孩子:</td>
+          <td><script>getSelect('','spouse_children','spouse_children','{$spouseinfo[children]}','0',children);</script></td>
+        </tr>
+         <tr>
+          <td class="label">择偶是否要孩子:</td>
+          <td><script>getSelect('','spouse_wantchildren','spouse_wantchildren','{$spouseinfo[wantchildren]}','0',wantchildren);</script></td>
+        </tr>
+         <tr>
+          <td class="label">择偶的性格:</td>
+          <td><script>getSelect('','spouse_character','spouse_character','{$spouseinfo[nature]}','0',nature);</script></td>
+        </tr>
+      </table>
+    </td>
+   </tr>
+</table>
+<div style="margin:0 auto;margin-left:500px;">
+	<input name="uid" type="hidden" value="{$uid}" />
+  	<input name="presex" type="hidden" value="{$userinfo['gender']}" />
+    {if $is_admin==0}{if $userinfo['s_cid']==40  && $userinfo['usertype']!=3 }<label><input type="checkbox" id="changeToAcq" value="noquanquan"   />更改为全权会员</label>{/if}{/if}
+    <input type="submit" value="确定修改 " class="button" />
+</div>
+</div>
+</form>
+</body>
+</html>

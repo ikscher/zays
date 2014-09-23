@@ -1,0 +1,861 @@
+[05-Mar-2011 14:49:37] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:49:37] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:49:37] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:49:37] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:49:37] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:49:37] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:49:37] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:49:37] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:49:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:49:51] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:49:51] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:49:51] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:49:51] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:49:51] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 14:49:51] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:49:51] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:49:51] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:49:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:49:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:49:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:49:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:49:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:49:57] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 14:49:57] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:50:08] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:50:08] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:50:08] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:50:08] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:50:08] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:50:08] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:08] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:50:08] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:10] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:50:10] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:50:10] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:50:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:50:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:50:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:50:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:10] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:50:15] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:50:15] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:50:15] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:50:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:50:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:50:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:50:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:15] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:50:42] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:50:42] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:50:42] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:42] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:50:42] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:42] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 14:50:42] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:50:55] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:50:55] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:50:55] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:50:55] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:50:55] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:50:55] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:55] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:50:55] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:50:55] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 14:50:55] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:52:31] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:52:31] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:52:31] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:52:31] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:52:31] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:52:31] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:52:31] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:52:31] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:52:31] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 14:52:31] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:53:27] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:53:27] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:53:27] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:53:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:53:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:53:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:53:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:53:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:53:27] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 14:53:27] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:53:36] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:53:36] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:55:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:55:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:55:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:55:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:55:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:55:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:55:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:55:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:56:02] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:56:02] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:56:02] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:56:02] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:56:02] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:56:02] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:56:02] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:56:02] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:56:02] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 14:56:02] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 14:56:09] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 14:56:09] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 14:56:09] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 14:56:09] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 14:56:09] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 14:56:09] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:56:09] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 14:56:09] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 14:56:09] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 14:56:09] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:04:51] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:04:51] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:04:51] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:04:51] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:04:51] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:04:51] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:04:51] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:04:53] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:04:53] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:04:53] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:04:53] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:04:53] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:04:53] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:04:54] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:04:54] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:04:54] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:04:54] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:06:32] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:06:32] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:06:32] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:06:32] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:06:32] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:06:32] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:06:33] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:06:33] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:06:33] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:06:33] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:20:25] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:20:25] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:20:25] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:20:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:20:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:20:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:20:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:20:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:20:25] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:20:25] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:42:48] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:42:48] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:42:48] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:42:48] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:42:48] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:42:48] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:42:48] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:42:48] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:42:48] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:42:48] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:45:15] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:45:15] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:45:15] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:45:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:45:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:45:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:45:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:45:15] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:45:15] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:45:15] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:45:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:45:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:45:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:45:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:45:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:45:25] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:45:25] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:51:18] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:51:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:51:18] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:51:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:51:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:51:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:51:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:51:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:51:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:51:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:52:01] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:52:01] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:52:01] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:52:01] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:52:01] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:52:01] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:52:01] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:52:01] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:52:01] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:52:01] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:52:18] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:52:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:52:18] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:52:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:52:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:52:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:52:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:52:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:52:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:52:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 15:59:46] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 15:59:46] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 15:59:46] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 15:59:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 15:59:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 15:59:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:59:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 15:59:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 15:59:46] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 15:59:46] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:01:47] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:01:47] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:01:47] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:01:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:01:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:01:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:01:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:01:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:01:47] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:01:47] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:04:18] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:04:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:04:18] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:04:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:04:36] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:04:36] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:04:36] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:04:36] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:04:36] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:04:36] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:04:36] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:04:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:04:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:04:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:04:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:04:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:04:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:04:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:04:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:04:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:04:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:05:12] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:05:12] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:05:12] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:05:12] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:05:12] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:05:12] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:05:12] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:05:12] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:05:12] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:05:12] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:05:16] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:05:16] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:05:16] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:05:16] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:05:16] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:05:16] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:05:16] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:05:16] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:05:16] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:05:16] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:05:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:05:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:05:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:05:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:05:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:05:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:05:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:05:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:05:45] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:05:45] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:05:45] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:05:45] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:05:45] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:05:45] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:05:45] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:05:45] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:05:45] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:05:45] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:06:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:06:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:06:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:06:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:06:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:06:03] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:06:03] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:07:35] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:07:35] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:07:35] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:07:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:07:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:07:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:07:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:07:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:07:35] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:07:35] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:07:59] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:07:59] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:07:59] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:07:59] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:07:59] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:07:59] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:07:59] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:07:59] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:07:59] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:07:59] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:08:27] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:08:27] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:08:27] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:08:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:08:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:08:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:08:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:08:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:08:27] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:08:27] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:17:17] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:17:17] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:17:17] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:17:17] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:17:17] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:17:17] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:17:17] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:17:17] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:17:17] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:17:17] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:17:46] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:17:46] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:17:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:17:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:17:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:17:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:17:46] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:17:46] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:17:46] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:21:35] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:21:35] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:21:35] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:21:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:21:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:21:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:21:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:21:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:21:35] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:31:38] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:31:38] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:31:38] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:31:38] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:31:38] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:31:38] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:31:38] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:31:38] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:31:38] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:31:38] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:34:58] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:34:58] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:34:58] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:34:58] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:34:58] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:34:58] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:34:58] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:34:58] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:34:58] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:34:58] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:35:14] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:35:14] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:35:14] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:35:14] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:35:14] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:35:14] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:35:14] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:35:14] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:35:14] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:35:14] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:36:04] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:36:04] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:36:04] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:36:04] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:36:04] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:36:04] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:36:04] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:36:04] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:36:04] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:36:04] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:36:32] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:36:32] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:36:32] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:36:32] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:36:32] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:36:32] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:36:32] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:36:32] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:42:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:42:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:42:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:42:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:42:25] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:42:25] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:42:25] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 16:53:39] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 16:53:39] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 16:53:39] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 16:53:39] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 16:53:39] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 16:53:39] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:53:39] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 16:53:39] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 16:53:39] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 16:53:39] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:00:24] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:00:24] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:00:24] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:00:24] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:02:49] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:02:49] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:02:49] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:02:49] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:02:49] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:02:49] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:02:49] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:02:49] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:02:49] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:02:49] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:17:07] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:17:07] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:17:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:17:07] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:17:07] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:18:05] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:18:05] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:18:05] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:18:05] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:18:05] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:18:05] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:18:05] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:18:05] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:18:05] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:18:05] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:23:18] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:23:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:23:18] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:23:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:23:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:23:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:23:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:23:18] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:23:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:23:18] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:27:45] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:27:45] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:27:45] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:27:45] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:27:45] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:31:19] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:31:19] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:31:19] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:31:19] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:31:19] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:36:10] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:36:10] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:36:10] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:36:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:36:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:36:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:36:10] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:36:10] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:36:10] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:36:15] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:36:15] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:49:35] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:49:35] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:49:35] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:49:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:49:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:49:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:49:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:49:35] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:49:35] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:49:35] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:49:40] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:49:40] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:49:40] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:49:40] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:49:40] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:49:47] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:49:47] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:49:47] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:49:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:49:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:49:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:49:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:49:47] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:49:47] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:49:47] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:50:07] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:50:07] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:50:07] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:50:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:50:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:50:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:50:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:50:07] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:50:07] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:50:07] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 17:54:29] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 17:54:29] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 17:54:29] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 17:54:29] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 17:54:29] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 17:54:29] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:54:29] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 17:54:29] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 17:54:29] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 17:54:29] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 18:02:43] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 18:02:43] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 18:02:43] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 18:02:43] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 18:02:43] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 18:02:43] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:02:43] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 18:02:43] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:02:43] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 18:02:43] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 18:02:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 18:02:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 18:02:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 18:02:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 18:02:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 18:02:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:02:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 18:02:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:02:57] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 18:02:57] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 18:02:57] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 18:02:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 18:02:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:02:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 18:02:57] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:02:57] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 18:03:03] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 18:03:03] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 18:03:03] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 18:03:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 18:03:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 18:03:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:03:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 18:03:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:03:03] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 18:03:03] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 18:03:08] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:51:28] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 18:51:28] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 18:51:28] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:51:28] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 18:51:28] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 18:51:28] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 18:51:28] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 19:03:27] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 19:03:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 19:03:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 19:03:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 19:03:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 19:03:27] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 19:07:03] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 19:07:03] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 19:07:03] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 19:07:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 19:07:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 19:07:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 19:07:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 19:07:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 19:07:03] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 19:07:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 19:07:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 19:07:44] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 19:07:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 19:07:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 19:07:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 19:07:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 19:07:44] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 19:07:44] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 20:08:40] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 20:08:40] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 20:15:03] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 20:15:03] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 20:15:03] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 20:15:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 20:15:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 20:15:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 20:15:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 20:15:03] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 20:54:21] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 20:54:21] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 20:54:21] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 20:54:21] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 20:54:21] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 20:54:21] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 20:54:21] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 13
+[05-Mar-2011 20:54:21] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 14
+[05-Mar-2011 20:54:34] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 9
+[05-Mar-2011 20:54:34] PHP Warning:  include(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/include/config.php on line 24
+[05-Mar-2011 20:54:34] PHP Warning:  require(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/ework/vipuser_ajax.php on line 11
+[05-Mar-2011 20:54:34] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 74
+[05-Mar-2011 20:54:34] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 93
+[05-Mar-2011 20:54:34] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[05-Mar-2011 20:54:34] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 97
+[05-Mar-2011 20:54:34] PHP Warning:  require_once(): Unable to allocate memory for pool. in /mnt/raid/data0/htdocs/ceshi.7651.com/framwork/MooPHP.php on line 884
+[13-Mar-2011 14:07:54] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20362853&md5=82fa3c2b7771c03664b9d3b5409b74bb): failed to open stream: HTTP request failed!  in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 310
+[27-Mar-2011 20:22:38] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[22-Apr-2011 20:22:26] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20406869&md5=30ad0f3e5993e3269b72889506cc4e87): failed to open stream: Connection timed out in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 310
+[22-Apr-2011 20:28:06] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20450265&md5=7ea1995ea8f6797982cca8eb502a57af): failed to open stream: Connection timed out in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 310
+[22-Apr-2011 20:39:36] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20474712&md5=5507bd6e971d883a4e7b82210e27c3ed): failed to open stream: Connection timed out in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 310
+[16-May-2011 20:22:01] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[30-May-2011 09:13:31] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[30-May-2011 09:13:31] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20630407&md5=844e5891f7f96492ae44648472022045): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[01-Jun-2011 17:57:13] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20638537&md5=c466bcaec179529d51f332008e2f7e8f): failed to open stream: Connection timed out in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[02-Jun-2011 20:24:57] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[02-Jun-2011 20:24:57] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20643192&md5=67184f3364d06227cbde16c76935676b): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[03-Jun-2011 11:24:33] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[03-Jun-2011 11:24:33] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20638190&md5=c3ce55d5cc22a248597593b8fb59b4d8): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[03-Jun-2011 12:00:35] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=2229370&md5=251e14b477307ea2350cf710abb78a48): failed to open stream: HTTP request failed!  in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[03-Jun-2011 17:24:28] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[03-Jun-2011 19:08:51] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[03-Jun-2011 20:22:39] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[03-Jun-2011 20:22:40] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[03-Jun-2011 20:22:40] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20653835&md5=9e3f98024594703bcf8a06bd8cdb125d): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 15:13:33] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 15:13:34] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 15:44:56] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 16:17:09] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 16:41:16] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 16:41:17] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 16:49:18] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 16:49:18] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 16:49:18] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20652587&md5=8ea2517a55888058c48fdfa09e48c5ad): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 17:02:35] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:05:56] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:06:01] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:06:02] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:06:11] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:06:14] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:06:31] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:06:37] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:06:38] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:06:39] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:06:41] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:06:42] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:06:52] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:06:54] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:07:10] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:07:11] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:07:13] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:07:14] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:07:16] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:07:38] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:07:39] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:07:44] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:07:53] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:08:00] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:08:01] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:08:01] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:08:56] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:09:15] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:09:16] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:11:26] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:15:05] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 17:15:05] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20578479&md5=ec8ee9d65688f9882e90e13dcfccfd3d): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 17:46:31] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:46:32] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 17:46:40] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 17:53:08] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 19:24:13] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 19:24:13] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20630684&md5=471530c08d93fbcb3de8719316926579): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 19:40:35] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 19:40:35] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20167488&md5=70a392256bd6dd24d22bc918b2fcc157): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 20:04:03] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 20:04:04] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 20:04:05] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 20:04:05] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20637190&md5=79f33914c69094eb5d40d74880942b8e): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 20:11:44] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 20:11:44] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20077341&md5=f7e9673ed7c74095ade5e1d994787e30): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 20:49:42] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jun-2011 20:49:43] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jun-2011 20:49:48] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 20:49:48] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20632488&md5=18d84365b85c0441423c5661dc3f6c59): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jun-2011 21:28:03] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 08:25:11] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 09:29:28] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 11:17:17] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 11:18:07] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 12:17:54] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 12:17:54] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20627844&md5=777d20d5b5173b277f919bdb016b4721): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 12:35:54] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 13:30:05] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 14:08:01] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 14:08:02] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 14:08:04] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 14:08:24] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 14:08:25] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 14:09:35] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 14:09:36] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 14:09:39] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 14:09:40] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 14:11:14] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 14:22:14] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 14:22:14] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 14:22:14] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20634270&md5=3583eea5a9e196b1011ee0e2e352e15c): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 14:48:03] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 15:46:18] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 15:46:19] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 15:58:21] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 15:58:21] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20582598&md5=82f9a6689d7e8237b5be10baac214430): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 16:16:28] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 16:16:29] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 16:24:17] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 16:24:18] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 16:34:03] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 16:34:04] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 16:34:04] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20658448&md5=16c22916ef9c99a270ae01773ef192cb): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 16:55:03] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 16:55:19] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 16:55:20] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 17:08:13] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 17:15:58] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 17:15:59] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 18:13:07] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 18:13:08] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 18:15:35] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 18:15:35] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20658107&md5=55a0f97fec4f8c15d348eb8c237ed5c5): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 18:15:35] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20582598&md5=82f9a6689d7e8237b5be10baac214430): failed to open stream: Connection timed out in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:04:49] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:06:05] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:06:06] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 19:06:32] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 19:09:23] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:09:24] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 19:21:06] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:21:06] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20621021&md5=9e4bd59d69ab272cda26bd519b434f64): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:21:58] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:21:58] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:21:58] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20625807&md5=a68946df448fdbba51bd0a5fe1517421): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:21:58] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:21:58] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20511963&md5=b86ae745cf5e1a39f5941f640cd36632): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:42:46] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:42:46] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20627658&md5=e3cabb02a9d5b659199f24da116eea98): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 19:45:35] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:45:36] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 19:46:52] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:46:53] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 19:46:53] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:46:54] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 19:47:19] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:47:20] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 19:51:06] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 19:51:07] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[05-Jun-2011 19:54:04] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[05-Jun-2011 20:18:48] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 20:18:48] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20561714&md5=ad6782a66951c734b3fa1d6f4a9e4bed): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[05-Jun-2011 20:37:08] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection timed out (110) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[07-Jun-2011 09:37:26] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20585472&md5=4d4ec1f28507011a1ba018e9b26f1d2c): failed to open stream: Connection refused in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[16-Jun-2011 10:35:09] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20727728&md5=9b119c4b3fe61d23242de3d5576d5fd0): failed to open stream: HTTP request failed!  in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[16-Jun-2011 10:35:38] PHP Warning:  file_get_contents(http://mycount.7651.com/hongniang/hongniang_super_import.php?uid=20727728&md5=9b119c4b3fe61d23242de3d5576d5fd0): failed to open stream: HTTP request failed!  in /var/www/ceshi.7651.com/ework/vipuser_ajax.php on line 372
+[04-Jul-2011 14:15:30] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jul-2011 14:15:30] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jul-2011 14:15:42] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jul-2011 14:15:42] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jul-2011 14:15:46] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jul-2011 14:15:46] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[04-Jul-2011 14:18:20] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[04-Jul-2011 14:18:20] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 13:35:41] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 13:38:48] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 13:42:15] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 13:57:28] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 13:57:40] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 14:06:07] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 14:07:22] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 14:29:22] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 14:29:49] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 14:37:10] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 14:55:39] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:01:32] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:25:03] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:25:40] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:26:12] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:27:20] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:30:35] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:30:57] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:33:00] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:33:11] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:45:14] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:46:44] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:46:46] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:48:52] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:50:44] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 15:54:31] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:21:49] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:22:08] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:22:45] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:22:49] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:49:05] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:49:08] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:52:05] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:57:04] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 16:58:37] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:12:00] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:25:33] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:36:49] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:36:55] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:37:26] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:37:46] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:38:02] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:38:43] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:59:52] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 17:59:58] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 18:10:53] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 19:11:19] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 20:30:14] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 20:30:22] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 20:31:14] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[27-Jul-2011 20:31:16] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11212, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 114
+[03-Aug-2011 18:33:47] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[03-Aug-2011 20:55:14] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[03-Aug-2011 20:55:18] PHP Warning:  Memcache::connect(): Can't connect to 114.80.200.172:11211, Connection refused (111) in /var/www/ceshi.7651.com/framwork/MooPHP.php on line 108
+[28-Nov-2011 09:06:18] PHP Notice:  Undefined variable: dbTablePre in D:\wamp\www\hongniang\ework\vipuser_ajax.php on line 437
+[28-Nov-2011 09:06:18] PHP Stack trace:
+[28-Nov-2011 09:06:18] PHP   1. {main}() D:\wamp\www\hongniang\ework\vipuser_ajax.php:0
+[28-Nov-2011 09:06:18] PHP   2. vipuser_expire() D:\wamp\www\hongniang\ework\vipuser_ajax.php:505
+[28-Nov-2011 09:06:32] PHP Notice:  Undefined variable: dbTablePre in D:\wamp\www\hongniang\ework\vipuser_ajax.php on line 437
+[28-Nov-2011 09:06:32] PHP Stack trace:
+[28-Nov-2011 09:06:32] PHP   1. {main}() D:\wamp\www\hongniang\ework\vipuser_ajax.php:0
+[28-Nov-2011 09:06:32] PHP   2. vipuser_expire() D:\wamp\www\hongniang\ework\vipuser_ajax.php:505
+[28-Nov-2011 09:06:35] PHP Notice:  Undefined variable: dbTablePre in D:\wamp\www\hongniang\ework\vipuser_ajax.php on line 437
+[28-Nov-2011 09:06:35] PHP Stack trace:
+[28-Nov-2011 09:06:35] PHP   1. {main}() D:\wamp\www\hongniang\ework\vipuser_ajax.php:0
+[28-Nov-2011 09:06:35] PHP   2. vipuser_expire() D:\wamp\www\hongniang\ework\vipuser_ajax.php:505
+[28-Nov-2011 09:06:46] PHP Notice:  Undefined variable: dbTablePre in D:\wamp\www\hongniang\ework\vipuser_ajax.php on line 437
+[28-Nov-2011 09:06:46] PHP Stack trace:
+[28-Nov-2011 09:06:46] PHP   1. {main}() D:\wamp\www\hongniang\ework\vipuser_ajax.php:0
+[28-Nov-2011 09:06:46] PHP   2. vipuser_expire() D:\wamp\www\hongniang\ework\vipuser_ajax.php:505

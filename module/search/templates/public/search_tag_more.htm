@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>地区搜索——标签搜索——真爱一生寻友——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/$GLOBALS['style_name']/css/font.css">
+<style type="text/css">
+@import url("module/search/templates/$GLOBALS['style_name']/search.css");
+</style>
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/search-tag.css");
+</style>
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/search-tag-map.css");
+</style>
+<script src="public/system/js/list.js" type="text/javascript"></script>
+<script src="public/system/js/sys1.js?v=1" type="text/javascript"></script>
+<!--<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>-->
+
+</head>
+<body>
+{template system/header public}
+</div>
+<!--头部结束-->
+<div class="clear"></div>
+<div class="content">
+	<div class="c-title">
+		<span class="f-000">
+			<a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;标签搜索
+		</span>
+		<div class="loaction_right">
+			<a href="index.php?n=invite" target="_blank">邀请好友</a>
+		</div>
+	</div>
+		<div class="content-title">
+			<span class="right-title">标签搜索</span>
+		</div><!--content-title end-->
+<div class="levelbox">
+<div style="padding:0px 30px; line-height:35px;font-size:13px;">
+<p>从地图或省列表中选想要搜索的省份，然后再选择城市，即可得到对应的搜索结果</p>
+<p>我 要 找：
+<input type="radio" id="man" value="0" {if isset($user['gender']) && $user['gender'] == '1'}checked{/if} name="vo.searchSex"/>
+男士&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" id="women" value="1"  {if isset($user['gender']) && $user['gender'] == '0'}checked{/if} name="vo.searchSex"/>
+女士&nbsp;&nbsp;&nbsp;&nbsp;
+<input  type="checkbox" checked="checked" name="vo.hasPhoto"/> 必须有照片</p>
+</div>
+<div class="map">
+<div class="map_left">
+<div class="map_left_map">
+<a href="###" onclick="changeClass('10129000','xinjiang')" class="xinjiang" >新疆</a>
+<a href="###" onclick="changeClass('10128000','xizang')" class=" xizang" >西藏</a>
+<a href="###" onclick="changeClass('10123000','qinghai')" class="qinghai" >青海</a>
+<a href="###" onclick="changeClass('10121000','neimenggu')" class="neimenggu" >内蒙古</a>
+<a href="###" onclick="changeClass('10122000','ningxia')" class="ningxia" >宁夏</a>
+<a href="###" onclick="changeClass('10108000','gansu')" class="gansu" >甘肃</a>
+<a href="###" onclick="changeClass('10127000','sichuan')" class="sichuan" >四川</a>
+<a href="###" onclick="changeClass('10130000','yunnan')" class="yunnan" >云南</a>
+<a href="###" onclick="changeClass('10114000','heilongjiang')" class="heilongjiang" >黑龙江</a>
+<a href="###" onclick="changeClass('10117000','jilin')" class="jilin" >吉林</a>
+<a href="###" onclick="changeClass('10120000','liaoning')" class="liaoning" >辽宁</a>
+<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10102000&linktag={php echo base64_encode('北京')}" class="beijing" >北京</a>
+<a href="###" onclick="changeClass('10112000','hebei')" class="hebei" >河北</a>
+<a href="###" onclick="changeClass('10125000','shangxi')" class="shangxi" >山西</a>
+<a href="###" onclick="changeClass('10126000','shanxi')" class="shanxi" >陕西</a>
+<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10105000&linktag={php echo base64_encode('重庆')}" class="chongqing" >重庆</a>
+<a href="###" onclick="changeClass('10110000','guzhou')" class="guzhou" >贵州</a>
+<a href="###" onclick="changeClass('10109000','guangxi')" class="guangxi" >广西</a>
+<a href="###" onclick="changeClass('10112000','hebei')" class="hebei" >河北</a>
+<a href="###" onclick="changeClass('10124000','shandong')" class="shandong">山东</a>
+<a href="###" onclick="changeClass('10113000','henan')" class="henan" >河南</a>
+<a href="###" onclick="changeClass(10106000,'anhui',{$gender})" class="anhui" >安徽</a>
+<a href="###" onclick="changeClass('10118000','jiangsu')" class="jiangsu" >江苏</a>
+<a href="###" onclick="changeClass('10115000','hubei')" class="hubei" >湖北</a>
+<a href="###" onclick="changeClass('10116000','hunan')" class="hunan" >湖南</a>
+<a href="###" onclick="changeClass('10119000','jiangxi')" class="jiangxi" >江西</a>
+<a href="###" onclick="changeClass('10131000','zhejiang')" class="zhejiang" >浙江</a>
+<a href="###" onclick="changeClass('10107000','fujiang')" class="fujiang" >福建</a>
+<a href="###" onclick="changeClass('10101000','guangzhou')" class="guangzhou" >广东</a>
+<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10133000&linktag={php echo base64_encode('香港')}" class="xianggang" >香港</a>
+<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10132000&linktag={php echo base64_encode('澳门')}" class="aomen">澳门</a>
+<a href="###" onclick="changeClass('10111000','hainan')" class="hainan" >海南</a>
+<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10134000&linktag={php echo base64_encode ('台湾')}" class="taiwan">台湾</a>
+</div>
+</div>
+<div class="map_right">
+<h3 id="sheng">安徽</h3>
+<ul class="link" id="citymore">
+<!--
+<li><a href="#">岳西</a>|</li>
+-->
+</ul>
+<div class="clear"></div>
+<h3 style="border-top:1px solid #e8e8e8">其他热门搜索</h3>
+<ul class="link">
+<li><a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10103000&linktag={php echo base64_encode('上海')}">上海</a>|</li>
+
+<li><a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10101002&linktag={php echo base64_encode('广州')}">广州</a>|</li>
+<li><a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10102000&linktag={php echo base64_encode('北京')}">北京</a>|</li>
+<li><a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10131001&linktag={php echo base64_encode('杭州')}">杭州</a>|</li>
+</ul>
+</div>
+
+</div>
+
+
+
+<div class="clear"></div>
+<ul style="text-align:center; padding:30px 0px; ">
+<li style="font-size:14px; line-height:30px;"></li>
+</ul>
+<div class="clear"></div>
+</div>
+{template system/footer public}
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript">
+//省的对应JS值
+function changeClass(cityvalue,pc){
+$('.current').removeClass("current");
+$('.'+pc+'').addClass("current");
+$('#sheng').html($('.'+pc+'').text());
+if($("#man").attr("checked")){
+linksex = '0';
+}
+if($("#women").attr("checked")){
+linksex = '1';
+}
+choiceGetCity(cityvalue,'citymore','',linksex);
+}
+$(document).ready(function(){
+//加载 默认城市
+changeClass('10118000','jiangsu')
+$("#women").click(
+function() {
+$("#salary1").css('display','');
+$("#salary0").css('display','none');
+$("#color1").css('display','');
+$("#color0").css('display','none');
+});
+
+$("#man").click(
+function() {
+$("#salary1").css('display','none');
+$("#salary0").css('display','');
+$("#color1").css('display','none');
+$("#color0").css('display','');
+});
+
+
+$("a").click(
+function(){
+if($("#man").attr("checked"))
+{
+	this.href = this.href.replace('&s=1','&s=0');
+}
+if($("#women").attr("checked"))
+{
+	this.href = this.href.replace('&s=0','&s=1');
+}
+});
+
+$("#tags").click(
+function() {
+var tagname = $("#tagnameid").attr("value");
+var all_a = $("a");
+for(i=0;i<all_a.length;i++){
+	if(all_a[i].text == tagname) {
+		self.location.href = all_a[i].href;
+	}
+}
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+/* CSS Document */
+*{ margin:0; padding:0; font-size:12px; color:#222; font-family:Arial;}
+img{ border:0; display:block;}
+a{ text-decoration:none; color:#333333; outline:none; star:expression(this.onFocus=this.blur());}
+a:hover{ text-decoration:underline;}
+ul,li{ list-style:none;}
+.clear{	clear:both;}
+
+/*header-----begin*/
+.header{
+	margin:0 auto;
+	width:1000px;
+	}
+	.header .logo{
+		display:inline;
+		float:left;
+		margin-top:10px;
+		margin-left:30px;
+		margin-bottom:5px;
+		}
+	.header .search{
+		display:inline;
+		float:right;
+		margin-top:20px;
+		padding-bottom:12px;
+		padding-left:10px;
+		border-bottom:2px solid #333;
+		}
+		.header .search span{
+			display:inline-block;
+			margin-left:5px;
+			*margin-left:0;
+			_margin-left:0;
+			margin-right:5px;
+			*margin-right:0;
+			_margin-right:0;
+			color:#C39;
+			font-size:14px;
+			font-weight:bold;
+			}
+		.header .search span.search_button{
+			display:inline-block;
+			position:relative;
+			top:0px;
+			*top:5px;
+			_top:5px;
+			}
+			.header .search .search_button{
+				border:0;
+				width:115px;
+				height:35px;
+				cursor:pointer;
+				background:url(../images1/search_button.gif);
+				}
+			.header .search .select{
+				position:relative;
+				top:2px;
+				}
+/*header-----end*/
+
+/*regist-----begin*/
+.regist{
+	margin:0 auto;
+	width:998px;
+	margin-bottom:10px;
+	height:341px;
+	border-left:1px solid #9d016f;
+	border-right:1px solid #9d016f;
+	border-top:3px solid #333;
+	background:url(../images1/regist_bg.gif);
+	}
+	.regist .pic{
+		display:inline;
+		float:left;
+		margin-left:50px;
+		}
+	.regist .regist_box{
+		display:inline;
+		float:right;
+		width:550px;
+		height:300px;
+		border:1px solid #CCC;
+		background:#FFF;
+		margin-top:20px;
+		margin-right:20px;
+		}
+		.regist .regist_box .regtop{ margin-top:5px;}
+			.regist .regist_box .regtop .regtop_l{
+				display:inline;
+				float:left;
+				margin-left:5px;
+				}
+			.regist .regist_box .regtop .regtop_r{
+				display:inline;
+				float:right;
+				margin-top:10px;
+				margin-right:5px;
+				}
+				
+		.regist .regist_box .regcontent{
+			margin-top:10px;
+			}
+			.regist .regist_box .regcontent table td{
+				height:32px;
+				line-height:32px;
+				}
+				.regist .regist_box .regcontent table td .text{
+					border:1px solid #999;
+					height:18px;
+					line-height:18px;
+					width:150px;
+					}
+				.regist .regist_box .regcontent table td .select{
+					position:relative;
+					top:2px;
+					*top:1px;
+					_top:6px;
+					}
+				.regist .regist_box .regcontent table td span.xinghao{
+					color:#F00;
+					position:relative;
+					top:3px;
+					_top:8px;
+					font-size:12px;
+					font-family:Verdana;
+					}
+				.regist .regist_box .regcontent table td span.num{
+					position:relative;
+					top:0;
+					font-weight:bold;
+					color:#F00;
+					}
+				.regist .regist_box .regcontent table td .regist_button{
+					border:0;
+					width:165px; 
+					height:47px; 
+					margin-top:10px;
+					cursor:pointer;
+					background:url(../images1/regist_button.gif);
+					}
+/*regist-----end*/
+
+/*box-----begin*/
+.box{
+	margin:0 auto;
+	width:1000px;
+	height:450px;
+	background:url(../images1/box_bg.gif) no-repeat;
+	margin-bottom:20px;
+	}
+	.box .shurong{
+		float:left;
+		margin-top:20px;
+		width:400px;
+		margin-right:20px;
+		}
+		.box .shurong h1{
+			margin-left:20px;
+			font-size:14px;
+			color:#F39;
+			height:20px;
+			line-height:20px;
+			text-indent:20px;
+			margin-bottom:5px;
+			background:url(../images1/tubiao.gif) no-repeat 0px 1px;
+			}
+		.box .shurong p{
+			margin-left:20px;
+			line-height:22px;
+			}
+		.box .shurong p.intr{
+			text-indent:2em;
+			margin-bottom:20px;
+			}
+			.box .shurong p.intr span{
+				color:#C00;
+				font-weight:bold;
+				}
+		.box .shurong p.bt{
+			margin-bottom:2px;
+			}
+		.box .shurong p.content{
+			margin-bottom:20px;
+			}
+			
+	.box .story{
+		float:right;
+		width:480px;
+		margin-top:20px;
+		}
+		.box .story h1{
+			font-size:14px;
+			color:#F39;
+			height:20px;
+			line-height:20px;
+			text-indent:20px;
+			background:url(../images1/tubiao.gif) no-repeat 0px 1px;
+			}
+		.box .story ul{
+				margin-top:20px;
+				}
+				.box .story ul li{
+					display:inline-block;
+					float:left;
+					width:200px;
+					height:170px;
+					text-align:center;
+					margin-bottom:20px;
+					margin-right:30px;
+					}
+					.box .story ul li span.pic{
+						display:block;
+						width:200px;
+						height:120px;
+						}
+						.box .story ul li span.pic a img{
+							padding:3px;
+							border:1px solid #DDD;
+							width:180px;
+							height:110px;
+							}
+						.box .story ul li span.pic a:hover img{
+							border:1px solid #F39;
+							}
+					.box .story ul li span.name{
+						display:block;
+						width:200px;
+						height:22x;
+						line-height:22px;
+						}
+						.box .story ul li span.name b{
+							color:#F09;
+							}
+					.box .story ul li span.date{
+						display:block;
+						width:200px;
+						height:22px;
+						line-height:22px;
+						color:#666;
+						}
+/*box-----end*/
+
+/*footer-----begin*/
+.footer{
+	margin:0 auto;
+	width:1000px;
+	text-align:center;
+	margin-bottom:20px;
+	}
+	.footer .friend_link{
+		margin-bottom:10px;
+		}
+		.footer .friend_link span{
+			margin-right:5px;
+			}
+			.footer .friend_link a:hover{
+				color:#F39;
+				}
+		.footer p img{
+			display:inline;
+			margin-bottom:10px;
+			}
+/*footer-----end*/

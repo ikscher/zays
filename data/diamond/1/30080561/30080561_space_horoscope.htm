@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的星座生肖——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">星座生肖</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Signs<br />and zodiac</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="horoscope">
+			<div class="horoscope1">
+				  	<p>关怀是白羊肖兔者的特长。他不只关心那些有历史传统并具价值感的东西，他甚至以自已有能力喜爱这些事物为乐。他产生优雅、采撷智慧，抒发出灵性气质。舒适对白羊肖兔者极端重要。他喜欢精美的食馔，但也不介意家常小菜。</P>
+				  	<p>白羊肖兔者是具能力的人。他们能做各种工作，但并不是具有创造力的人。他们在生活中崇尚美好与理想，美化家居环境，使美与理想为己所用。</P>
+                  </div>
+<div class="horoscope2">
+				  	<p>默默的等待在感情中经常陷于恋爱中。但是默默的等待并不善于处理情感的纠结，他讨厌冲突，所以若有接连不断的情感重创，他将卷铺离去。不要在默默的等待身上寻找斗士或领袖的身影。他的目标与大家所认可的无关。他想要知道更多、看得更多，或较他人做更多的事情。他的目标是没有冲突的安全感、不被打扰的舒适。</P>
+</div>              
+				 
+			  </div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+<div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

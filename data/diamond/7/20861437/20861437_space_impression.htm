@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的亲友印象——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" /><link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3 style="padding-left:5px;"><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">亲友助阵</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px;font-weight:400;">Relatives<br />and friends</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="impression">
+				 <div class="impression1">
+					   <p>父母亲觉得我有些叛逆，因为很小就离开父母一个人在外面读书，大小事物都需要自己处理，所以我学会了坚强，学会了独立，对父母的建议，我觉得有道理的，我能做到的，我会全力去完成，对他们说的我不赞同的，我坚决不做，因为我有我独立的思想。父母对我的期望很高，而因为我只要是我想做的事情，我一定可以把它完成的很圆满，所以父母对我的工作态度还是很认可的！随着年龄的增长，我也到了适当的年龄了，由于很少跟外界女孩子有来往，所以身边缺少女性朋友，在人生大事上不能得到解决的办法，我父母也看着我们一天天长大，对我们的人生大事有点着急，所以时不时的要我去相亲，不过我不喜欢相亲，但是我也说不出理由，也许想自己找一个能够给彼此双方一生承诺的另一半吧，父母也是通情达理的人，也希望我们能够找到自己心目中理想的另一半！</p>
+					   <p>我跟同事和朋友交往都很融洽，朋友之间对我的印象也不错，因为我也喜欢交朋友，对朋友关系上的处理也很理智，而且我是一个乐于助人的人，只要朋友有困难，在我不违反我的原则和我的能力范围内，我都会尽全力去帮助对方，我虽然喜欢交朋友，但交朋友也有我的原则，所以我跟我现在所接触的朋友都是铁哥们，都是无话不说的朋友。我身边的大部分朋友有有了自己的另一半，每次跟他们出去玩的时候，他们见我还是形单影知的一个人，每次都会开我的玩笑，其实我知道，他们是关心我，愿我早日找到我的心中女神而已，他们也会不时的带一两个女性朋友介绍给我认识，可我这个人在其他方面都胆大，一遇到女性朋友就会紧张的不知所措，这也是朋友经常说我不足的一点。</p>
+		          </div>
+
+
+                  
+				</div>
+			  </div>
+			
+			
+			  
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

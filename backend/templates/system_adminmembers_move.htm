@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 批量转移客服的会员<font color="red">您的操作将无法恢复，请你谨慎操作!</font> </span>
+   	<span class="action-span"><a href="index.php?action=system_adminmembers&h=move">刷新</a></span>
+    <div style="clear:both"></div>
+</h1>
+<div class="list-div">
+	<table>
+	<form action="index.php" type="get">
+		<tr><th>转出客服</th><th>会员类型</th><th>转移会员数量</th><th>接收客服</th><th>操作</th></tr>
+		<tr>
+			<td>转出客服：<select name="fromuser">
+			<option value=''>请选择客服</option>
+			{loop $kefu_list $kefu}
+			<option value="{$kefu['uid']}">{$kefu['uid']}号&nbsp;{$kefu['username']}&nbsp;{$kefu['member_count']}</option>
+			{/loop}
+			</select></td>
+			<td><select name="grade" style="width:150px;">
+				<option value="">所有会员</option>
+				{loop $GLOBALS['grade'] $key $grade}
+				<option value="{$key}" >{$grade}</option>
+				{/loop}
+			</select></td>
+			<td>数量<input type="text" name="move_num"></td>
+			<td>转入客服：<select name="getuser">
+			<option value="0">回收重新分配</option>
+			{loop $kefu_list $kefu}
+			<option value="{$kefu['uid']}">{$kefu['uid']}号&nbsp;{$kefu['username']}</option>
+			{/loop}
+			</select></td>
+			<td><input name='action' type='hidden' value="system_adminmembers">
+			<input name='h' type='hidden' value="move">
+			<input name='ispost' type='hidden' value="1">
+			<input name='submit' type='submit' value="执行" onclick="return confirm('此操作将不可恢复，你确定要继续吗？')"></td>
+		</tr>
+		</form>
+	</table>
+</div>
+</body>
+</html>

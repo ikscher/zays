@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBliC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>真爱一生网——视频海选专区</title>
+<link href="module/video/templates/default/movie_index.css" type=text/css rel=stylesheet>
+{template system/js_css public}
+<script src="module/video/templates/default/js/prototype.js" type=text/javascript></script>
+<script src="module/video/templates/default/js/changimages.js" type=text/javascript></script>
+</head>
+<style type="text/css">
+.bg_cor { background-color: #AD0066; }
+.cont_wid { width: 660px; }
+.cont_right_wid { width: 292px; }
+.nav { background: none; }
+</style>
+<body>
+<div class="box">
+{template system/header public}
+<div class="box">
+    <div class="flashbox">
+       {template system/lunbo public}
+    
+    <div class="new_video">
+    	<div class="header">
+        	<p></p><b>海选活动视频</b><a href="#">更多>></a>
+        </div>
+        <div class="content bg_cor">
+            <ol class="video_ul">
+                   
+                     <li>
+                        <div id="jac"></div>
+                        <p><a href="#">简介：JAC专场相亲会
+                        <br /></a></p>
+                    </li>
+					
+                    <li>
+                        <div id="hx_wxsnr"></div>
+                        <p><a href="/index.php?n=activity&h=sctv">简介：2011-9-11真爱一生网携手四川电视台妇女儿童频道《闻香识女人》栏目组，举办以“香水一种魔咒 让您我浪漫邂逅”为主题的电视相亲节目海选现场。
+                        <br /></a></p>
+                    </li>
+                    <li>
+                        <div id="hx_qcrl"></div>
+                        <p><a href="/index.php?n=activity&h=tytv">简介：2011-9-25真爱一生网携手太原电视台百姓频道《倾城之恋》栏目组，举办以“北方有佳人 等待您来寻”为主题的电视相亲节目海选现场。
+                        <br /></a></p>
+                    </li>
+                    
+                    <li>
+                        <div id="hx_zrwzd"></div>
+                        <p><a href="/index.php?n=activity&h=ahtv">2011-7-10真爱一生网携手安徽卫视《周日我最大》“缘来就是您”栏目组举办电视相亲节目海选活动的现场。
+                        <br /></a></p>
+                    </li>
+                    <li>
+                        <div id="hx_xflqm"></div>
+                        <p><a href="/index.php?n=activity&h=tytv">2011-7-17真爱一生网携手辽宁卫视《幸福来敲门》栏目组举办电视相亲节目海选活动现场。
+                        <br /></a></p>
+                    </li>
+					 <li>
+                        <div id="hx_nj_2"></div>
+                        <p><a href="/index.php?n=activity&h=njtv">简介：2011-10-10真爱一生网携手南京教科频道《我想有个家》栏目组举办以“瞬间情意 一生记忆”为主题的电视相亲节目海选现场。
+                        <br /></a></p>
+                    </li>
+					 <li>
+                        <div id="hx_hf"></div>
+                        <p><a href="/index.php?n=activity&h=gourd">简介：2011-10-15真爱一生网携手湖北卫视《相亲齐上阵》栏目组举办以“弱水三千，我只取一瓢”为主题的电视相亲海选现场。
+                        <br /></a></p>
+                    </li>
+					
+                    <li>
+                        <div id="hx_xs_2"></div>
+                        <p><a href="/index.php?n=activity&h=near">简介：2011-10-16真爱一生网携手上海电视台星尚频道《丈母娘看女婿》栏目组，举办以“原来，幸福离我们那么近”为主题的电视相亲节目海选现场（下）。
+                        <br /></a></p>
+                    </li>
+					
+					
+                   
+        		<div class="clear"></div>
+            </ol>
+        </div>
+    </div>
+</div>
+	<script>
+                var bigswitch = new SwitchPic(
+                    {
+                        bigpic:"SwitchBigPic",
+                        switchnav:"SwitchNav",
+                        selectstyle:"selected",
+                        objname:"bigswitch"
+                    }
+                ) ;
+                bigswitch.goSwitch(bigswitch,0);
+                bigswitch.autoSwitchTimer = setTimeout("bigswitch.autoSwitch(bigswitch) ;", 3000);
+    </script>
+    
+	<script type="text/javascript" src="module/video/templates/default/js/jwplayer.js"></script>
+	<script type="text/javascript">
+	var w='230px',h='190px';
+		//海选活动视频
+		jwplayer("jac").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/video/templates/default/images/flv/jac.flv",
+			image: "module/video/templates/default/images/jac.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		
+		
+		
+		jwplayer("hx_nj_2").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/video/templates/default/images/flv/nj_2.flv",
+			image: "module/video/templates/default/images/nj_2.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		
+		
+		
+		jwplayer("hx_wxsnr").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/activity/templates/default/images/flv/sctv/2.flv",
+			image: "module/video/templates/default/images/wxsnr.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("hx_qcrl").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/activity/templates/default/images/flv/tytv/02.flv",
+			image: "module/video/templates/default/images/hx_qcrl.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("hx_zrwzd").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/activity/templates/default/images/flv/ahtv/2.flv",
+			image: "module/video/templates/default/images/hx_zrwzd.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("hx_xflqm").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/activity/templates/default/images/flv/lntv/3.flv",
+			image: "module/video/templates/default/images/hx_xflqm.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		jwplayer("hx_hf").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/activity/templates/default/images/flv/ahtv/hf.flv",
+			image: "module/activity/templates/default/images/ahtv/hf.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		
+				
+		jwplayer("hx_xs_2").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/video/templates/default/images/flv/xs_2.flv",
+			image: "module/video/templates/default/images/xs_2.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		
+	</script>
+{template system/footer public}
+</body>
+</html>

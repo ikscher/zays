@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>可以奖励的人员列表</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="templates/css/jquery-ui.css" type="text/css" media="all"  />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.min.js"></script>
+<!-- <script type="text/javascript" src="templates/js/onmousemove_minutes.js"> -->
+<script type="text/javascript">
+$(function() {	
+	$( ".open" ).dialog({
+		bgiframe:true, //兼容IE6
+		autoOpen: false,
+		height: 420,
+		width: 440,
+		modal: true,
+		position:['top','left']
+	});
+	$( "#dialog-form" ).dialog({
+		buttons: {
+			"确定": function() {
+				var bValid = true;
+				var post=new Array();
+				post.uid=$('#uid').val();
+				post.type=$('[name=rewardtype]:checked').val();
+				post.amount=$.trim($('#amount').val());
+				//post.rewardid=$('#rewardid').val();
+				var rew=$('[name=rew]:checked').val();
+				if(rew=="1"){
+			    post.rewardid=$('#rewardid').val();	
+                }else{
+			    post.rewardid=$('#rewardid1').val();	
+			     }
+             	post.msg=$.trim($('#msg').val());
+				
+				
+				if(post.type!=0&&post.type!=1){
+					alert('请选择类型');
+					return false;
+				}
+				post.amount=parseInt(post.amount);
+				if(post.amount<=0){
+					alert('红娘币输入格式不正确');
+					return false;
+				}
+				if(post.rewardid==0&&post.msg==''){
+					alert('请填写备注');
+					return false;
+				}
+				
+				$.post('index.php?action=matchmaker&h=isAuthRewards',{uid:post.uid,type:post.type,amount:post.amount},function(str){
+				   if(str.flag==1){
+				
+						$.post('index.php?action=matchmaker&h=put_rewards',{uid:post.uid,type:post.type,amount:post.amount,rewardid:post.rewardid,msg:post.msg},function(data){
+							alert(data.msg);
+							if(data.flag){
+								var old_balance=$('#balance-'+post.uid).html();
+								old_balance=parseInt(old_balance);
+								if(post.type==0){
+									$('#balance-'+post.uid).html(old_balance-post.amount);
+								}else{
+									$('#balance-'+post.uid).html(old_balance+post.amount);
+								}
+								$( "#dialog-form" ).dialog( "close" );	
+							}
+						},'json');
+					}else{
+					   alert(str.msg);
+					}
+				},'json');
+				
+			},
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+	$( "#reward_form" ).dialog({
+		buttons: {
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});	
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$page_num})
+
+	page = {$page_num};
+	window.location.href = "{$currenturl}&page="+page;
+}
+function enterHandler(event){
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if (keyCode == 13) {
+	   gotoPage();	//调用函数
+	 } 
+}
+function make_pannel(id,msg){
+	$("#uname").html($("#username-"+id).html());
+	$("#uid").val(id);
+	$("#"+msg).dialog("open");
+} 
+function coom_pannel(data){
+		if(data.type){
+		$("#rewardtype-reward_form").html('奖励');
+		}else{
+			$("#rewardtype-reward_form").html('惩罚');
+		}
+		$("#money-reward_form").html(data.money);
+		$("#title-reward_form").html(data.title);
+		$("#msg-reward_form").html(data.msg);
+	$("#reward_form").dialog("open");
+}
+function get_reward_list(){
+	var type=$('[name=rewardtype]:checked').val();
+	var rewarddata=$('#rewarddata').data('reward_list_'+type);
+	if(rewarddata==undefined){
+		$.get('index.php?action=matchmaker&h=get_reward_list',{type:type},function(rewarddata){
+			$('#rewarddata').data('reward_list_'+type,rewarddata);
+			coom_list(rewarddata)
+		},'json');
+	}else{
+		coom_list(rewarddata);
+	}
+}
+function coom_list(data){
+	var len=data.length;
+	var html=new Array();
+	html.push('<option value="0">其他</option>');
+	for(var i=0;i<len;i++){
+		html.push('<option value="'+data[i]['id']+'">'+data[i]['title']+'</option>');
+	}
+	$('#rewardid').html(html.join(''));
+}
+function get_reward_config(){
+	var rewardid=$('#rewardid').val();
+	if(rewardid==0) return true;
+	var rewarddata=$('#rewarddata').data('rewarddata_'+rewardid);
+	if(rewarddata==undefined){
+		$.get('index.php?action=matchmaker&h=get_config_reward',{id:rewardid},function(rewarddata){
+			if(rewarddata.flag){
+				$('#rewarddata').data('rewarddata_'+rewardid,rewarddata.msg);
+				coom_pannel(rewarddata.msg);
+			}else{
+				alert(rewarddata.msg);
+			}
+		},'json');
+	}else{
+		coom_pannel(rewarddata);
+	}
+}
+function change_amount(){
+	var rewardid=$('#rewardid').val();
+	if(rewardid==0) return true;
+	var rewarddata=$('#rewarddata').data('rewarddata_'+rewardid);
+	if(rewarddata==undefined){
+		$.get('index.php?action=matchmaker&h=get_config_reward',{id:rewardid},function(rewarddata){
+			if(rewarddata.flag){
+				$('#rewarddata').data('rewarddata_'+rewardid,rewarddata.msg);
+				$('#amount').val(rewarddata.msg.money);
+			}else{
+				alert(rewarddata.msg);
+			}
+		},'json');
+	}else{
+		$('#amount').val(rewarddata.money);
+	}
+}
+
+//奖赏处罚的操作
+function alertview(){
+	var ale=document.getElementById("va1");
+    var ale1=document.getElementById("va2");
+
+	if(ale.checked==true||ale1.checked==true){
+	document.getElementById("rewardid").disabled="";
+	document.getElementById("rew").disabled="";
+	document.getElementById("rew1").disabled="";
+     }
+	
+	var rew1=document.getElementById("rew1");
+    if(rew1.checked==true){
+   document.getElementById("rewardid").disabled="disabled";
+    }
+	
+    }
+//奖赏处罚的操作
+function alertview1(){
+	var rew1=document.getElementById("rew1");
+	var rew=document.getElementById("rew");
+    if(rew1.checked==true){
+	document.getElementById("rewardid").disabled="disabled";
+	document.getElementById("rewardid1").disabled="";
+	document.getElementById("rew1").disabled="";
+	document.getElementById("amount").value="";
+}else{
+	
+	document.getElementById("rewardid1").disabled="disabled";
+	document.getElementById("rewardid").disabled="";
+	document.getElementById("rew").disabled="";
+	
+	
+}
+    }
+
+</script>
+</head>
+<body>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 红娘币奖励 </span>
+<span class="action-span"><a href="{php echo $_SERVER['REQUEST_URI'];}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+
+
+<form action="" method="get">
+<table width="100%">
+  <tr border="2">
+  <td width="40" align="right">客服：</td>
+ <td width="110" align="left">
+     <select name="choose" id="choose">
+	    <option value="">请选择条件</option>
+	    <option value="username" {if $choose=='username'}selected="selected"{/if}>用户名</option>
+		<option value="uid" {if $choose=='uid'}selected="selected"{/if}>UID</option>
+		
+	 </select>
+	 </td>
+    <td width="" align="left">
+		<input name="keyword" type="text" id="keyword" value="{$keyword}"/>
+		<input type="hidden" name="action" value="matchmaker" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input name="" type="submit" value="搜索"/>
+		</td>
+	  </tr>
+	 </table>
+</form>
+
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>UID</th>
+    <th>用户名</th>
+    <th>真实姓名</th>
+     <th>权限</th>
+    <th>红娘币</th>
+    <th>操作</th>
+  </tr>
+  {loop $data $v}
+  <tr onmousemove="this.bgColor='#cfeefe';"  id="tr_{$v['uid']}" onmouseout="this.bgColor='#ffffff';" class="listclass">
+  <td>{$v['uid']}</td>
+  <td id="username-{$v['uid']}">{$v['username']}</td>
+  <td>{$v['name']}</td>
+  <td algin="center">{php  $sql = "SELECT * FROM web_admin_group where groupid =".$v['groupid'];
+     $vs = $GLOBALS['_MooClass']['MooMySQL']->getOne($sql);
+     echo $vs[groupname];
+ }</td>
+  <td id="balance-{$v['uid']}">{$v['balance']}</td>
+  <td><a href="javascript:;" title="红娘币操作" onclick="make_pannel({$v['uid']},'dialog-form')">红娘币操作</a></td>
+  </tr>
+  {/loop}
+  </table>
+   <table cellpadding="4" cellspacing="0" style="text-algin:center;margin-left:auto;margin-right:auto">
+    <tr>
+      <td align="center"  >
+      {$pages}
+	  &nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+      <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+	  </td>
+    </tr>
+  </table>
+</div>
+<div id="dialog-form" title="奖赏与处罚" class="open">
+	<p>选择种类为其他的时，务必填写备注</p>
+	<input type="hidden" id="uid" name="uid">
+	<p><label>用户名：</label><span id="uname"></span></p>
+
+	<p><label>操作类型：</label><label onclick="get_reward_list()"><input type="radio" name="rewardtype" value="1" id="va2" onclick="alertview()">奖励</label><label onclick="get_reward_list()"><input type="radio" name="rewardtype" value="0" id="va1" onclick="alertview()">处罚</label></p>
+	<p><label>奖惩缘由：</label><label onclick="alertview1();"><input type="radio" name="rew" value="1"  id="rew" disabled="disabled"  checked="checked" >选择</label><select   name="rewardid" id="rewardid" onchange="change_amount()" disabled="disabled" style="width:100px"><option value="0">其他</option></select><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label onclick="alertview1();"><input type="radio" name="rew" id="rew1"value="2" disabled="disabled">其他</label><input type="text"   name="rewardid1" id="rewardid1"  disabled="disabled">&nbsp;&nbsp;&nbsp;<!--  <a href="javascript:;" onclick="get_reward_config()">详情</a>--><a href="index.php?action=matchmaker&h=config_list" title="奖惩理由详情表" onclick="parent.addTab('奖惩理由详情表{$adminuser['username']}','index.php?action=matchmaker&h=config_list','icon');return false;">详情</a></p>
+
+	<p><label>奖惩金额：</label><input type="text" id="amount" name="amount"></p>
+	<p><label>奖惩备注：</label></p>
+	<p><textarea cols="50" rows="5" name="msg" id="msg" class="text ui-widget-content ui-corner-all" ></textarea></p>
+</div>
+<div id="reward_form" title="奖惩信息详细" class="open">
+<p><label>红娘币奖惩类别：</label><span id="rewardtype-reward_form"></span></p>
+<p><label>红娘币参考值：</label><span id="money-reward_form"></span></p>
+<p><label>红娘币奖惩种类：</label><span id="title-reward_form"></span></p>
+<p><label for="msg">备注：</label></p><p id="msg-reward_form" ></p>   	
+</div>
+<div style="display:none" id="rewarddata">
+</div>
+</body>
+</html>

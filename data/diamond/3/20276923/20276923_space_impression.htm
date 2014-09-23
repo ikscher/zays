@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的亲友印象——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" /><link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/3/20276923/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3 style="padding-left:5px;"><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">亲友助阵</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px;font-weight:400;">Relatives<br />and friends</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="impression">
+				   <div class="impression1">
+					   <p>                                     在父母的眼里，我一直都是个长不大的小孩，有时会撒娇，有时会闹脾气，不过和家里人的感情是很好的，没事的时候我会陪他们聊聊天，一家人相处得很融洽，很温馨。他们都希望我能早日找到属于自己的幸福。</p>
+</div>
+				    <div class="impression3">
+						<p>                                                     同事们总说我不太好接近，有点冷，可是如果熟了，就没什么了，多数会说我比较内向吧。对于我的征婚，他们都希望我找个条件好点的，不会让我受气的，因为他们都把我当妹妹看，所以也很关心我。</p>
+  </div>
+  <div class="impression4">
+						<p>     我的朋友不是太多。我喜欢交知心的朋友，嘴上说是朋友的，可是行为上败坏你的，那不叫朋友。多数朋友也说我有点内向，然后有点冷漠那种吧，但是我的内心是狂热的，这一点朋友们也是了解的。朋友们也很关心我的个人问题，他们也希望我能找到一个好归宿。    <br />
+						</p>
+  </div>
+  <div class="impression5">
+						<p>         秋的幻想是一个外冷心热的女孩，可能初次见面你会觉得她严肃、冷漠，但是相处久了你就会发现她其实是很热心的，内心有憧憬，有追求，并且她一直渴望得到真爱，对于真心对自己的人她会给予更多的回报。衷心希望这一次她能在红娘网上找到一个懂她、爱她、怜惜她、包容她的人。<br />
+						</p>
+  </div>
+  
+  
+  
+  
+                    
+                    
+				</div>
+			  </div>
+			
+			
+			  
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

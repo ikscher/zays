@@ -1,0 +1,40 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 音乐列表</span>
+    <span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+	<form action="index.php?action=diamond_music&h=list" method="post">
+		用户UID:
+		<input name="uid" type="text" id="keyword" />&nbsp;&nbsp;
+		<input name=" 搜 索 " type="submit" id="but" value=" 搜 索 " />
+	</form>
+    <span class="but_a">
+        <a onclick="parent.addTab('添加音频','index.php?action=diamond_music&h=add')" href="#">添加音频</a>
+    </span>
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+	<table cellpadding="3" cellspacing="1" id='list-table'>
+		<tr>
+			<th>ID</th>
+            <th>会员UID</th>
+			<th>名称</th>
+			<th>说明</th>
+			<th>操作</th>
+		</tr>
+		{loop $music $v}
+		<tr id="trs_{$v['uid']}">
+        	<td>{$v['mid']}</td>
+            <td><a href="#" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{$v['uid']}</a></td>
+            <td>{$v['title']}</td>
+            <td>{$v['note']}</td>
+            <td><a href="index.php?action=diamond_music&h=del&uid={$v['uid']}&mid={$v['mid']}" onclick="return confirm('删除后将不可恢复,确定要删除吗?');">删除</a> | <a onclick="parent.addTab('添加钻石会员{$v['uid']}音乐','index.php?action=diamond_music&h=add&uid={$v['uid']}')" href="#">添加</a></td>
+		</tr>
+		{/loop}
+		<tr><td colspan="9" align="center">{$pages}</td></tr>
+	</table>
+</div>

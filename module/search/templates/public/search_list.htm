@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>您的搜索条件——真爱一生寻友——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/search.css");
+</style>
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/search-tag.css");
+</style>
+<!--<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>-->
+</head>
+<body>
+<div class="clear"></div>
+{template system/header public}
+<!--头部结束-->
+<div class="clear"></div>
+<div class="content">
+		<div class="c-title">
+			<span class="f-000">
+			<a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;真爱一生寻友</span>
+			<div class="loaction_right">
+				<a href="index.php?n=invite" target="_blank">邀请好友</a>
+			</div>
+		</div>
+			<div class="content-title">
+				<span class="right-title">搜索标签</span>
+			</div><!--content-title end-->
+			<div class="c-center">			
+					<p class="search-conserver-titel">点击已保存的搜索条件可以快捷地得到您想要的搜索结果</p>
+					<div class="search-conserver">
+						<div class="s-conserver-top">
+							<ul>
+								<li class="list-w299px">搜索名称</li>
+								<li class="list-w204px">编辑</li>
+								<li class="list-w200px">删除</li>
+							</ul>
+							<div class="clear"></div>
+						</div>
+						<div class="s-conserver-top-center">
+						{loop $sr $slist}
+							<ul>
+								<li class="list-w299px"><a href="index.php?n=search&h=show&oldSearchCondition={$slist['scid']}">{$slist['searchsign']}</a></li>
+								<li class="list-w204px"><a href="index.php?n=search&h=edit&s={$slist['scid']}"><img src="module/search/templates/default/images/icon01.gif" /></a></li>
+								<li class="list-w200px"><a onclick="delsc({$slist['scid']});"  href="#"><img src="module/search/templates/default/images/icon02.gif" /></a></li>
+							</ul>
+						{/loop}
+							<div class="clear"></div>
+						</div>
+						<div class="s-conserver-bottom"></div>
+					</div>
+			<div class="clear"></div>
+			</div><!--c-center end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+		{template system/footer public}
+	</div><!--content end-->
+<div class="clear"></div>
+</div>
+
+</div>
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript">
+function delsc(id) {
+	if(confirm("您是否确定删除该搜索条件")) {
+	//alert(id);
+	window.location="./index.php?n=search&h=del&s="+id;
+	}
+}
+</script>
+</body>
+</html>

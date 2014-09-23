@@ -1,0 +1,124 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+img{border:none;}
+.sysbtn1,.sysbtn2 {
+    background: none repeat scroll 0 0 #3E679A;
+    border: 1px solid #4B76AC;
+    color: #FFFFFF;
+    height: 25px;
+    line-height: 22px;
+}
+.sysbtn1{
+	width:60px;
+}
+.sysbtn2{
+	width: 90px;
+}
+</style>
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/sys1.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<h1>
+<span class="action-span1"><a href="#">真爱一生网 管理中心</a></span>
+<span id="search_id" class="action-span1"> - 首页钻石会员推荐列表</span>
+<span class="action-span">
+ 	<a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a>
+</span>
+</h1>
+<div style="clear:both"></div>
+<div class="list-div" id="listDiv">
+<div class="list-div" id="append_table">
+</div>
+<script type="text/javascript">
+<!--
+function changeuid(uid){
+//	alert(uid);
+	var newuid = $("#new"+uid).val();
+//	alert(newuid);
+	var txt = "<a onclick=\"parent.addTab('查看"+newuid+"资料','index.php?action=allmember&amp;h=view_info&amp;uid="+newuid+"','icon')\" href='#'>"+newuid+"</a>";
+//	alert(txt);
+	$("#uid_"+uid).html(txt);
+	$("#"+uid).attr("value",newuid);
+	var url = './site_recommend_diamond_ajax.php?n=searchuid&uid='+newuid+'&rand='+Math.random();
+	$.getJSON(url,function(data){
+		if(data[0]=='no'){
+			alert('没有此会员！');
+		}else{ 
+			var userarray = data[0];
+			var newnickname = userarray['nickname'];
+			var year = userarray['birthyear'];
+			var d = new Date();
+			var newbirthyear = d.getFullYear()-year;
+			var newmarriage = '';
+			if(userarray['marriage']=='1') newmarriage='未婚';
+			else if(userarray['marriage']=='3')  newmarriage='离异';
+			else newmarriage='丧偶';
+			var newscid = '';
+			if(userarray['s_cid'] =='20') newscid='钻石会员';
+			else if(userarray['s_cid'] =='30') newscid='高级会员';
+			else newscid='普通会员';
+			var newimg = '';
+			if(userarray['0']=='无') newimg=userarray['0'];
+			else newimg = "<img src='"+userarray['0']+"'>";
+			$("#nickname_"+uid).html(newnickname);
+			$("#birthyear_"+uid).html(newbirthyear);
+			$("#marriage_"+uid).html(newmarriage);
+			$("#scid_"+uid).html(newscid);
+			$("#img_"+uid).html(newimg);
+		}
+	});
+
+}
+//-->
+</script>
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>ID</th>
+    <th>昵称</th>
+    <th>年龄</th>
+    <th>婚姻状况</th>
+	<th>会员等级</th>
+	<th>形象照</th>
+	<th>操作</th>
+  </tr>
+<form action="index.php" method="get">
+<input type="hidden" name="action" value="site_recommend_diamond">
+ {loop $diamondarr $diamond}
+  <tr>
+	<td id="uid_{$diamond['uid']}">
+		<a onclick="parent.addTab('查看{$diamond['uid']}资料','index.php?action=allmember&amp;h=view_info&amp;uid={$diamond['uid']}','icon')" href="#">{$diamond['uid']}</a>
+	</td>
+	<td id="nickname_{$diamond['uid']}">{$diamond['nickname']}</td>
+	<td id="birthyear_{$diamond['uid']}">{php echo date('Y')-$diamond['birthyear'];}</td>
+	<td id="marriage_{$diamond['uid']}">
+		{if $diamond['marriage']=='1'}
+			未婚
+		{elseif $diamond['marriage']=='3'}
+			离异
+		{else}
+			丧偶
+		{/if}
+	</td>
+	<td id="scid_{$diamond['uid']}">
+		{if $diamond['s_cid'] =='20'}
+			钻石会员
+		{elseif $diamond['s_cid'] =='30'}
+			高级会员
+		{else}
+			普通会员
+		{/if}
+	</td>
+	<td id="img_{$diamond['uid']}">{php $img=MooGetphotoAdmin($diamond['uid'],'small');}{if $img}<img src="{$img}" />{else}无{/if}</td>
+	<td><input type="text" name="" value="" id="new{$diamond['uid']}"> <input type="button" value="替换" onclick="changeuid({$diamond['uid']});" class="sysbtn1"></td>
+  </tr>
+  <input type="hidden" name="uidlist" id="{$diamond['uid']}" value="{$diamond['uid']}">
+{/loop}
+  <tr>
+		<input type="hidden" name="h" value="recommendget">
+		<input type="hidden" name="ispost" value='1'>
+	<td colspan='7' align="center" height="50"><input type="submit" value="提交" class="sysbtn2"></td>
+  </tr>
+</form>
+  </table>
+</div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>城市之星——真爱一生网</title>
+{template system/js_css public}
+<link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="main">
+	{template system/header public}
+    <div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;城市之星</span></p>
+		<div class="clear"></div>
+		<div class="payment">
+			<div class="cs-banner">
+				<div class="banner-box">
+				<p style="margin-top:20px;"><img src="module/payment/templates/default/images/go-see04.gif" /></p>
+				<p><img src="module/payment/templates/default/images/pay-num03.gif" width="277" height="53" /><a href="index.php?n=payment&h=city_star"><img src="module/payment/templates/default/images/open.gif" /></a></p> <!-- {if $user_arr['s_cid'] >= 40} onclick="alert('只有高级会员才能开通此服务,请先升级为高级会员');return false;"{/if} -->
+				<p><img src="module/payment/templates/default/images/top-tel.gif" /></p>
+				</div>
+				<b class="vipicon"><img src="module/payment/templates/default/images/citystar-icon.gif" /></b>
+				<div class="clear"></div>
+			</div><!--pm-banner end-->
+			<div class="pm-content">
+				<p class="pm-text" style="padding-top:20px;">随着网络征婚的渠道地不断扩大和完善，越来越多的优秀未婚男士、女士选择了在网络上寻找到自己的另一半。随着这个队伍的不断扩大，如何从中脱颖而出，让茫茫人海中的那个TA尽快地发现你，是促进你找到幸福美满婚姻的一个关键因素。根据真爱一生网研究中心的最新数据表明，首页展示和网站搜索排在前4页的会员，成为其他会员发起委托对象的比例上升了70%，很快找到另一半的成功率也上升了50%。</p>
+			<h6><img src="module/payment/templates/default/images/con-title05.gif" /></h6>
+			<p class="pm-text">你还在为找不到心爱的TA而犯愁吗？你还在为你心仪的TA不能最快地看到你而苦恼吗？赶快加入城市之星的行列吧！在这里，你将走到最前面，以最优雅的姿态展示给3000多万会员！ </p>
+			<h6><img src="module/payment/templates/default/images/con-title04.gif" /></h6>
+			<p class="pm-text">城市之星 尊享四大功能服务优势 </p>
+			<div class="fu-box">
+				<div class="pm-show">
+					<div class="pm-show-title">一、首页鲜明展示</div>
+					<div class="pm-show-center">
+						<p>打开网站首页，您的形象照就会鲜明地展示在网友面前，那个心仪的TA就会最先发现你哦</p>
+						<img src="module/payment/templates/default/images/img01.gif" width="423" height="282" />							
+					</div>
+					<div class="pm-show-bottom"></div>
+				</div>
+				<div class="pm-show">
+					<div class="pm-show-title">二、城市优先搜索</div>
+					<div class="pm-show-center">
+						<p>当会员想要搜索与TA同城市的另一半的时候，您的形象照和个人信息就会出现在搜索栏的最前面哦！</p>
+						<img src="module/payment/templates/default/images/img02.gif" width="422" height="282" />							
+					</div>
+					<div class="pm-show-bottom"></div>
+				</div>
+				<div class="pm-show">
+					<div class="pm-show-title">三、鲜明的图标</div>
+					<div class="pm-show-center">
+						<p>有别于高级会员和钻石会员，城市之星的**图标更加醒目、闪亮！</p>							
+					</div>
+					<div class="pm-show-bottom"></div>
+				</div>
+				<div class="pm-show">
+					<div class="pm-show-title">四、更加完善的服务</div>
+					<div class="pm-show-center">
+						<p>成为城市之星之后，相应的，会员发起的委托也会增多，客服会在第一时间向您传达委托信息，并帮您筛选最合适您的人选，促使您更快地找到另一半！</p>							
+					</div>
+					<div class="pm-show-bottom"></div>
+				</div>
+				<div class="clear"></div>
+				<div class="cs-bottom">
+                <a href="index.php?n=payment&h=city_star"{if $user_arr['s_cid'] >= 40} onclick="alert('只有高级会员才能开通此服务,请先升级为高级会员');return false;"{/if}><img src="module/payment/templates/default/images/open.gif" /></a></div>
+			</div><!--steps end-->
+			</div><!--pm-content end-->
+		</div>
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

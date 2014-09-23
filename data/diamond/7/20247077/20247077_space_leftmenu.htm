@@ -1,0 +1,66 @@
+<!--非资料页面的左侧列表-->
+
+<div class="sidebar">
+			<h3>{$GLOBALS['TA']}的个人主页</h3>
+			<!--导航列表开始-->
+			<div class="space_l">
+				 <ul class="space_li">
+                  <li class="li_bg"><a href="index.php?n=service&h=commission&t=sendcontact&sendid={$GLOBALS['style_uid']}" class="li1"><span style="color:#fff">>></span>委托红娘</a></li>
+                  <li><a href="index.php?n=service&h=leer&t=sendnewleer&sendtoid={$GLOBALS['style_uid']}" class="li2"><span>>></span>送秋波</a></li>
+                  <li><a href="index.php?n=service&h=message&t=send&sendtoid={$GLOBALS['style_uid']}" class="li3"><span>>></span>发邮件</a></li>
+                  <li><a href="index.php?n=service&h=rose&t=sendrose&sendtoid={$GLOBALS['style_uid']}" class="li4"><span>>></span>送鲜花</a></li>
+                  <li><a href="index.php?n=service&h=liker&t=appendfriend&sendtoid={$GLOBALS['style_uid']}" class="li5"><span>>></span>加为意中人</a></li>
+				  <li><a href="#" onclick="javascript:window.open('index.php?n=service&h=chat&chatorid={$GLOBALS['style_uid']}', 'newwindow', 'height=500, width=700, toolbar =no, menubar=no, scrollbars=no, resizable=yes, location=no, status=no');return false;" class="li7"><span>>></span>在线聊天</a></li>
+				  <li><a href="#" onclick="javascript:window.open('index.php?n=service&h=chat&chatorid={$GLOBALS['style_uid']}', 'newwindow', 'height=500, width=700, toolbar =no, menubar=no, scrollbars=no, resizable=yes, location=no, status=no');return false;" class="li7"><span>>></span>对TA评价</a></li>				  
+                  </ul>
+				<!--我可能喜欢的人-->
+			<div class="likes">
+              <h3>我可能喜欢的人</h3>
+              {loop $able_like $able_likes}
+               <div class="linkdiv">
+                <div class="linkdivpic">
+					 <div class="linkdivpic1">
+					 	<p><a href="index.php?n=space&h=viewpro&uid={$able_likes['uid']}">
+					     {if $able_likes['images_ischeck']=='1'&& $able_likes['mainimg']}
+	                          <img id="show_pic" src="{php   
+	                          if(MooGetphoto($able_likes[uid],'index')) echo MooGetphoto($able_likes[uid],'index');
+	                          elseif(MooGetphoto($able_likes[uid],'medium')) echo MooGetphoto($able_likes[uid],'medium');
+	                          elseif($able_likes['gender'] == '1')echo 'public/system/images/woman_100.gif';
+	                          else  echo 'public/system/images/man_100.gif';
+	                          }" onload="javascript:DrawImage(this,100,125)" />
+	                    {elseif $able_likes['mainimg']}
+	                            {if $able_likes['gender'] == '1'}
+	                                <img id="show_pic" src="public/system/images/woman_100.gif"  />
+	                            {else}
+	                                <img id="show_pic" src="public/system/images/man_100.gif" />
+	                            {/if}
+	                    
+	                   {else}
+	         				{if $able_likes['gender'] == '1'}
+	         					<img src="public/system/images/nopic_woman_100.gif" />
+	         				{else}
+	          					<img src="public/system/images/nopic_man_100.gif" />
+	          				{/if}
+	         			{/if}
+                          </a></p>
+					</div>
+				</div>
+				
+                 <div class="text">
+	                 <p><a href="index.php?n=space&h=viewpro&uid={$able_likes['uid']}"  class="color_cc0000">{php echo $able_likes['nickname']?$able_likes['nickname']:'ID:'.$able_likes['uid']}</a></p>
+	                 <P>{php echo $able_likes['birthyear']?(gmdate('Y', time()) - $able_likes['birthyear']).'岁':'年龄保密';}</P>
+	                 <P>{if $able_likes[marriage] == '-1'}婚姻状况:保密{else}<script>userdetail('$able_likes[marriage]',marriage)</script>{/if}</P>
+	                 <P>学历：{if $able_likes[education] == '-1'}保密{else}<script>userdetail('$able_likes[education]',education)</script>{/if}</P>
+	                 <P>{if $able_likes[salary] == '-1'}薪资:保密{else}<script>userdetail('$able_likes[salary]',salary1)</script>{/if}</P>
+                 </div>
+               </div>
+			 {/loop}
+             
+               <div class="link"><a href="{$GLOBALS['search_url']}">查看更多>></a></div>
+            </div>
+			<!--我可能喜欢的人-->
+			</div>
+			<!--导航列表结束-->
+				
+		</div>
+	

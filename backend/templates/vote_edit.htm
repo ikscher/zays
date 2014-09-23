@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--投票修改</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<SCRIPT LANGUAGE="Javascript" SRC="FusionCharts.js"></SCRIPT>	
+<link href="Style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/jquery.js"></script>
+	
+</head>
+	<script>
+		function add(){
+		var number = document.getElementsByTagName('input').length;
+		
+		if(number == 11){
+			var k = '1';
+			var l = number - 10; 
+		}else if(number == 12){
+			var k = '2';
+			var l = number - 10; 
+		}else if(number == 13){
+			var k = '3';
+			var l = number - 10; 
+		}else if(number == 14){
+			var k = '4';
+			var l = number - 9; 
+		}else if(number == 15){
+			var k = '5';
+			var l = number - 10; 
+		}else if(number == 16){
+			var k = '6';
+			var l = number - 10; 
+		}else if(number == 17){
+			var k = '7';
+			var l = number - 10; 
+		}else if(number == 18){
+			var k = '8';
+			var l = number - 10; 
+		}else if(number == 19){
+			var k = '9';
+			var l = number - 10; 
+		}else if(number == 20){
+			var k = '10';
+			var l = number - 10; 
+		}else if(number == 21){
+			var k = '11';
+			var l = number - 10; 
+		}else if(number == 22){
+			var k = '12';
+			var l = number - 10; 
+		}else if(number == 23){
+			var k = '13';
+			var l = number - 10; 
+		}else if(number == 24){
+			var k = '14';
+			var l = number - 10; 
+		}else if(number == 25){
+			var k = '15';
+			var l = number - 10; 
+		}else if(number == 26){
+			var k = '16';
+			var l = number - 10; 
+		}else if(number == 27){
+			var k = '17';
+			var l = number - 10; 
+		}else if(number == 28){
+			var k = '18';
+			var l = number - 10; 
+		}else if(number == 29){
+			var k = '19';
+			var l = number - 10; 
+		}else if(number == 30){
+			var k = '20';
+			var l = number - 10; 
+		}else if(number == 31){
+			var k = '21';
+			var l = number - 10; 
+		}else if(number == 32){
+			var k = '22';
+			var l = number - 10; 
+		}else if(number == 33){
+			var k = '23';
+			var l = number - 10; 
+		}else if(number == 34){
+			var k = '24';
+			var l = number - 10; 
+		}else if(number == 35){
+			var k = '25';
+			var l = number - 10; 
+		}else if(number == 36){
+			var k = '26';
+			var l = number - 10; 
+		}else if(number == 37){
+			var k = '27';
+			var l = number - 10; 
+		}else if(number == 38){
+			var k = '28';
+			var l = number - 10; 
+		}else if(number == 39){
+			var k = '29';
+			var l = number - 10; 
+		}else if(number == 40){
+			var k = '30';
+			var l = number - 10; 
+		}
+			
+			$("<tr><td>"+'选&nbsp;项&nbsp;'+k+'&nbsp;'+":</td><td><input style='margin-left:6px;' type='text'  name='option"+l+"''/></td></tr>").appendTo("table");
+
+		}
+	
+		function check(){
+			var title=document.getElementById("title").value;
+			var start_time = document.getElementById("start_time").value;
+			var end_time = document.getElementById("end_time").value;
+			
+			if(title==''){alert("请完整填写资料");return false;}
+			if(start_time.length!= 16 && end_time.length!=16){alert("时间请规范填写");return false;}
+	
+		}
+	</script>
+
+<body>
+<div class="list-div" id="listDiv" onmouseout="hiddend();">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	<form action="vote.php?act=edit_sub" method="post" onsubmit="return check()" style="line-height:23px;">
+		<tr><td>提票题目:</td><td> <input style="margin-left:6px;"   type="text" name="title" id = 'title' value="{$content[0][vote_title]}"></input></td></tr>
+		<tr><td>提票类型:</td><td><select   name="style" style="margin-left:6px;">
+					<option   value="0" {if $content[0][vote_style] == 0} selected="selected"{/if} style="width:130px;">0</option>
+					<option  value="1" {if $content[0][vote_style] == 1} selected="selected"{/if} style="width:130px;">1</option>
+					<option  value="2" {if $content[0][vote_style] == 2} selected="selected"{/if} style="width:130px;">2</option>
+				</select>
+		<tr><td>分组:</td><td> <input style="margin-left:6px;"   type="text" name="group" id = 'group' value="{$content[0][group]}"></input></td></tr>
+		</td></tr>
+		<tr><td>是否删除原投票结果：</td><td>
+		<input type="radio" name="is_dele"  checked="checked" value="0"/>不删除
+		<input type="radio" name="is_dele"  value="1"/>删除</td></tr>
+		<tr><td>是否显示: </td><td> 
+		<input style="margin-left:20px;"  type="radio" name="is_show" {if $content[0]['is_show']==0} checked="checked" {/if}  value="0"/>不显示
+		<input style="margin-left:6px;"  type="radio" name="is_show" {if $content[0]['is_show']==1} checked="checked" {/if}  value="1"/>显示
+		<input style="margin-left:6px;"  type="hidden" name = 'vid' value="{$content[0][vid]}" /></td></tr>
+		<tr><td>开始时间: </td><td> <input style="margin-left:6px;"  type="text" name="start_time" id = 'start_time' value="{$content[0][vote_starttime]}"></input></td></tr>
+		<tr><td>结束时间:</td><td> <input style="margin-left:6px;"  type="text" name="end_time" id = 'end_time' value="{$content[0][vote_endtime]}"></input></td></tr>
+		{loop $result $key $value}
+			
+			<tr><td>选&nbsp;项&nbsp;{$key}&nbsp;:</td><td>	<input style="margin-left:6px;"  type="text" name="option{$key}"  value="{$value}"></input></td></tr>
+		{/loop}
+		<tr id = 'aa'></tr>
+		
+		
+		<tr><td ><input type="button" value="新加选项" onclick="add()" /></td><td>
+		<input type="submit" value = '提交' /></td></tr>
+	</form>
+	
+</div>	
+	
+	
+</body>
+</html>﻿﻿﻿﻿

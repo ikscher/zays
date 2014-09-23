@@ -1,0 +1,46 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 批量发送短信</span>
+<span class="action-span"><a href="javascript:void(0)" onclick="javascript:clearsendsmsuid();">清空</a></span>
+<span class="action-span">
+    <a href="index.php?action=other&h=sendmsm_most">刷新</a>
+</span>
+	<div style="clear:both"></div>
+</h1>
+<form action="index.php?action=other&h=sendmsm_most&post=1" method="post" onsubmit="return checkForm();">
+<div class="list-div">
+		<table width="100%">
+		<tr>
+				<td width="100" height="25" align="right">接收会员ID：</td>
+				<td align="left"><textarea name="uid_list" style="width:800px; height:80px;" readonly id="uid_list" ><?php echo $uid;?></textarea></td><td>以逗号分隔开,如：1747188,1747898</td>
+			</tr>
+			<tr>
+				<td width="100" height="25" align="right" valign="top">短信内容：</td>
+				<td align="left"><textarea name="content" id="content" style="width:800px; height:80px;"></textarea></td><td></td>
+			</tr>
+			<tr>
+				<td width="100" height="25" align="right"></td>
+				<td align="left"><input name="提交" type="submit" value="发 送" /></td><td></td>
+			</tr>
+		</table>
+</div>
+<p/>
+</form>
+<script type="text/javascript">
+function checkForm(){
+	var content = $("#content").val();
+	var uid_list = $("#uid_list").val();
+	if( !content||!uid_list){
+		alert("请将信息填写完整");
+		return false;
+	}
+}
+function clearsendsmsuid(){
+    $.get('./other_ajax.php?n=clearsendsmsuid',function(str){
+	    alert('清除成功！');
+		$('#uid_list').empty();
+	});
+}
+</script>

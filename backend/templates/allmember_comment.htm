@@ -1,0 +1,48 @@
+<script type="text/javascript">
+function pingjia(a){
+	var url = './allmember_ajax.php?n=pingjia&uid={$uid}&t='+a;
+	$.get(url,function(data){
+		$("#pingjia_showarea").html(data);
+	});
+}
+function lgopage(p){
+	var url = './allmember_ajax.php?n=pingjia&uid={$uid}&t={$t}&page='+p;
+	$.get(url,function(data){
+		$("#pingjia_showarea").html(data);
+	});	
+}
+</script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<div id="pingjia_showarea">
+<div style="padding:0px; margin:0px;">
+<br/>
+{if $t==1}<img src="templates/images/down.gif" /><b>{/if}<a href="javascript:pingjia(1);">别人对我的评价</a> ({$cocount1})</b>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+{if $t==2}<img src="templates/images/down.gif" /><b>{/if}<a href="javascript:pingjia(2);">我对别人的评价</a> ({$cocount2})</b>
+</div>
+<div style="border: 1px solid #1C3F80; margin:0 auto; width:100%;">
+	<table width="100%" cellpadding="3" cellspacing="1" style="background:#FFF">
+		<tr>
+			<th>评价会员ID</th>
+			<th>评价内容</th>
+			<th>发方是否删除</th>
+			<th>收放是否删除</th>
+			<th>评价时间</th>
+		</tr>
+		{loop $pingjia_list $v}
+		<tr class="tr_{if isset($v['stat'])}{$v['stat']}{/if}" id="leer_tr_{if isset($v['lid'])}{$v['lid']}{/if}" style="background:#FFF">
+			<td align="center">
+            {php $uid = $t == 1 ? $v['cuid'] : $v['uid'];}
+				<a href="#" onclick="parent.addTab('{$uid}资料','index.php?action=allmember&h=view_info&uid={$uid}','icon')">{$uid}</a>
+			</td>
+			<td align="left">{$v['content']}</td>
+			<td align="center">{php echo $v['send_del'] ? '已删除' : '未删除';}</td>
+			<td align="center">{php echo $v['receive_del'] ? '已删除' : '未删除';}</td>
+			<td align="center">{php echo date('Y-m-d H:i',$v['dateline']);}</td>
+		</tr>
+		{/loop}
+	</table>
+</div><br/>
+	{if $pages >= 2}<div style="text-align:center">第&nbsp;{php for($i=1;$i<=$pages;$i++){}
+	<a href="javascript:lgopage({$i});"style="text-decoration:none;{if $page == $i}border:1px solid #3E679A; background:#7F99BE;{/if}">&nbsp;{$i}&nbsp;</a>&nbsp;
+{/for}&nbsp;页</div>{/if}
+</div>

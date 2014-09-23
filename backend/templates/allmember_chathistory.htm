@@ -1,0 +1,84 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+$(function(){
+	$("#list-table tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+})
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$page_num})
+
+	page = {$page_num};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+input[type="button"]  {
+background-color:#cfeefe;
+}
+
+.coolbg {
+background: #a4cafd;
+border-bottom:2px solid #ACACAC;
+border-right:2px solid #ACACAC;
+cursor:pointer;
+padding:2px 5px;
+}
+
+.np {
+border:medium none;
+}
+
+
+</style>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 历史聊天记录</span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+{if $v['is_server']!=0 }（红娘）{/if}<span style='color: #33F;'>{$v['s_fromid']}</span>和
+<span style='color: #33F;'>{$v['s_uid']}</span>
+聊天记录
+</div>
+<p/>
+<div class="list-div" id="listDiv" align="left">
+{loop $user_arr $v}
+  <p style="margin-left: 20px; margin-right: 0px">[{php echo date("Y-m-d H:i:s",$v['s_time']);}]&nbsp;&nbsp;{if $v['is_server']!=0}（<span style='color: #33F;'>红娘</span>）{/if}{$v['s_fromid']}&nbsp;对
+&nbsp;{$v['s_uid']}
+说:
+<span style='color: #33F;'>
+$v['s_content']
+</span>
+</p>
+{/loop}
+</div>  
+
+<div style="clear:both"></div>
+<p></p>
+<div class="list-div" id="listDiv" style="padding:5px;"  align="center">
+{$pages}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/>
+
+  
+</div>

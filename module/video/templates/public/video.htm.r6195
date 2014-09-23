@@ -1,0 +1,526 @@
+<!DOCTYPE >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网——视频专区</title>
+<link  href="module/video/templates/default/video.css" type="text/css" rel="stylesheet" />
+{template system/js_css public}
+
+</head>
+<body>
+{template system/header public}
+<div id="video">
+  <div id="video_header">
+    <ul>
+      <li><a href="#tv_content" style="cursor:pointer"><img src="module/video/templates/default/images/t_tab.png" width="130" height="29"  /></a></li>
+      <li class="l_tab"><a href="#outline_content" style="cursor:pointer"><img src="module/video/templates/default/images/l_tab.png" width="130" height="29" /></a></li>
+      <li class="m_tab"><a href="#tv_video_content" style="cursor:pointer"><img src="module/video/templates/default/images/m_tab.png" width="130" height="29" /></a></li>
+    </ul>
+  </div>
+  <div id="video_content">
+    
+	 
+    <div class="tv_video" style="height:324px;">
+    	<p><img src="module/video/templates/default/images/video_title.png" width="121" height="16" /></p>
+        <div id="tv_video_content">
+          <ul>
+          <li>
+          	<div id="nj_f"></div>
+          	<h3><a href="./index.php?n=activity&h=njtv">由真爱一生网会员王海洋（男）、蒋伟倩、杨芷婧、毛雅轩、肖文秀、金露参与录制的《我想有个家》节目，于4月1日在南京台播出</a> </h3>
+          </li>
+          <li>
+          	 <div id="ty_hbtv"></div>
+          	<h3><a href="./index.php?n=activity&h=hbtv">真爱一生网会员王顺维参加湖北卫视《相亲齐上阵》，成功牵手10号女嘉宾盈盈 
+                  </a> </h3>
+          </li>
+          <li>
+          	<div id="nj"></div>
+          	<h3><a href="./index.php?n=activity&h=xscm">真爱一生网会员（男会员：高超）参加上海电视台《丈母娘看女婿》节目
+
+                </a> </h3>
+          </li>
+          <li>
+          	 <div id="ty_qcrl"></div>
+          	<h3><a href="./index.php?n=activity&h=tytv">
+						真爱一生网男会员史丽鹏和陶建参加太原电视台《倾城热恋》节目
+                 </a> </h3>
+          </li>
+         
+          </ul>
+        
+      </div>
+        
+        
+    </div>
+    
+    
+    <div class="tv_video">
+    	<p><img src="module/video/templates/default/images/auditions_title.png" width="121" height="16" /><a href="index.php?n=video&h=inner">更多>></a></p>
+        <div id="tv_video_content">
+          <ul>
+          <li>
+           <div id="hx_ty"></div>
+          	
+          	<h3><a href="./index.php?n=activity&h=sing">简介：<!-- 2011-10-13 -->真爱一生网携手太原电视台百姓频道《倾城热恋》栏目组举办以“有没有那么一首歌会让您想起我”为主题的电视相亲节目海选现场。
+                        </a>
+ </h3>
+          </li>
+          <li>
+           <div id="hx_hf"></div>
+          
+          	<h3><a href="./index.php?n=activity&h=gourd">简介：<!-- 2011-10-15 -->真爱一生网携手湖北卫视《相亲齐上阵》栏目组举办以“弱水三千，我只取一瓢”为主题的电视相亲海选现场。
+                       </a> </h3>
+          </li>
+          <li>
+          <div id="hx_wxsnr"></div>
+          
+          	<h3><a href="./index.php?n=activity&h=near">简介：<!-- 2011-10-16 -->真爱一生网携手上海电视台星尚频道《丈母娘看女婿》栏目组，举办以“原来，幸福离我们那么近”为主题的电视相亲节目海选现场（上）。
+                        </a>
+ </h3>
+          </li>
+          <li>
+             <div id="hx_qcrl"></div>
+          	
+          	<h3><a href="./index.php?n=activity&h=near">简介：<!-- 2011-10-16 -->真爱一生网携手上海电视台星尚频道《丈母娘看女婿》栏目组，举办以“原来，幸福离我们那么近”为主题的电视相亲节目海选现场（下）。
+                       </a>
+</h3>
+          </li>
+          </ul>
+        
+        </div>
+        
+        
+    </div>
+    <div class="tv_video">
+    	<p><img src="module/video/templates/default/images/outline_title.png" width="153" height="16" /><a href="javascript:void(null)">更多</a></p>
+  <div id="tv_video_content">
+          <ul>
+          <li>
+           <div id="xx_mozhou"></div>
+          	<h3><a href="./index.php?n=activity&h=perfume">简介：<!-- 2011-9-9 -->真爱一生网在成都君悦丽景酒店举办一场以“香水是一种魔咒 让您我浪漫邂逅”为主题的线下相亲活动。</a>
+   </h3>
+          </li>
+          <li>
+              <div id="xx_jiaren"></div>
+          
+          	<h3><a href="./index.php?n=activity&h=jiaren">简介：<!-- 2011-9-24 -->真爱一生网在太原举办了一场以“北方有佳人 等待您来寻”为主题的线下相亲活动
+                       </a>
+
+   </h3>
+          </li>
+           <li>
+           <div id="xx_lvtu"></div>
+          	
+          	<h3><a href="./index.php?n=activity&h=azlt">简介：<!-- 2011-9-2日至4日， -->真爱一生网携手阜阳电视台举办了一场“爱在旅途”三日游的旅游相亲活动。（上）
+                        </a> 
+
+   </h3>
+          </li>
+           <li>
+            <div id="xx_eye"></div>
+          	
+          	<h3><a href="./index.php?n=activity&h=eyes">简介：<!-- 2011-9-2日至4日， -->真爱一生网携手阜阳电视台举办了一场“爱在旅途”三日游的旅游相亲活动。（下）
+                        </a>
+
+   </h3>
+          </li>
+          </ul>
+        </div>
+    </div>
+  
+  
+  
+   	<div class="tv">
+    	<p><img src="module/video/templates/default/images/tv_title.png" width="143" height="26" /></p>
+        <div id="tv_content">
+        	<div id="arrow_leftG" onmousedown="ISL_GoUpG()" onmouseup="ISL_StopUpG()" onmouseout="ISL_StopUpG()"></div>
+            <div class="tv_pic" id="ISL_Cont1">
+            <div class="border_width">
+            <div class="tv_pic_width">
+            	<ul id="List1">
+            		{for $i=73;$i<=94;$i++}
+                <li><img src="module/video/templates/default/images/tv/{php echo (2*$i-1);}.jpg" width="218" height="162" /><img src="module/video/templates/default/images/tv/{php echo (2*$i);}.jpg" width="218" height="162" /></li>
+               {/for}
+               </ul>
+                <ul id="List2">
+            
+               </ul>
+                </div>
+            </div> </div>
+            <div id="arrow_rightG" onmousedown="ISL_GoDownG()" onmouseup="ISL_StopDownG()" onmouseout="ISL_StopDownG()" ></div>
+        </div>
+    </div>
+     <div class="clear"></div>
+    <div class="tv">
+    	<p><img src="module/video/templates/default/images/outtv_title.png" width="150" height="33" /></p>
+        <div id="outline_content">
+       	  	<div id="arrow_leftD" onmousedown="ISL_GoUpD()" onmouseup="ISL_StopUpD()" onmouseout="ISL_StopUpD()"></div>
+            <div class="tv_pic" id="ISL_Cont2">
+            <div class="border_width">
+            <div class="tv_pic_width">
+            	<div id="List3"><ul>
+			    {for $i=10;$i>=1;$i--}
+                <li><img src="module/video/templates/default/images/jianghuai/{php echo (2*$i-1);}.jpg" width="218" height="162" /><img src="module/video/templates/default/images/jianghuai/{php echo (2*$i);}.jpg" width="218" height="162" /></li>
+               {/for}			
+            {for $i=144;$i>=1;$i--}
+                <li><img src="module/video/templates/default/images/xiangqin/{php echo (2*$i-1);}.jpg" width="218" height="162" /><img src="module/video/templates/default/images/xiangqin/{php echo (2*$i);}.jpg" width="218" height="162" /></li>
+               {/for}
+              </ul>
+                </div>
+               <div id="List4"></div>
+                </div><div class="clear"></div>
+            </div></div>
+            <div id="arrow_rightD" onmousedown="ISL_GoDownD()" onmouseup="ISL_StopDownD()" onmouseout="ISL_StopDownD()" ></div>
+      </div>
+   </div>
+  </div>
+</div>
+<script type="text/javascript">
+ //--><![CDATA[//><!--
+//图片滚动列表 mengjia 070816
+var Speed = 0.01; //速度(毫秒)
+var Space = 4; //每次移动(px)
+var PageWidthG = 232; //翻页宽度
+var fill = 0; //整体移位
+var MoveLock = false;
+var MoveTimeObj;
+var Comp = 0;
+var AutoPlayGObj = null;
+GetObjG("List2").innerHTML = GetObjG("List1").innerHTML;
+GetObjG('ISL_Cont1').scrollLeft = fill;
+GetObjG("ISL_Cont1").onmouseover = function(){clearInterval(AutoPlayGObj);}
+GetObjG("ISL_Cont1").onmouseout = function(){AutoPlayG();}
+
+AutoPlayG();
+function GetObjG(objNameG){if(document.getElementById){return eval('document.getElementById("'+objNameG+'")')}else{return eval('document.all.'+objNameG)}}
+function AutoPlayG(){ //自动滚动
+ clearInterval(AutoPlayGObj);
+ AutoPlayGObj = setInterval('ISL_GoDownG();ISL_StopDownG();',5000); //间隔时间
+}
+function ISL_GoUpG(){ //上翻开始
+ if(MoveLock) return;
+ clearInterval(AutoPlayGObj);
+ MoveLock = true;
+ MoveTimeObj = setInterval('ISL_ScrUpG();',Speed);
+}
+function ISL_StopUpG(){ //上翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObjG('ISL_Cont1').scrollLeft % PageWidthG - fill != 0){
+  Comp = fill - (GetObjG('ISL_Cont1').scrollLeft % PageWidthG);
+  CompScrG();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlayG();
+}
+function ISL_ScrUpG(){ //上翻动作
+ if(GetObjG('ISL_Cont1').scrollLeft <= 0){GetObjG('ISL_Cont1').scrollLeft = GetObjG('ISL_Cont1').scrollLeft + GetObjG('List1').offsetWidth}
+ GetObjG('ISL_Cont1').scrollLeft -= Space ;
+}
+function ISL_GoDownG(){ //下翻
+ clearInterval(MoveTimeObj);
+ if(MoveLock) return;
+ clearInterval(AutoPlayGObj);
+ MoveLock = true;
+ ISL_ScrDownG();
+ MoveTimeObj = setInterval('ISL_ScrDownG()',Speed);
+}
+function ISL_StopDownG(){ //下翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObjG('ISL_Cont1').scrollLeft % PageWidthG - fill != 0 ){
+  Comp = PageWidthG - GetObjG('ISL_Cont1').scrollLeft % PageWidthG + fill;
+  CompScrG();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlayG();
+}
+function ISL_ScrDownG(){ //下翻动作
+ if(GetObjG('ISL_Cont1').scrollLeft >= GetObjG('List1').scrollWidth){GetObjG('ISL_Cont1').scrollLeft = GetObjG('ISL_Cont1').scrollLeft - GetObjG('List1').scrollWidth;}
+ GetObjG('ISL_Cont1').scrollLeft += Space ;
+}
+function CompScrG(){
+ var num;
+ if(Comp == 0){MoveLock = false;return;}
+ if(Comp < 0){ //上翻
+  if(Comp < -Space){
+   Comp += Space;
+   num = Space;
+  }else{
+   num = -Comp;
+   Comp = 0;
+  }
+  GetObjG('ISL_Cont1').scrollLeft -= num;
+  setTimeout('CompScrG()',Speed);
+ }else{ //下翻
+  if(Comp > Space){
+   Comp -= Space;
+   num = Space;
+  }else{
+   num = Comp;
+   Comp = 0;
+  }
+  GetObjG('ISL_Cont1').scrollLeft += num;
+  setTimeout('CompScrG()',Speed);
+ }
+}
+//--><!]]>
+
+var AutoPlayDObj = null;
+GetObjD("List4").innerHTML = GetObjD("List3").innerHTML;
+GetObjD('ISL_Cont2').scrollLeft = fill;
+GetObjD("ISL_Cont2").onmouseover = function(){clearInterval(AutoPlayDObj);}
+GetObjD("ISL_Cont2").onmouseout = function(){AutoPlayD();}
+AutoPlayD();
+function GetObjD(objNameD){if(document.getElementById){return eval('document.getElementById("'+objNameD+'")')}else{return eval('document.all.'+objNameD)}}
+function AutoPlayD(){ //自动滚动
+ clearInterval(AutoPlayDObj);
+ AutoPlayDObj = setInterval('ISL_GoDownD();ISL_StopDownD();',4000); //间隔时间
+}
+function ISL_GoUpD(){ //上翻开始
+ if(MoveLock) return;
+ clearInterval(AutoPlayDObj);
+ MoveLock = true;
+ MoveTimeObj = setInterval('ISL_ScrUpD();',Speed);
+}
+function ISL_StopUpD(){ //上翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObjD('ISL_Cont2').scrollLeft % PageWidthG - fill != 0){
+  Comp = fill - (GetObjD('ISL_Cont2').scrollLeft % PageWidthG);
+  CompScrD();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlayD();
+}
+function ISL_ScrUpD(){ //上翻动作
+ if(GetObjD('ISL_Cont2').scrollLeft <= 0){GetObjD('ISL_Cont2').scrollLeft = GetObjD('ISL_Cont2').scrollLeft + GetObjD('List3').offsetWidth}
+ GetObjD('ISL_Cont2').scrollLeft -= Space ;
+}
+function ISL_GoDownD(){ //下翻
+ clearInterval(MoveTimeObj);
+ if(MoveLock) return;
+ clearInterval(AutoPlayDObj);
+ MoveLock = true;
+ ISL_ScrDownD();
+ MoveTimeObj = setInterval('ISL_ScrDownD()',Speed);
+}
+function ISL_StopDownD(){ //下翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObjD('ISL_Cont2').scrollLeft % PageWidthG - fill != 0 ){
+  Comp = PageWidthG - GetObjD('ISL_Cont2').scrollLeft % PageWidthG + fill;
+  CompScrD();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlayD();
+}
+function ISL_ScrDownD(){ //下翻动作
+ if(GetObjD('ISL_Cont2').scrollLeft >= GetObjD('List3').scrollWidth){GetObjD('ISL_Cont2').scrollLeft = GetObjD('ISL_Cont2').scrollLeft - GetObjD('List3').scrollWidth;}
+ GetObjD('ISL_Cont2').scrollLeft += Space ;
+}
+function CompScrD(){
+ var num;
+ if(Comp == 0){MoveLock = false;return;}
+ if(Comp < 0){ //上翻
+  if(Comp < -Space){
+   Comp += Space;
+   num = Space;
+  }else{
+   num = -Comp;
+   Comp = 0;
+  }
+  GetObjD('ISL_Cont2').scrollLeft -= num;
+  setTimeout('CompScrD()',Speed);
+ }else{ //下翻
+  if(Comp > Space){
+   Comp -= Space;
+   num = Space;
+  }else{
+   num = Comp;
+   Comp = 0;
+  }
+  GetObjD('ISL_Cont2').scrollLeft += num;
+  setTimeout('CompScrD()',Speed);
+ }
+} 
+</script>
+
+<script type="text/javascript" src="module/video/templates/default/js/jwplayer.js"></script>
+	<script type="text/javascript">
+	var w1='230px',h1='190px';
+	var w='230px',h='190px';
+	//最新活动视频
+	jwplayer("nj").setup({
+		flashplayer: "module/video/templates/default/js/player.swf",
+		file: "module/video/templates/default/images/flv/xscm_a.flv",
+		image: "module/video/templates/default/images/xs.jpg",
+		height:h1,
+		'frontcolor': 'ffffff',
+'lightcolor': 'cc9900',
+'screencolor': 'ffffff',
+'stretching': 'fill',
+		'controlbar': 'bottom',
+		'skin':'module/video/templates/default/js/b.zip',
+		width:w1
+	});
+	
+	jwplayer("ty_hbtv").setup({
+		flashplayer: "module/video/templates/default/js/player.swf",
+		file: "module/activity/templates/default/images/flv/hbtv/4.flv",
+		image: "module/activity/templates/default/images/hbtv/101.jpg",
+		height:h1,
+		'frontcolor': 'ffffff',
+'lightcolor': 'cc9900',
+'screencolor': 'ffffff',
+'stretching': 'fill',
+		'controlbar': 'bottom',
+		'skin':'module/video/templates/default/js/b.zip',
+		width:w1
+	});		
+	
+	jwplayer("nj_f").setup({
+		flashplayer: "module/video/templates/default/js/player.swf",
+		file: "module/video/templates/default/images/flv/why.flv",
+		image: "module/video/templates/default/images/why.jpg",
+		height:h1,
+		'frontcolor': 'ffffff',
+'lightcolor': 'cc9900',
+'screencolor': 'ffffff',
+'stretching': 'fill',
+		'controlbar': 'bottom',
+		'skin':'module/video/templates/default/js/b.zip',
+		width:w1
+	});
+
+	jwplayer("ty_qcrl").setup({
+		flashplayer: "module/video/templates/default/js/player.swf",
+		file: "module/video/templates/default/images/flv/qc_2.flv",
+		image: "module/video/templates/default/images/qcrl.jpg",
+		height:h1,
+		'frontcolor': 'ffffff',
+'lightcolor': 'cc9900',
+'screencolor': 'ffffff',
+'stretching': 'fill',
+		'controlbar': 'bottom',
+		'skin':'module/video/templates/default/js/b.zip',
+		width:w1
+	});
+
+	//海选活动视频
+	jwplayer("hx_ty").setup({
+		flashplayer: "module/video/templates/default/js/player.swf",
+		file: "module/video/templates/default/images/flv/ty.flv",
+		image: "module/video/templates/default/images/ty.jpg",
+		height:h,
+		'frontcolor': 'ffffff',
+'lightcolor': 'cc9900',
+'screencolor': 'ffffff',
+'stretching': 'fill',
+		'controlbar': 'bottom',
+		'skin':'module/video/templates/default/js/b.zip',
+		width:w
+	});
+	
+	jwplayer("hx_hf").setup({
+		flashplayer: "module/video/templates/default/js/player.swf",
+		file: "module/activity/templates/default/images/flv/ahtv/hf.flv",
+		image: "module/activity/templates/default/images/ahtv/hf.jpg",
+		height:h,
+		'frontcolor': 'ffffff',
+'lightcolor': 'cc9900',
+'screencolor': 'ffffff',
+'stretching': 'fill',
+		'controlbar': 'bottom',
+		'skin':'module/video/templates/default/js/b.zip',
+		width:w
+	});
+	
+	jwplayer("hx_wxsnr").setup({
+		flashplayer: "module/video/templates/default/js/player.swf",
+		file: "module/video/templates/default/images/flv/xs_1.flv",
+		image: "module/video/templates/default/images/xs_1.jpg",
+		height:h,
+		'frontcolor': 'ffffff',
+'lightcolor': 'cc9900',
+'screencolor': 'ffffff',
+'stretching': 'fill',
+		'controlbar': 'bottom',
+		'skin':'module/video/templates/default/js/b.zip',
+		width:w
+	});
+			
+	jwplayer("hx_qcrl").setup({
+		flashplayer: "module/video/templates/default/js/player.swf",
+		file: "module/video/templates/default/images/flv/xs_2.flv",
+		image: "module/video/templates/default/images/xs_2.jpg",
+		height:h,
+		'frontcolor': 'ffffff',
+'lightcolor': 'cc9900',
+'screencolor': 'ffffff',
+'stretching': 'fill',
+		'controlbar': 'bottom',
+		'skin':'module/video/templates/default/js/b.zip',
+		width:w
+	});
+		//线下相亲活动视频
+		jwplayer("xx_mozhou").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/activity/templates/default/images/flv/perfume/1.flv",
+			image: "module/video/templates/default/images/mozhou.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("xx_jiaren").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/activity/templates/default/images/flv/jiaren/3.flv",
+			image: "module/video/templates/default/images/jiaren.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});	
+		
+		jwplayer("xx_lvtu").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/video/templates/default/images/flv/azlt_1.flv",
+			image: "module/video/templates/default/images/azlt_1.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});	
+		
+		jwplayer("xx_eye").setup({
+			flashplayer: "module/video/templates/default/js/player.swf",
+			file: "module/video/templates/default/images/flv/azlt_2.flv",
+			image: "module/video/templates/default/images/azlt_2.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'module/video/templates/default/js/b.zip',
+			width:w
+		});	
+	</script>
+
+{template system/footer public}
+</body>
+</html>

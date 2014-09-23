@@ -1,0 +1,69 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 会员交接资料</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+
+<div style="clear:both"></div>
+</h1>
+<script type="text/javascript">
+function gotoPage(){
+	var page=$("#pageGo").attr("value");
+	window.location="index.php?action=check&h=letter&page="+page;
+}
+</script>
+<p/>
+<div class="list-div" style="margin-bottom:10px;padding:5px;">
+<form action="" method="post">
+	升级会员ID：&nbsp;&nbsp;<input type="text" name="uid" size="10" value="{if !empty($uid)}$uid{/if}" />&nbsp;&nbsp;
+    原客服ID:&nbsp;&nbsp;<input type="text" name="sid" size="10" value="{if !empty($sid)}$sid{/if}" />
+    <input type="submit" value=" 查 找 " /><span class="but_a"></span>
+</form>
+</div>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>ID</th>
+    <th>升级会员ID</th>
+    <th>原客服ID</th>
+    <th>服务时间(月)</th>
+    <th>支付金额</th>
+    <th>委托会员</th>
+    <th>模拟聊天</th>
+    <th>升级会员资料</th>
+    <th>委托会员资料</th>
+    <th>最后一次联系</th>
+    <th>备注</th>
+    <th>添加时间</th>
+    <th>操作</th>
+  </tr>
+  {loop $transfer $v}
+  <tr>
+    <td>{$v['id']}</td>
+    <td><a href="#" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{$v['uid']}</a></td>
+    <td>{php echo $GLOBALS['kefu_arr'][$v['sid']].'('.$v['sid'].')'}</td>
+    <td>{$v['servicetime']}</td>
+    <td>{$v['payments']}</td>
+    <td><a href="#" onclick="parent.addTab('查看{$v['otheruid']}资料','index.php?action=allmember&h=view_info&uid={$v['otheruid']}','icon')">{$v['uid']}</a></td>
+    <td>{$v['chatnotes']}</td>
+    <td>{$v['intro']}</td>
+    <td>{$v['otherintro']}</td>
+    <td>{$v['lastcom']}</td>
+    <td>{$v['remark']}</td>
+    <td>{php echo date('Y-m-d,H:i',$v['dateline']);}</td>
+    <td><a href="index.php?action=other_members_transfer&h=modify&id={$v['id']}">修改</a>|<a onclick="return confirm('您确定删除本条记录？');" href="index.php?action=other_members_transfer&h=del&id={$v['id']}">删除</a></td>
+    </tr>
+  {/loop}
+  </table>
+  {if $pages}
+  <table>
+  	<tr>
+    <td>{$pages} 转到第
+				<input name="pageGo"  id="pageGo" type="text" style="width:35px" value=""/>
+				页
+				<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+    </tr>
+  </table>
+  {/if}
+</div>

@@ -1,0 +1,43 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 用户留言和表情</span>
+    <span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<div class="list-div" style="padding:10px;">
+	<span class="but_a">
+		<a onclick="parent.addTab('查看品论短语','index.php?action=site_diamond&h=comment&type=1')" href="#">查看品论短语</a><a onclick="parent.addTab('查看表情','index.php?action=site_diamond&h=comment&type=2')" href="#">查看表情</a><a onclick="parent.addTab('添加评论留言','index.php?action=site_diamond&h=comment_edit')" href="#">添加评论留言</a><a onclick="parent.addTab('添加表情','index.php?action=site_diamond&h=face_add')" href="">添加表情</a><a href="index.php?action=site_diamond&h=refresh_comment">刷新评论缓存</a>
+	</span>
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+	<table cellpadding="3" cellspacing="1" id='list-table'>
+		<tr>
+			<th>{php echo $type_arr[0][$type]}</th>
+			<th>评论类型</th>
+			<th>评论排序</th>
+			<th>操作</th>
+		</tr>
+		{loop $data['list'] $comment}
+		<tr id="c_{$comment['id']}" width="200px">
+			<td align="center">
+            {if $type == 1}
+            	{$comment['comment']}
+            {else}
+            	<img src="{$comment['comment']}" />
+            {/if}
+            </td>
+			<td>@$comment_type[$comment['comment_type']]</td>
+			<td>@$comment_sort[$comment['comment_sort']]</td>
+			<td>
+				<a onclick="parent.addTab('{php echo $type_arr[0][$type]} {$comment['id']} 编辑','index.php?action=site_diamond&h={php echo $type_arr[1][$type]}_edit&id={$comment['id']}')" href="#">编辑</a>&nbsp;
+				<a href="index.php?action=site_diamond&h={php echo $type_arr[1][$type]}_del&id={$comment['id']}" onclick="return confirm('确定删除？')">删除</a>
+			</td>
+		</tr>
+		{/loop}
+		<tr><td colspan="4" align="center">{$data['page_links']}</td></tr>
+	</table>
+</div>

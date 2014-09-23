@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网 - 中国成功率高,严肃的征婚网站</title>
+<link rel="shortcut icon" href="favicon.ico" />
+
+<link href="module/recommend/templates/default/recommend.css" rel="stylesheet" type="text/css" />
+</head>
+<script src="public/system/js/sys1.js?v=1"></script>  
+<script type="text/javascript">
+  function userdetail(number,arrayobj) {
+  	var arrname = arrayobj;
+  	for(i=0;i<arrayobj.length;i++) {
+		var valueArray  = arrayobj[i].split(",");
+		if(valueArray[0] == number) {
+			if(valueArray[0] == '0' && valueArray[1] != '男士') {
+				document.write("不限");
+			} else {
+				document.write(valueArray[1]);
+			}	
+		}
+  	}
+  }
+  //targetObj.style.display="block"
+  function changeSearch(target){
+	  var a1 = document.getElementById('search_oneuid');
+	  var a2 = document.getElementById('search_infolist');
+	  if(target == 'uid'){
+		  a1.style.display="block";
+		  a2.style.display="none";
+	  }else{
+		  a1.style.display="none";
+		  a2.style.display="block";
+	  }
+  }
+  </script>
+<body>
+	<div class="main">
+		<div class="head">
+			<a href="http://www.zhenaiyisheng.cc/" class="logobox" target="_blank"></a>
+			<div class="toplogin"><a href="login.html">登录</a> | <a href="register.html">注册</a></div>
+			<div class="toptel"></div>
+			<div class="clear"></div>
+		</div>
+		<div class="content">
+			<div class="c-top"></div>
+			<div class="c-side">
+				<div class="c-center">
+					<div class="nav">
+						<ul>
+							<li><a href="index.php" class="link01"></a></li>
+							<li><a href="index.php?n=about&h=us" class="link02"></a></li>
+							<li><a href="index.php?n=about&h=media" class="link03"></a></li>
+							<li><a href="index.php?n=about&h=contact" class="link04"></a></li>
+							<li><a href="index.php?n=about&h=links" class="link05"></a></li>
+
+							<li><a href="index.php?n=about&h=getsave" class="link06"></a></li>
+							<li><a href="index.php?n=story" class="link07"></a></li>
+
+						</ul>
+						<div class="clear"></div>
+					</div>
+				    <div class="searchbar">
+						<div class="search-cts">
+								<label for="a3"><input name="search_type" type="radio" onclick="changeSearch('');" value="1" id="a3" checked="checked" />按条件搜索</label>
+								<label for="a4"><input name="search_type" type="radio" onclick="changeSearch('uid');" value="2" id="a4"/>按ID号搜索</label>
+								<!--label里的ID值要与里面input的ID值一致-->
+							</div>
+							<!--按条件搜索-->
+							<ul class="search-cts-list" id="search_infolist">
+								<li>我要找:
+									<input name="gender" type="radio" value="1" {if $user['gender'] == '0'} checked="checked" {/if} />&nbsp;女士
+         <input name="gender"   type="radio" value="0" {if $user['gender'] == '1'} checked="checked" {/if} />&nbsp;男士</li>
+								<li>年龄:
+									<script>getSelect('m2 s47','age1','agebegin','','21',age);</script>到<script>getSelect('m2 s47','age2','ageend','','45',age) ;</script>
+                                    </li>
+								<li>地区:
+									<script>getProvinceSelect66('m2 s67','workprovince','workprovince','workcity','','10100000');</script>&nbsp;<script>getCitySelect66('m2 s67','workcity','workcity','','');</script></li>
+								<li><input name="photo" type="checkbox" value="1" checked="checked" />有照片</li>
+							</ul>
+							<!--按ID号搜索-->
+							<div class="searchid-bar" id="search_oneuid" style="display:none;"><input name="search_uid" type="text" class="reg-info-text"  id="search_uid" name="search_uid"/></div>
+ 							<input type="hidden" value="search" name="quick_search" id="quick_search">
+							<input name="" type="button" class="search-btn" onclick="javacrtip:location.href='register.html';" />
+					</div>
+					<div class="member-info">
+						<div class="member-img">
+							<div class="miside">
+								<div class="mimg">
+									<p><a href="{if $userid}index.php?n=space&h=viewpro&uid={$user['uid']}{else}register.html{/if}">
+                                    {if $user['images_ischeck']=='1'&& $user['mainimg']}
+         			  <img id="show_pic" src="{php   
+                      if(MooGetphoto($user[uid],'mid')) echo MooGetphoto($user[uid],'mid');
+                      elseif($user['gender'] == '1')echo 'public/system/images/se_woman.jpg';
+                      else  echo 'public/system/images/se_man.jpg';
+                      }" />
+                    {else}
+            	      {if $user['gender'] == '1'}
+         					<img id="show_pic" src="public/system/images/se_woman.jpg"  />
+         				{else}
+          					<img id="show_pic" src="public/system/images/se_man.jpg" />
+          				{/if}
+         			{/if}</a></p>
+								</div>
+							</div>
+							<div class="mname">
+                            {php echo $user['nickname'] ? $user['nickname']:'ID:'.$user['uid'];}</div>
+						</div>
+						<div class="r-minfo">
+							<div class="r-minfo-til">
+								<a href="register.html" class="r-title-r">注册会员可了解更多详情&gt;&gt;</a>
+								<div class="r-title">个人资料</div>
+							</div>
+							<dl class="right-data">
+							<dt>								
+								<div style="font-size:14px">
+                                {php echo $user['nickname'] ? $user['nickname']:'ID:'.$user['uid'];}</div>
+								</dt>
+							<dd>{php $time = time() - $user['lastvisit'];}
+								<div class="f-ea427d">{if $time < 1200}当前在线{elseif $time < 3600*3}三小时内登录过{elseif $time < 86400}一天内登录过'{else}三天内登录过{/if}</div>
+							</dd>
+							<dd>
+								{if $user['birthyear']}{php echo date('Y') - $user['birthyear'];}岁{else}年龄保密{/if}，
+								
+								{if $user['province'] == '0' && {$user['city']} == '0'}
+								{else}
+								居住在
+									<script>userdetail("{$user['province']}",provice)</script>
+									<script>userdetail("{$user['city']}",city)</script>
+								的
+								{/if}
+								<script>userdetail("{$user['gender']}",sex)</script>，
+								寻找一位年龄{if {$c['age1']} == '0'}不限{else}在
+								<script>userdetail("{$c['age1']}",age)</script>-<script>userdetail("{$c['age2']}",age)</script>岁{/if}的{if $user['gender'] == 0}女士{else}男士{/if}。
+							</dd>
+							<dd>{php $temp = array();}
+								<ul class="right-cer">
+								{if $user['telphone']}
+                                {php $temp[] = '手机认证';}
+                                <li class="cer-phone-yes">已通过号码验证</li>
+                                {else}
+                                <li class="cer-phone-no">未通过号码验证</li>
+                                {/if}
+                                {if $user['identity_check'] == 3}
+                                {php $temp[] = '身份认证';}
+                                <li class="cer-card-yes">已通过身份通认证</li>
+                                {else}
+                                <li class="cer-card-no">未通过身份通验证</li>
+                                {/if}
+                                {if $user['email'] == 'yes'}
+                                {php $temp[] = '邮箱认证';}
+                                <li class="cer-email-yes">已通过邮箱认证</li>
+                                {else}
+                                <li class="cer-email-no">未通过邮箱验证</li>
+                                {/if}
+                                {if $user['video_check'] == 3}
+                                {php $temp[] = '视频认证';}
+                                <li class="cer-video-yes">已进行视频认证</li>
+                                {else}
+                                <li class="cer-video-no">未通过视频验证</li>
+                                {/if}
+								</ul>
+							</dd>
+                            <dd><span>已认证证件：</span>{if $temp}{php echo implode(' ',$temp)}{else}暂未验证任何证件{/if} </dd>
+						</dl>
+						<div class="c-line"></div>
+						<div class="know-her"><span>想要了解该会员资料？</span><a href="{if $userid} index.php?n=space&h=viewpro&uid={$user[uid]}{else}register.html{/if}" class="getknow"></a></div>							
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="moremember">
+						<div class="more-m-til"><span></span></div>
+						<ul class="memberlist">
+                        {loop $tuijian $able_likes}
+							<li>
+								<dl>
+									<dt>
+										<div class="mmlistimg">
+											<p><a href="{if $userid}index.php?n=space&h=viewpro&uid={$able_likes[uid]}{else}register.html{/if}">
+                                            {if $able_likes['images_ischeck']=='1'&& $able_likes['mainimg']}<img src="{php if(MooGetphoto($able_likes[uid],'index'))echo MooGetphoto($able_likes[uid],'index');
+                      elseif(MooGetphoto($able_likes[uid],'medium')) echo MooGetphoto($able_likes[uid],'medium');
+                      elseif($able_likes['gender'] == '1') echo 'module/index/templates/default/images/se_woman.gif';
+                      else echo 'module/index/templates/default/images/se_man.gif';
+                      }" onload="javascript:DrawImage(this,100,125)" />
+                {else}
+         				{if $able_likes['gender'] == '1'}
+         					<img src="module/index/templates/default/images/se_woman.gif" />
+         				{else}
+          					<img src="module/index/templates/default/images/se_man.gif" />
+          				{/if}
+         			{/if}</a></p>
+										</div>
+									</dt>
+									<dd>{$able_likes['nickname']} {if $able_likes['birthyear']}{php echo  (gmdate('Y', time()) - $able_likes['birthyear']);}岁{else}年龄保密{/if}</dd>
+								</dl>
+							</li>
+                        {/loop}
+						</ul>
+						<div class="clear"></div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="c-bottom"></div>
+		</div>
+		<div class="r-bottom">
+			<p><a href="?n=about&h=us">关于我们</a> | 
+             <a href="?n=about&h=media">媒体关注</a> | 
+             <a href="?n=about&h=contact">联系我们</a> | 
+             <a href="?n=about&h=links">合作伙伴</a> | 
+             <a href="index.php?n=about&h=getsave">意见反馈</a> | 
+             <a href="index.php?n=story">成功故事</a> | 
+             <a href="index.php?n=payment&h=channel">汇款信息</a>
+			</p>
+			<p>真爱一生网备用域名：<a href="http://www.hongniangw.com">www.hongniangw.com</a> | <a href="http://www.hongniangwang.com">www.hongniangwang.com</a></p>
+			<div class="bottom-tel"></div>
+		</div>
+		<div class="bottom-copyright">Copyright 2005-2010 版权所有：真爱一生网 <a href="http://www.miibeian.gov.cn" target="_blank">闽ICP备09064513号</a></div>
+	</div>
+</body>
+</html>

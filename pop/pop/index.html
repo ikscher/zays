@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>红娘网 - 中国成功率最高最严肃的征婚网站</title>
+<link href="css/style3.css" rel="stylesheet" type="text/css" />
+<link href="css/pop.css" rel="stylesheet" type="text/css" />
+<script src="../public/system/js/jquery-1.3.2.min.js"></script>
+<script src="../module/register/templates/public/js/commonValidate.js"></script>
+<script src="../module/register/templates/public/js/syscode.js?v=1"></script>
+<script src="./js/reg.js"></script>
+<script src="./js/blockUI.js"></script>
+<script src="../public/system/js/sys1.js?v=1"></script>
+<script src="./ip.php"></script>
+<script type="text/javascript">
+var tanbutan = true;
+//var popu = 'http://g.tankwb.com/union/6yw.htm';
+function changepop(){
+	tanbutan = false
+}
+
+window.onbeforeunload = function() {
+	if(tanbutan){
+//	var popurl = new Array();
+//	popurl[0] = "http://www.66vv.com";
+//	popurl[1] = "http://www.66vv.com";
+//	var n = Math.floor(Math.random() * popurl.length + 1)-1; 
+//	var popu = popurl[n];
+//	window.open(popu);
+	}
+}
+
+var c_provice = "";
+var c_city = "";
+
+len = provice.length;
+for (i = 0; i < len; i++) {
+	provice_arr = provice[i].split(",");
+
+	if (curent_area.indexOf(provice_arr[1]) != -1) {
+		c_provice = provice_arr[0];
+		break;
+	}
+}
+
+len = city.length;
+for (i = 0; i < len; i++) {
+	city_arr = city[i].split(",");
+
+	if (curent_area.indexOf(city_arr[1]) != -1) {
+		c_city = city_arr[0];
+		break;
+	}
+}
+function checkRightResearchForm() {
+	var age1 = document.getElementById("age1").value;
+	var age2 = document.getElementById("age2").value;
+	if( age1 == -1 && age2 == -1) {
+		alert("请选择年龄");
+		document.getElementById("age1").focus();
+		return false;
+	}
+	if(age1!=null && age1!='' && age1==-1 && age2!=null && age2!='' && age2!=-1) {
+		alert("请选择年龄下限");
+		document.getElementById("age1").focus();
+		return false;
+	}
+	if(age1!=null && age1!='' && age1!=-1 && age2!=null && age2!='' && age2==-1) {
+		alert("请选择年龄上限");
+		document.getElementById("age2").focus();
+		return false;
+	}
+	if(age1!=null && age1!='' && age1!=-1 && age2!=null && age2!='' && age2!=-1 && age1>age2) {
+		alert("您选择的年龄范围不正确，请重新选择");
+		document.getElementById("age1").focus();
+		return false;
+	}
+	alert("请先注册");
+	return false;
+}
+</script>
+<script language="javascript">
+
+var c_provice = "";
+var c_city = "";
+
+len = provice.length;
+for (i = 0; i < len; i++) {
+	provice_arr = provice[i].split(",");
+
+	if (curent_area.indexOf(provice_arr[1]) != -1) {
+		c_provice = provice_arr[0];
+		break;
+	}
+}
+
+len = city.length;
+for (i = 0; i < len; i++) {
+	city_arr = city[i].split(",");
+
+	if (curent_area.indexOf(city_arr[1]) != -1) {
+		c_city = city_arr[0];
+		break;
+	}
+}
+function show(){
+	alert("请先注册！")
+	}
+function checkForm() {
+	var email = document.getElementById("username");
+	var year = document.getElementById("year");
+	var month = document.getElementById("month");
+	var day = document.getElementById("day"); 
+	var workProvince = document.getElementById("workprovincereg");
+	var workCity = document.getElementById("workcity");
+	var mysex1=document.getElementById("mysex1");
+	var mysex2=document.getElementById("mysex2");
+	var pwd = document.getElementById("password");
+	var agree = document.getElementById("agree");
+	var actio=document.getElementById("actio");
+	var pwd2=document.getElementById("password2");
+	var telphone = document.getElementById('telphone');
+	var emailmessage=document.getElementById('emailmessage');
+	var passmessage=document.getElementById('passmessage');
+	var telphonemessage=document.getElementById('telphonemessage');
+	if(email.value==""){
+	  	alert("邮箱不能为空");
+	  	email.focus();
+	 	return false;
+	}
+	if(emailmessage.value!="ok" &&emailmessage.value!="false"){
+	  	alert(emailmessage.value);
+	  	email.value='';
+	  	email.focus();
+	 	return false;
+	}
+	if(pwd.value==''){
+	       alert("密码不能为空");
+	       pwd.focus();
+	       return false;
+	}
+	if(pwd2.value==''){
+	       alert("密码不能为空");
+	       pwd2.focus();
+	       return false;
+	}
+	if(passmessage.value!='ok'){
+	       alert(passmessage.value);
+	       pwd.value='';
+	       pwd.focus();
+	       return false;
+	}
+	if(telphonemessage.value!='ok'){
+	       alert(telphonemessage.value);
+	       telphone.value='';
+	       telphone.focus();
+	       return false;
+	}
+	if(year.value=='-1'||year.value==''){
+		alert("请选择出生日期！");
+		year.focus();
+		return false;
+	}
+	if(month.value=='-1'||month.value==''){
+		alert("请选择出生日期！");
+		month.focus();
+		return false;
+	}
+	if(day.value=='-1'||day.value==''){
+		alert("请选择出生日期！");
+		day.focus();
+		return false;
+	}
+	
+	if(workProvince.value=='-1' && workCity.value=='-1') {
+		alert("您忘记选择“工作地区”这项了!");
+		workProvince.focus();
+		return false;	
+	}
+	if(workProvince.value !='10101201' && workProvince.value !='10102000' && workProvince.value !='10103000' && workProvince.value !='10101002' && workProvince.value !='10104000' && workProvince.value !='10105000' && workProvince.value !='10132000' && workProvince.value !='10133000' && workProvince.value !='10134000'){
+		if(workCity.value=='-1'||workCity.value==''){
+			alert("您忘记选择“工作地区”这项了!");
+			return false;
+		}
+	}
+return true;
+}
+</script>
+<script type="text/javascript">
+			$.blockUI.defaults.overlayCSS.backgroundColor="#d5d5d5";
+			$.blockUI.defaults.pageMessageCSS.border="none";
+			$.blockUI.defaults.pageMessageCSS.backgroundColor="#D6D6D6";
+			$.blockUI.defaults.pageMessageCSS.margin="-50px 0 0 -200px";
+			$.blockUI.defaults.pageMessageCSS.width="400px";
+			$.blockUI.defaults.overlayCSS.backgroundColor = "#e6e6e6";
+			$.blockUI.defaults.overlayCSS.cursor = "default";
+
+			function _popup(cont){
+				var _html = "";
+				_html += "<div id='flashDiv' class='pop_bg' style='width:398px; margin:-124px 0 0 -187px;'>";
+				_html += "	<div class='pop_video tl'>&nbsp;</div>";
+				_html += "	<div class='pop_video tr'>&nbsp;</div>";
+				_html += "	<div class='pop_content_video'>";
+				_html += "		<div class='pop_content_right_video'>";
+				_html += "			<div class='pop_video_text'>";
+				_html += "				<div class='video_close'><a style='cursor:pointer' onclick='$.unblockUI();'><img src='/pop/images3/pop_video_close.gif' alt=''/></a></div>";
+				_html += "				<div id='subFlashDiv' class='video_pic'>";
+
+				_html += cont;
+
+				_html += "				</div>";
+				_html += "			</div>";
+				_html += "		</div>";
+				_html += "	</div>";
+				_html += "	<div class='pop_video bl'>&nbsp;</div>";
+				_html += "	<div class='pop_video br'>&nbsp;</div>";
+				_html += "</div>";
+
+				$.blockUI(_html);
+			}
+			function videoFlash(){
+				var flashHtml = '<object height="252" width="328" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">\
+				  <param value="../public/system/flash/player.swf?path=0HRaoDc3Lvd3d34yUjNmLxbvNk9SRXY3LhZpZvVG8ycDMyMwEvQDAjYWY4NiJ1U2lDOWNlO3QkFDI2N2YzMzUhRmVjN2NmZuU2xm&amp;img=../pop/images2/shipin_pic.gif&amp;play=true" name="movie">\
+				  <param value="high" name="quality">\
+				  <param name="SCALE" value="exactfit"/>\
+				  <param value="true" name="allowFullScreen">\
+				  <param value="false" name="menu">\
+				  <param value="transparent" name="wmode">\
+				  <param value="aaaa" name="title">\
+				<embed height="252" width="328" menu="false"  SCALE="exactfit" allowfullscreen="true" value="transparent" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" quality="high" style="z-index: inherit;" src="../public/system/flash/player.swf?path=0HRaoDc3Lvd3d34yUjNmLxbvNk9SRXY3LhZpZvVG8ycDMyMwEvQDAjYWY4NiJ1U2lDOWNlO3QkFDI2N2YzMzUhRmVjN2NmZuU2xm&amp;img=../data/videos/201004/pic/536f9cea387ce656da3848c6bb70b37c_5.jpg&amp;play=true">\
+				</object>';
+				_popup(flashHtml);
+			}
+</script>
+<script src="../pop/jump.js"></script>
+</head>
+
+<body>
+<div id="bodyBox">
+	<div id="topBox">
+    	<div class="topFun">
+        
+           我要找：
+		     <input name="gender" type="radio" value="0" checked="checked" class="select" />
+            男士
+			<input name="gender" type="radio" value="1" class="select" />
+            女士
+			<input name="photo" type="checkbox" value="1" checked="checked" class="select" />
+            有照片
+            年龄：
+            <script>getSelect('selw60','age1','agebegin','','21',age);</script>
+            至
+            <script>getSelect('selw60','age2','ageend','','30',age) ;</script>
+            地区：
+            <script>getProvinceSelect66('w60','workprovince','workprovince','workcit','','10100000');</script>
+			<script>getCitySelect66('w60','workcit','workcit','','');</script>
+             <input id="quick_search" name="quick_search" type="submit" onclick="return checkRightResearchForm();" value="&nbsp;" class="btn" />
+           
+        </div>
+    	<div class="topRegedit">
+        	<p class="info">我们每天都能收到红娘网会员幸福恋爱的喜讯！只要一分钟，很多惊喜等着你！</p>
+        	<div class="formDiv">
+<form name="register_stepone" action="../index.php?n=register&h=stepone" method="post" onsubmit="return checkForm(this);">                	<p class="input_text"><strong>*</strong>注册邮箱：<input id="username" name="username" type="text" value="作为登录用户名及找回密码使用" title="此邮箱将成为您日后找回密码的途径之一" class="text" tabindex='1'/>&nbsp;<span style="margin-top:-2px;" id="validateemailID"></span><input type="hidden" value="false" id='emailmessage' /></p>
+                    <p class="input_text"><strong>*</strong>红娘密码：<input type="password" name="password" id="password" class="text"  tabindex='2'/>&nbsp;<span style="" id="pwdtip"></span><input type="hidden" value="false" id='passmessage' /></p>
+                    <p class="input_text"><strong>*</strong>确认密码：<input type="password" name="password2" id="password2" class="text"  tabindex='3'/>&nbsp;<span style="" id="pwdtip2"></span></p>
+                    <p class="input_text" style="margin-bottom:0px"><strong>*</strong>手　　机：<input id="telphone" name="telphone" type="text" class="text" value="填入手机号码获红娘免费牵线" title="红娘为您牵线搭桥，成就您的美满爱情"  tabindex='4'/>&nbsp;
+				<span style=" " id="validatetelphoneID"></span></p>
+                <p class="photoTip">不会产生任何手机费用，请放心填写。</p>
+                    <p style="margin-top:0px"><strong>*</strong>性　　别：<input type="radio" name="gender" value="1" id="mysex2" class="select"  tabindex='5'/><label for="sex1">女士</label><input type="radio" name="gender" value="0" checked="checked" id="mysex1" class="select"  tabindex='6'/><label for="sex2">男士</label></p>
+                    <p><strong>*</strong>出生日期：
+						<script>getYearsSelect('','year','year','0','-1');</script>&nbsp;
+						<script>getMonthsSelect('','month','month','0','-1');</script>
+						<script>getDaysSelect('','day','day','0','-1');</script>
+                	</p>
+                    <p><strong>*</strong>工作地区：
+                    <script>getProvinceSelect43rds('','workprovincereg','workprovincereg','workcity',c_provice,'10100000');</script>
+				<script>getCitySelect43rds('','workcity','workcity',c_city,'');</script></p>
+                <input type="hidden" value="false" id='telphonemessage' />
+				<input id="mustphone" type="hidden" value="1" name="mustphone"/>
+				<input name="agree" type="hidden" id="agree" value="1" />
+				<input name="telphonecheck" type="hidden" value="1" />
+				<input name="actio" type="hidden" id="actio" value="false" />
+				<input name="istueiguang" type="hidden" id="istueiguang" value="1" />
+                 <p class="regedit_sumbit"><input  id="register_submitone" name="register_submitone" src="images3/regedit_btn.jpg"  value=""  type="image" class="regist_button" /></p>
+                </form>
+            </div>
+        </div>        
+    </div>
+  <div id="middleBox">
+  	<div class="m01"><img src="images3/middle_bar.jpg" width="1000" height="76" border="0" usemap="#Map" />
+      <map name="Map" id="Map">
+        <area shape="rect" coords="841,12,993,36" href="javascript:show()" />
+      </map>
+  	</div>
+  	<div class="video">
+    	<span class="video_user"><img src="images3/shipin_pic_02.jpg" onclick="return videoFlash()" /></span>
+        <span class="info_user" ><a href="n=space&amp;h=art&amp;uid=2154571"><img src="images3/show01.jpg" width="221" height="138" style="margin:10px 0 0 3px;"/></a></span>
+        <span class="info_user" ><a href="n=space&amp;h=art&amp;uid=2154571"><img src="images3/show03.jpg" width="221" height="138" style="margin:10px 0 0 3px;"/></a></span>
+        <span class="info_user">
+        	<a href="n=space&amp;h=art&amp;uid=2154571"><img src="images3/show05.jpg" width="221" height="138" style="margin:10px 0 0 3px;"/></a>
+      </span>
+    </div>  
+    <div class="tuijian"><img src="images3/middle_bar2.jpg" width="1000" height="37" border="0" usemap="#Map2" />
+      <map name="Map2" id="Map2">
+        <area shape="rect" coords="826,8,989,32" href="javascript:show()" />
+      </map>
+    </div>
+    <div class="tuijian_p">
+    <div class="tuijian_c">
+    	<ul>
+        	<li><a href="../index.php?n=space&uid=2154013" target="_blank"><img src="images3/uesr01.jpg" width="137" height="196" /></a><a href="../index.php?n=space&uid=2154013" target="_blank">静忆</a><p>合肥  22岁</p></li>
+        	<li><a href="../index.php?n=space&uid=2153826" target="_blank"><img src="images3/uesr02.jpg" width="137" height="196" /></a><a href="../index.php?n=space&uid=2159633" target="_blank">小美</a>
+   	    <p>上海  24岁</p></li>
+        	<li><a href="../index.php?n=space&uid=2154150" target="_blank"><img src="images3/uesr03.jpg" width="137" height="196" /></a><a href="../index.php?n=space&uid=2154150" target="_blank">水之梦</a><p>南京  26岁</p></li>
+        	<li><a href="../index.php?n=space&uid=2154571" target="_blank"><img src="images3/uesr04.jpg" width="137" height="196" /></a><a href="../index.php?n=space&uid=2154571" target="_blank">CG骑士</a>
+   	          <p>广东  22岁</p></li>
+        	<li><a href="../index.php?n=space&uid=2149792" target="_blank"><img src="images3/uesr05.jpg" width="137" height="196" /></a><a href="../index.php?n=space&uid=2149792" target="_blank">寻找知心</a><p>临沂  24岁</p></li>
+        	<li><a href="../index.php?n=space&uid=2146337" target="_blank"><img src="images3/uesr06.jpg" width="137" height="196" /></a><a href="../index.php?n=space&uid=2146337" target="_blank">℡Phoeni</a>
+        	<p>天津  26岁</p></li>
+       </ul>
+    </div>
+    </div>  
+  </div>
+    <div id="bottomBox">
+    <div><img src="images3/mudole_bg4.jpg" width="1000" height="42" border="0" usemap="#MapMap" />
+      <map name="MapMap" id="MapMap"><area shape="rect" coords="837,10,989,34" href="javascript:show()" /><area shape="rect" coords="837,10,989,34" href="javascript:show()" />
+        <area shape="rect" coords="470,10,622,34" href="javascript:show()" />
+      </map>
+    </div>
+    	<div class="b_l">
+    	  <div class="b_l_c">
+       	  <dl>
+                	<dt><a href="../index.php?n=story&h=content&sid=70"><img src="http://www.7651.com/data/upload/story/210_big.jpg" /></a></dt>
+                    <dd class="dd_title"><a href="../index.php?n=story&h=content&sid=70">爱情在敲门</a></dd>
+                    <dd><strong>他：</strong>旭旭<strong>她：</strong>甜甜</dd>
+                    <dd><strong>结婚纪念日：</strong>2010-5-12</dd>
+                    <dd>当我在红娘网上看到甜甜的的照片时，就被她的大眼睛吸引住了，然后我就委托红娘帮我联系她，但是一直没回音，等的我那个焦急啊。一周后红娘来电说，女方愿意和我QQ联系。小样，还挺神秘呢！我加她QQ后也一直没反应，又过了一周，她才加我为好友……<a href="#">【详细】</a></dd>
+                </dl>
+                
+                <dl>
+                	<dt><a href="../index.php?n=story&h=content&sid=69"><img src="./images3/story2.jpg" /></a></dt>
+                    <dd class="dd_title"><a href="#">重新寻觅幸福</a></dd>
+                    <dd><strong>他：</strong>洋洋 <strong>她：</strong>燕燕</dd>
+                    <dd><strong>结婚纪念日：</strong>2010-4-26</dd>
+                    <dd>燕燕今年她39岁。她是一名公务员，相貌端正，身材姣好，性格温和，爱好音乐、民族舞，打乒乒球。有住房。戴着一副近视眼镜的她，有几份知识女性的气质。燕燕几年前与丈夫离婚，正所谓家家有本难念的经，丈夫的大男主义以及不顾家，导致了这场婚姻最终的解体……<a href="#">【详细】</a></dd>
+                </dl>
+            </div>
+        </div>
+    	<div class="b_r">
+    	  <div class="b_r_c">
+       	  <dl>
+                	<dt>·红娘网荣获“2008年度最佳婚恋网站”</dt>
+                    <dd>——互联网周刊《2008年中国商业网站排行榜》评选结果</dd>
+                </dl>
+                <dl>
+                	<dt>·中国最大的婚恋网站-红娘网荣获“2007年度婚恋交友类最佳市场占有率”</dt>
+                    <dd>——互联网周刊《2007年中国商业网站排行榜》评选结果</dd>
+                </dl>
+                <dl>
+                	<dt>·红娘网荣获 2006中国友谊协会“用户最满意的婚恋网站”的奖项</dt>
+                    <dd>——中国友谊协会《2006“中国”友推荐婚恋网排行榜》评选结果</dd>
+                </dl>
+            </div>
+        </div>   
+        <div style="clear:both"></div>  
+        <div class="copyright">
+        	<p><a href="../index.php?n=about&h=us">关于我们</a> | <a href="../index.php?n=about&h=media">媒体关注</a> | <a href="../index.php?n=about&h=contact">联系我们</a> | <a href="../index.php?n=about&h=links">合作伙伴</a> | <a href="../index.php?n=about&h=getsave">意见反馈</a> | <a href="../index.php?n=story">成功故事</a> | <a href="../index.php?n=payment&h=channel">汇款信息</a></p>
+            <p><img src="images3/bottom_tel.jpg" width="479" height="37" /></p>
+ 	</p>Copyright &copy; 1998-2009 增值电信业务经营许可证皖B2-20040382号 皖ICP备09023576号 </p>
+    
+        </div>   
+    </div>
+</div>
+<script type="text/javascript"> 
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://mycount.7651.com/" : "http://mycount.7651.com/");
+//document.write("script src='" + pkBaseURL + "piwik.js' type='text/javascript'/script");
+//document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.php?site_id=1' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript"> 
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "cnzz.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://mycount.7651.com/cnzz.php?idsite=1" style="border:0" alt=""/></p></noscript>
+
+<script type="text/javascript">
+$("a").not("#logo").not("#p_a > a").click(function(){
+	alert("请先注册！");
+	location.href='#top';
+	return false;
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="templates/js/My97DatePicker/skin/WdatePicker.css">
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+
+<script>
+$(function(){
+	$("#list-table tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+})
+
+
+
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+</style>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 成功订单总数</span>
+<!--  <span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>  -->
+<span class="action-span"><a href="index.php?action=financial_ordertotal&h=list">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;" onmouseover="$('#aboutorder').hide()">
+<form action="" method="get">
+  <tr border="2">
+  	<td>
+    
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：
+		<input realvalue="" name="bgtime" value="{if $bgtime}{$bgtime}{else}{php echo date('Y-m-d',(time()-60*60*24*30));}{/if}" onfocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width: 100px;" type="text">
+	 &nbsp;到
+		<input realvalue="" name="endtime" value="{if $endtime}{$endtime}{else}{php echo date('Y-m-d',time()+60*60*24);}{/if}" onfocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width: 100px;" type="text">
+	 &nbsp;&nbsp;
+		<input type="hidden" name="action" value="financial_ordertotal" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input name="search" type="submit" value="搜 索"/>
+	</td>
+	  </tr>
+</form>
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='2' id='list-table'>
+  <tr>
+    <th width="50%">成功订单总数</th>
+    <th width="50%">日期</th>
+  </tr>
+  <tr>
+    <td align="center">{$total['num']}</td>
+    <td align="center">{if $bgtime}{$bgtime}{else}{php echo date('Y-m-d',(time()-60*60*24*30));}{/if} 到{if $endtime}{$endtime}{else}{php echo date('Y-m-d',time()+60*60*24);}{/if}</td>
+ </tr>
+  </table>
+
+  <div style="padding:5px;background:#fff">
+	
+</div>
+
+
+  
+</div>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>成功故事——真爱一生网</title>
+<link href="module/story/templates/{$GLOBALS['style_name']}/story.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+			$("a.zoom").fancybox();
+});
+</script>
+<body>
+<div class="main">
+	{template system/header public}<!--head-search end-->
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=story">成功故事</a>&nbsp;&gt;&gt;&nbsp;{$love_story['title']}</span></p>
+		<div class="clear"></div>
+		<div class="story">
+			<div class="marry_top">
+			    <div class="float"></div>
+				<div class="updata-box">
+					<input name="uploadStory" type="button" class="btn btn-default"  value="上传成功故事" />
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="marrybig">
+				<div class="marrysmall">
+					<div class="detailbox">
+						<div class="detailbox-left">
+                        {php //恋爱、订婚、结婚、第一次见面样式}
+                          {if $love_story['state'] == 1}
+                          {php $class = 'engagement';$sta = '恋爱'}
+                          {elseif $love_story['state'] == 2}
+                          {php $class = 'love';$sta = '订婚'}
+                          {elseif $love_story['state'] == 3}
+                          {php $class = 'marriage';$sta = '结婚'}
+                          {elseif $love_story['state'] == 4}
+                          {php $class = 'firstLook';$sta = '第一次见面'}
+                          {/if}
+							<div class="marriage">
+								<div class="{$class}">
+									{if $show_pic}
+                                   <a class="zoom" rel="group"  href="{if $show_pic['0']['img']}{php echo IMG_SITE.STORY_IMG_PATH.$show_pic['0']['img'];}{/if}" >
+                                   {else}
+                                   <a  class="zoom" href="public/system/images/nopic.jpg">
+                                   {/if}
+                                    {php $picmedium = MooGetstoryphoto($love_story['sid'],$love_story['uid'],'medium');}
+                    
+                                    {if $picmedium}
+                                    <img src="{$picmedium}" />
+                                    {else}
+                                    <img src="module/story/templates/default/images/pic2.jpg" />
+                                    {/if}
+                                   </a>
+                                   <span>{$sta}纪念日：{php echo date("Y-n-j",$love_story['story_date']);}</span> 
+								</div>
+							</div>
+							<div class="clear"></div>
+							<div class="look-photo">
+                              {if $show_pic}
+                               <A class="zoom" rel="group" href="{if $show_pic['0']['img']}{php echo IMG_SITE.STORY_IMG_PATH.$show_pic['0']['img'];}{/if}">
+                               {else}
+                               <A  class="zoom" href="public/system/images/nopic.jpg">
+                               {/if}
+                               查看他们的幸福相册</A>
+              				 </div>
+						</div>
+                        {loop $show_pic $k $show_pics}
+                        {if $k != 0}
+                        <a class="zoom" rel="group" href="{php echo IMG_SITE.STORY_IMG_PATH.$show_pics['img'];}" ></a>
+                        {/if}
+                        {/loop}
+						<h3>{$love_story['title']}</h3>
+						<dl class="story-text">
+							<dt> <font class="f-ed0a91">{$love_story['name1']}</font> 与<font class="f-ed0a91"> {$love_story['name2']}</font> 的爱情故事</dt>
+							<dd>{php echo TextHtml($love_story['content'])}</dd>
+						</dl>
+						<div class="clear"></div>
+					</div>				
+				</div>
+
+				<div class="s_message">
+		  	<ul>
+            {loop $comment['list'] $v}
+				<li>
+					<p class="s_title">
+						<span>{php echo gmdate('Y-m-d H:s',$v['dateline'])}</span>
+						<a href="#">{if $v['username']==''}ID {$v['uid']}{else}{$v['username']}{/if}</a>
+						评论道：
+					</p>
+					<p class="s_content">{$v['comment']}</p>
+				</li>
+			{/loop}
+            {$comment['page_links']}
+            {if $GLOBALS['MooUid']}	
+				<li class="none_bg">
+					<form onsubmit="return check();" method="post" action="index.php?n=story&h=addcomment&id={$sid}">
+						<textarea id="content" name="content" class="s_text"></textarea>
+						<p><input type="submit" value="提交" class="btn btn-default"></p>
+					</form>
+				</li>
+            {/if}	<!--留言文本框 end-->
+			</ul>
+		  </div>
+		  <div class="clear"></div>
+		</div>	
+	</div>		
+	</div><!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+<script type="text/javascript">
+function check() 
+{ 
+var len = 0; 
+var str=document.getElementById("content").value; 
+for (var i=0; i<str.length; i++) 
+{ 
+if (str.charCodeAt(i)>127 || str.charCodeAt(i)==94) { 
+len += 2; 
+} else { 
+len ++; 
+} 
+}
+if(len>200) 
+{ 
+alert("对不起，评论不能大于200个字节，中文算两个！"); return false;
+} 
+return true;
+} 
+</script>
+<script type="text/javascript">
+    $('input[name=uploadStory]').on('click',function(){
+        location.href='index.php?n=story&h=upload';
+    });
+</script>
+</body>
+</html>

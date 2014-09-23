@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的兴趣爱好——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/art.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>兴趣爱好 <i>Hobbies</i></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			  <div class="s-hobbies">
+			    
+<div class="s-hobbies1" style="text-indent: 24px"><p>平时我最喜欢做的事情就是打篮球。这是我最喜欢的运动，从初中时开始接触，至高中大学，篮球场总是少不了我的身影。值得自豪的是自己身高还可以，有1米85，球场上是打中锋位置，中锋是抢篮板，三秒区内的杀手，配合着合理的身体运用，一些小技巧，跳投、 勾手、转身、命中率很高。现在参加工作了，平时也没多少时间打球，但是周末有时间的话就会去活动下，篮球本身也是我自我调节的一种方式，偶尔心情不好时，疯狂的打一场球赛，累到全身发软，跑不动，满身大汗的，很狼狈，呵呵！但是心情会随之很舒畅！</p>
+ </div>        
+ 
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+			  </div>
+			  </div>
+			  
+			 <h4>兴趣留言</h4>
+			
+			<div class="v_word" id="v_word">
+				<div class="w_left"></div>
+				<div class="w_center">
+					<input type="text" class="inputbox" id="comment_select" value="" readOnly=true />
+					<div class="down_div">&nbsp;</div>
+					<div class="face_img" id="picface" onclick="showFace(this,this.id,'comment_select')">
+						<img align="absmiddle" src="public/system/images/facelist.gif">				
+					</div>
+					<input type="hidden" value="" name="commentid" id="commentid" />
+					<input type="hidden" value="{$gender_value}" name="gender_value" id="gender_value" />
+					<input type="hidden" value="{$GLOBALS['style_uid']}" name="uid" id="uid" />
+					<input type="hidden" value="" name="choose_comment" id="choose_comment"/>
+					<input type="hidden" value="" name="choose_face" id="choose_face" />
+					
+					<input name="" type="button" class="mess_btn" value="发表" onclick="checkReply('','lifetimes')"/>
+					<div class="list_div" id="list_div" style="display:none">
+						<ul>
+							<!-- <li id="{$key}_{$gender_value}_{$vid}_{$GLOBALS['uid']}">$comment</li> -->
+							{loop $comment_list $key $comment}
+								<li id="{$key}">{$comment}</li>
+							{/loop}
+						</ul>
+					</div>	<!--留言 end-->
+				</div>
+				<div class="w_right"></div>
+			</div>
+				
+					{loop $life_comment $comment}
+					<div class="w_commit">
+						<a href="index.php?n=space&uid={$comment['uid']}">{$comment['nickname']} </a>
+						{php echo sdate('Y-m-d H:i',$comment['dateline']);}
+						<p>{$comment['comment']}</p>
+					</div>
+					{/loop}
+				</div>
+				<div class="page">
+					{php echo multimail($count,$pagesize,$page,$currenturl2)}
+				</div>	
+			  
+				
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网-活动专题页</title>
+<link type="text/css" href="module/activity/templates/default/css.css" rel="stylesheet" />
+
+{template system/js_css public}
+
+<script type=text/javascript>
+var $ = function (id) {
+	return "string" == typeof id ? document.getElementById(id) : id;
+};
+
+var Extend = function(destination, source) {
+	for (var property in source) {
+		destination[property] = source[property];
+	}
+	return destination;
+}
+
+var CurrentStyle = function(element){
+	return element.currentStyle || document.defaultView.getComputedStyle(element, null);
+}
+
+var Bind = function(object, fun) {
+	var args = Array.prototype.slice.call(arguments).slice(2);
+	return function() {
+		return fun.apply(object, args.concat(Array.prototype.slice.call(arguments)));
+	}
+}
+
+var Tween = {
+	Quart: {
+		easeOut: function(t,b,c,d){
+			return -c * ((t=t/d-1)*t*t*t - 1) + b;
+		}
+	},
+	Back: {
+		easeOut: function(t,b,c,d,s){
+			if (s == undefined) s = 1.70158;
+			return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+		}
+	},
+	Bounce: {
+		easeOut: function(t,b,c,d){
+			if ((t/=d) < (1/2.75)) {
+				return c*(7.5625*t*t) + b;
+			} else if (t < (2/2.75)) {
+				return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+			} else if (t < (2.5/2.75)) {
+				return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+			} else {
+				return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+			}
+		}
+	}
+}
+
+
+//容器对象,滑动对象,切换数量
+var SlideTrans = function(container, slider, count, options) {
+	this._slider = $(slider);
+	this._container = $(container);//容器对象
+	this._timer = null;//定时器
+	this._count = Math.abs(count);//切换数量
+	this._target = 0;//目标值
+	this._t = this._b = this._c = 0;//tween参数
+	
+	this.Index = 0;//当前索引
+	
+	this.SetOptions(options);
+	
+	this.Auto = !!this.options.Auto;
+	this.Duration = Math.abs(this.options.Duration);
+	this.Time = Math.abs(this.options.Time);
+	this.Pause = Math.abs(this.options.Pause);
+	this.Tween = this.options.Tween;
+	this.onStart = this.options.onStart;
+	this.onFinish = this.options.onFinish;
+	
+	var bVertical = !!this.options.Vertical;
+	this._css = bVertical ? "top" : "left";//方向
+	
+	//样式设置
+	var p = CurrentStyle(this._container).position;
+	p == "relative" || p == "absolute" || (this._container.style.position = "relative");
+	this._container.style.overflow = "hidden";
+	this._slider.style.position = "absolute";
+	
+	this.Change = this.options.Change ? this.options.Change :
+		this._slider[bVertical ? "offsetHeight" : "offsetWidth"] / this._count;
+};
+SlideTrans.prototype = {
+  //设置默认属性
+  SetOptions: function(options) {
+	this.options = {//默认值
+		Vertical:	true,//是否垂直方向（方向不能改）
+		Auto:		true,//是否自动
+		Change:		0,//改变量
+		Duration:	50,//滑动持续时间
+		Time:		10,//滑动延时
+		Pause:		4000,//停顿时间(Auto为true时有效)
+		onStart:	function(){},//开始转换时执行
+		onFinish:	function(){},//完成转换时执行
+		Tween:		Tween.Quart.easeOut//tween算子
+	};
+	Extend(this.options, options || {});
+  },
+  //开始切换
+  Run: function(index) {
+	//修正index
+	index == undefined && (index = this.Index);
+	index < 0 && (index = this._count - 1) || index >= this._count && (index = 0);
+	//设置参数
+	this._target = -Math.abs(this.Change) * (this.Index = index);
+	this._t = 0;
+	this._b = parseInt(CurrentStyle(this._slider)[this.options.Vertical ? "top" : "left"]);
+	this._c = this._target - this._b;
+	
+	this.onStart();
+	this.Move();
+  },
+  //移动
+  Move: function() {
+	clearTimeout(this._timer);
+	//未到达目标继续移动否则进行下一次滑动
+	if (this._c && this._t < this.Duration) {
+		this.MoveTo(Math.round(this.Tween(this._t++, this._b, this._c, this.Duration)));
+		this._timer = setTimeout(Bind(this, this.Move), this.Time);
+	}else{
+		this.MoveTo(this._target);
+		this.Auto && (this._timer = setTimeout(Bind(this, this.Next), this.Pause));
+	}
+  },
+  //移动到
+  MoveTo: function(i) {
+	this._slider.style[this._css] = i + "px";
+  },
+  //下一个
+  Next: function() {
+	this.Run(++this.Index);
+  },
+  //上一个
+  Previous: function() {
+	this.Run(--this.Index);
+  },
+  //停止
+  Stop: function() {
+	clearTimeout(this._timer); this.MoveTo(this._target);
+  }
+};
+var province = new Array("10102000,北京","10103000,上海","10101201,深圳","10101002,广州","10101000,广东","10104000,天津","10105000,重庆","10106000,安徽","10107000,福建","10108000,甘肃","10109000,广西","10110000,贵州","10111000,海南","10112000,河北","10113000,河南","10114000,黑龙江","10115000,湖北","10116000,湖南","10117000,吉林","10118000,江苏","10119000,江西","10120000,辽宁","10121000,内蒙古","10122000,宁夏","10123000,青海","10124000,山东","10125000,山西","10126000,陕西","10127000,四川","10128000,西藏","10129000,新疆","10130000,云南","10131000,浙江","10132000,澳门","10133000,香港","10134000,台湾","-2,国外");
+
+var city = new Array("10106001,合肥","10118001,南京","10127001,成都","10125001,太原","10115001,武汉");
+
+function gotoPage() {
+	var page = document.getElementById('pageGos').value;
+	if(page<1 || page>{$page_num}){
+		alert('页码有误');
+	}else{
+		window.location.href = "{$currenturl}&page="+page;
+	}
+	
+}
+</script>
+</head>
+
+<body>
+<div class="clear"></div>
+{template system/header public}
+<!--头部结束-->
+<div class="clear"></div>
+<div id="box"  style="+margin-left:208px;">
+
+	<div id="box">
+<!-- content -->
+		<div class="content">
+            <!-- 主要内容 左 -->
+				<div class="content_left">
+                	<div class="left_a">
+                    	<h1>
+                        	<span>活动专区</span>
+                            <ol>
+                            	<li ><a {if $group == 1}class="hover"{/if} href="index.php?n=activity&h=activity&group=1">最新活动</a></li>
+                            	<li><a {if $group == 2}class="hover"{/if} href="index.php?n=activity&h=activity&group=2">线下相亲活动</a></li>
+                            	<li><a {if $group == 3}class="hover"{/if} href="index.php?n=activity&h=activity&group=3">电视相亲活动</a></li>
+								<li><a {if $group == 4}class="hover"{/if} href="index.php?n=activity&h=activity&group=4">电视节目视频</a></li>
+                            </ol>
+                        </h1>
+                        <div class="clear"></div>
+						{if $group != 4}
+                        <div class="hd_place">
+						<form action="index.php?n=activity&h=activity&group={$group}" method="post">
+                        	<p>地区：  <script>getProvinceSelect43rds('','province','province','city','{$province}','10100000');</script>   
+                               <input name="" value="" type="submit" style="width:48px; height:21px; background:url(module/activity/templates/default/images/activity_new/search_btn.gif) no-repeat; border:none;" />      
+                            </p>
+							</form>
+                        	<div>热点城市：
+                            	<a href="index.php?n=activity&h=activity&group={$group}&city=10106001"><tt>合肥</tt></a>
+                                <a href="index.php?n=activity&h=activity&group={$group}&city=10118001"><tt>南京</tt></a>
+                                <a href="index.php?n=activity&h=activity&group={$group}&province=10103000"><tt>上海</tt></a>
+                                <a href="index.php?n=activity&h=activity&group={$group}&city=10127001"><tt>成都</tt></a>
+                                <a href="index.php?n=activity&h=activity&group={$group}&city=10125001"><tt>太原</tt></a>
+                                <a href="index.php?n=activity&h=activity&group={$group}&city=10115001"><tt>武汉</tt></a>
+                            </div>
+                        </div>
+						
+                        <div class="hd_banner">
+                        <!-- 图片轮播 -->
+                            <div class="hd_banner_lunbo">
+                                <div id=idContainer2 class=container>
+                                <table id=idSlider2 border=0 cellSpacing=0 cellPadding=0>
+                                  <tbody>
+								  {loop $result $k $v}
+								  	  <td class=td_f><a href="{$v[href]}" target="_blank"><IMG src="{$v[address]}"></a></td>
+								  {/loop}
+                                  
+                                  </tbody></table>
+                                <ul id=idNum class=num></ul>
+                                </div>
+                                
+                                <script>
+                                    var forEach = function(array, callback, thisObject){
+                                        if(array.forEach){
+                                            array.forEach(callback, thisObject);
+                                        }else{
+                                            for (var i = 0, len = array.length; i < len; i++) { callback.call(thisObject, array[i], i, array); }
+                                        }
+                                    }
+                                    
+                                    var st = new SlideTrans("idContainer2", "idSlider2", 6, { Vertical: false });
+                                    
+                                    var nums = [];
+                                    //插入数字
+                                    for(var i = 0, n = st._count - 1; i <= n;){
+                                        (nums[i] = $("idNum").appendChild(document.createElement("li"))).innerHTML = ++i;
+                                    }
+                                    
+                                    forEach(nums, function(o, i){
+                                        o.onmouseover = function(){ o.className = "on"; st.Auto = false; st.Run(i); }
+                                        o.onmouseout = function(){ o.className = ""; st.Auto = true; st.Run(); }
+                                    })
+                                    
+                                    //设置按钮样式
+                                    st.onStart = function(){
+                                        forEach(nums, function(o, i){ o.className = st.Index == i ? "on" : ""; })
+                                    }
+                                    st.Run();
+                                </script>
+							</div>   
+                        <!-- 图片轮播 结束 -->
+                            <ul class="hd_banner_news">
+								  	<li><a href="index.php?n=activity&h=luck"><p><span>{php echo empty($channel_count[17])?0:$channel_count[17];}</span>人参与</p><tt>☆</tt>【成都】 缘分，只有今生没有来世</a></li>
+								<li><a href="index.php?n=activity&h=near"><p><span>{php echo empty($channel_count[14])?0:$channel_count[14];}</span>人参与</p><tt>☆</tt>【上海】原来，幸福离我们那么近</a></li>
+								<li><a href="index.php?n=activity&h=wink"><p><span>{php echo empty($channel_count[15])?0:$channel_count[15];}</span>人参与</p><tt>☆</tt>【南京】瞬间情意，一生记忆</a></li>
+							<li><a href="index.php?n=activity&h=sing"><p><span>{php echo empty($channel_count[16])?0:$channel_count[16];}</span>人参与</p><tt>☆</tt>【太原】有没有那么一首歌会让您想起我</a></li>
+							
+							<li><a href="index.php?n=activity&h=sctv"><p><span>{php echo empty($channel_count[7])?0:$channel_count[7];}</span>人参与</p><tt>☆</tt>【成都】四川电视 海选活动 《闻香识女人》 </a></li>
+                            	<li><a href="index.php?n=activity&h=gourd"><p><span>{php echo empty($channel_count[18])?0:$channel_count[18];}</span>人参与</p><tt>☆</tt>【合肥】弱水三千，我只取一瓢</a></li>
+                            	<li><a href="index.php?n=activity&h=xscm"><p><span>{php echo empty($channel_count[10])?0:$channel_count[10];}</span>人参与</p><tt>☆</tt>【上海】海选活动 《丈母娘看女婿》</a></li>
+                            	
+                          
+				
+                            
+                            </ul>   
+						</div>
+						{/if}
+                        <div class="clear"></div>
+					</div>
+					
+					 <div class="left_tv">
+						
+					{if is_array($content) && $group != 4}
+                      {loop $content $key $value}
+						<dl>
+                            <div><b><span>{$value[title]}</span></b></div>
+                            <div class="number">
+							
+							
+                                <div style="background:#ffe5eb; border-bottom:1px #999 dashed; "><b>已报名<span>{php echo empty($channel_count[{$value[id]}])?0:$channel_count[{$value[id]}];}</span>人</b></div>
+                                <div style="background:#ffe5eb; border-bottom:1px #f583b0 solid;">不限</div>
+                                <div style="padding:5px 0; height:22px;"><a href="{$value[href]}">
+								{if $value[closetime]>=$time}
+								<img src="module/activity/templates/default/images/activity_new/manu.gif" />
+								{else}
+								<img src="module/activity/templates/default/images/activity_new/end.gif" />
+								{/if}
+								</a></div>
+                                <div><a href="{$value[href]}">[详细]</a></div>
+                            </div>            	
+                            <dt><a href="{$value[href]}"><img src="{$value[activity_img]}" /></a></dt>
+                            <dd>
+                                <p><b>时间：</b><span>{if strlen($value['time'])<=4}待定{else}{$value['time']}{/if}</span></p>
+                                <p><b>地点：</b>{$value['place']}</p>
+                                <p><b>活动简介：</b>{$value['profile']}</p>
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+			
+					  {/loop}
+					  {elseif $group != 4}
+					   <p align="center" style="margin-top:50px; margin-bottom:30px;"><span style="font-size:18px; font-weight:600;">{$content}</span></p>
+					  		
+					  {/if}
+                      
+					<div style="clear:both"></div>
+					{if $group !=4}
+                        <div class="mail_page">
+                            <a href="index.php?n=activity&h=activity&group={$group}&page={$up}"><span>上一页</span></a>
+							第
+							{loop $pages $key $value}
+								{if $value == $page}
+								 <a class="this_page">{$value}</a>
+								{else}
+								<a href="index.php?n=activity&h=activity&group={$group}&page={$value}"><span>{$value}</span></a>
+								{/if}
+							{/loop}
+                              页
+                            共{$page_num}页 
+                            <a href="index.php?n=activity&h=activity&group={$group}&page={$down}"><span>下一页</span></a>
+                            转到
+                            第 <input name="pageGo" id="pageGos" type="text" style="border:1px #CCC solid; width:24px;"> 页 
+                            <input type="button"  value="GO" class="button" onclick="gotoPage()"/>
+                        </div>
+					{/if}
+					{if $group == 4}
+						
+							<div class="video"  style="width: 384px; height: 1418px; margin: 30px auto 0;">
+							   <ol class="video_ul">
+								  <li><div id="v1"></div></li>
+							   </ol>
+							   <h3 style="margin-top:10px; margin-left:20px;">真爱一生网会员韩子琪参加太原电视台《倾城热恋》节目视频。</h3>
+							   <div class="clear"></div>
+							</div>
+					
+					{/if}
+                    </div>
+                </div>  
+				  
+				
+				
+            <!-- 主要内容 左 结束 -->
+            <!-- 主要内容 右 -->
+				<div class="content_right">
+                   <div>
+                          <div class="header">
+                             <div><img src="module/activity/templates/default/images/activity_new/top.jpg" /></div>
+                             <div class="header_l"></div>
+                             <div class="header_m"><a href="#" style="float:right; ">更多</a><b>往期回顾</b></div>
+                              <div class="header_r"></div>
+                          </div>
+                          <div></div>
+                          <ul class="huigu">
+						   	<li><a href="index.php?n=activity&h=eyes">· 2011.8.27 只是因为在人群中多看您一眼——线下交友派对</a></li>
+							 <li><a href="index.php?n=activity&h=hbtv">· 2011.8.27 湖北卫视《相亲齐上阵》——男女嘉宾海选活动</a></li>
+						   <li><a href="index.php?n=activity&h=xuanyan">· 2011.8.21 爱的表白 真爱一生网为您宣读----线下交友派对</a></li>
+							<li><a href="index.php?n=activity&h=qixi">· 2011年7月31日 七夕追爱悄然来袭----夕情人节交友派对</a></li>
+                           	<li><a href="index.php?n=activity&h=ahtv">· 2011.7.10安徽卫视《周日我最大》“缘来就是您”——男嘉宾海选活动</a></li>
+                           	<li><a href="index.php?n=activity&h=lntv">· 2011.7.17辽宁卫视《幸福来敲门》——男女嘉宾海选活动</a></li>
+                     </ul>
+                           <div><img src="module/activity/templates/default/images/activity_new/down_b.jpg" /></div>
+                  </div>
+                   <div style="height:10px; "></div>
+                    <div>
+                          <div class="header">
+                             <div><img src="module/activity/templates/default/images/activity_new/top.jpg" /></div>
+                             <div class="header_l"></div>
+                             <div class="header_m"><b>线下相亲活动</b></div>
+                              <div class="header_r"></div>
+                          </div>
+                          <ul class="huigu">
+                          	<li><a href="#">1、为了寻找属于自己的幸福，您是否乐意参加线下约会，想要参加哪种类型的线下约会？</a></li>
+                           	<li>
+                            	<label><input name="a" type="radio" value="" /><span>电视相亲类约会</span></label>
+                                <label><input name="a" type="radio" value="" /><span>线下相亲类约会</span></label>
+                            </li>
+                           	<li>
+                            	<label><input name="a" type="radio" value="" /><span>户外互动式约会</span></label>
+                                <label><input name="a" type="radio" value="" /><span>不乐意参加</span></label>
+                            </li>
+                          	<li><a href="#">2、您是否乐意在线下相亲约会活动中，积极参与互动节目，让别人更多的了解自己？</a></li>
+                           	<li>
+                            	<label><input name="b" type="radio" value="" /><span>主动参与</span></label>
+                                <label><input name="b" type="radio" value="" /><span>根据互动界面而定</span></label>
+                            </li>
+                           	<li>
+                            	<label><input name="b" type="radio" value="" /><span>被动参与</span></label>
+                                <label><input name="b" type="radio" value="" /><span>不乐意参加</span></label>
+                            </li>
+                          	<li><a href="#">3、线下约会时，您是否乐意提前准备才艺，并积极表现、展示自己？</a></li>
+                           	<li>
+                            	<label><input name="c" type="radio" value="" /><span>需真爱一生提醒</span></label>
+                                <label><input name="c" type="radio" value="" /><span>才艺随时展现</span></label>
+                            </li>
+                           	<li>
+                            	<label><input name="c" type="radio" value="" /><span>与别人互动</span></label>
+                                <label><input name="c" type="radio" value="" /><span>只做观众</span></label>
+                            </li>
+                          	<li><a href="#">4、线下活动中必需参与的相亲互动小游戏，您可以接受那些？（可多选）</a></li>
+                            <li><label><input name="" type="checkbox" value="" /><span>真心话大冒险</span></label>（好处：男女会员在游戏中可以加深彼此的印象，展示最真实的自己）</li>
+                            <li><label><input name="" type="checkbox" value="" /><span>未来生活模拟剧</span></label>（好处：在情景模拟中可以了解自己搭档对于生活的看法，更能在互动中培养彼此的默契哦！）</li>
+                            <li><label><input name="" type="checkbox" value="" /><span>幸福婚姻学堂</span></label>（好处：在婚姻课堂上积极发表自己的婚恋观，可以让心仪的TA对您独特的见解及对生活的坚持有更深的了解，也会让您“一鸣惊人”，提高您的人气）</li> 
+    						<li><label><input name="" type="checkbox" value="" /><span>千里姻缘一线牵</span></label>（好处：对于自己喜欢的TA， 您是否有勇气3次为TA绕上红绳，牵定一生，深情告白，让您与生命中的TA留下七夕最浪漫的回忆）</li>
+                          	<li><a href="#">5、您参加线下相亲约会时，您觉得什么样的活动费用标准比较合适？</a></li>
+                           	<li>
+                            	<label><input name="d" type="radio" value="" /><span>200元/次/人</span></label>
+                                <label><input name="d" type="radio" value="" /><span>150元/次/人</span></label>
+                            </li>
+                           	<li>
+                            	<label><input name="d" type="radio" value="" /><span>120元/次/人</span></label>
+                                <label><input name="d" type="radio" value="" /><span>100元/次/人</span></label>
+                            </li>
+                            <li>6、对于线下相亲，您希望真爱一生网加强完善的地方有：</li>
+                            <li style="text-align:center; "><textarea name="" cols="" rows="" style="width:190px; height:100px; "></textarea></li>
+                            <li style="text-align:right; "><a href="#"><img src="module/activity/templates/default/images/activity_new/tijiao.gif" /></a></li>
+                          </ul>
+                          <div><img src="module/activity/templates/default/images/activity_new/down_b.jpg" /></div>
+                    </div>
+                        
+				</div>  
+            <!-- 主要内容 右 结束 -->
+			
+                <div class="clear"></div> 
+        </div>
+    <div id="footer">
+        <p><a href="index.php?n=about&h=us">关于我们</a>| <!--  <a href="index.php?n=about&h=media">媒体关注</a> | --> <a href="index.php?n=about&h=contact">联系我们</a> | <a href="index.php?n=about&h=links">合作伙伴</a> | <a href="index.php?n=about&h=getsave">意见反馈</a> | <a href="index.php?n=story">成功故事</a>| <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> |
+      {if ($user_arr['s_cid'] == 30 && $user_arr['bgtime'] > time()-604800) || !empty($GLOBALS['h_pay'])} <a href="index.php?n=payment&h=add_money">其他信息</a> {else} <a href="index.php?n=payment&h=channel">其他信息</a> {/if}</p>
+	  <p></p>
+        <p ></p>
+        <div style="text-align:center; "><img src="module/activity/templates/default/images/activity_new/footer.jpg" /></div>
+        <p>Copyright 2005-2010 版权所有：真爱一生网 闽ICP备09064513号</p>
+        <p>真爱一生网备用域名：www.hongniangw.com | www.hongniangwang.com</p>
+        <div style="height:20px;"></div>
+    </div>
+
+</div>
+   {template system/server_footer public}
+</body>
+{if $group == 4}
+<script type="text/javascript" src="public/system/js/jwplayer.js"></script>
+	<script type="text/javascript">
+	var w='384px',h='288px';
+		jwplayer("v1").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/activity/templates/default/images/flv/tytv/1.flv",
+			image: "module/activity/templates/default/images/tytv/1.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+	</script>
+	{/if}
+</html>

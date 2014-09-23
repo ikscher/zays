@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的兴趣爱好——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>兴趣爱好 <i>Hobbies</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="s-hobbies">
+			    <div class="s-hobbies1">
+			    	<p>罗浮魅影喜欢音乐，尤其是那些比较舒缓且安静的欧美音乐。比如，有帕海贝尔的浪漫的《卡农》，《Dreamtale》亡灵序曲 ，久石让的《天空之城》，《安妮的仙境》,《夜间巴塞罗那》《雪之梦》等等。还有一些比较恢弘大气的影视主题曲，如这一首《帆船之都》里面的歌词&quot;远远的我站在山顶，欣赏你如画的风景；静静地我走在街市，感受你如诗的风情……&quot;罗浮魅影没有特定喜欢的歌手，只要曲子好。喜欢音乐的罗浮魅影会弹钢琴，虽然琴艺不精，但是自弹自唱让他很快乐。</p>
+			    	<p>业余的时候罗浮魅影会自己写写东西记录下自己的心情，偏爱写散文，散文是&quot;集诸美于一身&quot;的文学体裁而且是最自由的文体，不讲究音韵，不讲究排比，没有任何的束缚及限制，这也是罗浮魅影偏爱散文的原因他不是个拘泥于格式化的人。</p>
+			    	<p>另外，他还有一个最大的爱好那就是发呆，他自诩发呆那绝对是个骨灰级的人物，其实发呆也有发呆的好处，可以在自己想象的世界里随意畅游，这也反应出罗浮魅影是位心思细腻且敏感的人。 </p>
+			    </div>
+              </div></div></div><div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

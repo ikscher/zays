@@ -1,0 +1,323 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="templates/css/jquery-ui.css" rel="stylesheet" type="text/css" type="text/css" media="all"  />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<!-- 
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" /> 
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script> 
+ -->
+<script type="text/javascript" src="templates/js/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+//跳转
+	function gotoPage(){
+		var page=$("#pageGo").attr("value");
+		window.location="index.php?action=check&h=monolog&type=list&page="+page;
+	}
+
+	function monologCheck(uid,sid,pass){
+		var url  = "ajax.php?n=change_introduce";
+		$.post(url,{uid:uid,pass:pass,sid:sid,ajax:1},function(str){
+		    
+			if(str == 1){
+				alert('审核通过');
+				$("#monolog_"+uid).html("审核通过");
+				$("#tr_"+uid).hide();
+			}else if (str==-1){
+			    alert('没有权限！');
+
+			}else{
+				alert('审核不通过');
+				$("#monolog_"+uid).html("审核不通过");
+			}
+		})
+	}
+	//全选
+function choose_all(){
+	if($("#choose_all").attr("checked")){
+		$("input[name='uid[]']").attr("checked",true);
+	}else{
+		$("input[name='uid[]']").attr("checked",false);
+	}
+}
+//排序
+function chang_order(field,order){
+	location.href="{$currenturl2}&field="+field+"&order="+order;
+}
+
+
+$(function(){
+    $(".csstab tr").mouseover(function(){
+        $(this).addClass("over");
+    }).mouseout(function(){
+        $(this).removeClass("over");    
+    });
+});
+
+
+$(function() {
+	// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+	//$( "#dialog:ui-dialog" ).dialog( "destroy" );
+	
+	$( "#dialog-form" ).dialog({
+		bgiframe:true, //兼容IE6
+		autoOpen: false,
+		height: 600,
+		width: 500,
+		modal: true,
+		position:['top','left'],
+		buttons: {
+			"确定": function() {
+				var bValid = true;
+				var uid = $("#user_id").html();
+				//var title_val = $("#letter_title1").val();
+				var sid=$("#serviceid").html();
+                
+				var cont_val = $("#letter_content1").val();
+				$.post("ajax.php",{n:'change_introduce',introduce:cont_val,uid:uid,sid:sid,ajax:2},function(str){
+					
+				   if (str==2) {
+				       alert("没有权限！");
+				    }else if (str=='ok'){
+						tabTar = false;
+						$("#introduce_"+uid).html(cont_val);
+						alert('审核成功');
+						$("#tr_"+uid).hide();
+				    }
+
+				});
+				
+				$( this ).dialog( "close" );
+
+			},
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+        /*
+        ,
+		close: function() {
+			allFields.val( "" ).removeClass( "ui-state-error" );
+		}*/
+	});
+
+	
+});	
+
+function onChangeLetter(uid,sid){
+	var content = $("#letter_content1");
+    
+	
+	$("#user_id").html(uid);
+	$("#serviceid").html(sid);
+	
+	$("#modifyLetter_"+uid)
+	//.button()
+	.click(function() {
+		$( "#dialog-form" ).dialog( "open" );
+		//title.val($("#ser_title_"+s_id).html());
+        content.val($("#introduce_"+uid).html());
+		
+
+	});
+}
+
+//==============================直接编辑列表格========================================
+
+$(function() { 
+
+	   $(".listclass").each(function(){ 
+	      var numId=$(this).children().eq(4);
+	
+          var numUid=$(this).children().eq(0);
+	      numId.click(function() { 
+		      var tdObj = $(this); 
+		      if(tdObj.children("textarea").length>0) { 
+		        return false; 
+		      }
+
+		      var uid=numUid.text();
+		      //alert(uid);
+		      var tdVal=tdObj.html();
+		      var textObj = $("<textarea rows='5'>"); 
+	
+		      textObj.click(function(){ //对象的click事件失效
+			    return false; 
+			  }); 
+			  
+		      textObj.css("border-width","0").width(tdObj.width()).css("font-size","14px");
+		      textObj.val(tdVal); 
+		      tdObj.html(""); 
+		      textObj.appendTo(tdObj); 
+		    
+		      textObj.trigger("focus");//.trigger("select"); 
+		    
+		     
+		
+		      //alert(tdObj.html()); 
+		      //处理文本框上回车操作和esc按键操作 
+		      var temVal = textObj.val(); 
+		      textObj.keyup(function(event) { 
+		         var keycode=event.which; 
+		         //alert(keycode); 
+		         //如果是“enter”键，就保存值 
+		         if(keycode==13) { 
+		            var textValue = $(this).val(); 
+		            tdObj.html(textValue); 
+
+					$.post("ajax.php",{n:'change_introduce',introduce:textValue,uid:uid,ajax:2},function(str){
+					    if(str=='ok'){
+							alert('修改成功');
+						}
+					});
+		         } 
+		         //如果是“esc”按就撤销 
+		         if(keycode==27) {  
+		           tdObj.html(temVal); 
+		         } 
+		       }); 
+	
+		      textObj.blur(function(){
+		    	  tdObj.html(temVal); 
+		      });
+    
+	     
+         });
+  }); 
+}); 
+
+</script>
+<style type="text/css">
+    tr.over td {
+	  background:#cfeefe;
+    } 
+
+
+	label{ display:block; }
+	input.text { margin-bottom:12px; width:95%; padding: .4em; }
+	fieldset { padding:0; border:0; margin-top:25px; }
+
+	.ui-dialog .ui-state-error { padding: .3em; } 
+	.validateTips { border: 1px solid transparent; padding: 0.3em; }
+	
+</style>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$lei}</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="margin-bottom:10px;padding:5px;">
+<form action="{$currenturl2}" method="post">
+	会员ID：&nbsp;&nbsp;<input type="text" name="uid" value="{if !empty($uid)}{$uid}{/if}" />&nbsp;&nbsp;
+	{if $myservice_idlist && $myservice_idlist!==$GLOBALS['adminid']}
+		客服：<select name="usersid" id="usersid"  style="height:21px;margin-top:3px;" >
+		   {if $myservice_idlist=='all'}
+		     <option value="-1" {if $usersid==-1}selected="selected"{/if}> 不限</option>
+		     <option value="0" {if $usersid == 0} selected="selected"{/if}>0：</option>
+		   {/if}
+		   {loop $adminUser $value}
+		   <option value="{$value['uid']}" {if $usersid == $value[uid]} selected="selected"{/if}>{$value['uid']}：{$value['username']}</option>
+		   {/loop}
+		</select>
+	{/if}
+	<input type="hidden" name="pass" value="{$pass}" />
+	<input type="submit" value=" 查 找 " /><span class="but_a"><a href="{$currenturl2}&pass=1" {if $_GET['pass']==1}style="font-weight:bold;"{/if}>已审核</a><a href="{$currenturl2}&pass=0" {if $_GET['pass']==0}style="font-weight:bold;"{/if}>未审核</a></span>
+</form>
+</div>
+<div style=" margin-top:10px;">
+	
+</div>
+
+
+
+<div id="dialog-form" title="编辑内心独白">
+    <p class="validateTips">修改过后也通过了审核。会员ID：<span  id="user_id"></span>,所属客服：<span id="serviceid"></span></p>
+
+
+	
+		<!--<label for="subject">主题</label>
+		<input type="text" name="letter_title1" id="letter_title1"  size="40" value="" class="text ui-widget-content ui-corner-all" />
+		-->
+		<label for="content">内容</label>
+		<textarea cols="74" rows="13" id="letter_content1" name="letter_content1"  class="text ui-widget-content ui-corner-all" ></textarea>
+		
+	
+
+</div>
+
+
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table' class="csstab" >
+  <tr>
+    <th><input type="checkbox" id="choose_all" value="choose_all" onclick="choose_all()" />会员ID</th>
+	<th>昵称</th>
+	<th>年龄</th>
+	<th><a href="javascript:chang_order('allotdate','{$order}')"  style="text-decoration:underline;">分配时间</a></th>
+	<th>独白内容(修改，Enter确定，Esc撤销)</th>
+	<th>审核状态</th>
+	<th><a href="javascript:chang_order('sid','{$order}')"  style="text-decoration:underline;">所属客服ID</a></th>
+	<th>操作</th>
+  </tr>
+ {loop $list $v}
+  <tr onmousemove="this.bgColor='#cfeefe';"  id="tr_{$v['uid']}" onmouseout="this.bgColor='#ffffff';" class="listclass">
+    <td align="center">
+		<input type="checkbox" value="{$v['uid']}" name="uid[]" />
+		<a href="#" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{$v['uid']}</a>
+	</td>
+	<td align="center">
+		{if $v['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>
+		{else}<img src="templates/images/m.gif" alt="男" title="男"/>
+		{/if} 
+		<a href="#" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{$v['nickname']}</a>
+	</td>
+	<td align="center">{php if($v['birthyear'])echo date('Y')-$v['birthyear'];else echo "无";}</td>
+	<td align="center">{php echo date('Y-m-d',$v['allotdate']);}</td>
+
+	<td width="400" align="left" style="word-break:break-all;white-space:normal;word-wrap:break-word;" id="introduce_{$v['uid']}">{php echo $v['introduce_check'],$v['syscheck']}</td>
+
+	<td align="center">
+    	{if $_GET['h'] != 'monolog'}
+         {php echo $checkArr[$v['syscheck']];}
+        {else}
+         {php echo $v['syscheck'] !='' || $v['introduce_pass']==1 ? '审核通过' : '未审核';}
+        {/if}
+    </td>
+	<td align="center"><a href="{$currenturl2}&usersid={$v['sid']}">{$v['sid']}</a></td>
+
+ 
+	<td align="center">{php if($_GET['h']=='monolog' && $v['introduce_pass'] !='1')echo '<a onclick="monologCheck('.$v['uid'].','.$v['sid'].',1);return false;" href="#">通过</a> | <a onclick="monologCheck('.$v['uid'].','.$v['sid'].',2);return false;" href="#">不通过</a> | ';} <a href="#"  id="modifyLetter_{$v['uid']}" onclick="onChangeLetter({$v['uid']},{$v['sid']});">修改并审核</a> <span style="color:#F00" id="monolog_{$v['uid']}"></span></td>
+  </tr>
+  {/loop}
+  <tr>
+  	<td colspan="8" align="center">
+		
+		{php echo multipage($total,$prepage,$page,$currenturl2)}
+     	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:35px" value=""/>  页
+     	<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/>
+		{if $pass==0}
+		<span style="margin-left:50px;" ><input type="button"  value="全部通过" onclick="all_pass()" /></span>
+		{/if}
+		</td>
+  	</tr>
+  </table>
+</div>
+<script>
+//全部通过
+function all_pass(){
+	if(!confirm('确认全部通过？')){
+		return;
+	}
+	var uidlist = '';
+	var comma = '';
+	$("input[name='uid[]']:checked").each(function(){
+		uidlist += comma+this.value;
+		comma = ',';
+	})
+	if(uidlist==''){
+		alert('请选择会员');
+		return;
+	}
+	location.href="index.php?action=check&h=check_introduce&uidlist="+uidlist;
+
+}
+</script>

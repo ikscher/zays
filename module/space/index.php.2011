@@ -1,0 +1,806 @@
+<?php
+/*
+ * Created on 2007-10-13
+ *
+ * To change the template for this generated file go to*
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+ */
+/*************************************** 逻辑层(M)/表现层(V) ****************************************/ 
+
+    
+include "./module/{$name}/function.php";
+
+/**
+ * 功能列表
+ */
+
+//note 查看用户资料
+function space_viewpro() {
+	//echo 'dsfsafsadf';
+	global $_MooClass,$dbTablePre,$userid,$timestamp,$user_arr,$val_arr,$style_user_arr,$diamond,$_MooCookie,$memcached;//$val_arr统计资料完善度
+	$uid = $GLOBALS['style_uid'];
+//	if(empty($GLOBALS['style_uid'])){
+//		$uid = $userid;
+//		echo $uid;
+//	}
+	//echo 'style_uid'.$uid.'<br>';
+	//echo 'user_arr'.$user_arr[uid].'<br>';
+	//echo 'userid'.$userid;
+	//note 判断被浏览的会员是否存在
+	if(MOOPHP_ALLOW_FASTDB){
+		$status = MooFastdbGet('members','uid',$uid);
+	}else{
+		$status = $_MooClass['MooMySQL']->getOne("select uid,showinformation,showinformation_val,gender from " . $dbTablePre . "members where uid='" . $uid . "' and is_lock = '1'");
+	}
+	
+	if(MOOPHP_ALLOW_FASTDB && $status['is_lock'] != 1){//is_lock默认1不封锁用户，0则封锁
+		MooMessage('此会员已经找到真爱，关闭了个人资料，转向我的真爱一生，寻找自己的真爱吧！','index.php?n=service');
+	}
+
+	if(!$status){
+		MooMessage('此会员已经找到真爱，关闭了个人资料，转向我的真爱一生，寻找自己的真爱吧！','index.php?n=service');
+	//note 判断被浏览的用户是否允许其他会员查看他的资料
+	}elseif(!$status['showinformation'] && $status['uid'] != $userid){//showinformation默认1允许其他会员查看，0则不允许
+		switch($status['showinformation_val']){//showinformation_val用户关闭资料的理由
+			case 1:
+			MooMessage('此会员已找到正在交往的对象，故资料未公开，转向我的真爱一生','index.php?n=service');
+			break;
+			case 2:
+			MooMessage('此会员已找到真爱，即将踏上红地毯，故资料未公开，转向我的真爱一生','index.php?n=service');
+			break;
+			case 3:
+			MooMessage('此会员最近很忙，无法及时回复邮件，故资料未公开，转向我的真爱一生','index.php?n=service');
+			break;
+			case 4:
+			MooMessage('此会员资料未公开，原因可能是TA已经找到真爱了，转向我的真爱一生','index.php?n=service');
+			break;
+		}
+	}
+	
+	$serverid = Moo_is_kefu();//后台管理员
+	if($serverid){
+	    $result=$_MooClass['MooMySQL']->getOne("select groupid from web_admin_user where uid='{$serverid}'");
+	    $groupid=$result['groupid'];
+	    //系统管理员权限
+	    $GLOBALS['system_admin'] = array(60);
+		if(in_array($groupid,$GLOBALS['system_admin'])){
+			$serverid=null;
+		}
+	}
+	//note 浏览资料页面时候，写入谁浏览谁表，自己浏览自己的除外
+	if(($userid && $uid) && ($userid != $uid)) {
+		//note 不让屏蔽的会员查看
+		if(MooGetScreen($userid,$uid)){
+			MooMessage('由于特殊原因对方资料未公开，转向我的真爱一生','index.php?n=service');
+		}
+		
+		if(empty($serverid)){
+		    //service_visitor 某某会员浏览某某会员记录表
+			$visitor = $_MooClass['MooMySQL']->getOne("SELECT vid FROM {$dbTablePre}service_visitor WHERE uid = '$userid' AND visitorid = '$uid'");
+			//note 再次浏览的，更新浏览时间
+			if($visitor['vid']) {
+				$_MooClass['MooMySQL']->query("UPDATE {$dbTablePre}service_visitor SET visitortime = '$timestamp' WHERE uid='$userid' AND visitorid = '$uid' limit 1");	
+			}else {
+				$_MooClass['MooMySQL']->query("INSERT INTO {$dbTablePre}service_visitor SET uid = '$userid',visitorid='$uid',visitortime = '$timestamp'");
+			}
+		}
+	}
+	
+	
+	//note 查看会员资料信息	
+	if(MOOPHP_ALLOW_FASTDB){
+		$u = MooFastdbGet('memberfield','uid',$uid);
+		if(empty($u)){$u=array();}
+		$user = array_merge($status,$u); //合并这两个数组
+		$c = MooFastdbGet('choice','uid',$uid);	
+	}else{
+		$user = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}members as m left join {$dbTablePre}memberfield as mf on m.uid=mf.uid WHERE m.uid='$uid'");
+		$c = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}choice as mf WHERE uid='$uid'");	
+	}
+	
+	//note 资料的完善度
+	
+	//if($uid == $user_arr[uid]){
+//		$num = 0;
+//		foreach($val_arr as $key=>$val){
+//			if($user[$key] == $val){
+//				$num++;	
+//			}
+//		}
+//		if($c[introduce_check] == ''){
+//			$num++;
+//		}
+//		
+//		$len = $num = (20-$num)*5;
+//		$all_len = ($len/100)*100;
+//		$num = $num.'%';
+//	}
+	
+	
+	
+	//note_显示相册中的普通照片
+	$user_pic = $_MooClass['MooMySQL']->getAll("SELECT imgurl,pic_date,pic_name FROM {$dbTablePre}pic WHERE syscheck=1 and isimage='0' and uid='$uid'");
+	
+	$gender = $user_arr['gender'] == '0' ? '1' : '0';//0为男,1为女
+	$agebegin = (date("Y") - $user_arr['birthyear']) - 3;
+	$ageend = (date("Y") - $user_arr['birthyear']) + 3;
+	$workprovince = $user_arr['province'];
+	$workcity = $user_arr['city'];
+	$search_url = MOOPHP_URL."/index.php?n=search&h=quick&gender=".$gender."&age_start=".$agebegin."&age_end=".$ageend."&workprovince=".$workprovince."&workcity=".$workcity."&isphoto=1&imageField=&quick_search=搜索";
+	
+	//note 你可能喜欢的人，匹配相同地区
+	$able_like = youAbleLike(5);
+	
+	//note 获取会员认证证件
+	$usercer = certification($uid);
+	
+	//获取视频
+	$sql = "select toshoot_video_time,toshoot_video_url from {$dbTablePre}certification where uid='{$uid}' and toshoot_video_check=2";
+	$get_video = $_MooClass['MooMySQL']->getOne($sql);
+	$cs_path = videoPathEncrypt(MOOPHP_URL.'/'.$get_video['toshoot_video_url'].'/mov_'.$uid.'.flv');
+
+	//获取录音
+	$sql_voi = "select toshoot_voice_time,toshoot_voice_url from {$dbTablePre}certification where uid='{$uid}' and toshoot_voice_check=2"; 
+	$get_voice = $_MooClass['MooMySQL']->getOne($sql_voi);
+	$voice_path = MOOPHP_URL.'/'.$get_voice['toshoot_voice_url'].'/voi_'.$uid.'.flv';
+	
+	//note 当查看其他个人主页时，当前浏览的主页条件是否匹配	
+	if($uid != "" && $uid != $user_arr['uid'] && $user['gender'] != $user_arr['gender']){
+		if(MOOPHP_ALLOW_FASTDB){
+			$u = MooFastdbGet('memberfield','uid',$userid);
+			if(empty($u)){$u=array();}
+			$user2 = array_merge($status,$u);
+			$c2 = MooFastdbGet('choice','uid',$userid);	
+		}else{
+			$user2 = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}members as m left join {$dbTablePre}memberfield as mf on m.uid=mf.uid WHERE m.uid='{$userid}'");
+			$c2 = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}choice as mf WHERE uid='{$userid}'");
+		}
+	}
+	
+	//list($hzn,$adminid) = explode("\t", MooAuthCode($_MooCookie['kefu'], 'DECODE'));
+	//echo $_MooCookie['kefu'];
+	  if($serverid){ //如果是客服
+        $s_title="会员号:". $userid ." 会员\" ".$user_arr['nickname']."\"关注了您！";
+        $hznResult=$_MooClass['MooMySQL']->getOne("SELECT count(s_id) as count from web_services where s_uid='{$uid}' and s_title='{$s_title}'");
+        $hznCount=$hznResult['count'];
+        if($userid!=$uid && $hznCount<1 && $user['gender']!=$user_arr['gender']){
+           
+           $s_content="会员号：".$userid."  的会员【".  $user_arr['nickname']. "】关注了您，您可以通过点击下面的链接回访Ta：<br/>"."<a href=\"http://www.zhenaiyisheng.cc/index.php?n=space&uid=".$userid."\">我要访问TA</a>";
+           $_MooClass['MooMySQL']->query("insert into {$dbTablePre}services (s_cid,s_uid,s_fromid,s_title,s_content,s_time,sid,flag) values ('3','{$uid}','真爱一生网','{$s_title}','{$s_content}',".time().",'{$user_arr['sid']}','1')");           
+           $_MooClass['MooMySQL']->query("insert into {$dbTablePre}fakevisitor (sendid,receiveid,adminid,visittime) values('{$userid}','{$uid}','{$adminid}','{$timestamp}')");
+        
+        
+        
+        //发送短信和邮件
+        
+        
+           include_once("./module/crontab/crontab_config.php");
+           $res= $_MooClass['MooMySQL']->getOne("select telphone,is_phone,username from {$dbTablePre}members where uid='$uid'");
+          
+           $send_user_info = $_MooClass['MooMySQL']->getAll("select * from `{$dbTablePre}members` a  left join  {$dbTablePre}choice b  on a.uid=b.uid  where a.uid = '$userid'");
+           $send_user_info = $send_user_info[0];
+           //头像路径
+           $path = thumbImgPath(2,$send_user_info[pic_date],$send_user_info[pic_name],$send_user_info['gender']);
+           if(file_exists($path)){
+             $img_path = $path;
+           }else{
+                if($send_user_info['gender'] == 1){
+                    $img_path = "/public/images/service_nopic_woman.gif";
+                }else{
+                    $img_path = "/public/images/service_nopic_man.gif";
+                }
+           }
+           $send_username = $send_user_info['nickname'] ?  $send_user_info['nickname'] : $send_user_info['uid'];//发送者用户名
+           $send_user_grade = $send_user_info['gender'] == 1 ? "女" : "男"; //发送者性别
+           $province = $provice_list[$send_user_info[province]];//省
+           $city = $city_list[$send_user_info[city]]; //市
+           $height = $send_user_info[height] ? $height_list[$send_user_info[height]] : "未知"; //身高
+           ob_start();
+           require_once MooTemplate('public/mail_space_messagetpl', 'module'); //模板
+           $body = ob_get_clean();
+          
+           MooSendMail($res['username'],"真爱一生网系统温馨提示",$body,"",false,$uid);
+        }
+    }
+    
+	
+	//note 获得用户资料的完整度，以百分比显示makui
+	if($uid == $user_arr[uid]){
+		$all_len = (int)(getUserinfo_per($user_arr)*100);
+		//echo $all_len;exit;
+	}
+	
+	//note 匹配指数分数得出
+	if ($uid!="" && $uid!=$user_arr['uid'] && $user['gender']!=$user_arr['gender']){
+		$mark = 0;
+		if(MOOPHP_ALLOW_FASTDB){
+			$cho = MooFastdbGet('choice','uid',$user_arr['uid']);	
+		}else{
+			$cho = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}choice as mf WHERE uid='{$user_arr['uid']}'");
+		}
+		$year = $cho['birthyear'] ? $cho['birthyear'] : $user_arr['birthyear'];
+		if( ($year-5) <= $user['birthyear'] && $user['birthyear'] <= ($year+5)){
+			$mark_age = 9;$mark += 9;
+		}else{ $mark_age = 6;$mark += 6; }
+		if( $cho['height1'] <= $user['height'] && $user['height'] <= ($cho['height2'])){
+			$mark_height = 7;$mark += 7;
+		}else{ $mark_height = 5;$mark += 5; }
+		if( $cho['weight1'] <= $user['weight'] && $user['weight'] <= ($cho['weight2'])){
+			$mark_weight = 5;$mark += 5;
+		}else{ $mark_weight = 3;$mark += 3; }
+		  if( $cho['workprovince'] == $user['workprovince']){
+			$mark_workprovince = 8;$mark += 8;
+		}else{ $mark_workprovince = 6;$mark += 6; }
+		if( $cho['workcity'] == $user['workcity']){
+			$mark_workcity = 16;$mark += 16;
+		}else{$mark_workcity = 5;$mark += 10;}
+		if( $cho['education'] == $user['education']){
+			$mark_education = 8;$mark += 8;
+		}else{ $mark_education = 5;$mark += 5; }
+		if( $cho['salary'] == $user['salary']){
+			$mark_salary = 9;$mark += 9;
+		}else{ $mark_salary = 7;$mark += 7; }
+		if( $cho['marriage'] == $user['marriage']){
+			$mark_marriage = 8;$mark += 8;
+		}else{ $mark_marriage = 5;$mark += 5; }
+		if( $cho['children'] == $user['children']){
+			$mark_children = 8;$mark += 8;
+		}else{ $mark_children = 6;$mark += 6; }
+		if( $cho['drinking'] == $user['drinking']){
+			$mark_drinking = 5;$mark += 5;
+		}else{ $mark_drinking = 3;$mark += 3; }
+		if( $cho['smoking'] == $user['smoking']){
+			$mark_smoking = 5;$mark += 5;
+		}else{ $mark_smoking = 2;$mark += 2; }
+		if( $cho['body'] == $user['body']){
+			$mark_body = 6;$mark += 12;
+		}else{ $mark_body = 4;$mark += 8; }
+	}
+	$returnurl = 'index.php?'.$_SERVER['QUERY_STRING'];//返回的url
+	//note 检查绑定是否过期
+	if($user['isbind'] == 1){
+		$user['isbind'] = check_bind($user['bind_id']);
+	}
+
+	$activity = $_MooClass['MooMySQL']->getOne("SELECT uid,username,regtime,channel FROM {$dbTablePre}ahtv_reguser where  uid='{$uid}' and  isattend=1");
+	
+	
+	if($diamond){
+		require MooTemplate('space_viewpro','data');
+	}else{
+		if(!empty($GLOBALS['skiname'])){
+			require MooTemplate("public/space_{$GLOBALS['skiname']}",'module');
+		}elseif($user['skin']){
+			require MooTemplate("public/space_".$user['skin'],'module');
+		}else{
+			require MooTemplate('public/space_viewpro','module');
+		}
+    }
+	/*if(!empty($GLOBALS['skiname'])){
+		require MooTemplate("public/space_{$GLOBALS['skiname']}",'module');
+	}elseif($user['skin']){
+		require MooTemplate("public/space_".$user['skin'],'module');
+	}elseif($GLOBALS['style_name']=='default'){
+		require MooTemplate('public/space_viewpro','module');
+	}else{
+			
+	}*/
+    
+  
+}
+
+//note 会员的已认证证件
+function certification($uid){
+	global $_MooClass,$dbTablePre,$userid,$timestamp,$user_arr,$diamond;
+	//note 查询会员诚信认证表
+	
+	if(MOOPHP_ALLOW_FASTDB){
+		$certificationMsg =  MooFastdbGet('certification','uid',$uid);
+	}else{
+		$certificationMsg = $_MooClass['MooMySQL']->getOne("select * from {$dbTablePre}certification where uid='$uid'");
+	}
+	return $certificationMsg;
+}
+
+
+//note 钻石会视频
+function space_video(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$style_user_arr,$diamond;
+	
+	$uid = $GLOBALS['style_uid'];
+
+	if(MOOPHP_ALLOW_FASTDB){
+		$c = MooFastdbGet('choice','uid',$uid);	
+	}else{
+		$c = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}choice WHERE uid='$uid'");
+	}
+	$vid = MooGetGPC('vid','integer','G');
+	
+	$sql = "select * from {$dbTablePre}video where uid='$uid' and status='2' order by sort desc";
+	$video_list = $_MooClass['MooMySQL']->getAll($sql);
+	
+	if(!empty($video_list)){
+		if($vid){
+			foreach($video_list as $video){
+				if($video['vid'] == $vid){
+					$default_video_name = md5($video['vid'] . MOOPHP_AUTHKEY);
+					$default_video_pic = MOOPHP_URL.substr($video['filepath'],2).'/pic/'.$default_video_name.'_'.$video['pic'].'.jpg';
+					$video_subject = $video['subject'];
+					$video_dateline = date("Y-m-d",$video['dateline']);
+					$video_intro = $video['intro'];
+					$video_expert_comment = $video['expert_comment'];
+					break;
+				}
+				
+			}
+		}else{
+			$default_video_name = md5($video_list[0]['vid'] . MOOPHP_AUTHKEY);
+			$default_video_pic = MOOPHP_URL.substr($video_list[0]['filepath'],2).'/pic/'.$default_video_name.'_'.$video_list[0]['pic'].'.jpg';
+			$video_subject = $video_list[0]['subject'];
+			$video_dateline = date("Y-m-d",$video_list[0]['dateline']);
+			$video_intro = $video_list[0]['intro'];
+			$video_expert_comment = $video_list[0]['expert_comment'];
+			$vid = $video_list[0]['vid'];
+		}
+		
+	}
+	//视频path
+	$path = videoPathEncrypt(MOOPHP_URL.substr($video_list[0]['filepath'],2).'/'.$default_video_name.'.flv');
+	
+	//视频评论
+	$pagesize = 5;
+	$page = max(1,intval($_GET['page']));
+	$start = ($page - 1) * $pagesize;
+	$currenturl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; 
+	$currenturl2 = preg_replace("/(&page=\d+)/","",$currenturl);
+	if(!empty($vid)){
+		$sql = "select count(*) c from {$dbTablePre}diamond_comment where vid='$vid'";
+		$video_count = $_MooClass['MooMySQL']->getOne($sql);
+		$count = $video_count['c'];
+		
+		if($count > 0){
+			$sql = "select comment,uid,nickname,dateline from {$dbTablePre}diamond_comment where vid='$vid' order by id desc LIMIT $start,$pagesize";
+			$video_comment = $_MooClass['MooMySQL']->getAll($sql);
+		}
+	}
+
+	//note_显示相册中的普通照片
+	$user_pic = $_MooClass['MooMySQL']->getAll("SELECT imgurl,pic_date,pic_name FROM {$dbTablePre}pic WHERE syscheck=1 and isimage='0' and uid='$uid'");
+	//note 你可能喜欢的人，匹配相同地区
+	$able_like = youAbleLike(5);
+	//判断性别类型
+	$gender_value = check_diff_gender(); 
+	//根据来访性虽显示固定评语
+	$comment_list = comment_list($gender_value,$type=1);
+	
+	//音乐
+	$sql = "select * from {$dbTablePre}art_music where uid='{$GLOBALS['style_uid']}'";
+	$arr = $_MooClass['MooMySQL']->getAll($sql);
+	$mp3_list = array();
+	foreach( $arr as $v ){
+		$mp3_list[] = array(
+			'path' => 'data/mp3/'.$v['path'], 
+			'title' => $v['title'],
+			'note'	=> $v['note'],
+		);
+	}
+	$mp3_list = json_encode( $mp3_list);
+	include MooTemplate('space_video','data');
+}
+
+//note 才艺展示
+function space_art(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$diamond;
+	$sql = "select * from {$dbTablePre}art_music where uid='{$GLOBALS['style_uid']}'";
+	$arr = $_MooClass['MooMySQL']->getAll($sql);
+	$mp3_list = array();
+	foreach( $arr as $v ){
+		$mp3_list[] = array(
+			'path' => 'data/mp3/'.$v['path'], 
+			'title' => $v['title'],
+			'note'	=> $v['note'],
+		);
+	}
+	$mp3_list = json_encode( $mp3_list);
+
+	//note 你可能喜欢的人，匹配相同地区
+	$able_like = youAbleLike(5);
+	include MooTemplate('space_art','data');
+}
+
+//note 亲友印象
+function space_impression(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$diamond;
+	//note 你可能喜欢的人，匹配相同地区
+	$able_like = youAbleLike(5);
+	include MooTemplate('space_impression','data');
+}
+
+//note 星座生肖
+function space_horoscope(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$diamond;
+	//note 你可能喜欢的人，匹配相同地区
+	$able_like = youAbleLike(5);
+	include MooTemplate('space_horoscope','data');
+}
+
+//note 人生经历
+function space_lifetimes(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$diamond;
+	//判断性别类型
+	$gender_value = check_diff_gender(); 
+	//根据来访性别显示固定评语
+	$comment_list = comment_list($gender_value,$type=2);
+
+	//人生经历评论
+	$pagesize = 5;
+	$page = max(1,intval($_GET['page']));
+	$start = ($page - 1) * $pagesize;
+	$currenturl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; 
+	$currenturl2 = preg_replace("/(&page=\d+)/","",$currenturl);
+	$sql = "select count(*) c from {$dbTablePre}diamond_comment where comment_type='2' and cid='{$GLOBALS['style_uid']}'";
+	$life_count = $_MooClass['MooMySQL']->getOne($sql);
+	$count = $life_count['c'];
+	
+	if($count > 0){
+		$sql = "select comment,uid,nickname,dateline from {$dbTablePre}diamond_comment where comment_type=2 and cid='{$GLOBALS['style_uid']}' order by id desc LIMIT $start,$pagesize";
+		$life_comment = $_MooClass['MooMySQL']->getAll($sql);
+	}
+	//note 你可能喜欢的人，匹配相同地区
+	$able_like = youAbleLike(5);
+	include MooTemplate('space_lifetimes','data');
+}
+
+//note 约会
+function space_dating(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$style_user_arr,$diamond;
+	//包含配置文件
+	
+	$did = MooGetGPC('did','integer','G');
+	$uid = MooGetGPC('uid','integer','G');
+	if($_POST){
+		$param['did'] = $did;
+		$param['uid'] = $userid;
+		$param['nickname'] = $user_arr['nickname'];
+		$param['message'] = MooGetGPC('message','string','P');
+		$param['dateline'] = time();
+		inserttable('dating_respond',$param);
+		$sql = "update {$dbTablePre}dating set dating_total=dating_total+1 where did='$did'";
+		$_MooClass['MooMySQL']->query($sql);
+		MooMessage('应约成功，对方将会查看您的资料，请尽快完善你的资料。','index.php?n=space&uid='.$uid);
+	}
+	$sql = "select * from {$dbTablePre}dating where did='$did' and flag='2'";
+	$dating = $_MooClass['MooMySQL']->getOne($sql);
+	if(!$dating){
+		MooMessage('您查看的用户暂时还没有发布约会。','index.php?n=space&uid='.$uid);
+	}
+	$sql = "select count(*) as c from {$dbTablePre}dating_respond where did='$did' and uid='$userid'";
+	$dating_respond = $_MooClass['MooMySQL']->getOne($sql);
+	$dating_respond['count'] = $dating_respond['c'];
+	
+	include_once("./module/crontab/crontab_config.php");
+	$province_key = $dating['dating_province'];
+	$city_key = $dating['dating_city'];
+	
+	
+	if(!empty($uid) && ($uid != $userid)){
+		$sql = "select * from {$dbTablePre}members where uid='$uid'";
+		$members = $_MooClass['MooMySQL']->getOne($sql);
+	}else{
+		$members = $user_arr;
+		$uid = $userid;
+	}
+	$sql = "select * from {$dbTablePre}choice where uid='$uid'";
+	$choice = $_MooClass['MooMySQL']->getOne($sql);
+	
+	$dating_list = userDating($uid,'limit 3');
+	//note 你可能喜欢的人，匹配相同地区
+	$able_like = youAbleLike(5);
+	include MooTemplate('space_dating','data');
+}
+
+//note 播放器
+function space_player(){
+	include MooTemplate('space_player','data');
+}
+
+//个性化定制-其它未知模块
+function space_other(){
+	//note 你可能喜欢的人，匹配相同地区
+	$able_like = youAbleLike(5);
+	include MooTemplate('space_other','data');
+}
+//匹配列表
+function space_match(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$style_user_arr,$diamond;
+	$uid = MooGetGPC('uid','integer','G');
+	//print_r($user_arr);
+	//note 查看会员资料信息	
+	if(MOOPHP_ALLOW_FASTDB){
+		$m = MooFastdbGet('members','uid',$uid);
+		$u = MooFastdbGet('memberfield','uid',$uid);
+		$user = array_merge($m,$u);
+		$c = MooFastdbGet('choice','uid',$uid);	
+	}else{
+		$user = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}members as m left join {$dbTablePre}memberfield as mf on m.uid=mf.uid WHERE m.uid='$uid'");
+		$c = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}choice as mf WHERE uid='$uid'");
+	}
+
+	//note_显示相册中的普通照片
+	$user_pic = $_MooClass['MooMySQL']->getAll("SELECT imgurl,pic_date,pic_name FROM {$dbTablePre}pic WHERE syscheck=1 and isimage='0' and uid='$uid'");
+	
+	$gender = $user_arr['gender'] == '0' ? '1' : '0';
+	$agebegin = (date("Y") - $user_arr['birthyear']) - 3;
+	$ageend = (date("Y") - $user_arr['birthyear']) + 3;
+	$workprovince = $user_arr['province'];
+	$workcity = $user_arr['city'];
+	$search_url = MOOPHP_URL."/index.php?n=search&h=quick&gender=".$gender."&age_start=".$agebegin."&age_end=".$ageend."&workprovince=".$workprovince."&workcity=".$workcity."&isphoto=1&imageField=&quick_search=搜索";
+	
+	//note 匹配指数分数得出
+	if ($uid!="" && $uid!=$user_arr['uid'] && $user['gender']!=$user_arr['gender']){
+		$mark = 0;
+		if(MOOPHP_ALLOW_FASTDB){
+			$cho = MooFastdbGet('choice','uid',$user_arr['uid']);	
+		}else{
+			$cho = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}choice as mf WHERE uid='{$user_arr['uid']}'");
+		}
+		$year = $cho['birthyear'] ? $cho['birthyear'] : $user_arr['birthyear'];
+		if( ($year-5) <= $user['birthyear'] && $user['birthyear'] <= ($year+5)){
+			$mark_age = 9;$mark += 9;
+		}else{ $mark_age = 6;$mark += 6; }
+		if( $cho['height1'] <= $user['height'] && $user['height'] <= ($cho['height2'])){
+			$mark_height = 7;$mark += 7;
+		}else{ $mark_height = 5;$mark += 5; }
+		if( $cho['weight1'] <= $user['weight'] && $user['weight'] <= ($cho['weight2'])){
+			$mark_weight = 5;$mark += 5;
+		}else{ $mark_weight = 3;$mark += 3; }
+		  if( $cho['workprovince'] == $user['workprovince']){
+			$mark_workprovince = 8;$mark += 8;
+		}else{ $mark_workprovince = 6;$mark += 6; }
+		if( $cho['workcity'] == $user['workcity']){
+			$mark_workcity = 16;$mark += 16;
+		}else{$mark_workcity = 5;$mark += 10;}
+		if( $cho['education'] == $user['education']){
+			$mark_education = 8;$mark += 8;
+		}else{ $mark_education = 5;$mark += 5; }
+		if( $cho['salary'] == $user['salary']){
+			$mark_salary = 9;$mark += 9;
+		}else{ $mark_salary = 7;$mark += 7; }
+		if( $cho['marriage'] == $user['marriage']){
+			$mark_marriage = 8;$mark += 8;
+		}else{ $mark_marriage = 5;$mark += 5; }
+		if( $cho['children'] == $user['children']){
+			$mark_children = 8;$mark += 8;
+		}else{ $mark_children = 6;$mark += 6; }
+		if( $cho['drinking'] == $user['drinking']){
+			$mark_drinking = 5;$mark += 5;
+		}else{ $mark_drinking = 3;$mark += 3; }
+		if( $cho['smoking'] == $user['smoking']){
+			$mark_smoking = 5;$mark += 5;
+		}else{ $mark_smoking = 2;$mark += 2; }
+		if( $cho['body'] == $user['body']){
+			$mark_body = 6;$mark += 12;
+		}else{ $mark_body = 4;$mark += 8; }
+	}
+	$able_like = youAbleLike(5);
+	require MooTemplate('public/space_match','module');
+}
+
+//function space_convert_video(){
+//	global $dbTablePre,$_MooClass,$uid;
+//	$vals = MooGetGPC('vals','integer','G');
+//	$url_1 = substr($uid,-1,1);
+//	$url_2 = substr($uid,-2,1);
+//	$url_3 = substr($uid,-3,1);
+//	//note 调用文件操作类库，建立无限级目录
+//	$mkdirs = MooAutoLoad('MooFiles');
+//	//录制时候存储视频路径
+//	$url_s = 'data/usermov_tmp/'.$uid.'.flv';
+//	echo $url_s.'<br>';
+//	//if($vals){
+//		if(file_exists($url_s)){
+//			$filesize = filesize($url_s);
+//			if($filesize < 500){
+//				unlink($url_s);
+//				MooMessage("视频录制太短了","index.php?n=myaccount&h=videoindex");
+//			}
+//			//最终存储视频路径
+//			$url = 'data/usermov/'.$url_1.'/'.$url_2.'/'.$url_3;
+//			echo $url;
+//			if(!file_exists($url)){
+//				$mkdirs->fileMake_news($url);
+//			}
+//			if(copy($url_s,$url.'/'.$uid.'.flv')){
+//				$toshoot_video_time = strtotime(date('Y-m-d')); //录制视频的时间
+//				$own_uid = $_MooClass['MooMySQL']->getOne("select uid from {$dbTablePre}certification where uid='{$uid}'");	
+//				if($own_uid){
+//					$sql = "update {$dbTablePre}certification set toshoot_video_check=1,toshoot_video_time='{$toshoot_video_time}',toshoot_video_url='{$url}',toshoot_video_check=1 where uid='{$uid}'";
+//				}else{
+//					$sql = "insert into {$dbTablePre}certification(uid,toshoot_video_check,toshoot_video_time,toshoot_video_url) values('{$uid}',1,'{$toshoot_video_time}','{$url}')";	
+//				}
+//				$_MooClass['MooMySQL']->query($sql);
+//				if(unlink($url_s)){
+//					echo "<script>alert('上传成功')</script";
+//				}
+//			}
+//		}
+//	//}	
+//}
+//查看绑定申请
+function space_mebind(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$diamond;
+	$bind_id = MooGetGPC('bind_id','integer','G');
+	$statue = 1;
+	if($bind_id == 0){
+		//MooMessage('赶快去找到您心仪的TA去绑定吧！');
+		$statue = 0;
+	}else{
+		$sql = "SELECT a_uid,b_uid,length_time FROM {$dbTablePre}members_bind WHERE id=".$bind_id;
+		$m_bind = $_MooClass['MooMySQL']->getOne($sql);
+		
+		$f_uid  = $m_bind['a_uid'] == $user_arr['uid'] ? $m_bind['b_uid'] : $m_bind['a_uid'];
+		if(MOOPHP_ALLOW_FASTDB){
+			$user_bind = MooFastdbGet('members','uid',$f_uid);
+		}else{
+			$user_bind =  $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}members WHERE uid = '$f_uid'");
+		}
+	}
+	$user_s = $user_arr;
+	require MooTemplate('public/space_contact_binding', 'module');
+}
+
+
+function sendinsitemail(){
+    
+    global $_MooClass,$dbTablePre,$userid,$user_arr;
+    //$uid = $GLOBALS['style_uid'];
+    $uid=MooGetGPC('uid', 'integer', 'G');
+    $serverid = Moo_is_kefu();//后台管理员
+    //note 查看会员资料信息   
+    
+    
+    if(MOOPHP_ALLOW_FASTDB){
+        $user = MooFastdbGet('members','uid',$uid);
+    }else{
+        $user = $_MooClass['MooMySQL']->getOne("select uid,showinformation,showinformation_val,gender from " . $dbTablePre . "members where uid='" . $uid . "' and is_lock = '1'");
+    }
+    
+    
+    //if($userid!=$uid && $user['gender']!=$user_arr['gender'] && !$serverid){
+        //echo "<script type=\"text/javascript\">var Seconds=0;function settime(){Seconds++;setTimeout('settime()',1000);document.cookie=\"Moo_stoptime=\"+Seconds+\";path=/\";};settime();</script>";
+        
+        //页面停留时间
+        /*$nqs=md5(uniqid(rand(), true));
+        $memcached->set($nqs,'yesorno',0,30);
+        $stopTime=$memcached->get($nqs); */
+        $stopTime=$_POST['stoptime'];
+         
+        
+        
+        //if($stopTime==30){
+            $s_title="会员号:". $userid ." 会员\" ".$user_arr['nickname']."\"关注了您！"; 
+            $sql="SELECT count(s_id) as count from web_services where s_uid='{$uid}' and s_fromid='{$userid}' and s_title='{$s_title}'";echo $sql;
+            
+           /* $hznResult=$_MooClass['MooMySQL']->getOne($sql);//对方如果删除过你的邮件，下次不会发送 此类邮件
+            $hznCount=$hznResult['count'];
+            if($hznCount<1 || empty($hznResult)){
+               //和邮件
+               if($user_arr['s_cid'] < 2){
+               	 $s_cid=30;
+               }elseif($user_arr['s_cid'] ==40){
+               	 $s_cid=40;
+               }
+               $s_content="会员号：".$userid."  的会员【".  $user_arr['nickname']. "】关注了您，您可以通过点击下面的链接回访Ta：<br/>"."<a href=\"http://www.zhenaiyisheng.cc/index.php?n=space&uid=".$userid."\">我要访问TA</a>";
+               $_MooClass['MooMySQL']->query("insert into {$dbTablePre}services (s_cid,s_uid,s_fromid,s_title,s_content,s_time,sid,flag) values ('{$s_cid}','{$uid}','{$userid}','{$s_title}','{$s_content}',".time().",'{$user_arr['sid']}','1')");           
+               //$_MooClass['MooMySQL']->query("insert into {$dbTablePre}fakevisitor (sendid,receiveid,adminid,visittime) values('{$userid}','{$uid}','{$adminid}','{$timestamp}')");
+            }*/
+        //}
+    //}
+    
+       
+    
+}
+/***************************************   控制层(C)   ****************************************/
+
+$back_url='index.php?'.$_SERVER['QUERY_STRING'];
+$diamond_dir = 'data/diamond/'.substr($style_uid,-1).'/'.$style_uid;
+global $style_user_arr;
+$h = MooGetGPC('h', 'string'); 
+$h_b = $h;
+
+if($style_user_arr['s_cid'] == 20){
+	$diamond_info = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}diamond WHERE uid = {$style_user_arr['uid']}");
+		if( $diamond_info['status'] == 3 || ($diamond_info['status'] == 2) ){
+			$diamond=1;
+			$style_name = $diamond_info['skin'];
+		}else{
+			$diamond=0;
+		}
+}else{
+		$diamond=0;
+}
+
+//钻石会员默认显示视频介绍
+if( empty($h)&&$diamond){
+	$h = 'video';
+}elseif(empty($h)){
+	$h = 'viewpro';
+}
+
+if(!$userid){
+	if($h != 'viewpro'){ ////详细冷资料页没登录时弹出层要求登录
+		header("location:index.php?n=login&back_url=".urlencode($back_url));
+	}
+}
+
+//钻石会员页面导航显示约会
+if($style_name != 'default'){
+	$dating_list = userDating($GLOBALS['style_uid'],'limit 1');	
+}
+
+
+//查看更多可能喜欢的人
+$gender = $user_arr['gender'] == '0' ? '1' : '0';
+$agebegin = (date("Y") - $user_arr['birthyear']) - 3;
+$ageend = (date("Y") - $user_arr['birthyear']) + 3;
+$workprovince = $user_arr['province'];
+$workcity = $user_arr['city'];
+$search_url = MOOPHP_URL."/index.php?n=search&h=quick&gender=".$gender."&age_start=".$agebegin."&age_end=".$ageend."&workprovince=".$workprovince."&workcity=".$workcity."&isphoto=1&imageField=&quick_search=搜索";
+
+$TA = '我';
+if($user_arr['uid'] != $style_uid){
+	$style_user_arr['gender'] == 1 ? $TA='她':$TA='他';
+}
+if($h_b == 'match') $h = 'match';
+
+switch ($h) {
+	case 'match'://匹配列表
+		space_match();
+	break;
+	case 'video'://视频
+		space_video();
+		break;
+	case 'art'://才艺展示
+		space_art();
+		break;
+	case 'impression'://亲友印象
+		space_impression();
+		break;
+	case 'horoscope'://星座生肖
+		space_horoscope();
+		break;
+	case 'lifetimes'://人生经历
+		space_lifetimes();
+		break;
+	case 'dating'://约会
+		space_dating();
+		break;
+	case 'player'://音乐播放器
+		space_player();
+		break;
+	case 'other':
+		space_other();
+		break;
+	case 'comment'://对TA评价
+		space_comment();
+		break;
+	case  'mebind': //查看绑定申请
+	 	space_mebind();
+		break;
+	//case 'convert_video':
+//		//echo 'aaaaaaaaaaaaaaaaaaaaaaa';exit;
+//		space_convert_video();
+//		break;
+	case 'viewpro'://资料页
+		space_viewpro();
+		break;
+	case 'sendinsitemail':
+		sendinsitemail();
+		break;
+	default :
+		//$h = 'viewpro';
+		//echo "ssssssssss";
+		space_viewpro();
+		break;
+}
+?>

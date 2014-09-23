@@ -1,0 +1,62 @@
+<style type="text/css">
+/*在线聊天提示*/
+.online{ width:190px; color:#FFFFFF; margin-right:5px; _margin-right:0px; size:12px;  font-size:12px;}
+.tixingBox,.jiluBox,.tixingBox3{background:url(public/<?php echo $GLOBALS['style_name'];?>/images/webim_tipbg.gif) 0 -3px no-repeat;text-align:center; height:27px;line-height:27px;float:left;}
+.tixingBox,.tixingBox3{width:80px;padding-left:29px; cursor:pointer;}
+.tixingBox2{background-position:0px -38px;}
+.tixingBox3{background-position:0px -70px; color:#9C205C; height:30px; margin-top:-3px; line-height:30px;}
+.jiluBox{width:60px;padding-left:21px;background-position:-109px -3px;cursor:pointer;}
+.jiluBox2{background-position:-109px -38px;}
+.chat-window{ display:none; }
+.chat-conv,.chat-head{ background:url(public/<?php echo $GLOBALS['style_name'];?>/images/webim_tcbg.gif) 0 bottom no-repeat;}
+.chat-head{ background-position:0 top; height:25px; line-height:25px; }
+.head-name{ font-weight:bold; float:left; padding:0 5px;}
+.head-btn{ width:16px; float:right; margin:5px 5px 0 0;}
+a.minimize,a.minimize:visited{ background:url(public/<?php echo $GLOBALS['style_name'];?>/images/webim_close.gif) 0 0 no-repeat; display:block; width:16px; height:16px;}
+a.minimize:hover{ background-position:0 -16px;}
+.chat-conv{color:#000000; padding-bottom:10px; min-height:50px; _height:50px;  width:190px; float:left}
+.chat-conv p{ padding:10px 10px 0 10px;}
+.chat-conv p a{
+color:#cc3366;
+text-decoration:none}
+.chat-conv p a:hover{ text-decoration:underline}
+.c-line{
+	font-size:0px;
+	height:1px;
+	background:url(public/default/images/c-line.gif) no-repeat bottom;
+	padding-top:10px;
+	}
+.u-photo{
+	padding:2px;
+	background:#FFF;
+	border:1px solid #d2d2d2;
+	margin:10px;
+	float:left;
+	}
+</style>
+<div style="left: 0px; top: 50px; position: fixed;"></div><div style="right: 0px; bottom: 0px; position: fixed;"><div class="online clearfix" id="imonline">
+  <div style="display: none;" class="chat-window" id="msg">
+      <div class="chat-head">
+        <div class="head-name">消息提醒</div>
+        <div class="head-btn"><a href="###" class="minimize"></a></div>
+      </div>
+      <div class="chat-conv">
+         <!-- <p>您有<a href="javascript:;">0条新消息</a></p> -->
+      </div>
+  </div>
+  <div class="tixingBox"></div>
+  <div class="jiluBox" onClick="javascript:window.open('index.php?n=search&h=super')">高级搜索</div>
+  <script type="text/javascript" src="./public/system/js/new_message.js"></script>
+    <!--消息声音提醒-->
+	<div style="height:0; overflow:hidden;">
+	 <object width="1" height="1" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="myFlash">
+		<param value="/public/system/flash/new_message.swf" name="movie">
+		<param value="high" name="quality">
+		<param value="opaque" name="wmode">
+		<param value="9.0.45.0" name="swfversion">
+		<param value="sameDomain" name="allowScriptAccess">
+		<embed width="1" height="1" type="application/x-shockwave-flash" allowscriptaccess="sameDomain" quality="high" src="/public/system/flash/new_message.swf" name="myFlash">
+	</object>
+	</div>
+	
+</div>

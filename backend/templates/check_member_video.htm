@@ -1,0 +1,49 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="templates/css/imgareaselect-animated.css" />  
+<script type="text/javascript">
+function checknopass(){
+     if(confirm("您确定不通过此照片吗？")){
+             return true;
+     }else return false;
+}
+</script>
+</head>
+<body>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 会员视频审核</span><span class="action-span"><a href="index.php?action=check&h=video">返回</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>会员{$uid}的视频审核：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：{php echo isset($members_video['birthyear']) && $member_video['birthyear'] ?  date('Y')-$member_video['birthyear'] : '无' }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别：{php echo isset($member_video['gender']) && $member_video['gender']==0 ? '男' : '女' ;}</th>
+  </tr>
+</table>
+<form action="index.php?action=check&h=member_video" method="POST">
+<table>
+   <tbody>
+   		{if isset($member_video[toshoot_video_check]) && $member_video[toshoot_video_check] == 1}
+       <tr><input type="hidden" value="{$uid}" name="uid" />
+            <td align="center"><input class="submit" type="submit" name="nopass" value="不通过" onClick="return checknopass();"/>&nbsp;&nbsp;&nbsp;&nbsp;<input  class="submit" type="submit" name="pass" value="通过"/></td>
+            </tr>
+        {/if}
+       <tr>
+            <td align="center">
+            <object height="350px" width="436px" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+            <param value="{$path_url}/public/system/flash/player.swf?path={if isset($cs_path)}{$cs_path}{/if}&amp;img=#" name="movie">
+            <param value="high" name="quality">
+            <param name="SCALE" value="exactfit" />
+            <param value="true" name="allowFullScreen">
+            <param value="false" name="menu">
+            <param value="transparent" name="wmode">
+            <embed height="350px" width="436px" menu="false"  SCALE="exactfit" allowfullscreen="true" value="transparent" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" quality="high" style="z-index: inherit;" src="{$path_url}/public/system/flash/player.swf?path={if isset($cs_path)}{$cs_path}{/if}&amp;img=#">
+            </object>
+            </td>
+            </tr>
+   </tbody>
+</table>
+  </form>
+</div>
+<body>
+</html>

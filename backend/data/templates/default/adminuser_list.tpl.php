@@ -1,0 +1,205 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<link rel="stylesheet" href="templates/css/jquery-ui.css" type="text/css" media="all"  />
+
+<script type="text/javascript" src="templates/js/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+
+$(function() {	
+	$( ".open" ).dialog({
+		bgiframe:true, //兼容IE6
+		autoOpen: false,
+		height: 420,
+		width: 420,
+		modal: true,
+		position:['top','left']
+	});
+});	
+
+
+
+function remove(uid){
+    if(confirm('您确定要删除该管理员吗')){
+    }else return false;
+    var url="./ajax.php";
+    $.post(url,{n:"delAdminUser",uid:uid},function(str){
+        if(str=='ok'){
+            alert("删除成功");
+            $("#adminuser_"+uid).empty();
+            $("#adminuser_"+uid).remove();
+        }
+    });
+}
+function up(uid){
+    if(confirm('您确定要更新该管理员所管理的会员数吗')){
+    }else return false;
+    var url="./ajax.php";
+    $.post(url,{n:"upUser",uid:uid},function(str){
+        if(str=='ok'){
+            alert("更新成功");
+        }
+    });
+}
+//设置红娘币参数
+
+function moneyset(){
+if(confirm('客服的红娘币基数是0；组长的基数是500,\n要重置红娘币吗')){
+  var url="./ajax.php";
+
+$.post(url,{n:"upmoy"},function(str){
+    if(str=='ok'){
+      alert("更新成功！");
+      location.href="<?php echo $currenturl;?>";
+	}else{
+	  alert('更新失败！');
+	}
+});
+}else return false;
+
+}
+function bulid_input(uid){
+	var input=new Array('interval','allot','amount','money');
+	for(var i=0;i<4;i++){
+		var commid=input[i]+'_'+uid;
+		var val=$('#td_'+commid).html();
+		var html='<input type="text"  name="'+input[i]+'['+uid+']" value="'+val+'" id="'+commid+'">';
+		$('#td_'+commid).html(html);
+	}
+}
+function remove_input(uid){
+	var input=new Array('interval','allot','amount','money');
+	for(var i=0;i<4;i++){
+		var commid=input[i]+'_'+uid;
+		var val=$('#'+commid).val();
+		$('#td_'+commid).html(val);
+	}
+}
+function cheackall(){
+	alert($('#uid_'+uid).attr('checked'));
+}
+function change_input(uid){
+	if($('#uid_'+uid).attr('checked')){
+		bulid_input(uid);
+		$("#ok").removeAttr('disabled');
+	}else{
+		remove_input(uid);
+	}
+}
+</script>
+<h1>
+<span class="action-span"><a href="index.php?action=system_adminuser&h=add" onclick="parent.addTab('添加管理员','index.php?action=system_adminuser&h=add','icon');return false;">添加管理员</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 管理员列表 </span>
+<span class="action-span"><a href="<?php $u=explode('&',$_SERVER['QUERY_STRING']);?>index.php?<?php echo $u[0];?>&<?php echo $u[1];?>">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<form action="" method="POST">
+  <tr>
+  	<td colspan="8" style="text-align:left">
+  	    <label><input type="radio" name="choose" value="username" <?php if($choose=='username') { ?>checked="checked"<?php } ?> />管理员名</label>
+  	    <label><input type="radio" name="choose" value="usercode" <?php if($choose=='usercode') { ?>checked="checked"<?php } ?> />管理员编号</label>
+		<input type="text" name="content" value="" />
+		<input name="" type="submit" value="搜 索"/>
+	</td>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<?php if(in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr'])) { ?>
+	<td style="margin-left:20px;"><label><input onclick='moneyset()'  type="submit" value="更新红娘币初始值"/></label></td>
+ 
+<?php } ?></tr>
+</form>
+
+
+<form action="index.php?action=system_adminuser&h=change" method="post" id="formChange" name="formChange">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th><input type="checkbox" onclick="cheackall()">管理员名编号</th>
+    <th>管理员登录名</th>
+    <th>管理员姓名</th>
+    <th>分类角色</th>
+    <th>描述</th>
+    <th>加入时间</th>
+    <th>最后登录时间</th>
+    <th>是否分配客服</th>
+	<th>提成比率</th>
+    <th>CallCenterID</th>
+    <th>红娘币</th>
+    <th>胜/败</th>
+    <th>初始化间隔时间(月)</th>
+    <th>每日分配次数</th>
+    <th>每次分配金额</th>
+    <th>初始化金额</th>
+    <th>操作</th>
+  </tr>
+  <?php foreach((array)$adminuser_list as $adminuser) {?>  
+  <tr id="adminuser_<?php echo $adminuser['uid'];?>">
+    <td align="center"><input type="checkbox" name="uid[]" value="<?php echo $adminuser['uid'];?>" id="uid_<?php echo $adminuser['uid'];?>" onclick="change_input(<?php echo $adminuser['uid'];?>)"  ><?php echo $adminuser['usercode'];?></td>
+    <td align="center"><?php echo $adminuser['username'];?></td>
+    <td align="center" id="username-<?php echo $adminuser['uid'];?>"><?php echo $adminuser['name'];?></td>
+    <td align="center"><?php echo $adminuser['groupname'];?></td>
+    <td align="center"><?php echo $adminuser['userdesc'];?></td>
+    <td align="center"><?php echo date('Y-m-d',$adminuser['dateline']);?></td>
+    <td align="center"><?php echo date('Y-m-d H:i:s',$adminuser['lastlogin']);?></td>
+    <td align="center"><?php if($adminuser['is_allot']==1) { ?>是<?php } else { ?>否<?php } ?></td>
+	<td align="center"><?php echo $adminuser['sale_commission'];?>%</td>
+    <td align="center"><?php echo $adminuser['ccid'];?></td>
+    
+    <?php if($adminuser['balance']<=0) { ?>
+     <?php $adminuser['balance']=0;?>
+      <?php } ?>
+     <?php if($adminuser['money']<=0) { ?>
+     <?php $adminuser['money']=0;?>
+   <?php } ?>
+   <td align="center"><?php  echo isset($adminuser['balance'])? abs($adminuser['balance'])+abs($adminuser['money']):'';?></td>
+    <td align="center"><?php  echo isset($adminuser['victory'])?$adminuser['victory']:''?>/<?php  echo  isset($adminuser['failure'])?$adminuser['failure']:''?></td>
+    <td align="center" id="td_interval_<?php echo $adminuser['uid'];?>"><?php  echo  isset($adminuser['interval'])?$adminuser['interval']:'';?></td>
+    <td align="center" id="td_allot_<?php echo $adminuser['uid'];?>"><?php  echo  isset($adminuser['allot'])?$adminuser['allot']:'';?></td>
+    <td align="center" id="td_amount_<?php echo $adminuser['uid'];?>"><?php  echo  isset($adminuser['amount'])?$adminuser['amount']:'';?></td>
+    <td align="center" id="td_money_<?php echo $adminuser['uid'];?>"><?php echo  isset($adminuser['money'])?$adminuser['money']:'';?></td>
+    <td align="center">
+	<?php if(in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr'])) { ?>
+      <a href="index.php?action=system_adminuser&h=edit&aid=<?php echo $adminuser['uid'];?>" title="编辑" onclick="parent.addTab('编辑管理员<?php echo $adminuser['username'];?>','index.php?action=system_adminuser&h=edit&aid=<?php echo $adminuser['uid'];?>','icon');return false;">编辑</a>
+	  &nbsp;
+      <a href="javascript:;" onclick="remove(<?php echo $adminuser['uid'];?>)" title="移除">移除</a>&nbsp;
+      <a href="javascript:;" onclick="up(<?php echo $adminuser['uid'];?>)" title="更新会员数">更新会员数</a>
+     <?php } ?>
+	 </td>
+  </tr>
+  <?php } ?>
+  </table>
+  </form>
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center"><?php echo $pages;?>
+	  &nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+      <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+      <input type="button" value="保存" id="ok" disabled="disabled" onclick="document.formChange.submit()">
+	  </td>
+    </tr>
+  </table>
+</div>
+
+<script type="text/javascript">
+<!--
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page><?php echo $page_num;?>)
+
+	page = <?php echo $page_num;?>;
+	window.location.href = "<?php echo $currenturl;?>&page="+page;
+}
+function enterHandler(event){
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if (keyCode == 13) {
+	   gotoPage();	//调用函数
+	 } 
+}
+//-->
+</script>

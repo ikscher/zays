@@ -1,0 +1,168 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	var forground = new Array('其他', '首页', '我的红娘', '红娘寻友', '资料设置', '爱情测试', '诚信认证', 'E见钟情', '视频认证', '会员升级');
+	var background = new Array('其他', '网站管理', '测试管理', '我的用户', '全部会员', '会员升级', '互动管理', '报表', '信息审核', '系统管理', '其他管理');
+</script>
+<script type="text/javascript">
+//跳转
+	function gotoPage(){
+		var page=document.getElementById("pageGo").value;
+		window.location="index.php?action=other&h={$_GET['h']}&page="+page;
+	}
+	//排序
+	function chang_order(field,order){
+		location.href="{$currenturl}&order="+field+"&method="+order;
+	}
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 红娘意见箱</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<span class="action-span"><a href="index.php?action=other&h=complaint_box&type=show">我要提意见</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="margin-bottom:10px;padding:5px;">
+<form action="index.php" method="get">
+	<input type="hidden" name="action" value="other" />
+    <input type="hidden" name="h" value="complaint_box" />
+    &nbsp;查询条件：
+    &nbsp;
+    <select name="field">
+    	<option value="cid">意见ID</option>
+        <option value="uid">提交者姓名</option>
+    </select>
+    ：<input type="text" name="value" />
+    &nbsp;反馈区域：
+    		<select name="areaid" onchange="modulechange(this.value)">
+            	<option value="-1">----</option>
+                <!--{loop $areaid_arr $key $val}-->
+                	<option value="{$key}">{$val}</option>
+                <!--{/loop}-->
+            </select>
+   			&nbsp;反馈模块：<select name="module">
+            	<option value="-1">-----</option>
+            </select>
+            <script type="text/javascript">
+            	function modulechange(module) {
+					if(module == 1) {
+						var mod = forground;
+					} else if (module == 2) {
+						var mod = background;
+					}
+					html = '';
+					if(mod) {
+						html += "<option value='-1'>----</option>";
+						for(var i = 0; i < mod.length; i++) {
+							html += "<option value="+ i +">"+ mod[i] +"</option>";
+						}
+						$("select[name='module']").html(html);
+					} else {
+						$("select[name='module']").html("<option>-----</option>");
+					}
+					
+				}
+            </script>
+    <br />
+    &nbsp;提交时间：<input type="text" name="starttime" value="{php if(isset($_GET['starttime'])) echo $_GET['starttime'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+			<input type="text" name="endtime" value="{php if(isset($_GET['endtime'])) echo $_GET['endtime'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+    &nbsp;是否采纳：
+    <select name="accept">
+    	<option value="-1">----</option>
+        <!--{loop $accept_arr $key $val}-->
+            <option value="{$key}">{$val}</option>
+        <!--{/loop}-->
+    </select>
+    &nbsp;是否处理：
+    <select name="status">
+    	<option value="-1">----</option>
+        <!--{loop $status_arr $key $val}-->
+            <option value="{$key}">{$val}</option>
+        <!--{/loop}-->
+    </select>
+    <input type="submit" value=" 查 找 " />
+</form>
+</div>
+<div style=" margin-top:5px; margin-bottom:5px; color:#960">
+排序方式：
+{loop $sort_arr $key $val}
+	<a href="index.php?action=other&h=complaint_box&order={$key}&method=del">× </a>
+    <span style="background-color:#CCC"><a href="{$currenturl}&order={$key}&method=replace">{php echo $allow_order[$key]}
+    {if $val == 'desc'}
+    	&nbsp;↓&nbsp;
+    {else}
+    	&nbsp;↑&nbsp;
+    {/if}
+    </a></span>
+    &#12288;
+{/loop}
+</div>
+<div class="list-div">
+<span class="but_a">
+    <b><a href="index.php?action=other&h=complaint_box&accept=0" {if isset($_GET['accept']) && $_GET['accept'] == 0}style="color:#666;" {/if}>未处理</a></b>
+    <b><a href="index.php?action=other&h=complaint_box&accept=1" {if isset($_GET['accept'])&& $_GET['accept'] == 1}style="color:#666" {/if}>采纳</a></b>
+    <b><a href="index.php?action=other&h=complaint_box&accept=2" {if isset($_GET['accept'])&& $_GET['accept'] == 2}style="color:#666" {/if}>暂不需要</a></b>
+</span>
+</div>
+<div class="list-div" id="listDiv">
+<table width="100%" cellspacing='1' cellpadding='3' id='list-table' style="word-wrap: break-word; overflow: hidden;">
+  <tr>
+    <th><a href="javascript:chang_order('cid', '$rsort_arr['cid']')">意见ID</a></th>
+    <th>提交者</th>
+	<th>模块</th>
+	<th>内容</th>
+	<th><a href="javascript:chang_order('submittime', '$rsort_arr['submittime']');">提交时间</a></th>
+    <th>回复</th>
+    <th><a href="javascript:chang_order('replaytime', '$rsort_arr['replaytime']');">回复时间</a></th>
+	<th><a href="javascript:chang_order('accept', '$rsort_arr['accept']');">是否采纳</a></th>
+    <th><a href="javascript:chang_order('status', $rsort_arr['status']);">处理状态</a></th>
+  </tr>
+  <script type="text/javascript">
+  	function showmsg(cid) {
+		location.href="index.php?action=other&h=complaint_box&type=show&cid="+cid;
+	}
+  </script>
+  {loop $complaint $v}
+  <tr onmouseover="this.style.color='#00cc00'" onmouseout="this.style.color='#333';" style="cursor:pointer" onclick="showmsg($v['cid'])">
+    <td align="center">{$v['cid']}</td>
+    <td align="center">
+    {if isset($kefu_arr[$v['uid']])}
+    {php echo $kefu_arr[$v['uid']]}
+    {else}
+    {$v['uid']}
+    {/if}
+    </td>
+	<td align="center">
+    	{if $v['areaid'] != 0}
+        	{php echo $areaid_arr[$v['areaid']];}&nbsp;&nbsp;
+            {php $mod = $v['areaid'] == 1 ? $foreground : $background;}
+            {php echo $mod[$v['module']];}
+        {else}
+        	{php echo $areaid_arr[$v['areaid']];}
+    	{/if}
+    </td>
+	<td align="center">
+    	$v['content']
+    </td>
+	<td align="center">{php echo date('Y-m-d H:i:s', $v['submittime']);}</td>
+    <td align="center">
+    	{$v['replay']}
+    </td>
+    <td align="center">
+    {if $v['replaytime']}
+    {php echo date('Y-m-d H:i:s', $v['replaytime']);}
+    {/if}
+    </td>
+    <td align="center">{php echo $accept_arr[$v['accept']];}</td>
+    <td align="center">{php echo $status_arr[$v['status']];}</td>
+  </tr>
+  {/loop}
+  <tr>
+  	<td colspan="9" align="center">{php echo multipage( $total, $limit, $page, $currenturl );}
+     	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:35px" value=""/>  页
+     	<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+  	</tr>
+  </table>
+</div>

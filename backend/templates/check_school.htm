@@ -1,0 +1,120 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+//修改标识
+var change = false;
+function turnOff(){
+	change = true;
+}
+function gotoPage(){
+	var page=$("#pageGo").attr("value");
+	window.location="index.php?action=check&h=school&page="+page;
+}
+//提交毕业院校修改
+function checkSch(uid,pass,change){
+	var school = "";
+	var uid    = uid;
+	var pass   = pass;
+	if(change){
+		school = $("#school_box_"+uid).text();
+	}else{
+		if(pass == 3){
+			alert("你还没有修改呢...");
+			return;
+		}
+	}
+	$.post("ajax.php?n=check_school",{uid:uid,pass:pass,school:school},function(str){
+		if(str == 1){
+			if(pass == 1){
+				$("#uid_span_"+uid).html("审核通过");
+			}else if(pass == 0){
+				$("#uid_span_"+uid).html("审核未通过");
+			}else{
+				$("#uid_span_"+uid).html("修改成功");
+			}
+			$("#school_box_"+uid).html($("#school_box_"+uid).text());
+		}else if(str == 0){
+			alert('操作失败...');
+		}
+		change = false;
+	})
+}
+function changeinput(obj,type,id){
+	if(arguments.length == 1){
+		var uid = arguments[0];
+		var obj    = document.getElementById("school_box_"+uid);
+		$("#school_box_"+uid).html($("#uid_"+uid).val());
+		obj.className = "1";
+		return;
+	}
+    var check=obj.className;
+    var text = obj.innerHTML;
+    if(check==1){
+        obj.innerHTML='<input id="' + type + '_' + id + '" type="text" value="' + text + '" size="20" onblur = "changeinput(\''+id+'\');" onchange="turnOff();" />';
+        obj.className='2';
+        $("#"+type + "_" + id).focus();
+    }
+}
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$lei}</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+<form action="index.php?action=check&h=school" method="post">
+	会员ID:&nbsp;&nbsp;<input type="text" name="uid" value="{if !empty($uid)}{$uid}{/if}"/>
+    {if $myservice_idlist && $myservice_idlist!==$GLOBALS['adminid']}
+		客服：<select name="usersid" id="usersid" onchange="option_gourl(this.value,{$pass})" style="height:21px;margin-top:3px;" >
+		   {if $myservice_idlist=='all'}
+		     <option value="-1" {if $usersid==-1}selected="selected"{/if}> 不限</option>
+		     <option value="0" {if $usersid == 0} selected="selected"{/if}>0：</option>
+		   {/if}
+		   {loop $adminUser $value}
+		   <option value="{$value['uid']}" {if $usersid == $value[uid]} selected="selected"{/if}>{$value['uid']}：{$value['username']}</option>
+		   {/loop}
+		</select>
+	{/if}
+    
+    &nbsp;&nbsp;<input type="submit" value=" 查 找 " />
+    <span class="but_a">
+        <a href="{$currenturl2}&isschool=1"{if $isschool == 1} style="font-weight:bold"{/if}>审核通过</a>
+        <a href="{$currenturl2}&isschool=0"{if $isschool == 0} style="font-weight:bold"{/if}>审核未通过</a>
+    </span>
+</form>
+	
+</div>
+<br />
+<div class="list-div" id="listDiv">
+<table cellpadding="3" cellspacing="1">
+  <tr>
+  	<th>会员ID</th>
+    <th>昵称</th>
+    <th>年龄</th>
+    <th>最后登录时间</th>
+    <th>毕业院校</th>
+	<th>所属客服ID</th>
+    <th>操作</th>
+  </tr>
+	{loop $school $v}
+  <tr>
+  	<td><a href="#" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{$v['uid']}</a></td>
+    <td>{if $v['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>{else}<img src="templates/images/m.gif" alt="男" title="男"/>{/if} {$v['nickname']}</td>
+    <td>{php echo(date('Y',time())-$v['birthyear']);}</td>
+    <td>{php echo date('Y-m-d H:i:s',$v['lastvisit']);}</td>
+    <td>
+    	<span class="1" id="school_box_{$v['uid']}" onclick="changeinput(this,'uid',{$v['uid']})">{$v['finishschool']}</span>
+    </td>
+	<td align="center"><a href="{$currenturl2}&usersid={$v['sid']}">{$v['sid']}</a></td>
+    <td><a href="#" onclick="checkSch({$v['uid']},3,'1')">修改</a> | <a href="#" onclick="checkSch({$v['uid']},1)">通过</a> | <a href="#" onclick="checkSch({$v['uid']},0)">不通过</a>&nbsp;&nbsp;<span id="uid_span_{$v['uid']}" style="color:#F00">{php echo $checkArr[$v['syscheck']]}</span></td>
+  </tr>
+    {/loop}
+	  <tr>
+  	<td colspan="7" align="center">{$pageList}
+     	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:35px" value=""/>  页
+     	<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+  	</tr>
+</table>  
+</div>

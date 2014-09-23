@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--投票添加</title>
+
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+
+	function checkform(){
+		
+		var title=document.getElementById("title").value;
+		var start_time = document.getElementById("start_time").value;
+		var end_time = document.getElementById("end_time").value;
+		var group = document.getElementById("group").value;
+		if(title==''){alert("请完整填写资料");return false;}
+		if(group==''){alert("请填写该题目在哪个组别");return false;}
+		if(start_time.length!= 16 && end_time.length!=16){alert("时间请规范填写");return false;}
+	}
+	
+</script>
+
+</head>
+
+<body>
+	
+<div class="list-div" id="listDiv" onmouseout="hiddend();">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+			<form action="vote_add.php?action=vote" method="post" onsubmit="return checkform();">
+				<tr><td>题&nbsp;&nbsp;&nbsp;&nbsp;目：</td><td><input  type="text" name="title" id = 'title'></input></td></tr>
+				<tr><td>题目类型：</td><td>
+				<select name="style">
+					<option  value="0" style="width:130px;">0</option>
+					<option  value="1" style="width:130px;">1</option>
+					<option  value="2" style="width:130px;">2</option>
+				</select>
+				</td></tr>
+				<tr><td>分组：</td><td><input  type="text" name="group" id = 'group'></input></td></tr>
+				<tr><td>开始时间：</td><td><input  type="text" name="start_time" id = 'start_time'></input></td></tr>
+				<tr><td>结束时间：</td><td><input  type="text" name="end_time" id = 'end_time'></input></td></tr>
+				<tr><td></td><td>格式：2011-07-02 05:06</td><td>
+				<tr><td>是否显示：</td><td><input type="radio" style="margin-left:10px;" name="is_show" checked="checked"   value="1"/>显示<input style="margin-left:25px;" type="radio" name="is_show"  value="0"/>不显示</td></tr>
+				<input type="hidden" name = "check" value="1" />
+				<tr><td></td><td><input  type="submit" style="width:100px;" value="提交" /></td></tr>
+			</form>
+			
+	</table>
+	</div>
+</body>
+</html>
+﻿

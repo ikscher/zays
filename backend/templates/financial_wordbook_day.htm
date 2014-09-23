@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>售后客服{$username}工作情况日报表</title>
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/news.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script>
+	function goto(){
+		var page = document.getElementById('text1').value.replace(/\s/g,"");
+		if(page){
+			window.location.href='index.php?action=financial_wordbook&h=day&page='+page+'&username={$username}&sid={$sid}&time1={$time}';
+		}
+	}
+	function checkform(){
+		var time1 = document.getElementById('time1').value.replace(/\s/g,'');
+		if(!time1){
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+
+<body>
+<form name="form1" action="index.php?action=financial_wordbook&h=day&sid={$sid}&username={$username}" method="post" onsubmit="return checkform();">
+<h1><span style="float:left; color:#000;">红娘网管理中心—<font color="#FFFFFF">售后客服{$username}工作情况日报表</font></span><span style="float:right" class="action-span"><a href="index.php?action=financial_wordbook&h=day&username={$username}&sid={$sid}">刷新</a></span>
+<div class="clear"></div>
+ <div style="clear:both;"></div>
+</h1>
+    
+   <div>
+            <font color="#000000">按日期搜索：</font>
+            <input type="text" name="time1" value="" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>
+            &nbsp;<input type="submit" name="button" value="&nbsp;&nbsp;查&nbsp;找&nbsp;&nbsp;" class="button">
+            &nbsp;&nbsp;&nbsp;&nbsp;您今天维护了{php echo $total;}个会员
+   </div>
+    <div class="list-div">
+   <table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="list-table">
+	<tr>
+		<th width="12%" height="30" align="center">所属管理员ID</th>
+        <th width="11%" height="30" align="center">操作者ID</th>
+	    <th width="11%" height="30" align="center">会员ID</th>
+		<th width="11%" height="30" align="center">推荐</th>
+		<th width="11%" height="30" align="center">模拟</th>
+		<th width="11%" height="30" align="center">关注</th>
+		<th width="11%" height="30" align="center">回访</th>
+        <th width="11%" height="30" align="center">客诉</th>
+        <th width="11%" height="30" align="center">操作时间</th>
+	</tr>
+{loop $member_backinfo $k $val}
+   <tr>
+        <td width="12%" height="30" align="center">{$sid}</td>
+        <td width="11%" height="30" align="center">
+        {php $mid_val = '';}
+        {php $once_uid = '';}
+        {loop $sellinfo_arr $k $arrs}
+            {if $arrs[uid] == $val[uid] && $arrs[mid] != $sid && $arrs[sid] == $sid}
+                {if !eregi($arrs[mid],$mid_val)}
+                	{if $mid_val != ''}{php $mid_val.=',';}{/if}
+                	{php $mid_val.=$arrs[mid];}
+                {/if}
+            {/if}
+            {if $arrs[mid] == $sid && $arrs[sid] == $sid &&  $arrs[uid] == $val[uid]}
+            	{php $once_uid = $sid;}
+            {/if}
+        {/loop}
+      	{if $mid_val && $once_uid}
+        	{php echo $mid_val.','.$once_uid;}
+        {elseif $mid_val || $once_uid}
+        	{php echo $mid_val.$once_uid;}
+        {/if}
+         </td>
+        <td width="11%" height="30" align="center">
+        	<a href="#" onclick="parent.addTab('查看{$val[uid]}资料','index.php?action=allmember&h=view_info&uid={$val[uid]}','icon')">{$val[uid]}</a>
+            </td>
+        {for $i=1;$i<=6;$i++}
+        	 {if $i < 6}
+                <td width="11%" height="30" align="center">
+                    {php $j=1;}
+                    {php $f='';} 
+                    {loop $sellinfo_arr $arr}
+                    	{if $arr[uid] == $val[uid]}
+                        	{if $arr[effect_grade] == $i}{php $f.='('.$j.')'.$arr[comment];}{php $j++;}{/if}
+                        {/if}
+                    {/loop}
+                    <font title="{$f}">{php echo $f;}</font> 
+                    </td>
+             {else}
+             	 <td width="11%" height="30" align="center">
+                    {php echo date("Y-m-d H:i:s",$sellinfo_arr[0][dateline]);}
+                    </td>
+             {/if}
+        {/for}
+   </tr>
+{/loop}
+
+	{if $count_day}
+    <tr>
+        <td height="30" colspan="9" align="center">
+        当前记录条数：{$count_day}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{if $page_links }{$page_links} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="text1" type="text" style="width:20px">&nbsp;&nbsp;&nbsp;<a href="javascript:goto();" class="button-s">GO</a>{/if}</td>
+    </tr>
+	{/if}
+</table>
+<a href="#" class="button"></a>
+<div style="clear:both"></div>
+</div>
+</form>
+<div class="clear"></div>
+</body>
+</html>

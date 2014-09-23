@@ -1,0 +1,160 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+
+<script type="text/javascript">
+
+function delfromSendInfo(id){ 
+    if(confirm( '是否要删除？ ')) { 
+    	window.location='index.php?action=other&h=sendinfo&id='+id;
+    } 
+}
+
+
+
+//信息
+function userdetail(number,arrayobj) {
+    var arrname = arrayobj;
+        for(i=0;i<arrayobj.length;i++) {
+            var valueArray  = arrayobj[i].split(",");
+            if(valueArray[0] == number) {
+                if(valueArray[0] == '0' && valueArray[1] != '男士') {
+                    document.write("未选择");
+                } else {
+                    document.write(valueArray[1]);
+                }   
+            }
+    }
+}
+
+//判断是否选择了
+function checkForm(){
+    var k=0;
+    $("input[name^='changesid']").each(function(){
+        if($(this).attr("checked")==true){
+           k=k+1;
+        }   
+    });
+
+    if(k==0) {
+        alert("请选择要 删除的记录，可以选择多项！");
+        return false;
+    }    
+    return true;
+}
+
+
+//分页跳转
+function gotoPage() {
+    var page = $("#pageGo").val();
+    var page = parseInt(page);
+    
+    if(page<1) page = 1;
+    if(page><?php echo ceil($total/$page_per);?>)
+
+    page = <?php echo ceil($total/$page_per);?>;
+    window.location.href = "<?php echo $currenturl;?>&page="+page;
+}
+
+//全选
+function chooseall(){
+    if($("#choose_all").attr("checked")){
+        $("input[name='changesid[]']").attr("checked",true);
+    }else{
+        $("input[name='changesid[]']").attr("checked",false);
+    }
+}
+
+
+
+
+$(function(){
+    $(".csstab tr").mouseover(function(){
+        $(this).addClass("over");
+    }).mouseout(function(){
+        $(this).removeClass("over");    
+    })
+
+    $("#page_per").change(function(){
+        var page_per = this.value;
+        location.href="<?php echo $currenturl;?>"+"&page_per="+page_per;
+    })
+})
+
+
+
+</script>
+<style>
+tr.over td {
+    background:#cfeefe;
+} 
+</style>
+
+<h1>
+<span class="action-span"><a href="#" onclick="parent.addTab('添加秋波鲜花发送信息','index.php?action=other&h=add_sendinfo','icon');return false;">添加发送信息</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 秋波鲜花发送信息</span>
+<span class="action-span"><a href="<?php $u=explode('&',$_SERVER['QUERY_STRING']);?>index.php?<?php echo $u[0];?>&<?php echo $u[1];?>">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+
+<form action="" method="post">
+    <tr>
+        <td colspan="8" style="text-align:left">
+            搜索内容：
+            &nbsp;&nbsp;
+            <select name="type" id="type">
+                <option value="">不选择</option>
+                <option value="1" >女方发送到男方</option>
+                <option value="2" >男方发送到女方</option>
+            </select>
+            &nbsp;&nbsp;
+            <input name="" type="submit" value="搜 索"/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;"><?php echo $total;?>条记录</span>
+
+        </td>
+    </tr>
+</form>
+
+
+<form action="index.php?action=other&h=sendinfo" method="post" onsubmit="return checkForm();" >
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th style="width:3%"><input type="checkbox" id="choose_all" value="choose_all" onclick="chooseall()" /></th>
+    <th style="width:5%">序号</th>
+    <th style="width:10%">类别</th>
+    <th>内容</th>
+    <th style="width:5%">是否显示</th>
+    
+    <th style="width:5%">操作</th>
+  </tr>
+  <?php foreach((array)$list as $k=>$value) {?>
+   <tr>
+    <td><input type="checkbox" value="<?php echo $value['id'];?>" name="changesid[]" /></td>
+
+    <td align="center"><?php echo $k+1;?></td>
+    <td align="center"><?php if($value['type']==1) { ?>女方发男方<?php } elseif ($value['type']==2) { ?>男方发女方<?php } ?></td>
+    <td align="center"><?php echo $value['content'];?></td>
+    <td align="center"><?php if($value['isShow']==0) { ?>不显示<?php } else { ?>显示<?php } ?></td>
+   
+    <td align="center">
+
+    <a href="#" id="<?php echo $value['id'];?>" onclick="javascript:delfromSendInfo(this.id)">删除</a>
+  
+    </td>
+  </tr>
+  <?php }?>
+ </table>
+
+<input type="submit" name="submit" value='批量删除' />
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center"><?php echo $page_links;?>
+        &nbsp;&nbsp;&nbsp;
+        转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+     
+    </tr>
+  </table>
+</form>

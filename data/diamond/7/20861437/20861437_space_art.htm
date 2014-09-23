@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的爱情观——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>爱情观点 <i>love view</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="l-view">
+			   <div class="l-view1"> 
+			     <p>我是一个很执着，果断的一个人，对于我自己，我不想多说，因为我知道，自己说自己有多么好或多么坏，那都只是片面的，最重要的是别人认为你是怎么样的一个人，因为旁观者清！</p>
+			     <p>我对另一半没多大要求，外貌上看的话，也要跟自己有眼缘，能带的出去才行，漂亮一点自然是好毕竟爱美之心，人皆有之嘛，职业无所谓了，正当职业的都可以接受；性格方面我希望她能温柔，贤惠，识大体，能够相互理解，而且能用情专一，是个从一而终的人。在我的爱情理解中，爱情不是游戏，我们都需认真对待，因为它关系着我们一生的幸福！</p>
+			     <p>人生就像一场戏，相扶到老不容易，何必为了小事发脾气！</p>
+			     <p>人生就是要活的精彩，过的幸福。这样的人生才有意义！</p>
+			     <p>恋爱是走在婚姻的路上，婚姻是恋爱的最好归宿。不是每一对恋人都能走进婚姻的殿堂，也不是每一对夫妻都能白头偕老。恋爱和婚姻不同，恋爱是没上保险的爱情，而婚姻是上了保险的爱情。在一般情况下，一对恋人容易和平相处，而一对夫妻却常常因为一点小事，争论得面红耳赤。可以说：恋人是在虚拟的世界里，不需要柴、米、油、盐，抚养、赡养、进项、支出等问题；而婚姻是生活在现实里，上述的问题你必须天天面对，这样经济收入的高低，家务劳动付出的多少，都是直接面对的问题。人是自私的，爱也不是把自己抛出去什么都不要了，在家里都想有点地位、面子上有光；在社会都想有点尊严、能抬起头来。如果这两点都没有了，那你的婚姻也走进了“红灯区”,即使不离，也很痛苦。</p>
+			     <p>人们常说：有爱情没有婚姻是不幸的，有婚姻没有爱情是痛苦的；而我希望每一个人都能既有爱情，又有婚姻。</p>
+			     <p>我希望能早日找到真正属于我的另一半，不然宁可高傲的流浪，也不可卑贱的恋爱！然后和我的她共同努力去创造我们美好的未来，维护我们这个小家庭，不求世界之最，但求无愧于心！ </p>
+			   </div>
+   
+               
+                           
+</div>
+			  </div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

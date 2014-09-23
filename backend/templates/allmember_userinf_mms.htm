@@ -1,0 +1,31 @@
+
+<div class="list-div">
+	<table width="95%" cellpadding="3" cellspacing="1" >
+		<tr>
+			<th>TA的ID</th>
+			<th>形象照</th>			
+			<th>发送时间</th>
+				
+			<th>操作</th>
+		</tr>
+		{loop $user_active $v}
+		<tr>
+			<td align="center" id="user_pic_{$v['uid']}">
+			{$v['uid']}
+			</td>
+			<td align="center">
+			{if MooGetphotoAdmin($v['uid'],'medium')}有{else}无{/if}
+			</td>
+			<td align="center">
+			{php echo date("Y-m-d H:i",$v['sendtime']);}
+			</td>
+			<td align="center">
+			<a href="javascript:check_member_inf({$v['uid']},'{$kinds}');">选择</a>
+			</td>
+		</tr>
+		{/loop}
+	</table>
+</div><br/>
+	{if $pages>=2}<div style="text-align:center">第&nbsp;{php for($i=1;$i<=$pages;$i++){}
+	<a href="javascript:rgopage({$i});"style="text-decoration:none;{if $page==$i}border:1px solid #3E679A; background:#7F99BE;{/if}">&nbsp;{$i}&nbsp;</a>&nbsp;
+{/for}&nbsp;页</div>{/if}

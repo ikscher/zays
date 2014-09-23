@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+.display{height:42px; background:url(images/display.gif) no-repeat center top;}
+.left{height:320px; width:550px;}
+.right{width:423px; height:320px; margin-top:3px;_width:421px;}
+.title{height:37px; background:url(images/title.gif) no-repeat center top; line-height:41px; color:white;}
+.introduce{height:288px; background:url(images/content.gif) no-repeat center top; color:#363636; text-indent:4em; width:400px;_height:258px;}
+.link{width:730px;height:40px;}
+.phone{width:480px;}
+.leftBtn{top:150px; left:30px; width:13px; height:25px; cursor:pointer; z-index:999;}
+.rightBtn{top:160px; right:20px; cursor:pointer; z-index:999;}
+.leftBtn2{top:150px; left:30px; width:13px; height:25px; cursor:pointer; z-index:999;}
+.rightBtn2{top:160px; right:20px; cursor:pointer; z-index:999;}
+.up{height:330px;border:1px solid #6C1A76}
+#up{border-top:none;}
+#imgwall ul img { width: 552px; height: 323px; }
+
+
+

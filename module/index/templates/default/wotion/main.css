@@ -1,0 +1,111 @@
+body{font:12px/1.5 Verdana,Arial;margin:0;padding:0;}
+div,form,img,ul,ol,li,dl,dt,dd,p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;border:0}
+label{font:12px/1.5 Verdana,Arial;display:inline}
+.f10{font-size:10px}
+*{padding:0;margin:0}
+a,.textColor{color:#000;}
+a,a:hover{text-decoration : none;} 
+#xyContainer{width:960px;margin:0 auto; background: url(../images/wotion/bodybg.png) repeat-y 0 0;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;color:#333;position:relative;}
+body>a>img{display:none;}
+.slideShowcase{width:100%;height:100%;overflow:hidden;}
+ul,ol,dl,li{list-style:none}
+ul,ol{padding:0}
+li{line-height:20px}
+.slideList{visibility:hidden}
+.slideList li{width:960px;height:0;padding-top:600px;background:no-repeat;overflow:hidden;float:left}
+.slideList li{padding:0;height:600px;overflow:hidden;text-indent:-99999px}
+.slideList li.case01{background-image:url(../images/wotion/scase01.jpg)}
+.slideList li.case02{background-image:url(../images/wotion/scase02.jpg)}
+.slideList li.case03{background-image:url(../images/wotion/scase03.jpg)}
+.slideList li.pos_rel{position:relative}
+.slideControls .arrows{margin-left:8px;float:left}
+.xySearchBox{width:380px;height:215px;margin:20px 0 20px 20px;font:14px/16px "宋体";position:absolute;top:90px;left:510px;z-index:1}
+.xySearchBox{font:14px/16px "宋体"}
+.xySearchForm {width:380px;height:255px;}
+/* .xySearchForm {width:380px;height:255px;padding:80px 0 30px 40px;overflow:hidden;z-index:2;position:absolute;} */
+/* .xySearchForm{width:380px;height:255px;padding:80px 0 30px 40px;overflow:hidden;z-index:2;position:absolute;background:url(../images/wotion/xyshadow.png) no-repeat;_background-image:none} */
+.xySearchForm select{width:70px;padding:2px;margin:0 5px;color:#333}
+.xySearchForm .myTarget,.xySearchForm .itsAge,.xySearchForm .itsLocation{margin-bottom:14px}
+.xySearchForm .myTarget{margin-top:14px}
+a,input,select{outline:0}
+.xySearchForm input,.xySearchForm select{vertical-align:middle;font-size:14px}
+.xySearchForm .myTarget #chkfoto{margin:0 5px 4px 10px}
+label{cursor:default}
+.xySearchForm .myTarget,.xySearchForm .itsAge,.xySearchForm .itsLocation{margin-bottom:14px}
+.xySearchForm input,.xySearchForm select{vertical-align:middle;font-size:14px}
+.xySearchForm select{width:70px;padding:2px;margin:0 5px;color:#333}
+.xySearchForm .btnSearch{margin-left:72px;margin-top:20px}
+.xySearchBox .someLinks{margin-top:20px;font-size:12px}
+.xyLoginBox{padding-right:5px;position:absolute;top:46px;right:78px;width:385px;}
+.xyLoginForm{width:380px;position:relative;}
+
+.fakeuname{position:absolute;left:10px;top:5px;color:#67afd8;}
+.fakepwd{position:absolute;left:180px;top:5px;color:#67afd8;}
+.xyLoginBox .someLinks{height:22px;margin-left:10px;line-height:22px;color:#67afd8;float:left}
+.login{position:absolute;left:520px}
+.input-sm{width:30%;}
+.input-mm{width:40%;}
+.rememberLogin{position:absolute;left:137px;top:40px;color:#67afd8;clear:both;font-family:Tahoma;width:210px;height:24px;}
+.xyLoginBox a:hover,.xyLoginedBox a:hover{text-decoration:none!important;color:#f60!important}
+.xySearchForm .btnSearch input.sbt{width:145px;height:40px;padding-top:45px;background:url(../images/wotion/btnSearch.png) no-repeat;display:inline-block;overflow:hidden;border:0}
+.slideControls{position:absolute;bottom:16px;right:16px}
+.slideControls .circles{margin-top:3px;float:left}
+.slideControls .circles li{width:17px;height:0;padding-top:17px;margin-left:5px;background:url(../images/wotion/sCircle.png) no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.zhenai.com/zhena../images/wotion/newUI/newmod/sCircle.png');_background-image:none;overflow:hidden;float:left;cursor:pointer}
+.carousel-indicators{top:550px}
+.carousel-indicators li{width:17px;height:17px;cursor:pointer}
+.carousel-indicators li{background:url(../images/wotion/sCircle.png) no-repeat}
+.carousel-indicators li.active{background:url(../images/wotion/sCircleC.png) no-repeat}
+.clearfix:after{content:".";display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden}
+.clearfix{display:inline-block}
+#appraisal{width:960px;margin:10px auto;padding:0}
+.appraisalbox{width:407px;height:339px;/* padding-top:30px; */margin-right:26px;float:left;/* background:url(../images/wotion/story_za.png) no-repeat */}
+div span.txt{font-size:20px;}
+.ssfootBox dl{padding-left:10px;}
+.listpicbox{width:182px;height:155px}
+.listbox li{float:left;margin:5px 5px 5px 12px;line-height:18px;display:inline;text-align:center}
+.listbox{color:#bfe3f4;padding:5px 0 0 0}
+.ssfootBox{float:left;width:510px;/* padding-top:20px; font-size:14px;line-height:1.5; background:url(../images/wotion/about.png) no-repeat */}
+.ssfootBox dt{padding-top:8px}
+.listpicbox .picbg{border:1px solid #edefea;width:180px;}
+.listbox p{padding-top:5px}
+#cTl,#cTr,#cBl,#cBr,#bBl,#bBr{line-height:0;font-size:0;position:absolute;z-index:99;display:none}
+#cTl,#cTr,#cBl,#cBr{width:5px;height:5px;/* background:url(../images/wotion/corner8.png) no-repeat */}
+#cTl{background-position:0 0;top:0;left:0}
+#cTr{background-position:-5px 0;top:0;right:0}
+#cBl{background-position:0 -5px;bottom:0;left:0}
+#cBr{background-position:-5px -5px;bottom:0;right:0}
+#bBl{left:0}
+#bBr{right:0}
+.newhn{width:960px;margin:15px auto}
+.media{width:407px;height:232px;padding-top:20px; float:left;/* background:url(../images/wotion/media.png) no-repeat; */}
+.media p{text-align:right;margin-top:-12px;padding-right:20px;padding-bottom:10px}
+.media ul{width:370px;margin:0 auto}
+.media ul li{display:block;height:22px;line-height:22px;vertical-align:top;padding:5px 6px}
+.media ul li.first{height:74px;border:1px solid #0a679e;background:#1c78aa;margin-bottom:12px;padding:0}
+/* .media ul li a{color:#FFF} */
+.media ul li.first a.text{float:left;width:230px;margin-left:10px;margin-top:5px}
+.media ul li.first a.img{float:left;display:inline;width:115px;height:70px;padding:1px;border:1px solid #61b7dc;background:##01649e}
+.steps5{width:512px;margin-left:26px;float:left;display:inline}
+.steps5 ol li{margin:0 0 10px 10px;float:left;display:inline}
+.steps5 .tit{height:27px;padding-bottom:20px;/* background:url(../images/wotion/5steps.png) no-repeat; */overflow:hidden}
+.steps5 .tit h2{text-indent:-9999px;float:left}
+.steps5 .tit a{margin-right:5px;float:right}
+.clearfix{display:block}
+#footBox{text-align:center;padding:30px 0;line-height:18px;width:960px;margin:0 auto;background:url(../images/wotion/bottom.png) center 10px no-repeat}
+#footBox dt{margin-bottom:8px}
+.xySearchBox .someLinks{text-align:center;font-size:12px;position:absolute;left:37px;top:280px}
+.xySearchBox .someLinks a{margin-left:8px;text-decoration:underline!important;color:#0971a3!important;display:inline-block}
+.xySearchBox .someLinks a.zfbLogin{padding-left:28px;color:#838383!important;text-decoration:none!important;background:url(../images/wotion/icon_zfb.png) 10px center no-repeat;border-left:1px solid #ccc}
+.xySearchBox .someLinks a.link_uniacc_7620_qq{margin-top:-2px}
+.link_uniacc_7620_qq{width:0;height:20px;padding-left:76px;background:url(../images/wotion/icon_20px_lb.png) no-repeat;vertical-align:middle;overflow:hidden;display:inline-block}
+.rememberLogin span{margin-left:20px;}
+.carousel-caption{background:#69f;filter:alpha(opacity=50); /*IE滤镜，透明度50%*/-moz-opacity:0.5; /*Firefox私有，透明度50%*/opacity:0.5;/*其他，透明度50%*/}
+.errorTips{display:block;margin-top:5px;color:#f00;}
+
+span.logo{position:absolute;left:20px;top:20px;z-index:1;background: url(../images/wotion/top_logo.png);width: 275px;height: 91px;}
+/*修正IE6*/
+
+.picbg img{max-width:180px; width:expression(this.width > 180 ? "180px" : this.width); max-height:110px; height:expression(this.height > 110 ? "110" : this.height);}
+#scrollDiv{background:url(../images/wotion/voice.png)  no-repeat ;width:300px;height:25px;line-height:25px;overflow:hidden;position: absolute;top: 10px;right: 78px;}
+#scrollDiv li{line-height:25px;height:25px;padding-left:30px;color:#666;}
+dt a{color:#000;font-weight:normal;}

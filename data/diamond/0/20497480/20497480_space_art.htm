@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的爱情观——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>爱情观点 <i>love view</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="l-view">
+			  <div class="l-view1"> 
+				  <p>罗浮魅影有一句这样的内心独白&quot;如果你愿意为我打扫房间，那么我愿意为你扫天下。如果你愿意站在我身旁，那么我将为你展示一个只属于你的未来。&quot;罗浮魅影你只要付出一点他就会为你付出很多的人，他说女人是用来保护的，即使他以后工作再忙也不忘抽出时间来陪她。他现在的目标是兼并对手公司，找到一个可以让他去为她扫天下的女人。多么顶天立地的一个男人啊。罗浮魅影喜欢温柔贤惠顾家型的女子，漂亮与否不是他所看重的，只要求她懂得怎样去爱一个人，他很幽默的说自己不是外貌协会的成员，只要女生不是从事娱乐行业的工作都可以接受最好性格是开朗活泼型的。爱情和婚姻不一定要像轰轰烈烈，两个相爱的人能平平淡淡的走完一生也是一种幸福。爱情是平淡的、实在的，在与对方相处久了才能知对方的心意！美妙的文字可以让你有视觉思维上的感受，可是爱情只是用文字来衡量吗？它有许许多多的方面的．它是用时间与心来感受的。要喜欢一个人不是很容易，要爱一个人更不易，要彻底的了解一个人难如登天。我们渴望那至死不愈的爱情，更向往平淡的爱情，因为只有平淡的爱情才能禁得起生活的考验。<br />
+				  </p>
+			  </div>
+              </div></div></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

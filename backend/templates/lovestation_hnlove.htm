@@ -1,0 +1,161 @@
+{if !isset($_GET['ajax'])}
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>红娘爱车会列表</title>
+		<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+		<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+		<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+		<link rel="stylesheet" type="text/css" href="templates/css/jquery.fancybox-1.2.5.css" />
+		<style type="text/css">
+			.hidden { display: none; }
+			#carname {margin-right: 10px; }
+			#search { margin-left: 20px; }
+		</style>
+		<script type="text/javascript">
+			//分页跳转
+			function gotoPage(page) {
+				if (!page) {
+					var page = $("#pageGo").val();
+					page = parseInt(page);
+					if(page < 1 || isNaN(page)) page = 1;	
+				}
+				$('#listDiv').load(gotoPage.href + "&page=" + page, Hnlove.adjustWidth);
+			}
+			function enterHandler(event){
+				var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+				if (keyCode == 13) {
+					gotoPage();
+				} 
+			}
+		</script>
+	</head>
+	<body>
+		<h1 style="margin-bottom:15px;">
+			<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 红娘爱车会 </span>
+			<span class="action-span"><a href="javascript:parent.addTab('新增或编辑车型', 'index.php?action=lovestation&h=hnlove&n=addcar','icon')" id="addcar">添加车型</a></span>
+			<span class="action-span"><a href="index.php?action=lovestation&h=hnlove">刷新</a></span>
+			<div style="clear:both;"></div>
+		</h1>
+
+		<form action="" method="get">
+			车型: <input name="carname" type="text" id="carname" />
+			没有图片: <input type="checkbox" id="noimg" name="noimg" />
+			<input type="button" value="搜索" id="search"  class="button" />
+		</form>
+		<div style="border-bottom:1px solid #999;margin:10px auto;"></div>
+		<div class="list-div" id="listDiv">
+			{/if}
+			<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+				<thead><tr>
+						<th>序号</th>
+						<th>是否显示</th>
+						<th>车型</th>
+						<th id="thinfo">介绍</th>
+						<th>图片</th>
+						<th>添加日期</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{loop $car_list $keycar $car}
+					<tr>
+						<td align="center" role="id">{$car['id']}</td>
+						<td align="center" role="display"><input type="checkbox" value="{$car['id']}"{if $car['isdisplay'] == 1} checked="checked"{/if} /></td>
+						<td align="center">{$car['car']}</td>
+						<td align="center">{php echo MooCutstr(htmlspecialchars($car['info']), 200);}</td>
+						<td align="center" class="picwall">
+							{if count($car['imgurl']) == 0}
+							<a href="javascript:;" class="addimg">添加图片</a>
+							{else}
+								{loop $car['imgurl'] $k $url}
+									{if $k == 0}
+									<a href="../{$url}" rel="wall{$keycar}">{php echo count($car['imgurl']);}张图片</a>
+									{else}
+									<a href="../{$url}" rel="wall{$keycar}" class="hidden"></a>
+									{/if}
+								{/loop}
+							{/if}
+						</td>
+						<td align="center">{php echo date('Y-m-d', $car['dateline']);}</td>
+						<td align="center" class="operation">	
+							<a href="javascript:;" role="update">修改/添加图片</a>&nbsp;|&nbsp; 
+							<a href="javascript:;" role="delimg">删除图片</a>&nbsp;|&nbsp;
+							<a href="javascript:;" role="delete">删除</a>
+						</td>
+					</tr>
+					{/loop}
+				</tbody>
+			</table>
+
+			<table cellpadding="4" cellspacing="0">
+				<tr>
+					<td align="center">{$pages}
+						&nbsp;&nbsp;&nbsp;
+						转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+						<input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+					</td>
+				</tr>
+			</table>
+			<script type="text/javascript">	gotoPage.href = '{$currenturl}';</script>
+			{if !isset($_GET['ajax'])}
+		</div>
+		<script type="text/javascript">
+			var Hnlove = {
+				search: function() {
+					$('#listDiv').load('index.php?action=lovestation&h=hnlove&ajax=&' + $('form').serialize(), Hnlove.adjustWidth);
+				},
+				deleteid: function() {
+					if (confirm('确定要删除这款车么?')) {
+						var id = $(this).parent().siblings('[role=id]').text();
+						var tr = $(this).parent().parent();
+						$.get('index.php?action=lovestation&h=hnlove&n=delete&id=' + id, function(data) {
+							if (data == 'ok') {
+								tr.remove();
+								alert('删除成功');
+							} else { alert('fail'); }
+						});
+					}
+				},
+				delimg: function() {
+					var index = prompt('输入你想要删除的图片序号，从1开始(例如: 1或1,2): ');
+					if (!index) { return; }
+					if (!/^[1-9]+(,[1-9]\d*)*$/.test(index)) {
+						alert('输入格式错误！');return;
+					}
+					var id = $(this).parent().siblings('td[role=id]').text();
+					$.get('index.php?action=lovestation&h=hnlove&n=delimg&ajax=&id=' + id + '&index=' + index, function(data) {
+						$('#listDiv').html(data);
+						Hnlove.adjustWidth();
+					});
+				},
+				display: function() {
+					var isshow = Number(this.checked);
+					$.get('index.php?action=lovestation&h=hnlove&n=changeshow&isshow='+isshow+'&id='+this.value+'&sid='+Math.random(),function(data) {
+						if (data == 'ok') { alert('操作成功'); }
+					});
+				},
+				addpic: function() {
+					var id = $(this).parent().siblings('td[role=id]').text();
+					parent.addTab('修改 ' + id + '号车型信息', 'index.php?action=lovestation&h=hnlove&n=addcar&id=' + id);
+				},
+				adjustWidth: function() {
+					if ($('#thinfo').width() > 620) {
+						$('#thinfo').width('50%');
+					}
+					$('#listDiv .picwall a[rel]').fancybox();
+				}
+			}
+			Hnlove.adjustWidth();
+			$('#search').click(Hnlove.search);
+			$('#listDiv').delegate('.picwall .addimg, .operation a[role=update]', 'click', Hnlove.addpic);
+			$('#listDiv').delegate('td[role=display] :checkbox', 'click', Hnlove.display);
+			$('#listDiv').delegate('.operation a[role=delete]', 'click', Hnlove.deleteid);
+			$('#listDiv').delegate('.operation a[role=delimg]', 'click', Hnlove.delimg);
+		</script>
+		{/if}	
+	</body>
+</html>

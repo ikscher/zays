@@ -1,0 +1,77 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1> 
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 会员升级支付汇总</span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+	<form action="" method="get">
+		时间：
+		<input type="text" name="start_time" value="{if isset($_GET['start_time'])}$_GET['start_time']{/if}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+		<input type="text" name="end_time" value="{if isset($_GET['end_time'])}$_GET['end_time']{/if}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>
+        <input type="hidden" name="action" value="vipuser" />
+		<input type="hidden" name="h" value="vip_summary" />
+		{if isset($_GET['pay_service'])}<input type="hidden" name="pay_service" value="{$pay_service}" />{/if}
+		<input name="提交" type="submit" value="查看汇总" />
+	</form>
+</div>
+{if $note}<span style="float:left;margin-left:10px;padding:5px;">{$note}</span>{/if}
+<br /><br />
+<div class="list-div">
+<p>总体成单数及金额可以汇总</p>
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		  <tr>
+			<th>数量</th>
+			<th>销售总金额</th>
+			<th>购买类型</th>
+			<th>查看</th>
+		  </tr>
+		  {loop $totalCount $c}
+			<tr>
+            	<td>{$c['c']}</td>
+                <td>{$c['qian']}</td>
+                <td>{php echo @$GLOBALS['apply_member_level'][$c['pay_service']]}</td>
+				<td><a href="#" onclick="parent.addTab('@$GLOBALS['apply_member_level'][$c['pay_service']] 升级详细','index.php?action=vipuser&h=vip_summary&pay_service={php echo isset($c['pay_service'])?$c['pay_service']:'';}','icon')">查看详细</a></td>
+			</tr>
+		  {/loop}
+	  </table>
+</div>
+<!-- <div class="list-div">
+<p>每个客服的成单数及金额可以汇总</p>
+      <table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		  <tr>
+			<th>客服</th>
+			<th>成功订单数</th>
+			<th>销售金额</th>
+		  </tr>
+		  {loop $everyCount $c}
+			<tr>
+            	<td>{php echo $GLOBALS['kefu_arr'][$c['apply_sid']]}</td>
+                <td>{$c['num']}</td>
+                <td>{$c['total']}</td>
+			</tr>
+		  {/loop}
+	  </table>
+</div> -->
+<div class="list-div">
+<p>每个小组的成单数及金额可以汇总</p>
+      <table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		  <tr>
+			<th>组</th>
+			<th>销售总单数</th>
+			<th>销售总金额</th>
+			<th>查看</th>
+		  </tr>
+		  {loop $groupCount $k $c}
+			<tr>
+            	<td>{$k}</td>
+                <td>{$c[0]['num']}</td>
+                <td>{$c[0]['total']}</td>
+				<td><a href="#" onclick="parent.addTab('$k 升级详细','index.php?action=vipuser&h=getvip_group&groupid={$c['id']}','icon')">查看详细</a></td>
+			</tr>
+		  {/loop}
+	  </table>
+</div>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的亲友印象——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" /><link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/02.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->  
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3 style="padding-left:5px;"><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">亲友助阵</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px;font-weight:400;">Relatives<br />and friends</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="impression">
+					 <div class="impression1">
+					 	<p>《论语》中&quot;三十而立&quot;的古训妇孺皆知，不管某些人是否将其奉为金科玉律，广博的父母都希望他在30之前能结婚。<br />
+				 		</p>
+					 </div>
+				   <div class="impression3">
+				   	<p>同事朋友眼里的广博是个挺好的人。有着东北人所特有的热情和豪爽的他，重感情，在他们心里是好哥们、好兄弟般的存在。</p>
+				   </div>
+				   <div class="impression4">
+				   	<p>在为人处事上，人们都喜欢与那些随和的人相处，跟他们在一起，会感到温暖、自在、舒适，没有那么多条条框框，却有一种被尊重、被信任的感觉，而广博就是这样的一个人。他很随和，虽不能做到不以物喜，遇到事情却能不骄、不躁、不急、不发火，不为己悲。即使前面满地荆棘，他也不会因此而惊慌失措、乱了阵脚，而是随遇而安、淡然处之，兵来将挡，水来土淹。</p>
+				   </div>
+			    </div>
+			  </div>
+			
+			
+			  
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+
+#modalLeer{width:623px;height:527px;background:url(../../../../public/default/images/leer.png) no-repeat}
+._modal_{display:none;background:#fff;padding:0 20px 20px;overflow:auto;z-index:1001;position:absolute;width:500px;height:auto}
+.overlay{width:100%;height:100%;position:fixed;top:0;left:0;z-index:1000;display:none}
+.leerConfirm,.commissionConfirm,.likerConfirm,.giftConfirm,.estimateConfirm,.SMSConfirm,.bindConfirm{display:inline-block;width:180px;padding:9px 0;margin:0 0 5px 0;cursor:pointer;text-decoration:none;text-align:center;-webkit-border-radius:50px;border-radius:50px;background-clip:padding-box;-webkit-transition:all .2s linear;-moz-transition:all .2s linear;-o-transition:all .2s linear;transition:all .2s linear;position:absolute}
+.leerConfirm{border:2px solid #16a085;background:#f4f4f4;color:#16a085;left:300px;top:300px}
+.leerConfirm:hover,.leerConfirm:active,.estimateConfirm:hover,.estimateConfirm:active{background:#16a085;color:#f4f4f4}
+.commissionConfirm,.estimateConfirm,.bindConfirm{border:2px solid #c0392b;background:#f4f4f4;color:#c0392b}
+.commissionConfirm:hover,.bindConfirm:hover{background:#c0392b;color:#f4f4f4}
+.likerConfirm,.SMSConfirm{border:2px solid #c0392b;background:#f4f4f4;color:#c0392b}
+.likerConfirm:hover,.SMSConfirm:hover{background:#c0392b;color:#f4f4f4}
+.giftConfirm{border:2px solid #c0392b;background:#f4f4f4;color:#c0392b}
+.giftConfirm:hover{background:#c0392b;color:#f4f4f4}
+.fleer,.fcommission,.fliker{font-size:22px;font-family:'微软雅黑'}
+.Leer{position:absolute;left:575px;top:15px;}
+.Liker,.SMS{position:absolute;left:325px;top:15px;}
+.closeL{display:inline-block;width:28px;height:28px;text-decoration:none;-webkit-border-radius:50%;border-radius:50%;border:2px solid #3e5368;-webkit-transition:background .2s linear;-moz-transition:background .2s linear;-o-transition:background .2s linear;transition:background .2s linear}
+.closeL:after{display:block;font-size:28px;font-family:Arial,'Helvetica CY','Nimbus Sans L',sans-serif!important;content:"×";line-height:28px;padding-left:5px;cursor:pointer;text-decoration:none;color:#3e5368;-webkit-transition:all .2s linear;-moz-transition:all .2s linear;-o-transition:all .2s linear;transition:all .2s linear}
+.closeL:hover,.closeL:active{background:#3e5368;cursor:pointer}
+.closeL:hover.closeL:after,.closeL:active.closeL:after{color:#f4f4f4;cursor:pointer}
+#modalLeer h3{color:#fff;position:absolute;left:20px;top:5px}
+.zp_zt{position:absolute;left:0;top:60px}
+.zp_tp{width:127px;height:156px;background:url(../../../../public/default/images/toMemberBg.png) no-repeat;padding-left:7px;margin-left:15px;margin-top:10px;padding-top:5px}
+.nickname,.myname{font-family:'楷体';font-size:22px;color:#d1d810}
+.uinfo span{display:block;text-align:center}
+.zf_cb{position:absolute;left:165px;top:80px;width:438px;}
+.zf_cb p{padding-bottom:10px}
+.updown{position:absolute;right:80px;top:240px;color:#fad}
+.down{margin-left:10px;float:right}
+.up{float:right}
+.h{display:none}
+.leerTips{position:absolute;left:180px;top:260px;color:#f00;font-size:18px;font-weight:bold}
+.cTips,.gTips{position:absolute;left:250px;top:280px;color:#f00;font-size:14px;font-weight:bold}
+.bTips{position:absolute;left:300px;top:290px;color:#f00;font-size:14px;font-weight:bold}
+.eTips{position:absolute;left:300px;top:280px;color:#f00;font-size:14px;font-weight:bold}
+#modalCommission,#modalGift{width:512px;height:auto;background:0;height:490px;}
+#modalBind{width:512px;height:auto;background:0;height:550px;}
+#modalEstimate{width:512px;height:auto;background:0;height:380px;}
+.h6_top{display:block;width:90%;height:80px;position:absolute;left:0;top:0;z-index:100;background:url(../../../../public/default/images/commission.png) no-repeat}
+.b_v{display:block;width:100px;height:40px;position:absolute;left:12px;top:32px}
+.tan_k_x{padding:90px 60px 28px;width:400px}
+.tan_k_v{padding:90px 30px 28px;width:460px}
+.lxcss{width:430px;}
+.lxcss dl dd{width:413px}
+.lxcss textarea{width:413px;height:90px;overflow:hidden;resize:none}
+.h6_tj{font-size:16px;color:#ef6191}
+.tan_k_z{background:#fff;position:absolute;left:0;top:20px;}
+.tan_k_z em{display:block;width:50px;height:100px;position:absolute;top:60px;left:0;background:url(../../../../public/default/images/commission.png) no-repeat -1040px 0}
+.closeC{position:absolute;left:460px;top:20px;cursor:pointer;width:50px;height:50px}
+.h50{margin-right:10px;height:50px;padding-top:5px}
+#modalLiker,#modalSMS{width:350px;height:230px;background:url(../../../../public/default/images/addLiker.png) no-repeat}
+.zc_xp{position:relative;left:30px;top:40px;width:320px;}
+.zc_xp p{margin-bottom:10px;}
+.zc_xp p a{color:#EB004F;}
+.gift li {float: left;text-align: center;margin: 1px;margin-left: 1px\9;font-weight: bold;display: block;position:relative;cursor:pointer;width:85px;}
+.checkP{ position:absolute; right:0px; top:0px; width:50px; height:50px; background:url(../../../../public/default/images/hook.png) no-repeat;}
+.h100{margin:20px 100px;height:50px;}
+/* .pa{background:url(../../../../public/default/images/btnmulticolor.png) no-repeat}
+.red_a{background-position:0 -45px;width:134px;height:41px;}
+.red_a:hover{background-position:-139px -45px;width:134px;height:41px;} */
+.modalContainer a{font-weight:bold;}
+h4 span{font-size:14px;cursor:pointer;}
+h4 span:hover{color:#f00;}
+.t01{display:inline-block;width:100px;height:33px;text-align:center;background-color:#fff;}
+.t02{display:inline-block;width:100px;height:32px;text-align:center;background-color:#f0eff0;}
+.memberid{font-size:18px;}

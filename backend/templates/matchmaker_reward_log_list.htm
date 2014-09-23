@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>奖赏变更日志</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="templates/css/jquery-ui.css" type="text/css" media="all"  />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<!-- <script type="text/javascript" src="templates/js/onmousemove_minutes.js"> -->
+<script type="text/javascript">
+<!--
+$(function() {	
+	$( ".open" ).dialog({
+		bgiframe:true, //兼容IE6
+		autoOpen: false,
+		height: 400,
+		width: 400,
+		modal: true,
+		position:['top','left']
+	});
+	$( "#reward_form" ).dialog({
+		buttons: {
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});	
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$page_num})
+
+	page = {$page_num};
+	window.location.href = "{$currenturl}&page="+page;
+}
+function enterHandler(event){
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if (keyCode == 13) {
+	   gotoPage();	//调用函数
+	 } 
+}
+/* function make_pannel(id){
+	if(id!=0){
+		var rewarddata=$('#rewarddata').data('rewarddata_'+id);
+		if(rewarddata==undefined){
+			$.get('index.php?action=matchmaker&h=get_log',{id:id},function(rewarddata){
+				if(rewarddata.flag){
+					$('#rewarddata').data('rewarddata_'+id,rewarddata.msg);
+					coom_pannel(rewarddata.msg);
+				}else{
+					alert(rewarddata.msg);
+				}
+			},'json');
+		}else{
+			coom_pannel(rewarddata);
+		}
+	}
+} */
+function coom_pannel(data){
+	var str=new Array();
+	if(data.type==0 || data.type==1){
+		str.push(data.adminid_name);
+		str.push('于');
+		str.push(data.time);
+		str.push('对');
+		str.push(data.uid_name);
+		str.push('进行了币额');
+		str.push(data.amount);
+		str.push('的');
+		str.push(data.type_str);
+		str.push('<p>理由：</p>');
+		str.push('<p>'+data.msg+'</p>');
+	}else{
+		str.push();
+	}
+	$('#reward_form').html(str.join('')).dialog("open");
+}
+
+$(function(){
+	$("#group_change").change(function(){
+		  var groupid = this.value;
+		  $.get("vipuser_ajax.php?n=get_groupmember&id="+groupid,function(str){
+	           if(str == 'no'){
+				alert('此组无成员');
+			   }else{
+			   $("#kefu_sid").empty();
+				$("#kefu_sid").append(str);
+			   }
+	       });
+	});
+
+})
+//-->
+</script>
+</head>
+<body>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 奖惩日志列表 </span>
+<span class="action-span"><a href="{php echo $_SERVER['REQUEST_URI'];}">刷新当前页</a></span>
+<span class="action-span"><a href="index.php?action=matchmaker&h={$GLOBALS['h']}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+
+<form method="get" action="index.php">
+<input type="hidden" name="action" value="matchmaker">
+<input type="hidden" name="h" value="{$GLOBALS['h']}">
+<table>
+<tr>
+<td style="text-align:left">
+	   
+			组别:
+			<select name="groupid" id="group_change">
+				<option value="">请选择</option>
+				{loop $group_list $list}
+				<option value="{$list['id']}" {if $list['id']==$groupid} selected="selected"{/if}>{$list['manage_name']}</option>
+				{/loop}
+			</select>
+			人员:
+			<select name="sid" id="kefu_sid">
+           <option value="{$uid}" selected="selected">{$sid_user}</option>
+           {loop $mang_list $list}
+           <option value="{$list[uid]}" >{$list[username]}</option>
+           {/loop}
+			</select>
+	    </td>
+	  <td>
+		<span >时间：</span>
+		 <input type="text" id="startTime" name="start" value="{php if($start) echo $start;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/> 到 
+		<input type="text"id="endTime" name="end" value="{php if($end) echo $end;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+	  </td>
+	<td>
+		<input name="" type="submit" value="查询"/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;">{$total}条记录</span>
+
+</td>
+	  </tr>
+	  </table>
+	    </form>
+
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>ID</th>
+    <th>被奖惩者</th>
+    <th>奖惩者</th>
+    <th>币额</th>
+    <th>时间</th>
+    <th>类型</th>
+    <th>奖惩原因</th>
+  </tr>
+  {loop $data $v}
+  <tr onmousemove="this.bgColor='#cfeefe';"  id="tr_{$v['id']}" onmouseout="this.bgColor='#ffffff';" class="listclass">
+  <td>{$v['id']}</td>
+  <td>{php echo $GLOBALS['kefu_arr'][$v['uid']];}</td>
+  <td>{php echo $GLOBALS['kefu_arr'][$v['adminid']];}</td>
+  <td>{$v['amount']}</td>
+  <td>{php echo date('Y-m-d H:i:s',$v['time']);}</td>
+  <td>{php echo $GLOBALS['matchmaker_msg_array'][$v['type']]}</td>
+ 
+  <td>{php $sql = "SELECT * FROM web_reward_config where `id`=".$v['rewardid'];
+      $vs = $GLOBALS['_MooClass']['MooMySQL']->getOne($sql);
+         echo $vs[msg];
+ }</td>
+  </tr>
+  {/loop}
+  </table>
+   <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$pages}
+	  &nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+      <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+	  </td>
+    </tr>
+  </table>
+</div>
+<div style="display:none" id="rewarddata">
+</div>
+</body>
+</html>

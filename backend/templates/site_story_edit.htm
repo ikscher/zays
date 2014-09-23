@@ -1,0 +1,135 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+function changeFirstImg(mid,sid,obj){
+	var imgUrl = obj.value;
+	if(confirm("您真的要将此照片设为首页照吗？")){
+		$.ajax({
+			type:"post",
+			url:"index.php?action=site_story&h=edit",
+			data:"imgpost="+1+"&imgUrl="+imgUrl+"&sid="+sid+"&mid="+mid,
+			success:function res(rep){
+				if(rep){
+					location.href='index.php?action=site_story&h=edit&id='+sid;
+					alert("设为首页照成功！");
+				}
+			}
+		});
+	}
+}
+
+function delImg(sid,obj){
+	var imgUrl = obj.id;
+	if(confirm("您确定要删除此照片吗？")){
+		$.ajax({
+			type:"post",
+			url:"index.php?action=site_story&h=del",
+			data:"delpost="+1+"&imgUrl="+imgUrl+"&sid="+sid,
+			success:function res(rep){
+				if(rep){
+					location.href="index.php?action=site_story&h=edit&id="+rep;
+					alert("删除成功！");
+				}
+			}
+		});
+	}
+}
+
+//检测能否发送
+function checkStory(){
+
+}
+
+</script>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> -编辑成功故事</span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<form method="post" action="index.php?action=site_story&h=edit" enctype="multipart/form-data" onsubmit="return checkStory()">
+<div class="list-div" id="listDiv">
+	<table cellspacing="1" cellpadding="3">
+		<tr>
+			<th colspan="2" align="left">编辑成功故事</th></tr>
+		</tr>
+		<tr>
+			<td>故事标题：</td>
+			<td><input type="text" name="title" value="{$editStory['title']}"></td>
+		</tr>
+		<tr>
+			<td>故事详细内容：</td>
+			<td><textarea name="content" style="width: 600px; height: 150px;">{$editStory['content']}</textarea></td>
+		</tr>
+		<tr>
+			<td>恋爱一方：</td>
+			<td><input type="text" name="name1" value="{$editStory['name1']}"></td>
+		</tr>
+		<tr>
+			<td>恋爱另一方：</td>
+			<td><input type="text" name="name2" value="{$editStory['name2']}"></td>
+		</tr>
+		<tr>
+			<td>甜蜜进程：</td>
+			<td>
+				<select name="state">
+					{loop $story_sweet_process $k $v}
+						<option value="{$k}" {if $editStory['state']==$k}selected{/if}>{$v}</option>
+					{/loop}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>确定关系时间：</td>
+			<td><input type="text" name="date" value="{php echo date('Y-m-d',$editStory['story_date'])}" readonly></td>
+		</tr>
+		<tr>
+			<td>编辑确定关系时间：</td>
+			<td>
+				<input type="text" onfocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" name="confirmtime" id="confirmtime"/>
+			</td>
+		</tr>
+		<tr>
+			<td>原图片</td>
+			<td>
+				{loop $editPic $k $pic}
+					<div id="pics" style="float:left;height:80px;width:100px;">
+						<img src="../data/upload/images/story/{$pic['img']}" width='80px' height="50px">
+						<input type="radio" value="{$pic['img']}" onclick="changeFirstImg($pic['mid'],$pic['sid'],this)" {if $editStory['is_index']==$pic['mid']}checked{/if}>设为首页照<br />
+						&nbsp;&nbsp;&nbsp;<span id="{$pic['img']}" onclick="delImg($pic['sid'],this)">删除</span>
+					</div>
+				{/loop}
+			</td>
+		</tr>
+		<tr>
+			<td>添加形象图片：</td>
+			<td><input type="file" name="img"><input type="text" name="imgtitle" value="合影名称：(限10字)"></td>
+		</tr>
+		<tr>
+			<td>是否需要审核通过：</td>
+			<td>
+				<input type="radio" name="pass" value="1" {if $editStory['syscheck']==1}checked{/if}>审核通过&nbsp;&nbsp;
+				<input type="radio" name="pass" value="0" {if $editStory['syscheck']==0}checked{/if}>审核中
+			</td>
+		</tr>
+		<tr>
+			<td>是否首页推荐：</td>
+			<td>
+				<input type="radio" name="recommand" value="1" {if $editStory['recommand']==1}checked{/if}>推荐&nbsp;&nbsp;
+				<input type="radio" name="recommand" value="0" {if $editStory['recommand']==0}checked{/if}>不推荐
+			</td>
+		</tr>
+		<tr>
+			<td>点击次数：</td>
+			<td><input type="text" name="clicknum" value="{$editStory['hot']}"></td>
+		</tr>
+	</table>
+</div>
+<p/>
+<input type="hidden" name="ispost" value="1">
+<input name="sid" type="hidden" value="{$sid}" />
+<input type="submit" id="addnews" name="addnews" value=" 提 交 "/>
+</form>
+<br />
+<br />

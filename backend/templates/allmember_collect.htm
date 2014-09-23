@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys.js?v=1"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+//显示用户信息
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+
+
+//当鼠标移过时显示图框
+var xPos;
+var yPos;
+var timerID;
+function showinfo(evt,uid){
+        evt=evt || window.event;
+	if(evt.pageX){          
+		xPos=evt.pageX;
+		yPos=evt.pageY;
+	} else {      
+		xPos=evt.clientX+document.body.scrollLeft-document.body.clientLeft;
+		yPos=evt.clientY+document.body.scrollTop-document.body.clientTop;      
+	}
+        timerID = setTimeout("xy("+xPos+","+yPos+","+uid+")",500);
+}
+function xy(xPos,yPos,uid){
+		
+		if(xPos+70+600<window.screen.width){
+		      $("#callinfo").css('left',xPos+70);
+		      $("#callinfo").css('top',yPos-70);
+		      $("#userid").html(uid);
+		      $.get("ajax.php?n=callinfo",{uid:uid},function(str){
+		              var arr=new Array();
+		              arr=str.split('||');
+		              $("#usertelphone").html(arr[0]);
+		              $("#userbezhucontent").html(arr[1]);
+		              $("#usercause").html(arr[2]);
+		              $("#usercallstate").html(arr[3]);
+		              $("#usercallremark").html(arr[3]);
+		      });
+		      $("#callinfo").css('display','block');
+		//alert(xPos+'|'+yPos);
+		      }else {$("#callinfo").css('display','none'); }
+}
+function hiddend(){
+   $("#callinfo").css('display','none');
+   clearTimeout(timerID);
+}
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{php echo ceil($total/$page_per);})
+
+	page = {php echo ceil($total/$page_per);};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+//全选
+function chooseall(){
+	if($("#choose_all").attr("checked")){
+		$("input[name='changesid[]']").attr("checked",true);
+	}else{
+		$("input[name='changesid[]']").attr("checked",false);
+	}
+}
+
+//分配客服
+function changeusersid(){
+	var s_page_val = $("#s_page").val();
+	var e_page_val = $("#e_page").val();
+	var pre_url = $("#pre_url").val();
+	var kefuuid = $("#kefuuid option:selected").val(); 
+	if($.trim(s_page_val) != '' && $.trim(e_page_val) != ''){ //输入页数成批转换
+		if(s_page_val<=0){
+			alert('起始页数输入不正确');return;
+		}
+		if(e_page_val > {php echo ceil($total/$page_per);}){
+			alert('结束页数输入不正确');return;
+		}
+		if(parseInt(s_page_val)>parseInt(e_page_val)){
+			alert('起始页不得大于或等于结束页数');return;
+		}
+	
+		location.href="index.php?action=allmember&h=changeusersid_bat&s_page="+s_page_val+"e_page="+e_page_val+"&kefuuid="+kefuuid+"&pre_url="+pre_url;
+		return;
+	}else{
+		var uidlist = "";
+		$("input[name='changesid[]']:checked").each(function(){
+			uidlist = 1;
+		})
+		if(uidlist==''){
+			alert('请选择需要分配的会员');
+			return false;
+		}
+		return true;
+
+	}
+
+}
+
+//排序
+function chang_order(field,order){
+	location.href="{$currenturl}&order="+field+"&method="+order;
+}
+
+//月收入，年龄筛选条件
+$(function(){
+	$('#birthyear,#salary').click(function(){
+		var birthyear = $('#birthyear:checked').val() ? $('#birthyear:checked').val() : '';
+		var salary = $('#salary:checked').val() ? $('#salary:checked').val() : '';
+		window.location.href = "{$currenturl}&birthyear="+birthyear+"&salary="+salary;			   
+	})
+})
+
+$(function(){
+	$(".csstab tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+
+	$("#page_per").change(function(){
+		var page_per = this.value;
+		location.href="$currenturl"+"&page_per="+page_per;
+	})
+})
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+.callinfo{
+position:absolute;
+top:100px;
+left:100px;
+width:600px;
+height:125px;
+background:#ffffff;}
+#callinfo table{
+backgroung:#ffffff;}
+#callinfo td{
+border:#cccccc solid 1px;
+}
+</style>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="{$currenturl}">刷新当前页</a></span>
+<span class="action-span"><a href="{if isset($currenturl1)}{$currenturl1}{/if}">刷新全部</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$title} </span>
+<div style="clear:both"></div>
+</h1>
+<div>
+<form action="" method="get">
+<input type='hidden' name='clear' value='1' />
+  <tr>
+  	<td colspan="8" style="text-align:left">
+		搜索内容：
+		<input name="keyword" type="text" id="keyword" value="{php echo @$condition['uid'].@$condition['username'].@$condition['nickname'].@$condition['telphone'].@$condition['sid'];}"/>
+		<select name="choose" id="choose">
+		    <option value="" {if empty($condition)}selected="selected" {/if}>不选择</option>
+		    <option value="uid" {if !empty($condition['uid'])}selected="selected"{/if}>ID号</option>
+			<option value="username" {if !empty($condition['username'])}selected="selected"{/if}>用户名</option>
+		
+			<option value="nickname" {if !empty($condition['nickname'])}selected="selected"{/if}>昵称</option>
+			<option value="telphone" {if !empty($condition['telphone'])}selected="selected"{/if}>手机号</option>
+			<option value="sid" {if isset($condition['sid']) && $condition['sid'] != 0}selected="selected"{/if}>客服id</option>
+		</select>
+		{if isset($grade) && $grade}
+		   <select name="effect_grade" id="efffect_grade" class="m2 s47">
+				<option value="0">不限</option>
+				
+				{loop $grade $k $v}
+				  <option    {if $effect_grade + 1== $k} selected="selected" value="{$effect_grade} "  {/if}>{$v}</option>
+				{/loop}
+			</select>  
+		{/if}
+		性别:
+		<select name="gender">
+			<option value="3">全部</option>
+			<option value="2" {if isset($condition['gender']) && $condition['gender'] == 0}selected="selected"{/if}>男</option>
+			<option value="1" {if isset($condition['gender']) && $condition['gender'] == 1}selected="selected"{/if}>女</option>
+		</select><span>
+			年龄:
+			<select name="age_start" id="age1" class="m2 s47">
+				<option value="0">不限</option>
+				{loop $age_arr $v1}
+				<option value="{$v1}" {if isset($age_start) && $age_start == $v1}selected="selected"{/if}>{$v1}</option>
+				{/loop}
+			</select>
+			至
+			<select name="age_end" id="age2" class="m2 s47"><option value="0">不限</option>
+				{loop $age_arr $v2}
+				<option value="{$v2}" {if isset($age_end) && $age_end == $v2}selected="selected"{/if}>{$v2}</option>
+				{/loop}
+			</select>
+		</span><span class="desc">在线状态:</span>
+			<select name="online" style="width:70px;">
+				<option value="0">请选择</option>
+				<option value="1" {if isset($_GET['online']) && $_GET['online'] == 1}selected{/if}>在线</option>
+	  			<option value="2" {if isset($_GET['online']) &&  $_GET['online'] == 2}selected{/if}>一天内</option>
+	  			<option value="3" {if isset($_GET['online']) &&  $_GET['online'] == 3}selected{/if}>一周内</option>
+	  			<option value="4" {if isset($_GET['online']) &&  $_GET['online'] == 4}selected{/if}>一周外</option>
+		</select>
+		
+		  省：<script>getProvinceSelect43rds('','province','province','city','','10100000');</script>
+          市：<script>getCitySelect43rds('','city','city','','');</script>
+		
+		
+		是否锁定:
+		<select name="islock">
+			<option value="">全部</option>
+			<option value="1" {if isset($condition['is_lock']) && $condition['is_lock']==1}selected="selected"{/if}>否</option>
+			<option value="2" {if isset($condition['is_lock']) && !$condition['is_lock']}selected="selected"{/if}>是</option>
+		</select>
+		
+		
+	
+		<span >注册时间：</span>
+		<!-- <input type="text" id="startTime" name="startTime" value="{php if($startTime) echo $startTime;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/> 到 -->
+		<input type="text"id="regdate" name="regdate"  value=""  onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+	
+	    {if $usertype==3}
+		    <input type="radio" name="isExpire" value="1" {if $isExpire==1} checked="checked" {/if} />使用过期
+		    <input type="radio" name="isExpire" value="2" {if $isExpire==2} checked="checked" {/if} />使用未过期
+			<input type="radio" name="isExpire" value="3" {if $isExpire==3} checked="checked" {/if} />未使用的
+		{/if}
+		
+		<input type="hidden" name="action" value="allmember" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input name="" type="submit" value="搜 索"/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;">{$total}位会员</span>
+&nbsp;&nbsp;
+		{if isset($processlink)}
+		会员进展：
+		<!-- {loop $processlink $k $v} -->
+		<span class="processlink"><a href="index.php?action=allmember&h={$_GET['h']}&process=$k">{$v}</a></span>
+		<!-- {/loop} -->
+		{/if}
+		{if isset($renewalslink)}
+		续费状态：
+		<!-- {loop $renewalslink $k $v} -->
+		<span class="expiredlink"><a href="index.php?action=allmember&h={$_GET['h']}&renewals=$k">{$v}</a></span>
+		<!-- {/loop} -->
+		{/if}
+		{if $_GET['h']=='regnoallot_members' || $_GET['h']=='goodnoallot_members'}
+		<span class="but_a">
+        	<a {if isset($condition['gender']) && !$condition['gender']}style="font-weight:bold;"{/if} href="{$currenturl}&gender=2">男性会员</a>
+			<a {if isset($condition['gender']) && $condition['gender']==1}style="font-weight:bold;"{/if}href="{$currenturl}&gender=1">女性会员</a>
+			&nbsp;&nbsp;&nbsp;年龄25-35<input type="checkbox" value="birthyear" name="birthyear" id="birthyear" {if $birthyear}checked{/if}>&nbsp;&nbsp;&nbsp;
+            月收入3000元以上<input type="checkbox" value="salary" name="salary" id="salary" {if $salary}checked{/if}><br />
+        </span>
+		<span>
+			每页显示
+			<select name="page_per" id="page_per">
+				<option value="20" {if $page_per==20}selected{/if}>20</option>
+				<option value="30"  {if $page_per==30}selected{/if}>30</option>
+				<option value="50"  {if $page_per==50}selected{/if}>50</option>
+				<option value="80"  {if $page_per==80}selected{/if}>80</option>
+				<option value="100"  {if $page_per==100}selected{/if}>100</option>
+				<option value="200"  {if $page_per==200}selected{/if}>200</option>
+			</select>
+			条
+		</span>
+		{/if}
+
+	
+
+	</td>
+	  </tr>
+</form>
+</div>
+<div style=" margin-top:5px; margin-bottom:5px; color:#960">
+排序方式：
+{loop $sort_arr $key $val}
+	<a href="{$currenturl}&order={$key}&method=del">× </a>
+    <span style="background-color:#CCC"><a href="{$currenturl}&order={$key}&method=replace">{php echo $allow_order[$key]}
+    {if $val == 'desc'}
+    	&nbsp;↓&nbsp;
+    {else}
+    	&nbsp;↑&nbsp;
+    {/if}
+    </a></span>
+    &#12288;
+{/loop}
+</div>
+<div class="list-div" id="listDiv" onmouseout="hiddend();">
+<form action="index.php?action=allmember&h=changeusersid" method="post">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th><a href="javascript:chang_order('uid','{$rsort_arr['uid']}')"  style="text-decoration:underline;">ID</a></th>
+    <th>用户名</th>
+    <th>
+		<a href="javascript:chang_order('birthyear','{$rsort_arr['birthyear']}')"  style="text-decoration:underline;">年龄</a>
+	</th>
+    <th>等级</th>
+    <th>
+		<a href="javascript:chang_order('images_ischeck','{$rsort_arr['images_ischeck']}')"  style="text-decoration:underline;">照片</a>
+	</th>
+    <th><a href="javascript:chang_order('salary','{$rsort_arr['salary']}')"  style="text-decoration:underline;">收入</a></th>
+    <th>工作地</th>
+	<th>类</th>
+    <th><a href="javascript:chang_order('allotdate','{$rsort_arr['allotdate']}')"  style="text-decoration:underline;">分配时间</a></th>
+    <th><a href="javascript:chang_order('regdate','{$rsort_arr['regdate']}')"  style="text-decoration:underline;">注册时间</a></th>
+	
+	
+	{if $usertype==3}<th><a href="javascript:chang_order('action_time','{$rsort_arr['action_time']}')"  style="text-decoration:underline;">使用时间</a></th>{/if}
+	
+	
+    {if in_array($GLOBALS['groupid'],$GLOBALS['admin_vip_level_check'])}
+	<th>来源</th>
+	{if $_GET['h'] == 'general' || $_GET['h'] == 'high' || $_GET['h'] == 'diamond'}
+	<th>电话验证</th>
+	<th>原因</th>
+	{/if}
+	{/if}
+	<!--<th><a href="index.php?action=allmember&h={$_GET['h']}&order_tel=1&page={_GET['page']}" style="text-decoration:underline;"> 同号手机数</a></th>-->
+    <th>
+		<a href="javascript:chang_order('real_lastvisit','{$rsort_arr['real_lastvisit']}')"  style="text-decoration:underline;">在线状态</a>
+    </th>
+	<th><a href="javascript:chang_order('usertype','{$rsort_arr['usertype']}')"  style="text-decoration:underline;">会员类型</a></th>
+    <th><a href="javascript:chang_order('login_meb','{$rsort_arr['login_meb']}')"  style="text-decoration:underline;">登录</a></th>
+	<th>工号<input type="checkbox" id="choose_all" value="choose_all" onclick="chooseall()" /></th>
+	<th><a href="javascript:chang_order('sid','{$rsort_arr['sid']}')"  style="text-decoration:underline;">客服</a></th>
+    <th><a href="javascript:chang_order('is_lock','{$rsort_arr['is_lock']}')"  style="text-decoration:underline;">锁定</a></th>
+	{if isset($renewalsapper) && $renewalsapper=='yes'}
+	<th><a href="javascript:chang_order('renewalstatus','{$rsort_arr['renewalstatus']}')">续费状态</a></th>
+	{/if}
+	{if isset($process) && $process=='yes'}
+	<th><a href="javascript:chang_order('memberprogress','{$rsort_arr['memberprogress']}')">会员进展</a></th>
+	{/if}
+    <th>操作</th>
+  </tr>
+  {loop $member_list $member}
+    {if ($isExpire==3 && $member['action_time']=='') || $isExpire==2 || $isExpire==1 || !$isExpire}
+	 
+   <tr>
+    <td align="center"><a href="#" class="userinfo" onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['uid']}</a></td>
+    <td align="left" style="text-indent:10px;"  onmouseover="showinfo(event,{$member['uid']});"> 
+		{if $member['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>
+		{else}<img src="templates/images/m.gif" alt="男" title="男"/>
+		{/if}
+		<a href="#" onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['username']}</a>
+	</td>
+    <td align="center">{php echo date("Y")-$member['birthyear'];}</td>
+    <td align="center">{if $member['s_cid'] =='10'}铂金会员{elseif isset($GLOBALS['member_level'][$member['s_cid']])}$GLOBALS['member_level'][$member['s_cid']]{/if}</td>
+    <td align="center">{php echo isset($member['mainimg']) && $member['mainimg']?"有":"无";}</td>
+    <td align="center"><script>userdetail("$member['salary']",salary1);</script></td>
+    <td align="center"><script>userdetail("$member['province']",provice);userdetail("$member['city']",city);</script></td>
+	<td align="center">{php if($member['effect_grade']>0) echo $member['effect_grade']-1;}</td>
+    <td align="center">{php if($member['allotdate']) echo date("Y-m-d H:i",$member['allotdate']);}</td>
+    <td align="center">{php echo date("Y-m-d H:i",$member['regdate']);}</td>
+	<td align="center">{if empty($member['action_time'])}未使用{else}{php echo date("Y-m-d H:i:s",$member['action_time']);}{/if}</td>
+	
+    <td>
+    <!--{if !empty($member['real_lastvisit'])}-->
+    <!--{if (time()-$member['real_lastvisit']<100)}-->
+			<span style="color:red">在线&nbsp;&nbsp;&nbsp;{php echo empty($member['client'])?'':'<img src="templates/images/wap_phone.gif" title="手机wap在线">';}</span>
+		<!--{else}-->
+		<!--{if time()-$member['real_lastvisit']<24*3600}-->
+			<span style="color:#0F0;">一天内</span>
+		<!--{elseif (time()-$member['real_lastvisit']<7*24*3600)&&(time()-$member['real_lastvisit']>24*3600)}-->
+			<span style="color:#FF5;">一周内</span>
+		<!--{else}-->
+             一周外
+		<!--{/if}-->
+	<!--{/if}-->
+    <!--{/if}-->
+    </td>
+
+	<td align="center">
+		全权会员
+	</td>
+    <td align="center">{$member['login_meb']}</td>
+	
+    <td align="center">
+    	<input type="checkbox" value="{$member['uid']}" name="changesid[]" />
+    	{php if($member['sid']!='' && $member['sid']!=0) echo $member['sid'].'号';else echo "暂无";}
+    </td>
+	<td align="center">{php if($member['sid']) echo $GLOBALS['kefu_arr'][$member['sid']]}</td>
+    <td align="center">{php if($member['is_lock']==1) echo '否';else echo '<font color="#FF0000">是</font>';}</td>
+	{if isset($renewalsapper) && $renewalsapper=='yes'}
+	<td align="center">{if isset($member['renewalstatus']) && $member['renewalstatus']==0}0：默认{elseif isset($member['renewalstatus']) && isset($expired_status_grade[$member['renewalstatus']])}$expired_status_grade[$member['renewalstatus']]{/if}</td>
+	{/if}
+	{if isset($process) && $process=='yes'}
+	<td align="center">{if isset($member['memberprogress']) && $member['memberprogress']==0}0：默认{elseif isset($member['memberprogress']) && isset($member_progress_grade[$member['memberprogress']])}$member_progress_grade[$member['memberprogress']]{/if}</td>
+	{/if}
+    <td align="center">
+
+      <a href="#" onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=record&uid={$member['uid']}&sid={$member['sid']}','icon')">录音</a>
+	  {if (in_array($member['s_cid'],array(20,30)) && $member['usertype']==1) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_aftersales_service'])}
+	 
+	  {elseif $member['usertype']==3	&& !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_aftersales_service']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_group'])}
+
+      {else}
+	  &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" onclick="parent.addTab('修改会员{$member['uid']}资料','index.php?action=allmember&h=edit_info&uid={$member['uid']}')">修改资料</a>
+	  {/if}
+      {if $member['usertype']==3}
+      &nbsp;&nbsp;|&nbsp;&nbsp;<a href="index.php?action=allmember&h=delcollect&uid={$member['uid']}">删除</a>
+      {/if}
+	</td>
+  </tr>
+     {/if}
+  {/loop}
+ </table>
+ 
+<div style="padding:5px;background:#fff">
+	
+</div>
+
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$page_links}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+      <td>
+      <!-- 从<input type="text" value="" name="s_page" id="s_page" style="width:30px;" />到<input type="text" value="" name="e_page" id="e_page" style="width:30px;"/>页　分配给 -->	
+      	{if isset($generalmembers) && $generalmembers=='generalmembers'}
+      	<input type="hidden" name="generalmembers" value="generalmembers" />
+        {/if}
+      	<select id="kefuuid" name="kefuuid">
+			{loop $kefu_list $kefu}
+			<option value="{$kefu['uid']}">{$kefu['uid']}号&nbsp;{$kefu['username']}&nbsp;{$kefu['member_count']}&nbsp;({$kefu['allot_member']})&nbsp;三：({$kefu['three_day']})七:({$kefu['seven_day']})</option>
+			{/loop}
+		</select>
+		<input type="hidden" value="{$currenturl}" name="pre_url" id="pre_url" />
+      	<input type="submit" onclick="return changeusersid();" value="分配给此客服">
+      </td>
+    </tr>
+  </table>
+  </form>
+</div>
+
+<div class="callinfo" id="callinfo" style="display:none;">
+<table width="600" border="1">
+  <tr>
+    <td width="50" height="20">会员ID</td>
+    <td width="50" id="userid">&nbsp;</td>
+    <td width="50">手机号</td>
+    <td width="78" id="usertelphone">&nbsp;</td>
+    <td width="50">下次联系时间</td>
+    <td width="150" id="usercause">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="43" id="userbezhu">会员备注</td>
+    <td colspan="5" id="userbezhucontent">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="43">下次联系要点</td>
+    <td colspan="5" id="usercallremark">&nbsp;</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" xmlns="http://www.w3.org/1999/html"/>
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="templates/css/jquery.fancybox-1.2.5.css"/>
+
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 趣味游戏列表</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+    <span class="action-span"><a href="#"id="addrelaxgame">添加游戏</a></span>
+
+
+    <div style="clear:both"></div>
+</h1>
+<div class="list-div">
+
+</div>
+<br />
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+  	<th>序号</th>
+    <th>游戏说明</th>
+    <th>游戏链接地址</th>
+    <th>图片</th>
+    <th>游戏添加时间</th>
+    <th>操作</th>
+  </tr>
+  {php $i=($page-1)*$limit+1;}
+  {loop $data $k $v}
+  <tr>
+  	<td align="center">{$i}</td>
+    <td align="center">{$v['introduce']}</td>
+    <td align="center">{$v['href']}</td>
+    <td align="center"><a class="zoom" href="../../{$v['imgfile']}" >查看</a></td>
+    <td align="center">{php echo date("Y-m-d",$v['dateline']);}</td>
+    <td align="center"><a href="#{$v['id']}"  >编辑</a>
+    <a href="#{$v['id']}">删除</a><input type="hidden" value="{$v['id']}"></td>
+  </tr>
+  {php $i++;}
+  {/loop}
+  		<tr>
+			<td colspan="5" align="center">{$pages}</td>
+		</tr>
+  </table>
+
+
+<form action="index.php?action=lovestation&h=carrelaxbargameadd" enctype="multipart/form-data" id="form1" method="post" target="_self">
+<div id="div2" style="display: none">添加</div>
+    <table  id="t2" style="display: none" width="100%">
+        <tr><td class="label">游戏介绍：*</td><td ><textarea id="introduce" name="introduce" cols="50">{$datainfo['question']}</textarea></td></tr>
+        <tr><td class="label">游戏展示图片：*</td><td ><input type="file" id="imgfile" name="imgfile"></td></tr>
+        <tr><td class="label">链接地址：*</td><td><textarea name="href" id="href"></textarea></td></tr>
+    </table>
+    <div  id= "formdiv" style="margin:0 auto;margin-left:500px;display: none">
+        <input type="submit" id="faqbutton" value="确认提交" class="button" />
+    </div>
+
+    </form>
+    <form action="index.php?action=lovestation&h=carrelaxbargameedit" id="form2" enctype="multipart/form-data"  method="post" >
+        <div id="div3" style="display: none">编辑</div>
+            <table  id="t3" style="display: none" width="100%">
+                <tr><td class="label">序号：</td><td ><input type="text" id="num" readonly></td></tr>
+                <tr><td class="label">游戏介绍：*</td><td ><textarea id="introedit" name="introduce" cols="50">{$datainfo['question']}</textarea></td></tr>
+                <tr><td class="label">游戏展示图片：*</td><td ><input type="file" name="imgfile"></td></tr>
+                <tr><td class="label">链接地址：*</td><td><textarea name="href" id="hrefedit"></textarea></td></tr>
+            </table>
+            <div  id= "formdiv2" style="margin:0 auto;margin-left:500px;display: none">
+                <input type="hidden" name="id" id="idedit" value="">
+                <input type="submit" id="faqbutton2" value="确认提交" class="button" />
+            </div>
+    </form>
+</div>
+<script type="text/javascript">
+    String.prototype.trim = function()    {    return this.replace(/(^\s*)|(\s*$)/g, "");    }
+
+    $(document).ready(function(){
+                $("a.zoom").fancybox();
+            }
+    );
+    $("#addrelaxgame").click(function(){
+            $("#t2").show();
+            $("#formdiv").show();
+            $("#div2").show();
+            $("#t3").hide();
+            $("#formdiv2").hide();
+            $("#div3").hide();
+        });
+        $("tr td a").click(function(){
+            if(this.innerHTML.trim()=="编辑"){
+                var id =this.href;
+                id =id.substr(id.lastIndexOf("#")+1);
+                $("#t2").hide();
+                $("#formdiv").hide();
+                $("#div2").hide();
+                $("#t3").show();
+                $("#formdiv2").show();
+                $("#div3").show();
+                var parentnode = this.parentNode;
+                var href = $(parentnode).prev().prev().prev();
+                var introduce = $(parentnode).prev().prev().prev().prev();
+                var num = $(parentnode).prev().prev().prev().prev().prev();
+                $("#introedit").val(introduce.html());
+                $("#hrefedit").val(href.html());
+                $("#idedit").val(id);
+                $("#introedit").focus();
+                $("#num").val(num.html());
+                num=null;
+                introduce=null;
+                href=null;
+                parentnode=null;
+                return false;
+            }else if(this.innerHTML.trim()=="删除"){
+                var cf = confirm("你确定要删除吗?");
+                if(!cf){
+                    return false;
+                }
+                var id =this.href;
+                id =id.substr(id.lastIndexOf("#")+1);
+                var that = this;
+                $.ajax({
+                    url:"index.php?action=lovestation&h=carrelaxbargamedelete",
+                    data:"id="+id,
+                    type:"post",
+                    success:function(data){
+                        if(data==1){
+                            that.parentNode.parentNode.parentNode.removeChild(that.parentNode.parentNode);
+
+                        }
+                    }
+                })
+            }
+
+
+
+
+        });
+        $("#form1").submit(function(){
+            var introduce = $("#introduce");
+            var issub = true;
+            var isfoc = false;
+            if(!introduce.val()){
+                introduce.focus();
+                isfoc = true;
+                var label  = introduce.next();
+                if(!label[0]){
+                    introduce.after("<label>介绍必须填写</label>");
+                }
+                issub=false;
+            }else{
+
+                var label  = introduce.next();
+
+                if(label[0]){
+                    introduce[0].parentNode.removeChild(label[0]);
+                }
+            }
+            var imgfile =  $("#imgfile");
+
+
+            var img =  imgfile[0];
+            if(img.value==""){
+                if(!isfoc){
+                    isfoc = true;
+                    imgfile.focus();
+                }
+                var label  = imgfile.next();
+                if(!label[0]){
+                    imgfile.after("<label>请选择图片</label>");
+                }
+                issub=false;
+            }else{
+
+                var label  = imgfile.next();
+                if(label[0]){
+                    imgfile[0].parentNode.removeChild(label[0]);
+                }
+                var txtImg_url=img.value.toLowerCase();
+                var txtImg_ext=txtImg_url.substring(txtImg_url.length-3,txtImg_url.length);
+                if (txtImg_ext!="jpg" && txtImg_ext!="gif" && txtImg_ext!="png"){
+                    alert("请选择JPG,GIF,PNG格式的文件!");
+                    img.select()
+                    document.execCommand("Delete");
+                    img.focus();
+                    if(!isfoc){
+                        isfoc = true;
+                        imgfile.focus();
+                    }
+                }
+
+            }
+
+
+
+
+            var href = $("#href");
+            if(!href.val()){
+                if(!isfoc){
+                    isfoc = true;
+
+                    href.focus();
+                }
+                var label  = href.next();
+                if(!label[0]){
+                    href.after("<label>请填写游戏连接地址</label>");
+
+                }
+                issub=false;
+                }else{
+                    var label  = href.next();
+                    if(label[0]){
+                    href[0].parentNode.removeChild(label[0]);
+
+                }
+            }
+                return issub;
+        })
+
+    $("#form2").submit(function(){
+        var introduce = $("#introedit");
+        var issub = true;
+        var isfoc = false;
+        if(!introduce.val()){
+            introduce.focus();
+            isfoc = true;
+            var label  = introduce.next();
+            if(!label[0]){
+                introduce.after("<label>介绍必须填写</label>");
+            }
+            issub=false;
+        }else{
+
+            var label  = introduce.next();
+
+            if(label[0]){
+                introduce[0].parentNode.removeChild(label[0]);
+            }
+        }
+
+
+        var href = $("#hrefedit");
+        if(!href.val()){
+            if(!isfoc){
+                isfoc = true;
+
+                href.focus();
+            }
+            var label  = href.next();
+            if(!label[0]){
+                href.after("<label>请填写游戏连接地址</label>");
+
+            }
+            issub=false;
+        }else{
+            var label  = href.next();
+            if(label[0]){
+                href[0].parentNode.removeChild(label[0]);
+
+            }
+        }
+        return issub;
+    })
+
+
+
+</script>

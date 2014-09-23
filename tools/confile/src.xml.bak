@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <config_name>用于将投票表导入的配置文件</config_name>
+	<table>
+		<name>import</name><!-- 要插入数据的表 -->
+		<pretable>vote,vote_content,test</pretable><!-- 数据来源的表 -->
+		<step>3</step><!-- 一次插入多少条 -->
+		<fk>vote.vid=vote_content.vid , vote.vid=dfjd</fk><!-- 来源表关联 -->
+		<field>
+			<isint>1</isint>
+			<name>field1</name>
+			<from>xxx</from>
+			<rule>
+			<type>2</type>
+			<value>y->field1,m->field2,d->field3</value>
+			<!-- 
+			该规则实现目的：将旧表中的年，月，日三个字段合并成新表的一个字段，该字段存储年月日的时间戳
+			实现原理：y对应旧表中的存储年的时间戳，m对应旧表中的月存储字段,d代表旧表中的日存储字段
+			 -->
+			</rule>
+		</field>
+		<field>
+			<name>field2</name>
+			<from>vote_content.cid</from>
+			<rule>
+			<type>1</type>
+			<value>-1->1,0->1,1->2</value>
+			<!-- 
+			该规则实现目的：将旧表中的对应值转换成新表中的对应值，比如旧表中的-1在新表中存储为1
+			实现原理：将每一个值的对应用->分开，左边表示旧表中的值，右边表示新表中的值。比如-1->1 表示在旧表中的－1在新表中将作为1存储
+			 -->
+			</rule>
+		</field>
+	</table>
+	
+</root>

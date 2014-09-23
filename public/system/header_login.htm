@@ -1,0 +1,105 @@
+<div id="heared">
+ <div class="header">
+    <div class="head">
+     <a href="index.php"><h1></h1></a>
+     <div class="add_headtel">
+     <!--
+     {php //原来的图片 }
+     <img src="public/images/tel.jpg" />
+     {php //圣诞版的没有此张图片}
+     -->
+     </div>
+       <div class="sub">
+          <div class="subleft"></div>
+          <div class="submiddle">
+              <div class="hello">
+              您好，欢迎来到真爱一生网！[<a href="index.php?n=login" style="color:#d22224">请登录</a>]&nbsp;&nbsp;[<a href="index.php?n=register" style="color:#d22224">免费注册</a>] 
+              </div>
+            <div class="clear"></div>
+              <div class="sublink">
+              <a href="index.php">首页</a> |
+              <a href="?n=about&h=us">关于我们</a> | 
+              <a href="?n=about&h=media">媒体关注</a> | 
+              <a href="?n=about&h=contact">联系我们</a> | 
+              <a href="?n=about&h=links">合作伙伴</a> | 
+              <a href="index.php?n=about&h=getsave">意见反馈</a> | 
+              <a href="index.php?n=story">成功故事</a> 
+              </div>
+          </div>
+          <div class="subright"></div>
+       </div>
+       <div class="clear"></div>
+       
+       <div class="select">
+       <div class="font_red"> 今天真爱一生牵线
+     <font class="font_a">{php echo MooLoves();}</font>对
+       </div>
+         <span><a href="index.php?n=payment">&nbsp;</a></span>
+          <div class="selectbox">
+             <div class="se_left"></div>
+             <div class="se_middle">
+<form name="quick_search" id="quick_search" method="get" action="index.php" onkeydown="if(event.keyCode==13)this.submit();">
+ <input type="hidden" name="n" value="search">
+ <input type="hidden" name="h" value="quick">             
+                <table width="100%" cellpadding="0" cellspacing="0" >
+                   <tr>
+                    <td width="100" align="right" >
+                   性别：
+                   <select name="gender">
+                     <option value="0">男</option>
+                     <option value="1" selected="selected">女</option>
+                   </select>
+                   </td>
+                   <td width="160"  align="right">年龄：
+           <script>getSelect('w50','age1','agebegin','','21',age);</script>到<script>getSelect('w50','age2','ageend','','45',age) ;</script>
+                  </td>
+                   <td width="190"  align="right" style="padding-right:10px;">
+                     地区：
+           <script>getProvinceSelect66('w60','workprovince','workprovince','workcity2','','10100000');</script>&nbsp;<script>getCitySelect66('w60','workcity2','workcity2','','');</script>
+                   </td>
+                   <td  width="70px">
+                    <input name="isphoto" type="checkbox" id="isphoto" value="1" checked="checked" />有照片
+                   </td>
+                   <td width="45">
+                   <input type="submit" name="imageField" id="imageField" class="topselcted" value=""/>
+                   </td>
+                   <td width="60px" >
+                    <input id="quick_search" name="quick_search"  type="hidden" value="搜索">
+                     <input style="cursor:pointer" type="button" onclick="javascript:location.href='index.php?n=search&h=super'" class="selectbtn" value="高级搜索" />
+                   </td>
+                   </tr>
+                   </table>
+ </form>
+             </div>
+             <div class="se_right"></div>
+         </div>
+       </div>
+       <div class="clear"></div>
+       <div class="menu">
+           <div class="menu_right"></div>
+         <div class="menu_left"></div>
+           <span><img src="public/images/notes.gif"/></span>
+         <ul>
+             <li><a href="index.php?n=service" {php echo $_GET['n'] == 'service'?'class="current"':''}>我的真爱一生</a></li>
+             <li><a href="index.php?n=search" {php echo $_GET['n'] == 'search'?'class="current"':''}>真爱一生寻友</a></li>
+             <li><a href="index.php?n=space" {if $_GET['n'] == 'space' && $_GET['h'] == ''}class="current"{/if} {php echo $_GET['n'] == 'material'?'class="current"':''}>我的资料</a></li>
+             {if !in_array($_GET['h'],array('index2','telphone','smsindex','emailindex','videoindex','convinceindex')) && $_GET['n'] == 'myaccount'}
+             {php $mc = true}
+             {/if}
+             <li><a href="index.php?n=myaccount" {if $mc}class="current"{/if}>我的帐户</a></li>
+             <li><a href="index.php?n=lovestyle" {php echo $_GET['n'] == 'lovestyle'?'class="current"':''}>爱情测试</a></li>
+             {if in_array($_GET['h'],array('index2','telphone','smsindex','emailindex','videoindex','convinceindex')) && $_GET['n'] == 'myaccount'}
+             {php $cc = true}
+             {/if}
+             <li><a href="index.php?n=myaccount&h=index2" {if $cc}class="current"{/if}>诚信认证</a></li>
+              <li><a href="index.php?n=vote" {php echo $_GET['n'] == 'vote'?'class="current"':''}>E见钟情</a></li>
+         </ul>
+       </div>
+    </div>
+ </div>
+ <div class="clear"></div>
+ <div class="postion">
+ <span><a href="index.php?n=invite">邀请好友</a></span>
+   <a href="index.php">真爱一生首页</a>{php echo getMenu();}
+ </div>
+ </div>

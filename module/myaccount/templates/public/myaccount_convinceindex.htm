@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>诚信认证--证件认证——真爱一生网</title>
+<link href="module/myaccount/templates/{$GLOBALS['style_name']}/myaccount.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<script>
+function checkForm(){
+	var fileData1 = document.getElementById("fileData1").value;
+
+	if(!checkPhotoPath(fileData1)){
+		alert("请指定正确的图片文件，只能上传gif、jpg、bmp、png、jpeg类型图片");
+		document.photoform.reset();
+		return false;
+	}
+	return true;
+}
+function preview2(obj){
+	 var files=/\.bmp$|\.BMP$|\.gif$|\.jpg$|\.png$|\.PNG$|\.jpeg$|\.JPEG$|\.GIF$|\.JPG$\b/; 
+	var photoPath=obj.value;
+	if(!files.test(photoPath)){
+	  	alert("请指定正确的图片文件，只能上传gif、jpg、bmp、png、jpeg类型图片");
+		document.photoform.reset();
+	  	return;
+	}
+}
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
+
+</script>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=myaccount">诚信认证</a>&nbsp;&gt;&gt;&nbsp;证件认证</span></p>
+    <!--content-lift end-->
+    {template system/simp_left public}
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=myaccount" class="r-title-black">&lt;&lt;返回诚信认证</a>
+			<span class="right-title f-ed0a91">证件认证</span>
+			</div>
+			<div class="r-center-ccontent">
+				<div class="cer-conter">
+				<p class="r-cards-title">请上传BMP，JPG，PNG或GIF类型图片（大小20~1000KB）。<br /><br />上传的证件仅供网站评定诚信星级，不会向第三方公开（包括征友会员）。</p>
+				<dl class="cer-cards">
+					<dt>
+						<ul>
+							<li class="w345">认证类型</li>
+							<li class="w175" style="line-height:40px;">获得星级</li>
+							<li class="w75"></li>
+						</ul>
+					</dt>
+					<dd>
+						<ul>
+							<li class="w345">身份证明（身份证、护照、军官证、驾驶证、回乡证、台胞证）</li>
+							<li class="w175"><img src="public/system/images/start/default/start25.gif" /></li>
+							<li class="w75">{if $usercer['identity_check']==3}<b>已认证</b>{else}<a href="javascript:;" class="f-ed0a91" onclick="openShutManager(this,'up1')">立刻认证 </a>{/if}</li>
+						</ul>
+					</dd>
+					<dd>
+					<div id="up1" style="display: none;">
+						<div class="up">			
+						  <form action="index.php?n=myaccount&h=convinceindex" method="post" enctype="multipart/form-data" id="photoform" name="photoform" onsubmit="return checkForm();" >
+                          上传证件照片：<input name="fileData1" type="file" id="fileData1" style="padding:3px;"/><input name="convinceindexsubmit" type="submit"  class="laup" value="立刻上传" /><input type="hidden" id="phototype"  name="phototype" value="1"/>
+                          </form>
+                          </div>
+						  <p>上传的证件仅供网站评定诚信星级，不会向任何第三方公开(包括征友会员)。 </p>
+					  </div>
+					</dd>
+					<dd>
+						<ul>
+							<li class="w345">婚育证明（户口本、婚育证）台胞证）</li>
+							<li class="w175"><img src="public/system/images/start/default/start50.gif" /></li>
+							<li class="w75">{if $usercer['marriage_check']==3}<b>已认证</b>{else}<a href="javascript:;" class="f-ed0a91" onclick="openShutManager(this,'up2')">立刻认证 </a>{/if}</li></li>
+						</ul>
+					</dd>
+                    <dd>
+                    <div id="up2" style=" display:none">
+						<div class="up">			
+						  <form action="index.php?n=myaccount&h=convinceindex" method="post" enctype="multipart/form-data" id="photoform" name="photoform" onsubmit="return checkForm();" >
+                          上传证件照片：<input name="fileData1" type="file" id="fileData1" style="padding:3px;"/><input name="convinceindexsubmit" type="submit"  class="laup" value="立刻上传" /><input type="hidden" id="phototype"  name="phototype" value="2"/>
+                          </form>
+                          </div>
+						  <p>上传的证件仅供网站评定诚信星级，不会向任何第三方公开(包括征友会员)。 </p>
+					  </div>
+                    </dd>
+					<dd>
+						<ul>
+							<li class="w345">工作证明（工作证、营业执照）</li>
+							<li class="w175"><img src="public/system/images/start/default/start25.gif" /></li>
+							<li class="w75">{if $usercer['occupation_check']==3}<b>已认证</b>{else}<a href="javascript:;" class="f-ed0a91" onclick="openShutManager(this,'up3')">立刻认证 </a>{/if}</li>
+						</ul>
+					</dd>
+                    <dd>
+                    <div id="up3" style=" display:none">
+						<div class="up">			
+						  <form action="index.php?n=myaccount&h=convinceindex" method="post" enctype="multipart/form-data" id="photoform" name="photoform" onsubmit="return checkForm();" >
+                          上传证件照片：<input name="fileData1" type="file" id="fileData1" style="padding:3px;"/><input name="convinceindexsubmit" type="submit"  class="laup" value="立刻上传" /><input type="hidden" id="phototype"  name="phototype" value="4"/>
+                          </form>
+                          </div>
+						  <p>上传的证件仅供网站评定诚信星级，不会向任何第三方公开(包括征友会员)。 </p>
+					  </div>
+                    </dd>
+					<dd>
+						<ul>
+							<li class="w345">学历证明（学位证、毕业证、学生证）</li>
+							<li class="w175"><img src="public/system/images/start/default/start25.gif" /></li>
+							<li class="w75">{if $usercer['education_check']==3}<b>已认证</b>{else}<a href="javascript:;" class="f-ed0a91" onclick="openShutManager(this,'up4')">立刻认证 </a>{/if}</li>
+						</ul>
+					</dd>
+                    <dd>
+                    <div id="up4" style=" display:none">
+						<div class="up">			
+						  <form action="index.php?n=myaccount&h=convinceindex" method="post" enctype="multipart/form-data" id="photoform" name="photoform" onsubmit="return checkForm();" >
+                          上传证件照片：<input name="fileData1" type="file" id="fileData1" style="padding:3px;"/><input name="convinceindexsubmit" type="submit"  class="laup" value="立刻上传" /><input type="hidden" id="phototype"  name="phototype" value="3"/>
+                          </form>
+                          </div>
+						  <p>上传的证件仅供网站评定诚信星级，不会向任何第三方公开(包括征友会员)。 </p>
+					  </div>
+                    </dd>
+					<dd>
+						<ul>
+							<li class="w345">工资单</li>
+							<li class="w175"><img src="public/system/images/start/default/start25.gif" /></li>
+							<li class="w75">{if $usercer['salary_check']==3}<b>已认证</b>{else}<a href="javascript:;" class="f-ed0a91" onclick="openShutManager(this,'up5')">立刻认证 </a>{/if}</li>
+						</ul>
+					</dd>
+                    <dd>
+                    <div id="up5" style=" display:none">
+						<div class="up">			
+						  <form action="index.php?n=myaccount&h=convinceindex" method="post" enctype="multipart/form-data" id="photoform" name="photoform" onsubmit="return checkForm();" >
+                          上传证件照片：<input name="fileData1" type="file" id="fileData1" style="padding:3px;"/><input name="convinceindexsubmit" type="submit"  class="laup" value="立刻上传" /><input type="hidden" id="phototype"  name="phototype" value="5"/>
+                          </form>
+                          </div>
+						  <p>上传的证件仅供网站评定诚信星级，不会向任何第三方公开(包括征友会员)。 </p>
+					  </div>
+                    </dd>
+					<dd>
+						<ul>
+							<li class="w345">房产证明</li>
+							<li class="w175"><img src="public/system/images/start/default/start25.gif" /></li>
+							<li class="w75">{if $usercer['house_check']==3}<b>已认证</b>{else}<a href="javascript:;" class="f-ed0a91" onclick="openShutManager(this,'up6')">立刻认证 </a>{/if}</li>
+						</ul>
+					</dd>
+                    <dd>
+                    <div id="up6" style=" display:none">
+						<div class="up">			
+						  <form action="index.php?n=myaccount&h=convinceindex" method="post" enctype="multipart/form-data" id="photoform" name="photoform" onsubmit="return checkForm();" >
+                          上传证件照片：<input name="fileData1" type="file" id="fileData1" style="padding:3px;"/><input name="convinceindexsubmit" type="submit"  class="laup" value="立刻上传" /><input type="hidden" id="phototype"  name="phototype" value="6"/>
+                          </form>
+                          </div>
+						  <p>上传的证件仅供网站评定诚信星级，不会向任何第三方公开(包括征友会员)。 </p>
+					  </div>
+                      </dd>
+				</dl>
+				<div class="clear"></div>
+				<div class="cer-line"></div>
+				<dl class="cer-faq">
+					<dt class="f-ed0a91">客服帮助认证？</dt>
+					<dd>传&nbsp;&nbsp;&nbsp;&nbsp;真：+86－0551-65273920</dd>
+					<dd>邮寄地址：安徽省合肥市亳州路天庆大厦</dd>
+					<dd>邮政编码：230001</dd>
+					<dd>电子邮件：kefu@zhenaiyisheng.cc（请您在邮件中注明您的用户名、真实姓名和证件号码）</dd>
+				</dl>
+				<div class="cer-line"></div>
+				<dl class="cer-faq">
+					<dt class="f-ed0a91">温馨提示</dt>
+					<dd>1.请提供您的真实证件。上传证件仅供网站评定诚信星级，不做其他任何用途。</dd>					
+					<dd>2.如果您希望修改已提交过的其它资料，必须重新申请验证。</dd>
+				</dl>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}<!--foot end-->
+</div><!--main end-->
+</body>
+</html>

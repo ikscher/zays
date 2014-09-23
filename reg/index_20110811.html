@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>红娘网 - 中国成功率高，严肃的征婚网站</title>
+<link type="text/css" href="css/index.css" rel="stylesheet" />
+<link href="css/pop.css" rel="stylesheet" type="text/css" />
+<script src="../public/system/js/jquery-1.3.2.min.js"></script>
+<script src="../module/register/templates/public/js/syscode.js?v=1"></script>
+<script src="../module/register/templates/public/js/commonValidate.js"></script>
+<script src="../module/register/templates/public/js/syscode.js?v=1"></script>
+<script src="js/reg.js"></script>
+<script src="js/blockUI.js"></script>
+
+<script src="../public/system/js/sys.js?v=1"></script>
+<script src="js/pop.js"></script>
+<script src="http://fw.qq.com/ipaddress" charset="gb2312"></script>
+
+<script type="text/javascript"> 
+<!--
+    
+	
+	 //设为首页
+    function addHome(){
+        if (window.sidebar){
+            try {
+                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+            }
+            catch (e){
+                alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将 [signed.applets.codebase_principal_support]设置为true");
+            }
+
+            var prefs =  Components.classes["@mozilla.org/preferences-service;1"].getService( Components.interfaces.nsIPrefBranch );
+            prefs.setCharPref("browser.startup.homepage",'http://www.7651.com/');
+        } else if (document.all){
+            document.body.style.behavior="url(#default#homepage)";
+            document.body.setHomePage('http://www.7651.com/');
+        }else{
+            return false;
+        }
+    }
+	
+	
+	
+	//切换UID搜索还是快速搜索
+	$(function(){
+		$("input[name=search_type][value=1]").attr("checked","checked");
+		$("input[name=search_type]").click(function(){
+			if(this.value == 1){
+				$("#search-cts-list").css("display","");
+				$("#search_uid").css("display","none");
+			}
+			if(this.value == 2){
+				$("#search_uid").css("display","");
+				$("#search-cts-list").css("display","none");
+			}
+			
+		});
+	});
+	
+	
+	function checkRightResearchForm() {
+		var age1 = document.getElementById("age1").value;
+		var age2 = document.getElementById("age2").value;
+		if( age1 == -1 && age2 == -1) {
+			alert("请选择年龄");
+			document.getElementById("age1").focus();
+			return false;
+		}
+		if(age1!=null && age1!='' && age1==-1 && age2!=null && age2!='' && age2!=-1) {
+			alert("请选择年龄下限");
+			document.getElementById("age1").focus();
+			return false;
+		}
+		if(age1!=null && age1!='' && age1!=-1 && age2!=null && age2!='' && age2==-1) {
+			alert("请选择年龄上限");
+			document.getElementById("age2").focus();
+			return false;
+		}
+		if(age1!=null && age1!='' && age1!=-1 && age2!=null && age2!='' && age2!=-1 && age1>age2) {
+			alert("您选择的年龄范围不正确，请重新选择");
+			document.getElementById("age1").focus();
+			return false;
+		}
+		alert("请先注册");
+		return false;
+	}
+	
+	
+	var c_provice = "";
+	var c_city = "";
+	var qq_provice = IPData[2];
+	var qq_city = IPData[3];
+	len = provice.length;
+	for (i = 0; i < len; i++) {
+		provice_arr = provice[i].split(",");
+
+		if (qq_provice.indexOf(provice_arr[1]) != -1) {
+			c_provice = provice_arr[0];
+			break;
+		}
+	}
+
+	len = city.length;
+	for (i = 0; i < len; i++) {
+		city_arr = city[i].split(",");
+
+		if (qq_city.indexOf(city_arr[1]) != -1) {
+			c_city = city_arr[0];
+			break;
+		}
+	}
+
+	function checkForm() {
+		var email = document.getElementById("username");
+		var year = document.getElementById("year");
+		var month = document.getElementById("month");
+		var day = document.getElementById("day"); 
+		var workProvince = document.getElementById("workprovincereg");
+		var workCity = document.getElementById("workcity");
+		//var mysex1=document.getElementById("mysex1");
+		//var mysex2=document.getElementById("mysex2");
+		var pwd = document.getElementById("password");
+		//var agree = document.getElementById("agree");
+		//var actio=document.getElementById("actio");
+		var pwd2=document.getElementById("password2");
+		var telphone = document.getElementById('telphone');
+		var emailmessage=document.getElementById('emailmessage');
+		var passmessage=document.getElementById('passmessage');
+		var telphonemessage=document.getElementById('telphonemessage');
+		if(email.value==""){
+			alert("邮箱不能为空");
+			email.focus();
+			return false;
+		}
+		if(email.value.indexOf('@')<0){
+			//alert("请输入邮箱");
+			email.focus();
+			return false;
+		}
+		if(!chk_phone1(telphone.value)){
+			alert("请输入真实的手机号！");
+			return false;
+		}
+		if(emailmessage.value!="ok" && emailmessage.value!="false"){
+			alert(emailmessage.value);
+			email.value='';
+			email.focus();
+			return false;
+		}
+		if(pwd.value==''){
+			   alert("密码不能为空");
+			   pwd.focus();
+			   return false;
+		}
+		if(pwd2.value==''){
+			   alert("密码不能为空");
+			   pwd2.focus();
+			   return false;
+		}
+		if(passmessage.value!='ok'){
+			   alert(passmessage.value);
+			   pwd.value='';
+			   pwd.focus();
+			   return false;
+		}
+		if(telphonemessage.value!='ok' && telphonemessage.value!='false'){
+			   alert(telphonemessage.value);
+			   telphone.value='';
+			   telphone.focus();
+			   return false;
+		}
+		if(year.value=='-1'||year.value==''){
+			alert("请选择出生日期！");
+			year.focus();
+			return false;
+		}
+		if(month.value=='-1'||month.value==''){
+			alert("请选择出生日期！");
+			month.focus();
+			return false;
+		}
+		if(day.value=='-1'||day.value==''){
+			alert("请选择出生日期！");
+			day.focus();
+			return false;
+		}
+		
+		if(workProvince.value=='-1' && workCity.value=='-1') {
+			alert("您忘记选择“工作地区”这项了!");
+			workProvince.focus();
+			return false;   
+		}
+		if(workProvince.value !='10101201' && workProvince.value !='10102000' && workProvince.value !='10103000' && workProvince.value !='10101002' && workProvince.value !='10104000' && workProvince.value !='10105000' && workProvince.value !='10132000' && workProvince.value !='10133000' && workProvince.value !='10134000'){
+			if(workCity.value=='-1'||workCity.value==''){
+				alert("您忘记选择“工作地区”这项了!");
+				return false;
+			}
+		}
+		ispop = false;
+		return true;
+	}	
+	
+	
+	//更多---
+	function show(){
+		alert("请先注册！")
+	}
+
+	//视频
+	function _popup(cont){
+		var _html = "";
+		_html += "<div id='flashDiv' class='pop_bg' style='width:398px; margin:-124px 0 0 -187px;'>";
+		_html += "  <div class='pop_video tl'>&nbsp;</div>";
+		_html += "  <div class='pop_video tr'>&nbsp;</div>";
+		_html += "  <div class='pop_content_video'>";
+		_html += "      <div class='pop_content_right_video'>";
+		_html += "          <div class='pop_video_text'>";
+		_html += "              <div class='video_close'><a style='cursor:pointer' onclick='$.unblockUI();'><img src='css/images/pop_video_close.gif' alt=''/></a></div>";
+		_html += "              <div id='subFlashDiv' class='video_pic'>";
+
+		_html += cont;
+
+		_html += "              </div>";
+		_html += "          </div>";
+		_html += "      </div>";
+		_html += "  </div>";
+		_html += "  <div class='pop_video bl'>&nbsp;</div>";
+		_html += "  <div class='pop_video br'>&nbsp;</div>";
+		_html += "</div>";
+
+		$.blockUI(_html);
+	}
+	function videoFlash(){
+		var flashHtml = '<object height="252" width="328" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">\
+		  <param value="../public/system/flash/player.swf?path=0HRaoDc3Lvd3d34yUjNmLxbvNk9SRXY3LhZpZvVG8ycDMyMwEvQDAjYWY4NiJ1U2lDOWNlO3QkFDI2N2YzMzUhRmVjN2NmZuU2xm&amp;img=images2/shipin_pic2.jpg&amp;play=true" name="movie">\
+		  <param value="high" name="quality">\
+		  <param name="SCALE" value="exactfit"/>\
+		  <param value="true" name="allowFullScreen">\
+		  <param value="false" name="menu">\
+		  <param value="transparent" name="wmode">\
+		  <param value="aaaa" name="title">\
+		<embed height="252" width="328" menu="false"  SCALE="exactfit" allowfullscreen="true" value="transparent" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" quality="high" style="z-index: inherit;" src="../public/system/flash/player.swf?path=0HRaoDc3Lvd3d34yUjNmLxbvNk9SRXY3LhZpZvVG8ycDMyMwEvQDAjYWY4NiJ1U2lDOWNlO3QkFDI2N2YzMzUhRmVjN2NmZuU2xm&amp;img=../data/videos/201004/pic/536f9cea387ce656da3848c6bb70b37c_5.jpg&amp;play=true">\
+		</object>';
+		_popup(flashHtml);
+	}
+	
+//-->
+</script> 
+
+</head>
+
+<body>
+
+
+
+
+
+<div id="box">
+
+    <!-- 焦点图 -->
+    <div class="banner">
+      <div class="top"><a href="http://www.7651.com/index.php?n=login">登录 </a>|<a href="http://www.7651.com"> 首页</a>&nbsp;&nbsp;&nbsp;&nbsp;</div> 
+	  <div style="height:120px;"></div>
+	  
+	  
+	  	<div class="login">
+			<form action="../index.php?n=register&amp;h=stepone" method="post" name="register_stepone" id="register_stepone" onsubmit="return checkForm(this);">
+							
+			<ol>
+				<li>注册邮箱：
+					<input id="username" name="username" type="text"  value="作为登录用户名及找回密码使用" title="此邮箱将成为您日后找回密码的途径之一" style="width:200px;"  tabindex='1'  />
+					<span style="margin-top:-2px;" id="validateemailID"></span>
+					<input type="hidden" value="false" id='emailmessage' />
+				</li>
+				<li>红娘密码：
+					<input  type="password" name="password" id="password"   tabindex='2' style="width:200px;" />
+					<span style="" id="pwdtip"></span>
+					<input type="hidden" value="false" id='passmessage' />
+				</li>
+				<li>确认密码：
+					<input type="password" name="password2" id="password2"   tabindex='3'style="width:200px;" />
+					<span style="" id="pwdtip2"></span>
+				</li>
+				<li>手&nbsp;&nbsp;&nbsp;&nbsp;机：
+					<input id="telphone" name="telphone" type="text" style="width:200px;"  value="填入手机号码获红娘免费牵线" title="红娘为您牵线搭桥，成就您的美满爱情"  tabindex='4' />
+					<span style=" " id="validatetelphoneID"></span>
+					<span id="remindtel"></span>
+				</li>
+			
+				<li>性&nbsp;&nbsp;&nbsp;&nbsp;别： <label for="a3"><input type="radio" name="gender" value="1" id="a3"  tabindex='5' />女士</label>
+										<label for="a4"><input type="radio" name="gender" value="0" checked="checked" id="a4" tabindex='6' />男士</label></li>
+				<li>出生日期：
+				   <script>getYearsSelect('','year','year','0','-1');</script>
+											<script>getMonthsSelect('','month','month','0','-1');</script>
+											<script>getDaysSelect('','day','day','0','-1');</script>
+				</li>
+				<li>工作地区：
+					 <script>getProvinceSelect43rds('','workprovincereg','workprovincereg','workcity',c_provice,'10100000');</script>
+										<script>getCitySelect43rds('','workcity','workcity',c_city,'');</script>        
+				</li>
+				
+				
+				<input type="hidden" value="false" id='telphonemessage' />
+				<input id="mustphone" type="hidden" value="1" name="mustphone"/>
+				<input name="agree" type="hidden" id="agree" value="1" />
+				<input name="telphonecheck" type="hidden" value="1" />
+				<input name="actio" type="hidden" id="actio" value="false" />
+				<input name="istueiguang" type="hidden" id="istueiguang" value="1" />
+								
+				<li style="padding:7px 0 0 30px;">
+				  
+					<input name="register_submitone" type="submit" value=" " style="width:137px;height:30px; background:url(images/manu_zhuce.gif) no-repeat; border:none; " />    
+				</li>
+			</ol>
+			 <div class="clear"></div>
+			
+			</form>
+        </div>
+	  
+    </div> 
+    <!-- 焦点图结束 -->
+    <!-- 搜索 -->
+    <div class="search">
+     <ol>
+		<li>
+		  <label for="s1"><input name="search_type" type="radio" value="1" checked id="s1"/> 按条件搜索</label>
+        </li>
+		<li>
+		  <label for="s2"><input name="search_type" type="radio" value="2" id="s2"/> 按ID号搜索</label>
+        </li>
+	 </ol>
+        <!-- 按条件搜索 -->  
+        
+	 <ol id="search-cts-list">
+		<li>
+		  性别： 
+          <select name="gender">
+                    <option value="0" checked>男士</option>
+                    <option value="1">女士</option>
+                    </select>
+        </li>
+		<li>
+		  年龄：
+           <script>getSelect('selw60','age1','agebegin','','21',age);</script>
+                    至
+                    <script>getSelect('selw60','age2','ageend','','30',age) ;</script>
+        </li>
+		
+		<li>
+		  地区：
+           <script>getProvinceSelect43rds('w60','workprovince','workprovince','workcit','','10100000');</script>
+                    <script>getCitySelect43rds('w60','workcit','workcity','','');</script>
+        </li>
+        <li>
+        	<label><input name="photo" type="checkbox" value="1" checked="checked" /> 有照片</label>
+        </li>
+     </ol>
+                
+        <!-- 按ID号搜索   -->     
+	 <ol  style="display:none" id="search_uid">
+		<li>
+		  <input name="" type="text" style="width:150px;" />
+        </li>
+	 </ol> 
+		
+		
+       <input id="quick_search" name="quick_search" type="submit" value=" " onclick="return checkRightResearchForm();" style="width:100px; height:24px; background:url(images/manu_search.gif) no-repeat; border:none; " />
+
+    </div>
+    <!-- 搜索结束 -->
+    <!-- main部分 -->
+  <div class="main">
+  
+
+    <div class="diamond">
+    	<div class="title">钻石会员展示</div>
+        <div class="diamond_main">
+            <dl>
+                <dt><a href="#"><img src="images/pic_a.jpg"  onclick="return videoFlash();"/></a></dt>
+                <dd>声影传情</dd>
+            </dl>
+            <dl>
+                <dt><a href="#"><img src="images/pic_b.jpg" /></a></dt>
+                <dd>亲友助阵</dd>
+            </dl>
+            <dl>
+                <dt><a href="#"><img src="images/pic_c.jpg" /></a></dt>
+                <dd>才艺展示</dd>
+            </dl>
+            <dl>
+                <dt><a href="#"><img src="images/pic_d.jpg" /></a></dt>
+                <dd>个人资料</dd>
+            </dl>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div style="height:10px; "></div>
+    <div class="recommend">
+    	<div class="title">会员推荐</div>
+        <div class="rec_main">
+            <dl>
+                <dt><a href="#"><img src="images201105/uesr01.jpg" /></a></dt>
+                <dd>静忆  22岁</dd>
+                <dd><img src="images/img_bottom.gif" /></dd>
+            </dl>
+            <dl>
+                <dt><a href="#"><img src="images201105/uesr02.jpg" /></a></dt>
+                <dd>小美  24岁</dd>
+                <dd><img src="images/img_bottom.gif" /></dd>
+            </dl>
+            <dl>
+                <dt><a href="#"><img src="images201105/uesr03.jpg" /></a></dt>
+                <dd>水之梦  26岁</dd>
+                <dd><img src="images/img_bottom.gif" /></dd>
+            </dl>
+            <dl>
+                <dt><a href="#"><img src="images201105/uesr04.jpg" /></a></dt>
+                <dd>CG骑士  22岁</dd>
+                <dd><img src="images/img_bottom.gif" /></dd>
+            </dl>
+            <dl>
+                <dt><a href="#"><img src="images201105/uesr05.jpg" /></a></dt>
+                <dd>寻找知心  24岁</dd>
+                <dd><img src="images/img_bottom.gif" /></dd>
+            </dl>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div style="height:10px; "></div>
+    <div class="story">
+    	<div class="story_main">
+        	<div><span>成功故事</span> <i>------------------------------------------------------------------------------------------</i> <a href="#">更多>> </a></div>
+            <div class="story_font">
+            	<dl>
+                	<dt><img  src="http://www.7651.com/data/upload/story/516_small.jpg" /></dt>
+                    <dd>
+                    	<h3>转身遇见你</h3>
+                        <p>他：安¤... 她：霄霄...</p>
+                        <p>时间：2011-01-23</p>
+                        <p>2010年10月，我和她相识...</p>
+                        <p><a href="#">详情请点击>></a></p>
+                    </dd>
+                </dl>
+            	<dl>
+                	<dt><img src="http://www.7651.com/data/upload/story/525_small.jpg" /></dt>
+                    <dd>
+                    	<h3>网来的美人鱼</h3>
+                        <p>他：静海... 她：活泼...</p>
+                        <p>时间：2011-01-22</p>
+                        <p>鱼说， 你看不见我眼中的</p>
+                        <p>泪... <a href="#">详情请点击>></a></p>
+                    </dd>
+                </dl>
+            	<dl>
+                	<dt><img src="http://www.7651.com/data/upload/story/513_small.jpg" /></dt>
+                    <dd>
+                    	<h3>寻缘寻梦</h3>
+                        <p>他：心灵... 她：一切...</p>
+                        <p>时间：2010-10-06</p>
+                        <p>枯燥的生活令人崩溃，百...</p>
+                        <p><a href="#">详情请点击>></a></p>
+                    </dd>
+                </dl>
+            	<dl>
+                	<dt><img src="images201105/img05.gif" /></dt>
+                    <dd>
+                    	<h3>我会对你好一辈子</h3>
+                        <p>他：水悠悠 她：白裙子</p>
+                        <p>时间：2010-10-06</p>
+                        <p>2010年10月6日，是我和我亲</p>
+                        <p>爱... <a href="#">详情请点击>></a></p>
+                    </dd>
+                </dl>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="honor">
+        	<ol>
+            	<li>·2010年上半年度华东地区"最诚信恋</li>
+            	<li>·2010年上半年度华东地区婚恋网站</li>
+            	<li>·红娘网荣获2010年安徽人最受欢迎</li>
+            	<li>·2010年皖南互联网联盟安徽人最喜欢</li>
+            	<li>·红娘网荣获2009年中国交友与交流协</li>
+            	<li>·2009年中国交友与交流协会交友征婚</li>
+            	<li>·红娘网获2009年中国姻缘协会最受</li>
+            </ol>
+        </div>
+        <div class="clear"></div>
+    </div>
+  </div>    
+    <!-- main部分结束 -->
+    
+    <!-- footer部分 -->
+  <div class="footer">
+  	<p style="height:10px; background:#c63384;"></p>
+	<!--
+  	<p><a href="#">关于我们 |</a> <a href="#">联系我们 |</a> <a href="#">合作伙伴 |</a> <a href="#">意见反馈 |</a> <a href="#">成功故事 |</a> <a href="#">汇款信息 |</a> <a href="#">其他信息</a></p>
+    -->
+	
+	
+    <p><span>Copyright 2005-2011</span> 版权所有：红娘网 闽ICP备09064513号</p>
+    <p><span>红娘网备用域名：</span> www.hongniangw.com | www.hongniangwang.com</p>
+  </div>
+    <!-- footer部分结束 -->
+</div>
+</body>
+
+<div style="display:none;">
+<script type="text/javascript">
+    document.write("<script src='http://s9.cnzz.com/stat.php?id=2570260&web_id=2570260&online=1&show=line'><\/script>");
+</script>
+</div>
+
+<script type="text/javascript"> 
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://mycount.7651.com/" : "http://mycount.7651.com/");
+//document.write("script src='" + pkBaseURL + "piwik.js' type='text/javascript'/script");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.php?site_id=1' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript"> 
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "cnzz.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://mycount.7651.com/cnzz.php?idsite=1" style="border:0" alt=""/></p></noscript>
+
+<script type="text/javascript">
+$("a").not("#logo").not("#login").not("#p_a > a").not("#longina").not("#login").not("#miibeian").not("#reg-logo").not("#showvideo").click(function(){
+    alert("请先注册！");
+    location.href='#top';
+    return false;
+})
+$(document).ready(function(){
+    if($("#workprovincereg").val() != c_provice){
+        $("#workprovincereg option").each(function(){
+            if($(this).val() == c_provice){
+                $(this).attr("selected" , "selected");
+            };
+        });
+        $("#workcity option").each(function(){
+            if($(this).val() == c_city){
+                $(this).attr("selected" , "selected");
+            };
+        });
+    };               
+});
+window.onbeforeunload=function(){
+    if((wf=='dt' && st == '9733') || (wf=='legao' && st == 'nvhy') || (wf=='yqy' && st == 'tc') || (wf == '58dh' && st == 'lmm') || (wf == 'dh' && st == 'bb')||(st == 'haoz' && wf == 'wb')){//此渠道不弹出
+        ispop = false;
+    }
+    if(ispop){
+        stb.DOM.Script.window.open('http://7651.com/index.php?n=login');
+    }
+}
+
+</script>
+
+</html>

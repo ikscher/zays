@@ -1,0 +1,906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网-成功率高的征婚网站,婚介婚恋真爱网---江苏站</title>
+<link href="module/index/templates/default/index_js.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="module/index/templates/default/js/jquery1.4.2.min.js"></script>
+
+
+<!--[if lte IE 6]>
+<script src="js/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('div, img');
+</script>
+<![endif]-->
+<script type="text/javascript" src="module/index/templates/default/js/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="module/index/templates/default/js/index.js?v=1"></script>
+<script type="text/javascript" src="public/system/js/sys.js?v=1"></script>
+<script src="module/index/templates/rightbottom_popup/js/jquery.eBox.js"></script>
+<script>
+{if $test}
+var height_1 = {$test[9]};
+
+$(document).ready(function(){
+   $.eBox({
+      title:{html:"{$test[8]}"},
+      content:{html:"<p>{$test[1]}</p><p style=\"line-height:1.5;text-indent:2em;\">{$test[2]}</p><p style=\"line-height:1.5;text-indent:2em;\">{php echo
+	  htmlspecialchars_decode($test[4])}</p><p style=\"line-height:1.5;text-indent:2em;\">{php echo
+	  htmlspecialchars_decode($test[5])}</p><p style=\"line-height:1.5;text-indent:13em;\"> {$test[7]}</p><p style=\"line-height:1.5;text-indent:13em;\"> {$test[6]}</p>"},
+      effect:{type:"slide",speed:2500},
+      openOnce:false
+   });
+});
+
+{/if}
+</script>
+
+<script type="text/javascript">
+    //钻石会员轮转
+    jQuery(document).ready(function() {
+		jQuery('#mycarousel').jcarousel({
+          // Configuration goes here
+		  scroll:5
+        });
+	});
+	
+	jQuery(document).ready(function() {
+		jQuery('#mycarousel2').jcarousel({
+          // Configuration goes here
+		  scroll:5
+        });
+	});
+    //设为首页
+    function addHome(){
+        if (window.sidebar){
+            try {
+                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+            }
+            catch (e){
+                alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将 [signed.applets.codebase_principal_support]设置为true");
+            }
+
+            var prefs =  Components.classes["@mozilla.org/preferences-service;1"].getService( Components.interfaces.nsIPrefBranch );
+            prefs.setCharPref("browser.startup.homepage",'http://www.zhenaiyisheng.cc/');
+        } else if (document.all){
+            document.body.style.behavior="url(#default#homepage)";
+            document.body.setHomePage('http://www.zhenaiyisheng.cc/');
+        }else{
+            return false;
+        }
+    }
+   
+    //表单验证
+	function checkForm(){
+	   //header登录表单
+	   var username,password;
+       username=$("#user").val();
+	   password=$("#pwd").val();
+	   
+       if(!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(username) && !/^\d{5,11}$/.test(username)){
+	      alert('您输入的用户名格式不正确！');
+		  return false;
+	   }
+  
+
+	   if(!password){
+	      alert('请输入密码！'); 
+		  return false;
+       }
+       return true;
+	 }
+     
+	
+	//更多检索
+	function more_user(){
+		var workprovince = $("#workprovince1").val();
+		var workcity = $("#workcity1").val();
+		var age1 = $("#age01").val();
+		var age2 = $("#age02").val();
+		
+		if(age1 > age2){
+			alert("您选择的年龄范围不正确，请重新选择");
+			document.getElementById("age01").focus();
+			return;
+		}
+
+	    location.href="index.php?search_type=1&age_start="+age1+"&age_end="+age2+"&workprovince="+workprovince+"&workcity="+workcity+"&photo=1&search_uid=&n=search&h=quick&quick_search=search";
+    }
+
+	//检索验证
+	function checkquicksearch(){
+		if($("#s2").attr("checked") == true) {
+			if($("#search_uid").val() == '') {
+				alert("请输入您要查询的ID");
+				return false;
+			}
+			return true;
+		}
+		var age1 = $("#age1").val();
+		var age2 = $("#age2").val();
+		if( age1 == 0 && age2 == 0) {
+		  alert("请选择年龄");
+		  $("#age1").focus();
+		  return false;
+		}
+		if(age1!=null && age1!='' && age1==0 && age2!=null && age2!='' && age2!=0) {
+		  alert("请选择年龄下限");
+		  $("#age1").focus();
+		  return false;
+		}
+		if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2==0) {
+		  alert("请选择年龄上限");
+		  $("#age2").focus();
+		  return false;
+		}
+		if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2!=0 && age1>age2) {
+		  alert("您选择的年龄范围不正确，请重新选择");
+		  $("#age1").focus();
+		  return false;
+		}
+		return;
+    }
+</script>
+<script type="text/javascript">
+    //搜索条件轮换
+    $(function(){
+        $("input[name=search_type][value=1]").attr("checked","checked");
+        $("input[name=search_type]").click(function(){
+            if(this.value == 1){
+            
+                $("#search_more").css("display","block");
+                $("#search_uid").css("display","none");
+            }
+            if(this.value == 2){
+                $("#search_uid").css("display","block");
+                $("#search_more").css("display","none");
+                $("#age1").val('21');
+                $("#age2").val('45');
+            }
+        });
+    });
+
+    //地区切换
+	   $(function(){
+          ///$(".ol").hide();
+          $(".change_city").mousemove(function(){$(".ol").show()}).mouseout(function(){$(".ol").hide()});
+
+          $("#close").click(function() {
+             $(".ol").hide();
+          });                    
+       });
+
+</script>
+</head>
+
+<body>
+<div id="box">
+<div id="wrap">
+<!-- 头部 -->
+	<div id="hn_header">
+    	<div class="hn_header_top">
+        	<a href="javascript:addHome();" class="index">设真爱一生网为首页</a>
+            <!-- 切换城市 -->
+            <div class="change_city">
+               <div class="name"><span style="color:#C00;">{php echo $currentdistrict;}</span>切换地区</div>
+      
+        
+                <ol id="place">   <div id="close" style=" position:absolute;left: 555px;cursor:pointer;color:#060;">[关闭]</div>
+                    <li>
+                      <p>华北地区：</p>
+                        <p> <a href="index.php?n=index&province=10102000" ><script>userdetail('10102000',provice)</script></a> <a href="index.php?n=index&province=10104000"><script>userdetail('10104000',provice)</script></a> <a href="index.php?n=index&province=10112000"><script>userdetail('10112000',provice)</script></a> <a href="index.php?n=index&province=10125000"><script>userdetail('10125000',provice)</script></a> <a href="index.php?n=index&province=10121000"><script>userdetail('10121000',provice)</script></a> </p>
+                  </li>
+                    <li>
+                        <p>东北地区：</p>
+                       <p><a href="index.php?n=index&province=10114000"><script>userdetail('10114000',provice)</script></a> <a href="index.php?n=index&province=10117000"><script>userdetail('10117000',provice)</script></a> <a href="index.php?n=index&province=10120000"><script>userdetail('10120000',provice)</script></a> </p>
+                    </li>
+                    <li>
+                        <p>华东地区：</p>
+                        <p><a href="index.php?n=index&province=10103000"><script>userdetail('10103000',provice)</script></a> <a href="index.php?n=index&province=10118000"><script>userdetail('10118000',provice)</script></a> <a href="index.php?n=index&province=10131000"><script>userdetail('10131000',provice)</script></a> <a href="index.php?n=index&province=10106000"><script>userdetail('10106000',provice)</script></a> <a href="index.php?n=index&province=10107000"><script>userdetail('10107000',provice)</script></a> <a href="index.php?n=index&province=10119000"><script>userdetail('10119000',provice)</script></a> <a href="index.php?n=index&province=10124000"><script>userdetail('10124000',provice)</script></a></p>
+                    </li>
+                    <li> 
+                        <p>中南地区：</p>
+                        <p><a href="index.php?n=index&province=10113000"><script>userdetail('10113000',provice)</script></a> <a href="index.php?n=index&province=10115000"><script>userdetail('10115000',provice)</script></a> <a href="index.php?n=index&province=10116000"><script>userdetail('10116000',provice)</script></a> <a href="index.php?n=index&province=10101000"><script>userdetail('10101000',provice)</script></a> <a href="index.php?n=index&province=10109000"><script>userdetail('10109000',provice)</script></a> <a href="index.php?n=index&province=10111000"><script>userdetail('10111000',provice)</script></a> </p>
+                    </li>
+                    <li>
+                        <p>西南地区：</p>
+                        <p><a href="index.php?n=index&province=10105000"><script>userdetail('10105000',provice)</script></a> <a href="index.php?n=index&province=10127000"><script>userdetail('10127000',provice)</script></a> <a href="index.php?n=index&province=10110000"><script>userdetail('10110000',provice)</script></a> <a href="index.php?n=index&province=10130000"><script>userdetail('10130000',provice)</script></a> <a href="index.php?n=index&province=10128000"><script>userdetail('10128000',provice)</script></a></p>
+                    </li>
+                    <li>
+                        <p>西北地区：</p>
+                        <p><a href="index.php?n=index&province=10126000"><script>userdetail('10126000',provice)</script></a> <a href="index.php?n=index&province=10108000"><script>userdetail('10108000',provice)</script></a> <a href="index.php?n=index&province=10123000"><script>userdetail('10123000',provice)</script></a> <a href="index.php?n=index&province=10122000"><script>userdetail('10122000',provice)</script></a> <a href="index.php?n=index&province=10129000"><script>userdetail('10129000',provice)</script></a></p>
+                    </li>
+              </ol>
+            </div>
+            <script type="text/javascript">
+            $("#place").hide()
+            $(function(){
+                       $(".change_city").mousemove(function(){$("#place").show()}).mouseout(function(){$("#place").hide()});
+                       
+                       });
+            $("#close").click(function() {
+                $("#place").hide();
+            });
+    
+            </script>
+            <!-- 切换城市结束 -->
+			  {if $GLOBALS['MooUid']}
+   				 <ol >
+				  您的用户名是：{php echo MooCutstr($GLOBALS['MooUserName'],16)}
+				  您的ID是：{$GLOBALS['MooUid']}&nbsp;&nbsp;
+				  最新邮件(<a href="index.php?n=service&h=message">{php echo $GLOBALS['new_email_num']}) <a href="index.php?n=service">进入我的真爱一生&gt;&gt;</a> <a href="index.php?n=index&h=logout">安全退出&gt;&gt;</a>
+				</ol>
+				{else}
+    <ol>
+	 <div class="login">
+      <form id="loginform" name="loginform" action="index.php?n=index&h=submit" method="post" >
+        用户名：<input name="username" type="text" style="width:120px;"  value="请输入邮箱/ID/QQ/手机号"  onmouseover="this.select()" onClick="if(this.value=='请输入邮箱/ID/QQ/手机号'){this.value='';}"  />&nbsp; 
+       密码： <input name="password" type="password" style=" width:120px; height:18px; border:1px #CCC solid;" />&nbsp; 
+        
+          <input name="login" type="submit" id ='login' value="" style="width:42px; height:18px; background:url(module/index/templates/default/images/jiangsu/manu.png) no-repeat; border:none;" />&nbsp; 
+      
+          <label>
+            <input name="" type="checkbox" id="r-pwd" style="border:none; width:20px;" />
+            记住密码</label>&nbsp;
+       
+        <a href="index.php?n=login&h=backpassword">找回密码</a> &nbsp;<a href="index.php?n=register" style="color:#C00;">注册会员</a> &nbsp;<a href="#">会员中心</a>
+      </form>
+	   </div>
+      </ol>
+      {/if}
+           
+        </div>
+        <div>
+            <div class="logo"><a href="#"><img src="module/index/templates/default/images/jiangsu/logo_js.jpg" /></a></div>
+            <div class="header_js">
+                <div class="vip"><a href="index.php?n=index&h=govip"><img src="module/index/templates/default/images/jiangsu/vip.png" /></a></div>
+          </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+<!-- 头部 结束 -->
+
+<!-- 导航 -->
+    <div id="nav">
+       	<ol>
+		 <li><a href="index.php" class="act" target="_blank">网站首页</a></li>
+          <li><a href="index.php?n=about&h=us" target="_blank">关于我们</a></li>
+          <li><a href="index.php?n=about&h=contact" target="_blank">联系我们</a></li>
+          <li><a href="index.php?n=about&h=links" target="_blank">合作伙伴</a></li>
+          <li><a href="index.php?n=about&h=getsave" target="_blank">意见反馈</a></li>
+          <li><a href="index.php?n=story" target="_blank">成功故事</a></li>
+          <li><a href="index.php?n=payment&h=diamond" target="_blank">服务介绍</a></li>
+          <li><a href="index.php?n=activity&h=activity" target="_blank">活动专区</a></li>
+          <li><a href="index.php?n=video&h=index" target="_blank">视频专区</a><p><img src="module/index/templates/default/images/new-icon.gif" /></p></li>
+        </ol>
+    </div>
+<!-- 导航 结束 -->
+
+<!-- 搜索 -->
+<form action="index.php?n=search" target="_blank"  method="get" onSubmit="return checkquicksearch();">
+	<div id="search">
+		<div class="search_l"></div>
+        <div class="search_r"></div>
+    	<div class="search_choose">
+			<label>
+                <input name="search_type" type="radio" value="1" checked="checked" id="s1" />
+                按条件搜索</label>
+          
+           <label>
+                <input name="search_type" type="radio" value="2" id="s2" />
+                按ID号搜索</label>
+        </div>
+		 <div style="float:left;margin-top:1px;display:inline;" id="search_more">
+        <div class="search_tiaojian">
+        	性别：
+			<select name="gender" style="width:63px;">
+                <option value="0" {if $user_arr['gender'] == '1'} selected {/if} >男</option>
+                <option value="1" {if $user_arr['gender'] == '0' || empty($user_arr['gender'])} selected {/if}>
+                
+          女
+          
+                </option>
+              </select>
+        	
+            年龄：
+           <script>getSelect("",'age1','age_start','','21',age);</script>
+            至
+           <script>getSelect("",'age2','age_end','','45',age) ;</script>
+            地区：
+            <script>getProvinceSelect43rds('','workprovince','workprovince','workcity','','10100000');</script>
+            <script>getCitySelect43rds('','workcity','workcity','','');</script>
+            <label>
+                <input id="photo" name="photo" type="checkbox" value="1" checked="checked" />
+                有照片</label>
+			 </div>
+			
+		</div>
+		 <input type="text" name="search_uid" id="search_uid" class="index-login-text" style="display:none"/>
+		 <input type="hidden" name="n" value="search">
+		<input type="hidden" name="h" value="quick">
+		<input id="quick_search" name="quick_search"  type="hidden" value="search">
+<!--        <div class="search_id">
+        	<input name="" type="text" />
+        </div>
+-->
+		<div class="search_submit">
+            <input name="search" type="submit" id="search_btn" value="" />
+            <a href="index.php?n=search&h=super" style="border-bottom:1px solid #0093ca; font-size:12px; color:#0093ca;">高级搜索</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+	</form>
+<!-- 搜索 结束 -->
+
+<!-- 主体部分main -->
+	<div id="main">
+    <!-- 登录框和banner -->
+        <div id="loginbar">
+            <div class="line"><span></span></div>
+            <div class="loginbar_main">
+               
+				 {if $GLOBALS['MooUid']}
+				  <ol class="login_user">
+					<li>您的用户名是：{php echo MooCutstr($GLOBALS['MooUserName'],16)}</li>
+					<li> 您的ID是：{$GLOBALS['MooUid']}</li>
+					<li>最新邮件(<a href="index.php?n=service&h=message">{php echo $GLOBALS['new_email_num']})</li>
+					<li><a href="index.php?n=service">进入我的真爱一生&gt;&gt;</a> <a href="index.php?n=index&h=logout">安全退出&gt;&gt;</a></li>
+				  </ol>
+				  {else}
+				   <ol class="login_main">
+				    <form id="loginform" name="loginform" action="index.php?n=index&h=submit" method="post" onSubmit="return checkForm();">
+                     <li>账 号
+					  <input id="user" name="username" type="text" value="请输入邮箱/ID/QQ/手机号" onClick="if(this.value=='请输入邮箱/ID/QQ/手机号'){this.value='';}" onMouseOver="this.select()" style="border:1px solid #cccccc; width:160px; color:#666; height:20px;" />
+					</li>
+					<li>密 码
+					  <input id="pwd" name="password" type="password"  style="border:1px solid #cccccc; width:160px; height:20px;" />
+					</li>
+					 <li>
+					  <input name="login_a" type="submit" id="login_a"  value="" />
+					  &nbsp;&nbsp;&nbsp;<a href="index.php?n=register" class="for">会员注册</a>
+					</li>
+					 
+                  <div class="clear"></div>
+				   <label class="rem">
+					<input name="" type="checkbox" value="" id="r-pwd" />
+					记住密码</label>
+				  &nbsp;&nbsp;&nbsp;<a href="index.php?n=login&h=backpassword" class="for">忘记密码</a></li>
+				</ol>
+                  
+			  </form>
+			  {/if}
+                
+            <ul>
+            	<li>·2000万名优秀单身在这里寻觅伴侣</li>
+				<li>·580万名优秀单身牵线成功</li>
+                <li>·赶快注册会员开始寻爱之旅</li>
+                <div class="heart"></div>
+            </ul>
+            </div>
+        </div>
+    <!-- 登录框和banner 结束 -->
+    <!-- banner -->
+        <div class="banner_right">
+  <div id="newsSlider">
+    <div class="container">
+      <ul class="slides">
+	  {loop $index_img $key $value}
+	  		<li>
+          <dl>
+            <dt><a href="{$value[2]}" target="_blank"><img src="{$value[1]}" width="721" height="260" /></a></dt>
+            <dd>{$value[3]}</dd>
+          </dl>
+        </li>
+	  
+	  {/loop}
+
+      </ul>
+    </div>
+    <ul class="pagination">
+	{loop $index_img $key $value}
+		<li><a href="{$value[2]}"></a></li>
+	{/loop}
+
+    </ul>
+  </div>
+</div>
+<!-- 图片滚动 end -->
+<div class="clear" ></div>
+
+  <div class="ad1"> 
+ 
+ {loop $small_img  $key $value}
+  <a href="{$value[2]}" target="_blank"><img style="width:326px;" src="{$value[1]}" /></a>
+ {/loop}
+  </div>  	
+        
+ <script type="text/javascript" src="public/system/js/jquery.l.js"></script>
+<script type="text/javascript" src="module/index/templates/default/js/loopedslider.min.js" ></script>
+<script type="text/javascript">
+$('#newsSlider').loopedSlider({autoStart:5000});
+$().ready(function(){
+	$("#mains img").lazyload({placeholder : "/n.gif",effect : "fadeIn",threshold:100});
+}); 
+
+</script>       
+
+
+    <!-- 会员推荐 -->
+    	<div id="member">
+        	<div class="member_header">
+            	<div class="member_logo"></div>
+                <div class="member_search">
+                    年龄：
+                    <script>getSelect("",'age01','agebegin','','21',age);</script>
+                    至
+                    <script>getSelect("",'age02','ageend','','45',age) ;</script>
+                    地区：
+                   <script>getProvinceSelect43rds('','workprovince1','workprovince1','workcity1',"{$_GET['workprovince']}",'10100000');</script>
+                   <script>getCitySelect43rds('','workcity1','workcity1',"{$_GET['workcity']}",'');</script>
+                </div>
+                <ol>
+					<li><a href="javascript:show_commend_user(1);" class="lady"></a></li>
+				    <li><a href="javascript:show_commend_user(0);" class="man"></a></li>
+				    <li><a href="index.php?n=search&h=super" class="senior"></a></li>
+                	
+                </ol>
+            </div>
+            <div class="member_main">
+            	<ol>
+					{loop $userList $v}
+						<li >
+						  
+							{if $v['mainimg'] && $v['images_ischeck']==1}
+							<div><a href="index.php?n=space&uid={$v['uid']}" target="_blank"><img src="{php  if(MooGetphoto($v[uid],'small')) echo MooGetphoto($v[uid],'mid');
+															  elseif($v['gender'] == '1')echo 'module/index/templates/default/images/se_woman.gif';
+															  else  echo 'module/index/templates/default/images/se_man.gif';
+															  }" width="120"/> </a></div>
+							{else}
+							{if $v['gender']} <a href="index.php?n=space&uid={$v['uid']}" target="_blank"> <img src="module/index/templates/default/images/se_woman.gif" /> </a> {else} <a href="index.php?n=space&uid={$v['uid']}" target="_blank"><img src="module/index/templates/default/images/se_man.gif" /></a> {/if}
+							{/if}
+							<p>{if $v['s_cid']==20} <a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a> {elseif $v['s_cid'] == 30} <a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a> {else}							
+							  {/if}<span>{php echo $v['nickname']? MooCutstr($v['nickname'],6,''):'ID:'.$v['uid'];}</span>&nbsp;{if $v['birthyear']}{php echo (date('Y')-$v['birthyear'])}岁{else}年龄保密{/if} 
+							<script type="text/javascript">
+										userdetail({$v['province']},provice);
+										userdetail({$v['city']},city);
+									  </script> 
+							</p>
+						   {if $v['city_star']!=0}
+							 <span class="stars"><a href="index.php?n=payment&h=city_star_intro"><img src="module/index/templates/default/images/jiangsu/star.png"/></a></span>
+						  {elseif $v['s_cid'] == 20}
+							 <div class="star"><a href="index.php?n=payment&h=platinum"><img src="module/index/templates/default/images/platnium.gif"/></a></div>	  
+						  {/if}
+						</li>
+						{/loop}
+               	  
+                  <div class="clear"></div>
+                </ol>
+            </div>
+        </div>
+    <!-- 会员推荐 结束 -->
+        <div class="ad1"><a href="index.php?n=activity&h=travel" target="_blank" ><img src="module/index/templates/default/images/jiangsu/maldives.jpg" /></a></div>
+        
+    <!-- 钻石会员 -->
+    	<div id="diamond">
+        	<div class="diamond_header">
+            	<div class="diamond_logo"></div>
+                <p><a href="index.php?n=payment&h=diamond"></a></p>
+            </div>
+            <div class="diamond_main">
+            	<div class="line"></div>
+                <div class="diamond_member">
+                	<div class="diamond_member_border">
+                    	<div class="diamond_member_pepole">
+                        	<div class="LeftBotton" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()"></div>
+                            <div class="Cont" id="ISL_Cont">
+                                <div class="ScrCont">
+                                    <div id="List1">
+                                        <!-- 图片列表 begin -->
+										 {loop $arr_diamond_female $k $diamond_female}
+											  
+											   <div class="pic">
+												<a href="index.php?n=space&uid={$diamond_female['uid']}" target="_blank"><img src="{php   
+																						  if(MooGetphoto($diamond_female[uid],'small')) echo MooGetphoto($diamond_female[uid],'medium');
+																						  else  echo 'module/index/templates/default/images/se_woman.gif';
+																						  }" width="108"/></a>
+											 <p> <span><a href="index.php?n=payment&h=diamond" target="_blank"> <img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a> </span> {if $diamond_female['birthyear'] ==''}年龄：保密{else}{php echo (date('Y')-$diamond_female['birthyear']);}岁{/if}
+												 
+												  {loop $provice_list  $key $val}
+													 {if $diamond_female['province']==$key}
+													  {php 
+														 $province=$val;
+														  echo $province;
+														  break;
+													  } 
+													 {/if}
+												  {/loop}
+										
+												  {loop $city_list  $key $val}
+													 {if $diamond_female['city']==$key}
+													  {php 
+														 $city=$val;
+														  echo $city;
+														  break;
+													  } 
+													 {/if}
+												  {/loop}
+												 </p>
+												</div>
+											  {/loop}
+										
+                                       
+                                        <!-- 图片列表 end -->
+                                    </div>
+                                    <div id="List2"></div>
+                                </div>
+                                <script language="javascript" type="text/javascript">
+<!--//--><![CDATA[//><!--
+//图片滚动列表 mengjia 070816
+var Speed = 0.01; //速度(毫秒)
+var Space = 5; //每次移动(px)
+var PageWidth = 136; //翻页宽度
+var fill = 0; //整体移位
+var MoveLock = false;
+var MoveTimeObj;
+var Comp = 0;
+var AutoPlayObj = null;
+GetObj("List2").innerHTML = GetObj("List1").innerHTML;
+GetObj('ISL_Cont').scrollLeft = fill;
+GetObj("ISL_Cont").onmouseover = function(){clearInterval(AutoPlayObj);}
+GetObj("ISL_Cont").onmouseout = function(){AutoPlay();}
+AutoPlay();
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}}
+function AutoPlay(){ //自动滚动
+ clearInterval(AutoPlayObj);
+ AutoPlayObj = setInterval('ISL_GoDown();ISL_StopDown();',5000); //间隔时间
+}
+function ISL_GoUp(){ //上翻开始
+ if(MoveLock) return;
+ clearInterval(AutoPlayObj);
+ MoveLock = true;
+ MoveTimeObj = setInterval('ISL_ScrUp();',Speed);
+}
+function ISL_StopUp(){ //上翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0){
+  Comp = fill - (GetObj('ISL_Cont').scrollLeft % PageWidth);
+  CompScr();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlay();
+}
+function ISL_ScrUp(){ //上翻动作
+ if(GetObj('ISL_Cont').scrollLeft <= 0){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft + GetObj('List1').offsetWidth}
+ GetObj('ISL_Cont').scrollLeft -= Space ;
+}
+function ISL_GoDown(){ //下翻
+ clearInterval(MoveTimeObj);
+ if(MoveLock) return;
+ clearInterval(AutoPlayObj);
+ MoveLock = true;
+ ISL_ScrDown();
+ MoveTimeObj = setInterval('ISL_ScrDown()',Speed);
+}
+function ISL_StopDown(){ //下翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0 ){
+  Comp = PageWidth - GetObj('ISL_Cont').scrollLeft % PageWidth + fill;
+  CompScr();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlay();
+}
+function ISL_ScrDown(){ //下翻动作
+ if(GetObj('ISL_Cont').scrollLeft >= GetObj('List1').scrollWidth){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft - GetObj('List1').scrollWidth;}
+ GetObj('ISL_Cont').scrollLeft += Space ;
+}
+function CompScr(){
+ var num;
+ if(Comp == 0){MoveLock = false;return;}
+ if(Comp < 0){ //上翻
+  if(Comp < -Space){
+   Comp += Space;
+   num = Space;
+  }else{
+   num = -Comp;
+   Comp = 0;
+  }
+  GetObj('ISL_Cont').scrollLeft -= num;
+  setTimeout('CompScr()',Speed);
+ }else{ //下翻
+  if(Comp > Space){
+   Comp -= Space;
+   num = Space;
+  }else{
+   num = Comp;
+   Comp = 0;
+  }
+  GetObj('ISL_Cont').scrollLeft += num;
+  setTimeout('CompScr()',Speed);
+ }
+}
+//--><!]]>
+</script>
+                            </div>
+                        	<div class="RightBotton" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()"></div>
+                            <div class="clear"></div>
+                        </div>
+                    	<div class="diamond_member_pepole">
+                        	<div class="LeftBotton" onmousedown="ISL_GoUpman()" onmouseup="ISL_StopUpman()" onmouseout="ISL_StopUpman()"></div>
+                            <div class="Cont" id="ISL_Contman">
+                                <div class="ScrCont">
+                                    <div id="List1man">
+                                        <!-- 图片列表 begin -->
+										{loop $arr_diamond_male $k $diamond_male}
+										    <div class="pic">
+											<a href="index.php?n=space&uid={$diamond_male['uid']}" target="_blank">
+										  <img src="{php   
+													if(MooGetphoto($diamond_male[uid],'small')) echo MooGetphoto($diamond_male[uid],'medium');
+													else  echo 'module/index/templates/default/images/se_man.gif';
+													}" width="108"/> </a>
+											<p> <span> <a href="index.php?n=payment&h=diamond" target="_blank"> <img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a> </span> {if $diamond_male['birthyear'] ==''}年龄：保密{else}{php echo (date('Y')-$diamond_male['birthyear']);}岁{/if}
+											 
+											
+											   {loop $provice_list  $key $val}
+												 {if $diamond_male['province']==$key}
+												  {php 
+													 $province=$val;
+													  echo $province;
+													  break;
+												  } 
+												 {/if}
+											  {/loop}
+											  
+											  {loop $city_list  $key $val}
+												 {if $diamond_male['city']==$key}
+												  {php 
+													 $city=$val;
+													  echo $city;
+													  break;
+												  } 
+												 {/if}
+											  {/loop}
+											</p>
+										</div>
+									
+									  {/loop}
+                                        
+                                        <!-- 图片列表 end -->
+                                    </div>
+                                    <div id="List2man"></div>
+                                </div>
+                                <script language="javascript" type="text/javascript">
+<!--//--><![CDATA[//><!--
+//图片滚动列表 mengjia 070816
+var Speed = 0.01; //速度(毫秒)
+var Space = 5; //每次移动(px)
+var PageWidth = 136; //翻页宽度
+var fill = 0; //整体移位
+var MoveLock = false;
+var MoveTimeObj;
+var Comp = 0;
+var AutoPlaymanObj = null;
+GetObjman("List2man").innerHTML = GetObjman("List1man").innerHTML;
+GetObjman('ISL_Contman').scrollLeft = fill;
+GetObjman("ISL_Contman").onmouseover = function(){clearInterval(AutoPlaymanObj);}
+GetObjman("ISL_Contman").onmouseout = function(){AutoPlayman();}
+AutoPlayman();
+function GetObjman(objNameman){if(document.getElementById){return eval('document.getElementById("'+objNameman+'")')}else{return eval('document.all.'+objNameman)}}
+function AutoPlayman(){ //自动滚动
+ clearInterval(AutoPlaymanObj);
+ AutoPlaymanObj = setInterval('ISL_GoDownman();ISL_StopDownman();',5000); //间隔时间
+}
+function ISL_GoUpman(){ //上翻开始
+ if(MoveLock) return;
+ clearInterval(AutoPlaymanObj);
+ MoveLock = true;
+ MoveTimeObj = setInterval('ISL_ScrUpman();',Speed);
+}
+function ISL_StopUpman(){ //上翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObjman('ISL_Contman').scrollLeft % PageWidth - fill != 0){
+  Comp = fill - (GetObjman('ISL_Contman').scrollLeft % PageWidth);
+  CompScrman();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlayman();
+}
+function ISL_ScrUpman(){ //上翻动作
+ if(GetObjman('ISL_Contman').scrollLeft <= 0){GetObjman('ISL_Contman').scrollLeft = GetObjman('ISL_Contman').scrollLeft + GetObjman('List1man').offsetWidth}
+ GetObjman('ISL_Contman').scrollLeft -= Space ;
+}
+function ISL_GoDownman(){ //下翻
+ clearInterval(MoveTimeObj);
+ if(MoveLock) return;
+ clearInterval(AutoPlaymanObj);
+ MoveLock = true;
+ ISL_ScrDownman();
+ MoveTimeObj = setInterval('ISL_ScrDownman()',Speed);
+}
+function ISL_StopDownman(){ //下翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObjman('ISL_Contman').scrollLeft % PageWidth - fill != 0 ){
+  Comp = PageWidth - GetObjman('ISL_Contman').scrollLeft % PageWidth + fill;
+  CompScrman();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlayman();
+}
+function ISL_ScrDownman(){ //下翻动作
+ if(GetObjman('ISL_Contman').scrollLeft >= GetObjman('List1man').scrollWidth){GetObjman('ISL_Contman').scrollLeft = GetObjman('ISL_Contman').scrollLeft - GetObjman('List1man').scrollWidth;}
+ GetObjman('ISL_Contman').scrollLeft += Space ;
+}
+function CompScrman(){
+ var num;
+ if(Comp == 0){MoveLock = false;return;}
+ if(Comp < 0){ //上翻
+  if(Comp < -Space){
+   Comp += Space;
+   num = Space;
+  }else{
+   num = -Comp;
+   Comp = 0;
+  }
+  GetObjman('ISL_Contman').scrollLeft -= num;
+  setTimeout('CompScrman()',Speed);
+ }else{ //下翻
+  if(Comp > Space){
+   Comp -= Space;
+   num = Space;
+  }else{
+   num = Comp;
+   Comp = 0;
+  }
+  GetObjman('ISL_Contman').scrollLeft += num;
+  setTimeout('CompScrman()',Speed);
+ }
+}
+//--><!]]>
+</script>
+                            </div>
+                        	<div class="RightBotton" onmousedown="ISL_GoDownman()" onmouseup="ISL_StopDownman()" onmouseout="ISL_StopDownman()"></div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+           	  <div class="line"></div>
+              <div class="up_left"></div>
+              <div class="up_right"></div>
+              <div class="down_left"></div>
+                <div class="down_right"></div>
+            </div>
+        </div>
+    <!-- 钻石会员 结束 -->
+    <!-- 最新注册会员 -->
+        <div id="newmember">
+        	<div class="newmember_header"></div>
+            <div class="newmember_main">
+            	<ol>
+					{loop $new_regusers $new_user}
+						<li>
+					  {if $new_user['mainimg'] && $new_user['images_ischeck']==1}
+					 	<div class="new_photo"><a href="index.php?n=space&uid={$new_user['uid']}" target="_blank"><img src="{php   
+														  if(MooGetphoto($new_user[uid],'small')) echo MooGetphoto($new_user[uid],'medium');
+														  elseif($new_user['gender'] == '1') echo 'module/index/templates/default/images/se_woman.gif';
+														  else  echo 'module/index/templates/default/images/se_man.gif';
+														  }"  height="91" /> </a> {else}
+						{if $new_user['gender']} <a href="index.php?n=space&uid={$new_user['uid']}"><img src="module/index/templates/default/images/se_woman.gif" height="91"  /> </a> {else} <a href="index.php?n=space&uid={$new_user['uid']}"><img src="module/index/templates/default/images/se_man.gif" height="91"  /> </a> {/if}
+						{/if} </div>
+					  <p>
+						{if $new_user['birthyear']}{php echo (date('Y')-$new_user['birthyear'])}岁{else}年龄保密{/if}&nbsp; {if $new_user[city] == '0'}地区保密{else}<script>userdetail('{$new_user[city]}',city)</script>{/if}
+						 <span></span>
+					</p>
+					  <div class="clear"></div>
+					</li>
+					{/loop}
+                	
+                    
+                </ol>
+            </div>
+        </div>
+    <!-- 最新注册会员结束 -->
+    	<div class="clear"></div>
+        <div class="ad1"><a href="index.php?n=activity&h=scheme" target="_blank" ><img src="module/index/templates/default/images/jiangsu/500w.jpg" /></a></div>
+        
+    <!-- 成功故事 -->
+    	<div id="story">
+        	<div class="story_header">
+            	<div class="story_logo"></div>
+                <div class="story_more"><a href="index.php?n=story&h=list">更多>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+                <div class="clear"></div>
+            </div>
+            <div class="story_left"><img src="module/index/templates/default/images/jiangsu/story_left.gif" /></div>
+            <div class="story_main">
+            	<dl>
+                	<dt>
+                    	<a href="index.php?n=story&h=content&sid={$story[0]['sid']}" target="_blank">{php $picsmall = MooGetstoryphoto($story[0]['sid'],$story[0]['uid'],'medium')}
+        {if $picsmall} <img src="{$picsmall}" width="211" height="143" /> {else} <img src="module/index/templates/default/images/285_medium.jpg" width="211" height="143" /> {/if}</a>
+                	</dt>
+                    <dd>
+                    	<h3>{php echo MooCutstr($story[0]['title'], 18, $dot = ' ')}</h3>
+                        <p>{if getSex($story[0]['uid'])}她{else}他{/if}：{php echo MooCutstr($story[0]['name1'],8,'')} {if getSex($story[0]['uid'])}他{else}她{/if}：{php echo MooCutstr($story[0]['name2'],8,'')}</p>
+                        <p>时间：{php echo date('Y-m-d',$story[0]['story_date'])}</p>
+                        <p>{php echo MooCutstr($story[0]['content'], 50, $dot = ' ...')}<br/><a href="index.php?n=story&h=content&sid={$story[0]['sid']}" target="_blank">点击查看</a></p>
+                    </dd>
+                </dl>
+            	<dl>
+                	<dt>
+                    	<a href="index.php?n=story&h=content&sid={$story[1]['sid']}" target="_blank">{php $picsmall = MooGetstoryphoto($story[1]['sid'],$story[1]['uid'],'medium')}
+        {if $picsmall} <img src="{$picsmall}" width="211" height="143" /> {else} <img src="module/index/templates/default/images/285_medium.jpg" width="211" height="143" /> {/if}</a>
+                	</dt>
+                    <dd>
+                    	<h3>{php echo MooCutstr($story[1]['title'], 18, $dot = ' ')}</h3>
+                        <p>{if getSex($story[1]['uid'])}她{else}他{/if}：{php echo MooCutstr($story[1]['name1'],8,'')}{if getSex($story[1]['uid'])}他{else}她{/if}：{php echo MooCutstr($story[1]['name2'],8,'')}</p>
+                        <p>时间：{php echo date('Y-m-d',$story[1]['story_date'])}</p>
+                        <p>{php echo MooCutstr($story[1]['content'], 50, $dot = ' ...')}<br/><a href="index.php?n=story&h=content&sid={$story[1]['sid']}" target="_blank">点击查看</a></p>
+                    </dd>
+                </dl>
+            	<dl>
+                	<dt>
+                    	<a href="index.php?n=story&h=content&sid={$story[2]['sid']}" target="_blank">{php $picsmall = MooGetstoryphoto($story[2]['sid'],$story[2]['uid'],'medium')}
+        {if $picsmall} <img src="{$picsmall}" width="211" height="143" /> {else} <img src="module/index/templates/default/images/285_medium.jpg" width="211" height="143" /> {/if}</a>
+                	</dt>
+                    <dd>
+                    	<h3>{php echo MooCutstr($story[2]['title'], 18, $dot = ' ')}</h3>
+                        <p>{if getSex($story[2]['uid'])}她{else}他{/if}：{php echo MooCutstr($story[2]['name1'],8,'')} {if getSex($story[2]['uid'])}他{else}她{/if}：{php echo MooCutstr($story[2]['name2'],8,'')}</p>
+                        <p>时间：{php echo date('Y-m-d',$story[2]['story_date'])}</p>
+                        <p>{php echo MooCutstr($story[2]['content'], 50, $dot = ' ...')}<br/><a href="index.php?n=story&h=content&sid={$story[2]['sid']}" target="_blank">点击查看</a></p>
+                    </dd>
+                </dl>
+            	<dl>
+                	<dt>
+                    	<a href="index.php?n=story&h=content&sid={$story[3]['sid']}" target="_blank">{php $picsmall = MooGetstoryphoto($story[3]['sid'],$story[3]['uid'],'medium')}
+        {if $picsmall} <img src="{$picsmall}" width="211" height="143" /> {else} <img src="module/index/templates/default/images/285_medium.jpg" width="211" height="143" /> {/if}</a>
+                	</dt>
+                    <dd>
+                    	<h3>{php echo MooCutstr($story[3]['title'], 18, $dot = ' ')}</h3>
+                        <p>{if getSex($story[3]['uid'])}她{else}他{/if}：{php echo MooCutstr($story[3]['name1'],8,'')} {if getSex($story[3]['uid'])}他{else}她{/if}：{php echo MooCutstr($story[3]['name2'],8,'')}</p>
+                        <p>时间：{php echo date('Y-m-d',$story[3]['story_date'])}</p>
+                        <p>{php echo MooCutstr($story[3]['content'], 50, $dot = ' ...')}<br/><a href="index.php?n=story&h=content&sid={$story[3]['sid']}" target="_blank">点击查看</a></p>
+                    </dd>
+                </dl>
+            </div>
+            <div class="clear"></div>
+        </div>
+    <!-- 成功故事 结束 -->
+    
+    
+    
+    
+    </div>
+
+<div id="footer">
+  <div class="line1"></div>
+  <p><a href="index.php?n=about&h=us">关于我们</a>| <!--  <a href="index.php?n=about&h=media">媒体关注</a> | --> <a href="index.php?n=about&h=contact">联系我们</a> | <a href="index.php?n=about&h=links">合作伙伴</a> | <a href="index.php?n=about&h=getsave">意见反馈</a> | <a href="index.php?n=story">成功故事</a>| <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> |
+    {if ($user_arr['s_cid'] == 30 && $user_arr['bgtime'] > time()-604800) || !empty($GLOBALS['h_pay'])} <a href="index.php?n=payment&h=add_money">其他信息</a> {else} <a href="index.php?n=payment&h=channel">其他信息</a> {/if} </p>
+  <p></p>
+  <div class="p6"><a href="#"></a></div>
+  <p>Copyright 2005-2011 版权所有：真爱一生网 <a target="_blank" href="http://www.miibeian.gov.cn">闽ICP备09064513号</a></p>
+  <p>真爱一生网备用域名：<a href="http://www.hongniangw.com">www.hongniangw.com</a> | <a href="http://www.hongniangwang.com">www.hongniangwang.com</a>&nbsp;&nbsp; </p>
+  <div style="height:20px;"></div>
+</div>
+
+</div>
+
+</div>
+<div class="clear"></div>
+</div>
+</div>
+<script type="text/javascript">
+ $("#enter_lab").click(function(){
+      window.location=$(this).find("a").attr("href");
+ });
+</script>
+
+<div class="clear"></div></div>
+
+
+
+</div>
+
+</body>
+</html>

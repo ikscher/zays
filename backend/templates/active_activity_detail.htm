@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>活动添加</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script src="templates/js/ckeditor/ckeditor.js" type="text/javascript"></script>
+<script type="text/javascript" src="templates/js/ckeditor/ck.jquery.js"></script>
+</head>
+<body>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 添加活动 </span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&id={if isset($id)}{$id}{/if}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="main-div">
+<form action="" method="post">
+<table width="100%">
+<tr><td class="label">活动主题：</td><td><input type="text" name="title" id="title" value="{if isset($data['title'])}{$data['title']}{/if}" /><span class="require-field">*</span></td></tr>
+<tr><td class="label">活动类型：</td><td><select name="type" id="type"><option value='0'  {if isset($data['type']) && $data['type']==0}selected="selected"{/if}>线上活动</option><option value='1' {if isset($data['type']) && $data['type']==1} selected="selected"{/if}>线下活动</option><option value='2' {if isset($data['type']) && $data['type']==2} selected="selected"{/if}>旅游活动</option></select><span class="require-field">*</span></td></tr>
+<tr><td class="label">活动报名开始时间：</td><td><input type="text" name="starttime" id="starttime" value="{php echo empty($data['starttime'])?'':date('Y-m-d',$data['starttime']);}" class="Wdate" onFocus="WdatePicker({maxDate:'#F{\$dp.\$D(\'endtime\')}'})" /><span class="require-field">*</span></td></tr>
+<tr><td class="label">活动报名结束时间：</td><td><input type="text" name="endtime" id="endtime" value="{php echo empty($data['endtime'])?'':date('Y-m-d',$data['endtime']);}" class="Wdate" onFocus="WdatePicker({minDate:'#F{\$dp.\$D(\'starttime\')}'})"/><span class="require-field">*</span></td></tr>
+<tr><td class="label">活动举行时间：</td><td><input type="text" name="opentime[day]" id="opentime_day" value="{php echo empty($data['opentime'])?'':date('Y-m-d',$data['opentime']);}" onFocus="WdatePicker({minDate:'#F{\$dp.\$D(\'starttime\')}'})" class="Wdate"/>&nbsp;<select name="opentime[hour]" id="opentime_hour">{php $opentime_hour=empty($data['opentime'])?0:date('G',$data['opentime']); $opentime_mintue=empty($data['opentime'])?0:intval(date('i',$data['opentime']));
+$closetime_hour=empty($data['closetime'])?0:date('G',$data['closetime']); $closetime_mintue=empty($data['closetime'])?0:intval(date('i',$data['closetime']));
+}{for $i=0;$i<24;$i++}<option value="{$i}" {if $opentime_hour==$i}selected="selected"{/if}>{$i}</option>{/for}</select>时:<select name="opentime[mintue]" id="opentime_mintue">{for $i=0;$i<60;$i++}<option value="{$i}" {if $opentime_mintue==$i}selected="selected"{/if}>{$i}</option>{/for}</select>分<span class="require-field">*</span></td></tr>
+<tr><td class="label">活动举行时间：</td><td><input type="text" name="closetime[day]" id="closetime_day" value="{php echo empty($data['closetime'])?'':date('Y-m-d',$data['closetime']);}" onFocus="WdatePicker({minDate:'#F{\$dp.\$D(\'closetime_day\')}'})" class="Wdate"/>&nbsp;<select name="closetime[hour]" id="opentime_hour">{for $i=0;$i<24;$i++}<option value="{$i}" {if $closetime_hour==$i}selected="selected"{/if}>{$i}</option>{/for}</select>时:<select name="closetime[mintue]" id="opentime_mintue">{for $i=0;$i<60;$i++}<option value="{$i}" {if $closetime_mintue==$i}selected="selected"{/if}>{$i}</option>{/for}</select>分<span class="require-field">*</span></td></tr>
+<tr><td class="label">活动图片：</td><td><input type="file" name="img" id="img" value="{php echo empty($data['img'])?'':$data['img'];}" /></td></tr>
+<tr><td class="label">活动链接：</td><td><input type="text" name="href" id="href" value="{php echo empty($data['href'])?'':$data['href'];}" /></td></tr>
+<tr><td class="label">活动费用：</td><td><input type="text" name="price" id="price" value="{php echo empty($data['price'])?'':$data['price'];}" /></td></tr>
+<tr><td class="label">活动在线支付费用：</td><td><input type="text" name="price_online" id="price_online" value="{php echo empty($data['price_online'])?'':$data['price_online'];}" /></td></tr>
+<tr><td class="label">女士优惠比例：</td><td><input type="txt" name="issex" id="issex" value="{php echo empty($data['issex'])?'50':$data['issex'];}">%<span>女士的价格=活动费用X优惠比例(最低为1,最高100)</span></td></tr>
+<tr><td class="label">活动地区：</td><td><script>getProvinceSelect66('','province','province','city','{php echo empty($data['province'])?'0':htmlentities($data['province']);}','10100000');</script>省<script>getCitySelect66('','city','city','{php echo empty($data['city'])?'0':htmlentities($data['city']);}','0');</script>市<span class="require-field">*</span></td></tr>
+<tr><td class="label">活动地点：</td><td><input type="text" name="place" id="place" value="{php echo empty($data['place'])?'':htmlspecialchars_decode($data['place']);}" style="width:200px;" /><span class="require-field">*</span></td></tr>
+<!--<tr><td class="label">报名须知：</td><td><textarea style="width:100%" name="profile['profile']" id="profile_profile"></textarea></td></tr>
+<tr><td class="label">特别要求：</td><td><textarea style="width:100%" name="profile['profile']" id="profile_profile"></textarea></td></tr>
+<tr><td class="label">特别说明：</td><td><input type="text" name="profile['note'][]" id="place" value="" style="width:200px;" /><span id=''>+</span></td></tr>-->
+<tr><td class="label">活动简介：<span class="require-field">*</span></td><td><textarea style="width:100%" name="profile" id="profile_profile">{php echo empty($data['profile'])?'':htmlspecialchars_decode($data['profile']);}</textarea></td></tr>
+<tr><td class="label">活动介绍：<span class="require-field">*</span></td><td><textarea style="width:100%" name="introduction" id="introduction" class="introduction">{php echo empty($data['introduction'])?'':htmlspecialchars_decode($data['introduction']);}</textarea></td></tr>
+</table>
+<div style="margin:0 auto;margin-left:500px;">
+	<input name="id" type="hidden" value="{if isset($id)}{$id}{/if}" />
+    <input type="submit" value="确定修改 " class="button" />
+</div>
+</form>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+$( 'textarea.introduction' ).ckeditor({ skin : 'v2',filebrowserBrowseUrl : 'templates/js/ckfinder/ckfinder.html',
+        filebrowserImageBrowseUrl : 'templates/js/ckfinder/ckfinder.html?Type=Images',
+        filebrowserFlashBrowseUrl : 'templates/js/ckfinder/ckfinder.html?Type=Flash',
+        filebrowserUploadUrl : 'templates/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl : 'templates/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl : 'templates/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash' });
+});
+</script>
+</body>
+</html>

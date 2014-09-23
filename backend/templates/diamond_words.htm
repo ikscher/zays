@@ -1,0 +1,97 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 留言列表</span>
+    <span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<style type="text/css">
+ .u_right table{width:100%}
+ .tr0{background-color:#E5E5E5}
+ .tr1{background-color:#D5D5D5}
+ .tr_sel{background-color:#FFCC99}
+ .tr_over{background-color:#CCFFCC}
+</style>
+<script type="text/javascript" src="../public/system/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#tb tr:gt(0):even").addClass("tr0");
+	$("#tb tr:gt(0):odd").addClass("tr1");
+	$("#tb tr:gt(0)").mouseover(function(){
+		$(this).addClass('tr_over');
+	}).mouseout(function(){
+		$(this).removeClass('tr_over');
+	}).find("td:last-child").click(function(){
+		$("#cbox_"+$(this).parent().attr("id").split("_")[1]).click().change();
+	});
+	$("[id^=cbox_]").change(function(){
+		if( $(this).attr("checked")== true ){
+			$(this).parent().parent().addClass('tr_sel');
+		}else{
+			$(this).parent().parent().removeClass('tr_sel');
+		}
+	});
+	$("#bottom_bar").click(function(){	//全选
+		$("[id^=cbox_]").attr("checked",true);
+		$("[id^=tr_]").addClass("tr_sel");
+	}).next().click(function(){			//全不选
+		$("[id^=cbox_]").attr("checked",false);
+		$("[id^=tr_]").removeClass("tr_sel");
+	}).next().click(function(){			//已通过
+		$("#set_state").val(1);
+		$("#post_form").submit();
+	}).next().click(function(){			//不通过
+		$("#set_state").val(2);
+		$("#post_form").submit();
+	}).next().click(function(){			//未审核
+		$("#set_state").val(0);
+		$("#post_form").submit();
+	});
+	$("#post_form").submit(function(){
+		if( $("[id^=cbox_]:checked").length==0 ){
+			alert("你未选中任何行!");
+			return false;
+		}
+		return true;
+	});
+	$("#at_{$t}").css('font-weight','bold');
+	$("#ac_{$c}").css('font-weight','bold');
+	
+});
+</script>
+<div class="list-div">
+<p>&nbsp;&nbsp;留言类型: <span class="but_a"><a id="at_0" href="index.php?action=site_diamond&h=words&t=0&c={$c}">所有</a><a id="at_1" href="index.php?action=site_diamond&h=words&t=1&c={$c}">媒体报道</a><a id="at_2" href="index.php?action=site_diamond&h=words&t=2&c={$c}">成功故事</a></span>
+审核状态: <span class="but_a"><a id="ac_0" href="index.php?action=site_diamond&h=words&t={$t}&c=0">未审核</a><a id="ac_1" href="index.php?action=site_diamond&h=words&t={$t}&c=1">已通过</a><a id="ac_2" href="index.php?action=site_diamond&h=words&t={$t}&c=2">不通过</a></span></p>
+</div>
+<br />
+<div class="list-div" id="listDiv">
+<form id="post_form" action="" method="post">
+	<table id="tb" width="100%" style="width:100%" border="0" cellspacing="1" cellpadding="4">
+		<tr bgcolor="#D3DCE3">
+			<th>&nbsp;</th>
+			<th>用户ID</th>
+			<th>时间</th>
+			<th>留言
+			<input type="hidden" id="set_state" name="set_state" value="0" />
+			<input type="hidden" name="ispost" value="1" />
+			</th>
+		</tr>
+{loop $data['list'] $v}
+		<tr id="tr_{$v['cid']}">
+			<td><input type="checkbox" name="checkbox[]" value="{$v['cid']}" id="cbox_{$v['cid']}" /></td>
+			<td>{$v['uid']}</td>
+			<td>{php echo date('Y-m-d H:i:s',$v['dateline']);}</td>
+			<td style="text-align:left;">{$v['comment']}</td>
+		</tr>
+{/loop}
+		<tr>
+        	<td align="right" colspan="4"><a href="#" id="bottom_bar">全选</a> / <a href="#">全不选</a> &nbsp;&nbsp;&nbsp;选中项: <a href="#">通过</a> - <a href="#">不通过</a> - <a href="#">未审核</a></td>
+        </tr>
+        <tr>
+        	<td align="center" colspan="4">{$data['page_links']}</td>
+        </tr>
+	</table>
+</form>
+</div>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的亲友印象——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" /><link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3 style="padding-left:5px;"><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">亲友助阵</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px;font-weight:400;">Relatives<br />and friends</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="impression">
+				 <div class="impression1">
+					   <p>在我父母眼中，我是一个好孩子，乖儿子，都说女儿是父母的贴心小棉袄，可我父母却觉得比起女儿来，我这个儿子的所作所为丝毫不显逊色。每当父母有事情需要我的时候，我总会在他们的身边，尽我所能帮他们处理好。</p>
+					   <p>我的家人是属于那种比较开放的，如果有一个女孩子，是我喜欢的，那么，他们不但不会阻拦，而且还会大力支持。我很庆幸自己自己有一个这样幸福的家庭，也很幸运的遇到了那么开明的父母。他们对我的祝愿就是，可以找到一个真心喜欢我，而我也恰巧喜欢她的人，牵着她的手，一辈子。</p>
+					   <p>在我同事眼中，我是一个比较调皮、开朗的一个人。每当同事需要帮忙的时候，我都会毫不吝啬的伸出援助之手；每次我们在一起聊天的时候，我也会竭尽所能的活跃气氛。他们都说能和我一起共事，是一件极其幸福的事情。听说我要找女朋友，都告诫我说，一个人，你不能只看她外表，外表再美，心灵不美，那也是没有用的。</p>
+		          </div>
+
+
+                  
+				</div>
+			  </div>
+			
+			
+			  
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

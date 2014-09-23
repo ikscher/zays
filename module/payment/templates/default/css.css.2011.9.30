@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+#vip_content { width: 982px; margin: 0 auto; }
+#vip_content img { border: 0; }
+#vip_content #vip_ad { width: 982px; height: 260px; position: relative; }
+#vip_content #vip_ad img { width: 982px; }
+#vip_content #vip_ad .into { width: 200px; height: 43px; position: absolute; left: 512px; top: 198px; }
+#vip_content #vip_ad .into img { width: 200px; height: 43px; }
+#vip_content #category { width: 918px; margin-left: 8px; margin-top: 2px; padding: 20px 27px; border: #A0B707 solid 1px; background: url(images/vip_content_bg.jpg) left top repeat-x; }
+#vip_content .post h2 { height: 50px; margin: 10px 0; }
+#vip_content .post .recommend { padding: 0 55px; font-family: "宋体", Arial, Helvetica, sans-serif; font-size: 14px; color: #333; line-height: 24px; }
+#vip_content .post .service { width: 838px; height: 556px; margin: 0 auto; background: url(images/vip_entry_bg.gif) no-repeat; }
+#vip_content .post .service dl { width: 762px; margin-left: 34px; padding-top: 15px; list-style: none; font-family: "宋体", Arial, Helvetica, sans-serif; }
+#vip_content .post .service dt { font-size: 14px; color: #2D6542; line-height: 30px; border-bottom: #DCEACD dashed 1px; }
+#vip_content .post .service dd { margin: 0; padding-top: 5px; font-size: 12px; color: #666; line-height: 22px; }
+#vip_content .post .service ul { margin: 0; padding: 0; list-style: none; }
+#vip_content .post .function { width: 814px; height: 532px; margin: 0 auto; padding-left: 24px; padding-top: 24px; background: url(images/vip_entry_bg.gif) no-repeat; }
+#vip_content .post .contrast { width: 828px; height: 544px; margin: 0 auto; padding: 6px 5px; background: url(images/vip_entry_bg.gif) no-repeat; }
+#vip_content .post .contrast .title { padding: 25px 0 21px 95px; }
+#vip_content .post .contrast .style1 { width: 360px; padding: 10px 13px 10px 24px; border-top: #9EBB99 solid 1px; border-right: #9EBB99 solid 1px; position: relative; display: block; }
+#vip_content .post .contrast .style1 p { font-family: "宋体", Arial, Helvetica, sans-serif; font-size: 12px; color: #666; line-height: 24px; margin: 0; }
+#vip_content .post .contrast .style1 span { color: #6E369C; }
+#vip_content .post .contrast .style1 a { width: 70px; height: 22px; position: absolute; right: 39px; top: 23px; display: block; }
+#vip_content .post .contrast .style2 { width: 202px; border-top: #9EBB99 solid 1px; border-right: #9EBB99 solid 1px; padding: 10px 0; }
+#vip_content .post .contrast .style2 p { width: 114px; margin: 0 auto; text-align: center; font-family: "宋体", Arial, Helvetica, sans-serif; font-size: 12px; color: #666; }
+#vip_content .post .contrast .style3 { width: 227px; padding: 10px 0; border-top: #9EBB99 solid 1px; }
+#vip_content .post .contrast .style3 p { width: 187px; margin: 0 auto; text-align: center; font-family: "宋体", Arial, Helvetica, sans-serif; font-size: 12px; color: #666; }
+#vip_content .post .contrast .style4 { padding: 8px 24px; border-top: #9EBB99 solid 1px; }
+#vip_content .post .contrast .style4 p { font-family: "宋体", Arial, Helvetica, sans-serif; font-size: 12px; color: #666; line-height: 24px; margin: 0; }
+#vip_content .post .contrast .style4 span { color: #6E369C; }
+#vip_content #category .into { width: 200px; margin: 30px auto; display: block; }

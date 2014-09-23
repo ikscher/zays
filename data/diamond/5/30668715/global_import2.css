@@ -1,0 +1,390 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px;
+	padding:0px;
+	}
+img{
+	border:0px;
+	}
+body{
+	font-size:14px;
+	height:100%;
+	white-space:normal;
+	font:Arial, Helvetica, sans-serif;
+	background: #031cad url(images/bg_031cad.jpg) no-repeat scroll center 0px;
+	}
+.clear{ clear:both; padding:0px; margin:0px; height:0px; width:0px; font-size:0px; line-height:0px; overflow:hidden}
+a{ text-decoration:none}
+li{
+	list-style:none  }
+.pic_vaign{
+	width:100px;
+	height:125px;
+	border:1px solid #c4c4c4;
+	overflow:hidden;
+    position:relative;
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+	}
+.pic_vaign p{
+	 position:static;
+  +position:absolute;
+  top:50%}
+.pic_vaign img{
+	  position:static;
+  +position:relative;
+  top:-50%;left:-50%;
+
+	}
+/*--FONT-SIZE--*/
+.fontSize_14{
+	font-size:14px;
+	}
+.fontSize_12{
+	font-size:12px;
+	}
+/*--COLOR--*/
+.color_cc0000{
+	color:#e7504f;
+	}
+.color_333{
+	color:#333;
+	}
+.color_666{
+	color:#666;
+	}
+.color_f3f3f3{
+	color:#f3f3f3;
+	}
+/*红色*/
+.color_ff0000{
+	color:#687c1b;
+	}
+/*绿色*/
+.color_2093a2{
+	color:#E7504F;
+	}
+/*紫色*/
+.color_7c127c{
+	color:#7c127c;
+	}
+	
+/*--HEADER--*/
+.header{
+	width:998px;
+	margin:0 auto;
+	
+	}
+.head{
+	float:left;
+	position:relative;
+	width:998px;
+	height:121px;
+	padding-top:10px;
+	background:#fff;
+	display:inline;
+	border: 1px solid #6c92ff;
+	}
+.head .menu{
+	height:71px;
+	position:absolute;
+	right:10px;
+	top:10px;
+	}
+.head .menu .left{
+	float:left;
+	width:14px;
+	height:73px;
+	background:url(images/menu_left.gif) no-repeat;
+	}
+.head .menu .content{
+	float:left;
+	width:500px;
+	height:53px;
+	padding-top:10px;
+	padding-bottom:10px;
+	background:url(images/menu_bg.gif) repeat-x;
+	color:#333;
+	text-align:right;
+	}
+.head .menu .right{
+	float:left;
+	width:14px;
+	height:73px;
+	background:url(images/menu_right.gif) no-repeat;
+	}
+.head .menu p a{
+	color:#333;
+	}
+.head .menu p a:hover{
+	color:#cc0000;
+	}	
+.head .menu .menu_navi a{
+	color:#E7504F;
+	font-size:12px;
+	margin:0px 5px;
+	}	
+.head .menu .menu_navi{
+	position:absolute;
+	margin-top:15px;
+	right:15px;
+	*right:12px;
+	}
+.head .menu .menu_navi a:hover{
+	color:#E7504F;
+	text-decoration:underline;
+	}
+.head .tel{
+	position:absolute;
+	top:85px;
+	right:10px;
+	*right:0px;
+	}
+.head .zuanbtn_top{
+	position:absolute;
+	top:10px;
+	left:210px;
+	}
+	
+/*--MAIN--*/
+.header_main{
+	float:left;
+	width:968px;
+	padding:15px;
+	padding-bottom:0px;
+	margin:0 auto;
+	margin-top:5px;
+	background:#fff;
+	}
+/*--search--*/
+.main_top{
+	width:948px;
+	height:43px;
+	line-height:43px;
+	padding-left:10px;
+	padding-right:15px;
+	}
+.main_top b{
+	float:left;
+	color:#ff0000;
+	}	
+
+.search{
+	float:left;
+	height:43px;
+	background:#999;
+	margin-left:10px;
+	}
+.header_main .search .left{
+	float:left;
+	width:5px;
+	height:43px;
+	background:url(images/select_left.gif) no-repeat;
+	}
+.header_main .search .content{
+	float:left;
+	height:43px;
+	line-height:43px;
+	_height:33px;
+	_padding-top:10px;
+	padding-left:10px;
+	background:url(images/select_bg.gif) repeat-x;
+	}
+.header_main .search .content span{
+	margin:0px;
+	padding:0px;
+	}
+.header_main .search .right{
+	float:left;
+	width:5px;
+	height:43px;
+	background:url(images/select_right.gif) no-repeat;
+	}
+.btn_search{
+	width:45px;
+	height:20px;
+	cursor:pointer;
+	background:url(images/btn_select.gif) no-repeat;
+	border:0px;
+	}
+.header_main .search .content a:hover{
+	text-decoration:underline;
+	}	
+.header_main .vip_img{
+	float:left;
+	display:block;
+	width:127px;
+	height:43px;
+	background:url(images/member.gif) no-repeat left top;
+	margin-left:10px;
+	}
+.header_main .navi{
+	width:968px;
+	height:39px;
+	}
+.header_main .navi .left{
+	float:left;
+	width:23px;
+	height:39px;
+	background:url(images/navi_left.gif) no-repeat;
+	}	
+.header_main .navi .content{
+	float:left;
+	width:920px;
+	height:31px;
+	padding-top:8px;
+	background:url(images/navi_bg.gif) repeat-x;
+	}	
+.header_main .navi .right{
+	float:left;
+	width:23px;
+	height:39px;
+	background:url(images/navi_right.gif) no-repeat;
+	}	
+.header_main .navi .content li{
+	float:left;
+	width:89px;
+	height:21px;
+	line-height:21px;
+	text-align:center;
+	margin-left:5px;
+	}	
+.header_main .navi .content li a{
+	font-size:14px;
+	color:#162492;
+	font-weight:bold;
+	}	
+.header_main .navi .content li a:hover{
+	color:#000;
+	}	
+.header_main .navi .content .link a{
+	display:block;
+	width:88px;
+	height:21px;
+	line-height:21px;
+	text-align:center;
+	background:url(images/navi_link.gif) no-repeat;
+	color:#1300df;
+	}	
+.header_main .navi .content .search2{
+	float:right;
+	color:#333;
+	font-weight:bold;
+	} 
+.header_main .navi .content .search2 .head_text{
+	border:1px solid #999;
+	width:80px;
+	color:#666;
+	}
+	
+.main{
+	width:968px;
+	padding:10px 15px;
+	margin:0 auto;
+	background:#fff;
+	height:auto
+	}
+.main:after {
+    content: "."; 
+    display: block;
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+} 
+
+
+/*底部*/
+.footer{
+	width:968px;
+	padding:10px 15px;
+	margin:0 auto;
+	background:#fff;
+	height:100px;
+	font-size:12px;
+	color:#333;
+	text-align:center;
+	}
+.footer a{
+	color:#333;
+	margin:0px 5px;
+	}
+.footer a:hover{
+	color:#cc0000;
+	}
+.footer p{
+	margin-bottom:10px;
+	}
+	
+	
+
+
+/*钻石会员导航*/
+.loaction{
+	height:30px;
+	line-height:30px;
+	}
+.loaction_left{ float:left}
+.loaction_left a{
+	font-size:12px;
+	color:#7c127c}
+.loaction_center{
+	float:right;
+	margin-right:100px;
+	}
+.loaction_center li{
+	float:left;
+	width:80px;
+	text-align:center}
+.loaction_center li a{
+	color:#1300df;
+}
+.loaction_center li a:hover{
+	font-weight:bold;}
+.loaction_center li a.curr{
+	font-weight:bold;
+	color:#1300df;
+	background:none repeat scroll 0 0 #fff;
+}
+.loaction_right{
+	background:url(images/copy.jpg);
+	border:1px solid #ccc;
+	line-height:19px;
+	padding:0px 10px;
+	width:140px;
+	float:right;
+	margin-top:5px}
+.loaction_right a{
+	color:#656565;
+	font-size:12px;}
+.postion{
+	color:#7c127c;
+	line-height:25px;
+  	padding:10px 15px 10px 15px;
+	font-size:12px;
+	
+	
+	}
+.postion a{
+	color:#7c127c;
+	}
+.postion a:hover{
+	text-decoration:underline}
+.postion span{
+	float:right;
+	text-indent:0px;}
+.postion span a{
+	background:url(images/fuzhi.gif);
+	height:19px;
+	line-height:19px;
+	color:#656565;
+	font-size:12px;
+	display:block;
+	width:160px;
+	text-align:center;
+	border:1px solid #cccccc;
+	}
+.postion span a:hover{
+	text-decoration:underline}
+

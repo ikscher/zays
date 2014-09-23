@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>售后工作情况报表</title>
+<link href="templates/css/news.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h1><span style="float:left; color:#000" class="action-span1">红娘网管理中心—<font color="#FFFFFF">售后月维护情况</font></span><span style="float:right" class="action-span"><a href="index.php?action=financial_assert&h=list">刷新</a></span>
+<div style="clear: both;"></div>
+</h1>
+<h1><span class="action-span1" style="color:#000;float:left">当前数据时间：{if $time1 == 0}超过3天的数据{elseif $time1 == 1}超过5天的数据{elseif $time1 == 2}超过7天的数据{elseif $time1 == 3}超过9天的数据{elseif $time1 == 4}超过11天的数据{elseif $time1 == 5}超过13天的数据{elseif $time1 == 6}超过半个月的数据{elseif $time1 == 7}超过一个月的数据{/if}</span>
+	<p style="float:right">
+    	<span style="float:left" class="action-span"><a href="index.php?action=financial_assert&h=list&time1=0">超过3天</a></span>
+        <span style="float:left" class="action-span"><a href="index.php?action=financial_assert&h=list&time1=1">超过5天</a></span>
+        <span style="float:left" class="action-span"><a href="index.php?action=financial_assert&h=list&time1=2">超过7天</a></span>
+        <span style="float:left" class="action-span"><a href="index.php?action=financial_assert&h=list&time1=3">超过9天</a></span>
+        <span style="float:left" class="action-span"><a href="index.php?action=financial_assert&h=list&time1=4">超过11天</a></span>
+        <span style="float:left" class="action-span"><a href="index.php?action=financial_assert&h=list&time1=5">超过13天</a></span>
+        <span style="float:left" class="action-span"><a href="index.php?action=financial_assert&h=list&time1=6">超过半个月</a></span>
+        <span style="float:left" class="action-span"><a href="index.php?action=financial_assert&h=list&time1=7">超过一个月</a></span>
+    </p>
+    <div style="clear: both;"></div>
+</h1>
+<div class="list-div">
+<table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="list-table">
+<tr>
+    <th width="10%" height="30" align="center" bgcolor="#7F99BE">小组名称</th>
+    <th width="10%" height="30" align="center" bgcolor="#7F99BE">小组客服数</th>
+    <th width="10%" height="30" align="center" bgcolor="#7F99BE">三天内完成数</th>
+    <th width="10%" height="30" align="center" bgcolor="#7F99BE">三天外未完成数</th>
+    <th width="10%" height="30" align="center" bgcolor="#7F99BE">本月三天后统计</th>
+    <th width="10%" height="30" align="center" bgcolor="#7F99BE">小组会员数</th>
+    <th width="10%" height="30" align="center" bgcolor="#7F99BE">统计没有持续维护</th>
+    <th width="10%" height="30" align="center" bgcolor="#7F99BE">操作</th>
+</tr>
+    {loop $arr $num $group}
+        <tr>
+        <td width="10%" height="30" align="center">{$group[manage_name]}</td>
+        <td width="10%" height="30" align="center">{php echo count($arr_kefu[$num]);}</td>
+        <td width="10%" height="30" align="center">{php echo isset($three_in[$num]['count'])?$three_in[$num]['count']:0;}</td>
+        <td width="10%" height="30" align="center">{php echo isset($three_out[$num]['count'])?$three_out[$num]['count']:0;}</td>
+        <td width="10%" height="30" align="center">{php echo isset($three_through[$num]['count'])?$three_through[$num]['count']:'';}</td>
+        <td width="10%" height="30" align="center">{php echo $arr_uid[$num]['count'];}</td>
+        <td width="10%" height="30" align="center">{php echo $all_uid[$num]['count'];}</td>
+        <td width="10%" height="30" align="center">
+            <a href="#" onclick="parent.addTab('查看{$group[manage_name]}月维护情况','index.php?action=financial_assert&h=month&groupid={$group[id]}')">查看</a>
+        </td>  
+        </tr>
+    {/loop}
+</table>
+<a href="#" class="button"></a>
+<div style="clear:both"></div>
+</div>
+</body>
+</html>

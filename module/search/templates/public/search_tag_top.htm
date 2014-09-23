@@ -1,0 +1,59 @@
+<div class="content-title" style="width:982px; border:none">
+<span class="right-title f-ed0a91">标签搜索结果</span>
+</div>
+<div class="c-center" style="width:980px;">
+<div class="searche-recom">
+<p class="f-14x" style="padding-bottom:20px">真爱一生网推荐符合（{$linktag}）标签的会员</p>
+<ul class="searche-recom-photo">
+{loop $recommend $val}
+<li class="search-photo-img2">
+{if !empty($val['city_star'])}
+<a href="index.php?n=space&uid={$val['uid']}" class="citystar2"><img src="module/search/templates/default/images/citystar.gif" /></a>
+{/if}
+<dl>
+<dt>
+<p>
+<a target="_blank" href="index.php?n=space&uid={$val['uid']}">
+{if isset($val['mainimg']) && $val['images_ischeck']=='1'&& $val['mainimg']}
+<img src="
+{php 
+if(MooGetphoto($val[uid],'index')) echo MooGetphoto($val[uid],'index');
+elseif(MooGetphoto($val[uid],'medium')) echo MooGetphoto($val[uid],'medium');
+elseif($val['gender'] == '1') echo 'public/system/images/se_woman.jpg';
+else  echo 'public/system/images/se_man.jpg';
+}" onload="javascript:DrawImage(this,100,138)"  width="100px;"/>
+{elseif isset($val['mainimg']) && $val['mainimg']}
+{if $val['gender'] == '1'}
+<img src="public/system/images/se_woman.jpg" />
+{else}
+<img src="public/system/images/se_man.jpg" />
+{/if}
+{else}
+{if $val['gender'] == '1'}
+<img src="public/system/images/se_woman.jpg" />
+{else}
+<img src="public/system/images/se_man.jpg" />
+{/if}
+{/if}
+</a>
+</p>
+</dt>
+<dd>
+{if $val['s_cid'] ==20}							
+	<a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/search/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+{elseif $val['s_cid'] == 30}							
+	<a href="index.php?n=payment" target="_blank"><img src="module/search/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+{else}							
+{/if}
+<a target="_blank" href="index.php?n=space&uid={$val['uid']}">
+{php echo $val['nickname'] ? MooCutstr($val['nickname'],'8','') : 'ID:'.$val['uid'];}
+</a></dd>
+</p>
+</dl>
+</li>
+{/loop}	
+</ul>
+</div>
+<div class="content-lift">
+<div class="content-title" style="height:3px; font-size:0px;">
+</div><!--content-title end-->

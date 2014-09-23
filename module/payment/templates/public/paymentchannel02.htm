@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>汇款信息——红娘网</title>
+{template system/js_css public}
+<link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">红娘首页</a>&nbsp;&gt;&gt;&nbsp;汇款信息</span></p>
+		<div class="clear"></div>
+		<div class="payment">
+			<div class="pm-bank-banner">
+				<h5 style="padding:30px 20px 0;font-size:14px;"><img src="module/payment/templates/default/images/{$pay_image}" /> </h5>
+			</div><!--pm-bank-banner end-->
+			<div class="pm-content" style="width:906px; padding:0 35px;">
+				<p class="f-b-d73c90 f-14x" style="padding-top:20px;">请选择您最熟悉的支付方式进行付款升级</p>
+				<p class="f-14x" style="line-height:28px; padding-top:10px;">在线支付即时到账，银行转账通常2个工作日内到帐，请在汇款成功后，保留汇款凭证以便我们客服人员与您电话核实。</p><!--steps end-->
+				<p class="f-14x" style="padding:20px 0;"><img src="module/payment/templates/default/images/light.gif" />&nbsp;&nbsp;<span class="f-b-d73c90">网上银行支付：</span> 操作简单，安全支付，快速升级。</p>
+				<div class="bank-online">
+					<div class="bank-online-l">请选择网上银行:</div>
+					<form method="post" name="onlinebank" action="index.php?n=payment&h=onlinebank" target="_blank">
+					<div class="bank-online-r">
+						<ul>
+							{loop $yeepay_banktype  $k $banktype}
+							<li><input type="radio" id="{$k}" name="bank" value="{$k}"/><label for="{$k}"><img src="module/payment/templates/default/images/banklogo/{$banktype}"></label></li>
+							{/loop}
+						</ul>
+					<input type="hidden" name="channel" value="{$pay_h}">
+					<input type="button"  onclick="document.onlinebank.submit();" class="gopay" value="确认支付"/>
+					</div>
+					</form>
+					<div class="clear"></div>
+				</div>
+			
+				
+				<p class="f-14x" style="padding:20px 0;"><img src="module/payment/templates/default/images/light.gif" />&nbsp;&nbsp;<span class="f-b-d73c90">信用卡支付：</span> 操作简单，安全支付，快速升级。</p>
+				<div class="bank-online">
+					<div class="bank-online-l">请选择支付方式:</div>
+					<form name="creditcard" method="post" action="index.php?n=payment&h=creditcardinline" target="_blank">
+					<div class="bank-online-r">
+						<ul>
+							<li><input type="radio" name="pay" id="yeepayepos" value="yeepayepos" checked /><label for="yeepayepos"><img src="module/payment/templates/default/images/banklogo/yibao.gif"></label></li>
+                            <!-- 
+                            <li><input type="radio" name="pay" id="plbank" value="plbank"/><label for="plbank"><img src="module/payment/templates/default/images/banklogo/minsheng.gif"></label></li>
+                            <li><input type="radio" name="pay" id="gdbank" value="gdbank"/><label for="gdbank"><img src="module/payment/templates/default/images/banklogo/guangfa.gif"></label></li>
+						     -->
+                        </ul>
+					<input type="hidden" name="channel" value="{$pay_h}">
+					<input type="submit" class="gopay" value="确认支付"/>
+					</div>
+					</form>
+					<div class="clear"></div>
+				</div>	
+                
+                <p class="f-14x" style="padding:20px 0;"><img src="module/payment/templates/default/images/light.gif" />&nbsp;&nbsp;<span class="f-b-d73c90">网银账户支付：</span> 操作简单，安全支付，快速升级。</p>
+                <div class="bank-online">
+                     <!--  
+                    <div class="bank-online-l">请选择支付方式:</div>
+                    <form name="onlinepay" method="post" action="index.php?n=payment&h=onlinepay" target="_blank">
+                    <div class="bank-online-r">
+                        <ul>
+                            <li><input type="radio" name="pay" id="yeepay" value="yeepay" checked /><label for="yeepay"><img src="module/payment/templates/default/images/banklogo/yibao.gif"></label></li>
+                            <li><input type="radio" name="pay"id="alipay" value="alipay"/><label for="alipay"><img src="module/payment/templates/default/images/banklogo/zhifubao.gif"></label></li>
+                            <li><input type="radio" name="pay" id="tenpay" value="tenpay"/><label for="tenpay"><img src="module/payment/templates/default/images/banklogo/caifutong.gif"></label></li>
+                        </ul>
+                    <input type="hidden" name="channel" value="{$pay_h}">
+                    <input type="button" onclick="document.onlinepay.submit();" class="gopay" value="确认支付"/>
+                    </div>
+                    </form>
+                    -->
+                    <div class="bank-online-l">请选择支付方式:</div>
+                    <form name="onlinepay" method="post" action="index.php?n=payment&h=onlinepay" target="_blank">
+                        <div class="bank-online-r">
+                        <ul>
+                            <li>
+                            <input type="radio" name="pay" id="yeepay" value="yeepay" checked /><label for="yeepay">
+                            <img src="module/payment/templates/default/images/banklogo/yibao.gif"></label>
+                            </li>
+                         </ul>
+                            <input type="hidden" name="channel" value="{$pay_h}">
+                            <input type="button" onclick="document.onlinepay.submit();" class="gopay" value="确认支付"/>
+                            
+                        </div>
+                    </form>
+                    <div class="clear"></div>
+                    <br/>
+                    <div><span class="f-14x-d73e90">支付宝账号 ：268017651@qq.com </span>&nbsp;&nbsp;&nbsp;&nbsp; <span class="f-14x-d73e90">财付通帐号 ：268017651 &nbsp;&nbsp;&nbsp;&nbsp; 账户名 ：李涛</span></div>
+                      <div class="clear"></div>
+           
+                </div>      
+				
+				<p class="f-14x" style="padding:20px 0;"><img src="module/payment/templates/default/images/light.gif" />&nbsp;&nbsp;<span class="f-b-d73c90">银行汇款：</span> 操作简单，汇款安全，适用于无法进行网上支付的持卡用户。</p>
+				<table width="898" border="0" cellspacing="0" cellpadding="0" class="bank-table" style="margin:20px 0 40px;">
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk01.jpg" /></td>
+						<td>
+							<dl>
+								<dt>中国工商银行</dt>
+								<dd>开户行：中国工商银行合肥市双岗支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6222 0213 0200 7919 623</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk02.jpg" /></td>
+						<td>
+							<dl>
+								<dt>招商银行</dt>
+								<dd>开户行：招商银行合肥市濉溪路支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6225 8855 1800 2373</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk03.jpg" /></td>
+						<td>
+							<dl>
+								<dt>中国建设银行</dt>
+								<dd>开户行：中国建设银行合肥市双岗支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6227 0016 3401 0435 046</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk04.jpg" /></td>
+						<td>
+							<dl>
+								<dt>交通银行</dt>
+								<dd>开户行：中国合肥交通银行合肥市双岗支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6222 6002 5000 8487 612</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk05.jpg" /></td>
+						<td>
+							<dl>
+								<dt>中国银行</dt>
+								<dd>开户行：中国银行合肥市分行濉溪路办事处</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6216 6115 0000 0375 804</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk06.jpg" /></td>
+						<td>
+							<dl>
+								<dt>中国农业银行</dt>
+								<dd>开户行：中国农业银行合肥市濉溪路分理处</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6228 4806 6107 5708 817</span></dd>
+							</dl>
+						</td>
+						<td >账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk07.gif" /></td>
+						<td>
+							<dl>
+								<dt>中国光大银行</dt>
+								<dd>开户行：光大银行合肥市濉溪路支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6226 6230 0130 1583</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk08.gif" /></td>
+						<td>
+							<dl>
+								<dt>中国邮政邮政储蓄银行</dt>
+								<dd>开户行：中国邮政储蓄银行有限责任公司合肥市双岗支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6221 5036 1000 5436 203</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk09.jpg" /></td>
+						<td>
+							<dl>
+								<dt>兴业银行</dt>
+								<dd>开户行：合肥兴业银行胜利路支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6229 0949 3130 2403 10</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk10.gif" /></td>
+						<td>
+							<dl>
+								<dt>中信银行</dt>
+								<dd>开户行：中信银行合肥市濉溪路支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6226 9023 0148 5019</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk11.jpg" /></td>
+						<td>
+							<dl>
+								<dt>浦发银行</dt>
+								<dd>开户行：上海浦东发展银行合肥市新站区支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6225 2133 0036 4754</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+					<tr>
+						<td height="110" align="right"><img src="module/payment/templates/default/images/bk12.gif" /></td>
+						<td>
+							<dl>
+								<dt>中国民生银行</dt>
+								<dd>开户行：中国民生银行合肥双岗支行</dd>
+								<dd>卡号：<span class="f-14x-d73e90">6226 2234 0010 9289</span></dd>
+							</dl>
+						</td>
+						<td>账户名：李涛</td>
+					</tr>
+				</table>
+				<div align="center"><input onclick="javascript:window.print();" type="button"  class="print" value="请点击这里打印"/></div>
+			</div><!--pm-content end-->
+		</div>
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}<!--foot end-->
+</div><!--main end-->
+</body>
+</html>

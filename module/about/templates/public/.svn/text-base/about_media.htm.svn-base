@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>媒体关注——红娘网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/about/templates/{$GLOBALS['style_name']}/about.css");
+</style>
+</head>
+<body>
+<div class="clear"></div>
+{template system/header public}
+ <!--头部结束-->
+<div class="clear"></div>
+<div class="content">
+		<div class="c-title">
+			<span class="f-000"><a href="index.php">红娘首页</a>&nbsp;&gt;&gt;&nbsp;媒体关注</span>
+			<div class="loaction_right">
+				<a href="index.php?n=invite" target="_blank">邀请好友</a>
+			</div>
+		</div>
+			<div class="content-title">
+			</div><!--content-title end-->
+			<div class="c-center">
+			<!--左边开始-->
+			 {template public/about_left module}
+			<!--左边结束-->	
+			<!--右边开始-->	
+			<div class="about-right">
+				<dl class="about-right-text" id="about-media">
+				<dd>
+				<img src="module/about/templates/default/images/cup-top.gif" class="media-img"/>
+					<h1>2010</h1>
+					<p class="underline"></p>
+					<ul class="cup-year">
+						<li><a href="index.php?n=about&h=media_detail&id=2010_15"><span class="paper">《华东晚报》</span>婚恋网站提醒：女大学生嫁富二代有风险</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_14"><span class="paper">《快乐生活报》</span>“裸婚”，您要不要？</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_13"><span class="paper">《服务周刊》</span>红娘网提醒：女生网络征婚安全须摆第一位</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_12"><span class="paper">《安徽市场报》</span>婚恋网站：引领时尚婚恋新风</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_1"><span class="paper">《安徽商报》</span>我市单身青年突增 婚恋网站日渐走俏</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_2"><span class="paper">《安徽市场报》</span>婚介行业评比结果近日揭晓</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_3"><span class="paper">《合肥晚报》</span>婚介行业与传统婚介行业竞争加剧</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_4"><span class="paper">《合肥晚报》</span>网上征婚须谨慎——红娘网授您三招防骗术</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_5"><span class="paper">《新安晚报》</span>圣诞节掀起征婚高潮</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_6"><span class="paper">《新安晚报》</span>服务体现在每个细节</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_7"><span class="paper">《安徽商报》</span>还有多少传统婚介在徘徊</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_8"><span class="paper">《合肥晚报》</span>当传统受到网络冲击，该何去何从？</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_9"><span class="paper">《新安晚报》</span>用成功诉说幸福——网络婚介红娘网</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_10"><span class="paper">《合肥晚报》</span>婚介网的流行是生活进步的必然性</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=2010_11"><span class="paper">《工商导报》</span>出资解救会员婚姻 被称为社集区爱心红娘</a></li>
+					</ul>
+					<h1>2009</h1>
+					<p class="underline"></p>
+					<ul class="cup-year">
+						<li><a href="index.php?n=about&h=media_detail&id=09_1"><span class="paper">《新浪新闻》</span>红娘网调查：七成婚恋由网络促成</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=09_5"><span class="paper">《江淮晨报》</span>红娘网牵线 千人单身白领欢度2009情人节</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=09_3"><span class="paper">《中国日报》</span>High-pressure jobs boost bussiness for China's Internet matchmakers.</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=09_4"><span class="paper">《江淮晨报》</span>红娘网调查显示九成网友愿为网恋埋单</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=09_6"><span class="paper">《大众传媒网》</span>红娘网会员数突破2000万 跃居全球征婚网站第一</a></li>
+					</ul>
+					<h1>2008</h1>
+					<p class="underline"></p>
+					<ul class="cup-year">
+						<li><a href="index.php?n=about&h=media_detail&id=08_6"><span class="paper">《合肥晚报》</span>红娘网获“婚恋网站”大奖</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=08_5"><span class="paper">《搜狐网络》</span>单身女性垂青“雷锋式好男人”</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=08_3"><span class="paper">《合肥电视台》</span>2008中国互联网年会亮相北京 红娘网获2项大奖。</a></li>
+						<li><a href="index.php?n=about&h=media_detail&id=08_1"><span class="paper">《合肥热线》</span>庆祝红娘网开通三周年。</a></li>
+					</ul>
+					<div id="old_media" style="display:none;">
+						<h1>2007</h1>
+						<p class="underline"></p>
+						<ul class="cup-year">
+							<li><a href="index.php?n=about&h=media_detail&id=07_3"><span class="paper">《合肥晚报》</span>信息化武装红娘。</a></li>
+							<li><a href="index.php?n=about&h=media_detail&id=07_4"><span class="paper">《新浪新闻》</span>成功率网络婚恋的新标准</a></li>
+							<li><a href="index.php?n=about&h=media_detail&id=07_2"><span class="paper">《搜狐网络》</span>海外华人光棍节征婚。</a></li>
+							<li><a href="index.php?n=about&h=media_detail&id=07_1"><span class="paper">《合肥热线》</span>80后不愿凑合离婚率最高。</a></li>
+						</ul>
+						
+						<h1>2006</h1>
+						<p class="underline"></p>
+						<ul class="cup-year">
+							<li><a href="index.php?n=about&h=media_detail&id=06_2"><span class="paper">《青年报》</span>诚信为网络交友打通出路</a></li>
+							<li><a href="index.php?n=about&h=media_detail&id=06_1"><span class="paper">《计世网》</span>15%大城市市民认为互联网婚恋交友最有效</a></li>
+							<li><a href="index.php?n=about&h=media_detail&id=06_3"><span class="paper">《江淮晨报》</span>男性低于平均身高反而更有异性缘。</a></li>
+						</ul>
+						<h1>2005</h1>
+						<p class="underline"></p>
+						<ul class="cup-year">
+							<li><a href="index.php?n=about&h=media_detail&id=05_1"><span class="paper">《巢湖晨报》</span>红娘网：让网路婚介更可靠。</a></li>
+							<li><a href="index.php?n=about&h=media_detail&id=05_2"><span class="paper">《网易》</span>网络婚介前景看好 心灵匹配走红中。</a></li>
+							<li><a href="index.php?n=about&h=media_detail&id=05_3"><span class="paper">《北京商报》</span>现代网络上演“天仙配”。</a></li>
+						</ul>
+					</div>
+					</dd>
+<script type="text/javascript">
+		function open_media(){
+			var old_media = document.getElementById('old_media').style.display;
+			if(old_media == 'none'){
+				document.getElementById('old_media').style.display = 'block';
+			}else{
+				document.getElementById('old_media').style.display = 'none';
+			}
+		}
+	</script>
+					<dd class="media-more"><a href="javascript:open_media();">更多媒体关注&gt;&gt;</a></dd>
+				</dl>
+				
+			</div>
+			<!--右边结束-->	
+			<div class="clear"></div>
+		</div><!--c-center end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+		{template system/footer public}
+	</div><!--content end-->
+</body>
+</html>

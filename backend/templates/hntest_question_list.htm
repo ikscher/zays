@@ -1,0 +1,76 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+input[type="button"]  {
+background-color:#cfeefe;
+}
+
+.coolbg {
+background: #a4cafd;
+border-bottom:2px solid #ACACAC;
+border-right:2px solid #ACACAC;
+cursor:pointer;
+padding:2px 5px;
+}
+
+.np {
+border:medium none;
+}
+
+
+</style>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 测试管理</a> </span><span id="search_id" class="action-span1"> - 测试题目列表</span>
+<span class="action-span"><a href="index.php?action=hntest&h=question_modify">添加题目</a></span>
+<span class="action-span"><a href="index.php?action=hntest&h=question_list">返回</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th width="40">题目ID</th>
+    <th>题目内容</th>
+    <th>题目类型</th>
+    <th>选项类型</th>
+    <th>题目选项</th>
+	<th>操作</th>
+  </tr>
+  {loop $lists $list}
+  <tr id="tr_{$list['qid']}">
+    <td>{$list['qid']}</td>
+    <td>{$list['question']}</td>
+    <td>{php echo $hntest_cache['children'][$list['ctype']]}</td>
+    <td>{php echo $show_type_arr[$list['show_type']]}</td>
+    <td>
+    {if $list['show_type'] == 1}
+    	<a href="index.php?action=hntest&h=question_modify&qid={$list['qid']}">查看</a>
+    {else}
+    	{$list['str_scores']}
+    {/if}
+    </td>
+    <td align="center" width="80">
+    <a href="index.php?action=hntest&h=question_modify&qid={$list['qid']}">修改</a> | 
+    <a href="index.php?action=hntest&h=question_del&qid={$list['qid']}&show_type={$list['show_type']}"  onclick="return confirm('你确定要删除？');">删除</a>
+    </td>   
+  </tr>
+  {/loop}
+</table>
+{if $page_links}
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$page_links}</td>
+    </tr>
+</table>
+{/if}
+  
+</div>

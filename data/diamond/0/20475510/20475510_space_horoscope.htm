@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的星座生肖——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->  
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">星座生肖</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Signs<br />and zodiac</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="horoscope">
+				  <div class="horoscope1"><p>   虎年出生的小玉&amp;蓝默蝶是一个豁达的人，她总是以平常心对待身边的人和事，但是对于一些原则性的事情她是很坚持的。她心思细腻，感情丰富，善于倾听，是很好的倾诉对象，但是她自己不喜欢麻烦别人，有什么事情喜欢自己扛。</p>
+				  </div>
+                 <div class="horoscope2">
+                 	<p>     天秤座的小玉&amp;蓝默蝶是一个单纯的人，她追求简单而快乐的生活。生活中的她对身边的人都很好，大家对她很信赖，有什么事情都喜欢跟她倾诉，而她也乐于开解大家，善良而热心。感情上，她是缺乏自信的，她需要一个能够给她足够安全感的男人。</p>
+                 </div>		
+                 <div class="horoscope3">
+                 	<p> 天秤座的女子和任何人都能轻易地打成一片，朋友众多，总是生活在人们的包围之中。 她有时候会口硬心软，明明心里不是那么想的，嘴巴却说的又是另外一种，就算被误会也无所谓。优雅的天秤女人, 其实非常希望和一个能互相谈心的男人在一起. 你需要给她绝对的安全感，一种家的感觉。 <br />
+                 	  虎年出生的女子多是外柔内刚的，她们乐观而坚强，遇到困难和挫折即使心里再难受也不会叫苦，更不会找人哭诉，她们会默默忍受和承担着一切，会咬牙挺过去。这样的她们其实内心敏感而脆弱，温柔体贴、善解人意的男子会让她们更有安全感。<br />
+                 	</p>
+                 </div>	
+			  </div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+<div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

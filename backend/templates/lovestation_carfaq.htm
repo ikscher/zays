@@ -1,0 +1,49 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript" >
+    function conf(){
+        var cf = confirm("你确定要删除吗?");
+        if(!cf){
+            return false;
+        }
+    }
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 红娘来支招列表</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+    <span class="action-span"><a href="#" onclick="parent.addTab('红娘添加支招问题','index.php?action=lovestation&h=carfaqadd','icon')" >添加支招</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div">
+</div>
+<br />
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+  	<th>序号</th>
+    <th>用户uid</th>
+    <th>问题</th>
+    <th>回答</th>
+    <th>添加时间</th>
+    <th>操作</th>
+  </tr>
+  {php $i=($page-1)*$limit+1;}
+  {loop $data $k $v}
+  <tr>
+  	<td align="center">{$i}</td>
+    <td align="center"><a href="#"  onclick="parent.addTab('查看 {$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{$v['uid']}</a></td>
+    <td align="left">{$v['question']}</td>
+    <td align="left">{$v['answer']}</td>
+    <td align="center">{php echo date("Y-m-d",$v['dateline']);}</td>
+    <td align="center"><a href="#" class="userinfo" onclick="parent.addTab('红娘问题修改','index.php?action=lovestation&h=carfaqedit&id={$v['id']}','icon')">编辑回答</a>
+      <a  onclick="return conf()" href="index.php?action=lovestation&h=carfaqdelete&id={$v['id']}">删除</a></td>
+  </tr>
+  {php $i++;}
+  {/loop}
+  		<tr>
+			<td colspan="5" align="center">{$pages}</td>
+		</tr>
+  </table>
+</div>

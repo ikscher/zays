@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>资料设置——真爱一生网</title>
+{template system/js_css public}
+<link href="module/material/templates/{$GLOBALS['style_name']}/material.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="module/register/templates/public/js/syscode.js?v=1"></script>
+</head>
+<script>
+	//批量选择
+	$(function(){
+		$('#allcheck').click(function(){
+			var ftrue = $(this).attr('checked');
+			if(ftrue == true){
+				$('input[id^=delmemberid]').attr('checked','checked');	
+			}else if(ftrue == false){
+				$('input[id^=delmemberid]').attr('checked','');	
+			}							  						  
+		})		   
+	})
+	
+	function checkFormMemberRegister(){
+		var uid = $('#objmemberid').val();
+		if(!uid){
+			alert('请输入您想屏蔽的会员ID号');
+			$('#objmemberid').focus();
+			return false;
+		}
+		return true;
+	}
+	
+	function checkFormDelmemberid(){
+		var delmemberid = $('input[id^=delmemberid]').attr('checked');
+		if(delmemberid == false){
+			alert('请选择要取消屏蔽的会员');
+			return false;
+		}else if(typeof(delmemberid) == 'undefined'){
+			alert('目前您还没有屏蔽任何会员');
+			return false;	
+		}
+		return true;			
+	}
+</script>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;资料设置</span><a href="#"></a></p>
+	{template public/material_public_left module}
+	<!--=====左边结束===-->
+    <form  name="memberRegister" action="index.php?n=material&h=screen" method="post" onsubmit="return checkFormMemberRegister()">
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=service" class="r-title-black">&lt;&lt;返回我的真爱一生</a>
+			<span class="right-title f-ed0a91">资料设置</span>
+			</div>
+			<div class="r-center-ccontent">
+			<p class="m-accountinfo-title">阻止不喜欢的会员发动邮件给您 </p>
+			<h4 style="font-weight:400;">&nbsp;<span class="f-aeaeae">&gt;</span>&nbsp;输入您想屏蔽会员的ID号：</h4>
+			<ul class="pwd-text">
+				<li>您想屏蔽的会员ID：</li>
+				<li><input type="text" id="objmemberid" name="objmemberid" class="pwd-text-in" /></li>
+				<li><input type="submit" name="screensubmit" class="btn btn-default" value="立即屏蔽" />&nbsp;&nbsp;</li>
+			</ul>
+			<div class="clear" style="height:40px;"></div>
+			</div>
+            </form>
+			<div class="r-center-ccontent">	
+            <form name="delmemberid" action="index.php?n=material&h=screen" method="post" onsubmit="return checkFormDelmemberid();">		
+			<h4 style="font-weight:400;">&nbsp;<span class="f-aeaeae">&gt;</span>&nbsp;被您屏蔽的会员列表：</h4>
+			<ul class="pwd-text">
+				<li>勾选下表中被屏蔽会员的昵称,点击取消即可恢复互动动作(包括发送邮件、秋波、加为关注等):</li>
+				<li>
+					<div class="screen-id">
+						<div class="screen-id-title"></div>
+						<div class="screen-id-c">
+							<ul style="padding:5px 0 0 10px;">
+								<li><input id="allcheck" type="checkbox" name="allcheck"/>全选</li>
+                                {loop $user $key $val}
+								<li><input id="delmemberid{$val['screenid']}" name="delmemberid[]" type="checkbox" value="{$val['screenid']}" />(ID:{$val['mid']})</li>
+                                {/loop}
+							</ul>
+						</div>
+						<div class="screen-id-bottom"></div>
+					</div>
+				</li>
+				<li><input name="delmembersubmit" type="submit" class="btn btn-default" value="取消屏蔽" />&nbsp;&nbsp;</li>
+			</ul>
+			<div class="clear" style="height:134px;"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+			<div class="clear"></div>
+		</div>
+    </form>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

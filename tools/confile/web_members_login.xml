@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<config_name>从旧表web_members_op中导入内心独白到新表web_members_login</config_name>
+<table>
+	<name>web_members_login</name><!-- 要插入数据的表 -->
+	<pretable>web_members_op</pretable><!-- 数据来源的表 -->
+	<step>3000</step><!-- 一次插入多少条 -->
+	<fk>1</fk><!-- 来源表关联 -->
+		<field>
+		<isint>1</isint>
+		<name>uid</name>
+		<from>web_members_op.uid</from>
+	</field>
+	<field>
+		<name>lastip</name>
+		<from>web_members_op.lastip</from>
+	</field>
+	<field>
+		<isint>1</isint>
+		<name>lastvisit</name>
+		<from>web_members_op.lastvisit</from>
+	</field>
+	<field>
+		<isint>1</isint>
+		<name>last_login_time</name>
+		<from>web_members_op.last_login_time</from>
+	</field>
+
+</table>
+</root>

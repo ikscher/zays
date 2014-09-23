@@ -1,0 +1,65 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script>
+function checkForm(){
+	var skiname = document.getElementById('skiname');	
+	var imgs = document.getElementById('imgs');
+	var image =  document.getElementById('image');
+	var skin_style = document.getElementById('skin_style');
+	if(!skiname.value){
+		alert('请输入皮肤名称！');
+		skiname.focus();
+		return false;
+	}
+	
+	if(!skin_style){
+		alert('请输入皮肤模板名称');
+		skin_style.focus();
+		return false;
+	}
+	
+	if(image.value && (image.style.display == '')){
+		return true;
+	}
+	
+	if(!imgs.value){
+		alert('请选择要上传的图片！');
+		imgs.focus();
+		return false;
+	}
+	
+	return true;
+}
+</script>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> -修改皮肤</span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<form method="post" action="index.php?action=site_skin&h=check" onsubmit="return checkForm()" enctype="multipart/form-data">
+<div class="list-div" id="listDiv">
+	<table cellspacing="1" cellpadding="3">
+		<tr>
+			<th colspan="3" align="left">修改皮肤</th></tr>
+		</tr>
+         <tr>
+			<td>皮肤模板名称：</td>
+			<td><input type="text" name="skin_style" id="skin_style" value="{$uid_skin['skin_style']}"></td>
+		</tr>
+		<tr>
+			<td>皮肤名称：</td>
+			<td><input type="text" name="skiname" id="skiname" value="{$uid_skin['skiname']}"></td>
+		</tr>
+		<tr>
+			<td>皮肤图片：</td>
+			<td><input type="text" name="image" id="image" value="{$uid_skin['image']}">
+            <input type="file" name="imgs" id="imgs" value="{$uid_skin['image']}" style="display:none"></td>
+            <a href="" onclick="javascript:document.getElementById('image').style.display='none';document.getElementById('imgs').style.display='';return false;">如果想重新上传图片请点击这里</a>
+		</tr>
+	</table>
+</div>
+<p/>
+<input type="hidden" id="uid" name="uid" value="{$uid}">
+<input type="submit" id="addskin" name="addskin" value=" 提 交 "/>
+</form>
+<br />
+<br />

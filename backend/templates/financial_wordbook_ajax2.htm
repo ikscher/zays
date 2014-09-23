@@ -1,0 +1,34 @@
+<script>
+	count_page = {$count_page};
+</script>
+	<table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="table">	
+	<tr class="f-f00">
+		<td width="10%" height="35" style="color:#000; background:url(templates/images/tab_bg.gif)"><p align="right"><strong>ID&nbsp;&nbsp;</strong></p><p><strong>日期</strong></p></td>
+		{loop $member_arr $id}
+        	<td width="15%" align="center">{$id[uid]}</td>
+        {/loop}
+	</tr>
+    {php $a = $time1 ? date('Y-m-',$time1) : date('Y-m-');}
+    {for $i=1;$i<=$date_num;$i++}
+        <tr>
+            <td width="10%" height="35" align="center">{php echo $a.$i}</td>
+             {loop $member_arr $member_val} 
+                 <td width="15%" align="center">
+                    {php $f = 0;}
+                    {php $all_val = '';}
+                    {loop $member_arrs $vals}
+                    	{if $i <= 9}{php $date2 = $a.'0'.$i;}{else}{php $date2 = $a.$i;}{/if}
+                        {php $date = date('Y-m-d',$vals[dateline]);}
+                        {if $vals[uid] == $member_val[uid] && $date == $date2}
+                            {php $f = $f+1;}
+                            {php $all_val.='('.$f.')'.$vals[comment].'<br>';}
+                        {/if}
+                    {/loop}
+                    <font title="{$all_val}">{php echo $all_val;}</font>
+                 </td>
+            {/loop}
+        </tr>
+    {/for}
+</table>
+
+

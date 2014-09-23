@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生寻友——同城在线</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/search.css");
+</style>
+<script src="public/system/js/list.js" type="text/javascript"></script>
+<!--<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>-->
+<script>
+// 如果选择不限制，其他的选择框就要清空
+function change(p,q) {
+len = $("input[name='" + p + "']").length
+p_obj = $("input[name='" + p + "']");
+if(q.checked) {
+for(var i = 0; i < len; i++) {
+p_obj.get(i).checked = false;
+}
+}
+}
+
+function changeBox(p,q) {
+q.checked = false;
+}
+
+function checkRightResearchForm() {
+var age1 = document.getElementById("age1").value;
+var age2 = document.getElementById("age2").value;
+if( age1 == 0 && age2 == 0) {
+alert("请选择年龄");
+document.getElementById("age1").focus();
+return false;
+}
+if(age1!=null && age1!='' && age1==0 && age2!=null && age2!='' && age2!=0) {
+alert("请选择年龄下限");
+document.getElementById("age1").focus();
+return false;
+}
+if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2==0) {
+alert("请选择年龄上限");
+document.getElementById("age2").focus();
+return false;
+}
+if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2!=0 && age1>age2) {
+alert("您选择的年龄范围不正确，请重新选择");
+document.getElementById("age1").focus();
+return false;
+}
+return true;
+}
+</script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+$(".search-photo-img").mouseenter(function(){
+		$(this).css("background","url(module/search/templates/default/images/photo-img-onbg.gif)").mouseleave(function(){
+		$(this).css("background","");
+	});
+});
+});	
+//-->
+</script>
+</head>
+
+<body>
+{template system/header public}
+<!--头部结束-->
+<div class="content">
+<div class="c-title">
+<span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;同城在线</span>
+<div class="loaction_right">
+	<a href="index.php?n=invite" target="_blank">邀请好友</a>
+</div>
+</div>
+<div class="content-lift">
+<div class="content-title">
+<span class="right-title">同城在线</span>
+</div><!--content-title end-->
+<div class="c-center">
+			<div class="same-city-top">
+				<img src="module/search/templates/default/images/show-vip.gif" />
+			</div>
+			<div class="same-city-show">
+			{loop $user $k $users}
+			<dl class="search-photo-img" onclick="javascript:window.open('index.php?n=space&uid={$users['uid']}','')">
+					<dt>
+					{if !empty($users['city_star'])}
+						<a href="#" class="citystar"><img src="module/search/templates/default/images/citystar.gif" /></a>
+					{/if}
+					<div class="s-img-box">
+						<p>
+						{if $users['gender'] == '0'}
+							{if isset($users['mainimg']) && $users['mainimg'] && $users['images_ischeck']==1}
+							<img src="
+							{php 
+							  if(MooGetphoto($users[uid],'index')) echo MooGetphoto($users[uid],'index');
+							  elseif(MooGetphoto($users[uid],'medium')) echo MooGetphoto($users[uid],'medium');
+							  elseif($users['gender'] == '1') echo 'public/system/images/se_woman.jpg';
+							  else  echo 'public/system/images/se_man.jpg';
+							}" onload="javascript:DrawImage(this,100,125)"  />
+							{else}
+							 <img src="public/system/images/se_man.jpg" />					             
+							{/if}
+						{else}
+							{if isset($users['mainimg']) && $users['mainimg'] && $users['images_ischeck']==1}
+							<img src="
+							{php 
+							  if(MooGetphoto($users[uid],'index')) echo MooGetphoto($users[uid],'index');
+							  elseif(MooGetphoto($users[uid],'medium')) echo MooGetphoto($users[uid],'medium');
+							  elseif($users['gender'] == '1') echo 'public/system/images/se_woman.jpg';
+							  else  echo 'public/system/images/se_man.jpg';
+							}" onload="javascript:DrawImage(this,100,125)"  />
+							{else}
+							 <img src="public/system/images/se_woman.jpg" />					             
+							{/if}
+						{/if}
+						</p>
+					</div>
+					</dt>
+					<dd>
+						<span class="f-b-d73c90">
+							{if $users['s_cid'] ==20}							
+								<a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/search/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+							{elseif $users['s_cid'] == 30}							
+								<a href="index.php?n=payment" target="_blank"><img src="module/search/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+							{else}							
+							{/if}
+							{if $users['nickname']!=''}
+								{php echo MooCutstr($users['nickname'],'10','');}
+							{else}
+								ID:{$users['uid']}
+							{/if}
+						</span>&nbsp;<!--{if $users['birthyear']}{php echo (gmdate('Y', time()) - $users['birthyear']);}岁{else}年龄保密{/if}--></dd>
+					<dd>
+						<p class="f-ed0a91">
+							{if isset($users['lastvisit']) && (time() - $users['lastvisit'])  < 600}
+							当前在线
+							{elseif isset($users['lastvisit']) && (time()-$users['lastvisit'])< 3600 }一小时内登陆过
+							{elseif isset($users['lastvisit']) && (time() - $users['lastvisit']) > 3600 && (time() - $users['lastvisit']) < (12*3600)}
+							3小时前活跃过
+							{elseif isset($users['lastvisit']) && (time() - $users['lastvisit']) > 12*3600 && (time() - $users['lastvisit']) < (3600*24)}
+							今天活跃过
+							{elseif isset($users['lastvisit']) && (time() - $users['lastvisit']) > 24*3600 && (time() - $users['lastvisit']) < (3600*24*30)}
+							3天前活跃过
+							{else}一周前活跃过
+							{/if}
+						</p>
+					</dd>
+					<dd>
+						<a href="index.php?n=space&uid={$users['uid']}" class="go-look" target="blank">查看</a>
+						<a href="#" class="go-word" onclick="javascript:window.open('index.php?n=service&h=chat&chatorid={$users['uid']}', 'newwindow', 'height=495, width=565, toolbar =no, menubar=no, scrollbars=no, resizable=yes, location=no, status=no')">在线聊天</a>
+					</dd>
+				</dl>	
+				{/loop}
+				{if isset($user1)}
+				{loop $user1 $k $users}
+			<dl class="search-photo-img" onclick="javascript:window.open('index.php?n=space&uid={$users['uid']}','')">
+					<dt>
+					{if !empty($users['city_star'])}
+						<a href="#" class="citystar"><img src="module/search/templates/default/images/citystar.gif" /></a>
+					{/if}
+					<div class="s-img-box">
+						<p>
+						{if $users['gender'] == '0'}
+							{if $users['mainimg'] && $users['images_ischeck']==1}
+							<img src="
+							{php 
+							  if(MooGetphoto($users[uid],'index')) echo MooGetphoto($users[uid],'index');
+							  elseif(MooGetphoto($users[uid],'medium')) echo MooGetphoto($users[uid],'medium');
+							  elseif($users['gender'] == '1') echo 'public/system/images/se_woman.jpg';
+							  else  echo 'public/system/images/se_man.jpg';
+							}" onload="javascript:DrawImage(this,100,125)"  />
+							{else}
+							 <img src="public/system/images/se_man.jpg" />					             
+							{/if}
+						{else}
+							{if $users['mainimg'] && $users['images_ischeck']==1}
+							<img src="
+							{php 
+							  if(MooGetphoto($users[uid],'index')) echo MooGetphoto($users[uid],'index');
+							  elseif(MooGetphoto($users[uid],'medium')) echo MooGetphoto($users[uid],'medium');
+							  elseif($users['gender'] == '1') echo 'public/system/images/se_woman.jpg';
+							  else  echo 'public/system/images/se_man.jpg';
+							}" onload="javascript:DrawImage(this,100,125)"  />
+							{else}
+							 <img src="public/system/images/se_woman.jpg" />					             
+							{/if}
+						{/if}
+						</p>
+					</div>
+					</dt>
+					<dd>
+						<span class="f-b-d73c90">
+							{if $users['s_cid'] ==20}							
+								<a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/search/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+							{elseif $users['s_cid'] == 30}							
+								<a href="index.php?n=payment" target="_blank"><img src="module/search/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+							{else}							
+							{/if}
+							{if $users['nickname']!=''}
+								{php echo MooCutstr($users['nickname'],'10','');}
+							{else}
+								ID:{$users['uid']}
+							{/if}
+						</span>&nbsp;<!--{if $users['birthyear']}{php echo (gmdate('Y', time()) - $users['birthyear']);}岁{else}年龄保密{/if}--></dd>
+					<dd>
+						<p class="f-ed0a91">
+							{if (time() - $users['lastvisit'])  < 600}
+							当前在线
+							{elseif (time()-$users['lastvisit'])< 3600 }一小时内登陆过
+							{elseif (time() - $users['lastvisit']) > 3600 && (time() - $users['lastvisit']) < (12*3600)}
+							3小时前活跃过
+							{elseif (time() - $users['lastvisit']) > 12*3600 && (time() - $users['lastvisit']) < (3600*24)}
+							今天活跃过
+							{elseif (time() - $users['lastvisit']) > 24*3600 && (time() - $users['lastvisit']) < (3600*24*30)}
+							3天前活跃过
+							{else}一周前活跃过
+							{/if}
+						</p>
+					</dd>
+					<dd>
+						<a href="index.php?n=space&uid={$users['uid']}" class="go-look" target="blank">查看</a>
+						<a href="#" class="go-word" onclick="javascript:window.open('index.php?n=service&h=chat&chatorid={$users['uid']}', 'newwindow', 'height=495, width=565, toolbar =no, menubar=no, scrollbars=no, resizable=yes, location=no, status=no')">在线聊天</a>
+					</dd>
+				</dl>	
+				{/loop}{/if}
+				
+				
+			<div class="clear"></div>
+			</div>
+			<!-- 分页 -->
+			<div class="go-pages">
+				{$pagebar}
+				<div class="clear"></div>
+			</div>
+			<!-- end分页 -->
+				<div class="clear"></div>
+			</div>
+<div class="content-bottom">
+</div><!--content-bottom end-->
+</div><!--centent-lift end-->
+<!--左边结束-->
+<div class="centent-right">
+<div class="centent-right-side"></div>
+<div class="centent-center">
+<p class="centent-right-title">和谁是天生一对</p>
+<dl class="left-search">
+<dt>天生一对是指您符合对方择偶条件的同时，对方也正好符合您的择偶条件。</dt>
+<dd><input name="" type="submit" onclick="javascript:window.open('index.php?n=search&h=bothbelong')" value="开始 &gt;&gt;" /></dd>
+</dl>
+
+<div class="clear"></div>
+<p class="centent-right-title">谁在找我</p>
+<dl class="left-search">
+<dt>只要轻轻一点，就能知道哪些会员在寻觅像您这样的人选</dt>
+<dd><input name="" type="submit" value="开始 &gt;&gt;" onclick="javascript:window.open('index.php?n=search&h=look')"/></dd>
+</dl>
+<div class="clear"></div>
+<p class="centent-right-title">ID/昵称搜索</p>
+<dl class="left-search">
+<form onsubmit="return checkForm()" method="get" action="index.php?n=search&h=nickid" name="accountform" target="_blank">
+<input type="hidden" name="n" value="search">
+<input type="hidden" name="h" value="nickid">
+<dt>输入对方的真爱一生ID或昵称查找您想要的结果</dt>
+<dd>&nbsp;</dd>
+<dt><input name="info" type="text" class="searche-id-text"/></dt>
+<dd><input name="" type="submit" value="开始 &gt;&gt;" /></dd>
+</form>
+</dl>
+<div class="clear"></div>
+<form action="index.php" method="get" target="_blank">
+<input type="hidden" name="n" value="search">
+<input type="hidden" name="h" value="show">
+<p class="centent-right-title">按保存的条件搜索</p>
+<dl class="left-search">
+<dt>&nbsp;</dt>
+<dd>&nbsp;</dd>
+<dt>
+<select name="oldSearchCondition">
+<option value="0">您的搜索条件</option>
+<!--{loop $search_arr $k $v}-->
+<option value="{$v['scid']}">$v['searchsign']</option>
+<!--{/loop}-->
+</select>
+</dt>
+<dd><input name="" type="submit" value="开始 &gt;&gt;" target="_blank"/></dd>
+</dl>
+</form>
+<div class="clear"></div>
+<p class="search-left-bottom">
+<a href="index.php?n=search&h=list" target="_blank">编辑搜索条件</a><br />
+<a href="index.php?n=search&h=tag" target="_blank">使用搜索标签</a>
+</p>
+</div>
+<div class="centent-right-side" style="background-position:bottom;"></div>
+</div><!--centent-right end-->
+<div class="clear"></div>
+{template system/footer public}
+</div><!--content end-->
+<div class="clear"></div>
+</body>
+</html>
+<script language="javascript">
+function checkForm(){
+info = document.accountform.info
+if(info.value == ''){
+alert('请输入对方的真爱一生ID或昵称');
+info.focus();
+return false;
+}
+return true;
+}
+</script>

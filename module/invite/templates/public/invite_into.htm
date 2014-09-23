@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>邀请好友——真爱一生网</title>
+<link href="module/invite/templates/{$GLOBALS['style_name']}/invite.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<script type="text/javascript">
+function checkF(){
+	if( !/^([a-z0-9\+_\-\.]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/.test($.trim($("#hotmail").val())) ){
+		alert('请填写正确的MSN');return false;
+	}
+	if(!$('#hotpwd').val()){
+		alert('请输入密码');return false;
+	}
+	return true;
+}
+</script>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;邀请好友</span></p>
+		
+			<div class="content-title">
+				<span class="right-title">填写注册信息</span>
+			</div><!--content-title end-->
+			<div class="c-center">
+			<!--导航-->
+			<div class="service-title">
+				<ul>
+					<li><a href="index.php?n=invite"><span>发送链接邀请给朋友</span></a></li>
+					<!-- <li><a href="index.php?n=invite&h=into" class="onthis"><span>导入MSN联系人到邀请名单</span></a></li> -->
+					<li><a href="index.php?n=invite&h=mail"><span>通过E-mail邀请朋友</span></a></li>
+				</ul>
+			<div class="clear"></div>
+			</div>
+			<!--导航 end-->				
+			<h4>导入MSN联系人到邀请名单</h4>
+			<div class="invite-into-box">
+            <form id="form1" name="form1" method="post" action="" onsubmit="return checkF();">
+				<dl>
+					<dt>邮箱帐号：<input name="username" type="text" id="hotmail" maxlength="50" class="invt-email-text" /></dt>
+					<dt>邮箱密码：<input name="password" type="password" id="hotpwd" maxlength="20" class="invt-email-text" /></dt>
+					<dd><span class="f-ed0a91">*</span> 我们不会存储您的MSN密码，您放心使用。您也可以改密码再导入，成功后再改回原始密码，确保密码安全。</dd>
+					<dd>
+                    <input name="actio" type="hidden" id="actio" value="1" />
+                    <input type="submit" class="btn btn-default" value="导 入" /></dd>
+				</dl>
+             </form>
+				<div class="clear"></div>
+			</div><!--box end--><!--box end--><!--box end-->			
+			
+			<div class="clear" style="height:30px;"></div>
+			</div><!--c-center-data end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}<!--foot end-->
+</div><!--main end-->
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$typename}——媒体关注——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/about/templates/{$GLOBALS['style_name']}/about.css");
+</style>
+</head>
+<body>
+<div class="clear"></div>
+{if $GLOBALS['MooUid']}
+{template system/header public}
+{else}
+{template system/header_login public}
+{/if}
+ <!--头部结束-->
+<div class="clear"></div>
+    <div class="main">
+       {template system/nav public}
+       <div class="about">
+          {template public/about_left module}
+         <div class="a_text">
+           <h3>  {$typename}</h3>
+             <ul class="media">
+             {loop $media_list $v}
+               <li><a href="index.php?n=about&h=media_detail&id={$v['id']}"><span>[{php echo date('Y-m-d',$v['addtime'])}]</span>		{$v['title']}</a></li>
+             {/loop}
+             <li style="text-align:center;">
+             {php $currenturl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; 
+      $currenturl2 = preg_replace("/(&page=\d+)/","",$currenturl);}
+             {php $currenturl2 = preg_replace("/(&page=\d+)/","",$currenturl); echo multipage($total,$pagesize,$page,$currenturl2); }
+             </li>
+           </ul>  
+           
+         </div>
+          <div class="clear"></div>
+        
+      </div>
+     
+     
+    </div>
+ <div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

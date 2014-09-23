@@ -1,0 +1,389 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="templates/js/My97DatePicker/skin/WdatePicker.css">
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+$(function(){
+	$("#list-table tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+})
+
+
+
+function listgroup(){
+	if($("#choose").val() == 'group'){
+		$("#group").css("display","");
+		$("#keyword").css("display","none");
+		$("#keyword").attr("value","");
+	}
+
+	if($("#choose").val() == 'uid'){
+		$("#group").css("display","none");
+		$("#keyword").css("display","");
+		$("#group").attr("value","");
+	}
+}
+
+
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+tr td{
+	text-align: center; 
+}
+
+input[type="button"]  {
+background-color:#cfeefe;
+}
+
+.coolbg {
+background: #a4cafd;
+border-bottom:2px solid #ACACAC;
+border-right:2px solid #ACACAC;
+cursor:pointer;
+padding:2px 5px;
+}
+
+.np {
+border:medium none;
+}
+</style>
+
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="tel_title" class="action-span1"> - 电话时间</span>
+
+<span class="action-span"><a href="{php @$u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{php echo isset($u[2])?$u[2]:'';}&{php echo isset($u[3])?$u[3]:'';}&{php echo isset($u[4])?$u[4]:'';}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+
+<div class="list-div" style="padding:5px;" onmouseover="$('#aboutorder').hide()">
+<form action="" method="get">
+  <tr border="2">
+  	<td>
+   
+	 </td>
+	 <td>&nbsp;&nbsp;
+	 </td>
+	 <td>
+	 &nbsp;&nbsp;
+		 <select name="choose" id="choose">
+	    <option value="">请选择客服姓名查询</option>
+	    {loop $user_arr $user}
+	    <option id="op{$user['uid']}" value="{$user['uid']}" >{$user['name']}</option>
+	    {/loop}
+	 </select>
+	 
+		<input type="hidden" name="action" value="financial_totalwage" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input type="radio" value="1" name="callbound"/>&nbsp;&nbsp;呼入&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="2"  name="callbound" checked />&nbsp;&nbsp;呼出
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：
+		<input id="begint" realvalue="" name="bgtime" value="{if isset($bgtime)}{$bgtime}{else}{php echo date('Y-m-d',(time()-60*60*24*30));}{/if}" onfocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width: 100px;" type="text">
+	 &nbsp;到
+		<input id="endt" realvalue="" name="endtime" value="{if isset($endtime)}{$endtime}{else}{php echo date('Y-m-d',time()+60*60*24);}{/if}" onfocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width: 100px;" type="text">
+	 &nbsp;&nbsp;
+	
+		<input type="button" class="button" onclick='listenlogshow(1)' value="获取电话时间"/><span id="totaltime"></span>
+	</td>
+	  </tr>
+</form>
+</div>
+<br/>
+
+<div class="list-div" id="listDiv">
+<table id="showlistenlog" cellspacing='1' cellpadding='3'>
+  </table>
+</div>
+<br/>
+<div class="list-div" id="listDiv" style="padding:5px;">
+<table id="page"  cellspacing='1' cellpadding='3' >
+  </table>
+  </div>
+<script>
+
+//查询通话录音入口处理
+function listenlogshow(page){
+	var call = document.getElementsByName("callbound");
+	if(call[0].checked){
+		call_val = 1;
+	}else if(call[1].checked){
+		call_val = 2;
+	}
+	
+	var begint = $("#begint").val();
+	var endt = $("#endt").val();
+	if (begint == "") {
+		begint = 1;
+	}
+	if (endt == "") {
+		endt = 1;
+	}
+	//note 客服id
+	//sid = {$sid};
+	var sid_old = $("#choose").val();
+	var sid = Number(sid_old) + Number(800);
+	//alert(sid);
+	var str = "<tr id=\"showlistenlog_tr\" style=\"background:#b4e0f9\"><th height=\"25px\">时间</th><th>时长</th><th>手机号</th><th>红娘ID</th></tr>";
+	var restr = get_listenlog(sid,call_val,begint,endt,page);
+	//note 获取总时间
+	var retime = get_listentime(sid,call_val,begint,endt);
+	var retime = retime.split("△");
+	var retime = retime[0];
+
+	//note 获取总记录数 
+    var recount = get_count(sid,call_val,begint,endt);
+    var re_count_arr = recount.split("△");
+    var recount =  re_count_arr[0];
+    //note 组装分页
+	if(recount){
+		 	var pagesize = 5;
+		 	var pagenum = Math.round(recount/pagesize);
+		 	
+	    	var html_page = "<tr style=\"word-break:break-all;white-space:normal;word-wrap:break-word;\"><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+	   	    
+	   		for(var i=1;i<=pagenum;i++){
+		   		if(page == i){
+			   		var clickcolor = "color:green; font-size:14px;font-weight:bold";
+			   	}else{
+			   		var clickcolor = "";
+				}
+	   	 		html_page += '<a href="#" id="a_fontcolor'+i+'" style="'+clickcolor+'" onclick="listenlogshow('+i+')">'+i+'</a>&nbsp;&nbsp;';
+	   	 	}         
+	   	         
+	   		html_page +='页&nbsp;&nbsp;共'+pagenum+'页&nbsp;&nbsp;转到第   <input type="text" value="" style="width: 20px; height: 15px;" id="pageGo" name="pageGo"> 页 &nbsp;<input type="button" onclick="gotoPage()" value="跳转" class="ser_go"></td></tr>';
+	 }
+	 
+	//定义统计总计时间 
+	var alltime = 0; 
+	//note 解析返回数据
+	var rearr = restr.split("▲");
+	if(call_val==1){
+		for(var i=0;i<parseInt(rearr.length)-1&&i<20;i++){
+			var re = rearr[i].split("△");
+			str8 = re[8];
+			if(str8){
+				str8 = str8.replace(/\\/g, "\/");
+			}
+			str += "<tr><td>"+re[9]+"</td><td>"+re[11]+"&nbsp;秒</td><td>"+re[12]+"</td><td>"+(re[6]-800)+"</td></tr>";
+			alltime = Number(alltime)+Number(re[11]);
+			document.close();
+		}
+		$("#showlistenlog").html(str);	
+		if(html_page){
+	 		$("#page").html(html_page);
+		}
+
+
+	}else if(call_val==2){
+		for(var i=0;i<parseInt(rearr.length)-1&&i<20;i++){
+			var re = rearr[i].split("△");
+			var str13 = re[13];
+			if(str13){
+			str13 = str13.replace(/\\/g, "\/");
+			}
+			str	+= "<tr><td>"+re[7]+"</td><td>"+re[9]+"&nbsp;秒</td><td>"+re[2]+"</td><td>"+(re[12]-800)+"</td></tr>";
+			alltime = Number(alltime)+Number(re[9]);
+			document.close();
+		}
+		$("#showlistenlog").html(str);
+		if(html_page){
+	 		$("#page").html(html_page);
+		}
+
+	}
+
+	if(retime < 3600){
+		$("#totaltime").html("总共电话时间："+retime+"秒");
+	}
+
+	if(retime >= 60){
+		retime_minute = Math.floor(retime/60);
+		$("#totaltime").html("总共电话时间："+retime_minute+"分钟");
+	}
+
+	if(retime >= 3600){
+		retime_hour = Math.floor(retime/3600);
+		$("#totaltime").html("总共电话时间："+retime_hour+"个小时");
+	}
+
+	if(sid){
+		var tel_title = " - "+$("#op"+sid_old).html() + "和客户电话时间";
+		$("#tel_title").html(tel_title);
+	}
+}
+
+//note 查询统计记录总数
+function get_count(sid,call_val,begint,endt){
+	if(call_val==1){
+		var sql2 = "SELECT count(*) FROM dbo.AMDC_CallInService  a FULL  JOIN dbo.AMDC_CallInBound b ON a.InBoundID=b.InBoundID WHERE a.EmpID = "+sid;
+	}else if(call_val==2){
+		var sql2 =  "select count(*)  from AMDC_CallOutBound where EmpID = "+sid;
+	}
+	if(begint != 1 && endt != 1){
+		if(call_val == 1){
+			sql2 += " and convert(varchar(10),a.BeginTime,23) between '"+begint+"' and '"+endt+"'";
+		}else if(call_val == 2){
+			sql2 += " and convert(varchar(10),BeginTime,23) between '"+begint+"' and '"+endt+"'";
+		}
+	}else{
+		if(call_val == 1){
+			if(begint != 1){
+				sql2 += "  and convert(varchar(10),a.BeginTime,23) a.BeginTime >='"+begint+"'";
+			}
+			if(endt != 1){
+				sql2 += "  and convert(varchar(10),a.BeginTime,23) a.BeginTime <='"+endt+"'";
+			}
+		}else if(call_val == 2){
+			if(begint != 1){
+				sql2 += "  and convert(varchar(10),BeginTime,23) BeginTime >='"+begint+"'";;
+			}
+			if(endt != 1){
+				sql2 += "  and convert(varchar(10),BeginTime,23) BeginTime <='"+endt+"'";
+			}
+		}
+	}
+	try{
+		var recount = parent.dbio.get_result(sql2);
+	}catch(e){
+	}
+
+	return recount;
+}
+
+//note  查询电话系统返回数据
+function get_listentime(sid,call_val,begint,endt){
+
+	if(call_val==1){
+		var sql = "";
+		var sql = "SELECT sum(a.TimeSpan) FROM dbo.AMDC_CallInService  a FULL  JOIN dbo.AMDC_CallInBound b ON a.InBoundID=b.InBoundID WHERE a.EmpID = "+sid;
+			
+		
+	}else if(call_val==2){
+		var sql = "SELECT sum(TimeSpan) FROM dbo.AMDC_CallOutBound WHERE EmpID = "+sid;
+	
+	}
+	if(begint != 1 && endt != 1){
+		if(call_val == 1){
+			sql += " and convert(varchar(10),a.BeginTime,23) between '"+begint+"' and '"+endt+"'";
+			
+		}else if(call_val == 2){
+			sql += " and convert(varchar(10),BeginTime,23) between '"+begint+"' and '"+endt+"'";
+			
+		}
+	}else{
+		if(call_val == 1){
+			if(begint != 1){
+				sql += "  and convert(varchar(10),a.BeginTime,23) a.BeginTime >='"+begint+"'";
+			
+			}
+			if(endt != 1){
+				sql += "  and convert(varchar(10),a.BeginTime,23) a.BeginTime <='"+endt+"'";
+				
+			}
+		}else if(call_val == 2){
+			if(begint != 1){
+				ssql += "  and convert(varchar(10),BeginTime,23) BeginTime >='"+begint+"'";
+				
+			
+			}
+			if(endt != 1){
+				sql += "  and convert(varchar(10),BeginTime,23) BeginTime <='"+endt+"'";
+			
+			}
+		}
+	}
+	
+	try{
+		var restr = parent.dbio.get_result(sql);
+	
+	}catch(e){
+	}
+	
+	return restr;
+}
+
+//note 查询电话系统返回数据
+function get_listenlog(sid,call_val,begint,endt,page){
+	var pagesize =5;
+	var start = (page - 1)*pagesize;
+	if(call_val==1){
+		var sql0 = "SELECT top "+pagesize+" a.*,b.CallerID FROM dbo.AMDC_CallInService a FULL JOIN dbo.AMDC_CallInBound b ON a.InBoundID=b.InBoundID WHERE b.InID not in(";
+
+		var sql1 = "select top "+start+" b.InID from dbo.AMDC_CallInService a FULL JOIN dbo.AMDC_CallInBound b ON a.InBoundID=b.InBoundID WHERE a.EmpID =" + sid;
+		var sql2 = ") and  a.EmpID = "+sid;				
+		
+	}else if(call_val==2){
+		var sql0 = "SELECT top "+pagesize+" * FROM dbo.AMDC_CallOutBound WHERE  OutID not in(";
+		var sql1 = "select top "+start+" OutID from dbo.AMDC_CallOutBound where EmpID ="+sid;
+		var sql2 = ") and EmpID = "+sid;
+	
+	}
+	if(begint != 1 && endt != 1){
+		if(call_val == 1){
+			sql1 += " and convert(varchar(10),a.BeginTime,23) between '"+begint+"' and '"+endt+"'";
+			sql2 += " and convert(varchar(10),a.BeginTime,23) between '"+begint+"' and '"+endt+"'";
+		}else if(call_val == 2){
+			sql1 += " and convert(varchar(10),BeginTime,23) between '"+begint+"' and '"+endt+"'";
+			sql2 += " and convert(varchar(10),BeginTime,23) between '"+begint+"' and '"+endt+"'";
+			
+		}
+	}else{
+		if(call_val == 1){
+			if(begint != 1){
+				sql1 += "  and convert(varchar(10),a.BeginTime,23) a.BeginTime >='"+begint+"'";
+				sql2 += "  and convert(varchar(10),a.BeginTime,23) a.BeginTime >='"+begint+"'";
+			}
+			if(endt != 1){
+				sql1 += "  and convert(varchar(10),a.BeginTime,23) a.BeginTime <='"+endt+"'";
+				sql2 += "  and convert(varchar(10),a.BeginTime,23) a.BeginTime <='"+endt+"'";
+			}
+		}else if(call_val == 2){
+			if(begint != 1){
+				sql1 += "  and convert(varchar(10),BeginTime,23) BeginTime >='"+begint+"'";
+				sql2 += "  and convert(varchar(10),BeginTime,23) BeginTime >='"+begint+"'";
+			
+			}
+			if(endt != 1){
+				sql1 += "  and convert(varchar(10),BeginTime,23) BeginTime <='"+endt+"'";
+				sql2 += "  and convert(varchar(10),BeginTime,23) BeginTime <='"+endt+"'";
+			
+			}
+		}
+	}
+	
+	try{
+		var sql = sql0 + sql1 + sql2;
+		var restr = parent.dbio.get_result(sql);
+	
+	}catch(e){
+	}
+	
+	return restr;
+}
+
+//note 打开播放录音窗口
+function openlisten(listenurl,memberid,rtime){
+	var lurl = "index.php?action=allmember&h=listen_open&len=500&recodetime="+rtime+"&title="+memberid+"&lurl="+encodeURI(listenurl);
+	window.open(lurl,memberid,"width=500,height=30,toolbar=no,scrollbars=no,menubar=no,screenX=400,screenY=100");
+}
+
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	if(page<1) page = 1;
+	listenlogshow(page);
+}
+
+</script>
+

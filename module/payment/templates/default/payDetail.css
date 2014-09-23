@@ -1,0 +1,135 @@
+@charset "utf-8";
+body{padding:0;margin:0;}
+.contents{
+	width:980px;
+	margin:0 auto;
+	border: 1px solid #CCC;
+	border-top:0;
+	background-color: #FFF;
+}
+.header{
+	font-weight:bold;
+	color:#D73C90;
+	line-height:50px;
+	text-align: center;
+	font-size: 24px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+}
+.clear {
+	clear: both;
+}
+
+.con{
+	width:910px;
+	margin:0 auto;
+	padding-bottom: 20px;
+}
+.con dl{
+	margin: 0;
+	padding:0;
+	display: block;
+}
+.con dt{
+	color:#D73C90;
+	font-weight:bold;
+	margin:10px 0;
+}
+.con dd{
+	line-height:28px;
+	font-size: 14px;
+	color:#666;
+	margin: 0px;
+	padding: 0px;
+}
+.page{width:870px;}
+.con img{
+	margin: 0 0 10px 0;
+}
+.imgBtn{
+	padding: 0px;
+	vertical-align: middle;
+	margin: 0 10px;
+	}
+.imgBorColor {
+	border: 2px solid #D73C90;
+	padding: 3px;
+}
+.bankMap {
+	height:30px;
+	color:#F00;
+	line-height:30px;
+	font-weight:bold;
+	padding-bottom: 12px;
+}
+.beforePay {
+	line-height: 40px;
+	color: #06F;
+	font-weight: bold;
+}
+.liucheng {
+	line-height:40px;height:40px;color:#F00;font-weight:bold;
+}
+
+
+.allBankSty {
+	line-height: 40px;
+	float: left;
+	height: 40px;
+	width: 300px;
+}
+
+.line{
+	border-top-width: 1px;
+	border-top-style: dashed;
+	border-top-color: #999;
+	height: 1px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.dingwei {
+	position:absolute;
+	width:164px;
+	height:44px;
+	border:2px solid red;
+}
+.bankCol {
+}
+.bankColSub {
+	color: #D73C90;
+	font-weight: bold;
+}
+
+.con p {
+	color: #666;
+	line-height:26px;
+}
+.jump{
+	width:50px;
+	height:50px;
+	position:fixed;
+	bottom:0;
+	right:100px;
+	background-image: url(module/payment/templates/default/images/payDetail/back-top.png);
+	background-repeat: no-repeat;
+	display: block;
+	background-position: 0px 0px;
+	overflow: hidden;
+}
+
+a.jump:hover{
+	background-image: url(module/payment/templates/default/images/payDetail/back-top.png);
+	background-repeat: no-repeat;
+	background-position: -50px 0px;
+}
+#fixedbox{   
+position: absolute;
+right:80px;width:50px;height:50px;
+}
+
+* html .fixed-bottom  {/* IE6 底部固定 */
+	position:absolute;
+	bottom:auto;
+top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||0)-(parseInt(this.currentStyle.marginBottom, 10)||0)));
+}

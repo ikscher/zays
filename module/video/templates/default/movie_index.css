@@ -1,0 +1,104 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,   
+form,fieldset,input,textarea,p,th,td {   
+padding: 0;   
+margin: 0;   
+}   
+body{
+	font-family:"宋体", Arial, Vrinda;
+	font-size:12px;
+	}
+.clear{ clear:both;}
+img { border:none;}
+a { text-decoration:none; outline:none;}
+a:link, a:visited { color:#666;}
+a:hover, a:active { color:#F60;}
+ol, ul{ list-style:none;}
+img { font-size:0; line-height:0; }
+.box { width:982px; margin:0 auto;}
+span {color:#ec3d85;}
+.yellow{ color:#F60; font-size:16px;}
+
+
+/* banner部分 */
+.flashbox {
+	position: relative; height:354px; width:982px; background:#000; 
+}
+.flashbox .pic {
+	left: 0px; width:680px; position: absolute; top: 0px; height:354px
+}
+
+.flashbox ul {
+	left:690px; position: absolute; top: 0px; width:290px;
+}
+.flashbox li {
+	margin-bottom: 1px; line-height: 24px; width:145px; float:left; height:88px;
+}
+.flashbox li a {
+	display: block; color: #333; position: relative; height:75px; width:140px;padding:5px 0 0 5px;
+}
+.flashbox li.selected a {
+	background:url(images/kuang.gif) no-repeat 0 center;  
+}
+.flashbox li a:hover {
+	background:url(images/kuang.gif) no-repeat 0 center;
+}
+.flashbox li img {
+  width: 125px; position:absolute; height:70px; 
+  filter: alpha(opacity=50);
+  -moz-opacity:0.5;
+  opacity: 0.5;
+}
+.flashbox li img:hover {   filter: alpha(opacity=100);
+  -moz-opacity:1;
+  opacity: 1;
+}
+
+/* 视频区公共部分 */
+.header { height:32px; background:url(images/bg.gif) repeat-x; padding-left:10px; color:#FFF; line-height:32px;}
+.header p { width:16px; margin-top:10px; height:10px; overflow:hidden; background:url(images/ico.gif) no-repeat; float:left; }
+.header b { font-size:14px; float:left; padding-left:8px;}
+.header a { color:#FFF; display:block; width:50px; float:right;} 
+
+.content { background:#ad0066;}
+
+.video_ul {height:100%; padding-top:14px;} 
+.video_ul li {float:left; width:270px; height:280px; overflow:hidden; margin-left:40px; color:#FFF; }
+.video_ul li div{ padding-bottom:5px;}
+.video_ul li p { padding:0 5px; line-height:1.8em;}
+.video_ul li p a:link, .video_ul li p a:visited { color:#FFF;}
+.video_ul li p a:hover, .video_ul li p a:active { color:#CCC;}
+
+/* 视频区公共部分 结束 */
+
+.hx_video { padding-top:10px;}
+
+.new_video{ padding-top:10px;}
+.new_video .video_ul li {float:left; width:230px; height:290px; overflow:hidden; margin-left:12px; color:#FFF; }
+
+
+
+
+.left_v{ width:660px; float:left;}
+.paihang { width:312px; float:right; padding-top:10px;}
+.paihang .content { padding:9px 10px;}
+.paihang .content dl { background:#FFF; height:76px; padding:3px 0 0 7px;}
+.paihang .content dl dt { float:left; width:80px; padding-right:10px;}
+.paihang .content dl .pic { height:70px; padding-top:3px; position:relative; width:125px;}
+.paihang .content dl .pic .num {
+	position:absolute;
+	width:21px;
+	height:30px;
+	background:url(images/ico.gif) no-repeat 0 -11px;
+	left: 5px;
+	top: 0px;
+}
+.paihang .content dl dt b {line-height:1.5em;}
+.paihang .content dl dt p { padding-top:10px;}
+
+.paihang .content ul {height:477px; background:#FFF; padding:0 5px; } 
+.paihang .content ul li {height:30px; color:#666; border-top:1px #CCC solid; padding-top:15px;}
+.paihang .content ul li .number_1 { width:14px; height:14px; background:url(images/ico.gif) no-repeat 0 -43px; float:left; color:#FFF; text-align:center;}
+.paihang .content ul li .number_2 { width:14px; height:14px; background:url(images/ico.gif) no-repeat -14px -43px; float:left; color:#FFF; text-align:center; }
+.paihang .content ul li .yellow { float:right; width:30px; font-size:14px;}
+
+

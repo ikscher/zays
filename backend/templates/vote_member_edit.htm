@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--投票结果</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<SCRIPT LANGUAGE="Javascript" SRC="FusionCharts.js"></SCRIPT>	
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<link href="Style.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+
+<script>
+	function gotoPage(){
+		var page = document.getElementById('pageGo').value;
+		
+		location.href = 'vote.php?page_now='+page;
+	}
+	function check(){
+		return true;
+	}
+	function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+	}
+	function check(){
+		return true;
+	}
+</script>
+</head>
+
+<body>
+	
+	<div class="list-div" id="listDiv" onmouseout="hiddend();">
+	<form action="vote_member.php?act=update" method="post" onsubmit="return check()">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		
+	
+		
+				<tr><td>ID</td><td align='center'><input type="text"   value = '{$arr[0][uid]}' name = 'uid' /></td></tr>
+			 	<tr><td>昵称</td><td align='center'><input type="text" value = '{$arr[0][nick_name]}' name = 'nick_name' /></td></tr>
+			 	<tr><td>性别</td><td align='center'>
+					男：<input type="radio" name="sex" value="1" {if $arr[0][sex] == 1} checked="checked"{/if}/>
+					女：<input type="radio" name="sex" value="2" {if $arr[0][sex] == 2} checked="checked"{/if}/>
+				</td></tr>
+			 	<tr><td>所在地区</td><td align='center'>
+					 <script>getProvinceSelect66('','','workprovince','workCity','$arr[0][region]','10100000');</script>
+					省
+					<script>getCitySelect66('','workCity','workCity','$arr[0][region_city]','0');</script>
+					市
+				
+				</td></tr>
+				<tr><td>出生日期</td><td align='center'>
+					<script>getYearsSelect('selectSize','year','year','{$arr[0][birthdatey]}','0');</script>年
+					<script>getMonthsSelect('selectSize01','month','month','{$arr[0][birthdatem]}','0');</script>月
+					<script>getDaysSelect('selectSize011','day','day','{$arr[0][birthdated]}','0');</script>日
+				
+				</td></tr>
+				<tr><td>电话</td><td align='center'><input type="text" value = '{$arr[0][phone]}' name = 'phone' /></td></tr>
+				<tr><td>手机</td><td align='center'><input type="text" value = '{$arr[0][cellphone]}' name = 'cellphone' /></td></tr>
+				<tr><td>婚姻状况</td><td align='center'>
+					<select name = 'marriage' style="width:100px; height:20px;" >
+						<option value="0"  {if $arr[0][marriage] == 0} selected="selected" {/if}>未婚</option>
+						<option value="1" {if $arr[0][marriage] == 1} selected="selected" {/if}>已婚</option>
+						<option value="2" {if $arr[0][marriage] == 2} selected="selected" {/if}>丧偶</option>
+					</select>
+				</td></tr>
+				<tr><td>学历</td><td align='center'>
+					<select name = 'education' style="width:100px; height:20px;" >
+							<option value="0" {if $arr[0][education] == 0} selected="selected" {/if}>高中以下</option>
+							<option value="1" {if $arr[0][education] == 1} selected="selected" {/if}>职高</option>
+							<option value="2" {if $arr[0][education] == 2} selected="selected" {/if}>大专</option>
+							<option value="3" {if $arr[0][education] == 3} selected="selected" {/if}>一般本科</option>
+							<option value="4" {if $arr[0][education] == 4} selected="selected" {/if}>重点本科</option>
+							<option value="5" {if $arr[0][education] == 5} selected="selected" {/if}>研究生</option>
+							<option value="6" {if $arr[0][education] == 6} selected="selected" {/if}>研究生以上</option>
+					</select>
+				</td></tr>
+				<tr><td>E-mail</td><td align='center'><input type="text" value = '{$arr[0][email]}' name = 'email' /></td></tr>
+				<tr><td>投票时间</td><td align='center'><input type="text" value = '{$arr[0][sub_time]}' name = 'sub_time' /></td></tr>
+				{loop $arr[vote] $key $value}				
+				<tr><td>投票题目</td><td align='center'><input style="width:500px;" type="text" value = '$value[0]' name = 'title{$key}' /></td></tr>	
+				<tr><td>投票答案</td><td align='center'><input style="width:500px;" type="text" value = '$value[1]' name = 'result{$key}' /></td></tr>					
+				{/loop}
+	
+	</table>
+	<div align="center"><input type="submit" value = "提交" style="width:100px; text-align:center;"  /></div>
+  
+	</div>
+	</form>
+</body>
+</html>﻿﻿﻿﻿

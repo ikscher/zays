@@ -1,0 +1,27 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 修改删除会员去向</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+
+<div class="main-div">
+<form name="theForm" method="post" action="index.php?action=other&h=set_del_user">
+	<table width="100%">
+		<tr>
+			<td class="label">删除会员转到客服ID：</td>
+			<td>
+				<input name="user_to_sid" type="text" id="pw" size="20" maxlength="20" value="{$del_to_sid}"/>
+				</td>
+			</tr>		
+		<tr>
+  	<td height="36" colspan="2" valign="bottom" style="padding-left:350px;"><input type="hidden" name="is_post" value="1"/>
+		
+		<input type="submit" value=" 确定 " class="button" />&nbsp;&nbsp;&nbsp;
+  		<input type="reset" value=" 重置 " class="button" />
+  		</td>
+			</tr>
+</table>
+</form>
+</div>

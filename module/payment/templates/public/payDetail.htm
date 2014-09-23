@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网 - 支付细则</title>
+{template system/js_css public}
+<link href="module/payment/templates/default/payDetail.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="module/payment/templates/default/js/payDetail.js"></script>
+</head>
+<body>
+{template system/header public}
+<div class="contents">
+<div class="header">支付细则</div>
+<div class="con">
+<br />
+<dl>
+  <dt >银行卡的种类和区别</dt>
+    <dd>常见的银行卡一般分为两种卡：借记卡和信用卡。</dd>
+    <dd>借记卡就是我们常用的储蓄卡，不可透支，存钱有利息；</dd>
+    <dd>
+    	<dl>
+            <dt  style="font-size:16px">信用卡分为两种---准贷记卡和贷记卡。</dt>
+            <dd style="margin:0;">准贷记卡是借记卡和贷记卡中间的过渡产品，是信用卡的前身现在很少使用；</dd>
+            <dd style="margin:0;">贷记就是现在俗称的信用卡，银行按照个人的信用等级颁发的额度不同的卡，可以透支，存钱无利息。</dd>
+            </dl>
+    </dd>
+</dl>
+<dl style="margin:0">
+<dt >电话银行</dt>
+<dd>通过拨通银行的电话号码，得到电话银行提供的服务（交易查询、申请帮助、查询等业务）。如需办理转账和汇款需要去银行柜台正式开通。目前四大国有银行里面中行不支持电话银行转账；农行和建行不支持跨行；工行支持跨行和异地。其他银行根据其规定也各不相同。</dd>
+</dl>
+<dl>
+<dt>手机银行终端</dt>
+<dd>利用移动通信网络及终端办理相关银行业务。开通此服务后可以在手机上用与银行卡绑定的SIM卡里的菜单进行转账和支付业务。</dd>
+</dl>
+<dl>
+<dt>网上银行</dt>
+<dd>指客户在网上可直接享受和接进行查询、转账、信贷等服务项目。是银行在网上的虚拟柜台。</dd>
+</dl>
+<dl>
+<dt>电话支付</dt>
+<dd>指移动运营商的移动支付系统为每个用户建立的一个与其手机号码关联的支付账户，为用户提供了一个通过手机进行交易支付和身份认证的途径，相当于电子钱包。</dd>
+</dl>
+<dl>
+<dt>第三方支付平台（支付宝、财付通、易宝等）</dt>
+<dd>是指介于卖家和买家之间的独立支付平台，目的是为了保证网络上的交易双方的资金和货物安全，卖家通过虚拟帐户收到钱以后才发货，买家在收到货，而且确认无误的情况下通过第三方支付平台把钱划给卖家。企业想要使用第三方支付平台是需要具备极高的资质和实力的，需要在央行申请第三方支付牌照，建立自己的"银行系统"并且所拥有资金需达到一定要求才可以使用。</dd>
+</dl>
+
+<!--跳转到详细流程 高度2400 -->
+			<div id="fixedbox" class="fixed-bottom">
+		  	<a class="jump"  title="跳转到详细支付流程"  href="#flags"></a>
+			</div>
+<!--跳转到详细流程 -->	
+<div>
+<div class="line"></div>
+</div>
+
+<dl>
+<dt>电话支付流程图</dt>
+    <dd>电话支付分为：信用卡支付和借记卡支付（就是平常所说的储蓄卡）；</dd>
+    <dd><img src="module/payment/templates/default/images/payDetail/1.jpg" ></dd>
+    <dt>(a)电话支付 信用卡支付 支持银行：</dt>
+    <dd><img src="module/payment/templates/default/images/payDetail/2.jpg" ></dd>
+    <dd>
+           支付流程：    </dd>
+    <dd><img src="module/payment/templates/default/images/payDetail/3.jpg" ></dd>
+    <dd>1、先输入会员的基本信息：</dd>
+     <dd>
+    <font color="#FF0000">
+    <b>注意点：会员填写的姓名和身份证号需要与信用卡账号的姓名和身份证号是一致的。身份证如果末尾是0或者X 那么把前面表示年份的前两位去掉 末尾0或者X也去掉 留15位！</b>    </font>     </dd>    
+     <dd>2、	点击<img src="module/payment/templates/default/images/payDetail/4.jpg" class="imgBtn" />后，手机接听银联自动语音电话：02195156的来电！     </dd>
+     <dd>3、	输入信用卡的有效期与CVV码（有效期在信用卡的正面卡号下面 例如04/15 代表有效年2015 有效月04月，CVV码如下</dd>
+     <dd><img src="module/payment/templates/default/images/payDetail/5.jpg"></dd>
+     <dd>4、支付成功。</dd>
+</dl>
+
+<!--网站借记卡支付-->
+<div class="line"></div>
+<dl>
+<dt>(b)电话支付 借记卡支付 支持银行：</dt>
+<dd><img src="module/payment/templates/default/images/payDetail/6.jpg"></dd>
+<dd>支付流程：</dd>
+<dd>1、选择所属银行后进入个人信息填写：</dd>
+<dd><img src="module/payment/templates/default/images/payDetail/7.jpg"></dd>
+<dd><font color="#FF0000"><b>注意点：区别于信用卡的就是此处不需要输入"信用卡号"和"CVV码"</b></font></dd>
+<dd>2、点击<img src="module/payment/templates/default/images/payDetail/4.jpg" class="imgBtn" />后，手机接听银联自动语音电话：02195156的来电！</dd>
+<dd >3、支付成功。</dd>
+</dl>
+
+<!--网上所有支付银行-->
+<div class="line"></div>
+<dl>
+<dt>网上银行支付流程 </dt>
+<dd>网站所支持的银行</dd>
+<dd><img src="module/payment/templates/default/images/payDetail/BankAll.jpg" border="0" /></dd>
+</dl>
+<div class="line"></div>
+
+<!--所有银行-->
+<div class="liucheng" id="flags">详细支付流程图，请点击...</div>
+<div  class="allBankSty"><a href="javascript:gongshang();" class="bankCol"><font class="bankColSub">中国工商银行</font>支付流程图解(网银)</a></div>
+<div  class="allBankSty"><a href="javascript:zhaoshang()" class="bankCol"><font class="bankColSub">招商银行</font>支付流程图解(网银)</a></div>
+<div  class="allBankSty"><a href="javascript:nongye()"  class="bankCol"><font class="bankColSub">中国农业银行</font>支付流程图解(网银)</a></div>
+<div  class="allBankSty"><a href="javascript:jianshe()"  class="bankCol"><font class="bankColSub">中国建设银行</font>支付流程图解(网银)</a></div>
+
+<div  class="allBankSty"><a  class="bankCol"><font class="bankColSub">北京银行</font>支付流程图解(网银)</a></div>
+<div  class="allBankSty"><a href="javascript:jiaotong()"  class="bankCol"><font class="bankColSub">交通银行</font>支付流程图解(网银)</a></div>
+<div  class="allBankSty"><a href="javascript:xingye()"  class="bankCol"><font class="bankColSub">兴业银行</font>支付流程图解(网银)</a></div>
+<div  class="allBankSty"><a   class="bankCol"><font class="bankColSub">南京银行</font>支付流程图解(网银)</a></div>
+
+<div class="allBankSty"><a href="javascript:minsheng()"  class="bankCol"><font class="bankColSub">中国民生银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a href="javascript:guangda()" class="bankCol"><font class="bankColSub">中国光大银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a href="javascript:zhongguo()"  class="bankCol"><font class="bankColSub">中国银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a  class="bankCol"><font class="bankColSub">平安银行</font>支付流程图解(网银)</a></div>
+
+<div class="allBankSty"><a  class="bankCol"><font class="bankColSub">渤海银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a  class="bankCol"><font class="bankColSub">BEA东亚银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a  class="bankCol" ><font class="bankColSub">宁波银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a href="javascript:zhongxin()"  class="bankCol" ><font class="bankColSub">中信银行</font>支付流程图解(网银)</a></div>
+
+<div class="allBankSty"><a  class="bankCol" ><font class="bankColSub">深圳发展银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a   class="bankCol" ><font class="bankColSub">广东发展银行</font>支付流程图解(网银)</a></div>
+<div  class="allBankSty"><a  class="bankCol" ><font class="bankColSub">上海银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a href="javascript:pufa()" class="bankCol" ><font class="bankColSub">上海浦东发展银行</font>支付流程图解(网银)</a></div>
+
+<div class="allBankSty"><a href="javascript:youzheng()"  class="bankCol" ><font class="bankColSub">中国邮政</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a  class="bankCol" ><font class="bankColSub">北京农村商业银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a   class="bankCol" ><font class="bankColSub">华夏银行</font>支付流程图解(网银)</a></div>
+<div class="allBankSty"><a   class="bankCol"  ><font class="bankColSub">浙商银行</font>支付流程图解(网银)</a></div>
+<div class="clear"></div>
+
+<!--浮动框架-->
+<div  id="fra" >
+</div>
+<!--底部备注-->
+    <div class="line"></div>
+    
+    <div class="bankMap" style="margin:0;padding:0;">温馨提示：</div>
+    <p>1、	有些银行存在动态口令、口令、u盘类型加密之分，在支付和选择填入的时候注意了解会员的具体情况，其中也涉及到支付额度的问题，这个需要先了解，以免造成支付不成功问题</p>
+    <p>2、	有些银行在前台支付的时候，有不同的选项，核实会员的银行卡开通的具体项目，选择正确的方式进行支付，以免造成支付失败。</p>
+    <p>3、	前台支付易宝，公司名称为北京通融通，这个如果会员问道，可以告知，就是我们合作的这个三方支付通道，是经过国家认账的三方支付通道，和支付宝一样，可以放心支付。</p>
+    <p>4、	在通过网络支付的时候，首先确认自己是否开通网银支付，什么时间开通，是否通过网银之前支付过，网银加密是什么方式，额度限定等等，了解清楚，再建议用正确的方式进行支付，以免浪费时间并且造成会员反感同时支付不成功。</p>
+    <p>5、	确认支付时候是否准备好加密设备，是否在本机上进行过支付，否则需要安装驱动、控件等，以免造成支付失败。</p>
+    <p>6、	不要再网吧等公共场所使用网银支付，请选择自己或者安全的电脑进行支付。</p>
+    <p>7、	如果您无法进行网上支付，您也可以选择银行汇款功能。 
+您在网上支付的时候遇到输入身份证号码时，如果您的省份证号码末位是字母，可以转换为15位数字。（转换方式：去掉出生年月部分的19及最后一位字母）</p>
+	
+	</div>
+<!--footer end-->
+</div>
+{template system/footer public}
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网——只是因为在人群中多看了您一眼</title>
+<link type="text/css" href="module/service/templates/default/activity_new.css" rel="stylesheet" />
+<SCRIPT LANGUAGE="Javascript" SRC="module/service/FusionCharts.js"></SCRIPT>	
+
+<script type="text/javascript" src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js'></script>
+<script LANGUAGE="Javascript" src="jquery.jplayer.min.js"></script>
+</head>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#jquery_jplayer_1").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				mp3: "http://thsy.bbzx.wuxi.cn/myimages/2010-3/ce434b84-95bf-4c4f-aacd-b17301d0f3dd.mp3"
+			}).jPlayer("play");
+		},
+		
+		swfPath: "./",
+		supplied: "mp3"
+	});
+	
+});
+
+</script>
+
+<div id="jquery_jplayer_1"></div> 
+
+	

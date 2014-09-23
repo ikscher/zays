@@ -1,0 +1,59 @@
+/*钻石会员导航*/
+.loaction{
+	height:30px;
+	line-height:30px;
+	}
+.loaction_left{ float:left}
+.loaction_left a{
+	font-size:12px;
+	color:#7c127c}
+.loaction_center{
+	float:right;
+	margin-right:100px;
+	}
+.loaction_center li{
+	float:left;
+	width:82px;
+	text-align:center}
+
+.loaction_right{
+	background:url(images/copy.jpg);
+	border:1px solid #ccc;
+	line-height:19px;
+	padding:0px 10px;
+	width:140px;
+	float:right;
+	margin-top:5px}
+.loaction_right a{
+	color:#656565;
+	font-size:12px;}
+.postion{
+	color:#7c127c;
+	line-height:25px;
+  	padding:10px 15px 10px 15px;
+	font-size:12px;
+	
+	
+	}
+.postion a{
+	color:#7c127c;
+	}
+.postion a:hover{
+	text-decoration:underline}
+.postion span{
+	float:right;
+	text-indent:0px;}
+.postion span a{
+	background:url(../images/fuzhi.gif);
+	height:19px;
+	line-height:19px;
+	color:#656565;
+	font-size:12px;
+	display:block;
+	width:160px;
+	text-align:center;
+	border:1px solid #cccccc;
+	}
+.postion span a:hover{
+	text-decoration:underline}
+

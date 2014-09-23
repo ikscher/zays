@@ -1,0 +1,76 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> -成功故事管理列表</span>
+	<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<span class="action-span"><a href="index.php?action=site_story&h=add" onclick="parent.addTab('添加成功故事','index.php?action=site_story&h=add','icon');return false;">添加故事</a></span>
+    <span class="action-span" id="story_update"><a href="javascript:void(0)">更新缓存</a></span>
+	<div style="clear:both"></div>
+    <script type="text/javascript">
+    	$("#story_update").click(function() {
+			var url = "index.php?action=site_story&h=update";
+			$.get(url,function(date) {
+				if(date == 'ok') {
+					alert("更新成功");
+				}
+			});	
+		});
+    </script>
+</h1>
+<div class="list-div">
+<span class="but_a">
+<!-- {loop $story_process $k $v} -->
+<b><a href="index.php?action=site_story&h=list&state={$k}">{$v}</a></b>
+<!-- {/loop} -->
+</span>
+</div>
+<br />
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+  	<th>序号</th>
+    <th>用户id</th>
+    <th>标题</th>
+    <th>日期</th>
+	<th>进程类型</th>
+	<th>恋爱一方</th>
+	<th>恋爱另一方</th>
+	<th>提交日期</th>
+	<th>是否审核通过</th>
+	<th>是否首页推荐</th>
+	<th>被查看次数</th>
+	<th>照片ID</th>
+	<th>操作</th>
+  </tr>
+  {php $i=($page-1)*$limit+1;}
+  {loop $ret_list $k $v}
+  <tr>
+	<td align="center">{$v['sid']}</td>
+	<td align="center">{$v['uid']}</td>
+	<td align="center">{$v['title']}</td>
+	<td align="center">{php echo date("Y-m-d",$v['story_date']);}</td>
+	<td align="center">{php if($v['state']=='1') echo '恋爱';if($v['state']=='2') echo '订婚';if($v['state']=='3') echo '结婚';if($v['state']==4) echo '第一次见面';}</td>
+	<td align="center">{$v['name1']}</td>
+	<td align="center">{$v['name2']}</td>
+	<td align="center">{php echo date("Y-m-d",$v['submit_date']);}</td>
+	<td align="center">{php if($v['syscheck']=='1') echo '通过';if($v['syscheck']=='0') echo '审核中';}</td>
+	<td align="center">{php if($v['recommand']=='1') echo '是';if($v['recommand']=='0') echo '否';}</td>
+	<td align="center">{$v['hot']}</td>
+	<td align="center">{$v['is_index']}</td>
+
+    <td align="center">
+		<a href="index.php?action=site_story&h=edit&id={$v['sid']}" onclick="parent.addTab('编辑成功故事','index.php?action=site_story&h=edit&id={$v['sid']}','icon');return false;">编辑</a> 
+		<a href="index.php?action=site_story&h=del&id={$v['sid']}&state={$v['state']}">删除</a>
+	</td>
+  </tr>
+  {php $i++;}
+  {/loop}
+  		<tr>
+			<td colspan="13" align="center">{$pages}</td>
+		</tr>
+  </table>
+</div>
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的爱情观——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>爱情观点 <i>love view</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="l-view">
+			    <div class="l-view1"> 
+				  <p>                                                                    心语星愿：健康+理想+行动+努力=金钱。我现在最关心的就是身体健康，对于未来，我也有很好很完美的规划及想象，就等着我一步一步地去实现，对此我非常的有信心。而爱情方面，我希望能找到一个适合我的女生，让你快乐，甜甜蜜蜜的过一生。对于我们的这段爱情，我会非常的珍惜，会不离不弃的陪着你。在你心情不好的时候，与你一起分担。我相信顾家的我能把们这个大家庭建立得非常的好，非常的和睦。<br />
+			      </p>
+                </div>
+                <div class="l-view2"> 
+				  <p>                                                                       我们需要的爱情，不是将就也不是委曲求全，更不是一而再再而三的去强求。命里有时终须有，命里无时莫强求，说的也是这个理。是你的就是你的，不是你的，就算你哭天抢地也是强求不来的。之前的感情，带给緣的除了痛苦，还有深深的懊悔。也让他明白了人的现实，经不起风吹雨打。但他相信这世上还是好女孩多，一旦爱上了，他就会坚持到底，许她个一生一世不离不弃。俗话说情人眼里出西施，他不在乎她的外貌、职业、性格，只要适合他的就好。毕竟爱情的力量很强大，很多东西都会因喜欢一个人而改变。<br />
+			      </p>
+                </div>
+                
+
+                
+              </div>
+			  </div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

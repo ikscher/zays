@@ -1,0 +1,121 @@
+<?php if(!defined('IN_MOOPHP')) exit('Access Denied');?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--修改选项</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/jquery.js"></script>
+	<script>
+		function add(){
+		var number = document.getElementsByTagName('input').length;
+		if(number == 13){
+			var k = 'K';
+			var l = number - 2; 
+		}else if(number == 14){
+			var k = 'L';
+			var l = number - 2; 
+		}else if(number == 15){
+			var k = 'M';
+			var l = number - 2; 
+		}else if(number == 16){
+			var k = 'N';
+			var l = number - 2; 
+		}else if(number == 17){
+			var k = 'O';
+			var l = number - 2; 
+		}else if(number == 18){
+			var k = 'P';
+			var l = number - 2; 
+		}else if(number == 19){
+			var k = 'Q';
+			var l = number - 2; 
+		}else if(number == 20){
+			var k = 'R';
+			var l = number - 2; 
+		}else if(number == 21){
+			var k = 'S';
+			var l = number - 2; 
+		}else if(number == 22){
+			var k = 'T';
+			var l = number - 2; 
+		}else if(number == 23){
+			var k = 'U';
+			var l = number - 2; 
+		}else if(number == 24){
+			var k = 'V';
+			var l = number - 2; 
+		}else if(number == 25){
+			var k = 'W';
+			var l = number - 2; 
+		}else if(number == 26){
+			var k = 'X';
+			var l = number - 2; 
+		}else if(number == 27){
+			var k = 'Y';
+			var l = number - 2; 
+		}else if(number == 28){
+			var k = 'Z';
+			var l = number - 2; 
+		}
+			
+			$("<tr><td>"+k+":</td><td><input type='text' name='option"+l+"'  size='50Px;'/></td></tr>").appendTo("table");
+
+		}
+	
+	
+	</script>
+
+
+
+</head>
+
+<body>
+	<div class="list-div" id="listDiv" onmouseout="hiddend();">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+			
+			
+			
+			{if $style != 2}
+			<form action="vote_add.php?action=vote&h=<?php echo $vid;?>" method="post" onsubmit="return checkform();" name = 'content'>
+				<tr><td>A:</td><td><input type="text" name="option1"  size="50Px;"/></td></tr>
+				<tr><td>B:</td><td><input type="text" name="option2" size="50Px;"/></td></tr>
+				<tr><td>C:</td><td><input type="text" name="option3" size="50Px;"/></td></tr>
+				<tr><td>D:</td><td><input type="text" name="option4" size="50Px;"/></td></tr>
+				<tr><td>E:</td><td><input type="text" name="option5" size="50Px;"/></td></tr>
+				<tr><td>F:</td><td><input type="text" name="option6" size="50Px;"/></td></tr>
+				<tr><td>G:</td><td><input type="text" name="option7" size="50Px;"/></td></tr>
+				<tr><td>H:</td><td><input type="text" name="option8" size="50Px;"/></td></tr>
+				<tr><td>I:</td><td><input type="text" name="option9" size="50Px;"/></td></tr>
+				<tr><td>J:</td><td><input type="text" name="option10" size="50Px;" /></td></tr>
+				
+				<tr><td><input type="button" value="新加选项" onclick="add()" /></td><td>
+				<input type="hidden" name = "check" value="1" />
+				<input  type="submit" value="提交"   /></td></tr>
+			</form>
+			
+			
+			{elseif $style == 2}
+				<form action="vote_add.php?action=vote&h=<?php echo $vid;?>" method="post" onsubmit="return checkform();">
+				<tr><td>请输入文字：</td><td><input type="text" name="text"  size="50Px;"  value="请回答："/></td></tr>
+				<input type="hidden" name = "check" value="1" />
+					
+				<tr><td></td><td><input  type="submit" style="width:100px;" value="提交"   /></td></tr>
+			</form>
+			{/if}
+			
+			
+			
+			
+			
+			
+		</table>
+	</div>
+</body>
+</html>
+﻿

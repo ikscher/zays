@@ -1,0 +1,41 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 用户留言和表情编辑</span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+	<form action="" method="post">
+						<table>
+							<tr>
+								<td>留言分类：</td>
+								<td>
+									<select name="comment_type">
+										<option value="1" {if @$comment['comment_type']==1} selected {/if}>视频介绍</option>
+										<option value="2" {if @$comment['comment_type']==2} selected {/if}>人生经历</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>修改评论留言：</td>
+								<td><textarea name="comment" rows="5" cols="40">{php echo !empty($comment['comment'])?$comment['comment']:''}</textarea></td>
+							</tr>
+							<tr>
+								<td>留言排序：</td>
+								<td>
+									<select name="comment_sort">
+										<option value="0" {if @$comment['comment_type']==0}selected{/if}>通用</option>
+										<option value="1" {if @$comment['comment_type']==1}selected{/if}>男对女</option>
+										<option value="2" {if @$comment['comment_sort']==2}selected{/if}>女对男</option>
+										<option value="3" {if @$comment['comment_sort']==3}selected{/if}>男对男</option>
+										<option value="4" {if @$comment['comment_sort']==4}selected{/if}>女对女</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="submit" value="修改" /></td><td></td>
+							</tr>
+						</table>
+					</form>
+</div>

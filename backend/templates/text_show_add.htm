@@ -1,0 +1,83 @@
+
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+
+<script type="text/javascript" src="templates/js/ckeditor/ck.jquery.js"></script>
+<style type="text/css">
+.desc {
+    color: #333333;
+    font-weight: bold;
+}
+tr.over td {
+	background:#cfeefe;
+} 
+</style>
+<script type="text/javascript">
+
+
+function check(){
+	var content = $("#content").val();
+	var starttime = $("#starttime").val();
+	var endtime = $("#endtime").val();
+	if(content == '' || starttime == '' || endtime == ''){
+		alert('请填写完整');
+		return false;
+	}
+}
+
+</script>
+
+<h1 style="margin-bottom:15px;">
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 文字轮播 </span>
+	{if isset($data['starttime'])}
+	<span class="action-span"><a href="index.php?action=other&h=text_show_edit&id={$id}">刷新</a></span>
+	{else}
+	<span class="action-span"><a href="index.php?action=other&h=text_show_add">刷新</a></span>
+	{/if}
+	<div style="clear:both"></div>
+</h1>
+
+
+
+
+<div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+<div class="list-div" id="listDiv">
+{if isset($data['starttime'])}
+	<form action="index.php?action=other&h=text_show_update" method="post" onsubmit="return check()">
+{else}
+	<form action="index.php?action=other&h=text_show_add" method="post" onsubmit="return check()">
+{/if}
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	 
+		<input type="hidden" name = 'id' value="{$id}" />
+		<tr><td>UID:</td><td><input type="text" value="{$data['uid']}" name="uid" /></td> </tr>
+		<tr><td>是否显示</td><td><select name="show"><option value="1" {if $data['show'] == 1} selected="selected"{/if}>显示</option><option value="0" {if $data['show'] == 0} selected="selected"{/if}>不显示</option></select></td> </tr>
+		<tr><td>类型</td><td>
+		<select name="type">
+			<option value="1" {if $data['type'] == 1} selected="selected"{/if}>结婚</option>
+			<option value="2" {if $data['type'] == 2} selected="selected"{/if}>恋爱</option>
+			<option value="3" {if $data['type'] == 3} selected="selected"{/if}>约会</option>
+			<option value="4" {if $data['type'] == 4} selected="selected"{/if}>成功故事</option>
+			</select>
+		</td>
+			
+		 </tr>
+		 <tr><td>排序</td><td><input type="text" name="order" value="{$data['order']}" /></td></tr>
+        <tr><td>开始时间</td><td><input type="text" name="starttime" id="starttime" value="{php echo empty($data['starttime'])?'':date('Y-m-d',$data['starttime']);}" class="Wdate" onFocus="WdatePicker({maxDate:'#F{\$dp.\$D(\'endtime\')}'})" /><span class="require-field">*</span></td> </tr>
+       <tr> <td>结束时间</td><td><input type="text" name="endtime" id="endtime" value="{php echo empty($data['endtime'])?'':date('Y-m-d',$data['endtime']);}" class="Wdate" onFocus="WdatePicker({minDate:'#F{\$dp.\$D(\'starttime\')}'})"/><span class="require-field">*</span></td> </tr>
+       <tr> <td>内容</td>
+	   <span class="require-field">*</span><td ><textarea style="width:500px;" name="content" id="content" class="introduction">{php echo empty($data['content'])?'':$data['content'];}</textarea>
+	   </td> </tr>
+		<tr><td colspan="2" align="center" style="width:200px;"><input type="submit" value="     提         交     " /></td> </tr>
+	
+     
+    </table>
+</form>
+	 
+</div>
+
+
+﻿﻿

@@ -1,0 +1,381 @@
+
+<link href="module/index/templates/default/index.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+/* 城市切换 */
+.change_city{position:relative; font-size:12px; float:left; padding-left:20px; }
+.change_city .name { cursor:pointer; width:110px; height:30px; line-height:30px;}
+.change_city .ol {
+    list-style:none;
+    position:absolute;
+    width:580px;
+    z-index:20;
+    background:#FFF;
+    border:1px #999 solid;
+    top: 30px;
+    left:-80px; 
+    padding:3px 0 10px 20px;
+    color:#999;
+}
+#close {
+    position:absolute;
+    left: 555px;
+    cursor:pointer;
+    color:#060;
+}
+.change_city .ol li { padding-top:5px; float:left; width:290px; line-height:1.3em; height:40px;}
+.change_city .ol a { text-decoration:none; display:block; float:left; width:40px; padding-top:5px; }
+.change_city .ol a:link, .change_city .ol a:visited { color:#C00; }
+.change_city .ol a:hover, .change_city .ol a:active{ color:#03C; }
+/* 城市切换结束 */
+
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="module/index/templates/default/js/jquery.jcarousel.min.js"></script>
+
+<script type="text/javascript" src="public/system/js/sys.js?v=1"></script>
+<script type="text/javascript" src="module/index/templates/default/js/index.js?v=1"></script>
+
+<link href="module/index/templates/rightbottom_popup/css/global.css" rel="stylesheet" />
+
+
+
+
+<script type="text/javascript">
+    //钻石会员轮转
+    jQuery(document).ready(function() {
+		jQuery('#mycarousel').jcarousel({
+          // Configuration goes here
+		  scroll:5
+        });
+	});
+	
+	jQuery(document).ready(function() {
+		jQuery('#mycarousel2').jcarousel({
+          // Configuration goes here
+		  scroll:5
+        });
+	});
+    //设为首页
+    function addHome(){
+        if (window.sidebar){
+            try {
+                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+            }
+            catch (e){
+                alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将 [signed.applets.codebase_principal_support]设置为true");
+            }
+
+            var prefs =  Components.classes["@mozilla.org/preferences-service;1"].getService( Components.interfaces.nsIPrefBranch );
+            prefs.setCharPref("browser.startup.homepage",'http://www.zhenaiyisheng.cc/');
+        } else if (document.all){
+            document.body.style.behavior="url(#default#homepage)";
+            document.body.setHomePage('http://www.zhenaiyisheng.cc/');
+        }else{
+            return false;
+        }
+    }
+   
+    //表单验证
+	function checkForm(){
+	   //header登录表单
+	   var username,password;
+       username=$("#user").val();
+	   password=$("#pwd").val();
+	   
+       if(!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(username) && !/^\d{5,11}$/.test(username)){
+	      alert('您输入的用户名格式不正确！');
+		  return false;
+	   }
+  
+
+	   if(!password){
+	      alert('请输入密码！'); 
+		  return false;
+       }
+       return true;
+	 }
+     
+	
+	//更多检索
+	function more_user(){
+		var workprovince = $("#workprovince1").val();
+		var workcity = $("#workcity1").val();
+		var age1 = $("#age01").val();
+		var age2 = $("#age02").val();
+		
+		if(age1 > age2){
+			alert("您选择的年龄范围不正确，请重新选择");
+			document.getElementById("age01").focus();
+			return;
+		}
+
+	    location.href="index.php?search_type=1&age_start="+age1+"&age_end="+age2+"&workprovince="+workprovince+"&workcity="+workcity+"&photo=1&search_uid=&n=search&h=quick&quick_search=search";
+    }
+
+	//检索验证
+	function checkquicksearch(){
+		if($("#s2").attr("checked") == true) {
+			if($("#search_uid").val() == '') {
+				alert("请输入您要查询的ID");
+				return false;
+			}
+			return true;
+		}
+		var age1 = $("#age1").val();
+		var age2 = $("#age2").val();
+		if( age1 == 0 && age2 == 0) {
+		  alert("请选择年龄");
+		  $("#age1").focus();
+		  return false;
+		}
+		if(age1!=null && age1!='' && age1==0 && age2!=null && age2!='' && age2!=0) {
+		  alert("请选择年龄下限");
+		  $("#age1").focus();
+		  return false;
+		}
+		if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2==0) {
+		  alert("请选择年龄上限");
+		  $("#age2").focus();
+		  return false;
+		}
+		if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2!=0 && age1>age2) {
+		  alert("您选择的年龄范围不正确，请重新选择");
+		  $("#age1").focus();
+		  return false;
+		}
+		return;
+    }
+</script>
+<script type="text/javascript">
+    //搜索条件轮换
+    $(function(){
+        $("input[name=search_type][value=1]").attr("checked","checked");
+        $("input[name=search_type]").click(function(){
+            if(this.value == 1){
+            
+                $("#search_more").css("display","block");
+                $("#search_uid").css("display","none");
+            }
+            if(this.value == 2){
+                $("#search_uid").css("display","block");
+                $("#search_more").css("display","none");
+                $("#age1").val('21');
+                $("#age2").val('45');
+            }
+        });
+
+
+      
+    });
+
+    //地区切换
+	   $(function(){
+          ///$(".ol").hide();
+          $(".change_city").mousemove(function(){$(".ol").show()}).mouseout(function(){$(".ol").hide()});
+
+          $("#close").click(function() {
+             $(".ol").hide();
+          });                    
+       });
+
+</script>
+</head>
+
+<body>
+
+<!-- box -->
+<div id="box">
+  <div id="box_main">
+    <div id="header">
+    <div class="header_a">
+    <div class="index"><a href="javascript:addHome();" >&nbsp;设真爱一生网为首页</a></div>
+    
+    <!-- 切换城市 -->
+     <div class="change_city">  <div class="name"><span style="color:#C00; font-weight:blod; font-size:14px;">{php echo $currentdistrict;}</span>切换地区</div>
+      <ol class="ol" style="display:none;">
+        <div id="close">[关闭]</div>
+        <!--<div style="font-weight:bolder; line-height:1em; padding-bottom:5px;"><span>请选择您所在的城市:</span></div> --> 
+        <!-- 可以从此处循环遍历一级菜单项和二级菜单项 -->
+        
+          <li> <p>华北地区：</p><p> <a href="index.php?n=index&province=10102000" ><script>userdetail('10102000',provice)</script></a> <a href="index.php?n=index&province=10104000"><script>userdetail('10104000',provice)</script></a> <a href="index.php?n=index&province=10112000"><script>userdetail('10112000',provice)</script></a> <a href="index.php?n=index&province=10125000"><script>userdetail('10125000',provice)</script></a> <a href="index.php?n=index&province=10121000"><script>userdetail('10121000',provice)</script></a> </p></li>
+          <li> <p>东北地区：</p><p><a href="index.php?n=index&province=10114000"><script>userdetail('10114000',provice)</script></a> <a href="index.php?n=index&province=10117000"><script>userdetail('10117000',provice)</script></a> <a href="index.php?n=index&province=10120000"><script>userdetail('10120000',provice)</script></a> </p></li>
+          <li> <p>华东地区：</p><p> <a href="index.php?n=index&province=10103000"><script>userdetail('10103000',provice)</script></a> <a href="index.php?n=index&province=10118000"><script>userdetail('10118000',provice)</script></a> <a href="index.php?n=index&province=10131000"><script>userdetail('10131000',provice)</script></a> <a href="index.php?n=index&province=10106000"><script>userdetail('10106000',provice)</script></a> <a href="index.php?n=index&province=10107000"><script>userdetail('10107000',provice)</script></a> <a href="index.php?n=index&province=10119000"><script>userdetail('10119000',provice)</script></a> <a href="index.php?n=index&province=10124000"><script>userdetail('10124000',provice)</script></a></p> </li>
+          <li> <p>中南地区：</p><p> <a href="index.php?n=index&province=10113000"><script>userdetail('10113000',provice)</script></a> <a href="index.php?n=index&province=10115000"><script>userdetail('10115000',provice)</script></a> <a href="index.php?n=index&province=10116000"><script>userdetail('10116000',provice)</script></a> <a href="index.php?n=index&province=10101000"><script>userdetail('10101000',provice)</script></a> <a href="index.php?n=index&province=10109000"><script>userdetail('10109000',provice)</script></a> <a href="index.php?n=index&province=10111000"><script>userdetail('10111000',provice)</script></a> </p></li>
+          <li>  <p>西南地区：</p><p> <a href="index.php?n=index&province=10105000"><script>userdetail('10105000',provice)</script></a> <a href="index.php?n=index&province=10127000"><script>userdetail('10127000',provice)</script></a> <a href="index.php?n=index&province=10110000"><script>userdetail('10110000',provice)</script></a> <a href="index.php?n=index&province=10130000"><script>userdetail('10130000',provice)</script></a> <a href="index.php?n=index&province=10128000"><script>userdetail('10128000',provice)</script></a></p> </li>
+          <li> <p>西北地区：</p><p><a href="index.php?n=index&province=10126000"><script>userdetail('10126000',provice)</script></a> <a href="index.php?n=index&province=10108000"><script>userdetail('10108000',provice)</script></a> <a href="index.php?n=index&province=10123000"><script>userdetail('10123000',provice)</script></a> <a href="index.php?n=index&province=10122000"><script>userdetail('10122000',provice)</script></a> <a href="index.php?n=index&province=10129000"><script>userdetail('10129000',provice)</script></a></p> </li>
+      
+        
+      </ol>
+    </div>
+    <!-- 切换城市结束 --> 
+    
+    {if $GLOBALS['MooUid']}
+    <ol >
+      您的用户名是：{php echo MooCutstr($GLOBALS['MooUserName'],16)}
+      您的ID是：{$GLOBALS['MooUid']}&nbsp;&nbsp;
+      最新邮件(<a href="index.php?n=service&h=message">{php echo $GLOBALS['new_email_num']}) <a href="index.php?n=service">进入我的真爱一生&gt;&gt;</a> <a href="index.php?n=index&h=logout">安全退出&gt;&gt;</a>
+    </ol>
+    {else}
+    <ol>
+      <form id="loginform" name="loginform" action="index.php?n=index&h=submit" method="post" >
+        <li>用户名：</li>
+        <li>
+          <input name="username" type="text"  value="请输入邮箱/ID/QQ/手机号"  onmouseover="this.select()" onClick="if(this.value=='请输入邮箱/ID/QQ/手机号'){this.value='';}" style=" width:160px; height:18px; color:#666; border:1px #CCC solid;" />
+        </li>
+        <li>&nbsp;密码：</li>
+        <li>
+          <input name="password" type="password" style=" width:120px; height:18px; border:1px #CCC solid;" />
+        </li>
+        <li> &nbsp;&nbsp;
+          <input name="login" type="submit" id="login" value="" />
+        </li>
+        <li> &nbsp;&nbsp;
+          <label>
+            <input name="" type="checkbox" id="r-pwd" height="30" />
+            记住密码</label>
+        </li>
+        &nbsp;&nbsp;<a href="index.php?n=login&h=backpassword">找回密码</a> &nbsp;&nbsp;<a href="index.php?n=register">注册会员</a> &nbsp;&nbsp;<a href="#">会员中心</a>
+      </form>
+      </ol>
+      {/if}
+      </div>
+      <div class="clear"></div>
+      <ul class="header_b">
+        <li>
+          <dl>
+            <dt><img src="module/index/templates/default/images/a_03.gif" /></dt>
+            <dd>
+              <p>29岁</p>
+              <p>上海</p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt><img src="module/index/templates/default/images/a_05.gif" /></dt>
+            <dd>
+              <p>22岁</p>
+              <p>合肥</p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt><img src="module/index/templates/default/images/a_07.gif" /></dt>
+            <dd>
+              <p>21岁</p>
+              <p>北京</p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt><img src="module/index/templates/default/images/a_09.gif" /></dt>
+            <dd>
+              <p>26岁</p>
+              <p>广州</p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt><img src="module/index/templates/default/images/a_11.gif" /></dt>
+            <dd>
+              <p>25岁</p>
+              <p>合肥</p>
+            </dd>
+          </dl>
+        </li>
+      </ul>
+      <div class="nav">
+        <ol class="nav_b">
+          <li><a href="index.php" class="act" target="_blank">网站首页</a></li>
+          <li><a href="index.php?n=about&h=us" target="_blank">关于我们</a></li>
+          <!--  <li><a href="index.php?n=about&h=media" target="_blank">媒体关注</a></li> -->
+          <li><a href="index.php?n=about&h=contact" target="_blank">联系我们</a></li>
+          <li><a href="index.php?n=about&h=links" target="_blank">合作伙伴</a></li>
+          <li><a href="index.php?n=about&h=getsave" target="_blank">意见反馈</a></li>
+          <li><a href="index.php?n=story" target="_blank">成功故事</a></li>
+          <li><a href="index.php?n=payment&h=diamond" target="_blank">服务介绍</a></li>
+          <li><a href="index.php?n=service&h=activity" target="_blank">活动专区</a><i><img src="module/index/templates/default/images/new-icon.gif" /></i></li>
+          <!--<div class="upgrade"></div>-->
+        </ol>
+        <div class="position_b"> <a href="index.php?n=index&h=govip"></a> </div>
+		
+      </div>
+      </div>
+      <div class="clear"></div>
+      <div id="content">
+      <!-- search -->
+      <form action="index.php?n=search" target="_blank"  method="get" onSubmit="return checkquicksearch();">
+        <div class="search">
+          <div class="search_l"></div>
+          <div class="search_r"></div>
+          <ol>
+            <li>
+              <label>
+                <input name="search_type" type="radio" value="1" checked="checked" id="s1" />
+                按条件搜索</label>
+            </li>
+            <li>
+              <label>
+                <input name="search_type" type="radio" value="2" id="s2" />
+                按ID号搜索</label>
+            </li>
+            <li>&nbsp;&nbsp;</li>
+          </ol>
+          <ol style="float:left;margin-top:1px;display:inline;" id="search_more">
+            <li>性别：</li>
+            <li>
+              <select name="gender" style="width:63px;">
+                <option value="0" {if $user_arr['gender'] == '1'} selected {/if} >男</option>
+                <option value="1" {if $user_arr['gender'] == '0' || empty($user_arr['gender'])} selected {/if}>
+                
+          女
+          
+                </option>
+              </select>
+            </li>
+            <li>&nbsp;&nbsp;</li>
+            <li>年龄：</li>
+            <li><script>getSelect("",'age1','age_start','','21',age);</script></li>
+            <li>至</li>
+            <li><script>getSelect("",'age2','age_end','','45',age) ;</script></li>
+            <li>&nbsp;&nbsp;</li>
+            <li>地区：</li>
+            <li><script>getProvinceSelect43rds('','workprovince','workprovince','workcity','','10100000');</script></li>
+            <li><script>getCitySelect43rds('','workcity','workcity','','');</script></li>
+            <li>&nbsp;&nbsp;</li>
+            <li>
+              <label>
+                <input id="photo" name="photo" type="checkbox" value="1" checked="checked" />
+                有照片</label>
+            </li>
+          </ol>
+          <ol>
+            <li>
+              <input type="text" name="search_uid" id="search_uid" class="index-login-text" style="display:none"/>
+            </li>
+            <input type="hidden" name="n" value="search">
+            <input type="hidden" name="h" value="quick">
+            <input id="quick_search" name="quick_search"  type="hidden" value="search">
+            <li>
+              <input name="search" type="submit" id="search"  value=""/>
+            </li>
+            <li><a href="index.php?n=search&h=super" style="border-bottom:1px solid #0093ca; font-size:12px; color:#0093ca;">高级搜索</a></li>
+          </ol>
+        </div>
+      </form>
+     <div class="clear"></div>
+</div>
+
+
+<div class="clear"></div>
+
+
+
+
+
+
+

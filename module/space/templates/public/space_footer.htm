@@ -1,0 +1,118 @@
+<div class="foot">
+	<div class="foot-nav">
+		<ul>
+			<li><a href="aboutus.html" target="_blank">关于我们</a>|</li>
+			<li><a href="contact.html" target="_blank">联系我们</a>|</li>
+			<li><a href="links.html" target="_blank">合作伙伴</a>|</li>
+			<li><a href="advices.html" target="_blank">意见反馈</a>|</li>
+			<li><a href="story.html" target="_blank">成功故事</a>|</li>
+			<li><a href="diamond.html" target="_blank">汇款信息</a></li>
+		</ul>
+	</div>
+
+	<p>Copyright 2006-{php echo date('Y');} 真爱一生网.All Right Reserved.皖ICP备14002819</p>
+  
+</div><!--foot end-->
+{if $GLOBALS['userid'] && !in_array( MooGetGPC('h','string'), array('return','pay','picflash','makepic','history','chat' ) ) && $_GET['n']!='register' }
+	{template system/rightbottom public}
+{/if}
+
+
+<!--登录模态框-->
+<div class="modal fade" id="myModal" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" >
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h5 class="modal-title" id="myModalLabel">登录真爱一生网，您将获取更多会员的征婚信息和更多的会员关注 </h5>
+	  </div>
+	  <div class="modal-body">
+			<div class="login-box">
+				<form id="loginform" name="loginform" action="index.php?n=index&h=submit" method="post" onsubmit="return checkLoginForm();">
+					<p><input type="text" name="username" id="username"   class="form-control" value=""  class="login-text" /></p>
+					<p><input type="password" name="password" id="password" class="form-control"   class="login-text"/></p>
+					<p><span class="userTips h"></span><span class="pwdTips h"></span></p>
+					<p><input style="width:20px;" name="remember" type="checkbox" id="remember" value="1"  /><label for="remember">记住账号</label>
+						<a href="#"  onclick="javascript:location.href='index.php?n=login&h=backpassword'" class="f-ed0a91-a">忘记密码？</a>
+						<a href='register.html' class="f-ed0a91-a">我要成为会员</a></p> 
+					<p><input type="submit"  name="btnLogin" class="btn btn-success ft" value="登 录" />
+					<span class="fakeuname" >ID，手机号，邮箱 都 可以作为账号</span> 
+					<span class="fakepwd" >密码</span> 
+					<input type="hidden" name="returnurl" value="" />
+				</form>
+			</div>
+			<div class="login-box-right">
+				 <span>告诉我一个地址，让我到你心里；给我一个密码，让我打开你的心门。我们衷心祝福所有在真爱一生网认识的会员都能终成眷属！</span>
+			</div>
+	  </div>
+	  <!-- <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	  </div> -->
+	</div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+<!--登录模态框-->
+<script type="text/javascript">
+	//检测表单
+	function checkLoginForm(){
+		$('.userTips').html('');
+		$('.pwdTips').html('');
+		var username = $('#username').val().replace(/\s/g,'');
+		var password = $('#password').val().replace(/\s/g,'');
+		if(!username || username==''){
+			$('.userTips').html('请输入账号');
+			$('.userTips').removeClass('h');
+			$('.userTips').addClass('s');
+			return false;
+		}else if (!CheckEmail(username) && !chk_phone(username) && !/^\d{8,8}$/.test(username)){
+			$('.userTips').html('输入的用户名格式不正确');
+			$('.userTips').removeClass('h');
+			$('.userTips').addClass('s');
+			return false;
+		}
+		if(!password){
+			$('.pwdTips').html('请输入密码');
+			$('.pwdTips').removeClass('h');
+			$('.pwdTips').addClass('s');
+			return false;
+		}
+		return true;
+	}
+	
+	
+	//表单输入框的提示信息
+	$('input[name=username]').focus(function(){
+	   $('.userTips').addClass('h');
+	   $('.fakeuname').addClass('h');
+		$('.userTips').removeClass('s');
+	   $('.fakeuname').removeClass('s');
+	}).blur(function(){
+	   var username = $.trim($(this).val());
+	   if(!username) {$('.fakeuname').removeClass('h');$('.fakeuname').addClass('s');}
+	});
+	
+	$('input[name=password]').focus(function(){
+	   $('.fakepwd').addClass('h');
+	   $('.pwdTips').addClass('h');
+		$('.fakepwd').removeClass('s');
+	   $('.pwdTips').removeClass('s');
+	}).blur(function(){
+	   var pwd = $.trim($(this).val());
+	   if(!pwd) { $('.fakepwd').addClass('s');$('.fakepwd').removeClass('h');}
+	});
+	
+	$('.fakeuname').on('click',function(){
+	   $('input[name=username]').trigger('focus');
+	});
+	
+	$('.fakepwd').on('click',function(){
+	   $('input[name=password]').trigger('focus');
+	});
+	
+	$('.wrapper li a').on('click',function(){var uid={$GLOBALS['MooUid']};if(!uid){openLogin();return false;}});
+   
+</script>
+<div style="display:none;">
+    <script src="http://s22.cnzz.com/z_stat.php?id=1000262469&web_id=1000262469" language="JavaScript"></script>
+    <script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe78b26575943bb3d1af18f473a6f4f5d' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>

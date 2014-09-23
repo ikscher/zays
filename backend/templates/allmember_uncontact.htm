@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+<script>!window.jQuery && document.write('<SCRIPT src="./../public/system/js/jquery-1.4.2.min.js"><\\/SCRIPT>');</script>
+
+<!--  <script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>-->
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+
+<script type="text/javascript">
+//显示用户信息
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+
+//判断是否选择了会员
+function checkForm(){
+    var k=0;
+	$("input[name^='changesid']") .each(function(){
+        if($(this).attr("checked")==true){
+           k=k+1;
+        }   
+    });
+
+    if(k==0) {
+        alert("请选择处理的会员，可以选择多项！");
+        return false;
+    }    
+    return true;
+}
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{php echo ceil($total/$page_per);})
+
+	page = {php echo ceil($total/$page_per);};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+//全选
+function chooseall(){
+	if($("#choose_all").attr("checked")){
+		$("input[name='changesid[]']").attr("checked",true);
+	}else{
+		$("input[name='changesid[]']").attr("checked",false);
+	}
+}
+
+
+
+//排序
+function chang_order(field,order){
+	location.href="{$currenturl}&order="+field+"&method="+order;
+}
+
+//月收入，年龄筛选条件
+$(function(){
+	$('#birthyear,#salary').click(function(){
+		var birthyear = $('#birthyear:checked').val() ? $('#birthyear:checked').val() : '';
+		var salary = $('#salary:checked').val() ? $('#salary:checked').val() : '';
+		window.location.href = "{$currenturl}&birthyear="+birthyear+"&salary="+salary;			   
+	})
+})
+
+$(function(){
+    $(".csstab tr").mouseover(function(){
+        $(this).addClass("over");
+    }).mouseout(function(){
+        $(this).removeClass("over");    
+    })
+
+    $("#page_per").change(function(){
+        var page_per = this.value;
+        location.href="$currenturl"+"&page_per="+page_per;
+    })
+})
+
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+.callinfo{
+position:absolute;
+top:100px;
+left:100px;
+width:600px;
+height:125px;
+background:#ffffff;}
+#callinfo table{
+backgroung:#ffffff;}
+#callinfo td{
+border:#cccccc solid 1px;
+}
+</style>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="{$currenturl}">刷新当前页</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$title} </span>
+<div style="clear:both"></div>
+</h1>
+<div>
+<form action="" method="get">
+<input type='hidden' name='clear' value='1' />
+  <tr>
+  	<td colspan="8" style="text-align:left">
+		搜索内容：
+		<input name="keyword" type="text" id="keyword" value="{$keyword}"/>
+		<select name="choose" id="choose">
+		    <option value="">不选择</option>
+		    <option value="uid" {if $choose=='uid'}selected="selected"{/if}>ID号</option>
+			<option value="username" {if $choose=='username'}selected="selected"{/if}>用户名</option>
+		
+			<option value="nickname" {if $choose=='nickname'}selected="selected"{/if}>昵称</option>
+			<option value="telphone" {if $choose=='telphone'}selected="selected"{/if}>手机号</option>
+			<option value="sid" {if $choose=='sid'}selected="selected"{/if}>客服id</option>
+		</select>
+		
+		
+		
+		<input type="hidden" name="action" value="allmember" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input name="" type="submit" value="搜 索"/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;">{$total}位会员</span>
+
+
+	</td>
+	  </tr>
+</form>
+</div>
+<div style=" margin-top:5px; margin-bottom:5px; color:#960">
+排序方式：
+{loop $sort_arr $key $val}
+	<a href="{$currenturl}&order={$key}&method=del">× </a>
+    <span style="background-color:#CCC"><a href="{$currenturl}&order={$key}&method=replace">{php echo $allow_order[$key]}
+    {if $val == 'desc'}
+    	&nbsp;↓&nbsp;
+    {else}
+    	&nbsp;↑&nbsp;
+    {/if}
+    </a></span>
+    &#12288;
+{/loop}
+</div>
+<div class="list-div" id="listDiv">
+<form action="index.php?action=allmember&h=uncontact" method="post" onsubmit="return checkForm();" >
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th><input type="checkbox" id="choose_all" value="choose_all" onclick="chooseall()" /></th>
+    <th><a href="javascript:chang_order('uid','{$rsort_arr['uid']}')"  style="text-decoration:underline;">ID</a></th>
+    <th>用户名</th>
+    <th>性别</th>
+    <th>
+		<a href="javascript:chang_order('birthyear','{$rsort_arr['birthyear']}')"  style="text-decoration:underline;">年龄</a>
+	</th>
+    <th>等级</th>
+    <th>
+		<a href="javascript:chang_order('images_ischeck','{$rsort_arr['images_ischeck']}')"  style="text-decoration:underline;">照片</a>
+	</th>
+    <th><a href="javascript:chang_order('salary','{$rsort_arr['salary']}')"  style="text-decoration:underline;">收入</a></th>
+    <th>工作地</th>
+    <th><a href="javascript:chang_order('allotdate','{$rsort_arr['allotdate']}')"  style="text-decoration:underline;">分配时间</a></th>
+    <th><a href="javascript:chang_order('regdate','{$rsort_arr['regdate']}')"  style="text-decoration:underline;">注册时间</a></th>
+
+   
+	<th><a href="javascript:chang_order('usertype','{$rsort_arr['usertype']}')"  style="text-decoration:underline;">会员类型</a></th>
+    <th><a href="javascript:chang_order('login_meb','{$rsort_arr['login_meb']}')"  style="text-decoration:underline;">登录</a></th>
+	<th>工号</th>
+	<th><a href="javascript:chang_order('sid','{$rsort_arr['sid']}')"  style="text-decoration:underline;">客服</a></th>
+    <th><a href="javascript:chang_order('is_lock','{$rsort_arr['is_lock']}')"  style="text-decoration:underline;">锁定</a></th>
+	
+    <th>操作</th>
+  </tr>
+  {loop $member_list  $member}
+   <tr>
+    <td><input type="checkbox" value="{$member['uid']}" name="changesid[]" /></td>
+    <td align="center"><a href="#" class="userinfo" onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['uid']}</a></td>
+    <td align="left" style="text-indent:30px;"  > 
+		{if $member['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>
+		{else}<img src="templates/images/m.gif" alt="男" title="男"/>
+		{/if}
+		<a href="#" onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['username']}</a>
+	</td>
+    <td align="center">{if $member['gender']==1}女{else}男{/if}</td>
+    <td align="center">{php echo date("Y")-$member['birthyear'];}</td>
+    <td align="center">$GLOBALS['member_level'][$member['s_cid']]</td>
+    <td align="center">{php echo isset($member['mainimg']) && $member['mainimg']?"有":"无";}</td>
+    <td align="center"><script>userdetail("$member['salary']",salary1);</script></td>
+    <td align="center"><script>userdetail("$member['province']",provice);userdetail("$member['city']",city);</script></td>
+
+    <td align="center">{php if(isset($member['allotdate']) && $member['allotdate']) echo date("Y-m-d H:i",$member['allotdate']);}</td>
+    <td align="center">{php echo date("Y-m-d H:i",$member['regdate']);}</td>
+	
+
+
+	<td align="center">
+		{php if($member['usertype']==1)echo "本站注册";if($member['usertype']==2)echo "外站加入";if($member['usertype']==3)echo "全权会员";}
+	</td>
+    <td align="center">{if isset($member['login_meb'])}{$member['login_meb']}{/if}</td>
+	
+    <td align="center">
+    	{php if($member['sid']!=''&&$member['sid']!=0) echo $member['sid'].'号';else echo "暂无";}
+    </td>
+	<td align="center">{php echo $GLOBALS['kefu_arr'][$member['sid']]}</td>
+    <td align="center">{php if($member['is_lock']==1) echo '否';else echo '<font color="#FF0000">是</font>';}</td>
+	
+    <td align="center">
+
+      <!--  
+	  {if (in_array($member['s_cid'],array(20,30)) && $member['usertype']==1) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_aftersales_service'])}
+	 
+	  {elseif $member['usertype']==3	&& !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_aftersales_service']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_group'])}
+					
+	  {else}
+      
+	  &nbsp;&nbsp;|&nbsp;&nbsp;
+      -->
+      <a href="#" onclick="parent.addTab('修改会员{$member['uid']}资料','index.php?action=allmember&h=edit_info&uid={$member['uid']}')">修改资料</a>
+	  <!-- {/if} -->
+	</td>
+  </tr>
+  {/loop}
+ </table>
+
+<input type="submit" name="submit" value='提交处理' />注：一次尽量选择一个会员处理（不要选择多个）！
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$page_links}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+     
+    </tr>
+  </table>
+  </form>
+</div>
+
+
+</body>
+</html>

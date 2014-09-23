@@ -1,0 +1,352 @@
+<!DOCTYPE html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我想有个家 真爱一生会员招募中</title>
+
+</head>
+
+
+<link href="module/service/templates/default/tytv.css" rel="stylesheet" type="text/css" />
+<script src="public/system/js/jquery-1.3.2.min.js"></script>
+<style>
+.photo, .video { width:950px;  background:#FFF;  }
+.photo p { text-align:right;  no-repeat center 0; width:930px; padding:30px 20px 0 0; height:24px;}
+.photo ol { width:920px; list-style:none; overflow:hidden; height:165px; margin-top:5px;}
+.photo ol li{ float:left; padding:0px 1px 0 0 ; }
+.photo ol li img {border:1px #f583b0 solid;  }
+
+.video_ul { width:940px;  float:left; padding:10px 0 0 10px; height:180px; overflow:hidden;} 
+.video_ul li {float:left; width:290px; height:212px; overflow:hidden; padding:0 10px; }	
+</style>
+
+<script LANGUAGE="Javascript" src="module/service/templates/public/js/jquery.jplayer.min.js"></script>
+<script src="public/system/js/sys.js?v=1"></script>
+</head>
+<script type="text/javascript">
+  function checkForm() {
+	var username = $("#username").val();
+    var mobile = $("#mobile").val();
+    var year = $("#year").val();
+    var month = $("#month").val();
+    var workprovince = $("#workprovince").val();
+    var workcity = $("#workcity").val();
+    if(!username || username==''){
+        alert('您的用户名格式不对!');
+        return false;
+    }
+    if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(mobile)) || mobile==''){ 
+        alert('您输入的手机号格式不对!');
+        return false;
+    }
+    if(year=='-1'||year==''){
+        alert('您忘记选择出生年份');
+        return false;
+    }
+    if(month=='-1'||month==''){
+        alert('您忘记选择出生月份');
+        return false;
+    }
+    if(workprovince == '10101201' || workprovince =='10102000' || workprovince =='10103000' || workprovince =='10101002' || workprovince =='10104000' || workprovince =='10105000' || workprovince =='10132000' || workprovince =='10133000' || workprovince =='10134000'){
+        return true;
+    }else{   
+        if(workprovince == '-1' || workprovince == '' || workcity=='-1' || workcity==''){
+            alert('您忘记选择地区这项了!');
+            return false;
+        }
+    }
+    return true; 
+  }
+  $(function(){
+      $("#useryear").attr("disabled","disabled");
+      $("#usermonth").attr("disabled","disabled");
+      $("#userworkprovince").attr("disabled","disabled");
+      $("#userworkcity").attr("disabled","disabled");
+
+  });
+  function checkRemark(){
+    var content =  $("#content").val();
+    if (content.length<=1 || content==''){
+	  alert("请输入您的评论内容!");
+	  return false;
+   }
+
+
+
+ }    
+ //检测验证码是否正确
+ /*
+$(function().blur(function(){
+		var seccode = $('#seccode').val();
+	
+		var url = 'ajax.php?n=service&h=seccode&updates='+Math.random();
+		$.get(url,{seccode:seccode},function(data){							
+			if(data == '2'){
+				alert('验证码输入不正确');
+			}						
+		   
+    });
+
+  });
+
+*/
+        //分页跳转
+        function gotoPage() {
+            var page = $("#pageGo").val();
+            var page = parseInt(page);
+            
+           
+            window.location.href = "{$currenturl}&page="+page;
+        }
+        function enterHandler(event){
+            var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+               gotoPage();  //调用函数
+             } 
+        }
+
+</script>
+<body id="body_family">
+<div class="box">
+	<div class="main">
+    	<div class="jieshao">
+			<dl>
+            	<dt>
+                	<img src="module/service/templates/default/images/tytv/nj_pic.jpg">
+                    <div style="+margin-top:-130px;">
+                        <h3>栏目介绍</h3>
+                        <p>2006年1月1日，《我想有个家》栏目正式在南京电视台教育科技频道播出，是江苏地区首个大型婚恋交友类电视节目。栏目开播至今已制作播出近500期节目（104档/年），每期时长40分钟，每周六、周日晚20：10播出。自开播以来，央视平均收视率维持在3.0左右。节目播出后已为过半数的嘉宾找到了情感归宿。节目的宗旨就是为嘉宾提供最贴心的服务。</p>
+                    </div>
+                </dt>
+                <h3>报名要求</h3>
+                <dd style="font-size:12px;">
+                    <p>《我想有个家》栏目，以其准确的节目定位，鲜明的节目风格，权威、高效的服务性能和独特的运作模式而成为全国婚恋类栏目中的佼佼者。《我想有个家》每期节目通过演播室嘉宾访谈（以嘉宾真实的情感经历、人生故事和对生活的感悟、对家的期盼为主线），嘉宾生活、工作、家庭状态全景式展现，以及相亲配对环节等多种环节和表现手法，全面深入地展现出嘉宾的自然情况、个性特点。其真实性现场感、故事性、时代性使《我想有个家》在同时段节目中一直保持着不俗的收视表现。自2006年1月1日开播至今已有千余位来自海内外、不同年龄、不同职业、不同社会阶层的单身男女走进节目。其中包括来自美国的年轻女孩，来自日本的成功男士，来自香港的成熟女子，来自宝岛台湾的魅力女性。医生、企业家、大学教授、科研工作者等不同领域的精英也纷纷走进节目。当然，许多来自弱势群体的单身朋友也通过节目找到了理想中的家。</p>
+                </dd>
+            </dl>
+        </div>
+    	<div class="baoming">
+        	<div><img src="module/service/templates/default/images/tytv/minge.gif"></div>
+            <div class="bm_up">
+            	<table cellpadding="0" cellspacing="0" border="0">
+                	<tr>
+                    	<td height="30" align="center" colspan="2">已报名</td>
+                        <td>人数<span>{$num}</span>人</td>
+                    	<td><a href="#liuyan"><img src="module/service/templates/default/images/tytv/liuyan.gif"></a></td>
+                    </tr>
+                	<tr>
+                    	<td colspan="2" height="30"><span>♀女：</span></td>
+                        <td><input name="" type="text" style="width:120px;" value="{$female_num}"></td>
+                    </tr>
+                	<tr>
+                    	<td colspan="2" height="30"><tt>♂男：</tt></td>
+                    	<td><input name="" type="text" style="width:120px;" value="{$male_num}"></td>
+                    </tr>
+                </table>
+            </div>
+			<form id='reguser' action='index.php?n=service&h=register&channel=11' method='post'  onsubmit="return checkForm();" >
+            <div class="bm_down">
+			  {if empty($GLOBALS['userid'])}
+			  	<p>
+                	姓&nbsp;&nbsp;名：<input name='username' id="username" type="text" style="width:55px; height:18px; border:1px #b7caf5 solid; " /> 性别：<select name="gender" style="width:40px;"> <option>男</option>
+                  <option>女</option></select>
+					
+                </p>
+                <p>
+                    出&nbsp;生：
+						 <script>getYearsSelect('','year','year','','-1');</script>
+                          <script>getMonthsSelect('','month','month','','-1');</script>
+                </p>
+                <p>手机号：<input name="mobile" id="mobile" type="text"  style="width:120px;">  </p>
+                <p>
+                    地&nbsp;区：
+						 
+						 <script>getProvinceSelect43rds('','workprovince','workprovince','workcity','','10100000');</script>                  
+                       <script>getCitySelect43rds('','workcity','workcity','','');</script>
+                </p>
+			  
+			  {else}
+			  	<p>
+                	姓&nbsp;&nbsp;名：<input name='username'  id="username" value="{php echo $user_arr['username'];}" type="text" disabled="disabled" style="width:60px;"> 性别：<select name="gender" disabled="disabled" style="width:40px;">
+					<option value='0' {if $user_arr['gender']=='0'} selected="selected" {/if} disabled="disabled">男</option>
+				  <option value='1' {if $user_arr['gender']=='1'} selected="selected" {/if} disabled="disabled">女</option>
+					</select>
+                </p>
+                <p>
+                    出&nbsp;生：<script>getYearsSelect('','useryear','year',{php echo $user_arr['birthyear'];},'-1');</script>
+						  <script>getMonthsSelect('','usermonth','month',{php echo $user_arr['birthmonth'];},'-1');</script> 
+                </p>
+                <p>手机号：<input name="mobile" id="mobile"  type="text" value="{php echo $user_arr['telphone'];}" disabled="disabled" style="width:120px;"> </p>
+                <p>
+                    地&nbsp;区：<script>getProvinceSelect43rds('','userworkprovince','workprovince','workcity','{php echo $user_arr['province'];}','10100000');</script>                  
+					   <script>getCitySelect43rds('','userworkcity','workcity','{php echo $user_arr['city'];}','');</script> 
+                </p>
+			  
+			  {/if}
+				
+                <div><input name="" type="submit" value="" style="width:178px; height:48px; background:url(module/service/templates/default/images/tytv/baoming.gif) no-repeat; border:none; "></div>
+            </div>
+			</form>   
+            <div class="clear"></div>
+        </div>
+        <div style="height:10px; overflow:hidden; clear:both;"></div>
+    	<div class="yaoqiu">
+        	<h3>报名要求</h3>
+            <ul>
+            	<li><span>·</span>报名嘉宾请确认能参与南京的节目拍摄；</li>
+                <li><span>·</span>单身、男22岁以上、女20岁以上；</li>
+                <li><span>·</span>语言表达能力强，表现欲及表现力俱佳；</li>
+                <li><span>·</span>愿意将自己独特的世界观、人生观、恋爱观、行为特点与别人分享；</li>
+                <li><span>·</span>愿意在电视节目上展现个人风采；</li>
+                <li><span>·</span>个人出身、学历、经历、情感经历或才艺等任一方面与众不同；</li>
+                <li><span>·</span>可根据节目录制要求安排个人时间；</li>
+                <li><span>·</span>报名者需在真爱一生网上传照片，否则会失去优先面试权</li>
+                <div class="clear"></div>
+            </ul>
+        	<h3>节目形态</h3>
+            <ul>
+            	<div>节目以演播室访谈为主，同时加上对嘉宾生活状态的采访，同时在室外对嘉宾进行交友配对过程，三者相互穿插，互为承接。</div>
+                <div class="clear"></div>
+            </ul>
+        	<h3>依托《我想有个家》，不断拓展产业经营</h3>
+            <ul>
+            	<div>在《我想有个家》开播伊始，就不断探索节目与产业经营的相互融合。随着《我想有个家》的影响力不断扩大，伴随它成长起来的《我想有个家》月月相亲会也已经成为江苏规模最大、最具权威、最具影响力的婚介婚庆综合性服务机构。它成功地迈出了媒体向服务型产业进军的脚步，依托节目的优势带动了产业的发展，同时产业所带来的资源和效益再次反哺节目，从而形成良性循环的产业链，目前《我想有个家》“月月相亲会”婚介服务中心已拥有数万名会员。每月定期举办的大型万人相亲会已成为南京地区一道靓丽的风景线，各类小型联谊会成为单身朋友们聚会、交友的第一选择，并多次举办百对新人婚礼，《我想有个家》以全新的婚恋、婚介、婚庆文化产业，在南京市民中引领、倡导健康向上的新时代婚恋观，有效实现了社会效益与经济效益双丰收，为构建和谐社会做出自己的努力。</div>
+            </ul>
+        	<h3>获奖情况</h3>
+            <ul>
+            	<div>《我想有个家》栏目获得2006年度全国社教栏目创优三等奖；</div>
+            	<div>2008年度全国城市台优秀栏目一等奖；</div>
+            	<div>2010年度全国广播电视十佳栏目</div>
+            	<div>2011年全国广播电视民生影响力电视60强栏目称号（中国广播电视协会生活节目委员会（首届）广播电视民生影响力评选）</div>
+            	<div>负责创作的《我想有个家》之《天堂的阶梯》节目获2006年度社教栏目类创优节目三等奖（中国广播电视协会  城市广播电视新闻研究会）</div>
+            	<div>负责创作的《我想有个家》之《相约井冈山》节目获2008年度全国城市台优秀栏目一等奖）</div>
+            	<div>2011年全国广播电视民生影响力电视60强栏目称号</div>
+            	<div>2010年省市收听收看全省发文表扬、推广</div>
+            </ul>
+        </div>
+        <div id="liuyan">
+       		<form id='remark' action='index.php?n=service&h=njtv' method="post" onSubmit="return checkRemark();">
+       		<h3>我要留言&nbsp;&nbsp;<font>留言的字数 不超过 2000字</font></h3>
+			
+            <ul>
+            	<li><textarea name="content" id="content"  style="width:800px; height:88px;"></textarea></li>
+                <li>
+                	<br/>
+                	<br/>
+                	<p><input type="submit" value="" style="cursor:pointer; width:48px; height:24px; border:1px #999 solid; background:url(module/service/templates/default/images/tytv/fb.gif) no-repeat;"></p>
+                </li>
+                <div class="clear"></div>
+            </ul>
+			</form>
+			
+            <div class="clear"></div>
+            <ol>
+				 {loop $result  $value}
+                	<li>
+						
+                    	<div><tt>网友 <a href="#">{php echo $value['username'];}</a> 发表评论 &nbsp;{php echo $value['operationtime'];}</tt></div>
+                        <div><p>{php echo $value['remark'];}</p></div>
+                    </li>
+                 {/loop}
+                   
+                 
+            	
+                <div style="text-align:right; padding-top:10px;"> 转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onKeyDown="enterHandler(event)"/> 页 &nbsp;
+                  <input type="button"  value="跳转" class="button" onClick="gotoPage()"/></div>
+            </ol>
+        </div>
+		<!-- 图片及视频 -->
+		<div style="height:10px; clear:both; "></div>
+            	<div class="photo">
+                	
+                    <div style="width:948px; padding-bottom:10px; margin-left:10px; padding-top:5px; ">
+                        <ol>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/01.jpg" /></li>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/02.jpg" /></li>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/03.jpg" /></li>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/04.jpg" /></li>
+                        </ol>
+                        <ol>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/05.jpg" /></li>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/06.jpg" /></li>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/07.jpg" /></li>
+                            <li><img  style="width:224px; height:160px;"src="module/service/templates/default/images/njtv/08.jpg" /></li>
+                        </ol>
+						<ol>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/09.jpg" /></li>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/10.jpg" /></li>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/11.jpg" /></li>
+                            <li><img style="width:224px; height:160px;" src="module/service/templates/default/images/njtv/12.jpg" /></li>
+                        </ol>
+                    </div>
+					
+                </div>
+                <div style="height:10px; clear:both; "></div>
+                <div class="video">
+                	
+                    <div style="width:948px; padding-bottom:20px; height:180px; +height:200px; overflow:hidden; border-left:1px #f583b0 solid; border-right:1px #f583b0 solid; ">
+                        <ol class="video_ul">
+                            <li><div id="v1"></div></li>
+                            <li><div id="v2"></div></li>
+                            <li><div id="v3"></div></li>
+                        </ol>
+                    </div>
+                   
+                </div>
+            <!-- 图片及视频 结束 -->
+    </div>
+</div>
+ 
+<div class="footer">
+    	 <p><a href="index.php?n=about&h=us">关于我们</a>| <!--  <a href="index.php?n=about&h=media">媒体关注</a> | --> <a href="index.php?n=about&h=contact">联系我们</a> | <a href="index.php?n=about&h=links">合作伙伴</a> | <a href="index.php?n=about&h=getsave">意见反馈</a> | <a href="index.php?n=story">成功故事</a>| <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> |
+      {if ($user_arr['s_cid'] == 30 && $user_arr['bgtime'] > time()-604800) || !empty($GLOBALS['h_pay'])} <a href="index.php?n=payment&h=add_money">其他信息</a> {else} <a href="index.php?n=payment&h=channel">其他信息</a> {/if}</p>
+        <p style="padding:10px 0; "><img src="module/service/templates/default/images/tytv/kefu.gif" /></p>
+        <p>Copyright 2005-2010 版权所有：真爱一生网 闽ICP备09064513号</p>
+		<p>真爱一生网备用域名： www.hongniangw.com | www.hongniangwang.com</p>
+</div>
+<script type="text/javascript" src="public/system/js/jwplayer.js"></script>
+	<script type="text/javascript">
+	var w='280px',h='212px';
+		jwplayer("v1").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/service/templates/default/images/flv/njtv/1.flv",
+			image: "module/service/templates/default/images/njtv/1.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("v2").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/service/templates/default/images/flv/njtv/2.flv",
+			image: "module/service/templates/default/images/njtv/2.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("v3").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/service/templates/default/images/flv/njtv/3.flv",
+			image: "module/service/templates/default/images/njtv/3.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+	</script>
+	{template system/service_foot public}
+</body>
+
+</html>

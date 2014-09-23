@@ -1,0 +1,57 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../public/system/js/sys.js?v=1"></script>
+<script type="text/javascript" src="./templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+
+
+function check_form(){
+	
+	var msg_content = $("#msg_content").val();
+
+	
+	if($.trim(msg_content)==''){
+		alert('内容必须填写');
+		return false;
+	}
+	if($.trim(msg_title) == ''){
+		alert('标题不能为空');
+		return false;
+	}
+	
+	return true;
+}
+</script>
+<h1>
+<span class="action-span1"><a href="#">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> ----- 群发站内邮件</span>
+
+<div style="clear:both"></div>
+</h1>
+<form action="index.php?action=activity&h=sendmsm_batch" method="post" onsubmit="return check_form();">
+
+
+<div class="list-div" id="listDiv">
+	
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+		 <tr>
+			<td>　收件人ID：<input type="text" name="uid_list" id="uid_list"  value="{$uid_list}"  style="width:500px;"/></td>
+		</tr> 
+	
+		<tr>
+			<td colspan="2">　　标　题：<input type="text" name="msg_title" id="msg_title" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				　　内　容：
+				<textarea name="msg_content" id="msg_content" rows="10" cols="60"></textarea>
+			</td>
+		</tr>
+	</table>
+  
+	<div style="padding:20px;background:#fff">
+		<input type="submit" name="post" value="提交" class="button" />
+	</div>
+	
+</div>
+</form>

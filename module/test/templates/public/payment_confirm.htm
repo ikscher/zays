@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$order['subject']}——真爱一生网</title>
+<link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<script type="text/javascript">
+function sendmessage(){
+var uid=$("#message").attr('value');
+var sid=$("#sid").attr('value');
+if(uid){
+        var url="ajax.php?n=payment"
+        $.get(url,{uid:uid,sid:sid},function(str){
+        });
+}
+}
+</script>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;{$order['subject']}</span></p>
+		<div class="clear"></div>
+		<div class="payment">
+			<div class="pm-bank-banner">
+				<h5 style="padding:30px 20px 0;"><img src="module/payment/templates/default/images/{$pay_image}" /></h5>
+			</div><!--pm-bank-banner end-->
+			<div class="pm-content">
+				<p align="center" class="f-14x-d73e90">请核对信息 {php if($time>=strtotime($activitytime1)&&$time<strtotime($activitytime2)) echo "[活动期间]";} {$order['subject']}</p>
+				<table width="898" border="0" cellspacing="0" cellpadding="0" class="bank-table">
+					<tr>
+						<td width="40%" height="55" align="right" class="alipay">真爱一生服务费用:</td>
+						<td width="60%"  class="alipay"><strong>{$order[order_amount]}元</strong>
+						</td>
+					</tr>
+					<tr>
+						<td height="55" align="right" class="alipay">您的真爱一生支付单号:</td>
+						<td  class="alipay"><span class="f-14x-d73e90">{$order[order_sn]}</span></td>
+					</tr>					
+				</table>
+                <input type="hidden" id="message" value="{$uid}" />
+                <input type="hidden" id="sid" value="{$server['sid']}" />
+				<div align="center">{$buton}</div>
+			</div><!--pm-content end-->
+		</div>
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}
+    <!--foot end-->
+</div><!--main end-->
+</body>
+</html>

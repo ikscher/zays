@@ -1,0 +1,35 @@
+body{background:url(../images/bg.png) repeat;}
+
+.main{width:960px;height:658px;position:absolute;top:50%;left:50%;margin-top:-329px;margin-left:-480px;}
+.fl{float:left;}
+.left{width:288px;height:652px;background-color:#d13f71;position:relative;border:1px  solid #c9c7c8\0;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);}
+
+.right{width:668px;height:652px;background-color:#fff;border:1px  solid #c9c7c8\0;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);}
+.logo{width:260px;height:100px;background:url(../images/logo.png) no-repeat 30px 10px;margin-top:20px;}
+.pb{margin-left:40px;width:287px;height:410px;background:url(../images/lady.png) no-repeat 0 20px;}
+.illustration{position:absolute;left:28px;top:520px;}
+.illustration span{color:#fff;display:block;font-size:13px;padding-top:10px;}
+
+.head{margin:25px 0 15px 10px;}
+.ss{color:#7e8128;font-size:20px;font-weight:bold;}
+.lg{float:right;margin-right:20px;padding-top:3px;}
+.lg a{text-decoration:none;color:#658cb4;font-size:12px;}
+.lg a:hover{text-decoration:none;color:#7919ef;}
+.line{margin:0 10px;border-bottom:1px solid #ddd;}
+.regContent{width:658px;height:510px;background:url(../images/contentbg.png) no-repeat 4px 10px;position:relative;}
+.clearfix:after{*zoom:1;content:"."; display:block; height:0; visibility:hidden; clear:both;}
+.note{position:absolute;left:58px;top:466px;color:#999;}
+.footer{padding-left:10px;padding-top:5px;}
+.footer span{padding:5px 0;display:block;color:#999;font-size:12px;}
+dl{margin-top:40px;}
+dt {width: 120px;text-align: right;line-height: 38px;float: left;}
+dd {width: 520px;float: left;margin-bottom: 5px;line-height: 45px;height: 45px;}
+label.gender {background-repeat: no-repeat;background-image: url(../images/gender.jpg);padding-left: 25px;height: 32px;width: 45px;display: inline;}
+label.male {background-position: 5px 5px;}
+label.female {background-position: 5px -27px;}
+.register-clue {width: 261px;height: 38px;line-height:38px;background: url(../images/w-box.gif);padding-left: 20px;}
+dd p {float: left;margin-left: 15px;display: inline;}
+dd p span{font-size: 12px;}
+.tos{font-size:12px;}
+
+

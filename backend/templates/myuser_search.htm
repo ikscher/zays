@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+
+<script type="text/javascript">
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					
+					document.write(valueArray[1]);
+					
+				}	
+			}
+	}
+}
+
+
+
+//当鼠标移过时显示图框
+var xPos;
+var yPos;
+var timerID;
+function showinfo(evt,uid){
+
+        evt=evt || window.event;
+	if(evt.pageX){          
+		xPos=evt.pageX;
+		yPos=evt.pageY;
+	} else {      
+		xPos=evt.clientX+document.body.scrollLeft-document.body.clientLeft;
+		yPos=evt.clientY+document.body.scrollTop-document.body.clientTop;   
+		
+	}
+        timerID = setTimeout("xy("+xPos+","+yPos+","+uid+")",500);
+}
+function xy(xPos,yPos,uid){
+		
+		if(xPos+70+600<window.screen.width){
+		      $("#callinfo").css('left',xPos+70);
+		      $("#callinfo").css('top',yPos-70);
+		      $("#userid").html(uid);
+		      $.get("ajax.php?n=callinfo",{uid:uid},function(str){
+		              var arr=new Array();
+		              arr=str.split('||');
+		              $("#usertelphone").html(arr[0]);
+		              $("#userbezhucontent").html(arr[1]);
+		              $("#usercause").html(arr[2]);
+		              $("#usercallstate").html(arr[3]);
+		              $("#usercallremark").html(arr[3]);
+		      });
+		      $("#callinfo").css('display','block');
+		//alert(xPos+'|'+yPos);
+		      }else {$("#callinfo").css('display','none'); }
+}
+function hiddend(){
+	       $("#callinfo").css('display','none');
+	       clearTimeout(timerID);
+	}
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	page = parseInt(page);
+	
+	if(page<1) page = 1;
+
+	
+	if(page>{php echo ceil($total/$page_per);}){
+	   page = {php echo ceil($total/$page_per);};
+	}
+	
+	
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+
+
+
+$(function(){
+	$(".csstab tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	});
+
+		
+	$("#listDiv input[name^='is_awoke_']").click(function(){
+		var uid = this.value;
+		$.get("myuser_ajax.php?n=change_awoke",{uid:uid},function(str){
+			if(str == 'error') alert('意外出错,请稍后再试');
+		});
+	});
+});
+
+</script>
+
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+#listDiv .desc{
+	color:#333;
+	font-weight:bold;
+}
+.area_select{
+	width:100px;
+}
+
+.callinfo{
+position:absolute;
+top:100px;
+left:100px;
+width:600px;
+height:125px;
+background:#ffffff;}
+#callinfo table{
+backgroung:#ffffff;}
+#callinfo td{
+border:#cccccc solid 1px;
+}
+
+</style>
+</head>
+<body>
+<h1 style="margin-bottom:15px;">
+	<span class="action-span"><a href="index.php?action=myuser&h={$_GET['h']}">刷新</a></span>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 我的用户搜索 </span>
+	<div style="clear:both"></div>
+</h1>
+
+
+<div class="list-div" id="listDiv" style="background:#fff;" onmouseout="hiddend();">
+
+	<div style="padding:10px;background:#fff"></div>
+<form action="" method="get">
+	<table cellpadding="4" cellspacing="0">
+	<tr>
+		<td>
+			<span class="desc">会员ID： </span><input type="text" name="uid" value="{php isset($_GET['uid'])?$_GET['uid']:'';}" style="width:100px;" />
+		</td>
+		<td><span class="desc">成熟度：</span>
+			<select name="grade" style="width:150px;">
+				<option value="">请选择</option>
+			`	{loop $GLOBALS['grade'] $key $grade}
+				<option value="{$key}" {if (isset($_GET['grade'])?$_GET['grade']:'')==$key}selected="selected"{/if}>{$grade}</option>
+				{/loop}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="desc">婚　姻：</span>
+			<select name="marriage" style="width:150px;">
+				<option value="">请选择</option>
+				<option value="1" {if (isset($_GET['marriage'])?$_GET['marriage']:'')==1}selected="selected"{/if}>未婚</option>
+				<option value="3" {if (isset($_GET['marriage'])?$_GET['marriage']:'')==3}selected="selected"{/if}>离异</option>
+				<option value="4" {if (isset($_GET['marriage'])?$_GET['marriage']:'')==4}selected="selected"{/if}>丧偶</option>
+			</select>
+		</td>
+		<td>
+			<span class="desc">分配时间：</span>
+			<input type="text" name="allotdate1" value="{php if(isset($_GET['allotdate1'])) echo $_GET['allotdate1'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+			<input type="text" name="allotdate2" value="{php if(isset($_GET['allotdate2'])) echo $_GET['allotdate2']}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="desc">性　别：</span>
+			<select name="gender" style="width:150px;">
+				<option value="">请选择</option>
+				<option value="0" {if isset($_GET['gender'])&&$_GET['gender']=='0'}selected="selected"{/if}>男</option>
+				<option value="1" {if  isset($_GET['gender'])&&$_GET['gender']==1}selected="selected"{/if}>女</option>
+			</select>
+		</td>
+		<td>
+			<span class="desc">注册时间：</span>
+			<input type="text" name="regdate1" value="{php if(isset($_GET['regdate1'])) echo $_GET['regdate1'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+			<input type="text" name="regdate2" value="{php if(isset($_GET['regdate2'])) echo $_GET['regdate2'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="desc">会员等级：</span>
+			<select name="s_cid" style="width:150px;">
+				<option value="">请选择</option>
+				{loop $GLOBALS['member_level'] $key $member_level}
+					<option value="{$key}" {if (isset($_GET['s_cid'])?$_GET['s_cid']:'')==$key && !empty($_GET['s_cid'])}selected="selected"{/if}>{$member_level}</option>
+				{/loop}
+			</select>
+		</td>
+		<td>
+			<span class="desc">下次联系时间：</span>
+			<input type="text" name="next_contact_time1" value="{php if(isset($_GET['next_contact_time1'])) echo $_GET['next_contact_time1'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+			<input type="text" name="next_contact_time2" value="{php if(isset($_GET['next_contact_time2'])) echo $_GET['next_contact_time2'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="desc">年　龄：</span>
+			<input type="text" name="age1" style="width:75px;" value="{php echo isset($_GET['age1'])?$_GET['age1']:'';}" />到
+			<input type="text" name="age2" style="width:75px;" value="{php echo isset($_GET['age2'])?$_GET['age2']:'';}" />
+		</td>
+		<td>
+			<span class="desc">最后登录时间：</span>
+			<input type="text" name="last_login_time1" value="{php if(isset($_GET['last_login_time1'])) echo $_GET['last_login_time1'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+			<input type="text" name="last_login_time2" value="{php if(isset($_GET['last_login_time2'])) echo $_GET['last_login_time2'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+		</td>
+	</tr>
+	<tr>
+		<td><span class="desc">所在地：</span>
+			<script>getProvinceSelect66('area_select','province','province','city','{php if(isset($_GET['province']))echo $_GET['province']}','10100000');</script>
+			<script>getCitySelect66('area_select','city','city','{php if(isset($_GET['province']))echo $_GET['city']}','');</script>
+		</td>
+		<td><span class="desc">会员收入情况：</span>
+			<script>getSelect('','salary','salary','-1','-1',salary1buxian);</script>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<!-- <span class="desc">在线状态：</span>最近<input type="text" value="" name="online_time" style="width:20px;" />几分钟内在线-->
+			<input type="checkbox" name="master_member" value="1" {if (isset($_GET['master_member'])?$_GET['master_member']:'')==1}checked{/if}/>重点会员
+			<input type="checkbox" name="online" value="1" />在线会员
+		</td>
+		<td>
+			<span class="desc">用户名：</span>
+			<input type="text" name="username" />
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+			<span class="desc">手机号：</span><input type="text" name="telphone" value='{php echo isset($_GET['telphone'])?$_GET['telphone']:'';}' />
+		</td>
+		<td>
+			<span class="desc">昵称：</span>
+			<input type="text" name="nickname" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="desc">姓名：</span>
+			<input type="text" name="truename" />
+		</td>
+	</tr>
+  </table>
+  
+  <div style="text-align:center;margin-left:100px;">
+  	<input type="hidden" name="action" value="myuser" />
+  	<input type="hidden" name="h" value="search"  />
+  	<input type="submit" value="搜索"  class="button" />
+  	<input type="reset" value="重置" class="button" />
+  </div>
+</form>  
+
+  <div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+  
+  <table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th>ID</th>
+    <th>昵称</th>
+    <th>年龄</th>
+    <th>等级</th>
+    <th>照片</th>
+    <th>收入</th>
+    <th>工作地</th>
+    <th>分配时间</th>
+    <th>注册时间</th>
+    <th>客服</th>
+	<th>来源</th>
+	<th>登录</th>
+    <th>最后登录时间</th>
+	<th><a href="index.php?action=myuser&h={$_GET['h']}&order_tel=1&page={php echo isset($_GET['page'])?$_GET['page']:''}" style="text-decoration:underline;"> 同号手机数</a></th>
+    <th>下次联系时间</th>
+ 	<th>重点会员</th>
+	<th>在线状态</th>
+    <th>操作</th>
+	<th>上线提醒</th>
+	<th>操作</th>
+  </tr>
+  {loop @$member_list $member}
+   <tr>
+    <td align="center"><a href="#" class="userinfo" onclick="parent.addTab('{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['uid']}</a></td>
+    <td align="left" style="text-indent:30px;" onmouseover="showinfo(event,{$member['uid']});"> 
+		{if $member['gender']==1}
+			<img src="templates/images/w.gif" alt="女" title="女"/>
+		{else}
+			<img src="templates/images/m.gif" alt="男" title="男"/>
+		{/if}
+		<a href="#" class="userinfo" onclick="parent.addTab('{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['nickname']}</a>
+	</td>
+    <td align="center">{php echo date("Y")-$member['birthyear'];}</td>
+    <td align="center">$GLOBALS['member_level'][$member['s_cid']]</td>
+    <td align="center">{php echo !empty($member['mainimg'])?"有":"无";}</td>
+    <td align="center"><script>userdetail("$member['salary']",salary1);</script></td>
+    <td align="center"><script>userdetail("$member['province']",provice);userdetail("$member['city']",city);</script></td>
+    <td align="center">{php if($member['allotdate']) echo date("y-m-d H:i",$member['allotdate']);}</td>
+    <td align="center">{php echo date("y-m-d H:i",$member['regdate']);}</td>
+    <td align="center">
+		{php echo $GLOBALS['kefu_arr'][$member['sid']];}
+    </td>
+	<td align="center"></td>
+	<td align="center">{$member['login_meb']}</td>
+    <td align="center">{php echo date("y-m-d H:i:s",$member['last_login_time']);}</td>
+	<td align="center"><a href="#" onclick="parent.addTab('{$member['telphone']}号注册会员','index.php?action=allmember&h=same_telphone&telphone={$member['telphone']}','icon')">
+	{$member['num']}</a>
+	</td>
+    <td align="center">{php if($member['next_contact_time']) echo date('y-m-d H:i:s',$member['next_contact_time']);}</td>
+	<td align="center">{if $member['master_member']==1}是{else}否{/if}</td>
+	<td align="center">
+	 				{if (time()-$member['real_lastvisit'])<600}
+	 					<span style="color:red">在线</span>
+	 				{else}
+	 					离线
+	 				{/if}
+	 </td>
+    <td align="center">
+		<a href="#" onclick="parent.addTab('修改会员{$member['uid']}资料','index.php?action=allmember&h=edit_info&uid={$member['uid']}')">修改资料</a>
+	</td>
+	 <td align="center">
+	 	<input type="checkbox" value="{$member['uid']}" {if $member['is_awoke']==1}checked="checked"{/if}name="is_awoke_{$member['uid']}" />
+	 </td>
+   <td align="center"><a href="#" onclick="parent.delmyuser({$member['uid']})">删除</a></td>
+  </tr>
+  {/loop}
+    <tr>
+    <td align="center" colspan="21">{$page_links}</td>
+  </tr>
+ </table>
+</div>
+
+<div class="callinfo" id="callinfo" style="display:none;">
+<table width="600" border="1">
+  <tr>
+    <td width="50" height="20">会员ID</td>
+    <td width="50" id="userid">&nbsp;</td>
+    <td width="50">手机号</td>
+    <td width="78" id="usertelphone">&nbsp;</td>
+    <td width="50">下次联系时间</td>
+    <td width="150" id="usercause">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="43" id="userbezhu">会员备注</td>
+    <td colspan="5" id="userbezhucontent">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="43">下次联系要点</td>
+    <td colspan="5" id="usercallremark">&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+</body>
+</html>

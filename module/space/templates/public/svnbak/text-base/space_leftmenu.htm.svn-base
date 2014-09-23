@@ -1,0 +1,189 @@
+<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;{if $uid != $userid}{php echo $user['nickname']?MooCutstr($user['nickname'], 12, ''):'ID:'.$user['uid']}{else}我{/if}的个人主页</span><a href="#"></a></p>
+	<div class="content-lift">
+		<div class="c-lift-content">
+		<div class="c-lift-title" title="{php echo $user['nickname']?$user['nickname']:'ID:'.$user['uid']}">
+		{if $uid != $userid}{php echo $user['nickname']?MooCutstr($user['nickname'], 12, ''):'ID:'.$user['uid']}{else}我{/if}的个人主页
+		</div>
+		<div class="c-lift-content-in">
+			<div class="left-photos">
+            {if !empty($user['city_star'])}
+            	<a href="index.php?n=payment&h=city_star_intro" target="_blank" title="城市之星" class="citystar"><img src="public/system/images/citystar.gif" /></a>
+			{/if}
+            	<div class="pic-show">
+                    <div class="in-pic">
+                        <p>
+                        {if count($user_pic)}
+                            <a rel="group" id="show_big_pic" href="{php echo IMG_SITE.$user_pic[0]['imgurl']}" onclick="return false;" class="zoomb preview">
+                        {else}
+                            <a id="show_big_pic" href="#" onclick="return false;">
+                        {/if}
+                        {if $user['images_ischeck']=='1'&& $user['mainimg']}
+                             <img id="show_pic_1" src="{php   
+                              if(MooGetphoto($user[uid],'mid')) echo MooGetphoto($user[uid],'mid');
+                              elseif($user['gender'] == '1')echo 'public/system/images/woman_1.gif';
+                              else  echo 'public/system/images/man_1.gif';
+                              }" flag=''/></a>
+                       {elseif $user['mainimg']}
+                            {if $user['gender'] == '1'}
+                                <img id="show_pic_1" src="public/system/images/woman.gif"/>
+                            {else}
+                                <img id="show_pic_1" src="public/system/images/man.gif" />
+                            {/if}
+                            </a>
+                       {else}                                        
+                            {if $user['gender'] == '1'}
+                                <img id="show_pic_1" src="public/system/images/service_nopic_woman.gif"/>
+                            {else}
+                                <img  id="show_pic_1" src="public/system/images/service_nopic_man.gif"/>
+                            {/if}
+                            </a>
+                       {/if} 
+                      <a id="save_pic" href="{php   
+                      if(MooGetphoto($user[uid],'mid')) echo MooGetphoto($user[uid],'mid');
+                      elseif($user['gender'] == '1')echo 'public/system/images/woman_1.gif';
+                      else  echo 'public/system/images/man_1.gif';
+                      }"></a>     
+                        </p>
+                    </div>
+				</div>
+				<div class="photo-box">
+                    <div class="photo-last">
+                    <a title="上一张"  href="javascript:prevPhoto();" class="fleft"><img id="img_last" src="module/space/templates/default/images/last-none.gif" /></a>
+                    </div>
+                    <span id="setpage" value="0"></span>
+                    <div class="photo-show">
+                    {loop $user_pic $k $v} <!--/*相册图片显示*/-->
+                    	{if $k < 3}
+                        <div id="ab{$k}" class="fleft">
+                            <div class="photo-show-in">
+                                <p>
+                                {php $img= "./" . trim(thumbImgPath("1",$v['pic_date'],$v['pic_name']))}
+                                {if file_exists($img)}
+                               		<img  class="tt" name="thumbpic" onclick="javascript:showpic(this); " flag="{php echo $v['imgurl'];}" src="{php echo thumbImgPath("1",$v['pic_date'],$v['pic_name']);}" />
+                                {else}
+                                {/if}
+                                </p>
+                            </div>
+                        </div>
+                        {else}
+                        	<div id="ab{$k}" class="fleft" style="display:none">
+                                <div class="photo-show-in">
+                                    <p>
+                                    {php $img= "./" . trim(thumbImgPath("1",$v['pic_date'],$v['pic_name']))}
+                          			{if file_exists($img)}
+                           				<img class="tt" name="thumbpic" onclick="javascript:showpic(this); " flag="{php echo $v['imgurl'];}" src="{php echo thumbImgPath("1",$v['pic_date'],$v['pic_name']);}" />
+                          			{else}
+                          			{/if}
+                                    </p>
+                                </div>
+                        	</div>
+                        {/if}
+                    {/loop}        
+                    </div>
+                    <div class="photo-next">
+                    <a title="下一张" href="javascript:nextPhoto();" class="fleft">
+                    {if count($user_pic)}
+                    	<img id="img_next" src="module/space/templates/default/images/next.gif" />
+                    {else}
+                    	<img id="img_next" src="module/space/templates/default/images/next-none.gif" />
+                    {/if}
+                    </a>
+                    </div>
+				</div>
+				<div class="clear"></div>
+				<div class="set-photos">
+                {if $user_arr[uid]==$user['uid']}
+                    {if $user_pic}
+                        <p><a rel="group" href="{php echo IMG_SITE.$user_pic[0]['imgurl']}" class="zoom f-000-a">查看相册</a>
+                    {else}
+                        <p><a rel="group" href="public/system/images/nopic.jpg" class="zoom f-000-a">查看相册</a>
+                    {/if}
+                    &nbsp;&nbsp;({php echo count($user_pic).' 张'})
+                    </p>
+                    <p><a href="index.php?n=material&h=show" class="f-ed0a91-a">管理相册</a></p>
+                {else}
+                	{if $user_pic}
+                    	<p><a rel="group" href="{php echo IMG_SITE.$user_pic[0]['imgurl']}" class="zoom f-000-a">查看相册</a>
+                    {else}
+                    	<p><a rel="group" href="public/system/images/nopic.jpg" class="zoom f-000-a">查看相册</a>
+                    {/if}
+                    &nbsp;&nbsp;({php echo count($user_pic).' 张'})</p>
+                {/if}
+                </div>
+                {if $user_pic}
+                    {loop $user_pic $k $user_pics}
+                        {if $k != 0}
+                             <a class="zoom" rel="group" href="{php echo IMG_SITE.$user_pics['imgurl']}" ></a>
+                        {/if}
+                    {/loop}
+                    
+                    {loop $user_pic $k $user_pics}
+                        {if $k != 0}
+                             <a class="zoomb" rel="group" href="{php echo IMG_SITE.$user_pics['imgurl']}" ></a>
+                        {/if}
+                    {/loop}
+           		{/if}
+				{if $mark}<p class="left-match"><a href="index.php?n=space&h=match&uid={$user['uid']}"><span class="icon">您与{if $user['gender'] == '1'}她{else}他{/if}的匹配指数：</span><span class="big-f">{$mark}</span>分</a></p>{/if}
+				
+			</div>
+			<div class="clear"></div>
+			<a href="index.php?n=service&h=commission&t=sendcontact&sendid={$user['uid']}" class="go-know" {if $userid == $uid}onclick='return false'{/if}></a>
+			<ul class="c-left-list">				
+				<li><a href="index.php?n=service&h=leer&t=sendnewleer&sendtoid={$user['uid']}" class="left-list01" {if $userid == $uid}onclick='return false'{/if}><span>&gt;&gt;</span>送秋波</a></li>
+				<li><a href="index.php?n=service&amp;h=message&amp;t=send&sendtoid={$user['uid']}" class="left-list02" {if $userid == $uid}onclick='return false'{/if}><span>&gt;&gt;</span>发邮件</a></li>
+				<li><a href="#show_flower_dis" class="left-list03"{if $userid != $uid}onclick="show_flower();"{else}onclick='return false'{/if}><span>&gt;&gt;</span>送鲜花</a></li>
+				<li><a href="index.php?n=service&h=liker&t=appendfriend&sendtoid={$user['uid']}" class="left-list04" {if $userid == $uid}onclick='return false'{/if}><span>&gt;&gt;</span>加为意中人</a></li>
+				<li><a href="#" class="left-list05" onclick="{if $userid == $uid}return;{else}javascript:window.open('index.php?n=service&h=chat&chatorid={$user['uid']}', '_blank', 'height=495, width=545, toolbar =no, menubar=no, scrollbars=no, resizable=yes, location=no, status=no'){/if}"><span>&gt;&gt;</span>在线聊天</a></li>
+				<li><a href="index.php?n=service&h=comment&sendtoid={$user['uid']}" class="left-list06"><span>&gt;&gt;</span>对TA评价</a></li>
+				<li><a href="index.php?n=service&h=request_sms&sendtoid={$user['uid']}" class="left-list07" {if $userid == $uid}onclick='return false'{/if}><span>&gt;&gt;</span>索取真实身份资料</a></li>
+				<li><a href="index.php?n=service&h=commission&t=sbind&sendid={$user['uid']}" class="left-list08" {if $userid == $uid}onclick='return false'{/if}><span>&gt;&gt;</span>委托真爱一生绑定TA</a></li>
+                <li><a href="index.php?n=profile&h=report&uid={$user['uid']}" class="left-list09" {if $userid == $uid}onclick='return false'{/if}><span>&gt;&gt;</span>举报该会员</a></li>
+			</ul>
+			<div class="c-lift-title" style="margin-bottom:10px;">我可能喜欢的人</div>
+            {loop $able_like $able_likes}
+			<dl class="left-likes">
+				<dt>
+					<div class="left-likes-img">
+						<p>
+                        <a style="display:block;" href="index.php?n=space&h=viewpro&uid={$able_likes['uid']}"> 
+                           {if $able_likes['images_ischeck']=='1'&& $able_likes['mainimg']}
+                                  <img id="show_pic" src="{php   
+                                  if(MooGetphoto($able_likes[uid],'index')) echo MooGetphoto($able_likes[uid],'index');
+                                  elseif(MooGetphoto($able_likes[uid],'medium')) echo MooGetphoto($able_likes[uid],'medium');
+                                  elseif($able_likes['gender'] == '1')echo 'public/system/images/woman_100.gif';
+                                  else  echo 'public/system/images/man_100.gif';
+                                  }" onload="javascript:DrawImage(this,100,125)" width="100"/>
+                           {elseif $able_likes['mainimg']}
+                                    {if $able_likes['gender'] == '1'}
+                                        <img id="show_pic" src="public/system/images/woman_100.gif"  />
+                                    {else}
+                                        <img id="show_pic" src="public/system/images/man_100.gif" />
+                                    {/if}
+                            
+                           {else}
+                                {if $able_likes['gender'] == '1'}
+                                    <img src="public/system/images/nopic_woman_100.gif" />
+                                {else}
+                                    <img src="public/system/images/nopic_man_100.gif" />
+                                {/if}
+                            {/if}
+                	   </a>
+                        </p>
+					</div>
+				</dt>
+                
+				<dd class="f-b-d73c90"><a href="index.php?n=space&h=viewpro&uid={$able_likes['uid']}"  class="f-ed0a91-a">{php echo $able_likes['nickname']?$able_likes['nickname']:'ID:'.$able_likes['uid']}</a></dd>
+				<dd>{php echo $able_likes['birthyear']?(gmdate('Y', time()) - $able_likes['birthyear']).'岁':'年龄保密';}</dd>
+				<dd>{if $able_likes[marriage] == '-1'}婚姻状况:保密{else}<script>userdetail('$able_likes[marriage]',marriage)</script>{/if}</dd>
+				<dd>学历:{if $able_likes[education] == '-1'}保密{else}<script>userdetail('$able_likes[education]',education)</script>{/if}</dd>
+				<dd>{if $able_likes[salary] == '-1'}薪资:保密{else}<script>userdetail('$able_likes[salary]',salary1)</script>{/if}</dd>
+			</dl>
+			{/loop}
+			<div class="clear"></div>
+			<a href="{$search_url}" class="left-more">查看更多&nbsp;&gt;&gt;</a>
+		</div>
+		<div class="c-lift-bottom"></div>
+		</div><!--c-lift-content-->
+	</div><!--content-lift end-->
+	<!--=====左边结束===-->

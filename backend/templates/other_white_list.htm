@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>红娘币PK判决</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="templates/css/jquery-ui.css" type="text/css" media="all"  />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js"></script>
+<!-- <script type="text/javascript" src="templates/js/onmousemove_minutes.js"> -->
+<script type="text/javascript">
+<!--
+function userdetail(number,arrayobj) {
+    var arrname = arrayobj;
+        for(i=0;i<arrayobj.length;i++) {
+            var valueArray  = arrayobj[i].split(",");
+            if(valueArray[0] == number) {
+                if(valueArray[0] == '-1') {
+                    document.write("未选择");
+                } else {
+                    document.write(valueArray[1]);
+                }   
+            }
+    }
+}
+$(function() {	
+	$( ".open" ).dialog({
+		bgiframe:true, //兼容IE6
+		autoOpen: false,
+		height: 240,
+		width: 200,
+		modal: true,
+		position:['top','left'],
+	});
+	$( "#dialog-form" ).dialog({
+		buttons: {
+			"确定": function() {
+				var bValid = true;
+				var post=new Array();
+				post.anotheruid=$.trim($("#anotheruid").val());
+				post.uid=$.trim($("#uid").val());
+				post.anotheruid=parseInt(post.anotheruid);
+				post.uid=parseInt(post.uid);
+				if(post.uid<=0){
+					alert('请输入被浏览者');
+					return false;
+				}
+				if(post.anotheruid<=0){
+					alert('请输入浏览者');
+					return false;
+				}
+				$.post('other_ajax.php?n=add_white',{uid:post.uid,anotheruid:post.anotheruid},function(data){
+					alert(data.msg);
+					if(data.flag==0){
+						return false;
+					}
+					$( "#dialog-form" ).dialog( "close" );
+					window.location.href="index.php?action=other&h=white&uid="+post.uid;
+				},'json');
+				
+			},
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+	$( "#reward_form" ).dialog({
+		buttons: {
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});	
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$page_num})
+
+	page = {$page_num};
+	window.location.href = "{$currenturl}&page="+page;
+}
+function enterHandler(event){
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if (keyCode == 13) {
+	   gotoPage();	//调用函数
+	 } 
+}
+function make_pannel(){
+		$("#anotheruid").val('');
+		$("#uid").val($("#search-uid").val());
+		$("#dialog-form").dialog("open");
+}
+function del_white_list(id){
+	$.post('other_ajax.php?n=del_white',{id:id},function(data){
+		if(data.flag==1){
+			$('#tr_'+id).hide();
+		}
+		alert(data.msg);
+	},'json');
+}
+function search_uid(){
+	var uid=$("#search-uid").val();
+	uid=parseInt(uid);
+	if(uid==0){
+		return false;
+	}
+	window.location.href="index.php?action=other&h=white&uid="+uid;
+}
+//-->
+</script>
+</head>
+<body>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 白名单 </span>
+<span class="action-span"><a href="{php echo $_SERVER['REQUEST_URI'];}">刷新</a></span>
+{if checkGroup('other','add_white')}<span class="action-span"><a href="javascript:;" title="添加白名单" onclick="make_pannel()">添加白名单</a></span>{/if}
+{php $is_del=checkGroup('other','del_white');}
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv" style="margin-bottom:10px;padding:5px;">
+搜索条件：<label>UID：</label><input type="text" id="search-uid" name="search-uid" value="{php echo empty($uid)?'':$uid;}" /><input type="button" value="查询" onclick="search_uid()"  />
+</div>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th>ID</th>
+    <th>UID</th>
+    <th>用户名</th>
+    <th>年龄</th>
+    <th>等级</th>
+    <th>照片</th>
+    <th>收入</th>
+    <th>工作地</th>
+    <th>类</th>
+    <th>分配时间</th>
+    <th>注册时间</th>
+    <th>工号</th>
+    <th>操作</th>
+  </tr>
+  {php $date=date("Y");}
+  {loop $data $v}
+  <tr onmousemove="this.bgColor='#cfeefe';"  id="tr_{$v['id']}" onmouseout="this.bgColor='#ffffff';" class="listclass">
+  <td>{$v['id']}</td>
+  <td>{$v['uid']}</td>
+  <td>{if $v['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>{else}<img src="templates/images/m.gif" alt="男" title="男"/>{/if}{$v['username']}</td>
+  <td>{php echo $date-$v['birthyear'];}</td>
+  <td>{php echo $GLOBALS['member_level'][$v['s_cid']]}</td>
+  <td>{php echo $v['mainimg']?"有":"无";}</td>
+  <td><script>userdetail("$v['salary']",salary1);</script></td>
+  <td><script>userdetail("$v['province']",provice);userdetail("$v['city']",city);</script></td>
+  <td>{php if($v['effect_grade']>0) echo $v['effect_grade']-1;}</td>
+  <td align="center">{php if($v['allotdate']) echo date("Y-m-d H:i",$v['allotdate']);}</td>
+  <td align="center">{php echo date("Y-m-d H:i",$v['regdate']);}</td>
+  <td>{$v['sid']}</td>
+  <td>{if $is_del}<a href="javascript:;" onclick="del_white_list({$v['id']})">删除</a>{/if}</td>
+  </tr>
+  {/loop}
+  </table>
+   <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$pages}
+	  &nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+      <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+	  </td>
+    </tr>
+  </table>
+</div>
+<div id="dialog-form" title="添加白名单" class="open">
+	<p><label>被浏览者：</label><input type="text" id="uid" name="uid"></p>
+	<p><label>浏览者：</label><input type="text" id="anotheruid" name="anotheruid"></p>
+</div>
+<div style="display:none" id="rewarddata">
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+@charset "utf-8";
+
+/*
+ 珍爱网注册-市场部-巴西match@珍爱网
+by fan.ye@zhenai.com
+on Sept 6 2012
+*/
+
+/* 浮动清除 */
+.clearfix:after { content:"."; height:0; line-height:0; font-size:0; display:block; clear:both; visibility:hidden; }
+.clearfix { display:inline-block; }
+/* \*/
+* html .clearfix { height:1%; }
+.clearfix { display:block; }
+/* */
+
+/* 注册 */
+body{background:#002d5a;}
+.wrapper{width:963px;margin:0 auto;}
+.header{height:186px !important;background:url(../images/h.jpg) no-repeat;}
+.maincont{background:url(../images/b.gif) repeat-y;position:relative; /*overflow:hidden;*/}
+.footer{padding:40px 0  0 50px;height:76px;background:url(../images/f.jpg) no-repeat;text-align:center;color:#43c1ea;}
+.header .logo{width:280px;height:89px;background:url(../images/logo_da.png) no-repeat;float:left;margin:52px 28px 0 25px;text-indent:-9999px;*display:inline;}
+.header .adsection{width:355px;height:48px;padding:90px 10px 0 420px;background:url(../images/lejia.jpg) no-repeat;float:left;}
+/*.header .adsection{width:355px;height:48px;padding:90px 10px 0 420px;background:url(../images/lejia03.jpg) no-repeat;float:left;}*/
+.header .loginbar{position:relative;}
+.header .loginbar a{color:#97e5ff;}
+.header .loginbar input{width:96px;padding:4px;border:1px solid #ccc;background:rgba(255,255,255,.7);background:#fff\9;margin-right:10px;font-size:12px;color:#004164;vertical-align:middle;font-family:Tahoma;}
+.header .loginbar input.btnlogin{width:55px;height:25px;padding:0;border:none;background:url(../images/btn_login.gif) no-repeat;cursor:pointer;}
+#fakeValue,#errorTips{padding:0;border:none;background:transparent; font:12px/14px "宋体";color:#004164;position:absolute;}
+#fakeValue{top:6px;top:9px\9;top:7px\0;left:122px;}
+#errorTips{padding:3px 6px 3px 30px;border:1px solid #fc9;background:url(../images/newUI/login/icon_16px_lb.png) 8px -118px no-repeat #fff8ce;color:#f60;top:25px;left:116px;display:none;}
+.membercont{padding:20px 0 10px;position:relative; z-index:1;}
+.membercont ul{width:404px;height:504px;padding:10px;border:1px solid #ccc;float:left;margin-left:37px;background:#fff;*display:inline;}
+.membercont ul li{width:100px;height:125px;overflow:hidden;float:left;margin:0 1px 1px 0;filter:alpha(opacity=50);opacity:.5;cursor:pointer;background:#000;overflow:hidden;position:relative;}
+.membercont ul li.noblur{filter:alpha(opacity=100) !important;opacity:1 !important;}
+.membercont ul li img{width:100px;}
+.regbox{width:350px;position:absolute;top:5px;left:305px;z-index:2;}
+.regbox .boxtit{background:url(../images/bg_box.png) no-repeat;_background-image:url(../images/bg_box_nos.gif);overflow:hidden;zoom:1;}
+.regbox .boxtit h2{width:284px;height:24px;padding-bottom:10px;border-bottom:1px solid #ccc;margin:37px auto 0;text-indent:-9999px;background:url(../images/h2.gif) no-repeat;}
+.regbox .regform{padding:1px 30px 40px;background:url(../images/bg_box.png) 0 100% no-repeat;_background-image:url(../images/bg_box_nos.gif);overflow:hidden;}
+.regbox .regform ul li{margin-top:10px;position:relative;}
+.regbox .regform label.dt{width:65px;font-weight:700;color:#555;}
+.regbox .regform select{padding:2px;border:1px solid #bbb;margin-right:6px;font-size:12px;color:#333;}
+.regbox .regform select.sels{width:60px;}
+.regbox .regform select.selxl{width:192px;}
+.regbox .regform input.w1{width:54px;padding:2px;border:1px solid #bbb;margin-right:6px;font-size:12px;color:#333;}
+.regbox .regform p{text-align:center;}
+.regbox .regform p.agreement{margin-top:30px;}
+.regbox .regform p.btnsub{margin-top:10px;}
+.regbox .regform p.btnsub input{width:165px;height:45px;border:none;background:url(../images/btnreg.png) no-repeat;cursor:pointer;font-size: 24px;font-weight: bold;color: #fff;font-family: "黑体";}
+.regbox .membercard{width:302px;height:208px;background:url(../images/bg_card.png) no-repeat;_background-image:url(../images/bg_card_nos.gif);position:absolute;top:15px;left:10px;color:#fff;z-index:-1;}
+.regbox .membercard .cardtit{padding:15px 25px;}
+.regbox .membercard .cardtit h4{width:154px;height:14px;text-indent:-9999px;background:url(../images/h4.gif) no-repeat;}
+.regbox .membercard .memberinfo{padding:0 10px 10px 25px;}
+.regbox .membercard .memberinfo .avatar{width:106px;height:131px;overflow:hidden;float:left;}
+.regbox .membercard .memberinfo .avatar img{width:100px;height:125px;border:3px solid #fff;}
+.regbox .membercard .memberinfo .intro{padding:6px 36px 0 116px;}
+.regbox .membercard .memberinfo .intro dt strong{padding:2px 5px;background:#ff9844;display:inline-block;}
+.regbox .membercard .memberinfo .intro dd{margin-top:8px;}
+.regbox .membercard .arrow{width:31px;height:27px;background:url(../images/arrow.gif) no-repeat;position:absolute;top:15px;left:230px;cursor:pointer;}
+
+/* 女註冊用戶 */
+.regbox_f{width:367px;top:-50px;}
+.regbox_f .boxtit{height:137px;background:url(../images/bg_box_f_1.png) no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.zhenai.com/edition2012/zhenai3/images/bg_box_f_1_1.png',sizingMethod='image');_background:none;}
+.regbox_f .boxtit h2{display:none;}
+.regbox_f .regform{padding:0 35px 40px;background-image:url(../images/bg_box_f_2.png);_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.zhenai.com/edition2012/zhenai3/images/bg_box_f_2.png',sizingMethod='scale');_background:none;zoom:1;}
+.regbox_f .regform form{position:relative;}
+.regbox_f .membercard{top:70px;}
+.regbox_f .regform p.btnsub input{background-image:url(../images/btn_reg_f.gif);}
+
+/* 提示框 */
+.regform .tip_msg{margin-left:65px; margin-top:5px; font-size:12px; line-height:1.5; padding:1px 6px; display:inline-block; background-color:#FFFDF3;  border:#DFD4BA solid 1px; -webkit-border-radius:3px; position:relative;*display:inline; *zoom:1;  _padding:2px 6px 0px; line-height:20px; }
+.regform .tip_msg .radius1,.regform .tip_msg .radius2,.regform .tip_msg .radius3,.regform .tip_msg .radius4 { width:3px; height:3px; line-height:3px; font-size:3px; background:url(../images/register/form/tips_radius.gif) no-repeat; position:absolute; }
+.regform .tip_msg .radius1 {top:-1px; left:-1px;}
+.regform .tip_msg .radius2 {top:-1px; right:-1px; background-position:-4px 0;}
+.regform .tip_msg .radius3 {left:-1px; bottom:-1px; background-position: 0 -4px;}
+.regform .tip_msg .radius4 { bottom:-1px; right:-1px; background-position:-4px -4px;}
+
+/* 提示小箭头 */
+.regform .tip_msg .angle1,.regform .tip_msg .angle2{overflow:hidden; position:absolute; left:-8px; top:50%; margin-top:-8px; display:block; width:0; height:0; border-top:transparent dashed 8px; border-bottom:transparent dashed 8px; border-right:#DFD4BA solid 8px;display:none;}
+.regform .tip_msg .angle2{ left:-7px; border-right-color:#FFFDF3;}
+
+/*提示框2*/
+.tip_msg2_box{ _height:30px; min-height:30px;}
+.regform .tip_msg2{ display:block; font-size:14px; line-height:30px; width:90%; padding-left:30px; margin-left:0; margin-bottom:30px;  background:#FFFDF3 url(../images/register/14x14_1.png) no-repeat 8px center; }
+
+/* 提示框4 对钩 */
+.regform .correct { margin-left:5px; position:relative; top:3px;}
+
+/* 提示框3 错误警告 */
+.regform .tip_msg3{background:#F9F2F7 url(../images/register/14x14_1.png) no-repeat 3px center; padding-left:20px;}
+.regform .tip_msg3 .angle2{ border-right-color:#F9F2F7;}
+
+/*广告*/
+.maincont .adv{position:absolute;width:868px;height:252px;left:0;top:0;margin:30px 0 20px 47px;}
+.maincont .adv .adv_bg{position:absolute;width:100%;height:252px;left:0;top:0;background:#005aa5;filter:alpha(opacity=80);opacity:.8;}
+.maincont .adv .adv_text{position:absolute;top:100px;left:0;width:100%;height:41px;background:url(../images/reg_text_png24.png) center top no-repeat;_background:url(../images/reg_text.png) center top no-repeat;}
+.li_privacy .radio{margin-left:60px;}
+.c8b{color:#8b8b8b;}
+/*20130723优化*/
+
+.header .loginbar input.btnlogin_quick{ width:114px; height:33px; background:url("../images/btnlogin_quick.jpg") no-repeat; margin-right:0px;  border: medium none; vertical-align:top; position:absolute; top:-5px; right:6px; _right:16px}
+.regbox .regform p.cheksub{ margin:20px 0 0 0; overflow:hidden;}
+.regbox .regform p.cheksub label{ vertical-align:middle;}
+.regbox .regform p.cheksub input{ vertical-align:middle;}
+.regbox .regform .quickdl{ margin-top:15px; font-size:14px;}
+.regbox .regform .quickdl .ksdl_a{ text-decoration:underline;}
+.regbox .regform .quickdl a{ text-decoration:underline;}
+
+.regform .zhanghaoBox{ margin-top:65px; margin-bottom:15px; position:relative;}
+.regform .zhanghaoBox .zhanghao_X{ display:inline-block; width:8px; height:10px; background:url("../images/zhanghao_X.jpg") no-repeat; position:absolute; right:26px; _right:55px; top:11px;} 
+.regform .zhanghaoBox label{ font-weight: 700; width: 65px; vertical-align:middle; color:#505050;}
+.regform .zhanghaoBox .idphone{ width:202px; height:24px; border:#9c9c9c 1px solid; vertical-align:middle; color:#8b8b8b; padding:3px; line-height:23px;}
+.regform .mimaBox label{ font-weight: 700; width: 65px; vertical-align:middle; color:#505050; display:inline-block;}
+.regform .mmtetx{width:202px; height:24px; border:#9c9c9c 1px solid; vertical-align:middle; padding:3px; line-height:23px;}
+.regform .chckBox{ padding-left:70px; margin-top:20px; margin-bottom:30px;}
+.regform .chckBox input,.regform .chckBox label{ vertical-align:middle;}
+.regform .chckBox .wjmima{ margin-left:35px;}
+
+.regbox .regform p.btnsub .btn_dl{ width:165px; height:45px; background:url("../images/btn_dl.gif") no-repeat;}
+.header .adsection02{ background:url("../images/lejia02.jpg") no-repeat; float: left; height: 48px; padding: 90px 10px 0 420px; width: 355px;}
+.header .adsection02 .mianfeizhuce{ width:114px; height:33px; background:url("../images/mianfeizhuce.jpg") no-repeat; display:inline-block; position:absolute; right:18px; top:0px;}
+
+.regbox .boxtit02 h2{width:284px;height:24px;padding-bottom:10px;border-bottom:1px solid #ccc;margin:40px auto 0;text-indent:-9999px;background:url(../images/h2.gif) no-repeat;}
+/*市场七夕需求20130731*/
+.regbox .boxtit_qixi{background:url(../images/bg_box.png) no-repeat;_background-image:url(../images/bg_box_nos.gif);overflow:hidden;zoom:1; text-align:center;}
+.regbox .boxtit_qixi h2{width:284px;height:24px;padding-bottom:10px;border-bottom:1px solid #ccc;margin:0px auto 0;text-indent:-9999px;background:url(../images/h2.gif) no-repeat;}
+.regbox .boxtit_qixi span{display:inline-block; margin-top:20px; width:132px; height:16px;}
+
+
+.flipcard-container{ position:relative; display:block;float:left; width:100px; height:250px; -webkit-perspective:1000;*zoom:1; z-index:9;}
+.storyCont .flipcard-container{ margin:7px 0 0;}
+.flipcard-container:before,.flipcard-container:after{content:"";display:table;}
+.flipcard-container:after{clear:both;}
+/* .flipcard-container:hover .flipcard .front.face ,  */
+.flipcard.hover .front.face{transform:rotateY(180deg);-webkit-transform:rotateY(180deg);-moz-transform:rotateY(180deg);}
+/* .flipcard-container:hover .flipcard .back.face,  */
+.flipcard.hover .back.face {transform:rotateY(0deg);-webkit-transform:rotateY(0deg);-moz-transform:rotateY(0deg);}
+.flipcard{width:100%;height:125px;position:absolute;top:0;}
+.flipcard .face{ position:absolute; width:100px; height:125px;backface-visibility:hidden;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-webkit-box-shadow:0px #fff;  -webkit-transform:rotateY(0deg);-webkit-transition:all .25s linear 0s;-webkit-transform-style:preserve-3d;-moz-transform-style:preserve-3d;-moz-transform:rotateY(0deg);-moz-transition:all .25s linear 0s;-ms-transform-style:preserve-3d;-ms-transform:rotateY(0deg);-ms-transition:all .25s linear 0s;  }
+.flipcard .face.front{background:#fff; background:#fff;opacity:0.99;}
+.flipcard .face.back{ transform:rotateY(-180deg) translateZ(1px);-webkit-transform:rotateY(-180deg) translateZ(1px);-moz-transform:rotateY(-180deg);-ms-transform:rotateY(180deg);}
+.flipcard .front.face{ overflow:hidden;}
+.flipcard div{overflow:hidden;}
+img{vertical-align:top;}

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>添加修改车型</title>
+		<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+		<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+		<style type="text/css">
+			label { font-weight: bold; }
+			#cardiv {border: 1px solid; padding: 5px; padding-left: 200px;}
+			#carimgs { margin-left: 10px; padding: 3px; }
+			#carimgs span{ margin-right: 5px; font-size: bold; font-size: 1.2em; }
+			#buttonset { padding-left: 200px; }
+			#buttonset input { margin-top: 5px; margin-right: 20px;	border:1px solid #4b76ac;
+					background:#3e679a; width:90px; height:25px; line-height:22px; color:#FFFFFF;	}
+		</style>	
+	</head>
+	<body>
+		<h1>添加或修改车型信息</h1>
+		<div id="cardiv">
+			<form action="index.php?action=lovestation&h=hnlove&n=addcar&id={$id}" method="post" enctype="multipart/form-data">
+				<label for="car">车型: </label>
+				<input type="text" name="carname" id="carname" value="{$cardetail['car']}" /><br />
+				<label for="carinfo">车型介绍: </label><br />
+				<textarea name="carinfo" id="carinfo" cols="80" rows="10">{$cardetail['info']}</textarea><br />
+				<label>车型图片:  </label>
+				<div id="carimgs">
+					<span>1: </span><input type="file" name="carimg[]" />
+				</div>
+				<div id="buttonset">
+					<input type="button" value="新增图片" id="addpic" />
+					<input type="button" value="确定保存" id="subcar" />
+				</div>
+			</form>
+		</div>
+		<script type="text/javascript">
+			var LoveCar = {
+				addpic: function() {
+					var count = $('#carimgs input:file').length;
+					var needbr = count % 3 == 0 ? '<br />' : '';
+					$('#carimgs').append(needbr + '<span>' + (count + 1) + ': </span><input type="file" name="carimg[]" />');
+				},
+				subcar: function() {
+					var carname = $('#carname').val();
+					if (!carname) {
+						alert('车型名还未填写！');
+						return;
+					}
+					$.get('index.php?action=lovestation&h=hnlove&n=checkname&carname=' + carname + '&id=' + {$id}, function(data) {
+						if (data == 'ok') {
+							$('form').submit();
+						} else {
+							alert('车型名已存在！');
+							$('#car').focus();
+						}
+					});
+				}
+			}
+			{if isset($alert_msg)} alert("{$alert_msg}"); {/if}
+			$('#addpic').click(LoveCar.addpic);
+			$('#subcar').click(LoveCar.subcar);
+		</script>
+	</body>
+</html>

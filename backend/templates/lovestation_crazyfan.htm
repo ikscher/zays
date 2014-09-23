@@ -1,0 +1,176 @@
+{if !isset($_GET['ajax'])}
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>疯狂粉丝会</title>
+		<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+		<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+		<script type="text/javascript">
+			//分页跳转
+			function gotoPage(page) {
+				if (!page) {
+					var page = $("#pageGo").val();
+					page = parseInt(page);
+					if(page < 1 || isNaN(page)) page = 1;	
+				}
+				$('#listDiv').load(gotoPage.href + "&page=" + page);
+			}
+			function enterHandler(event){
+				var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+				if (keyCode == 13) {
+					gotoPage();
+				} 
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1 style="margin-bottom:15px;">
+			<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 疯狂粉丝会 </span>
+			<span class="action-span"><a href="javascript:parent.addTab('用户推荐表','index.php?action=lovestation&h=recommend_list','icon')">用户推荐表</a></span>
+			<span class="action-span"><a href="index.php?action=lovestation&h=crazyfan">刷新</a></span>
+			<div style="clear:both"></div>
+		</h1>
+		<div class="list-div">
+			<span class="but_a">
+				<a href="index.php?action=lovestation&h=crazyfan&index=0">已推荐列表</a>
+				<a href="index.php?action=lovestation&h=crazyfan&n=history&index=1">历史推荐列表</a>
+			</span>
+		</div>
+		{if $n != 'history'}
+		<form action="" method="get">
+			添加用户ID: &nbsp;&nbsp;<input name="adduid" type="text" id="adduid" />
+			<input type="button" value="添加推荐" id="add"  class="button" />
+		</form>
+		{/if}
+		<div style="border-bottom:1px solid #999;margin:5px auto;"></div>
+		<div id="userimg" style="position: absolute;"></div>
+		<div class="list-div" id="listDiv">
+			{/if}
+			<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+				<thead><tr>
+						<th>序号</th>
+						<th>UID</th>
+						<th>昵称</th>
+						<th>性别</th>
+						<th>当月得分</th>
+						<th>推荐时间</th>
+						<!--<th>推荐理由</th>-->
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{loop $user_list $v}
+					<tr>
+						<td align="center" role="id">{$v['id']}</td>
+						<td align="center" role="uid"><a href="javascript:;">{$v['uid']}</a></td>
+						<td align="center" class="nickname"><a href="javascript:;">{$v['nickname']}</a></td>
+						<td align="center">{php echo $v['gender'] == 1 ? '<img src="templates/images/w.gif"> 女' : '<img src="templates/images/m.gif"> 男';}</td>
+						<td align="center">{$v['score']}</td>
+						<td align="center">{php echo date('Y-m-d H:i:s', $v['recommend_time']);}</td>
+						<!--<td align="center">{$v['recommend_reason']}</td>-->
+						<td align="center" class="operation">	
+							<!--<a href="javascript:;" role="addition">其他信息</a>&nbsp;|&nbsp;-->
+							{if $n == 'history'}
+								<a href="javascript:;" role="recommend">重新推荐</a>
+							{else}
+								<a href="javascript:;" role="delete">取消推荐</a>
+							{/if}
+						</td>
+						{/loop}
+				</tbody>
+			</table>
+			{if $n == 'history'}
+			<table cellpadding="4" cellspacing="0">
+				<tr>
+					<td align="center">{$pages}
+						&nbsp;&nbsp;&nbsp;
+						转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+						<input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+					</td>
+				</tr>
+			</table>
+			<script type="text/javascript">	gotoPage.href = '{$currenturl}';</script>
+			{/if}
+			{if !isset($_GET['ajax'])}
+		</div>
+		<script type="text/javascript">
+			var CrazyFan = {
+			    timerID:0,
+				adduid: function() {
+					if (!/^\d+$/.test($('#adduid').val())) return;
+					$.get('index.php?action=lovestation&h=crazyfan&ajax=&n=adduid&' + $('form').serialize(),function(data) {
+						if (data == 'nouser') {
+							alert('该会员已封锁或不存在!');
+						} else if(data == 'nopic') {
+							alert('该会员没有形象照或还未通过审核!');
+						} else if (data == 'isadd') {
+							alert('该会员已被推荐！');
+						} else {
+							$('#listDiv').html(data);
+						}
+					});
+				},
+				deleteid: function() {
+					if (confirm('确定要取消推荐么?')) {
+						var uid = $(this).parent().siblings('[role=uid]').find('a').text();
+						$.get('index.php?action=lovestation&h=crazyfan&n=delete&ajax=&uid=' + uid, function(data) {
+							$('#listDiv').html(data);
+						});
+					}
+				},
+				recommend: function() {
+					var adduid = $(this).parent().siblings('td[role=uid]').find('a').text();
+					var tr = $(this).parent().parent();
+					$.get('index.php?action=lovestation&h=crazyfan&ajax=&n=adduid&adduid=' + adduid,function(data) {
+						if (!/^(nouser|nopic|isadd)$/.test(data)) {
+							tr.remove();
+						} else { alert('推荐失败'); }
+					});
+				},
+				openuid: function() {
+					var uid = $(this).text();
+					parent.addTab(uid + '资料','index.php?action=allmember&h=view_info&uid=' + uid,'icon')
+				},
+				showx:function(e,uid){
+	               if (CrazyFan.showstatus) return;
+				   //var timestamp=new Date().getTime()；
+				   uid = $(this).prev().children('a').text();
+				   //CrazyFan.timerID=setTimeout("CrazyFan.showy("+e+","+uid+")",10);
+			       CrazyFan.showy(e,uid);
+				
+				},
+				showy: function(e,uid) {
+				  
+				   var timestamp=new Date().getTime();
+				   
+		            $('#userimg').css({left: e.pageX + 100, top: e.pageY - 100});
+					$.get('index.php?action=lovestation&h=crazyfan&n=getimg&uid=' + uid+'&t='+timestamp, function(data) {
+						$('#userimg').html('<img src="' + data +'" />');
+						$('#userimg').css('display', 'block');
+					});
+					CrazyFan.showstatus = 1;
+				},
+				hidden: function() {
+					CrazyFan.showstatus = 0;
+					$('#userimg').css('display', 'none');
+					//clearTimeout(CrazyFan.timerID);
+				}
+			}
+			$('.but_a a').eq({$index}).wrap('<b />');
+			{if $n == 'history'}
+				$('#listDiv').delegate('.operation a[role=recommend]', 'click', CrazyFan.recommend);
+			{else}
+				$('#add').click(CrazyFan.adduid);
+				$('#listDiv').delegate('.operation a[role=delete]', 'click', CrazyFan.deleteid);
+			{/if}
+			$('#listDiv').delegate('td[role=uid] a', 'click', CrazyFan.openuid);
+			$('#listDiv').delegate('td.nickname', 'mouseenter', CrazyFan.showx);
+			$('#listDiv').delegate('td.nickname', 'mouseleave', CrazyFan.hidden);
+		</script>
+	</body>
+</html>
+{/if}

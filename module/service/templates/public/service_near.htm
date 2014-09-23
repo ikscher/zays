@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--原来，幸福离我们那么近</title>
+<link type="text/css" href="module/service/templates/default/activity_new.css" rel="stylesheet" />
+<script type="text/javascript" src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js'></script>
+<script LANGUAGE="Javascript" src="module/service/templates/public/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#jquery_jplayer_2").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				mp3: "module/service/templates/public/js/near.mp3"
+			}).jPlayer("play");
+		},
+		
+		swfPath: "module/service/templates/public/js",
+		supplied: "mp3"
+	});
+	
+});
+var sex=1;
+function show(type){
+    sex=type;
+    if(type){
+        $('#nv').show();
+        $('#nan').hide();
+    }else{
+    $('#nan').show();
+        $('#nv').hide();
+    }
+}
+function page(pg){
+    var np=$("#now").html();
+    if(sex=='1'){
+        var total=$("#nv_total").val();
+    }else{
+        var total=$("#nan_total").val();
+    }
+    if(pg=='up'){
+        if(np=='1'){
+            return false;
+        }
+        np=parseInt(np)-1;
+    }
+    if(pg=='next'){
+        if(np==total){
+            return false;
+        }
+        np=parseInt(np)+1;
+    }
+    var htmlstr='<table cellpadding="0" cellspacing="0" border="0" width="212" align="center" ><tr><td width="60" align="center" valign="middle" >昵称</td><td width="26" align="center" valign="middle" >性别</td><td width="28" align="center" valign="middle" >年龄</td><td width="98" align="center" valign="middle" >学历</td></tr><tr><td colspan="4">-----------------------------------</td></tr></table>';
+   $.get('ajax.php',{n:"service",h:"page",sex:sex,page:np,channel:'14'},function(data){
+        if(sex){
+            $("#nv").html(data);
+        }else{
+            $("#nan").html(data);
+        }
+        $("#now").html(np);
+   });
+}
+//分页跳转
+        function gotoPage() {
+            var page = $("#pageGo").val();
+            var page = parseInt(page);
+            
+            if(page<1) page = 1;
+            if(page>{php echo ceil($total/$page_per);})
+        
+            page = {php echo ceil($total/$page_per);};
+            window.location.href = "{$currenturl}&page="+page;
+        }
+        function enterHandler(event){
+            var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+               gotoPage();  //调用函数
+             } 
+        }
+</script>
+</head>
+
+<body>
+<div id="jquery_jplayer_2"></div> 
+	<div id="box">
+		<div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/a.jpg" /></div>
+<!-- content -->
+		<div class="content" style="height:2800px;">
+        	<div class="tv_l"></div>
+            <div class="con_m">
+            <!-- 主要内容 左 -->
+				<div class="content_left">
+                	<div class="left_a">
+                    	<div><h1 style="text-align:center; ">原来，幸福离我们那么近</h1></div>
+                        <div><p>活动主办： 真爱一生网<span>（www.zhenaiyisheng.cc）</span></p>
+                             <p>主&nbsp;&nbsp;&nbsp;&nbsp;题：<span>原来，幸福离我们那么近</span></p>
+							 <p>承办单位：上海电视台星尚频道《丈母娘看女婿》栏目组</p>
+                             <p>地&nbsp;&nbsp;&nbsp;&nbsp;点：上海黄浦区西藏南路889号上岛咖啡</p>
+                             <p>活动时间:2011年10月16日14:30-17:30（报名后活动前一天短信通知）</p>
+                             <p>对&nbsp;&nbsp;&nbsp;&nbsp;象：男士22岁以上，女士20岁以上。</p>
+                            
+                             <p>咨询热线：<span>400-678-0405</span></p>
+                             <p>报名须知:诚邀都市单身男女参加本次活动，本活动报名截止日期为10月15日。</p>
+                             <p>特别要求：<span>男士22岁以上，女士20岁以上！精心打扮，寻找爱的回忆，大胆展示，秀出最真的自我，邀约身边的朋友，</span></p>
+                             <p><span>在浪漫时光里一起幸福告别单身！</span></p>
+                        </div>
+                        <div class="manu_a"><a href="index.php?n=service&h=register&channel=14"><img src="module/service/templates/default/images/activity_new/manu_a.jpg" /></a></div>
+                    </div>
+                    <div class="jieshao"><b style="color:#FFF;">活动介绍</b></div>
+                    <div style="text-align:center; padding:17px 0 10px 0;"><img src="module/service/templates/default/images/activity_new/near.jpg" /></div>
+                    <ul class="left_font">
+                    	<li>
+                        	<tt ><img src="module/service/templates/default/images/activity_new/xin.jpg" /> <b>活动宣言</b></tt>
+                       
+
+                        	<p style=" text-indent:24px;"> 幸福滑过我们的指尖，定落在人间，化作永远。这个世间爱情永远是人间最美的话题，爱情妙不可言，在虚拟</p>
+                            <p>的网络中，有缘的人依然会寻找到属于自己的真爱。该珍惜的时候就不要犹豫，不要让值得您的人与您擦肩而过。</p>
+							<p>很多时候，您爱的人就在您身边。</p>
+							<p style=" text-indent:24px;">只要您善于发现。如今，真爱一生网来到了中国经济最繁荣的上海，作为一个大都市，它海纳百川，它包容了各种</p>
+							<p>文化。当然，真爱一生网也希望在这样能包容一切价值观的大都市，单身的男女能找到自己的爱情观，找回属于自己的</p>
+							<p>那一段佳缘。</p>
+							<p style=" text-indent:24px;">自古，儿女的婚事就是父母的心事；儿女的幸福，也是父母最大的满足。上海有句老话叫“丈母娘看女婿，越</p>
+							 <p>看越欢喜”，哪位丈母娘不希望女儿得到幸福？</p>
+                            <p style=" text-indent:24px;">而今，真爱一生网携手星尚频道《丈母娘看女婿》举办一次海选的活动，希望都市中的寂寞孤身男女来到这里，能</p>
+                            <p>寻回真爱。其实，幸福离我们很近，只要我们用心去发现，属于您的那个ta就会悄然而至。</p>
+                            <p style=" text-indent:24px;">《丈母娘看女婿》是上海星尚频道倾情制作的一台相亲节目，各位准岳母（单亲家庭父亲也可参加）将代替自</p>
+                            <p>己的女儿在节目中为她们寻找终生的伴侣。每期节目将请十位母亲来到电视台的录制现场参加《丈母娘看女婿》的</p>
+							<p>录制活动，同时现场也将展示您女儿的照片和录像。每期节目中会筛选出4位杰出的男士上台展示自己的风采，接受</p>
+							<p>妈妈们的考验和挑选，最终选出她们满意的约会人选。</p>
+							<p style=" text-indent:24px;">同时《丈母娘看女婿》欢迎广大青年男士积极报名，毕竟结婚不是两个人的事，结婚是两个家庭的事，俗话说</p>
+							 <p>丈母娘看女婿是越看越欢喜，您还在犹豫什么呢？如果丈母娘这关都能过了，那您还有什么好担心的呢？《丈母娘</p>
+							  <p>看女婿》不但给您提供了一个婚恋的平台，还给了您一个拜见丈母娘的机会，成败在此一举！《丈母娘看女婿》期</p>
+							 <p>待您的加入！</p>
+                   	    </li>
+						 <div style="text-align:center; padding:17px 0 10px 0;"><img src="module/service/templates/default/images/activity_new/near_z.jpg" /></div>
+                    	<li>
+                        	<tt ><img src="module/service/templates/default/images/activity_new/xin.jpg" /> <b>报名要求</b></tt>                      	    
+                          		<p><span>参加海选的单身男女，报名时请确认能否参与上海的节目拍摄；</span></p>
+								<p><span>单身，男22岁以上、女20岁以上；</span></p>
+                          		<p><span>语言表达能力强，表现欲及表现力俱佳； </span></p>
+                          		<p><span>愿意在电视节目上展现个人风采，将自己独特的世界观、人生观、恋爱观与别人分享；</span></p>
+                          		<p><span>个人出身、学历、经历、情感经历或才艺等任一方面与众不同；</span></p>
+								<p><span>可根据节目录制要求安排个人时间；</span></p>
+								<p><span>报名者需在真爱一生网上传照片，否则会失去优先面试权；</span></p>
+                   	    </li>
+						              	    
+                    	<li>
+                        	<tt ><img src="module/service/templates/default/images/activity_new/xin.jpg" /> <b>参与人群</b></tt>   
+                            <p><span>他们人称“白骨精”，收入颇丰，学历较高，每天忙碌于这座城市各个角落的商务楼。</span></p>   
+                            <p><span>他们朝九晚五，忙碌少休，习惯了快节奏的生活方式，居然无暇寻找自己的缘分。</span></p>   
+                            <p><span>他们渴望爱情，渴望温馨，想找到属于自己的那个有缘人。</span></p>   
+                        </li>                  	    
+                    </ul>
+                  
+                </div>   
+            <!-- 主要内容 左 结束 -->
+            <!-- 主要内容 右 -->
+				<div class="content_right">
+                   <div>
+                    	<div class="header">
+                        	<div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/top.jpg" /></div>
+                            <div class="header_l"></div>
+                            <div class="header_m"><b>已报名</b></div>
+                            <div class="header_r"></div>
+                            <div class="nv" onClick="show(1);">女会员({$qixi_regest_count[1]})</div>
+                            <div class="nan"onclick="show(0);">男会员({$qixi_regest_count[0]})</div>
+                        </div>
+                        <div class="clear"></div>
+                    	<ol class="huiyuan" id="nv">
+                        	<table cellpadding="0" cellspacing="0" border="0" width="212" align="center" >
+                            	<tr>
+                                	<td width="60" align="center" valign="middle" >昵称</td>
+                                	<td width="26" align="center" valign="middle" >性别</td>
+                                	<td width="28" align="center" valign="middle" >年龄</td>
+                                	<td width="98" align="center" valign="middle" >学历</td>
+                                </tr>
+                                <tr>
+                                	<td colspan="4">-----------------------------------</td>
+                                </tr>
+                            </table>
+                        	{php $edu_array=array('3'=>'高中及以下','4'=>'大专','5'=>'大学本科','6'=>'硕士','7'=>'博士')}
+                            <!--{loop $woman_qixi_regest  $key $nv}-->
+                            <!--{if $key==0}-->
+                        	<li class="clear">
+                            <!--{else}-->
+                            <li>
+                            <!--{/if}-->
+                            	<div style="width:60px;overflow:hidden;"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></div>
+                            	<div style="width:26px;"><img src="module/service/templates/default/images/activity_new/lady.jpg" /></div>
+                            	<div style="width:28px;">{php echo empty($nv[birthyear])?'保密':(date('Y')-$nv[birthyear]);}</div>
+                            	<div style="width:98px;">{php echo empty($edu_array[$nv[education]])?'保密':$edu_array[$nv[education]];}</div>
+                            </li>
+                            <!--{/loop}-->
+                        </ol>
+                        <ol class="huiyuan" id="nan" style="display:none">
+                        	<table cellpadding="0" cellspacing="0" border="0" width="212" align="center" >
+                            	<tr>
+                                	<td width="60" align="center" valign="middle" >昵称</td>
+                                	<td width="26" align="center" valign="middle" >性别</td>
+                                	<td width="28" align="center" valign="middle" >年龄</td>
+                                	<td width="98" align="center" valign="middle" >学历</td>
+                                </tr>
+                                <tr>
+                                	<td colspan="4">-----------------------------------</td>
+                                </tr>
+                            </table>
+                        	<!--{loop $man_qixi_regest  $key $nv}-->
+                            <!--{if $key==0}-->
+                        	<li class="clear">
+                            <!--{else}-->
+                            <li>
+                            <!--{/if}-->
+                            	<div style="width:60px;overflow:hidden;"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></div>
+                            	<div style="width:26px;"><img src="module/service/templates/default/images/activity_new/man.jpg" /></div>
+                            	<div style="width:28px;">{php echo empty($nv[birthyear])?'保密':(date('Y')-$nv[birthyear]);}</div>
+                            	<div style="width:98px;">{php echo empty($edu_array[$nv[education]])?'保密':$edu_array[$nv[education]];}</div>
+                            </li>
+                            <!--{/loop}-->
+                        </ol>
+                    	<div>
+                            <input type="hidden" value="{php echo ($qixi_regest_count[1]%9)?(intval($qixi_regest_count[1]/9)+1):(intval($qixi_regest_count[1]/9))}" id="nv_total">
+                            <input type="hidden" value="{php echo ($qixi_regest_count[0]%9)?(intval($qixi_regest_count[0]/9)+1):(intval($qixi_regest_count[0]/9))}" id="nan_total">
+                            <div class="header_l"></div>
+                            <div class="header_m"><a href="javascript:page('up');">上一页</a><span id="now">1</span><a href="javascript:page('next');">下一页</a></div>
+                            <div class="header_r"></div>
+                            <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/down_a.jpg" /></div>
+                        </div>
+                   </div>
+                   <div style="height:10px; "></div>
+                   <div>
+                          <div class="header">
+                             <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/top.jpg" /></div>
+                             <div class="header_l"></div>
+                             <div class="header_m"><a href="#" style="float:right; ">更多</a><b>往期回顾</b></div>
+                              <div class="header_r"></div>
+                          </div>
+                          <ul class="huigu">
+                      
+                           	<li><a href="index.php?n=service&h=ahtv">· 2011.7.10安徽卫视《周日我最大》“缘来就是您”——男嘉宾海选活动</a></li>
+                           	<li><a href="index.php?n=service&h=lntv">· 2011.7.17辽宁卫视《幸福来敲门》——男女嘉宾海选活动</a></li>
+                           </ul>
+                           <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/down_b.jpg" /></div>
+                    </div>
+                    <div style="height:10px; "></div>
+                    <div>
+                          <div class="header">
+                             <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/top.jpg" /></div>
+                             <div class="header_l"></div>
+                             <div class="header_m"><b>活动志愿者报名</b></div>
+                              <div class="header_r"></div>
+                          </div>
+                          <ul class="huigu">
+                          	<li><a href="index.php?n=cooperation&h=personal&a=0"><img src="module/service/templates/default/images/activity_new/zhiyuanzhe.jpg" /></a></li>
+                           	<li style="width:90%">
+                            	<p style="font-size:14px;">我口齿伶俐思维敏捷有主持经验</p>
+								<p style="font-size:14px;">想成为志愿者。</p>
+                                <div class="clear"></div>
+                            </li>
+                           	<li>希望与真爱一生网提供主持服务 <a href="index.php?n=cooperation&h=company&cooptype=7" target="_blank">点击进入>></a></li>
+                           	<li>希望为活动提供志愿者服务 <a href="index.php?n=cooperation&h=personal&a=0" target="_blank">点击进入>></a></li>
+                           </ul>
+                           <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/down_b.jpg" /></div>
+                    </div>
+                    <div style="height:10px; "></div>
+                    <div>
+                          <div class="header">
+                             <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/top.jpg" /></div>
+                             <div class="header_l"></div>
+                             <div class="header_m"><b>活动合作</b></div>
+                              <div class="header_r"></div>
+                          </div>
+                          <ul class="huigu">
+                          	<li><a href="#"><img src="module/service/templates/default/images/activity_new/heying.jpg" /></a></li>
+                           	<li style="width:95%">希望与真爱一生网合作举办活动 <a href="index.php?n=cooperation&h=company&cooptype=1" target="_blank">进入>></a></li>
+                           	<li style="width:95%">希望为活动赞助物品或现金 <a href="index.php?n=cooperation&h=company&cooptype=2" target="_blank">进入>></a></li>
+                           	<li style="width:95%">让会员和您企业单身员工联谊 <a href="index.php?n=cooperation&h=company&cooptype=3" target="_blank">进入>></a></li>
+                           	<li style="width:95%">让我们策划主持您的企业活动 <a href="index.php?n=cooperation&h=company&cooptype=4" target="_blank">进入>></a></li>
+                           </ul>
+                           <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/down_b.jpg" /></div>
+                    </div>
+                    <div style="height:10px; "></div>
+                    <div>
+                          <div class="header">
+                             <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/top.jpg" /></div>
+                             <div class="header_l"></div>
+                             <div class="header_m"><b>线下相亲活动</b></div>
+                              <div class="header_r"></div>
+                          </div>
+                          <ul class="huigu">
+                          	<li><a href="#">1、为了寻找属于自己的幸福，您是否乐意参加线下约会，想要参加哪种类型的线下约会？</a></li>
+                           	<li>
+                            	<label><input name="a" type="radio" value="" /><span>电视相亲类约会</span></label>
+                                <label><input name="a" type="radio" value="" /><span>线下相亲类约会</span></label>
+                            </li>
+                           	<li>
+                            	<label><input name="a" type="radio" value="" /><span>户外互动式约会</span></label>
+                                <label><input name="a" type="radio" value="" /><span>不乐意参加</span></label>
+                            </li>
+                          	<li><a href="#">2、您是否乐意在线下相亲约会活动中，积极参与互动节目，让别人更多的了解自己？</a></li>
+                           	<li>
+                            	<label><input name="b" type="radio" value="" /><span>主动参与</span></label>
+                                <label><input name="b" type="radio" value="" /><span>根据互动界面而定</span></label>
+                            </li>
+                           	<li>
+                            	<label><input name="b" type="radio" value="" /><span>被动参与</span></label>
+                                <label><input name="b" type="radio" value="" /><span>不乐意参加</span></label>
+                            </li>
+                          	<li><a href="#">3、线下约会时，您是否乐意提前准备才艺，并积极表现、展示自己？</a></li>
+                           	<li>
+                            	<label><input name="c" type="radio" value="" /><span>需真爱一生提醒</span></label>
+                                <label><input name="c" type="radio" value="" /><span>才艺随时展现</span></label>
+                            </li>
+                           	<li>
+                            	<label><input name="c" type="radio" value="" /><span>与别人互动</span></label>
+                                <label><input name="c" type="radio" value="" /><span>只做观众</span></label>
+                            </li>
+                          	<li><a href="#">4、线下活动中必需参与的相亲互动小游戏，您可以接受那些？（可多选）</a></li>
+                            <li><label><input name="" type="checkbox" value="" /><span>真心话大冒险</span></label>（好处：男女会员在游戏中可以加深彼此的印象，展示最真实的自己）</li>
+                            <li><label><input name="" type="checkbox" value="" /><span>未来生活模拟剧</span></label>（好处：在情景模拟中可以了解自己搭档对于生活的看法，更能在互动中培养彼此的默契哦！）</li>
+                            <li><label><input name="" type="checkbox" value="" /><span>幸福婚姻学堂</span></label>（好处：在婚姻课堂上积极发表自己的婚恋观，可以让心仪的TA对您独特的见解及对生活的坚持有更深的了解，也会让您“一鸣惊人”，提高您的人气）</li> 
+    						<li><label><input name="" type="checkbox" value="" /><span>千里姻缘一线牵</span></label>（好处：对于自己喜欢的TA， 您是否有勇气3次为TA绕上红绳，牵定一生，深情告白，让您与生命中的TA留下七夕最浪漫的回忆）</li>
+                          	<li><a href="#">5、您参加线下相亲约会时，您觉得什么样的活动费用标准比较合适？</a></li>
+                           	<li>
+                            	<label><input name="d" type="radio" value="" /><span>200元/次/人</span></label>
+                                <label><input name="d" type="radio" value="" /><span>150元/次/人</span></label>
+                            </li>
+                           	<li>
+                            	<label><input name="d" type="radio" value="" /><span>120元/次/人</span></label>
+                                <label><input name="d" type="radio" value="" /><span>100元/次/人</span></label>
+                            </li>
+                            <li>6、对于线下相亲，您希望真爱一生网加强完善的地方有：</li>
+                            <li style="text-align:center; "><textarea name="" cols="" rows="" style="width:190px; height:100px; "></textarea></li>
+                            <li style="text-align:right; "><a href="#"><img src="module/service/templates/default/images/activity_new/tijiao.gif" /></a></li>
+                          </ul>
+                          <div style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/down_b.jpg" /></div>
+                    </div>
+                        
+				</div>   
+            <!-- 主要内容 右 结束 -->
+            <div class="clear"></div>
+            <!-- 评论 -->
+                <div><img src="module/service/templates/default/images/activity_new/pl.jpg" /></div>
+                <div style="padding:10px 0 0 20px; background:#fff;">
+                    <div class="comment">
+                                <div class="left"></div>
+                                <div>
+                                <form action="index.php?n=service&h=xuanyan" method="post">
+                                    <div style="width:842px;"><textarea name="content" id="content" cols="" rows="" style="width:842px; height:150px; background:none; border:1px #999 solid; "></textarea></div>
+                                    <div style="width:842px; padding-top:10px; ">
+                                        <ol style="padding:0; float:left; width:500px; height:30px;">
+                                            <li style="line-height:28px; font-size:14px; ">验证码：</li>
+                                            <li><input name="seccode" type="text" id="seccode" style="width:120px; height:26px; font-size:20px;" ></li>
+                                            <li><img src="index.php?n=service&h=seccode" id="code" border="0" onClick="javascript:this.src='index.php?n=service&h=seccode&update=' + Math.random();" style="margin-top:2px;cursor:pointer;"></li>
+                                            <li style="line-height:28px; font-size:14px; "><a onClick="javascript:$('#code').attr('src','index.php?n=service&h=seccode&updatak='+Math.random())" style="cursor:pointer;">←看不清</a></li>
+                                        </ol>
+                                        <input type='hidden' id='userid' value="{php echo $user_arr['uid'];}" />
+                                        <span style="float:right; "><input type="image" src ="module/service/templates/default/images/ahtv/fabiao.jpg" alt = "提交" name="imagesubmit"></span>
+                                        </form>
+                                    </div>
+                                    <ol class="pinglun">
+                                        {loop $result  $value}
+            	                        <li>
+                	                            <div><tt>网友 <a href="#">{php echo $value['username'];}</a> 发表评论 &nbsp;{php echo $value['operationtime'];}</tt></div>
+                                                <div><p>{php echo $value['remark'];}</p></div>
+                                        </li>
+                                        {/loop}
+                                    </ol>
+                                </div>
+                                <div style="text-align:right; width:842px; padding-top:10px; ">
+                                	{$pages}
+                  &nbsp;&nbsp;&nbsp;
+                    转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onKeyDown="enterHandler(event)"/> 页 &nbsp;
+                  <input type="button"  value="跳转" class="button" onClick="gotoPage()"/>
+                                </div>
+                                <div class="right"></div>
+                        
+                    </div>
+                </div>
+                <!-- 评论结束 -->
+            	<div class="clear"></div>
+				
+            </div>
+            <div class="tv_r"></div>    
+        	<div class="clear" style="font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/s_bottom.gif" /></div>
+        </div>
+
+<!-- footer -->    
+        <div id="footer">
+            <p><a href="index.php?n=about&h=us">关于我们</a>| <!--  <a href="index.php?n=about&h=media">媒体关注</a> | --> <a href="index.php?n=about&h=contact">联系我们</a> | <a href="index.php?n=about&h=links">合作伙伴</a> | <a href="index.php?n=about&h=getsave">意见反馈</a> | <a href="index.php?n=story">成功故事</a>| <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> |
+      {if ($user_arr['s_cid'] == 30 && $user_arr['bgtime'] > time()-604800) || !empty($GLOBALS['h_pay'])} <a href="index.php?n=payment&h=add_money">其他信息</a> {else} <a href="index.php?n=payment&h=channel">其他信息</a> {/if}</p>
+            <p></p>
+            <div style="text-align:center; font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/footer.jpg" /></div>
+            <p>Copyright 2005-2010 版权所有：真爱一生网 闽ICP备09064513号</p>
+            <p>真爱一生网备用域名：www.hongniangw.com | www.hongniangwang.com</p>
+            <div style="height:20px;"></div>
+        </div>
+    </div>
+
+	{template system/service_foot public}
+</body>
+</html>
+﻿

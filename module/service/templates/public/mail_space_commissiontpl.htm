@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网邮件提醒</title>
+<style>
+/*公共*/
+*{	margin:0;padding:0;}
+body,img,ul,li,a,dl,dd,dt,p{border:none;list-style:none;text-decoration:none;font-family: "宋体";}
+.hn-content a{ text-decoration:underline;}
+.hn-content a:hover{ text-decoration:none;}
+.clear{clear:both;width:0px; height:0px; overflow:hidden; line-height:0px; font-size:0px;}
+body{white-space:normal;word-wrap:break-word; font-size:14px; background:#ececec;}
+.hn-content{ margin:20px auto; width:750px; background:#FFF;}
+.f-d9007f{ color:#d9007f;}
+.f-666{ color:#666;}
+
+/*头部*/
+.hn-content .head{ width:750px; float:left}
+.hn-content .logobox{ width:240px; height:34px; padding:42px 0 0 37px; background:url(http://www.zhenaiyisheng.cc/module/service/templates/default/images/e_logo.gif) no-repeat; float:left; display:inline; margin:12px 0 0 18px; }
+.hn-content .logobox:hover{ text-decoration:none;}
+.hn-content .head p{ float:right; padding-top:17px; width:320px; color:#666;}
+.hn-content .head p a{ color:#666}
+.hn-content .topnav{ height:22px; padding:4px 0 4px 40px; background:#dc3580; text-align:center; float:left; width:710px;}
+.hn-content .topnav a{ color:#FFF; padding:0 18px;*padding:0 15px; float:left; line-height:22px;}
+.hn-content .topnav a:hover{ text-decoration:underline}
+
+/*中间内容*/
+.hn-main{ width:700px; float:left; padding:30px 25px 0;}
+.user-name{font-size:14px; height:40px; line-height:36px; border-bottom:1px dashed #b1b1b1; text-indent:3px;}
+.bottom-msg a,.user-name a{ color:#000}.hn-main dl{ padding:20px 0 30px; line-height:32px;}
+.hn-main dd{ text-indent:28px;}
+.bottom-btn{ width:500px; padding:30px 0 40px 98px; float:left; height:22px;}
+.bottom-btn a{ background:url(http://www.zhenaiyisheng.cc/module/service/templates/default/images/e_btn.gif) no-repeat; width:100px; height:22px; line-height:22px;text-indent:10px; font-size:12px; display:inline; float:left; margin-left:30px;}
+.bottom-btn a:hover{ text-decoration:none;}
+.bottom-msg{ width:700px; float:left; color:#666; line-height:28px; font-size:12px;}
+.outemail{ line-height:28px; float:right; color:#666}
+.footer{ height:30px; line-height:30px; text-align:center; color:#FFF; background:#dc3580; }
+
+</style>
+</head>
+
+<body>
+<div class="hn-content">
+	<div class="head">
+		<a href="http://www.zhenaiyisheng.cc/" target="_blank" style="color:#000; text-decoration:none; font-size:12px;" class="logobox">严肃正规的征婚网站</a>
+		<p><a href="http://www.zhenaiyisheng.cc/index.php?n=login&h=backpassword">找回密码</a> - <a href="http://www.zhenaiyisheng.cc/index.php?n=service">我的真爱一生</a> - <a href="http://www.zhenaiyisheng.cc/index.php?n=search">真爱一生寻友</a> - <a href="http://www.zhenaiyisheng.cc/index.php?n=payment" style="color:#e30085;">升级高级会员</a></p>		
+	</div>
+	<div class="topnav">
+		<a href="http://www.zhenaiyisheng.cc/" style="border-right:1px solid #f066a3;text-decoration:none; float:left;">真爱一生首页</a>
+		<a href="http://www.zhenaiyisheng.cc/index.php?n=about&h=us" style=" border-left:1px solid #b81d64; border-right:1px solid #f066a3;text-decoration:none; float:left;">关于我们</a>
+		<a href="http://www.zhenaiyisheng.cc/index.php?n=about&h=media" style=" border-left:1px solid #b81d64; border-right:1px solid #f066a3;text-decoration:none; float:left;">媒体关注</a>
+		<a href="http://www.zhenaiyisheng.cc/index.php?n=about&h=contact" style=" border-left:1px solid #b81d64; border-right:1px solid #f066a3;text-decoration:none; float:left;">联系我们</a>
+		<a href="http://www.zhenaiyisheng.cc/index.php?n=about&h=links" style=" border-left:1px solid #b81d64; border-right:1px solid #f066a3;text-decoration:none; float:left;">合作伙伴</a>
+		<a href="http://www.zhenaiyisheng.cc/index.php?n=about&h=getsave" style=" border-left:1px solid #b81d64; border-right:1px solid #f066a3;text-decoration:none; float:left;">投诉建议</a>
+		<a href="http://www.zhenaiyisheng.cc/index.php?n=story" style=" border-left:1px solid #b81d64;text-decoration:none; float:left;">成功故事</a>
+	</div>
+	<div class="hn-main">
+		<div class="user-name">亲爱的 {$res['username']},您好！</div>
+		<dl>
+			
+			<dd style="margin:0;padding:0;"><a href="http://www.zhenaiyisheng.cc/index.php?n=space&h=viewpro&uid={$send_user_info['uid']}" class="f-d9007f">{$send_username}</a>在真爱一生网浏览了您相关的资料后，对您的情况很感兴趣，已经将您委托<a href="http://www.zhenaiyisheng.cc" class="f-d9007f">真爱一生联系了</a>，还在犹豫什么，赶快去<a href="http://www.zhenaiyisheng.cc" class="f-d9007f">真爱一生网</a>了解下TA的<a href="http://www.zhenaiyisheng.cc/index.php?n=space&h=viewpro&uid={$send_user_info['uid']}" class="f-d9007f">详细资料</a>吧，或许会有非常的惊喜哦。</dd>
+			<dd class="f-666" style="margin:0;padding:0;">温馨提示：真爱一生网会持续为您推荐优质人选，请保持登陆查看。</dd>
+		</dl>
+		<div style=" height:34px; line-height:34px; border-bottom:1px solid #ccc; background:#f3f3f3; font-size:14px; font-weight:400; padding-left:10px;">TA的简明资料</div>
+		<dl>
+			<dt style="margin:0;padding:0;"> <a class="f-d9007f" href="http://www.zhenaiyisheng.cc/index.php?n=space&h=viewpro&uid={$send_user_info['uid']}">{php echo $send_user_info['nickname'] ? $send_user_info['nickname'] : $send_user_info['uid']}</a> 年龄:{if $send_user_info['birthyear']}{php echo (gmdate('Y', time()) - $send_user_info['birthyear']);}岁{else}保密{/if}，身高:{if $send_user_info[height] == '0'}保密{else} {$height}厘米{/if}，地区:{if $send_user_info[province] == '0' && {$send_user_info[city]} == '0'}保密{else} {$province}{$city}{/if}</dt>
+			<dd style="margin:0;padding:0;">{php echo MooStrReplace($send_user_info['introduce'])}</dd>
+		</dl>
+		<div style="font-size:16px; font-weight:400; font-family:'黑体'; padding:0px 10px; color:#d9007f;">TA于{php echo date("Y-m-d");} <span style="margin:0;padding:0;">已经将您委托真爱一生联系了</span></div>
+		<div class="bottom-btn">
+			<a href="http://www.zhenaiyisheng.cc/index.php?n=space&h=viewpro&uid={$send_user_info['uid']}" style="color:#fff; text-decoration:none">查看详细资料</a>
+			<a href="http://www.zhenaiyisheng.cc/index.php?n=service&h=commission&t=sendcontact&sendid={$send_user_info['uid']}" style="color:#fff;text-decoration:none">委托真爱一生联系</a>
+		</div>
+		<p class="bottom-msg"><a href="http://www.zhenaiyisheng.cc" class="outemail">邮件退订</a>请不要直接回得该电子邮件。如需帮助，请发邮件到<span class="f-d9007f">kefu@zhenaiyisheng.cc</span></p>
+	</div>	
+	<div class="clear"></div>
+	<div class="footer">Copyright 2006-{php echo date('Y');} 版权所有：真爱一生网 皖ICP备14002819号</div>
+</div>
+</body>
+</html>

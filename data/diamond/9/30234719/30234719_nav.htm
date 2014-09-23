@@ -1,0 +1,26 @@
+<!--钻石会员主页菜单-->
+	<div class="loaction">
+		<div class="loaction_left">
+			<a href="index.php" class="color_7c127c fontSize_12">红娘首页</a> >> 
+			<a href="index.php?n=space&uid={$GLOBALS['style_uid']}" id="nav_now" class="color_7c127c fontSize_12">个人主页</a>
+			
+		</div>
+		<div class="loaction_right">
+			<a href="#" onclick="javascript:copyToClipboard(location.href);">复制当前页地址发给好友</a>
+		</div>
+		<ul class="loaction_center" style="margin-right:30px;">
+			<li><a href="index.php?n=space&h=video&uid={$GLOBALS['style_uid']}" id="nav_video" >兴趣爱好</a></li>
+			<li><a href="index.php?n=space&h=art&uid={$GLOBALS['style_uid']}" id="nav_art" >我的爱情观</a></li>
+			<li><a href="index.php?n=space&h=impression&uid={$GLOBALS['style_uid']}" id="nav_impression" >亲友助阵</a></li>
+			<li><a href="index.php?n=space&h=horoscope&uid={$GLOBALS['style_uid']}" id="nav_horoscope" }>星座生肖</a></li>
+        <li><a href="index.php?n=space&h=lifetimes&uid={$GLOBALS['style_uid']}" id="nav_lifetimes" >人生经历</a></li>
+          	<li><a href="index.php?n=space&h=dating&did={$GLOBALS['dating_list'][0]['did']}&uid={$GLOBALS['style_uid']}" id="nav_dating" >TA的约会</a></li>		
+			<li><a href="index.php?n=space&h=viewpro&uid={$GLOBALS['style_uid']}" id="nav_viewpro" >个人资料</a></li>
+		</ul>
+	</div>
+<script type="text/javascript">
+$(document).ready( function(){
+	var menu_name = $("#nav_{$GLOBALS['h']}").addClass('curr').text();
+});
+</script>
+<script type="text/javascript" src="module/space/templates/public/js/copy_board.js"></script>

@@ -1,0 +1,49 @@
+<?php if(!defined('IN_MOOPHP')) exit('Access Denied');?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--查看</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<SCRIPT LANGUAGE="Javascript" SRC="templates/FusionCharts.js"></SCRIPT>	
+<link href="templates/Style.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="list-div" id="listDiv" onmouseout="hiddend();">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	<form action="vote.php?act=view" method="post" style="margin-left:20px;">
+		<tr><td><select name = 'sex' style="width:80px;">
+			<option value="0" {if $sex == 0}selected="selected"{/if}>全部</option>
+			<option value="1" {if $sex == 1}selected="selected"{/if}>男生</option>
+			<option value="2" {if $sex == 2}selected="selected"{/if}>女生</option>
+		</select></td></tr>
+		<br/>
+		<tr><td>年龄时间段：
+		<input type="text" name ='age_min'  size="4" value="{$age_min}" />
+		<input type="text" name ='age_max' value="{$age_max}"  size="4"/>
+		</td></tr>
+		<input type="hidden" value="{$vid}" name="vid" />
+		<tr><td><input style="margin-top:10px; width:100px;" type="submit" value="提交"/></td></tr>
+	</form>
+	{if $check}
+		
+			<tr><td> <div id="chartdiv" align="center"> 
+				FusionCharts. </div>
+			  <script type="text/javascript">
+				   var chart = new FusionCharts("templates/FCF_Bar2D.swf", "ChartId", "850", "{$height_1}");
+				   chart.setDataXML("{$list_1}");		   
+				   chart.render("chartdiv");
+				</script> </td></tr>
+		 
+	{/if}
+	</table>
+</div>
+</body>
+</html>
+﻿﻿

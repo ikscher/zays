@@ -1,0 +1,213 @@
+
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+
+<script type="text/javascript">
+
+
+//判断是否选择
+function checkForm(){
+    var k=0;
+	
+	{if empty($isAdmin)}
+	   alert("只有系统管理员才有删除权限！");
+	   return false;
+	{/if}
+	
+	$("input[name^='changesid']") .each(function(){
+        if($(this).attr("checked")==true){
+           k=k+1;
+        }   
+    });
+
+    if(k==0) {
+        alert("请选择  要删除的组长评论，可以选择多项！");
+        return false;
+    }    
+	
+	
+    return true;
+}
+
+
+function check(){
+   var startTime=$("#startTime").val();
+   var endTime=$("#endTime").val();
+  
+   if((!startTime && endTime) || (startTime && !endTime)){
+      alert('请选择起始日期和结束日期！');
+	  return false;
+   }
+   
+   if(startTime>endTime){
+      alert("起始日期不能大于结束日期！");
+	  return false;
+   }
+
+    return true;
+
+}
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{php echo ceil($total/$limit);})
+
+	page = {php echo ceil($total/$limit);};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+//全选
+function chooseall(){
+
+	if($("#choose_all").attr("checked")){
+		$("input[name='changesid[]']").attr("checked",true);
+	}else{
+		$("input[name='changesid[]']").attr("checked",false);
+	}
+}
+
+
+
+
+
+$(function(){
+    $(".csstab tr").mouseover(function(){
+        $(this).addClass("over");
+    }).mouseout(function(){
+        $(this).removeClass("over");    
+    });
+});
+
+
+
+$(function(){
+	$("#group_change").change(function(){
+		  var groupid = this.value;
+		  $.get("vipuser_ajax.php?n=get_groupmember&id="+groupid,function(str){
+	           if(str == 'no'){
+				alert('此组无成员');
+			   }else{
+			   $("#kefu_sid").empty();
+				$("#kefu_sid").append(str);
+			   }
+	       });
+	});
+
+})
+
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+.callinfo{
+position:absolute;
+top:100px;
+left:100px;
+width:600px;
+height:125px;
+background:#ffffff;}
+#callinfo table{
+backgroung:#ffffff;}
+#callinfo td{
+border:#cccccc solid 1px;
+}
+</style>
+
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="{$currenturl}">刷新当前页</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$title} </span>
+<div style="clear:both"></div>
+</h1>
+<div>
+<form action="" method="get" >
+  <tr>
+  	<td style="text-align:left">
+	  
+			组别:
+			<select name="groupid" id="group_change">
+				<option value="">请选择</option>
+				{loop $group_list $list}
+				<option value="{$list['id']}" {if $list['id']==$groupid}selected="selected"{/if}>{$list['manage_name']}</option>
+				{/loop}
+			</select>
+			人员:
+			<select name="sid" id="kefu_sid">
+				<option value="">请选择</option>
+				
+				
+			</select>
+	 
+		<!-- <input name="sid" type="text" id="sid" value="{$sid}"/> -->
+		
+		
+		
+		<input type="hidden" name="action" value="myuser" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+	</td>
+	
+<td>
+		<span >时间：</span>
+		<!-- <input type="text" id="startTime" name="startTime" value="{php if($startTime) echo $startTime;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/> 到 -->
+		<input type="text"id="endTime" name="endTime" value="{php if($endTime) echo $endTime;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+	</td>
+	<td>
+		<input name="" type="submit" value="搜 索"/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;">{$total}条评论</span>
+
+
+	</td>
+	  </tr>
+</form>
+</div>
+
+<div class="list-div" id="listDiv" >
+<form action="index.php?action=myuser&h=remark" method="post" onsubmit="return checkForm();" >
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th><input type="checkbox" id="choose_all" value="choose_all" onclick="chooseall()" /></th>
+    <th>客服ID</th>
+    <th>组长ID</th>
+    
+    <th width="60%">评语</th>
+    <th><a>评论日期</a></th>
+
+  </tr>
+  
+  
+  {loop $remark_list  $remark}
+   <tr>
+    <td><input type="checkbox" value="{$remark['id']}" name="changesid[]" /></td>
+    <td align="center">{$remark['sid']}</td>
+   
+    <td align="center">{$remark['gid']}</td>
+    <td align="center">{$remark['remark']}</td>
+    <td align="center">{php echo date('Y-m-d H:i:s',$remark['dateline']);}</td>
+
+	
+    
+  </tr>
+  {/loop}
+ </table>
+
+<input type="submit" name="submit" value='删除' />注：可以批量选择删除！
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$page_links}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+     
+    </tr>
+  </table>
+  </form>
+</div>

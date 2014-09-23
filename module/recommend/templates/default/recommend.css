@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+/*公共*/
+*{margin:0;padding:0;}
+body,img,ul,li,a,dl,dd,p{margin:0;padding:0;border:none;list-style:none;text-decoration:none;font-family: "宋体";}	
+.clear{ clear:both;width:0px; height:0px; overflow:hidden; line-height:0px; font-size:0px;}
+body{background:url(images/bg.gif) repeat-x center top #ffeff2;font-size:12px;}
+.fleft{float:left;}	
+.logobox,.toptel,.c-top,.c-bottom,.nav li a,.searchbar,.search-btn,.c-line,.getknow,.more-m-til span,.bottom-tel{ background:url(images/allimg.gif)}
+.head,.main{ width:980px; margin:0 auto;}
+.c-top,.c-bottom{width:965px; height:9px; font-size:0px; margin:0 auto;}
+.c-bottom{ background-position:0 -198px;}
+.c-top{ background-position:0 -188px; }
+.c-side{ border-left:1px solid #f4e5e0; border-right:1px solid #f4e5e0;width:963px; background:#fff2ec; margin:0 auto;}
+.c-center{border-left:1px solid #f1e2dd; border-right:1px solid #f1e2dd;width:949px; background:#fff; margin:0 auto;}
+.nav{ width:949px;}
+
+/*头部*/
+.head{ height:153px;}
+.logobox{ width:244px; height:92px; float:left; background-position:-661px -219px; display:inline; margin:10px 0 0 40px;}
+.toptel{ width:596px; height:37px; background-position:0 -219px; float:left; display:inline; margin:30px 0 0 70px;}
+.toplogin{ float:right; color:#ea427d; padding-top:5px;}
+.toplogin a{ color:#ea427d;}
+.toplogin a:hover{ text-decoration:underline;}
+
+/*头部导航*/
+.nav{ height:50px;}
+.nav ul,.nav li{float:left;}
+.nav ul{ padding-left:10px;}
+.nav li a{ display:block; height:50px; width:120px;	filter:alpha(opacity=80);opacity:0.8; margin:0 6px;}
+.nav li a:hover{filter:alpha(opacity=100);opacity:1.0;}
+.nav li a.link01{ background-position:-20px -11px;}
+.nav li a.link02{ background-position:-150px -11px;}
+.nav li a.link03{ background-position:-280px -11px;}
+.nav li a.link04{ background-position:-415px -11px;}
+.nav li a.link05{ background-position:-550px -11px;}
+.nav li a.link06{ background-position:-685px -11px;}
+.nav li a.link07{ background-position:-820px -11px;}
+
+/*搜索条*/
+.searchbar{ position:relative; width:979px; height:48px; padding-top:22px;background-position:0 -78px; margin-left:-15px; color:#FFF;}
+.search-cts{width:190px;float:left; margin-left:80px; display:inline;}
+.search-cts input{margin-left:5px;}
+.search-cts-list{float:left;width:568px;}
+.search-cts-list li{float:left;margin-right:10px;*margin-right:5px; display:inline;}
+.search-cts-list li select{width:60px;}	
+.search-btn{width:114px;height:31px;border:none;cursor:pointer; margin-top:-5px; background-position:-132px -323px;}
+.reg-info-text {margin:4px 10px 4px 0;float:left; border: 1px solid #CCCCCC; color: #666666; height: 18px; line-height: 18px; width: 184px;}
+
+/*会员信息*/
+.member-info{ padding:20px 12px 0;}
+.member-img{ width:175px; height:255px; border-right:1px solid #efefef; background:url(images/imgbg.gif) repeat-x; float:left}
+.mimg{ width:171px; height:212px;text-align:center;vertical-align:middle;display:table-cell;overflow:hidden;position:relative;}
+.mimg p{position:static;+position:absolute;top:50%;}
+.mimg img{position:static;+position:relative;top:-50%;left:-50%;}
+.miside{ width:171px; height:212px; padding:2px;}
+.mname{ height:34px; line-height:34px; color:#ea427d; text-align:center; font-size:14px}
+
+.r-minfo{ width:720px; border:1px solid #ed9416; float:right}
+.r-minfo-til{ width:720px; position:relative; margin-top:-7px;}
+.r-title-r,.r-title{ padding:0 10px; background:#FFF;}
+.r-title-r{ float:right; display:inline; margin-right:15px; color:#ea427d;}
+.r-title{ float:left; display:inline; margin-left:20px; color:#fa9219; font-size:14px ; font-weight:700;}
+
+.right-data{float:left; padding:5px 0 0 20px; color:#666;}
+.right-data dt,.right-data dd{float:left;width:670px;line-height:32px;height:32px;	}
+.right-data .fright{width:200px;}	
+.right-data .fright img{float:left;	margin-top:8px;	}
+.right-cer,.right-cer li{float:left}
+.right-cer li{width:110px;}
+.cer-phone-yes,.cer-card-yes,.cer-email-yes,.cer-video-yes,.cer-phone-no,.cer-card-no,.cer-email-no,.cer-video-no{ background:url(images/publcimg.gif) no-repeat;}
+.right-cer li a{color:#666;}
+.right-cer li a:hover{color:#000;}	
+.cer-phone-yes,.cer-phone-no{padding-left:25px;}
+.cer-card-yes,.cer-card-no{padding-left:30px;}
+.cer-email-yes,.cer-email-no{padding-left:35px;}
+.cer-video-yes,.cer-video-no{padding-left:30px;}
+.cer-phone-yes,.cer-card-yes,.cer-email-yes,.cer-video-yes,.f-ea427d{color:#ea427d;}
+.cer-phone-yes{ background-position:0 -7px;}
+.cer-phone-no{ background-position:0 -44px;}
+.cer-card-yes{ background-position:0 -87px;}
+.cer-card-no{ background-position:0 -124px;}
+.cer-email-yes{ background-position:0 -168px;}
+.cer-email-no{ background-position:0 -204px;}
+.cer-video-yes{ background-position:0 -241px;}
+.cer-video-no{ background-position:0 -277px;}
+.c-line{ font-size:0px; height:2px; background-position:-6px -172px; width:720px; float:left; margin:10px auto;}
+.know-her{ height:28px; line-height:28px; color:#0c7ba4; font-size:14px;width:700px; float:left; padding:6px 0 20px 20px;}
+.getknow{ width:102px; height:28px; background-position:0 -325px; display:block; float:left;}
+.know-her span{ float:left;}
+
+/*更多会员*/
+.moremember{ width:925px; padding:20px 12px;}
+.more-m-til{ width:925x; height:46px; background:url(images/bbg.gif) 0 25px repeat-x;}
+.more-m-til span{ background-position:-314px -316px; width:155px; height:46px; display:block}
+
+.memberlist{ padding-top:18px; float:left; width:925px;}
+.memberlist li{ float:left; padding:0 25px;}
+.memberlist li dt{ width:103px; height:128px;}
+.memberlist li dd{ text-align:center; line-height:40px;}
+.mmlistimg{ width:103px; height:128px;text-align:center;vertical-align:middle;display:table-cell;overflow:hidden;position:relative;}
+.mmlistimg p{text-align:center;	position:static;+position:absolute;top:50%;}
+.mmlistimg img{	position:static;+position:relative;	top:-50%;left:-50%;	border-top: 2px solid #f5a2bf;border-left: 1px solid #ea427d;border-bottom: 1px solid #ea427d;	border-right: 2px solid #f5a2bf;}
+
+/*底部*/
+.r-bottom{color:#666;border-top:4px solid #ea427d;background:#fff;padding-top:10px;padding-bottom:10px;font-size:12px; margin-top:32px}
+.r-bottom p{line-height:24px;text-align:center;color:#666;}
+.r-bottom a,.bottom-copyright a{color:#666;}
+.r-bottom p a:hover,.bottom-Copyright a:hover{text-decoration:underline;}
+.bottom-tel{ width:529px; margin:10px auto 0; height:35px;background-position:0 -271px;}
+.bottom-copyright{padding-bottom:30px;line-height:24px;font-size:12px;color:#666;text-align:center;}	

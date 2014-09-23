@@ -1,0 +1,29 @@
+				<title>{if $recodetime}$recodetime {/if}{if $title}红娘{$title}{/if}  电话录音</title>
+				<body style="margin:0; padding:0px">
+				<object classid="clsid:6BF52A52-394A-11D3-B153-00C04F79FAA6" id="phx" width="{$len}" height="45" style="border:1px solid #ccc">
+				<param name="URL" value="{$url}">
+				<param value="1" name="ShowControls"/>
+				<param value="0" name="ShowPositionControls"/>
+				<param value="1" name="ShowAudioControls"/>
+				<param value="1" name="ShowTracker"/>
+				<param value="0" name="ShowDisplay"/>
+				<param value="1" name="ShowStatusBar"/>
+				<param value="0" name="AutoSize"/>
+				<param value="0" name="ShowGotoBar"/>
+				<param value="0" name="ShowCaptioning"/>
+				<param value="1" name="AutoStart"/>
+				<param value="10000" name="PlayCount"/>
+				<param value="0" name="AnimationAtStart"/>
+				<param value="0" name="TransparentAtStart"/>
+				<param value="0" name="AllowScan"/>
+				<param value="0" name="EnableContextMenu"/>
+				<param value="0" name="ClickToPlay"/>
+				<param value="1" name="InvokeURLs"/>
+				<param value="datawindow" name="DefaultFrame"/>
+				<param value="100" name="volume"/>
+				<param value="999" name="PlayState"/>
+				</object>
+                <br>
+                <br>
+                <a href="{$url}">下载</a>
+				</body>

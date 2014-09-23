@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>成功故事——真爱一生网</title>
+{template system/js_css public}
+<link href="module/story/templates/{$GLOBALS['style_name']}/story.css" rel="stylesheet" type="text/css" />
+</head>
+
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<script>
+// 检测昵称，是否选择了年月日
+function checkForm(obj) {
+	if(!getValue('name1')) {
+		document.getElementById("name1").focus();
+		return false;
+	}
+	if(!getValue('name2')) {
+		document.getElementById("name2").focus();
+		return false;
+	}
+	if(document.getElementById("stateSelect").value == '-1') {
+		alert("请选择您们的甜蜜进程!");
+		return false;
+	}
+	return true;
+	
+}
+
+function getValue(obj) {
+	var v1 = document.getElementById(obj).value;
+	if(v1 == '') {
+		alert("请输入名称");
+		return false;
+	}
+	if(v1 != null && v1 != "") {
+		if(v1.length > 10) {
+			alert("名称输入过长");
+			return false;	
+		}
+	}
+	return true;
+	
+}
+</script>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=story">成功故事</a>&nbsp;&gt;&gt;&nbsp;上传/修改 成功故事</span></p>
+		<div class="clear"></div>
+		<div class="story">
+			<div class="up_top">
+				<div class="clear"></div>
+			</div>
+			<div class="marrybig">
+				<div class="marrysmall">
+					<div style="padding-bottom: 15px; border-bottom: 1px solid rgb(228, 228, 228);">
+					    <div style="padding-left: 0px; font-weight:700" class="m_fleft">
+						 上传/修改 成功故事
+						 </div>
+						 <div class="m_fright">
+						   <a href="index.php?n=story">返回成功故事首页&gt;&gt;</a>
+						 </div>
+						 <div class="clear"></div>
+					 </div>
+                     <form name="form1" action="index.php?n=story&h=step1" method="post" onsubmit="return checkForm(this);">
+					 <dl class="up-data-center">
+					 	<dt>我的昵称：</dt>
+						<dd><input name="name1" id="name1" type="text" value="{$love_story['name1']}"/></dd>
+						<dt>我爱人的昵称：</dt>
+						<dd><input name="name2" id="name2" type="text" value="{$love_story['name2']}"/></dd>
+						<dt>我们的甜蜜进程：</dt>
+						<dd>
+                        <select name="state" id="stateSelect">
+						<option value="-1">--请选择--</option>
+						<option value="1" {if $love_story['state'] == '1'}selected{/if}>我们恋爱了</option>
+						<option value="2" {if $love_story['state'] == '2'}selected{/if}>我们订婚了</option>
+						<option value="3" {if $love_story['state'] == '3'}selected{/if}>我们结婚了</option>
+					</select>
+                        </dd>
+						<dt>我们确定恋爱关系的时间：</dt>
+						<dd>
+                        {php $year = $love_story['story_date'] ? date("Y",$love_story['story_date']) : date("Y");
+                        $month = $love_story['story_date'] ? date("m",$love_story['story_date']) : date("m");
+                        $day = $love_story['story_date'] ? date("d",$love_story['story_date']) : date("d");
+                        }
+                        <select name="year" id="year">
+                        {for $i=date("Y"); $i>=1963; $i--}
+	                     	<option value="{$i}" {if $i == $year} selected="selected" {/if} >{$i}</option>
+	                    {/for}
+                        </select>
+                        <select name="month" id="month">
+                         {for $i=1; $i<=12; $i++}
+                            <option value="{$i}" {if $i == $month} selected="selected" {/if} >{$i}</option>
+                         {/for}
+                        </select>
+                        <select name="day" id="day">
+                         {for $i=1; $i<=31; $i++}
+                            <option value="{$i}" {if $i == $day} selected="selected" {/if} >{$i}</option>
+                         {/for}
+                        </select>
+						</dd>
+					 	<dt>&nbsp;</dt>
+						<dd style="height:auto"><input name="story1" type="submit" class="btn btn-default up-data-buttons" value="继续下一步" /></dd>
+					 </dl>
+                     </form>
+					 <div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+		</div>	
+	</div>		
+	</div><!--content end-->
+	{template system/footer public}<!--foot end-->
+</div><!--main end-->
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绑定申请--我的真爱一生--真爱一生网</title>
+<link href="module/service/templates/default/service.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+</head>
+<script language="javascript"> 
+function textCounter(field,tip,maxlimit) {
+	var tipobj = document.getElementById(tip);
+	if (field.value.replace(/\s/g,'').length > maxlimit) // if too long...trim it!
+	{
+	  alert(" 限" + maxlimit + "字内！");
+	  field.value=field.value.substring(0,100);
+	  return;
+	}
+} 
+function check(){
+	var content1=$("#content1").attr('value');
+	var ltime = $("#ltime").val();
+	if(content1==''){alert("请填写介绍内容");return false;}else return true;
+	if(isNaN(ltime)){
+		alert("绑定时间不是一个有效数字");
+		return false;
+	}else if(ltime<1 || ltime>72) {
+		alert("请填写1~72直接的数字");
+		return false;
+	}
+}
+</script> 
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=service">我的真爱一生</a>&nbsp;&gt;&gt;&nbsp;绑定申请</span><a href="index.php?n=invite" target="_blank" class="loaction_right">邀请好友</a></p>
+	<div class="content-lift">
+		<div class="c-lift-content">
+		<div class="c-lift-title">
+		我的联系情况
+		</div>
+		<div class="c-lift-content-in">
+			<dl class="cl-photo-show">
+				<dt>
+                	{if !empty($user_s['city_star'])}<a href="#" class="citystar" style="margin:-10px 0 0 -10px;"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
+					<div class="cl-photo-img">
+						<p>
+                       <a style="display:block;" href="index.php?n=space&h=viewpro&uid={$user_s[uid]}" target="_blank">
+                        {if $user_s['images_ischeck']=='1'&& $user_s['mainimg']}
+                                      <img src="{php   
+                                      if(MooGetphoto($user_s[uid],'com')) echo MooGetphoto($user_s[uid],'com');
+                                      elseif(MooGetphoto($user_s[uid],'medium')) echo MooGetphoto($user_s[uid],'medium');
+                                      elseif($user_s['gender'] == '1')echo 'public/system/images/woman.gif';
+                                      else  echo 'public/system/images/man.gif';
+                                      }" onload="javascript:DrawImage(this,110,138)" />
+                        {elseif $user_s['mainimg']}
+                            {if $user_s['gender'] == '1'}
+                                <img src="public/system/images/woman.gif"/>
+                            {else}
+                                <img src="public/system/images/man.gif"  />
+                            {/if}
+                        {else}
+                                {if $user_s['gender'] == '1'}
+                                    <img src="public/system/images/service_nopic_woman.gif"/>
+                                {else}
+                                    <img src="public/system/images/service_nopic_man.gif"/>
+                                {/if}
+                         {/if}
+                         </a>
+                        </p>
+					</div>
+				</dt>
+				<dd>
+                {if $user_s['s_cid'] != 30 && $user_s['s_cid'] != 40 && $user_s['s_cid'] != 50}
+                    <a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+                {elseif  $user_s['s_cid'] == 30}
+                    <a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+                {/if}
+                {php $nickname=$user_s['nickname2']?$user_s['nickname2']:$user_s['nickname']}
+                {php echo $nickname?$nickname:'ID: '.$user_s['uid']}
+                </dd>
+				<dd class="f-ed0a91">&lt;
+                {php echo activetime($user_s['lastvisit'],$user_s['usertype']);}
+        
+                &gt;</dd>
+				<dd>{if $user_s['birthyear']}{php echo (gmdate('Y', time()) - $user_s['birthyear']);}岁{else}年龄保密{/if}，<script>userdetail('{$user_s[marriage]}',marriage)</script></dd>
+				<dd>{if $user_s[province] == '0' && {$user_s[city]} == '0'}保密{else}<script>userdetail('{$user_s[province]}',provice)</script><script>userdetail('{$user_s[city]}',city)</script>{/if}</dd>
+				<dd>照片（{$user_pic}）</dd>
+			</dl>
+		</div>
+		<div class="c-lift-bottom"></div>
+		</div><!--c-lift-content-->
+		<div class="left-tips">
+			<div class="left-tips-side"></div>
+			<div class="left-tips-center">
+			<dl>
+				<dt><img src="module/service/templates/default/images/left-tips-img.gif" />
+					<p><a href="index.php?n=about&h=getsave" class="f-ed0a91-a">意见反馈</a></p>
+				</dt>
+				<dd>拨打<strong>400-8787-920</strong><br />咨询真爱一生网提供的专业征婚服务
+				</dd>
+				
+			</dl>
+			</div>
+			<div class="left-tips-side" style="background-position:right;"></div>
+		</div>
+		
+	</div><!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=service" class="r-title-black">&lt;&lt; 返回我的真爱一生</a>
+			<a href="index.php?n=space&h=viewpro&uid={$user_s['uid']}" class="r-title-black">&lt;&lt; 返回{php echo $user_s['gender']?'她':'他'}的详细资料</a>
+			<span class="right-title f-ed0a91">绑定申请</span>			
+			</div>
+            {if $bindMsg}
+            <div class="r-center-ccontent" style="padding:0 0 40px; width:753px;">
+                <div class="norequest">
+				{$bindMsg}<br />立即 <a href="index.php?n=service&h=commission&t=mebind&bind_id={$user_arr['bind_id']}" class="f-ed0a91-a">查看我要绑定的TA</a>。 </div>
+                <div class="clear"></div>
+            </div>
+            <div class="r-center-bottom"></div>
+			<div class="clear"></div>
+            {else}
+                <div class="r-center-ccontent" style="padding:0 0 40px; width:753px;">
+                    <form action="" method="post" style="position:relative" onsubmit="return check();">
+                    <div class="r-comment-box">
+                        <p class="f-14x">申请绑定现在开始：请将您的情况告诉红娘！</p>
+                        <p>当红娘向 <span class="f-ed0a91">{php $nickname=$user_s['nickname']?$user_s['nickname']:$user_s['nickname']}{php echo $nickname?$nickname:'ID: '.$user_s['uid']}</span> 介绍您时， 您希望红娘着重介绍您的哪些方面？您有没有情况想让红娘帮您去了解？（选填,限100字内）</p>
+                        <p><textarea name="content1" id="content1" style="width:500px; height:100px;" onkeyup="textCounter(this,'content1',100);"></textarea></p>
+                        <p>请填写您希望的绑定时间：<input type="text" id="ltime" name="ltime" class="my-e-page" value='12'/>   范围（1~72小时） </p>
+                        <p align="center"><input {if $user_arr['bind_id'] != 0} disabled="disabled"{/if} type="submit" name="formsubmit1" class="btn btn-default" value="开始申请" /></p>
+                        <input type="hidden" name="buid" value="{$sendid}" />
+                    </div>
+                    </form>
+                    <div class="line" style="margin:0 20px;"></div>
+                    <dl class="r-con-text">
+                        <dt>什么是委托红娘绑定？</dt>
+                        <dd>“委托红娘绑定”就是您委托红娘帮您联系TA与您绑定在一起。</dd>
+                    </dl>
+                    <dl class="r-con-text">
+                        <dt>会员绑定功能介绍？</dt>
+                        <dd>红娘收到您的绑定申请的时候后，会通过电话征求对方的同意，并询问{php echo $user_s['gender']?'她':'他'}与您的绑定意愿。当您们成功绑定之后，任何人将不能向您们发送红娘委托。</dd>
+                        <dd>如果对方愿意与您绑定，红娘会尽快给您电话反馈，请耐心等候。</dd>
+                    </dl>
+                    <div class="clear"></div>
+                </div>
+                <div class="r-center-bottom"></div>
+				<div class="clear"></div>
+             {/if}
+		</div>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

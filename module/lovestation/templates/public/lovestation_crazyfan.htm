@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{template system/js_css public}
+<link type="text/css" rel="stylesheet" href="{MOOPHP_TEMPLATE_DIR}/default/basic.css" />
+<link type="text/css" rel="stylesheet" href="{MOOPHP_TEMPLATE_DIR}/default/fans.css" />
+<title>疯狂粉丝会</title>
+</head>
+
+<body>
+	{template system/header public}
+	<div class="wrap w980 bc" style="background-color: #fff;">
+    	<img src="{MOOPHP_TEMPLATE_DIR}/default/images/vs.jpg" />
+        <div class="main">
+        	<div class="left fl">
+            	<div class="vip w"></div>
+                <div class="body w">
+					{for $i = 0; $i < 4; ++$i}
+					{php $man = each($fans_list[0]); $woman = each($fans_list[1]); $ele_class = $i > 0 ? '2' : '';}
+                	<div class="pr fl vipBg{$ele_class} user">
+                    	<p class="pa img{$ele_class} oh"><img src="{php echo $photo_list[$man[0]];}" /></p>
+                        <div class="pa info{$ele_class}">
+							<div class="flower"></div>
+							<div class="egg"></div>
+                        	<ul class="list tr mt10 ml10">
+                            	<li class="fb"><span>+1</span>魅力</li>
+                                <li class="reduce fb"><span>-1</span>魅力</li>
+                                <li class="id tc f14">会员id：<span role="uid">{$man[0]}</span>　<span class="score">得票数：<span role="score">{$man[1]}</span>分</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                	<div class="pr fl vipBg{$ele_class} user">
+                    	<p class="pa img{$ele_class} oh"><img src="{php echo $photo_list[$woman[0]];}" /></p>
+                        <div class="pa info{$ele_class}">
+							<div class="flower"></div>
+							<div class="egg"></div>
+                        	<ul class="list tr mt10 ml10">
+                            	<li class="fb"><span>+1</span>魅力</li>
+                                <li class="reduce fb"><span>-1</span>魅力</li>
+                                <li class="id tc f14">会员id：<span role="uid">{$woman[0]}</span>　<span class="score">得票数：<span role="score">$woman[1]</span>分</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cb"></div>
+					{/for}
+                </div>
+            </div>
+            <div class="right fr">
+            	<div class="member w">
+                </div>
+                <p class="fl boy tc fb">男生</p>
+                <p class="fr girl fb tc">女生</p>
+                <div class="cb"></div>
+                <ul class="boyImage fl">
+					{for $i = 0; $i < $history_month; ++$i}
+					{php $uid = $history_score[$fullyear - $history_month + $i][0];if ($uid > 0):}
+                	<li><img src="{php echo MooGetphoto($uid);}" /></li>
+					{php endif;}
+					{/for}
+                </ul>
+                <ul class="girlImage fr ml5">
+					{for $i = 0; $i < $history_month; ++$i}
+					{php $uid = $history_score[$fullyear - $history_month + $i][1];if ($uid > 0):}
+                	<li><img src="{php echo MooGetphoto($uid);}" /></li>
+					{php endif;}
+					{/for}
+                </ul>
+            </div>
+        </div>
+        <div class="search mt30">
+        	<img src="{MOOPHP_TEMPLATE_DIR}/default/images/boyid.png" class="fl"/><input type="text" name="id" class="vipId fl mt5" />
+            <img src="{MOOPHP_TEMPLATE_DIR}/default/images/submit.png"  class="fr submit"/>
+        </div>
+        <div class="search mt30 bc">
+        	<img src="{MOOPHP_TEMPLATE_DIR}/default/images/girl.png" class="fl"/><input type="text" name="id" class="vipId fl mt5" />
+            <img src="{MOOPHP_TEMPLATE_DIR}/default/images/submit.png"  class="fr submit"/>
+        </div>
+        <span style="position: relative">
+             <!--<img src="{MOOPHP_TEMPLATE_DIR}/default/images/bottom.png" class="pa page" />-->
+             <img src="{MOOPHP_TEMPLATE_DIR}/default/images/shadow.png"  class="shadow" />
+         </span>   
+    </div>
+	{template system/footer public}
+	<script type="text/javascript">
+		var CrazyFan = {
+            rankinfo: [[], []],
+			vote: function() {
+                var self = $(this);
+				var mode = self.attr('class');
+				var uid = self.parent().find('span[role=uid]').text();
+                //if (score == 0 && mode == 'egg') { return; }
+				$.get('index.php?n=lovestation&h=vote&mode=' + mode + '&uid=' + uid, function(data) {
+					if (data == 'ok') {
+						var index = $('.user').index(self.parents('.user'));
+                        var votescore = mode == 'flower' ? 1 : mode == 'egg' ? - 1 : 0;
+                        var user = CrazyFan.rankinfo[index % 2][Math.floor(index / 2)];
+                        user.score += votescore;
+                        alert('投票成功！');
+                        CrazyFan.rank(index);
+					} else if (data.substr(0, 8) == 'gotourl:') {
+						location.href = data.substr(8);
+					}
+				});
+			},
+			submit: function() {
+				var recommenduid = $.trim($(this).prev().val());
+				if (/^\d{5,11}$/.test(recommenduid)) {
+					$.get('index.php?n=lovestation&h=recommend&recommenduid=' + recommenduid, function(data) {
+						if (data.substr(0, 8) == 'gotourl:') {
+							location.href = data.substr(8);
+						} else alert(data);
+					});
+				} else if (recommenduid != '') {
+					alert('用户ID格式有误！');
+				}
+			},
+            getrankinfo: function() {
+                $('.user').each(function(i, ele) {
+                    var gender = i % 2;
+                    var uid = Number($(ele).find('[role=uid]').text());
+                    var score = Number($(ele).find('[role=score]').text());
+                    var imgurl = $(ele).find('img')[0].src;
+                    CrazyFan.rankinfo[gender].push({uid: uid, score: score, url: imgurl});
+                });
+            },
+            rank: function(index) {
+                var gender = index % 2;
+                CrazyFan.rankinfo[gender].sort(function(user1, user2) {
+                    return user2.score - user1.score;
+                });
+                $('.user' + (gender == 0 ? ':even' : ':odd')).each(function(i, ele) {
+                    ele = $(ele);
+                    var user = CrazyFan.rankinfo[gender][i];
+                    ele.find('img')[0].src = user.url;
+                    ele.find('[role=uid]').text(user.uid);
+                    ele.find('[role=score]').text(user.score);
+                });
+            }
+		}
+        CrazyFan.getrankinfo();
+		$('div.flower, div.egg').click(CrazyFan.vote);
+		$('img.submit').click(CrazyFan.submit);
+	</script>
+</body>
+</html>

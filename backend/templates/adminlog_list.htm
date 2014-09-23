@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+var flg = true;
+function changcheckbox(){
+    if(flg){
+        $("#allgoodslist :checkbox").attr('checked','checked');
+        $("#allgoodslist :checkbox").attr('class','2');
+        flg=false;
+    }else{
+        $("#allgoodslist :checkbox").attr('checked','');
+        $("#allgoodslist :checkbox").attr('class','1');
+        flg=true;
+    }
+}
+function checkform(){
+    var geshu=$("#allgoodslist :checked").length;
+    if(geshu==0){
+        alert('请选择要删除的项');
+        return false;
+    }
+    if(confirm('您确定要删除日志吗')){
+    }else return false;
+}
+
+function removelog(value){
+    if(confirm('您确定要删除管理员日志吗吗')){
+    }else return false;
+    window.location='index.php?action=adminlog&h=del&day='+value;
+}
+
+$(function(){
+	$(".csstab tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	});
+
+});
+
+
+</script>
+<style>
+    tr.over td {
+        background:#cfeefe;
+    } 
+</style>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="index.php?action=system_adminlog&h=list">刷新</a></span>
+<span class="action-span1"><a href="###">紫蔻 管理中心</a> </span><span id="search_id" class="action-span1"> - 操作日志 </span>
+<div style="clear:both"></div>
+</h1>
+<div class="form-div">
+<form name='form1' action="" method="get" >
+<table>
+    <tr>
+      <td>
+		  选择客服名:
+		  <select name="sid">
+			  <option value='0'>请选择</option>
+			  {loop $user_list $user}
+			  <option value="{$user['uid']}" {php if($user['uid']==(isset($_GET['sid'])?$_GET['sid']:''))echo "selected='selected'";}>{$user['uid']}号&nbsp;{$user['username']}</option>
+			  {/loop}   
+		  </select>
+		  客服ID：
+		  <input type="text" name="sid2" id="sid2"  value="{php echo isset($_GET['sid2'])?$_GET['sid2']:'';}" style="width:80px;" />
+		 会员ID：
+		 <input type="text" name="uid" id="uid" value="{php echo isset($_GET['uid'])?$_GET['uid']:'';}" style="width:80px;" /> 
+      </td>
+      <td>
+		  按日期查看:
+		  <input type="text" name="date1" value="{php if(isset($_GET['date1'])) echo $_GET['date1'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+		  <input type="text" name="date2" value="{php if(isset($_GET['date2'])) echo $_GET['date2'];}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+		 
+      </td>
+	  <td>
+	  <input type="hidden" name="action" value="system_adminlog" />
+	  <input type="hidden" name="h" value="search" />
+	  <input type="submit" value="搜索" /></td>
+    </tr>
+</table>
+</form>
+</div>
+<div class="list-div" id="listDiv">
+<form action="index.php?action=system_adminlog&h=del" method="post" onsubmit="return checkform();">
+<!-- start admin_logs list -->
+<table cellpadding="3" cellspacing="1" id="allgoodslist" class ="csstab" >
+  <tr>
+    <th>
+		<input onclick='changcheckbox()' type="checkbox">
+		日志编号
+	</th>
+    <th>客服名称及ID</th>
+    <th>操作日期</th>
+    <th>操作类型</th>
+    <th>操作的表</a></th>
+	<th>会员ID</th>
+    <th>操作记录</th>
+  </tr>
+  {loop $adminlogin_list $adminlogin}
+    <tr>
+    <td width="10%"><span><input name="checkboxes[]" type="checkbox" value="{$adminlogin['slid']}" />{$adminlogin['slid']}</span></td>
+    <td width="15%" class="first-cell"><span>{$adminlogin['username']}&nbsp;&nbsp;ID:{$adminlogin['sid']}</span></td>
+    <td width="15%" align="center"><span>{php echo date('Y-m-d H:i:s',$adminlogin['time']);}</span></td>
+    <td width="10%" align="left"><span>{php if($adminlogin['type']==1)echo '查看';if($adminlogin['type']==2)echo '删除';if($adminlogin['type']==3)echo '修改';if($adminlogin['type']==4)echo '插入';}</span></td>
+    <td width="15%" align="left"><span>{$adminlogin['tablename']}</span></td>
+	<td width="10%" align="left"><span>{$adminlogin['uid']}</span></td>
+    <td width="40%" align="left"><span>{$adminlogin['handle']}</span></td>
+  </tr>
+  {/loop}
+</table>
+</form>
+
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$page_links}</td>
+    </tr>
+</table>
+
+</div>
+
+
+
+
+</body>
+</html>

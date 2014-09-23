@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生荣誉——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/about/templates/{$GLOBALS['style_name']}/about.css");
+</style>
+</head>
+<body>
+<div class="clear"></div>
+{template system/header public}
+ <!--头部结束-->
+<div class="clear"></div>
+<div class="content">
+		<div class="c-title">
+		<span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;真爱一生荣誉</span>
+		<div class="loaction_right">
+			<a href="index.php?n=invite" target="_blank">邀请好友</a>
+		</div>
+		</div>
+			<div class="content-title">
+			</div><!--content-title end-->
+			<div class="c-center">
+			<!--左边开始-->
+			 {template public/about_left module}
+			<!--左边结束-->	
+			<!--右边开始-->	
+			<div class="about-right"><div class="pagebar">{$pagebar}</div>
+				<div class="a_text"> <img src="module/about/templates/default/images/glory/{$page}.jpg"/></div>
+				<div class="pagebar">{$pagebar}</div>
+			</div>
+			<!--右边结束-->	
+			<div class="clear"></div>
+		</div><!--c-center end-->
+			<div class="content-bottom">	</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+	{template system/footer public}
+	</div><!--content end-->
+</body>
+</html>

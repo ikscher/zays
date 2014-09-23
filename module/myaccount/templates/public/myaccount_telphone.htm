@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>诚信认证--手机认证——真爱一生网</title>
+<link href="public/default/css/global_import.css" rel="stylesheet" type="text/css" />
+<link href="module/myaccount/templates/{$GLOBALS['style_name']}/myaccount.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<script>
+var a=60;
+ function check(){
+  var val=$("#telphones").val();
+	  if(val.replace(/\s/g,'') == ''){
+		alert('请输入您的手机号码');
+		return false;
+	  }else if(!val.match(/^1([345]\d{9,9})|(8[0-9]\d{8,8})$/)){
+		alert('手机号码不符合规范');
+		return false;
+	  }
+	var changeUrl = "ajax.php?n=myaccount&phone="+val;
+	//checktime();
+	$.get(changeUrl,function(str){
+		if(str != ''){
+			checktime();
+		}
+	});
+ }
+
+
+function checkForm(){
+	if($("#sign").val() == ''){
+		alert('请输入认证码');
+		return false;
+	}
+	if(!$("#sign").val().match(/^\d{4,4}$/)){
+		alert('您的认证码不正确');
+		return false;
+	}
+	return true;
+}
+
+function checktime(){
+  if(a<=0){
+	$.cookie('s',null);
+	 clearTimeout(b);
+	location.href="index.php?n=myaccount&h=telphone";
+   }
+  else{
+	a--;
+	$.cookie('s',a);
+	$("#sign_id").html("如果没有获取到短信,请在"+a+"秒后重新获取");
+	var b=setTimeout("checktime()",1000);
+  }
+}
+
+</script>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=myaccount">诚信认证</a>&nbsp;&gt;&gt;&nbsp;手机认证</span></p>
+	{template system/simp_left public}<!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=myaccount" class="r-title-black">&lt;&lt;返回诚信认证</a>
+			<span class="right-title f-ed0a91">手机认证</span>
+			</div>
+			<div class="r-center-ccontent">
+				<div class="cer-conter">
+                <form id="form1" name="form1" method="post" action="" onsubmit="return checkForm()">
+					<dl class="cer-phone">
+						<dt>请输入您的手机号：</dt>
+						<dd>
+                        <input name="telphones" type="text" id="telphones" size="11" maxlength="11" value="{$telphone[telphone]}" class="cer-text"  disabled="disabled" />
+                        </dd>
+						<dt>短信验证码：</dt>
+						<dd><input name="sign" type="text" id="sign" size="10" class="cer-text"  maxlength="4" />{if (empty($_COOKIE['web_counts'])?'0':$_COOKIE['web_counts'])>=3}您的操作太过频繁请稍后再试{else}<span style="margin-left:3px;"><font id="sign_id"><a href="javascript:;" class="f-ed0a91-a" onclick="check();">点击获取验证码</a></font></span>{/if}
+						</dd>
+						<dt>&nbsp;</dt>
+						<dd class="f-aeaeae">* 手机号码验证完全免费，真爱一生网不会收取任何费用。</dd>
+						<dt>
+						<input type="hidden" name="telphone" id="telphone" value="{$telphone[telphone]}" />
+						<input name="actio" type="hidden" id="actio" value="b" /></dt>
+						<dd ><input id="telsubmit" type="submit" class="btn btn-default" value="确认验证" /></dd>
+					</dl>
+                    </form>
+					<div class="clear"></div>
+					
+				<div class="cer-line"></div>
+				<span class="lc">向对方 发送秋波，发送委托 均需要 您通过手机验证！！！</span>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}
+    <!--foot end-->
+</div><!--main end-->
+</body>
+</html>

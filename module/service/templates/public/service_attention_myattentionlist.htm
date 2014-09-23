@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的意中人--我的真爱一生——真爱一生网</title>
+<link href="module/service/templates/{$GLOBALS['style_name']}/service.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+<script src="module/service/templates/{$GLOBALS['style_name']}/js/service_submit_page.js"></script>
+</head>
+
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=service">我的真爱一生</a></span><a href="index.php?n=invite" target="_blank" class="loaction_right">邀请好友</a></p>
+	<div class="content-lift">
+		{template public/service_left module}
+	</div><!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=service" class="r-title-black">&lt;&lt;返回我的真爱一生</a>
+			<span class="right-title f-ed0a91">我的意中人</span>			
+			</div>
+			<div class="r-center-ccontent" style="padding:20px 0 60px; width:753px;">
+			<!--=======公共头部=====-->
+			<div class="service-title">
+				<ul>
+					<li><a href="#" class="onthis"><span>我的意中人（{$total}）</span></a></li>
+					<li><a href="#" onclick="location.href='index.php?n=service&h=liker&t=whoaddme'"><span>谁加我为意中人（{$total2}）</span></a></li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<!--====公共头部结束==-->
+			<div class="service-liker">
+			 {if $total == 0}
+            <div class="norequest">
+              您现在还没有加任何人为您的意中人
+              <p> 马上去 <a href="index.php?n=search" class="f-ed0a91-a">搜索意中人</a>，即刻拥有自己的意中人</p>
+            </div>
+            {else}
+            {loop $friend $friends}
+        	{php $send_user1 = leer_send_user1($friends['friendid']);$send_user2 = leer_send_user2($friends['friendid']);}
+				<ul class="service-liker-list">
+					<li><input name="" type="checkbox" value="" /></li>
+					<li>												
+						<div class="r-service-img">
+						{if !empty($send_user1['city_star'])}<a class="citystar2"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
+							<div class="r-s-img-in">
+								<p> <a style="display:block;" href="index.php?n=space&h=viewpro&uid={$friends['friendid']}">
+									{if $send_user1['images_ischeck']=='1'&& $send_user1['mainimg']}
+										  <img src="
+										  {php if(MooGetphoto($send_user1[uid],'index')) echo MooGetphoto($send_user1[uid],'index');
+										  elseif(MooGetphoto($send_user1[uid],'medium')) echo MooGetphoto($send_user1[uid],'medium');
+										  elseif($send_user1['gender'] == '1') echo 'public/system/images/woman_100.gif';
+										  else echo 'public/system/images/man_100.gif';
+										   }
+										  " onload="javascript:DrawImage(this,100,125)" />
+										   {elseif $send_user1['mainimg']}
+											{if $send_user1['gender'] == '1'}
+												<img src="public/system/images/woman_100.gif"/>
+											{else}
+												<img src="public/system/images/man_100.gif"  />
+											{/if}
+									
+										{else}
+											{if $send_user1['gender'] == '1'}
+												<img src="public/system/images/nopic_woman_100.gif" />
+											{else}
+												<img src="public/system/images/nopic_man_100.gif"  />
+											{/if}
+										{/if}
+								 </a> </p>
+							</div>
+						</div>						
+					</li>
+					<li>
+						<dl class="liker-heart">
+							<dt> <a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+									{elseif  $send_user1['s_cid'] == 30}
+									<a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+									{else}
+									{/if}
+									<a id="fzs" href="index.php?n=space&h=viewpro&uid={$friends['friendid']}">{php $nickname=$send_user1['nickname2']?$send_user1['nickname2']:$send_user1['nickname']}{php echo $nickname?$nickname:'ID:'.$send_user1['uid']}</a>
+							</dt>
+							<dd> {if $send_user1['uid'] < 1599400}
+									{php echo $send_user2['introduce']?MooStrReplace(MooCutstr($send_user2['introduce'], 148, $dot = ' ...')):'无内心独白内容'}
+									{else}
+									{php echo $send_user2['introduce']?MooCutstr($send_user2['introduce'], 148, $dot = ' ...'):'无内心独白内容'}
+									{/if}
+							</dd>
+							<dd class="f-ed0a91">&lt;{php echo activetime($send_user1['lastvisit'],$send_user1['usertype']);}&gt;
+						   </dd>
+						</dl>
+					</li>
+					<li style="float:right">
+						<dl class="new-move">
+							<dd>2010年10月01日 09时12分42秒登录</dd>
+							<dd>2010年10月01日 09时12分42秒更新了个人资料</dd>
+							<dt><a href="#" class="f-ed0a91-a">更多&gt;&gt;</a></dt>
+							<dt><input name="" type="button" class="get-know-likes" value="委托真爱一生联系TA" /></dt>
+						</dl>
+					</li>
+				</ul>
+				<ul class="service-liker-list">
+					<li><input name="" type="checkbox" value="" /></li>
+					<li>												
+						<div class="r-service-img">
+							<div class="r-s-img-in">
+								<p> <a href="#"> <img src="module/service/templates/default/images/woman_100.gif" /> </a> </p>
+							</div>
+						</div>						
+					</li>
+					<li>
+						<dl class="liker-heart">
+							<dt>随风而逝</dt>
+							<dd>我，来自北方， 在一家外资公司做技术工作，读书，然后工清爽的衬衣，和蓝色牛仔裤， 我，友善，孝顺，自知……</dd>
+							<dd class="f-ed0a91">&lt;3天前活跃过&gt;</dd>
+						</dl>
+					</li>
+					<li style="float:right">
+						<dl class="new-move">
+							<dd>2010年10月01日 09时12分42秒登录</dd>
+							<dd>2010年10月01日 09时12分42秒更新了个人资料</dd>
+							<dt><a href="#" class="f-ed0a91-a">更多&gt;&gt;</a></dt>
+							<dt><input name="" type="button" class="get-know-likes" value="委托真爱一生联系TA" /></dt>
+						</dl>
+					</li>
+				</ul>
+				<ul class="service-liker-list">
+					<li><input name="" type="checkbox" value="" /></li>
+					<li>												
+						<div class="r-service-img">
+							<div class="r-s-img-in">
+								<p> <a href="#"> <img src="module/service/templates/default/images/woman_100.gif" /> </a> </p>
+							</div>
+						</div>						
+					</li>
+					<li>
+						<dl class="liker-heart">
+							<dt>随风而逝</dt>
+							<dd>我，来自北方， 在一家外资公司做技术工作，读书，然后工清爽的衬衣，和蓝色牛仔裤， 我，友善，孝顺，自知……</dd>
+							<dd class="f-ed0a91">&lt;3天前活跃过&gt;</dd>
+						</dl>
+					</li>
+					<li style="float:right">
+						<dl class="new-move">
+							<dd>2010年10月01日 09时12分42秒登录</dd>
+							<dd>2010年10月01日 09时12分42秒更新了个人资料</dd>
+							<dt><a href="#" class="f-ed0a91-a">更多&gt;&gt;</a></dt>
+							<dt><input name="" type="button" class="get-know-likes" value="委托真爱一生联系TA" /></dt>
+						</dl>
+					</li>
+				</ul>
+				<div class="clear"></div>
+				<div class="pages"><span class="fleft" style="padding-left:40px;"><input name="" type="checkbox" value="" />&nbsp;全选<input name="" type="button" class="my-e-button" value="删除信息" /></span><a href="#">第一页</a> <a href="#">1</a> <a href="#">2</a> <a href="#" class="f-ed0a91">3</a> <a href="#">4</a> <a href="#">5</a> 6 7 8 9 <a href="#">上一页</a> <a href="3">下一页</a> <a href="#">最后一页</a><input name="" type="text" size="3" />&nbsp;<input name="" type="button" class="go-page" value="GO" style="float:none"/>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

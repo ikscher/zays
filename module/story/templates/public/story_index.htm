@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>成功故事——真爱一生网</title>
+<link href="module/story/templates/{$GLOBALS['style_name']}/story.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<div class="main">
+	{template system/header public}<!--head-search end-->
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;成功故事</span></p>
+		<div class="clear"></div>
+		<div class="story">
+			<div class="marry_top">
+			    <div class="float"></div>
+				<div class="updata-box">
+				    <input name="uploadStory" type="button" class="btn btn-default"  value="上传成功故事" />
+           			<!-- <a href="index.php?n=search">寻找真爱</a> -->
+				</div>
+				<div class="clear"></div>
+				<div class="marry">
+					<div class="m_fleft">
+						<img src="module/story/templates/default/images/story-title.gif">
+					</div>
+					<div class="m_fright">
+					 <a href="index.php?n=story&h=list">见证更多成功故事&gt;&gt;</a>
+					</div>
+               </div>
+			</div>
+			<div class="marrybig">
+			<div class="marrysmall">
+				<div class="hot-story">
+					<div class="picbig ">
+					 <div class="lovebox">
+					 <a target="_blank" href="index.php?n=story&h=content&sid={$hot_story['sid']}">
+                     {php $picbig = MooGetstoryphoto($hot_story['sid'],$hot_story['uid'],'big')}
+    
+                     {if $picbig}
+                     <img src="{$picbig}"  />
+                     {else}
+                     <img src="module/story/templates/default/images/story_hot.jpg" />
+                     {/if}
+                     </a>
+					 </div>
+                 <p>{if $hot_story['state'] == 1}恋爱{elseif $hot_story['state'] == 2}订婚{elseif $hot_story['state'] == 3}结婚{/if}纪念日：{php echo date("Y-n-j",$hot_story['story_date']);}</p>
+                 </div>
+				 <div class="m_text">
+                     <h3>{$hot_story['title']}</h3>
+                      <div class="detail">
+                          <div class="m_title">
+                            <span>{php echo $hot_story['name1'];}</span> 与 <span>{php echo $hot_story['name2'];}</span> 的爱情故事
+                          </div>
+                          <p>
+                          {php echo MooCutstr($hot_story['content'],270,"……")}<a target="_blank" href="index.php?n=story&h=content&sid={$hot_story['sid']}">
+                          [查看详情]</a></p>
+                      </div>
+                 </div>
+				 <div class="clear"></div>
+				</div>	
+				<div class="storys-box">
+				{loop $index_story $index_storys}
+					<div class="singmarry">
+                     {php //恋爱、订婚、结婚样式}
+                     {if $index_storys['state'] == 1}
+                     {php $class = 'engagement';$sta = '恋爱'}
+                     {elseif $index_storys['state'] == 2}
+                     {php $class = 'love';$sta = '订婚'}
+                     {elseif $index_storys['state'] == 3}
+                     {php $class = 'marriage';$sta = '结婚'}
+                     {/if}
+                         <div class="{$class}"><!--已经结婚-->
+                         <div class="lovesamll">
+                         <a target="_blank" href="index.php?n=story&h=content&sid={$index_storys['sid']}">
+                         {php $picmedium = MooGetstoryphoto($index_storys['sid'],$index_storys['uid'],'medium')}
+        
+                         {if $picmedium}
+                         <img src="{$picmedium}" />
+                         {else}
+                         <img src="module/story/templates/default/images/pic2.jpg" />
+                         {/if}
+                         </a></div><span>{$sta}纪念日：{php echo date("Y-n-j",$index_storys['story_date']);}</span>                 </div>
+                     <p><a class="f146" target="_blank" href="index.php?n=story&h=content&sid={$index_storys['sid']}">{$index_storys['title']}</a></p>
+                     <p>{php echo $index_storys['name1'];} <font color="#d22224">和</font> {php echo $index_storys['name2'];}</p>
+                     </div>
+				{/loop}
+				<div class="clear"></div>
+				</div>			
+			</div>
+		</div>	
+	</div>		
+	</div><!--content end-->
+	
+</div><!--main end-->
+{template system/footer public}<!--foot end-->
+<script type="text/javascript">
+    $('input[name=uploadStory]').on('click',function(){
+        location.href='index.php?n=story&h=upload';
+    });
+</script>
+</body>
+</html>

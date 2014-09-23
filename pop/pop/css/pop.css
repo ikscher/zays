@@ -1,0 +1,190 @@
+@charset "gb2312";
+body{ color:#666666;}
+
+.pop_bg{ position: absolute;top:50%; left:50%; zoom:1;}
+.pop_bg a{ color:#6d7182;}
+.pop_bg a:hover{ text-decoration:underline; color:#2f81d4;}
+.pop_bg a.name{ color:#2f81d4; text-decoration:underline;}
+.pop_bg a.name:hover{ color:#ff3c00;}
+.pop_bg .red01{ color:#ff0000;}
+
+/*.pop_corner{ position:absolute; width:60%;height:12px; margin:-12px 0; line-height:12px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_bg.gif);}*/
+/*.pop_corner_red{ position:absolute; width:60%;height:12px; margin:-12px 0; line-height:12px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_bg_red.gif);}*/
+.pop_video{ position:absolute; width:60%;height:12px; margin:-12px 0; line-height:12px; background:url(http://www.7651.com/pop/images/pop_video_bg.gif);}
+.tl{ background-position:left top; top:0; left:0;}
+.tr{ background-position:right top; top:0; right:0;}
+.bl{ background-position:left bottom; left:0; margin:0}
+.br{ background-position:right bottom; right:0; margin:0}
+
+/*.pop_content{ padding:0 0 0 5px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_bg.gif) no-repeat 0 -12px; }*/
+/*.pop_content_red{ padding:0 0 0 5px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_bg_red.gif) no-repeat 0 -12px; }*/
+/*.pop_content_right{ padding:0 5px 0 0;background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_bg.gif) no-repeat right -12px; zoom:1;}*/
+/*.pop_content_right_red{ padding:0 5px 0 0; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_bg_red.gif) no-repeat right -12px; zoom:1;}*/
+
+.pop_content_video{ padding:0 0 0 5px; background:url(http://www.7651.com/pop/images/pop_video_bg.gif) no-repeat 0 -12px; }
+.pop_content_right_video{ padding:0 5px 0 0; background:url(http://www.7651.com/pop/images/pop_video_bg.gif) no-repeat right -12px; zoom:1;}
+
+
+/*main
+------------------------------------------------------------------------------------------------------------*/
+.pop_text{ overflow:hidden; zoom:1; padding:0 0 10px 0;}
+.pop_video_text{ position:relative; zoom:1; padding:5px 10px;}
+	.pop_text h3{ margin:0 0 20px 0; padding:0 20px; font-family:黑体; font-size:16px;color:#666; line-height:26px; }
+	.pop_text h3.nomargin{ margin:0 0 7px 0;}
+	.pop_text h2{ margin:0 0 25px 0;padding:0 20px 10px 20px; font-family:黑体; font-size:18px; color:#ff6600; border-bottom:1px solid #ccc; overflow:hidden;}
+	.pop_text h2.center{ text-align:center; border-bottom:0; margin:0;}
+	.pop_text h2.center img{ position:relative; top:5px; margin:0 10px 0 0;}
+	.pop_text .pop_text_right{ clear:both; padding:20px 30px 0; font-size:12px; text-align:right; line-height:22px;}
+	.pop_text_right .blue{ color:#2f81d4; text-decoration:underline;}
+	.pop_text_right .yellow{ color:#ff6600;}
+	/*.pop_close{ float:right; width:16px; height:16px; margin:5px 0 0; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_close.gif) no-repeat 0 0; cursor:pointer; overflow:hidden;}*/
+	.video_close{ position:absolute; right:-21px; top:-29px;}
+	
+
+/*按钮
+------------------------------------------------------------------------------------------------------------*/
+.pop_btn_center{ position:relative; margin:0 auto; float:left; left:50%; }
+/*.pop_btn_center	.pop_btn{ position:relative;right:50%; float:left;padding:0 0 0 25px; height:49px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_btn_left.png) no-repeat 0 0;}*/
+/*.pop_btn_center .pop_btn span{ display:block; float:left; line-height:16px; padding:13px 35px 21px 10px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_btn_right.png) no-repeat right 0; font-size:16px; font-family:黑体; }*/
+	.pop_btn a{ color:#5f5f5f; text-decoration:none;}
+	.pop_btn a:hover{ color:#2099ed; text-decoration:none;}
+	
+	/*.pop_btn_left .pop_btn{ float:left;padding:0 0 0 25px; margin:0 10px 0 0; height:49px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_btn_left.png) no-repeat 0 0;}*/
+	/*.pop_btn_left .pop_btn span{ display:block; line-height:16px; padding:13px 35px 21px 10px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_btn_right.png) no-repeat right 0; font-size:16px; font-family:黑体; }*/
+
+/*提示部分
+------------------------------------------------------------------------------------------------------------*/
+.pop_point{ padding:40px 20px; text-align:center; font-weight:700; font-size:14px; color:#ff6600; overflow:hidden;}
+/*.pop_error{ padding:2px 5px 0 24px; color:#ff3c00; background:#fff6dc url(http://images.baihe.com/images/baihe_new/images/icon/mybaihe_icon_014.gif) no-repeat 5px 6px; border:1px solid #ffcb98;}*/
+.pop_blue{ padding:7px 15px; background:#e9f2f7; border:1px solid #b0cbda;}
+.pop_loading{ padding:15px 20px; text-align:center; font-size:12px; line-height:40px; overflow:hidden;}
+.pop_loading01{ padding:50px 20px; text-align:center; font-size:14px; font-weight:700; line-height:40px; overflow:hidden;}
+
+
+/*主体部分
+------------------------------------------------------------------------------------------------------------*/
+.pop_main{ padding:0 20px 15px 20px; font-size:12px; overflow:hidden; zoom:1;}
+/*.pop_main.bg{ background:url(http://images.baihe.com/images/baihe_new/images/pop_img/greetings_bg.gif) repeat-x 0 0;}*/
+.pop_main a{ color:#2e81d1;}
+.pop_main a:hover{ color:#000; text-decoration:none;}
+	.pop_main .greetings{ width:100%; overflow:hidden;}
+	.pop_main .greetings dt{ float:left; width:126px; margin:0 30px 0 0; text-align:center; overflow:hidden;}
+	.pop_main .greetings dt img{ width:120px; height:150px; padding:2px; border:1px solid #ccc; }
+	.pop_main .greetings dt strong{ display:block; margin:10px 0;}
+	.pop_main .greetings dd{ overflow:hidden; zoom:1;}
+	.pop_main .greetings dd li{ float:left; width:100%; margin:0 0 10px 0 !important; *margin:0 0 5px 0; color:#858585;}
+	.pop_main .greetings dd li input{ vertical-align:middle;}
+	
+	.pop_memberlist{ width:100%; margin:5px 0 0; overflow:hidden; zoom:1;}
+	.pop_memberlist h4{ margin:10px 0; font-size:14px; color:#7f7f7f;}
+	.pop_memberlist ul{ width:100%; height:245px; overflow:hidden; zoom:1;}
+	/*.pop_memberlist li{ display:block; float:left; width:146px; padding:12px 0 0 0;text-align:center; background:url(http://images.baihe.com/images/baihe_new/images/mb_photo_bj01.gif) no-repeat 0 0;}*/
+	.pop_memberlist li strong{ display:block; margin:15px 0 0;}
+	.pop_memberlist li p{ display:block; margin:6px 0 0;}
+	/*.pop_memberlist li p a{ display:block; margin:0 auto; width:70px; padding:0 0 0 9px; height:22px; line-height:24px; overflow:hidden; background:url(http://images.baihe.com/images/baihe_new/images/button_greetings.png) no-repeat 0 0; color:#6d7182; text-decoration:none;}*/
+	.pop_memberlist li p img{ position:relative; top:3px; margin:0 3px 0 0;}
+	
+	
+.pop_info_cue{ padding:0 20px; font-size:12px; overflow:hidden;}
+	.pop_member_info{ width:100%; overflow:hidden; zoom:1;}
+	/*.pop_member_info dt{ float:left; width:120px; padding:12px 13px; margin:0 15px 0 0; _margin:0 12px 0 0; background:url(http://images.baihe.com/images/baihe_new/images/mb_photo_bj01.gif) no-repeat 0 0;}*/
+	.pop_member_info dt a.name{ display:block; margin:15px 0 0; text-align:center;}
+	.pop_member_info dt span{ display:block; margin:7px 0 0; text-align:center;}
+	.pop_member_info dd{ padding:10px 0 0; line-height:22px; overflow:hidden; zoom:1;}
+	.pop_member_info dd h5{ width:100%; margin:0 0 20px 0; font-size:14px; font-weight:700; color:#ff6600; overflow:hidden; }
+	.pop_member_info dd h5 span{ color:#666;}
+	.pop_member_info dd p{ width:100%; padding:0 0 25px 0; overflow:hidden;}
+	.pop_member_info dd .ps{ display:block; width:100%; padding:10px 0 0; color:#ff6600;}
+	.pop_member_info dd strong{ font-size:14px; font-weight:700; }
+	.pop_info_cue .red{ color:#ff6600;}
+	.pop_member_info dd .btn_norm.fl{ display:inline; margin-left:70px;}
+	
+	.pop_info_cue .mat{ padding:0 0 10px 0; margin:0 0 15px 0; font-family:黑体; font-size:18px; color:#ff6600; border-bottom:1px solid #ccc;}
+	.pop_info_cue .mat_list{ overflow:hidden; zoom:1;}
+	.pop_info_cue .mat_list li{ margin:0 0 10px 0 ;font-size:14px;}
+	.pop_info_cue .mat_list li.area{ padding:0 0 0 42px;}
+	.pop_info_cue .mat_list .inputbox{ width:300px; padding:2px 5px; border:1px solid #ccc; }
+	.pop_info_cue .mat_list select{ width:312px;}
+	.pop_info_cue .mat_list textarea{ width:300px; height:80px; padding:5px; font-size:12px; overflow-x:hidden; overflow-y:auto;}
+
+	
+/****************推荐理由****************/
+	.pop_member_info dd h6{ width:100%; overflow:hidden;}
+	.pop_match{ float:left; width:47%; margin:10px 0 0; overflow:hidden;}
+	.pop_match.fr{ float:right;}
+	.pop_match li{ margin:0 0 5px 0;}
+	.pop_match li span{ float:right;}
+	.pop_member_info .btn{ clear:both; padding:8px 0 0;}
+	
+	
+	
+.pop_blank{ width:100%; padding:70px 0 80px 0; text-align:center; font-size:12px; overflow:hidden; zoom:1;}
+	.pop_blank img{ position:relative; top:3px; margin:0 5px 0 0;}
+.pop_notice{ padding:70px 0 40px 0; text-align:center; font-size:18px; font-family:黑体; color:#ff6600;overflow:hidden; zoom:1;}
+
+.pop_feedback{ clear:both; padding:50px 30px; text-align:left; font-size:14px; font-weight:700; line-height:26px; overflow:hidden; zoom:1;color:#666;}
+.pop_feedback.red ,.pop_feedback .red{ color:#ff3300;}
+.pop_feedback.green,.pop_feedback .green{ color:#26a907;}
+	
+
+/*approve
+------------------------------------------------------------------------------------------------------------*/
+.pop_approve{ padding:15px 0; font-size:12px; overflow:hidden; zoom:1;}
+	.pop_approve strong{ display:block; padding:0 25px; margin:0 0 10px 0; font-weight:700;}
+	.pop_approve ul{ padding:15px 25px; border:1px dotted #666; border-width:1px 0; overflow:hidden; zoom:1;}
+	.pop_approve ul li{ float:left; width:33%; margin:0 0 10px 0;}
+	.pop_approve ul li input{ position:relative; top:2px; margin:0 3px 0 0;}
+	.pop_approve_file{ padding:0 30px;}
+	.pop_approve_file input{ float:left; padding:3px 0; margin:0 10px 0 0;}
+	
+.pop_approve fieldset{ padding:0 25px; overflow:hidden; zoom:1;}
+.pop_approve fieldset p{ margin:0 0 15px 0; font-weight:700; overflow:hidden; zoom:1;}
+.pop_approve fieldset p label{ display:block; float:left; width:120px; font-weight:normal;}
+.pop_approve fieldset .link{ text-align:right; font-size:14px;}
+.pop_approve fieldset .link a{ color:#ff6600; text-decoration:underline;}
+
+
+/*search
+------------------------------------------------------------------------------------------------------------*/	
+	/*.pop_search_bottom{padding:15px 20px ; position: relative; left:0px; bottom:-7px; background:url(http://images.baihe.com/images/baihe_new/images/pop_img/pop_search_bg.gif) repeat-x 0 bottom; z-index:100; font-size:12px;}*/
+	.pop_search_bottom a{ text-decoration:underline; color:#ff6600;}
+	
+	.pop_search_cont{ width:100%; padding:0 0 10px 0; overflow:hidden; zoom:1;}
+		.pop_search_cont li{ position:relative; padding:0 0 0 30px; margin:0 0 8px 0; line-height:24px; overflow:hidden; zoom:1;}
+		.pop_search_cont li .inputbox{ width:200px; padding:2px 5px; margin:0 10px; border:1px solid #d0d0d0; line-height:16px; font-family:Arial; font-weight:700;}
+		.pop_search_cont li.select{ padding:0 0 0 83px;}
+		.pop_search_cont li.select input{ position:relative; top:3px !important; top:2px; margin:0 5px 0 0;}
+		.pop_search_cont b{ font-weight:700; color:#ff6600; }
+		.pop_search_cont p a{ color:#2f81d4; text-decoration:underline;}
+		.pop_search_cont .point{ padding:0 0 0 30px; margin:0 0 10px 0;}
+		.pop_search_cont .btn_norm{ position:absolute; top:0; left:310px;}
+		.pop_search_cont .pop_error{ margin:5px 0 0 70px;}
+		.pop_search_cont .pop_blue{ margin:5px 0 0;}
+		.pop_search_cont .yellow{ color:#ff6600; }
+		.pop_search_cont .success{ font-size:14px; font-weight:700;}
+		.pop_search_cont p input{ width:150px; padding:1px 5px; margin:0 20px 0 5px; border:1px solid #d0d0d0; line-height:16px; font-family:Arial; font-weight:700;}
+	
+/*ad
+------------------------------------------------------------------------------------------------------------*/	
+.pop_ad_cont{ font-size:12px; overflow:hidden;}	
+
+
+/*pop_love_bh
+------------------------------------------------------------------------------------------------------------*/
+	.pop_love_bh{ width:100%; overflow:hidden; zoom:1;}
+		.pop_love_bh dl dt{ float:left; width:160px; overflow:hidden;}
+		.pop_love_bh dl dt.love01{ padding:0 0 0 30px;}
+		.pop_love_bh dl dd{ padding:30px 25px 0; overflow:hidden; zoom:1;}
+		.pop_love_bh strong{ display:block; padding:0 0 15px 0; margin:0 0 10px 0; border-bottom:1px dotted #ccc; font-size:14px; font-weight:700; color:#ff3300; line-height:26px;}
+		.pop_love_bh b{ display:block; padding:15px 7px 0; margin:0 0 10px 0; font-size:14px; font-weight:700; color:#ff3300; line-height:26px;}
+		.pop_love_bh p{ margin:0 0 15px 0; font-size:12px;}
+		.pop_love_bh .linkgray{ display:block; float:left; width:100px;  padding:13px 0 0; font-size:12px;}
+		
+/*pop_pay
+------------------------------------------------------------------------------------------------------------*/
+.pop_member_info .pop_pay_title{ padding:0 0 15px 50px; line-height:22px; color:#ff3000; background:url(images/pay/pop_pay_icon.jpg) no-repeat 0 0;}
+.pop_pay_cont{ width:100%; padding:0 0 10px 0; overflow:hidden; zoom:1;}
+.pop_pay_cont li{ padding:0 0 0 30px; margin:0 0 8px 0; line-height:24px; overflow:hidden; zoom:1;}
+.pop_pay_cont li label{ float:left; width:100px; text-align:right;}
+.pop_pay_cont li input{ width:146px; padding:2px 5px; border:1px solid #d0d0d0;}
+.pop_pay_cont li select{ margin:0 5px 0 0;}

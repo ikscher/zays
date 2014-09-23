@@ -1,0 +1,165 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+tr.over td {
+	background:#cfeefe;
+} 
+
+input[name="xx"]  {
+background-color:#cfeefe;
+}
+
+.coolbg {
+background: #a4cafd;
+border-bottom:2px solid #ACACAC;
+border-right:2px solid #ACACAC;
+cursor:pointer;
+padding:2px 5px;
+}
+
+.np {
+border:medium none;
+}
+
+form table tr td input[type='text']{
+   width:100px;
+}
+
+</style>
+<h1>
+<span class="action-span1"><a href="###">红娘管理中心 </a> </span><span id="search_id" class="action-span1"> -会员上行短信</span>
+<span class="action-span"><a href="index.php?action=active_uplink&h=list">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+
+<form action="" method="get">
+<table width="100%">
+  <tr border="2">
+  
+  	<td >
+     <span class="desc">查询时间：</span>
+		<input type="text" name="startdate" value="{php echo $startdate;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" /> 到
+		<input type="text" name="enddate" value="{php echo $enddate;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  />
+     </td>
+    <td>
+     <select name="choose" id="choose">
+	    <option value="">请选择条件</option>
+	    <option value="uid" {if $choose=='uid'}selected="selected"{/if}>会员ID</option>
+		<option value="sid" {if $choose=='sid'}selected="selected"{/if}>客服ID</option>
+		
+	 </select>
+	 </td>
+    <td>
+		<input name="keyword" type="text" id="keyword" value="{$keyword}"/>
+		<input type="hidden" name="action" value="active_uplink" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input name="xx" type="submit" value="搜索"/>
+		</td>
+	  </tr>
+	 </table>
+</form>
+
+<p/>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table' >
+  <tr>
+    <th>会员ID</th>
+    <th>客服ID</th>
+    <th>内容</th>
+    <th>时间</th>
+    <th>操作</th>
+    
+  </tr>
+  {loop $user_arr $v}
+  <tr id="tr_{$v['id']}">
+    <td align="center" width="100"><a href="#" class="userinfo" >
+		<span>{$v['uid']}</span>
+    </a></td>
+
+    <td align="center" width="100"><a href="#" class="userinfo" >
+    	<span >{$v['sid']}</span>
+    	</a></td>
+    	<td align="left" width="%80"><span>{$v['rep']}</span></td>
+    <td align="center">{php echo date("Y-m-d H:i:s",$v['reptime']);}</td>
+  <td align="center"><a href='#'>&nbsp;</a></td>
+  </tr>
+  {/loop}
+  </table>
+  
+ <div  class="page">
+	<table cellpadding="4" cellspacing="0">
+		<tr>
+		  <td align="center">{$pages}
+			&nbsp;&nbsp;&nbsp;
+			分页   <input name="pageGo"  id="pageGo" type="text"  value="" /> &nbsp;
+		  <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+		</tr>
+	  </table>
+  </div>
+  
+</div>
+
+
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#list-table tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+})
+
+
+//note 分页处理
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$page_num})
+
+	page = {$page_num};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+ function dealok(id){
+	var url = './active_ajax.php?n=uplink&id='+id;
+	$.get(url,function(data){
+		$("#tr_"+id).hide();
+	});	 
+}
+
+
+function enterHandler(event){
+    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+    if (keyCode == 13) {
+       gotoPage();  //调用函数
+     } 
+}
+
+$(document).ready(function(){
+   $("form table tr td:eq(0)").attr("width","210px").attr("align","left");
+   $("form table tr td:eq(1)").attr("width","80px").attr("align","right");
+   $("form table tr td:eq(2)").attr("width","580px").attr("align","left");
+   
+   $("#listDiv table tr td .userinfo span").css("color",'#33F');
+   
+   $("#listDiv .page").css("padding","5px").css("background","#fff");
+   
+   $("#listDiv .page input:text").css("width","50px").css("height","25px");
+   
+   $("#listDiv tr td a.userinfo ").click(function(){
+      //var uid=$(this).parent().parent().attr('id');
+	  var uid=$(this).children().html();
+	  uid=uid.replace(/tr\_/,"");
+	  
+	  parent.addTab('查看'+uid+'资料','index.php?action=allmember&h=view_info&uid='+uid,'icon');
+   
+   });
+
+});
+
+</script>

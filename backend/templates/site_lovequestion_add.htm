@@ -1,0 +1,121 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+function checkForm(){
+	var lovetype = $("#lovetype").val();
+	var ty_pe = $("#ty_pe").val();
+	var title = $("#title").val();
+	var ask1 = $("input[name='askvalue1']:checked").val();
+	var ask2 = $("input[name='askvalue2']:checked").val();
+	var ask3 = $("input[name='askvalue3']:checked").val();
+	var ask4 = $("input[name='askvalue4']:checked").val();
+	var ask5 = $("input[name='askvalue5']:checked").val();
+	
+	if( !lovetype || !ty_pe || !title || !ask1 || !ask2 || !ask3 || !ask4 || !ask5){
+		alert("请将信息填写完整");
+		return false;
+	}
+}
+</script>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 添加爱情测试题目</span>
+	<div style="clear:both"></div>
+</h1>
+添加测试题目：
+<form action="index.php?action=site_lovequestion&h=add" method="post" onsubmit="return checkForm();">
+<div class="list-div">
+	<table><th colspan="2" style="text-align:left">
+		题目分类：
+		<select name="lovetype" id="lovetype">
+			<option value="">--请选择--</option>
+			{loop $lovetype_list $v}
+			<option value="{$v['qid']}">{$v['title']}</option>
+			{/loop}
+		</select>
+		&nbsp;&nbsp;&nbsp;测试类型：
+		<select name="ty_pe" id="ty_pe">
+			<option value="">--请选择--</option>
+			{loop $love_type $k $v}
+			<option value="{$k}">{$v}</option>
+			{/loop}
+		</select>
+		&nbsp;&nbsp;&nbsp;测试题目：
+		<input name="title" type="text" id="title" size="40" />
+		</th>
+			<tr>
+				<td>答案A：</td>
+				<td> 打分
+					<input name="askvalue1" id="ask11" type="radio" value="1"/>
+					1
+					<input name="askvalue1" id="ask12" type="radio" value="2"/>
+					2
+					<input name="askvalue1" id="ask13" type="radio" value="3"/>
+					3
+					<input name="askvalue1" type="radio" id="ask14" value="4"/>
+					4
+					<input name="askvalue1" id="ask15" type="radio" value="5"/>
+					5&nbsp;&nbsp;&nbsp;&nbsp;(<span style="color:red">完全不符合</span>) </td>
+			</tr>
+			<tr>
+				<td>答案B：</td>
+				<td> 打分
+					<input name="askvalue2" id="ask21" type="radio" value="1"/>
+					1
+					<input name="askvalue2" id="ask22" type="radio" value="2"/>
+					2
+					<input name="askvalue2" id="ask23" type="radio" value="3"/>
+					3
+					<input name="askvalue2" id="ask24" type="radio" value="4"/>
+					4
+					<input name="askvalue2" id="ask25" type="radio" value="5"/>
+					5&nbsp;&nbsp;&nbsp;&nbsp;(<span style="color:red">不符合</span>) </td>
+			</tr>
+			<tr>
+				<td>答案C：</td>
+				<td> 打分
+					<input name="askvalue3" id="ask31" type="radio" value="1"/>
+					1
+					<input name="askvalue3" id="ask32" type="radio" value="2"/>
+					2
+					<input name="askvalue3" id="ask33" type="radio" value="3"/>
+					3
+					<input name="askvalue3" id="ask34" type="radio" value="4"/>
+					4
+					<input name="askvalue3" id="ask35" type="radio" value="5"/>
+					5&nbsp;&nbsp;&nbsp;&nbsp;(<span style="color:red">很难说</span>) </td>
+			</tr>
+			<tr>
+				<td>答案D：</td>
+				<td> 打分
+					<input name="askvalue4" id="ask41" type="radio" value="1"/>
+					1
+					<input name="askvalue4" id="ask42" type="radio" value="2"/>
+					2
+					<input name="askvalue4" id="ask43" type="radio" value="3"/>
+					3
+					<input name="askvalue4" id="ask44" type="radio" value="4"/>
+					4
+					<input name="askvalue4" id="ask45" type="radio" value="5"/>
+					5&nbsp;&nbsp;&nbsp;&nbsp;(<span style="color:red">符合</span>) </td>
+			</tr>
+			<tr>
+				<td>答案E：</td>
+				<td> 打分
+					<input name="askvalue5" id="ask51" type="radio" value="1"/>
+					1
+					<input name="askvalue5" id="ask52" type="radio" value="2"/>
+					2
+					<input name="askvalue5" id="ask53" type="radio" value="3"/>
+					3
+					<input name="askvalue5" id="ask54" type="radio" value="4"/>
+					4
+					<input name="askvalue5" id="ask54" type="radio" value="5"/>
+					5&nbsp;&nbsp;&nbsp;&nbsp;(<span style="color:red">完全符合</span>) </td>
+			</tr>
+		</table>
+</div>
+<p/>
+<input name="ispost" type="hidden" id="ispost" value="1" />
+<input name="提交" type="submit" value=" 添 加 " />
+</form>

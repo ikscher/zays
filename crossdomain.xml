@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+<allow-access-from domain="*.hongniangwang.com"  to-ports="*"  />
+<allow-access-from domain="*.hongniangw.com"  to-ports="*"  />
+<allow-access-from domain="*.7651.com"  to-ports="*"  />
+<allow-access-from domain="7651.com"  to-ports="*"  />
+<allow-access-from domain="www.7651.com"  to-ports="*"  />
+<allow-access-from domain="ceshi.7651.com"  to-ports="*"  />
+<allow-access-from domain="192.168.1.30"  to-ports="*"  />
+</cross-domain-policy>
+
+

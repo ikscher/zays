@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{padding:0;margin:0;}   
+body{font-family:"宋体", Arial, Vrinda;font-size:12px;background:#fff;}
+.clear{clear:both;}
+a{text-decoration:none; outline:none;}
+a:link, a:visited {color:#000;}
+a:hover, a:active {color:#900;}
+ol,ul{list-style:none;}
+img{font-size:0; line-height:0; border:none;}
+
+.red{color:#C00;}
+.leftfloat{float:left;}
+.rightfloat{float:right;}
+#button{ border:none; cursor:pointer;}
+
+#realname{width:982px;margin:0 auto; height:1250px;}
+#realname_top{ background:url(images/top_bg.gif) no-repeat;width:982px;height:453px;}
+#realname_top p{float:right;width:410px;color:#FFF;margin-right:30px;margin-top:80px;line-height:20px;}
+
+.realname_new{width:782px;height:73px; background:url(images/new_lbg.gif) no-repeat;padding-left:200px;}
+.realname_new p,.realname_older p{width:590px;font-size:14px;line-height:24px;float:left;margin-top:10px;}
+.realname_new span{ background:url(images/new_rbg.gif) no-repeat;float:right;width:163px;height:73px;}
+
+.realname_older{width:832px;height:76px;background:url(images/new_lbg.gif) no-repeat -44px 0;padding-left:150px;float:left;}
+.realname_older h2{float:left;width:512px;font-weight:400;}
+.realname_older img{margin-left:30px;}
+.realname_older span{ background:url(images/new_rbg.gif) no-repeat 44px 0;float:right;width:163px;height:76px;display:block;}
+
+.rn_promise{height:154px;width:982px;float:left;}
+.rn_promise p{ background:url(images/promise.gif) no-repeat;width:982px;height:44px;}
+.promise_cont{width:982px;height:110px;float:left;}
+.promise_cont p{ background:url(images/promise_lbg.gif) no-repeat; height:110px;width:45px;float:left;}
+.promise_cont h3,.award_cont h3{font-size:18px;color:#0087e1; font-family:"黑体";font-weight:400;width:850px;margin-top:26px;margin-left:20px;line-height:32px;float:left;}
+.promise_cont span{ background:url(images/promise_rbg.gif) no-repeat;height:110px;width:47px;display:block;float:right;}
+
+.rn-award{width:982px;height:377px;float:left;}
+.rn-award p{ background:url(images/rn_reward.gif) no-repeat;width:982px;height:44px;}
+.award_cont p{ background:url(images/reward-new.gif) no-repeat -57px 0;width:103px;height:94px;float:left;}
+.award_cont span{ background:url(images/rn_rreward.gif) no-repeat;width:105px;height:94px;float:right;display:block;}
+
+#realname_bottom{ background:url(images/rn_bottom.gif) repeat-x;width:964px;height:104px;float:left;padding-top:30px;padding-left:18px;overflow:hidden;}
+#realname_bottom p{ background:url(images/rn_title.png) no-repeat;margin-left:100px;margin-top:10px;}

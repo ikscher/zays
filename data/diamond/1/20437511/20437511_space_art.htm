@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的爱情观——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>爱情观点 <i>love view</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="l-view">
+			    <div class="l-view1"> 
+				  <p>                                 达达是一个外向乐观的人，但对于感情，他还是比较保守的。他喜欢可爱、开朗的女孩子。最好有着秀美的长发。达达渴望邂逅一位心仪的女孩，然后建立一个幸福温馨的家，在属于他们的城堡里爱她，守护她。达达认为，伴侣不是生活中你爱吃黄瓜他也爱吃黄瓜的那个人，而是你吃蛋清他甘愿吃蛋黄的那个人；伴侣不是天黑了和你一起手挽手走进饭店的那个人，而是守在门口巴望你回来共进晚餐的那个人；伴侣不是和你大谈爱情，把“我爱你”挂在嘴边的那个人，而是和你平淡的唠叨柴米油盐、锅碗瓢盆的那个人。在幸福的婚姻中，伴侣已不是一个具体的人，而是两个人在几十年的岁月中沉淀下来的：一份默契、一份温情、一份平淡、一份理解、一份宽容。</p>
+				  <p>     两个人在一起了，就要用心地去关爱生命中的另一半，既然她是选定的终身伴侣，就要用一生的时间去不断地了解她，读懂她。爱她，就要让她开心，给她你所有的爱，给她一个温暖幸福的家。</p>
+				  <p>     家是人生最美的拥有。她是一份牵挂中蕴涵的一点温暖，她是一丝温柔中隐藏的一份宁静，她是一份体贴中表达的一丝情谊……她是尊重、信任和宽容……</p>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+              </div>
+			  </div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

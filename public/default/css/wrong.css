@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+.content-title{
+	width:982px;
+	float:left;
+	}
+.c-center{
+	width:980px;
+	float:left;
+	font-size:14px;
+	}
+.content-bottom{
+	width:981px;
+	float:left;
+	font-size:0px;
+	}
+.wrong-tips{
+	width:468px;
+	margin:15px auto 40px;
+	}
+.wrong-tips-title,.wrong-tips-bottom{
+	width:468px;
+	margin:0 auto;
+	}
+.wrong-tips-title,.wrong-tips-bottom{
+	background:url(../images/tips-title.gif) no-repeat;
+	}	
+.wrong-tips-title{
+	height:36px;
+	}
+.wrong-tips-bottom{
+	height:25px;
+	background-position:bottom;
+	}	
+.wrong-tips-c{
+	width:464px;
+	border-left:2px solid #f1f0f0;
+	border-right:2px solid #f1f0f0;
+	}	
+.wrong-tips-icon{
+	width:111px;
+	height:96px;
+	float:left;
+	display:inline;
+	margin-left:40px;
+	margin-top:20px;
+	}
+.msg-title{
+	background:url(../images/msg-title.gif) no-repeat;
+	height:24px;
+	line-height:24px;
+	padding-left:60px;
+	}
+.w-t-c-right{
+	float:left;
+	width:280px;
+	}
+.w-t-c-right dd{
+	color:#d73c90;
+	font-size:14px;
+	font-weight:700;
+	padding:30px 0 0px 20px;
+	}	
+.pass_btn{
+	background:url(../images/wrongs.jpg) no-repeat;
+	width:74px;
+	height:28px;
+	border:none;
+	text-align:center;
+	font-size:14px;
+	line-height:28px;
+	cursor:pointer;
+	margin-top:10px;
+	}	

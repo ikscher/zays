@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<style type="text/css">
+.newsite_layer1 { display:none; padding:20px 30px; width:500px; font-size:14px;}
+.newsite_layer1 p { text-indent:24px; padding-bottom:10px;}
+.newsite_layer1 .red { color:#f00;}
+.newsite_layer1 .action { padding-top:20px; text-align:center;}
+.newsite_layer2 { display:none; padding:20px 30px; width:500px; font-size:14px;}
+.newsite_layer2 p {  padding-bottom:10px;}
+.newsite_layer2 .red { color:#f00;}
+.newsite_layer2 .action { padding-top:20px; text-align:center;}
+.newsite_layer2 .action a { margin:0 10px; padding:0 20px;}
+body {
+    color: #333333;
+    font-family: 宋体;
+    font-size: 12px;
+    line-height: 20px;
+}
+a:link {
+    color: #0861A2;
+    text-decoration: none;
+}
+a:hover {
+    color: #0861A2;
+    text-decoration: underline;
+}
+/**main.css*/
+div, form, img, ul, ol, li, dl, dt, dd, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+/**picture**/
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+/*wrongTip*/
+.tred {
+    color: #FF6600;
+}
+</style>
+<link rel="shortcut icon" href="public/default/images/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="public/default/images/favicon.ico" type="image/x-icon">
+<link href="reg/zhenai/css/reg_brmatch.css" rel="stylesheet" type="text/css">
+<link href="reg/zhenai/css/areaForm.css" rel="stylesheet" type="text/css">
+<!-- <link href="http://i0.zastatic.com/zhenai3/zhenai2012/css/button.css?v=20130918" rel="stylesheet" media="screen"> -->
+<title>真爱一生</title>
+<link rel="canonical" href="http://www.zhenaiyisheng.cc/">
+<meta name="robots" content="noindex,follow"> 
+<script type="text/javascript">
+/*
+(function(){
+	var channelId='901045',subid='',ref=document.referrer;
+	var url='http://cdnlog.zhenai.com/track/?channelId='+channelId+'&subid='+subid+'&referer='+encodeURIComponent(ref?ref:'');
+	document.write(unescape('%3cscript type%3d%22text/javascript%22 src%3d%22'+escape(url)+'%22%3e%3c/script%3e'));
+})();
+
+(function(){
+	var ref=document.referrer;
+	var p = /baidu.com|google.com|sogou.com|soso.com|youdao.com|jike.com|bing.com|yahoo.cn/
+	if(p.test(ref)){
+		var url='http://cdnlog.zhenai.com/sw/?referer='+encodeURIComponent(ref);
+		document.write(unescape('%3cscript type%3d%22text/javascript%22 src%3d%22'+escape(url)+'%22%3e%3c/script%3e'));
+	}
+})();
+*/
+
+</script>
+<script type="text/javascript" src="reg/zhenai/js/jquery-1.8.3.min.js"></script>
+<script src="reg/zhenai/js/fixCore.js"></script>
+<script type="text/javascript" src="reg/zhenai/js/saved_resource"></script>
+<script src="reg/zhenai/js/sea.js"></script>
+<script src="reg/zhenai/js/sys.js"></script>
+<script src="reg/ipReal.php"></script>
+<script type="text/javascript">
+seajs.config({
+	charset:"GBK"
+})
+</script>
+
+
+
+<script type="text/javascript">
+	var workCityTemp = "";
+	var workProvinceTemp ="";
+	var registerCity = "";
+	var resourceId="1050";
+	var ref=document.referrer;
+	var channelId='901045';
+	var subid='';
+	
+	
+	var c_provice = "";
+	var c_city = "";
+	len = provice.length;
+	for (i = 0; i < len; i++) {
+		provice_arr = provice[i].split(",");
+		if (curent_area.indexOf(provice_arr[1]) != -1) {
+			c_provice = provice_arr[0];
+			break;
+		}
+	}
+	len = city.length;
+	for (i = 0; i < len; i++) {
+		city_arr = city[i].split(",");
+		if (curent_area.indexOf(city_arr[1]) != -1) {
+			c_city = city_arr[0];
+			break;
+		}
+	}
+	/*
+	//accessPoint{0:页面pv,1:免费注册,2:点击登录,3:快速注册}
+	function stat(accessPoint,isPV) {
+		  if(channelId=='902692' || channelId=='902712' || channelId=='902713' || channelId=='902714' || channelId=='902715'){
+			  var url='http://cdnlog.zhenai.com/visit/?resourceId=1050&accessPoint='+accessPoint+'&sParam=2&isPV='+isPV+'&isEnable=1&channelId=' + channelId + '&subId=' + subid + '&referer='+encodeURIComponent(ref?ref:'');
+			  $.ajax({url:url,dataType:"jsonp",success: function(data){}})
+		  }
+	}
+	stat(0,1);*/
+</script>
+
+
+<script src="reg/zhenai/js/channel_data.js" id="channelScript" type="text/javascript" language="javascript"></script></head>
+<body>
+<div id="touxiangTest"></div>
+<div class="wrapper">
+	<div class="header clearfix">
+		<a href="http://www.zhenaiyisheng.cc"><div class="logo">真爱一生网</div></a>
+		<!-- <div class="adsection">
+			<div class="loginbar">
+				<form id="form1" name="form1" action="http://www.zhenaiyisheng.cc/index.php?n=login" method="post" onsubmit="setTimeout(&#39;stat(2,0)&#39;,200);return checkValue();">
+					<input name="loginmode" id="loginmode" type="hidden" value=""><input type="text" value="登录ID/手机号" id="iptUid" name="loginInfo"><input type="password" class="iptPwd" name="password" id="iptPwd"><input type="submit" class="btnlogin" id="btnLogin" value="">
+					<a href="http://www.zhenaiyisheng.cc/index.php?n=register" target="_blank" onclick="stat(1,0);">免费注册</a><span id="fakeValue" style="display: block;">密码</span><span id="errorTips" style=""></span>
+				</form>
+			</div>
+		</div>  -->
+		
+	</div>
+	
+	<div class="maincont">
+		<div class="membercont clearfix" id="channelData">
+		    <ul>
+			   
+				
+				</ul></div>
+		<div class="regbox">
+		<!--七夕-->
+			<div class="boxtit_qixi"><span></span><h2>轻松一步，开始您的寻爱之旅</h2></div>
+        <!--七夕-->
+			<div class="regform">
+				<form action="index.php?n=register&h=stepone" id="myForm" name="myForm" method="post" >
+					<ul>
+						<li><label class="dt">我的性别：</label><input type="radio" id="mysex_0" name="gender" value="0" checked="checked" id="forgentleman"><label for="forgentleman">帅哥</label><input type="radio" id="mysex_1" name="gender" value="1" id="forlady"><label for="forlady">美女</label>
+						</li>
+						
+						<li><label class="dt">出生日期：</label><script>getYearsSelect('sels','register_dateFormYear','year','','0');</script><script>getMonthsSelect('sels','register_dateFormMonth','month','','0');</script><script>getDaysSelect('sels','register_dateFormDay','day','','0');</script><div class="tip_msg tred" style="display:none">您忘记选择“生日”这项了。<span class="angle1"></span><span class="angle2"></span><span class="radius1"></span><span class="radius2"></span><span class="radius3"></span><span class="radius4"></span></div>
+						</li>
+						<li><label class="dt">工作地区：</label><span ><script>getProvinceSelect43rds('','workprovincereg','workprovincereg','workcity',c_provice,'10100000');</script>
+         <script>getCitySelect43rds('','workcity','workcity',c_city,'');</script></span>
+								
+							<div class="tip_msg tred" style="display: none;">请选择具体工作地区。<span class="angle1"></span><span class="angle2"></span><span class="radius1"></span><span class="radius2"></span><span class="radius3"></span><span class="radius4"></span></div>	
+						</li>
+						<li><label class="dt">婚姻状况：</label><script>getSelect('selxl','marriage1','marriage','1','1',marriage);</script>
+							<div class="tip_msg" style="display: none;">此项注册后不可更改，请慎重填写<span class="angle1"></span><span class="angle2"></span><span class="radius1"></span><span class="radius2"></span><span class="radius3"></span><span class="radius4"></span></div>
+						</li>
+						<li><label class="dt">学&nbsp;&nbsp;&nbsp;&nbsp;历：</label><script>getSelect('selxl','education1','education','-1','0',educationbuxian);</script>
+							<div class="tip_msg tred" style="display:none">请选择“学历”<span class="angle1"></span><span class="angle2"></span><span class="radius1"></span><span class="radius2"></span><span class="radius3"></span><span class="radius4"></span></div>
+						</li>
+						<li><label class="dt">月&nbsp;收&nbsp;入：</label><script>getSelect('selxl','salary1','salary','-1','0',salary1buxian);</script>
+							<div class="tip_msg tred" style="display:none">请选择“月收入”<span class="angle1"></span><span class="angle2"></span><span class="radius1"></span><span class="radius2"></span><span class="radius3"></span><span class="radius4"></span></div>
+						</li>
+						<li><label class="dt">手&nbsp;&nbsp;&nbsp;&nbsp;机：</label><input id="mobile" name="telphone" type="text"  value='' />
+							<div class="tip_msg tred" style="display:none">您忘记选择“手机”这项了。<span class="angle1"></span><span class="angle2"></span><span class="radius1"></span><span class="radius2"></span><span class="radius3"></span><span class="radius4"></span></div>
+						</li>
+						 <input name="agree" type="hidden" id="agree" value="1" />
+						 <input name="istuiguang" type="hidden" id="istuiguang" value="1" />
+						<!--  <input type="hidden" name="password" value="123456" />
+						 <input type="hidden" name="password2" value="123456" /> -->
+					</ul>
+					<p class="btnsub"><input type="button" id="register_btn" value="快速注册"></p>
+				</form>
+			</div>
+			<div class="membercard" style="left: 10px;">
+				<div class="cardtit"><h4>查看更多资料请先注册哦</h4></div>
+				<div class="memberinfo">
+					<div class="avatar"><img alt="昵称" id="uavator" src=""></div>
+					<dl class="intro">
+						<dt><strong id="uname"></strong></dt>
+						<dd id="uage"></dd>
+						<dd id="uadd"></dd>
+					</dl>
+				</div>
+				<div class="arrow"></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="reg/zhenai/js/channelRegister.js" charset="gbk"></script>
+	<div class="footer">
+		<p>品牌：8年专业婚恋服务 专业：庞大的资深红娘队伍 真实：诚信会员验证体系</p>
+		<p>Copyright 2006-2014 真爱一生网.All Right Reserved.皖ICP备14002819号</p>
+		<p>客服热线：400-8787-920 （周一至周日：9:00-21:00）</p>
+	</div>
+		
+</div>
+<script type="text/javascript">
+
+$('#register_btn').on('click',function(){
+    if(channelCheckForm()){
+	   setTimeout(function(){ document.myForm.submit();},1000);
+	}
+});
+
+/*加载背景用户*/
+function getDataScript(){
+	var id='channelScript';
+	var url = 'reg/zhenai/js/channel_data.js?v=20140404';
+	oScript = document.getElementById(id); 
+	var head = document.getElementsByTagName("head").item(0); 
+	if (oScript != null) {
+		head.removeChild(oScript); 
+	} 
+	oScript = document.createElement("script"); 
+	oScript.setAttribute("src", url); 
+	oScript.setAttribute("id",id); 
+	oScript.setAttribute("type","text/javascript"); 
+	oScript.setAttribute("language","javascript"); 
+	head.appendChild(oScript); 
+}
+getDataScript();
+</script>
+<div style="display:none">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe78b26575943bb3d1af18f473a6f4f5d' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script  type="text/javascript">
+  var _sogou_sa_q = _sogou_sa_q || [];
+  _sogou_sa_q.push(['_sid', '169583-174065']);
+ (function() {
+    var _sogou_sa_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var _sogou_sa_src=_sogou_sa_protocol+"hermes.sogou.com/sa.js%3Fsid%3D169583-174065";
+    document.write(unescape("%3Cscript src='" + _sogou_sa_src + "' type='text/javascript'%3E%3C/script%3E"));
+    })();
+</script>
+
+
+<script src="http://s22.cnzz.com/z_stat.php?id=1000262469&web_id=1000262469" language="JavaScript"></script>
+
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48665834-1', 'zhenaiyisheng.cc');
+  ga('send', 'pageview');
+
+</script>
+</div>
+<div class="area_box province_box" style="z-index: 9999999; left: 711px; top: 408px; display: none;"><div class="pleasechoosebox">请选择省/直辖市</div><ul class="area_box_tr"><li><a href="javascript:void(0)" v="10102000">北京</a></li><li><a href="javascript:void(0)" v="10103000">上海</a></li><li><a href="javascript:void(0)" v="10101002">广州</a></li><li><a href="javascript:void(0)" v="10101201">深圳</a></li><li><a href="javascript:void(0)" v="10105000">重庆</a></li><li><a href="javascript:void(0)" v="10104000">天津</a></li></ul><ul class="area_box_tr"><li><a href="javascript:void(0)" v="10101000" class="">广东</a></li><li><a href="javascript:void(0)" v="10118000">江苏</a></li><li><a href="javascript:void(0)" v="10131000">浙江</a></li><li><a href="javascript:void(0)" v="10127000">四川</a></li><li><a href="javascript:void(0)" v="10107000">福建</a></li><li><a href="javascript:void(0)" v="10124000">山东</a></li><li><a href="javascript:void(0)" v="10115000">湖北</a></li><li><a href="javascript:void(0)" v="10112000">河北</a></li><li><a href="javascript:void(0)" v="10125000">山西</a></li><li><a href="javascript:void(0)" v="10121000">内蒙古</a></li><li><a href="javascript:void(0)" v="10120000">辽宁</a></li><li><a href="javascript:void(0)" v="10117000">吉林</a></li><li><a href="javascript:void(0)" v="10114000">黑龙江</a></li><li><a href="javascript:void(0)" v="10106000">安徽</a></li><li><a href="javascript:void(0)" v="10119000">江西</a></li><li><a href="javascript:void(0)" v="10113000">河南</a></li><li><a href="javascript:void(0)" v="10116000">湖南</a></li><li><a href="javascript:void(0)" v="10109000">广西</a></li><li><a href="javascript:void(0)" v="10111000">海南</a></li><li><a href="javascript:void(0)" v="10110000" class="select">贵州</a></li><li><a href="javascript:void(0)" v="10130000">云南</a></li><li><a href="javascript:void(0)" v="10128000">西藏</a></li><li><a href="javascript:void(0)" v="10126000">陕西</a></li><li><a href="javascript:void(0)" v="10108000">甘肃</a></li><li><a href="javascript:void(0)" v="10123000">青海</a></li><li><a href="javascript:void(0)" v="10122000">宁夏</a></li><li><a href="javascript:void(0)" v="10129000">新疆</a></li></ul><ul class="area_box_tr2"><li><a href="javascript:void(0)" v="10133000">香港</a></li><li><a href="javascript:void(0)" v="10132000">澳门</a></li><li><a href="javascript:void(0)" v="10134000">台湾</a></li><li><a href="javascript:void(0)" v="10200000">国外</a></li></ul></div><div class="area_box w30" style="z-index: 9999999; left: 777px; top: 408px; display: none;"><div class="pleasechoosebox">请选择市/区</div><div class="city_box"><div class="area_box_tr2"><a href="javascript:void(0)" v="10110001">贵阳</a><a href="javascript:void(0)" v="10110002" class="select">六盘水</a><a href="javascript:void(0)" v="10110007">遵义</a><a href="javascript:void(0)" v="10110006">安顺</a><a href="javascript:void(0)" v="10110021">毕节</a><a href="javascript:void(0)" v="10110055">铜仁</a><a href="javascript:void(0)" v="10110082">黔西南</a><a href="javascript:void(0)" v="10110083">黔东南</a><a href="javascript:void(0)" v="10110084">黔南</a></div></div></div><div class="area_box w30" style="z-index: 9999999; left: 843px; top: 408px; display: none;"><div class="pleasechoosebox">请选择区县</div><div class="city_box"><div class="area_box_tr2"><a href="javascript:void(0)" v="10110091" class="select">钟山区</a><a href="javascript:void(0)" v="10110034">六枝特区</a><a href="javascript:void(0)" v="10110092">水城</a><a href="javascript:void(0)" v="10110073">盘县</a></div></div></div></body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的爱情观——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>爱情观点 <i>love view</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="l-view">
+			   <div class="l-view1"> 
+			     <p>我应该是属于那种在陌生人面前比较内向，互相认识后比较健谈的性格。我喜欢性格比较活波的女孩子。这样，性格上我们可以做到互补，两个人在一起不会太闹也不会太闷。</p>
+			     <p>我认为婚姻应该需要两方认真、真诚的对待，既然选择牵起对方的手，就要包容彼此，理解彼此，用一颗最真挚的心对待彼此，不离不弃，直至生命的尽头……有人说摩羯座的人最好的事业就是坚持选择的工作，所以我十年以来一直坚持着自己的工作，希望自己会在这个岗位上一直坚持下去。</p>
+			     <p>我是一个典型的摩羯座男生，在经历了7年的网络生涯后，突然有一天，我的脑海里有了一个懵懂的念想：“难道我就靠网游游戏人生，难道我内心里就想庸庸碌碌，平平凡凡的过活，难道我就不想红红火火去谈恋爱？”这个念想在我的脑海里存在了半年后，我来到了这里，希望在这里能够找到一个活泼开朗的女孩带领我走出懵懵懂懂的世界。</p>
+			     <p>我憧憬的生活是在我累了困了的时候她能给我一个深深的拥抱，微笑的对我说：“老公辛苦了。”在你伤心的时候，我会默默的给你一个拥抱；在你疲惫的时候我会静静陪伴着你；在你郁闷的时候我会牵着你的手去公园漫步；在你需要倾诉的时候，我会成为你的忠实听众。</p>
+               </div>
+   
+               
+                           
+</div>
+			  </div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

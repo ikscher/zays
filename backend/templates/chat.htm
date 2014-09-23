@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title id='t'>客服模拟会员聊天</title>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
+<style type="text/css">
+body {
+	background-color:#D7E4F4;
+	margin:0px;
+	padding:0px;
+	font-size:10pt;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	$.hotkeys.add('Ctrl+return',sendMes);
+	$.hotkeys.add('Ctrl+down',history); 
+})
+var gender1 = gender2 = "";
+function checkID( v , info ){
+	if( !parseInt(v) ){
+		alert("请输入正确的会员ID");
+		return;
+	}
+	var url = "../chat_ajax.php?n=checkid&id="+v;
+	$.getJSON(url,function(data){//alert(data);
+		if( !data ){
+			alert("该会员不存在！");
+			return;
+		}
+		
+		var gerder = grade = name = online = "";
+		if(data.gender == 0){
+			gender = "<img src='images/m.gif'/>";
+		}else if(data.gender == 1){
+			gender = "<img src = 'images/w.gif'/>";
+		}
+		
+		if( data.s_cid == 20 ){
+			grade = "钻石会员";	
+		}else if(data.s_cid == 30 ){
+			grade = "高级会员";
+		}else if(data.s_cid == 40 ){
+			grade = "普通会员";	
+		}else if(data.s_cid == 50 ){
+			grade = "红娘";	
+		}
+		if(data.isoline==1){
+			online = "在线";
+		}else{
+			online = "离线";
+		}
+		
+		if( info== "uinfo" ){
+			gender1 = data.gender;
+			if( data.nickname ){ name = data.nickname}//else{ name = data.username}
+			$("#uinfo").html(gender + name + "(" + grade + v +"-<span id='online_tip1'>"+ online+"</span>)");	
+			$("#uid").val(v);
+			$("#uinfo_uid").html(v);
+			$("#uinfo_nickname").html(name);
+			$("#uinfo_muli").css("display","");
+		}
+		if( info== "kinfo" ){
+			gender2 = data.gender;
+/*			if(data.isonline){
+				alert("您模拟聊天的会员当前正在线，不能模拟该会员聊天与其它会员聊天");
+				return;
+			}*/
+			if( data.nickname ){ name = data.nickname}//else{ name = data.username}
+			$("#kinfo").html("(<span id='online_tip2'>"+online +"</span>-"+ v + grade + ")" + name + gender);
+			$("#kid").val(v);
+			$("#kinfo_uid").html(v);
+			$("#kinfo_nickname").html(name);
+			$("#kinfo_muli").css("display","");
+		}
+	})
+}
+
+var title_message_st = 0;
+var title_message = document.title;
+
+function sendMes(){
+	
+	var mes = $("#mes").val();
+	var sender = $("#kid").val();
+	var receiver = $("#uid").val();
+	
+	//取消标题闪烁
+	title_message_st = 0;
+
+	if( sender == ""){alert("消息发送者ID不能为空！");return;}
+	if( receiver == ""){alert("消息接收者ID不能为空！");return;}
+	if(gender1 == gender2){alert("不能与同性聊天！");return;}
+	if( mes == ""){alert("消息内容不能为空！ ");return;}
+	//$("title").text("模拟"+sender+"与"+receiver+"聊天");
+	$("#mes").val("");
+	var url = "../chat_ajax.php?n=sendmes";
+	$.post(url,{sender:sender,receiver:receiver,mes:mes},function(data){//alert(data);
+	})
+
+	var logo = "<img src='images/top_logo.gif'/>  ";
+	var date = new Date();
+	var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+	//var time = date.getYear() + "-" +  date.getMonth() + "-" + (date.getDate()+1) +"  "+ date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+	//$("#show").html($("#show").html()+logo + time　+ "<div style='margin-left:3px;margin-bottom:5px;'>我对"+receiver+"说:"+mes+"</div>");
+	$("#show").html($("#show").html() +"<div style='margin-left:15px;margin-bottom:5px;'><img src='images/top_logo.gif'/>我对ID:"+receiver+'（'+time+'）'+"说:<br /><span style='margin-left:15px;color:#CD489B;'>"+mes+"</span></div>");
+	document.getElementById('show').scrollTop = document.getElementById('show').scrollHeight;
+}
+
+
+//标题循环提示
+function titleRun(){
+        if(title_message_st){
+		  if (title_message_st%2==0)
+		  {
+		    document.title = "你有新的消息";
+		  }else{
+             document.title = "****************";
+		  }
+		   title_message_st++;
+		}else{
+		    document.title = title_message;
+		}
+		setTimeout("titleRun()",500);
+}
+
+titleRun();
+
+function getMes(){
+	var sender = $("#kid").val();
+	var receiver = $("#uid").val();
+	var chat_id = $("#chat_id").val();
+	var logo = "<img src='images/top_logo.png'/>  ";
+	if( sender && receiver){
+		var url =  "../chat_ajax.php?n=getmes&sender="+sender+"&receiver="+receiver+"chat_id="+chat_id;
+		$.getJSON(url,function(data){//alert(data.length)
+			if(data.length){	
+				//window.focus();
+				title_message_st = 1;
+
+				for(var i=0;i<data.length;i++){
+					//$("#show").html($("#show").html()+logo+data[i].s_time+ "<div style='margin-left:3px;margin-bottom:10px;'>aaaas"+data[i].s_content+"</div>");	
+					$("#show").html($("#show").html()+ "<div style='margin-left:15px;margin-bottom:10px;'>ID:"+sender+"("+data[i].s_time+")说:<br /><span style='margin-left:15px;color:#333;'>"+data[i].s_content+"</div>");	
+					$("#chat_id").val(data[i].s_id);
+				}
+			}
+		});
+	}
+	document.getElementById('show').scrollTop = document.getElementById('show').scrollHeight;
+}
+setInterval("getMes()",3000);
+
+//检查会员是否在线
+var s = 1;
+function checkOnline(){
+	var sender = $("#kid").val();
+	var receiver = $("#uid").val();
+	
+	var checkid = s == 1 ? receiver : sender;
+	var url = "../chat_ajax.php?n=checkonline&checkid="+checkid;
+	$.get(url,function(data){
+		if(data){
+			$("#online_tip"+s).html("在线");
+			//if(s==2) alert("您模拟的会员"+sender+"上线了，请结束模拟聊天！");
+		}else{
+			$("#online_tip"+s).html("离线");
+		}
+	});
+	s = s ==1 ? 2 : 1;
+}
+setInterval("checkOnline()",60000);
+
+function history(){
+	var sender = $("#kid").val();
+	var receiver = $("#uid").val();
+	if(!sender && !receiver){
+		alert("消息接收者ID与发送者ID不能为空");	
+		return;
+	}
+	window.open("../chat_ajax.php?n=menu&sender="+sender+"&receiver="+receiver,"查看"+sender+"与"+receiver+"的聊天记录","height=450,width=600");
+}
+</script>
+</head>
+<body>
+<div style="border:1px solid #1C3F80;">
+	<table width="100%" height="100%" border="0" cellspacing="1" cellpadding="1">
+		<th height="23" align="left" style="background-color:#3E679A; color:#FFF">
+			<div style="float:left">
+					<img src="images/top_logo.png" style="position:relative;top:3px;" />
+					<span id="uinfo">
+						<input id="aaa" type="text" style="width:90px;height:13px;" onblur="checkID(this.value,'uinfo')" value="接收消息会员ID" onfocus="this.value=''" />
+						
+					</span>
+					<div id="uinfo_muli" style="color:red;display:none;">
+						接收者ID:<span id="uinfo_uid"></span>,
+						昵称:<span id="uinfo_nickname"></span>
+						<input type="hidden" id="chat_id" />
+					</div>
+			</div>
+			<input name="uid" type="hidden" id="uid" value="" /><input name="kid" type="hidden" id="kid" value="" />
+			<div style="float:right">
+				<span id="kinfo"><input type="text" style="width:90px;height:13px;" onblur="checkID(this.value,'kinfo')" value="发送消息会员ID" onfocus="this.value=''"/></span>
+					<img src="images/top_logo.gif" style="border:none;background:#fff;height:20px;width:20px;position:relative;top:3px;"/>
+				<div id="kinfo_muli" style="color:red;display:none;">
+						发送者ID:<span id="kinfo_uid"></span>,
+						昵称:<span id="kinfo_nickname"></span>
+				</div>
+			</div>
+			
+		</th>
+		<tr>
+			<td><div id="show" style="height:300px; margin:1px;background:#FFF; border:1px solid #999;overflow:auto;overflow-x:hidden;overflow-y:scroll;"></div></td>
+		</tr>
+		<tr>
+			<td><textarea id="mes" style="width:485px; height:80px; margin-left:1px;"></textarea>
+			<input type="button" style="width:100%; height:25px;" value="聊天记录 (Ctrl+down) / 发 送 (Ctrl+Enter)" onclick="sendMes()" />
+			</td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

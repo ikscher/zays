@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网上刷卡支付信息填写——真爱一生网</title>
+{template system/js_css public}
+<link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="module/payment/templates/default/js/creditcardinline.js"></script>
+<script type="text/javascript">
+<!--
+function checkinfoform(){
+	var credcode=$("#pb_CredCode").val();
+	var frpid=$("#pd_FrpId").val();
+	var buyertel=$("#pe_BuyerTel").val();
+	var buyername=$("#pf_BuyerName").val();
+	var actid=$("#pt_ActId").val();
+	var expireyear=$("#pa2_ExpireYear").val();
+	var expiremonth=$("#pa3_ExpireMonth").val();
+	var cvv=$("#pa4_CVV").val();
+	arr[1] = '';
+	var len = arr.length;
+	if(credcode==''||frpid==''||buyertel==''||buyername==''||actid==''||expireyear==''||expiremonth==''||cvv==''){
+		return false;
+	}
+	for(var i=0;i<len;i++){
+		if(arr[i]!='') return false; 
+	}
+	$("#submitbutton").val("提交中...");
+	return true;
+}
+//-->
+</script>
+</head>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000">真爱一生首页&nbsp;&gt;&gt;&nbsp;网上刷卡支付信息填写</span><a href="#"></a></p>
+		<div class="content-lift">
+			<div class="content-title">
+				<span class="right-title">网上刷卡支付信息填写</span>
+			</div><!--content-title end-->
+			<div class="c-center">
+			<form action="index.php?n=payment&h=creditcardinline" method="post" onsubmit="return checkinfoform();">
+			<dl class="c-center-data">
+				<dt><span class="f-ed0a91">*</span> 升级类型：</dt>
+				<dd><p style="width:160px;"><input name="upgradetype" type="text" class="c-center-data-text" readonly value="{$order['subject']}"/></p></dd>
+				<dt><span class="f-ed0a91">*</span> 服务费用：</dt>
+				<dd><p style="width:160px;"><input name="serviceprice" type="text" class="c-center-data-text" readonly value="{$order['order_amount']}元"/></p></dd>
+				<dt><span class="f-ed0a91">*</span> 证件类型：</dt>
+				<dd>
+					<p style="width:160px;">
+					<select name="pa_CredType" class="c-center-data-text" id="pa_CredType">
+						<option value="IDCARD">身份证</option>
+						<option value="OFFICERPASS">军官证</option>
+						<option value="HM_VISITORPASS">澳居民往来内地通行证</option>
+						<option value="T_VISITORPASS">台湾居民来往大陆通行证</option>
+					</select>
+					</p>
+				</dd>
+				<dt><span class="f-ed0a91">*</span> 证件号码：</dt>
+				<dd><p style="width:160px;">
+					<input name="pb_CredCode" id="pb_CredCode" type="text" class="c-center-data-text" onfocus="show_credcode();" onblur="hidden_credcode(this);"/></p>
+					<p id="pbcredcode" class="payment-clue" style="display:none"></p>
+				</dd>
+				<dt><span class="f-ed0a91">*</span> 发 卡 行：</dt>
+				<dd>
+					<p style="width:160px;">
+					<select name="pd_FrpId" class="c-center-data-text" id="pd_FrpId">
+						<option value="ECITICCREDIT">中信银行</option>
+						<option value="ICBCCREDIT">工商银行</option>
+						<!-- <option value="BOCOCREDIT">交通银行</option> -->
+						<!-- <option value="BOSHCREDIT">上海银行</option> -->
+						<option value="BOCCREDIT">中国银行</option>
+
+						<!-- <option value="CIBCREDIT">兴业银行</option> -->
+						<option value="CCBCREDIT">建设银行</option>
+						<!-- <option value="HXBCREDIT">华夏银行</option> -->
+						<option value="CMBCHINACREDIT">招商银行</option>
+						<option value="PINGANREDIT">平安银行</option>
+						<option value="ABCCREDIT">农业银行</option>
+                        <option value="GDBCREDIT">广发银行</option>
+                        <option value="CMBCCREDIT">民生银行</option>
+						<option value="BCCBCREDIT">北京银行</option>
+						<option value="BOSHCREDIT">上海银行</option>
+					</select>
+					</p>
+					<p id="frpid" class="payment-clue" style="display:none"></p>
+				</dd>
+				<dt><span class="f-ed0a91">*</span> 手 机 号：</dt>
+				<dd><p style="width:160px;">
+					<input name="pe_BuyerTel" id="pe_BuyerTel" type="text" class="c-center-data-text" value="{$user_arr['telphone']}" onfocus="show_buyertel();" onblur="hidden_buyertel(this);"/></p>
+					<p id="buyertel" class="payment-clue" style="display:none"></p>
+				</dd>
+				<dt><span class="f-ed0a91">*</span> 持卡人姓名：</dt>
+				<dd><p style="width:160px;">
+					<input name="pf_BuyerName" id="pf_BuyerName" type="text" class="c-center-data-text" onfocus="show_buyername();" onblur="hidden_buyername(this);"/></p>
+					<p id="buyername" class="payment-clue" style="display:none"></p>
+				</dd>
+				<dt><span class="f-ed0a91">*</span> 支付卡号：</dt>
+				<dd><p style="width:160px;">
+					<input name="pt_ActId" id="pt_ActId" type="text" class="c-center-data-text" onfocus="show_actid();" onblur="hidden_actid(this);"/></p>
+					<p id="actid" class="payment-clue" style="display:none"></p>
+				</dd>
+				<dt><span class="f-ed0a91">*</span> 信用卡有效期（年）：</dt>
+				<dd><p style="width:160px;">
+					<input name="pa2_ExpireYear" id="pa2_ExpireYear" type="text" class="c-center-data-text" onfocus="show_expireyear();" onblur="hidden_expireyear(this);"/></p>
+					<p id="expireyear" class="payment-clue" style="display:none"></p>
+				</dd>
+				<dt><span class="f-ed0a91">*</span> 信用卡有效期（月）：</dt>
+				<dd><p style="width:160px;">
+					<input name="pa3_ExpireMonth" id="pa3_ExpireMonth" type="text" class="c-center-data-text" onfocus="show_expiremonth();" onblur="hidden_expiremonth(this);"/></p>
+					<p id="expiremonth" class="payment-clue" style="display:none"></p>
+				</dd>
+				<dt><span class="f-ed0a91">*</span> CVV：</dt>
+				<dd><p style="width:160px;">
+					<input name="pa4_CVV" id="pa4_CVV" type="text" class="c-center-data-text" onfocus="show_cvv();" onblur="hidden_cvv(this);"/></p>
+					<p id="cvv" class="payment-clue" style="display:none"></p>
+				</dd>
+				</dl>				
+				<div class="clear"></div>
+				<input type="hidden" name="ispost" value='1'>
+				<input type="hidden" name="channel" value="{$channel}">
+				<input type="hidden" name="pay" value="{$pay}">
+				<input type="hidden" name="p3_Amt" value="{$p3_Amt}">
+				<input type="hidden" name="text" value="{$text}">
+				<div style="padding:20px 0;">				
+				<p style="text-align:center"><input name="" type="submit"  class="go-on" id="submitbutton" value="提交表单"/>
+				</p>
+				<div class="clear"></div>
+			</div>
+			</form>
+			</div><!--c-center-data end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		</div><!--centent-lift end-->
+		<!--左边结束-->
+		<div class="centent-right">
+			<div class="centent-right-side"></div>
+			<div class="centent-center">
+			<p class="centent-right-title">为什么升级会员？</p>
+			<dl class="c-r-content">
+				<dt id="diamondc" onclick="left_window('diamond')"><p class="title-open">1. 升级钻石会员</p></dt>
+				<dd id="diamond"><p class="text-center"><img src="module/payment/templates/default/images/d.jpg" /></p>
+					<p>您是否仍在苦苦寻觅那个他/她？不要再被动的等待了！想要有缘人主动来到您的身边吗？</p>
+					<p>立即升级为钻石会员，让您从3000多万用户中脱颖而出！</p>		
+				</dd>
+                
+                <!-- 
+				<dt id="vipc" onclick="left_window('vip')"><p class="title-close">2. 升级高级会员</p></dt>
+				<dd id="vip" style="display:none;"><p class="text-center"><img src="module/payment/templates/default/images/v.jpg" /></p>
+					<p>真爱一生网通过大量研究发现，网络征婚领域中，几乎所有成功的恋爱关系都是在诚信的网络征婚平台上经过相识、相见、相恋这3个阶段，</p>
+					<p>因此高级会员所提供的所有服务正是基于这三个必经阶段而开发的。</p>
+				</dd>
+                 -->
+                 
+				<dt id="citystarc" onclick="left_window('citystar')"><p class="title-close">2. 升级城市之星</p></dt>
+				<dd id="citystar" style="display:none;"><p class="text-center"><img src="module/payment/templates/default/images/c.jpg" /></p>
+					<p>你还在为找不到心爱的TA而犯愁吗？你还在为你心仪的TA不能最快地看到你而苦恼吗？</p>
+					<p>赶快加入城市之星的行列吧！在这里，你将走到最前面，以最优雅的姿态展示给3000多万会员！</p>
+				</dd>
+			</dl>
+			<div class="line-title"></div>
+			<p class="centent-right-title">CVV位置</p>
+			<dl class="c-r-c-text">
+				<img src="module/payment/templates/default/images/cvv.gif" width="266px;"/>
+			</dl>
+			</div>
+			<div class="centent-right-side" style="background-position:bottom;"></div>
+		</div><!--centent-right end-->
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}<!--foot end-->
+</div><!--main end-->
+</body>
+</html>

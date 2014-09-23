@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--投票添加</title>
+
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+
+	function checkform(){
+		
+		var address=document.getElementById("address").value;
+		var group = document.getElementById("group").value;
+		var sort = document.getElementById("sort").value;
+		var href = document.getElementById("href").value;
+		if(address==''){alert("请填写图片地址");return false;}
+		if(group==''){alert("请填写组别");return false;}
+		if(sort==''){alert("请填写排序");return false;}
+		if(href==''){alert("请链接地址");return false;}
+	}
+	
+</script>
+
+</head>
+
+<body>
+	
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+			<form action="activity_img.php?act=sub" method="post" onsubmit="return checkform();">
+				<tr><td>图片地址：</td><td><input type="file" name="address" id = 'address'  ></input></td></tr>
+				<tr><td>分组：</td><td><input  type="text" name="group" id = 'group' value="{$group}"></input></td></tr>
+				<tr><td>排序：</td><td><input  type="text" name="sort" id = 'sort' value="{$sort}"></input></td></tr>
+				{if $mid}
+					<input type="hidden" name="mid" value="{$mid}" />
+				{/if}
+				<tr><td>链接地址：</td><td><input  type="text" name="href" id = 'href' value="{$href}"></input></td></tr>
+				<tr><td></td><td><input  type="submit" style="width:100px;" value="提交" /></td></tr>
+			</form>
+			
+	</table>
+	</div>
+</body>
+</html>
+﻿

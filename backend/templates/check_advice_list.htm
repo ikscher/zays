@@ -1,0 +1,117 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+//跳转
+	function gotoPage(){
+		var page=$("#pageGo").attr("value");
+		{if isset($str_s) && $str_s}
+		window.location="index.php?action=check&h=feedback_s{$str_s}&page="+page;
+		{else}
+		window.location="index.php?action=check&h=feedback&type=list&page="+page;
+		{/if}
+	}
+	function showreport(id){
+		$("#report").css('display','none');
+		$("#report_div").css('display','block');
+		$("#report_iframe").attr('src','index.php?action=check&h=feedback&type=show&id='+id);
+	}
+	function unshowreport(){
+		$("#report").css('display','');
+		$("#report_div").css('display','none');
+	}
+	function jump(id,uid){
+	       window.location="index.php?action=check&h=feedback&type=show&id="+id+"&uid="+uid;
+	}
+</script>
+<style type="text/css">
+.but_a a{
+	background-color:#a4cafd;
+	display:inline-block;
+	width:60px;
+	text-align:center;
+	padding:3px;
+	margin:4px;
+}
+</style>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$lei} </span>
+<span class="action-span"><a href="index.php?action=check&h=feedback">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+<form action="index.php?action=check&h=feedback_s" method="post">
+        会员ID：<input type="text" name="s_uid" />&nbsp;&nbsp;&nbsp;
+        反馈类型：<select name="s_stat2">
+        			<option value="0"> 请选择 </option>
+                    <option value="1"{if $s_stat2 == 1} selected="selected"{/if}>网站功能</option>
+                    <option value="2"{if $s_stat2 == 2} selected="selected"{/if}>红娘服务</option>
+                </select>&nbsp;&nbsp;&nbsp;
+        反馈态度：<select name="s_stat1">
+        			<option value="0"> 请选择 </option>
+                    <option value="2"{if isset($_GET['s_stat1']) && $_GET['s_stat1'] == 2} selected="selected"{/if}>表扬</option>
+                    <option value="3"{if isset($_GET['s_stat1']) && $_GET['s_stat1'] == 3} selected="selected"{/if}>批评</option>
+                    <option value="4"{if isset($_GET['s_stat1']) && $_GET['s_stat1'] == 4} selected="selected"{/if}>建议</option>
+                </select>
+                  {if $myservice_idlist && $myservice_idlist!=$GLOBALS['adminid']}
+	
+	客服：<select name="usersid" id="usersid" onchange="option_gourl(this.value,{$pass})" style="height:21px;margin-top:3px;" >
+	   <option value='-1' {if $usersid==-1}selected="selected"{/if}> 不限</option>
+	   <option value="0" {if $usersid == 0} selected="selected"{/if}>0：</option>
+	   {loop $adminUser $value}
+	   <option value="{$value['uid']}" {if $usersid == $value[uid]} selected="selected"{/if}>{$value['uid']}：{$value['username']}</option>
+	   {/loop}
+	</select>
+{/if} &nbsp;&nbsp;&nbsp;
+                
+                <input type="submit" value="搜 索" />
+	<span class="but_a">
+    	<a href="{$currenturl2}&pass=1"{if isset($_GET['pass']) && $_GET['pass']==1} style="font-weight:bold;"{/if}>已回复</a><a href="{$currenturl2}&pass=0"{if isset($_GET['pass']) && $_GET['pass']==0} style="font-weight:bold;"{/if}>未回复</a> 
+    </span>
+</form>
+</div>
+<br />
+<div class="list-div" id="listDiv">
+<table width="100%" cellpadding='3' cellspacing='1' id='list-table'>
+  <tr>
+    <th>会员id</th>
+    <th width="50%">反馈内容</th>
+	<th>反馈类型</th>
+	<th>反馈态度</th>
+    {if $s_stat2 == 2}
+    <th>评分</th>
+    {/if}
+    <th>提交时间</th>
+    <th>分配时间</th>
+    <th>是否回复</th>
+	<th>所属客服ID</th>
+	<th>操作</th>
+  </tr>
+  <!--{loop $advice $list}-->
+  <tr onmousemove="this.bgColor='#cfeefe';" onmouseout="this.bgColor='#ffffff';" style="word-break:break-all;word-wrap:break-word";>
+    <td align="center"><a href="#" onclick="parent.addTab('查看{if isset($ser['s_fromid'])}{$ser['s_fromid']}{/if}资料','index.php?action=allmember&h=view_info&uid={$list['uid']}','icon')">{$list['uid']}</a></td>
+    <td >{php echo wordwrap($list['content'],96,"<br />\n",true)}</td>
+	<td align="center">{php echo $serArr[$list['stat2']]}</td>
+	<td align="center">{php echo $attArr[$list['stat1']]}</td>
+    {if $s_stat2 == 2}
+    <td>{php echo $fraction_arr[$list['fraction']];}</td>
+    {/if}
+    <td align="center">{if isset($list['submitdate'])}{php echo date('Y-m-d H:i:s',$list['submitdate']);}{/if}</td>
+    <td align="center">{if isset($list['allotdate'])}{php echo date('Y-m-d H:i:s',$list['allotdate']);}{/if}</td>
+	<td align="center">
+    	{php  echo $checkArr[$list['syscheck']];}
+    </td>
+	<td align="center"><a href="{$currenturl2}&usersid={$list['sid']}">{$list['sid']}</a></td>
+	<td align="center">{php if($list['syscheck']==-1)echo "查看";else echo "<a href=\"index.php?action=check&h=feedback&type=show&gid=".$list['gid']."&uid=".$list['uid']."\">查看</a>";}</td>
+  </tr>
+{/loop}
+  <tr>
+  {if !isset($total)}{php $total = 0;}{/if}
+  	<td colspan="8" align="center">{php echo multipage($total,$prepage,$page,$currenturl2)}
+     	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:35px" value=""/>  页
+     	<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+  	</tr>
+
+  </table>
+</div>

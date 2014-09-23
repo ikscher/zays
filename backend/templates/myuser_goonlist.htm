@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+
+<script type="text/javascript">
+//显示用户信息
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+
+//当鼠标移过时显示图框
+var xPos;
+var yPos;
+var timerID;
+function showinfo(evt,uid){
+        evt=evt || window.event;
+    if(evt.pageX){          
+        xPos=evt.pageX;
+        yPos=evt.pageY;
+    } else {      
+        xPos=evt.clientX+document.body.scrollLeft-document.body.clientLeft;
+        yPos=evt.clientY+document.body.scrollTop-document.body.clientTop;      
+    }
+        timerID = setTimeout("xy("+xPos+","+yPos+","+uid+")",500);
+}
+function xy(xPos,yPos,uid){
+        
+        if(xPos+70+600<window.screen.width){
+              $("#callinfo").css('left',xPos+70);
+              $("#callinfo").css('top',yPos-70);
+              $("#userid").html(uid);
+              $.get("ajax.php?n=callinfo",{uid:uid},function(str){
+                      var arr=new Array();
+                      arr=str.split('||');
+                      $("#usertelphone").html(arr[0]);
+                      $("#userbezhucontent").html(arr[1]);
+                      $("#usercause").html(arr[2]);
+                      $("#usercallstate").html(arr[3]);
+                      $("#usercallremark").html(arr[3]);
+              });
+              $("#callinfo").css('display','block');
+        //alert(xPos+'|'+yPos);
+              }else {$("#callinfo").css('display','none'); }
+}
+function hiddend(){
+   $("#callinfo").css('display','none');
+   clearTimeout(timerID);
+}
+
+
+//判断是否选择了会员
+function checkForm(){
+    var k=0;
+	$("input[name^='changesid']") .each(function(){
+        if($(this).attr("checked")==true){
+           k=k+1;
+        }   
+    });
+
+    if(k==0) {
+        alert("请选择  要删除的重点跟进会员，可以选择多项！");
+        return false;
+    }    
+    return true;
+}
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{php echo ceil($total/$page_per);})
+
+	page = {php echo ceil($total/$page_per);};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+//全选
+function chooseall(){
+	if($("#choose_all").attr("checked")){
+		$("input[name='changesid[]']").attr("checked",true);
+	}else{
+		$("input[name='changesid[]']").attr("checked",false);
+	}
+}
+
+
+
+//排序
+function chang_order(field,order){
+	location.href="{$currenturl}&order="+field+"&method="+order;
+}
+
+//月收入，年龄筛选条件
+$(function(){
+	$('#birthyear,#salary').click(function(){
+		var birthyear = $('#birthyear:checked').val() ? $('#birthyear:checked').val() : '';
+		var salary = $('#salary:checked').val() ? $('#salary:checked').val() : '';
+		window.location.href = "{$currenturl}&birthyear="+birthyear+"&salary="+salary;			   
+	});
+});
+
+$(function(){
+    $(".csstab tr").mouseover(function(){
+        $(this).addClass("over");
+    }).mouseout(function(){
+        $(this).removeClass("over");    
+    });
+
+    $("#page_per").change(function(){
+        var page_per = this.value;
+        location.href="$currenturl"+"&page_per="+page_per;
+    });
+});
+
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+.callinfo{
+position:absolute;
+top:100px;
+left:100px;
+width:600px;
+height:125px;
+background:#ffffff;}
+#callinfo table{
+backgroung:#ffffff;}
+#callinfo td{
+border:#cccccc solid 1px;
+}
+</style>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="{$currenturl}">刷新当前页</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$title} </span>
+<div style="clear:both"></div>
+</h1>
+<div>
+<form action="" method="get">
+  <tr>
+  	<td colspan="8" style="text-align:left">
+		搜索内容：
+		<input name="keyword" type="text" id="keyword" value="{$keyword}"/>
+		<select name="choose" id="choose">
+		    <option value="">不选择</option>
+		    <option value="uid" {if $choose=='uid'}selected="selected"{/if}>ID号</option>
+			<option value="sid" {if $choose=='sid'}selected="selected"{/if}>客服id</option>
+		</select>
+		
+		
+		
+		<input type="hidden" name="action" value="myuser" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input name="" type="submit" value="搜 索"/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;">{$total}位会员</span>
+
+
+	</td>
+	  </tr>
+</form>
+</div>
+<div style=" margin-top:5px; margin-bottom:5px; color:#960">
+排序方式：
+{loop $sort_arr $key $val}
+	<a href="{$currenturl}&order={$key}&method=del">× </a>
+    <span style="background-color:#CCC"><a href="{$currenturl}&order={$key}&method=replace">{php echo $allow_order[$key]}
+    {if $val == 'desc'}
+    	&nbsp;↓&nbsp;
+    {else}
+    	&nbsp;↑&nbsp;
+    {/if}
+    </a></span>
+    &#12288;
+{/loop}
+</div>
+<div class="list-div" id="listDiv" onmouseout="hiddend();">
+<form action="index.php?action=myuser&h=goon_list" method="post" onsubmit="return checkForm();" >
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th><input type="checkbox" id="choose_all" value="choose_all" onclick="chooseall()" /></th>
+    <th><a href="javascript:chang_order('uid','{$rsort_arr['uid']}')"  style="text-decoration:underline;">ID</a></th>
+    <th>昵称</th>
+    <th>性别</th>
+    <th>
+		<a href="javascript:chang_order('birthyear','{$rsort_arr['birthyear']}')"  style="text-decoration:underline;">年龄</a>
+	</th>
+    <th>等级</th>
+    <th><a href="javascript:chang_order('effect_grade','{$rsort_arr['effect_grade']}')"  style="text-decoration:underline;">类</a></th>
+    <th>
+		<a href="javascript:chang_order('images_ischeck','{$rsort_arr['images_ischeck']}')"  style="text-decoration:underline;">照片</a>
+	</th>
+    <th><a href="javascript:chang_order('salary','{$rsort_arr['salary']}')"  style="text-decoration:underline;">收入</a></th>
+    <th>工作地</th>
+    <th><a href="javascript:chang_order('allotdate','{$rsort_arr['allotdate']}')"  style="text-decoration:underline;">分配时间</a></th>
+    <th><a href="javascript:chang_order('regdate','{$rsort_arr['regdate']}')"  style="text-decoration:underline;">注册时间</a></th>
+
+   
+	<th><a href="javascript:chang_order('next_contact_time','{$rsort_arr['next_contact_time']}')"  style="text-decoration:underline;">下次联系时间</a></th>
+    <th><a href="javascript:chang_order('login_meb','{$rsort_arr['login_meb']}')"  style="text-decoration:underline;">登录</a></th>
+	<th>工号</th>
+	<th><a href="javascript:chang_order('sid','{$rsort_arr['sid']}')"  style="text-decoration:underline;">客服</a></th>
+    <th><a href="javascript:chang_order('is_lock','{$rsort_arr['is_lock']}')"  style="text-decoration:underline;">锁定</a></th>
+	
+    
+  </tr>
+  {loop $member_list  $member}
+   <tr>
+    <td><input type="checkbox" value="{$member['uid']}" name="changesid[]" /></td>
+    <td align="center"><a href="#" class="userinfo" onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['uid']}</a></td>
+    <td align="left" style="text-indent:30px;"  onmouseover="showinfo(event,{$member['uid']});"> 
+		{if $member['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>
+		{else}<img src="templates/images/m.gif" alt="男" title="男"/>
+		{/if}
+		{$member['nickname']}
+	</td>
+    <td align="center">{if $member['gender']==1}女{else}男{/if}</td>
+    <td align="center">{php echo date("Y")-$member['birthyear'];}</td>
+    <td align="center">{php echo @$GLOBALS['member_level'][$member['s_cid']];}</td>
+    <td align="center">{php echo $member['effect_grade']-1}</td>
+    <td align="center">{php echo $member['mainimg']?"有":"无";}</td>
+    <td align="center"><script>userdetail("$member['salary']",salary1);</script></td>
+    <td align="center"><script>userdetail("$member['province']",provice);userdetail("$member['city']",city);</script></td>
+
+    <td align="center">{php if(isset($member['allotdate'])) echo date("Y-m-d H:i",$member['allotdate']);}</td>
+    <td align="center">{php echo date("Y-m-d H:i",$member['regdate']);}</td>
+	
+
+
+	<td align="center">
+		{php echo date("Y-m-d H:i",$member['next_contact_time']);}
+	</td>
+    <td align="center">{php echo isset($member['login_meb'])?$member['login_meb']:'';}</td>
+	
+    <td align="center">
+    	{if $member['sid']=='' || $member['sid']==0} 暂无{else}{$member['sid']}号 {/if}
+    </td>
+	<td align="center">{php echo @$GLOBALS['kefu_arr'][$member['sid']]}</td>
+    <td align="center">{if (isset($member['is_lock'])?$member['is_lock']:'')==1}否{else}<font color="#FF0000">是</font>{/if}</td>
+	
+    <td align="center">
+
+      <!--  
+	  {if (in_array($member['s_cid'],array(20,30)) && $member['usertype']==1) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_aftersales_service'])}
+	 
+	  {elseif $member['usertype']==3	&& !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_aftersales_service']) && !in_array($GLOBALS['groupid'],$GLOBALS['admin_service_group'])}
+					
+	  {else}
+      
+	  &nbsp;&nbsp;|&nbsp;&nbsp;
+      -->
+      
+      <!-- 
+      <a href="#" onclick="parent.addTab('修改会员{$member['uid']}资料','index.php?action=allmember&h=edit_info&uid={$member['uid']}')">修改资料</a>
+	  {/if} -->
+	</td>
+  </tr>
+  {/loop}
+ </table>
+
+<input type="submit" name="submit" value='删除' />注：可以批量选择删除！
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$page_links}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+     
+    </tr>
+  </table>
+  </form>
+</div>
+
+<div class="callinfo" id="callinfo" style="display:none;">
+<table width="600" border="1">
+  <tr>
+    <td width="50" height="20">会员ID</td>
+    <td width="50" id="userid">&nbsp;</td>
+    <td width="50">手机号</td>
+    <td width="78" id="usertelphone">&nbsp;</td>
+    <td width="50">下次联系时间</td>
+    <td width="150" id="usercause">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="43" id="userbezhu">会员备注</td>
+    <td colspan="5" id="userbezhucontent">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="43">下次联系要点</td>
+    <td colspan="5" id="usercallremark">&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+
+
+
+
+</body>
+</html>

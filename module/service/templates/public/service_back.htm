@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--投票结果</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<SCRIPT LANGUAGE="Javascript" SRC="module/service/FusionCharts.js"></SCRIPT>	
+<link href="Style.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="module/service/templates/default/activity_new.css" rel="stylesheet" />
+</head>
+
+<script>
+	function teturn(){
+		location.href='http://www.zhenaiyisheng.cc';
+	}
+</script>
+
+<body>
+<div id="box" style="margin-left:208px;">
+		<div style=" font-size:0;  line-height:0;"><img src="module/service/templates/default/images/activity_new/a.jpg" /></div>
+<div align="center">
+
+	<div style="text-align:left; margin-left:250px; line-height:25px; padding-top:10px;" >
+		
+		{loop $list $key $value}
+			
+			<div style="color:#CC3333;"></div>
+			<input type="hidden" name="uid" value="{$uid}" />
+			{loop $value $k $v}
+				{$value}
+			{/loop}
+			
+		{/loop}
+		</div>
+	
+	{loop $array_1 $key $value}
+		{$value[0]}
+			<table width="80%" border="0" cellspacing="0" cellpadding="3" >
+			  <tr> 
+				<td valign="top" class="text" align="center"> <div id="chartdiv{$key}" align="center"> 
+					FusionCharts. </div>
+				  <script type="text/javascript">
+					   var chart = new FusionCharts("module/service/FCF_Bar2D.swf", "ChartId", "850", "{$value[1]}");
+					   chart.setDataXML("{$value[0]}");		   
+					   chart.render("chartdiv{$key}");
+					</script> </td>
+			  </tr><tr>
+				<td valign="top" class="text" align="center">&nbsp;</td>
+			  </tr>
+			 
+			</table>
+	{/loop}
+	
+		
+	
+	
+	</div>
+	  <div id="footer">
+            <p><a href="index.php?n=about&h=us">关于我们</a>| <!--  <a href="index.php?n=about&h=media">媒体关注</a> | --> <a href="index.php?n=about&h=contact">联系我们</a> | <a href="index.php?n=about&h=links">合作伙伴</a> | <a href="index.php?n=about&h=getsave">意见反馈</a> | <a href="index.php?n=story">成功故事</a>| <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> |
+      {if ($user_arr['s_cid'] == 30 && $user_arr['bgtime'] > time()-604800) || !empty($GLOBALS['h_pay'])} <a href="index.php?n=payment&h=add_money">其他信息</a> {else} <a href="index.php?n=payment&h=channel">其他信息</a> {/if}</p>
+    <p></p>
+            <p></p>
+            <div style="text-align:center; "><img src="module/service/templates/default/images/activity_new/footer.jpg" /></div>
+            <p>Copyright 2005-2010 版权所有：真爱一生网 闽ICP备09064513号</p>
+            <p>真爱一生网备用域名：www.hongniangw.com | www.hongniangwang.com</p>
+            <div style="height:20px;"></div>
+        </div>
+    </div>
+
+</body>
+</html>﻿

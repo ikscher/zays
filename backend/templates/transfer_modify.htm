@@ -1,0 +1,68 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 会员交接资料修改</span>
+
+<div style="clear:both"></div>
+</h1>
+<script type="text/javascript">
+</script>
+<p/>
+<div class="list-div" id="listDiv">
+<form action="" method="post">
+    <input type="hidden" name="modifyid" value="{$id}" />
+    <input type="hidden" name="ispost" value="1" />
+    <table>
+    	<tr>
+        	<th>会员交接信息修改</th>
+        </tr>
+        <tr>
+        	<td>升级客服ID<input type="text" name="sid" value="{$transfer['sid']}" /></td>
+        </tr>
+    	<tr>
+        	<td>会员ID
+            	<input type="text" name="uid" value="{$transfer['uid']}" />
+            </td>
+        </tr>
+        <tr>
+        	<td>服务期限
+            	<select name="servicetime">
+                	<option value="1"{if $transfer['servicetime'] == 1} selected="selected"{/if}>一个月</option>
+                    <option value="3"{if $transfer['servicetime'] == 3} selected="selected"{/if}>三个月</option>
+                    <option value="6"{if $transfer['servicetime'] == 6} selected="selected"{/if}>六个月</option>
+                </select>
+                付款金额<input type="text" name="payments" value="{$transfer['payments']}" size="6" />元
+            </td>
+        </tr>
+        <tr>
+        	<td>委托联系的会员ID
+            	<input type="text" name="otheruid" value="{$transfer['otheruid']}" />
+                模拟聊天记录
+                <input type="text" name="chatnotes" value="{$transfer['chatnotes']}" />
+            </td>
+        </tr>
+        <tr>
+        	<td>升级会员的具体情况
+                <textarea cols="60" rows="5" name="intro">{$transfer['intro']}</textarea>
+           </td>
+         </tr>
+        <tr>
+        	<td>委托会员的具体情况
+                <textarea cols="60" rows="5" name="otherintro">{$transfer['otherintro']}</textarea>
+            </td>
+        </tr>
+        <tr>
+        	<td>最后一次沟通情况
+                <textarea cols="60" rows="5" name="lastcom">{$transfer['lastcom']}</textarea>
+            </td>
+        </tr>
+        <tr>
+        	<td>备注信息
+                 <textarea cols="60" rows="5" name="remark">{$transfer['remark']}</textarea>
+            </td>
+        </tr>
+    </table>
+    <div style="margin-left:30px"><input type="submit" value="提交" class="button" /></div>
+    </form>
+</div>

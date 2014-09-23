@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{php echo $user['nickname']?$user['nickname']:'ID:'.$user['uid']}的征婚交友信息——成就美好姻缘——真爱一生网</title>
+{template system/js_css public}
+<style type="text/css">
+@import url("module/space/templates/{$GLOBALS['style_name']}/space.css");
+</style>
+
+<style>
+.tt {}
+.tt1 {border:2px solid #D95A99;}
+#preview{display:none; position:absolute;}
+</style>
+
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+</head>
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("a.zoom").fancybox(); 
+});
+</script>
+
+<script language="javascript"> 
+//控制图片显示 
+function showpic(tt){
+	var  show_pic_1 = tt.getAttribute('src');
+	var  show_big_pic = tt.getAttribute('flag');
+	var  thumbpic = document.getElementsByName('thumbpic');
+	for(i=0;i<thumbpic.length;i++){
+		thumbpic[i].className = 'tt';
+	}
+	tt.className = 'tt1';
+	//alert(show_pic_1);
+	show_pic_1 = show_pic_1.replace("41_57", "171_244");
+	document.getElementById('show_big_pic').setAttribute('href',show_big_pic);
+	document.getElementById('show_pic_1').setAttribute('src',show_pic_1);
+}
+
+//控制弹出浮动窗口
+function alertWin(title, msg, w, h){  
+    var titleheight = "25px";
+    var bordercolor = "#b75bad";
+    var titlecolor = "#FFFFFF";
+    var titlebgcolor = "#666699";
+    var bgcolor = "#FFFFFF";
+     
+    var iWidth = document.documentElement.clientWidth;  
+    var iHeight = document.documentElement.clientHeight;  
+    var bgObj = document.createElement("div");  
+    bgObj.style.cssText = "position:absolute;left:0px;top:0px;width:"+iWidth+"px;height:"+Math.max(document.body.clientHeight, iHeight)+"px;filter:Alpha(Opacity=30);opacity:0.3;background-color:#000000;z-index:101;"; 
+    document.body.appendChild(bgObj);  
+     
+    var msgObj=document.createElement("div"); 
+    msgObj.style.cssText = "position:absolute;top:"+(iHeight-h)/2+"px;left:"+(iWidth-w)/2+"px;z-index:102;border:3px solid #b75bad;width:345px;padding:10px;color:#666;background:#fff"; 
+    document.body.appendChild(msgObj); 
+     
+    var table = document.createElement("table"); 
+    msgObj.appendChild(table); 
+    table.style.cssText = "margin:0px;border:0px;padding:0px;"; 
+    table.cellSpacing = 0; 
+    var tr = table.insertRow(-1); 
+    var titleBar = tr.insertCell(-1); 
+    titleBar.style.cssText = "cursor:move"; 
+    titleBar.style.paddingLeft = "10px"; 
+    titleBar.innerHTML = title; 
+    var moveX = 0; 
+    var moveY = 0; 
+    var moveTop = 0; 
+    var moveLeft = 0; 
+    var moveable = false; 
+    var docMouseMoveEvent = document.onmousemove; 
+    var docMouseUpEvent = document.onmouseup; 
+    titleBar.onmousedown = function() { 
+        var evt = getEvent(); 
+        moveable = true;  
+        moveX = evt.clientX; 
+        moveY = evt.clientY; 
+        moveTop = parseInt(msgObj.style.top); 
+        moveLeft = parseInt(msgObj.style.left); 
+         
+        document.onmousemove = function() { 
+            if (moveable) { 
+                var evt = getEvent(); 
+                var x = moveLeft + evt.clientX - moveX; 
+                var y = moveTop + evt.clientY - moveY; 
+                if ( x > 0 &&( x + w < iWidth) && y > 0 && (y + h < iHeight) ) { 
+                    msgObj.style.left = x + "px"; 
+                    msgObj.style.top = y + "px"; 
+                } 
+            }     
+        }; 
+        document.onmouseup = function () {  
+            if (moveable) {  
+                document.onmousemove = docMouseMoveEvent; 
+                document.onmouseup = docMouseUpEvent; 
+                moveable = false;  
+                moveX = 0; 
+                moveY = 0; 
+                moveTop = 0; 
+                moveLeft = 0; 
+            }  
+        }; 
+    } 
+     
+    var closeBtn = tr.insertCell(-1); 
+    //closeBtn.style.cssText = "cursor:pointer; padding:2px;background-color:" + titlebgcolor; 
+    //closeBtn.innerHTML = "<span style='font-size:15pt; color:"+titlecolor+";'>×</span>"; 
+    closeBtn.onclick = function(){  
+        document.body.removeChild(bgObj);  
+        document.body.removeChild(msgObj);  
+    }  
+    var msgBox = table.insertRow(-1).insertCell(-1);  
+    msgBox.style.cssText = "font:10pt '宋体';"; 
+    msgBox.colSpan  = 2; 
+    msgBox.innerHTML = msg; 
+     
+    // 获得事件Event对象，用于兼容IE和FireFox 
+    function getEvent() { 
+        return window.event || arguments.callee.caller.arguments[0]; 
+    } 
+}  
+
+//控制弹出登录框
+function is_login(uid){
+	if(typeof(uid)== "undefined" || uid == 0){
+		$("html").css("overflow","hidden");
+		$("select").css("display","none");
+		alertWin('','<form action="index.php?n=index&h=submit" method="post"><table width="345" border="0" cellpadding="0" cellspacing="0" ><tr><td colspan="2" height="38px;" style="background:#f9f9fb"><strong> <img src="module/space/templates/default/images/zhixiang.jpg" style="margin-right:5px;" />请进行登录，立即查看他人的详细资料。</strong></td></tr><tr><td  align="right" height="38px;">用户名：</td><td align="left"><input name="username" type="text" style="width:160px;"/></td></tr><tr ><td align="right"  height="38px">密 码：</td><td><input name="password" type="password"  style="width:160px;"/></td></tr><tr><td>&nbsp;</td><td style="padding-bottom:10px"><input type="hidden" name="loginsubmit"  value="登录" /><input type="submit" style=" background:url(module/space/templates/default/images/space_btn.jpg); width:75px;height:30px;border:none;cursor:pointer" value=""/><input type="button" style="width:85px;height:30px;border:none;cursor:pointer;background:url(module/space/templates/default/images/forget.gif);margin-left:10px;"value="" onclick="javascript:location.href=\'index.php?n=register\'" /><input id="returnurl" type="hidden" value="{$returnurl}" name="returnurl"/></td></tr><tr><td colspan="2" height="38px;" style="background:#f9f9fb; border-top:1px dashed #ccc"><a href="index.php?n=login&h=backpassword" style="color:#bd0000; font-size:12px;">&nbsp;&nbsp;&nbsp;&nbsp;忘记密码？</a></td></tr></table></form>',300,200);
+	}else{
+		$("html").css("overflow","");
+		$("select").css("display","");
+	}
+}
+</script>
+
+<script type="text/javascript">
+//上一页
+function prevPhoto(){
+	var setpage = parseInt($('#setpage').attr('value'));
+	var count = {php echo count($user_pic);};
+	var num = 3; //显示3个图片分
+	if(setpage > 0){
+		$('#setpage').attr('value',setpage-1);
+	}
+	var currentpage = setpage - 1; //当前页
+	if(currentpage >= 0){
+		for(i=0;i<count;i++){
+			$('#ab'+i).css('display','none');
+		}
+		//当前的页显示的图片
+		var pic_min = currentpage * num;
+		var pic_max = num + (currentpage * num);
+		for(k=pic_min;k<pic_max;k++){
+			if(k < count) { //如果已经没有图片了不再操作了
+				$('#ab'+k).css('display','');
+			}
+		}
+		$('#img_last').attr('src','module/space/templates/default/images/last.gif');
+		if(currentpage == 0){
+			$('#img_last').attr('src','module/space/templates/default/images/last-none.gif');
+		}
+		$('#img_next').attr('src','module/space/templates/default/images/next.gif');
+	}else{
+		$('#img_last').attr('src','module/space/templates/default/images/last-none.gif');
+		$('#img_next').attr('src','module/space/templates/default/images/next.gif');	
+	}
+}
+//下一页
+function nextPhoto(){
+	var setpage = parseInt($('#setpage').attr('value'));
+	var count = {php echo count($user_pic);};
+	var num = 3; //显示3个图片分
+	var page = Math.ceil(count/3); 
+	var currentpage = setpage + 1; //当前页
+	if(currentpage <= page-1){
+		$('#setpage').attr('value',setpage+1);
+		for(i=0;i<count;i++){
+			$('#ab'+i).css('display','none');
+		}
+		//当前的页显示的图片
+		var pic_min = currentpage * num;
+		var pic_max = num + (currentpage * num); 
+		for(k=pic_min;k<pic_max;k++){
+			if(k < count) { //如果已经没有图片了不再操作了
+				$('#ab'+k).css('display','');
+			}
+		}
+		$('#img_last').attr('src','module/space/templates/default/images/last.gif');
+		$('#img_next').attr('src','module/space/templates/default/images/next.gif');
+		if(currentpage == page-1){
+			$('#img_next').attr('src','module/space/templates/default/images/next-none.gif');
+		}
+	}else{
+		$('#img_last').attr('src','module/space/templates/default/images/last.gif');
+		$('#img_next').attr('src','module/space/templates/default/images/next-none.gif');	
+	}
+}
+</script> 
+<script type="text/javascript">
+//鼠标滑上去有图片提示
+this.imagePreview = function(){
+	var xOffset=100;
+	var yOffset=30;
+	//$('a.preview').hover(function(e){
+	$("a.preview").hover(function(e){
+		var url=this.href;
+		$('body').append("<p id='preview'><img src='"+url+"' id='showImg'></p>");
+		var image=new Image();
+		image.src=this.href;
+		var width_img = image.width;
+	    var height_img = image.height;
+	    w = width_img;
+	    h = height_img;
+		if(width_img > 600) {
+		   w = 600;
+		   h = height_img * 600 / width_img;
+		}else if(height_img > 480){
+		   h = 480;
+		   w = width_img * 480 / height_img;
+		}
+		$('#showImg').css('width',w).css('height',h);
+		var e = e ? e : window.event;
+		if(e.pageX){
+			x1=e.pageX;
+			y1=e.pageY;
+		}else{
+			x1=e.clientX;
+			y1=e.clientY;
+		}
+		$('#preview').css('left',(x1+yOffset)+'px')
+		.css('top',(y1-xOffset)+'px')
+		.fadeIn('fast'); 
+	},
+	function(){
+		$('#preview').remove();	
+	});	
+	
+	$('a.preview').mousemove(function(e){
+		var e = e ? e : window.event;
+		if(e.pageX){
+			x2 = e.pageX;
+			y2 = e.pageY;
+		}else{
+			x2 = e.clientX;
+			y2 = e.clientY;
+		} 
+		$('#preview')
+		.css('top',(y2-xOffset)+'px')
+		.css('left',(x2+yOffset)+'px');
+	}) 
+}
+
+
+$(document).ready(function(){
+	imagePreview();
+});
+
+</script>
+<body onload="is_login({$userid})">
+<div class="main">
+	{template system/header public}
+	{template public/space_leftmenu_new module}
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<span class="right-title f-ed0a91">情缘匹配</span>
+			</div>
+			<div class="r-center-ccontent">
+				<div class="match-bg-box">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="match-table">
+						<tr>
+							<th width="10%" height="70">&nbsp;</th>
+							<th width="20%">匹配条件</th>
+							<th width="20%">完全匹配分数</th>
+							<th width="20%">匹配条件</th>
+							<th width="20%">完全匹配指数</th>
+							<th width="10%">&nbsp;</th>
+						</tr>
+						<tr>
+							<td height="28" class="hbg">&nbsp;</td>
+							<td align="center" class="hbg">年&nbsp;&nbsp;&nbsp;&nbsp;龄 </td>
+							<td align="center" class="hbg"> +{$mark_age}分</td>
+							<td align="center" class="hbg">身&nbsp;&nbsp;&nbsp;&nbsp;高</td>
+							<td align="center" class="hbg">+{$mark_height}分</td>
+							<td class="hbg">&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="28">&nbsp;</td>
+							<td align="center">体&nbsp;&nbsp;&nbsp;&nbsp;重</td>
+							<td align="center">+{$mark_weight}分</td>
+							<td align="center">体&nbsp;&nbsp;&nbsp;&nbsp;型</td>
+							<td align="center">+{$mark_body}分</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="28" class="hbg">&nbsp;</td>
+							<td align="center" class="hbg">是否有照片</td>
+							<td align="center" class="hbg">+{$mark_body}分</td>
+							<td align="center" class="hbg"> 征友地区</td>
+							<td align="center" class="hbg">+{$mark_workprovince}分</td>
+							<td class="hbg">&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="28">&nbsp;</td>
+							<td align="center">教育程度 </td>
+							<td align="center">+{$mark_education}分</td>
+							<td align="center">职&nbsp;&nbsp;&nbsp;&nbsp;业</td>
+							<td align="center">+{$mark_workcity}分</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="28" class="hbg">&nbsp;</td>
+							<td align="center" class="hbg">收&nbsp;&nbsp;&nbsp;&nbsp;入 </td>
+							<td align="center" class="hbg">+{$mark_salary}分</td>
+							<td align="center" class="hbg">工 作 地</td>
+							<td align="center" class="hbg">+{$mark_workcity}分</td>
+							<td class="hbg">&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="28">&nbsp;</td>
+							<td align="center">是否吸烟</td>
+							<td align="center">+{$mark_smoking}分</td>
+							<td align="center">是否喝酒</td>
+							<td align="center">+{$mark_drinking}分</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="28" class="hbg">&nbsp;</td>
+							<td align="center" class="hbg">婚姻状况</td>
+							<td align="center" class="hbg">+{$mark_marriage}分</td>
+							<td align="center" class="hbg">子女状况</td>
+							<td align="center" class="hbg">+{$mark_children}分</td>
+							<td class="hbg">&nbsp;</td>
+						</tr>
+						<tr>
+							<th height="70" colspan="6">总分：{$mark}分</th>
+							</tr>
+					</table>
+				</div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑搜索——真爱一生寻友——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/h-search.css");
+</style>
+<script src="public/system/js/list.js" type="text/javascript"></script>
+<!--<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>-->
+<script src="module/search/templates/default/js/common.js" type="text/javascript"></script>
+<script src="module/search/templates/default/js/addSearchConditions.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="clear"></div>
+{template system/header public}
+<!--头部结束-->
+{php 
+preg_match("/<gender>(.*)<\/gender>/isU",$body,$gender_arr);
+preg_match("/<age_start>(.*)<\/age_start>/isU",$body,$age_start_arr);
+preg_match("/<age_end>(.*)<\/age_end>/isU",$body,$age_end_arr);
+preg_match("/<work_province>(.*)<\/work_province>/isU",$body,$work_province_arr);
+preg_match("/<work_city>(.*)<\/work_city>/isU",$body,$work_city_arr);
+preg_match("/<marriage>(.*)<\/marriage>/isU",$body,$marriage_arr);
+preg_match("/<salary>(.*)<\/salary>/isU",$body,$salary_arr);
+preg_match("/<education>(.*)<\/education>/isU",$body,$education_arr);
+preg_match("/<height1>(.*)<\/height1>/isU",$body,$height1_arr);
+preg_match("/<height2>(.*)<\/height2>/isU",$body,$height2_arr);
+preg_match("/<weight1>(.*)<\/weight1>/isU",$body,$weight1_arr);
+preg_match("/<weight2>(.*)<\/weight2>/isU",$body,$weight2_arr);
+preg_match("/<body1>(.*)<\/body1>/isU",$body,$body_arr);
+preg_match("/<smoking>(.*)<\/smoking>/isU",$body,$smoking_arr);
+preg_match("/<drinking>(.*)<\/drinking>/isU",$body,$drinking_arr);
+preg_match("/<occupation>(.*)<\/occupation>/isU",$body,$occupation_arr);
+preg_match("/<house>(.*)<\/house>/isU",$body,$house_arr);
+preg_match("/<vehicle>(.*)<\/vehicle>/isU",$body,$vehicle_arr);
+preg_match("/<corptype>(.*)<\/corptype>/isU",$body,$corptype_arr);
+preg_match("/<children>(.*)<\/children>/isU",$body,$children_arr);
+preg_match("/<wantchildren>(.*)<\/wantchildren>/isU",$body,$wantchildren_arr);
+preg_match("/<home_townprovince>(.*)<\/home_townprovince>/isU",$body,$home_townprovince_arr);
+preg_match("/<home_towncity>(.*)<\/home_towncity>/isU",$body,$home_towncity_arr);
+preg_match("/<nation>(.*)<\/nation>/isU",$body,$nation_arr);
+preg_match("/<body1>(.*)<\/body1>/isU",$body,$body_arr);
+preg_match("/<animalyear>(.*)<\/animalyear>/isU",$body,$animalyear_arr);
+preg_match("/<constellation>(.*)<\/constellation>/isU",$body,$constellation_arr);
+preg_match("/<bloodtype>(.*)<\/bloodtype>/isU",$body,$bloodtype_arr);
+preg_match("/<religion>(.*)<\/religion>/isU",$body,$religion_arr);
+preg_match("/<family>(.*)<\/family>/isU",$body,$family_arr);
+preg_match("/<language1>(.*)<\/language1>/isU",$body,$language_arr);
+preg_match("/<photo>(.*)<\/photo>/isU",$body,$photo_arr);
+preg_match("/<searchname>(.*)<\/searchname>/isU",$body,$searchname_arr);
+preg_match("/<issavesearchname>(.*)<\/issavesearchname>/isU",$body,$issavesearchname);
+//print_r($smoking_arr[1]);
+//print_r($marriage_arr[1]);
+}
+<!--头部结束-->
+<div class="content">
+<div class="c-title">
+<span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;编辑搜索</span>
+<div class="loaction_right">
+	<a href="index.php?n=invite" target="_blank">邀请好友</a>
+</div>
+</div>
+<div class="clear"></div>
+<div class="search-center">
+<p class="h-seache-side-top"></p>
+<div class="c-center">
+<p class="h-seache-title">高级搜索
+</p>
+<!--------------------------------->
+<div class="search-criteria-tipm clearfix">
+<div class="h-search-side"></div>
+<div class="s-right">
+<div class="tipboxl">
+<p class="h-seache-title" style="color:#f1299b">您选择的搜索条件：</p>
+<div class="search-criteria-m">
+<script type="text/javascript">
+<!--
+var removeNewSelected=function(o){
+	 	var oo=$(o);
+		var id=oo.attr('id');
+		if(oo.parent().parent().find('li').size()==2){
+			if(oo.parent().parent().parent().find('ul').size()==1){
+			//最后一个同时要隐藏全部清除
+					$('#alldelete2').css("display","none");			
+			}
+			var temp = new Array();
+			temp=id.split("_");
+			$('#personal_'+temp[0]).removeClass('current darrow2').addClass('darrow');
+			$('#personal_view_'+temp[0]).removeClass('datalist2').addClass('datalist');	
+			$('#personal_view_'+temp[0]).css("display","none");				
+			oo.parent().parent().remove();
+		}else{
+	 		oo.parent().remove();
+		}
+	 }
+	 var removeOldSelected=function(o){
+	 	var oo=$(o);
+		var id=oo.attr('id');
+		if(oo.parent().parent().find('li').size()==3){
+			if(oo.parent().parent().parent().find('ul').size()==1){
+			//最后一个同时要隐藏全部清除
+					$('#alldelete2').css("display","none");			
+			}
+			var temp = new Array();
+			temp=id.split("_");
+			$('#personal_'+temp[0]).removeClass('current darrow2').addClass('darrow');
+			$('#personal_view_'+temp[0]).removeClass('datalist2').addClass('datalist');	
+			$('#personal_view_'+temp[0]).css("display","none");				
+			oo.parent().parent().remove();			
+		}else{
+	 		oo.parent().remove();
+		}
+	 }
+var doCheckedFalse = function(o,v){
+	$('#'+o+"_"+v).attr("checked",false);
+}
+
+//-->
+</script>
+<div id="addSearchCondition"> 
+{if $marriage_arr[1]!='0'}
+<ul class="scbox2" id="marriage_title">
+<li class="title">
+	<span class="tred" id="marriage_extends">婚姻状况</span>
+</li>
+<li>
+	<script>selectedFiled2(syscode.marriage,",{$marriage_arr[1]},","marriage","marriage");</script>
+</li>
+</ul>
+{/if}
+
+{if $salary_arr[1]!='0'}
+<ul class="scbox2" id="salary_title">
+<li class="title">
+	<span class="tred" id="salary_extends">月收入</span>
+</li>
+<li>
+	<script>selectedFiled2(syscode.salary,",{$salary_arr[1]},","salary","salary");</script>
+</li>
+</ul>
+{/if}
+
+{if $education_arr[1]!='0'}
+<ul class="scbox2" id="education_title">
+<li class="title">
+	<span class="tred" id="education_extends">教育程度</span>
+</li>
+<li>
+	<script>selectedFiled2(syscode.education,",{$education_arr[1]},","education","education");</script>
+</li>
+</ul>
+{/if} 
+
+{if $height1_arr[1] != '0' || $height2_arr[1] != '0'}
+<ul class="scbox2" id="height_title">
+<li class="title">
+	<span class="tred" id="height_extends">身高</span>
+</li>
+<li class="label">
+	<a onclick="removeNewSelected(this);removeNewAddedHeight();" href="##">
+{if $height1_arr[1] != '0' && $height2_arr[1] != '0'}
+{$height1_arr[1]}cm 到 {$height2_arr[1]}cm
+{elseif $height1_arr[1] != '0'}
+{$height1_arr[1]}cm - 不限
+{else}
+{$height2_arr[1]}cm
+{/if}
+	</a>
+</li>
+</ul>
+{/if}
+
+{if $house_arr[1]!='0'}
+<ul class="scbox2" id="house_title">
+<li class="title">
+	<span class="tred" id="house_extends">住房情况</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.house,",{$house_arr[1]},","house","house");</script>
+</li>
+</ul>
+{/if}
+
+{if $vehicle_arr[1]!='0'}
+<ul class="scbox2" id="vehicle_title">
+<li class="title">
+	<span class="tred" id="vehicle_extends">是否购车</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.vehicle,",{$vehicle_arr[1]},","vehicle","vehicle");</script>
+</li>
+</ul>
+{/if}
+
+{if $home_townprovince_arr[1] != '0' || $home_towncity_arr[1] != '0'}
+<ul class="scbox2" id="hometown_title">
+<li class="title">
+	<span class="tred" id="hometown_province_Id">籍贯</span>
+</li>
+<li class="label">
+	<a onclick="removeNewSelected(this);removeNewAddedHometown();" href="##">
+{if $home_townprovince_arr[1] != '0' && $home_towncity_arr[1] != '0'}
+		<script type="text/javascript">
+			userdetail('{$home_townprovince_arr[1]}',provice)
+			userdetail('{$home_towncity_arr[1]}',city)
+		</script>
+{elseif $home_townprovince_arr[1] != '0'}
+	<script type="text/javascript">
+			userdetail('{$home_townprovince_arr[1]}',provice)
+			userdetail('0',city)
+		</script>
+{else}
+		<script type="text/javascript">
+			userdetail('0',provice)
+			userdetail('0',city)
+		</script>
+{/if}
+	</a>
+</li>
+</ul>
+{/if}
+
+{if $smoking_arr[1]!='0'}
+<ul class="scbox2" id="ismok_title">
+<li class="title">
+	<span class="tred" id="ismoking_extends">是否吸烟</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.isSmoking,",{$smoking_arr[1]},","ismok","ismok");</script>
+</li>
+</ul>
+{/if}
+
+{if $drinking_arr[1]!='0'}
+<ul class="scbox2" id="idrink_title">
+<li class="title">
+	<span class="tred" id="idrinking_extends">是否喝酒</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.isDrinking,",{$drinking_arr[1]},","idrink","idrink");</script>
+</li>
+</ul>
+{/if}
+
+{if $children_arr[1]!='0'}
+<ul class="scbox2" id="child_title">
+<li class="title">
+	<span class="tred" id="children_extends">是否有孩子</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.children,",{$children_arr[1]},","child","child");</script>
+</li>
+</ul>
+{/if}
+
+{if $wantchildren_arr[1]!='0'}
+<ul class="scbox2" id="wtchildren_title">
+<li class="title">
+	<span class="tred" id="wantchildren_extends">是否想要孩子</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.wantChildren,",{$wantchildren_arr[1]},","wtchildren","wtchildren");</script>
+</li>
+</ul>
+{/if}
+
+{if $nation_arr[1]!='0'}
+<ul class="scbox2" id="stock_title">
+<li class="title">
+	<span class="tred" id="stock_extends">民族</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.stock,",{$nation_arr[1]},","stock","stock");</script>
+</li>
+</ul>
+{/if}
+
+{if $animalyear_arr[1]!='0'}
+<ul class="scbox2" id="animals_title">
+<li class="title">
+	<span class="tred" id="animals_extends">生肖</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.animals,",{$animalyear_arr[1]},","animals","animals");</script>
+</li>
+</ul>
+{/if}
+
+{if $constellation_arr[1]!='0'}
+<ul class="scbox2" id="constellation_title">
+<li class="title">
+	<span class="tred" id="constellation_extends">星座</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.constellation,",{$constellation_arr[1]},","constellation","constellation");</script>
+</li>
+</ul>
+{/if}
+
+{if $bloodtype_arr[1]!='0'}
+<ul class="scbox2" id="bty_title">
+<li class="title">
+	<span class="tred" id="bloodtype_extends">血型</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.bloodtype,",{$bloodtype_arr[1]},","bty","bty");</script>
+</li>
+</ul>
+{/if}
+
+{if $body_arr[1]!= '0'}
+<ul class="scbox2" id="body_title">
+<li class="title">
+	<span class="tred" id="body_extends">体型</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.body1,",{$body_arr[1]},","body","body");</script>
+</li>
+</ul>
+{/if}
+
+{if $weight1_arr[1] != '0' || $weight2_arr[1] != '0'}
+<ul class="scbox2" id="weight_title">
+<li class="title">
+	<span class="tred" id="weight_extends">体重</span>
+</li>
+<li class="label">
+	<a href="##" onclick="delCruSearchResultWeight(this);">
+{if $weight1_arr[1] != '0' && $weight2_arr[1] != '0'}
+{$weight1_arr[1]} 到 {$weight1_arr[1]} 公斤
+{elseif $weight1_arr[1] != '0' && $weight2_arr[1] == '0'}
+{$weight1_arr[1]} 公斤
+{else}
+{$weight1_arr[1]} {$weight2_arr[1]} 公斤					
+{/if}
+	</a>
+</li>
+</ul>
+{/if}
+
+{if $occupation_arr[1]!='0'}
+<ul class="scbox2" id="occupation_title">
+<li class="title">
+	<span class="tred" id="occupation_extends">从事职业</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.occupationbt,",{$occupation_arr[1]},","occupation","occupation");</script>
+</li>
+</ul>
+{/if}
+
+{if $corptype_arr[1]!='0'}
+<ul class="scbox2" id="corptp_title">
+<li class="title">
+	<span class="tred" id="corptp_extends">公司类型</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.corptype,",{$corptype_arr[1]},","corptp","corptp");</script>
+</li>
+</ul>
+{/if}
+
+{if $religion_arr[1]!='0'}
+<ul class="scbox2" id="belief_title">
+<li class="title">
+	<span class="tred" id="belief_extends">信仰</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.belief,",{$religion_arr[1]},","belief","belief");</script>
+</li>
+</ul>
+{/if}
+
+{if $language_arr[1]!='0'}
+<ul class="scbox2" id="tonguegift_title">
+<li class="title">
+	<span class="tred" id="tonguegift_extends">语言能力</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.tonguegifts,",{$language_arr[1]},","tonguegift","tonguegift");</script>
+</li>
+</ul>
+{/if}
+
+{if $family_arr[1]!='0'}
+<ul class="scbox2" id="family_title">
+<li class="title">
+	<span class="tred" id="family_extends">兄弟姐妹</span>
+</li>
+<li class="label">
+	<script>selectedFiled2(syscode.family,",{$family_arr[1]},","family","family");</script>
+</li>
+</ul>
+{/if}
+</div>
+<p id="alldelete2" style="display:none" class="textRight"><a href="##" onclick="delAllItem2();" class="lgray underlines">全部清除</a></p>
+<script type="text/javascript">
+<!--
+if($('#marriage_title').size()>0  || $('#education_title').size()>0 || $('#salary_title').size()>0  || $('#height_title').size()>0  || $('#house_title').size()>0  || $('#vehicle_title').size()>0  || $('#hometown_title').size()>0 || $('#ismok_title').size()>0 || $('#idrink_title').size()>0 || $('#child_title').size()>0  || $('#wtchildren_title').size()>0 || $('#body_title').size()>0 || $('#weight_title').size()>0 || $('#stock_title').size()>0 || $('#animals_title').size()>0 || $('#constellation_title').size()>0 || $('#bty_title').size()>0 || $('#occupation_title').size()>0  || $('#corptp_title').size()>0  || $('#belief_title').size()>0 || $('#tonguegift_title').size()>0 || $('#family_title').size()>0 ) {	
+$('#alldelete2').css("display","");}
+//-->
+</script>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+var checkForm = function() {
+var sex = document.getElementById("sex").value;
+var age1 = document.getElementById("a1").value;
+var age2 = document.getElementById("a2").value;
+var h1 = document.getElementById("h1").value;
+var h2 = document.getElementById("h2").value;
+var w1 = document.getElementById("w1").value;
+var w2 = document.getElementById("w2").value;
+if(sex == null) {
+alert("请选择性别");
+document.getElementById("sex").focus();
+return false;
+}
+if( age1 == 0 && age2 == 0) {
+alert("请选择年龄");
+document.getElementById("age1").focus();
+return false;
+}
+if(age1!=null && age1!='' && age1==0 && age2!=null && age2!='' && age2!=0) {
+alert("请选择年龄下限");
+document.getElementById("age1").focus();
+return false;
+}
+if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2==0) {
+alert("请选择年龄上限");
+document.getElementById("age2").focus();
+return false;
+}
+if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2!=0 && age1>age2) {
+alert("您选择的年龄范围不正确，请重新选择");
+document.getElementById("age1").focus();
+return false;
+}
+if(h1!=null && h1!='' && h1!=0 && h2!=null && h2!='' && h2!=0 && h1>h2) {
+alert("您选择的身高范围不正确，请重新选择");
+document.getElementById("h1").focus();
+return false;
+}
+if(w1!=null && w1!='' && w1!=0 && w2!=null && w2!='' && w2!=0 && w1>w2) {
+alert("您选择的体重范围不正确，请重新选择");
+$('#w1').focus();
+return false;
+}
+var ic = document.getElementById("is_commend");
+var issavesearchname = document.getElementById("issavesearchname");
+var searchname = document.getElementById("searchname");
+if(issavesearchname.checked==true) {
+	var temp = Trim(searchname.value);
+	if(temp == null || temp == ''){
+		alert("请输入搜索条件名");
+		searchname.focus();
+		return false;
+	}
+	issavesearchname.value = 1;
+	searchname.value = temp;
+	checkWord(22,event,'对不起！您输入的搜索条件名过长！');
+} else if(issavesearchname.checked==false &&  null != temp && temp != '') {
+	issavesearchname.value = 1;
+	searchname.value = temp;
+	issavesearchname.checked=true;
+}
+if(ic.checked==true) {
+	ic.value = 1;
+}
+$("#buttonsearch").val('搜索中...');
+return;
+}
+</script>
+<form id="hs" name="hs" action="index.php" method="get" onsubmit="return checkForm()">
+<input type="hidden" value="search" name="n">
+<input type="hidden" value="super" name="h">
+<input type="hidden" name="advance_search" value="1">
+<div class="tipboxr clearfix">
+	<ul class="databox clearfix">
+		<li>
+			<h5>基本条件</h5>
+			<ul class="basic">
+				<li>我要找：
+					<select name="gender" id="sex" onchange=" changeBody(this.value);" class="selectSize">
+					{if $gender_arr[1]=='1'}
+						<option value="1"  selected="selected">女士</option>
+						<option value="0">男士</option>
+					{else}
+						<option value="1" >女士</option>
+						<option value="0" selected="selected">男士</option>
+					{/if}
+					</select>
+					{if $photo_arr[1] == '1'}
+					<input name="photo" type="checkbox" checked="checked" value="1" />有照片</li>
+					{else}
+					<input name="photo" type="checkbox" value="1" />有照片</li>
+					{/if}
+					
+				<li>年&nbsp;&nbsp;龄：
+					<script>syscode.select('select50','a1','age_start','{$age_start_arr[1]}','21',syscode.age,syscode.buxian);</script>
+						到
+					<script>syscode.select('select50','a2','age_end','{$age_end_arr[1]}','45',syscode.age,syscode.buxian);</script>
+				</li>
+				<li>所在地：
+					<script>syscode.provinceSelect('selectSize','areaForm.workProvince','workprovince','areaForm.workCity','{$work_province_arr[1]}','10100000',syscode.buxian);</script>
+					<script>syscode.citySelect('selectSize','areaForm.workCity','workcity','{$work_city_arr[1]}','0',syscode.buxian);</script>
+				</li>
+			</ul>
+			<h5>生活细节</h5>
+			<dl>
+				<dt id="personal_ismok" class="darrow" onclick="tabtoggle2(this,'#personal_view_ismok')">是否抽烟</dt>
+				<dd class="datalist" id="personal_view_ismok" style="display:none">
+					<script>syscode.checkbox2('ismok','ismok',',{$smoking_arr[1]},',syscode.isSmoking,'p',syscode.buxian,'ismok');checkBuXian(',{$smoking_arr[1]},','ismok_0');</script>
+
+				</dd>
+				<dt id="personal_idrink" class="darrow" onclick="tabtoggle2(this,'#personal_view_idrink')">是否喝酒</dt>
+				<dd class="datalist" id="personal_view_idrink" style="display:none">
+					<script>syscode.checkbox2('idrink','idrink',',{$drinking_arr[1]},',syscode.isDrinking,'p',syscode.buxian,'idrink');checkBuXian(',{$drinking_arr[1]},','idrink_0');</script>
+				</dd>
+				<dt id="personal_child" class="darrow" onclick="tabtoggle2(this,'#personal_view_child')">是否有孩子</dt>
+				<dd class="datalist" id="personal_view_child" style="display:none">
+					<script>syscode.checkbox2('child','child',',{$children_arr[1]},',syscode.taChildren,'p',syscode.buxian,'child');checkBuXian(',{$children_arr[1]},','child_0');</script>
+				</dd>
+				<dt id="personal_wtchildren" class="darrow" onclick="tabtoggle2(this,'#personal_view_wtchildren')">是否想要孩子</dt>
+				<dd class="datalist" id="personal_view_wtchildren" style="display:none">
+					<script>syscode.checkbox2('wtchildren','wtchildren',',{$wantchildren_arr[1]},',syscode.taWantChildren,'p',syscode.buxian,'wtchildren');checkBuXian(',{$wantchildren_arr[1]},','wtchildren_0');</script>
+				</dd>
+			</dl>
+		</li>
+		<li>
+			<h5>外形条件</h5>
+			<dl style="margin-bottom:10px">
+				<dt id="personal_height" class="darrow" onclick="tabtoggle2(this,'#personal_view_height')">身高</dt>
+				<dd class="datalist" id="personal_view_height" style="display:none">
+					<script>syscode.select('selectSize','h1','height1','{$height1_arr[1]}','0',syscode.height,syscode.buxian);</script> 到 <script>syscode.select('selectSize','h2','height2','{$height2_arr[1]}','0',syscode.height,syscode.buxian);</script>
+					<input class="addbut" name="" type="button" value="增加" onclick="addHeight();" /></dd>
+				<dt id="personal_weight" class="darrow" onclick="tabtoggle2(this,'#personal_view_weight')">体重</dt>
+				<dd class="datalist" id="personal_view_weight" style="display:none">
+					<script>syscode.select('selectSize','w1','weight1','{$weight1_arr[1]}','0',syscode.weight,syscode.buxian);</script>
+到
+					<script>syscode.select('selectSize','w2','weight2','{$weight2_arr[1]}','0',syscode.weight,syscode.buxian);</script>
+					<input class="addbut" name="" type="button" value="增加" onclick="addWeight();" />
+				</dd>
+				<dt id="personal_body" class="darrow" onclick="tabtoggle2(this,'#personal_view_body')">体型</dt>
+				<dd class="datalist" id="personal_view_body" style="display:none">
+					<ul class="clearfix">
+						<li id="bodybtbt" class="clearfix">
+							<script>syscode.checkbox2('body','body',',{body_arr[1]},',syscode.body0,'p',syscode.buxian,'body');checkBuXian(',{$body_arr[1]},','body_0');</script>
+						</li>
+					</ul>
+				</dd>
+			</dl>
+			<h5>背景条件</h5>
+			<dl>
+				<dt id="personal_hometown" class="darrow" onclick="tabtoggle2(this,'#personal_view_hometown')">籍贯</dt>
+				<dd class="datalist" id="personal_view_hometown" style="display:none">
+					<script>syscode.provinceSelect('selectSize','areaForm.workProvince1','workcityprovince1','areaForm.workCity1','{$home_townprovince_arr[1]}','0',syscode.buxian);</script>
+					<script>syscode.citySelect('selectSize','areaForm.workCity1','workcitycity1','{$home_towncity_arr[1]}','',syscode.buxian);</script>
+					<input class="addbut" name="" type="button" value="增加" onclick="addHometown();" />
+				</dd>
+				<dt id="personal_stock" class="darrow" onclick="tabtoggle2(this,'#personal_view_stock')">民族</dt>
+				<dd class="datalist" id="personal_view_stock" style="display:none">
+					<script>syscode.select('','stock','stock','{$nation_arr[1]}','0',syscode.stock,syscode.buxian);</script>
+					<input class="addbut" name="" type="button" value="增加" onclick="addStock();" />
+				</dd>
+				<dt id="personal_animals" class="darrow" onclick="tabtoggle2(this,'#personal_view_animals')">生肖</dt>
+				<dd class="datalist" id="personal_view_animals" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('animals','animals',',{$animalyear_arr[1]},',syscode.animals,'p',syscode.buxian,'animals');checkBuXian(',{$animalyear_arr[1]},','animals_0');</script>
+						</li>
+					</ul>
+				</dd>
+				<dt id="personal_constellation" class="darrow" onclick="tabtoggle2(this,'#personal_view_constellation')">星座</dt>
+				<dd class="datalist" id="personal_view_constellation" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('constellation','constellation',',{$constellation_arr[1]},',syscode.constellation,'li',syscode.buxian,'constellation');checkBuXian(',{$constellation_arr[1]},','constellation_0');</script>
+					</ul>
+				</dd>
+				<dt id="personal_bty" class="darrow" onclick="tabtoggle2(this,'#personal_view_bty')">血型</dt>
+				<dd class="datalist" id="personal_view_bty" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('bty','bty',',{$bloodtype_arr[1]},',syscode.bloodtype,'p',syscode.buxian,'bty');checkBuXian(',{$bloodtype_arr[1]},','bty_0');</script>
+						</li>
+					</ul>
+				</dd>
+			</dl>
+		</li>
+		<li>
+			<h5>个人资料</h5>
+			<dl>
+				<dt id="personal_marriage" class="darrow" onclick="tabtoggle2(this,'#personal_view_marriage')">婚姻状况</dt>
+				<dd class="datalist" id="personal_view_marriage" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('marriage','marriage',',{$marriage_arr[1]},',syscode.marriage,'p',syscode.buxian,'marriage');checkBuXian(',{$marriage_arr[1]},','marriage_0');</script>
+						</li>
+					</ul>
+				</dd>
+				<dt id="personal_education" class="darrow" onclick="tabtoggle2(this,'#personal_view_education')">教育程度</dt>
+				<dd class="datalist" id="personal_view_education" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('education','education',',{$education_arr[1]},',syscode.education,'p',syscode.buxian,'education');checkBuXian(',{$education_arr[1]},','education_0');</script>
+						</li>
+					</ul>
+				</dd>
+				<dt id="personal_salary" class="darrow" onclick="tabtoggle2(this,'#personal_view_salary')">月收入</dt>
+				<dd class="datalist" id="personal_view_salary" style="display:none">
+					<script>syscode.checkbox2('salary','salary',',{$salary_arr[1]},',syscode.salary,'p',syscode.buxian,'salary');checkBuXian(',{$salary_arr[1]},','salary_0');</script>
+				</dd>
+				<dt id="personal_occupation" class="darrow" onclick="tabtoggle2(this,'#personal_view_occupation')">从事职业</dt>
+				<dd class="datalist" id="personal_view_occupation" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('occupation','occupation',',{$occupation_arr[1]},',syscode.occupationbt,'p',syscode.buxian,'occupation');checkBuXian(',{$occupation_arr[1]},','occupation_0');</script>
+						</li>
+					</ul>
+				</dd>
+				<dt id="personal_house" class="darrow" onclick="tabtoggle2(this,'#personal_view_house')">住房情况</dt>
+				<dd class="datalist" id="personal_view_house" style="display:none">
+					<script>syscode.checkbox2('house','house',',{$house_arr[1]},',syscode.house,'p',syscode.buxian,'house');checkBuXian(',{$house_arr[1]},','house_0');</script>
+				</dd>
+				<dt id="personal_vehicle" class="darrow" onclick="tabtoggle2(this,'#personal_view_vehicle')">是否购车</dt>
+				<dd class="datalist" id="personal_view_vehicle" style="display:none">
+					<script>syscode.checkbox2('vehicle','vehicle',',{$vehicle_arr[1]},',syscode.vehicle,'p',syscode.buxian,'vehicle');checkBuXian(',{$vehicle_arr[1]},','vehicle_0');</script>
+				</dd>
+				<dt id="personal_corptp" class="darrow" onclick="tabtoggle2(this,'#personal_view_corptp')">公司类别</dt>
+				<dd class="datalist" id="personal_view_corptp" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('corptp','corptp',',{$corptype_arr[1]},',syscode.corptype,'p',syscode.buxian,'corptp');checkBuXian(',{$corptype_arr[1]},','corptp_0');</script>
+						</li>
+					</ul>
+				</dd>
+				<dt id="personal_belief" class="darrow" onclick="tabtoggle2(this,'#personal_view_belief')">信仰</dt>
+				<dd class="datalist" id="personal_view_belief" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('belief','belief',',{$religion_arr[1]},',syscode.belief,'p',syscode.buxian,'belief');checkBuXian(',{$religion_arr[1]},','belief_0');</script>
+						</li>
+					</ul>
+				</dd>
+				<dt id="personal_tonguegift" class="darrow" onclick="tabtoggle2(this,'#personal_view_tonguegift')">语言能力</dt>
+				<dd class="datalist" id="personal_view_tonguegift" style="display:none">
+					<script>syscode.checkbox2('tonguegift','tonguegift',',{$language_arr[1]},',syscode.tonguegifts,'p',syscode.buxian,'tonguegift');checkBuXian(',{$language_arr[1]},','tonguegift_0');</script>
+				</dd>
+				<dt id="personal_family" class="darrow" onclick="tabtoggle2(this,'#personal_view_family')">兄弟姐妹</dt>
+				<dd class="datalist" id="personal_view_family" style="display:none">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<script>syscode.checkbox2('family','family',',{$family_arr[1]},',syscode.family,'p',syscode.buxian,'family');checkBuXian(',{$family_arr[1]},','family_0');</script>
+						</li>
+					</ul>
+				</dd>
+			</dl>
+		</li>
+		<div style="clear:both"></div>
+	</ul>
+	<div class="butbox clearfix">
+	<input type="hidden" name="sid" value="{$s}">
+		<div class="clearfix-p">
+			<p><input name="issavesearchname" type="checkbox" value="1" {if $issavesearchname['1']=='1'}checked{/if}/>&nbsp;保存这次搜索条件命名为：<input name="searchname" type="text"  class="clearfix-p-text" value="{$searchname_arr[1]}"/></p>
+			<p><input name="is_commend" type="checkbox" value="1" {if $is_commend=='1'}checked{/if}/>&nbsp;定期推荐符合此搜索条件的会员到我的注册邮箱</p>
+		</div>
+		<div style="float:right">
+			<input name="" value="开始搜索"  type="submit" class="search-button-h">
+		</div>
+	</div>
+</div>
+<div class="h-search-side" style="background-position:bottom; font-size:0px; margin-top:0!important; margin-top:-5px;"></div>
+</form><!-- end form -->
+<div style="clear:both"></div>
+</div>
+<script type="text/javascript">
+<!--
+	var updateSelectedClass = function(o) {
+		$('#personal_'+o).removeClass('darrow').addClass('darrow current');
+	}
+	if($('#marriage_title').size()>0) {updateSelectedClass('marriage');}
+	if($('#salary_title').size()>0) {updateSelectedClass('salary');}
+	if($('#education_title').size()>0) {updateSelectedClass('education');}
+	if($('#height_title').size()>0) {updateSelectedClass('height');}
+	if($('#house_title').size()>0) {updateSelectedClass('house');}
+	if($('#vehicle_title').size()>0) {updateSelectedClass('vehicle');}
+	if($('#hometown_title').size()>0) {updateSelectedClass('hometown');}
+	if($('#ismok_title').size()>0) {updateSelectedClass('ismok');}
+	if($('#idrink_title').size()>0) {updateSelectedClass('idrink');}
+	if($('#child_title').size()>0) {updateSelectedClass('child');}
+	if($('#wtchildren_title').size()>0) {updateSelectedClass('wtchildren_title');}
+	if($('#weight_title').size()>0) {updateSelectedClass('weight');}
+	if($('#body_title').size()>0) {updateSelectedClass('body');}
+	if($('#stock_title').size()>0) {updateSelectedClass('stock');}
+	if($('#animals_title').size()>0) {updateSelectedClass('animals');}
+	if($('#constellation_title').size()>0) {updateSelectedClass('constellation');}
+	if($('#bty_title').size()>0) {updateSelectedClass('bty');}
+	if($('#occupation_title').size()>0) {updateSelectedClass('occupation');}
+	if($('#corptp_title').size()>0) {updateSelectedClass('corptp');}
+	if($('#belief_title').size()>0) {updateSelectedClass('belief');}
+	if($('#tonguegift_title').size()>0) {updateSelectedClass('tonguegift');}
+	if($('#family_title').size()>0) {updateSelectedClass('family');}
+//-->
+</script>
+<!--------------------------------->
+</div>
+<p class="h-seache-side-bottom"></p>
+</div>
+<div class="clear"></div>
+{template system/footer public}
+</div><!--content end-->
+</body>
+</html>

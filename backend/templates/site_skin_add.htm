@@ -1,0 +1,60 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+
+<script>
+function checkForm(){
+	var skiname = document.getElementById('skiname');	
+	var imgs = document.getElementById('imgs');
+	var skin_style = document.getElementById('skin_style');
+	
+	if(!skin_style.value.replace(/' '/g,'')){
+		alert('请输入皮肤模板名称！');
+		skin_style.focus();
+		return false;
+	}
+	
+	if(!skiname.value.replace(/' '/g,'')){
+		alert('请输入皮肤名称！');
+		skiname.focus();
+		return false;
+	}
+	
+	if(!imgs.value.replace(/' '/g,'')){
+		alert('请选择要上传的图片！');
+		imgs.focus();
+		return false;
+	}
+	
+	
+	return true;
+}
+</script>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> -添加皮肤</span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<form method="post" action="index.php?action=site_skin&h=add" onsubmit="return checkForm()" enctype="multipart/form-data">
+<div class="list-div" id="listDiv">
+	<table cellspacing="1" cellpadding="3">
+		<tr>
+			<th colspan="3" align="left">添加皮肤</th></tr>
+		</tr>
+        <tr>
+			<td>皮肤模板名称：</td>
+			<td><input type="text" name="skin_style" id="skin_style"></td>
+		</tr>
+		<tr>
+			<td>皮肤名称：</td>
+			<td><input type="text" name="skiname" id="skiname"></td>
+		</tr>
+		<tr>
+			<td>皮肤图片：</td>
+			<td><input type="file" name="imgs" id="imgs"></td>
+		</tr>
+	</table>
+</div>
+<p/>
+<input type="submit" id="addskin" name="addskin" value=" 提 交 "/>
+</form>
+<br />
+<br />

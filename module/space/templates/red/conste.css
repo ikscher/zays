@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+.data{
+	padding:10px;
+	padding-left:20px;
+	zoom:1;
+	}
+.data span{
+	margin:0 10px;
+	}
+.space_rbox .h_conste{
+	width:746px;
+	height:59px;
+	background:url(images/conste_1.gif) no-repeat;
+	}
+.space_rbox .h_animal{
+	width:746px;
+	height:59px;
+	background:url(images/animal_1.gif) no-repeat;
+	}
+.space_rbox .h_reviews{
+	width:746px;
+	height:59px;
+	background:url(images/reviews.gif) no-repeat;
+	}
+.space_rbox .h_banner{
+	width:746px;
+	height:59px;
+	background:url(images/banner.gif) no-repeat;
+	}
+/*星座*/
+.conste{
+	width:716px;
+	height:auto;
+	line-height:200%;
+	padding-top:150px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:20px;
+	background:url(images/s_pic.gif) no-repeat top left;
+	}
+.conste .img_1{
+	float:left;
+	margin:0 10px 10px;
+	}
+.animal .img_2{
+	float:right;
+	margin:0 0 10px 5px;
+	}	
+	
+.animal{
+	width:716px;
+	line-height:200%;
+	padding:15px;
+	}
+		
+.reviews{
+	width:716px;
+	line-height:200%;
+	padding:15px;
+	}
+	
+/*恋爱史*/
+.love_bg{
+	float:left;
+	width:237px;
+	height:223px;
+	padding-top:76px;
+	padding-left:115px;
+	background:url(images/img_bg2.gif) no-repeat;
+	}
+.love_div{
+	width:120px;
+	height:165px;
+	border:1px solid #c4c4c4;
+	overflow:hidden;
+    position:relative;
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+	}
+.love_div p{
+	position:static;
+    +position:absolute;
+    top:50%;
+	}
+.love_div img{
+	position:static;
+    +position:relative;
+    top:-50%;
+	left:-50%;
+	}
+	
+

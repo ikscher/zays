@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>意见反馈成功——红娘网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("public/{$GLOBALS['style_name']}/css/wrong.css");
+</style>
+</head>
+<body> 
+{template system/header public}
+<!--头部结束-->
+<div class="clear"></div>
+    <div class="main">
+        <div id="wrong">
+          <div class="wrongbox">
+          <div class="top"></div>
+          <div class="wrong_m">
+          <img src="public/system/images/wrong1.jpg" />
+        
+          <h3>提示信息</h3>
+          <p>{$prompt['content']}</p>
+<p align="center"><input type="submit" class="wrong_btn" value="{$prompt['button']}" onclick="javascript:location.href='{$prompt['url']}'" /></p>
+          </div>
+          <div class="wrongboxbottom"></div>
+          </div>
+          
+      </div>
+    </div>
+ <div class="clear"></div>
+{template system/footer public}
+</body>
+</html>

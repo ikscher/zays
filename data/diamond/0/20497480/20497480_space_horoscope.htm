@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的星座生肖——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->  
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">星座生肖</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Signs<br />and zodiac</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="horoscope">
+				  <div class="horoscope1">
+				  	<p>巨蟹座的罗浮魅影在青年时期希望拥有自己的家庭和事业。虽然擅长自我保护，懂得如何等待，但是如果因此认为他们是被动、消极的人，那可就大错特错了。巨蟹座对于自己想要的，还是相当积极；只是比较不愿意自己提出要求，而是期待别人能感受到他们的需求、敏感和情绪的改变。</p>
+				  </div>
+				  <div class="horoscope2">
+				  	<p>鼠年出生的罗浮魅影乐观积极，自信心强，环境适应力优越，有丰富的社会阅历和为人处事知道，聪明机警，是个敛财的能手。做事非常有魄力有一定的指挥领导才能，属鼠的他财星高照，财源茂盛。很适合投资和创业。若与人合资，只要选对项目并保持自己的权利，会有很好的回报。</p>
+				  </div>
+				  <div class="horoscope3">
+				  	<p>肖鼠巨蟹的罗浮魅影其实是一个充满温情的人在妻子和孩子身边或者与自己的知心朋友在一起的时候，才能抒发出内心的欢慰。而且他非常聪明伶俐，凡事宜有心德，他志愿颇高，利欲心很强，颇有成就，且有积蓄财富，待找到生命中挚爱的人后才称得上是真正的幸福之人。</p>
+				  </div></div></div></div></div>
+				  </div><div class="clear"></div>
+				  </div>
+
+{template system/footer public}
+
+</body>
+</html>

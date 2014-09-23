@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--客服登陆</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<script type="text/javascript">
+	//验证表单
+	function checkform(){
+		var servername=document.getElementById("username").value;
+		var password=document.getElementById("password").value;
+		var seccode = document.getElementById("vertify_code").value;
+		if(seccode ==''){
+			//alert('验证码不能为空');
+			//return false;
+		}
+		if(password==''){alert("用户名和密码不能为空");return false;}
+	}
+</script>
+</head>
+
+<body>
+	<div class="login" style="text-align:center;">
+		<div class="login_main">
+			<div class="login_text">
+			<form action="index.php?action=login&h=login" method="post" onsubmit="return checkform();">
+				<table border="0" style="float:left;">
+				<tr>
+					<td colspan="2">
+						<span style="cursor:pointer;float:right;"><img border="0" style="" onclick="this.src='index.php?action=login&amp;h=seccode&amp;update=' + Math.random()" src="index.php?action=login&amp;h=seccode" id="code"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="vertify_code">验证码:</label></td>
+					<td>
+						<input type="text" name="vertify_code" id="vertify_code" class="txt" />
+					</td>
+				  </tr>
+				  <tr style="height:30px;">
+					<td width="70"><label for="username">用户名:</label></td>
+					<td width="85"><input name="username" id="username" type="text" class="txt" /></td>
+				  </tr>
+				  <tr>
+					<td> <label for="password">密 &nbsp;码:</label></td>
+					<td><input name="password" id="password" type="password" class="txt" />
+					</td>
+				  </tr>
+				  
+				</table>
+				<input name="" type="submit" value="" class="btn" style="float:left;" />
+			</form>
+			</div>
+		</div>	<!--登陆框 end -->
+	</div>
+</body>
+</html>

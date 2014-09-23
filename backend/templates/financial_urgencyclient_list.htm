@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>最急需维护的客户列表</title>
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/news.css" rel="stylesheet" type="text/css" />
+<script>
+	function goto(){
+		var page = document.getElementById('text1').value.replace(/\s/g,"");
+		if(page){
+			window.location.href='index.php?action=financial_urgencyclient&h=list&page='+page+'&show={$show}&sid={$sid}&uid={$uid}';
+		}
+	}
+	function checkform(){
+		var uid = document.getElementById('uid').value.replace(/\s/g,'');
+		var sid = document.getElementById('sid').value.replace(/\s/g,'');
+		if(!uid && !sid){
+			return false;
+		}
+		return true;
+	}
+	
+</script>
+</head>
+
+<body>
+<form name="form1" id="form1" action='index.php?action=financial_urgencyclient&h=list&show={$show}' method="post" onsubmit="return checkform();">
+<h1><span style="float:left; color:#000" class="action-span1">红娘网管理中心—<font color="#FFFFFF">当前显示{if $show == 1 || $show == ''}【三天内未完成的】{elseif $show == 2}【三天后未完成的】{/if}最急需维护的客户列表</font></span><span style="float:right" class="action-span"><a href="index.php?action=financial_urgencyclient&h=list&show={$show}">刷新</a></span>
+<div class="clear"></div>
+</h1>	
+	<div>
+        {if in_array($groupid,$admin_service_arr) || in_array($groupid,$admin_aftersales_service) || in_array($groupid,$admin_aftersales_service_fu)}
+        <span style="float:left"><font color="#000000">会员ID：</font><input type="text" id="uid" name="uid" value="{php echo $uid ? $uid : '';}">&nbsp;
+        	<font color="#000000">客服ID：</font><input type="text" id="sid" name="sid" value="{php echo $sid ? $sid : '';}">&nbsp;
+        	<input type="submit" name="button" value="&nbsp;&nbsp;查&nbsp;找&nbsp;&nbsp;" class="button">
+        </span>
+        {/if}
+        <a href="index.php?action=financial_urgencyclient&h=list&show=1" class="reset" style="float:left;margin-left:10px;{if $show == 2}color:#000{/if}">三天内未完成的</a><a href="index.php?action=financial_urgencyclient&h=list&show=2" class="reset" style="float:left;margin-left:10px;{if $show != 2}color:#000{/if}">三天后未完成的</a>
+     	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{if $show == 1 || $show == ''}当前记录三天内未完成的共{php echo $total;}条{elseif $show == 2}当前记录三天外未完成的共{php echo $total;}条{/if}
+    	<div style="clear:both"></div>
+	</div>
+    <div class="list-div">
+	<table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="list-table">
+	<tr>
+		<th width="9%" height="30" align="center">会员ID</th>
+		<th width="9%" height="30" colspan="2" align="center">昵称</th>
+		<th width="9%" height="30" align="center">年龄</th>
+        <th width="9%" height="30" align="center">性别</th>
+		<th width="9%" height="30" align="center">最后登录时间</th>
+        <th width="9%" height="30" align="center">升级时间</th>
+        <th width="9%" height="30" align="center">会员等级</th>
+        <th width="9%" height="30" align="center">交接时间</th>
+        <th width="10%" height="30" align="center">三大步完成状态</th>
+		<th width="9%" height="30" align="center">所属客服ID</th>
+		<th width="9%" height="30" align="center">操作</th>
+	</tr>
+        {loop $payment_new $val}
+        <tr>
+            <td width="9%" height="30" align="center"><a href="#" onclick="parent.addTab('查看{$val[uid]}资料','index.php?action=allmember&h=view_info&uid={$val[uid]}','icon')">{$val[uid]}</a></td>
+            <td width="9%" height="30" colspan="2" align="center"><a href="#" onclick="parent.addTab('查看{$val[uid]}资料','index.php?action=allmember&h=view_info&uid={$val[uid]}','icon')">{$val[nickname]}</a></td>
+            <td width="9%" height="30" align="center">{php echo date('Y')-$val[birthyear]}</td>
+          <td width="9%" height="30" align="center">{if isset($val['gender'])}{php echo $val['gender'] == 0 ? '男' : '女';}{/if}</td>
+          <td width="9%" height="30" align="center">{php echo $val[last_login_time] ? date('Y-m-d',$val[last_login_time]) : '';}</td>
+          <td width="9%" height="30" align="center">{php echo $val[bgtime] ? date('Y-m-d H:i:s',$val[bgtime]) : '';}</td>
+       	  <td width="9%" height="30" align="center">{php echo $val[s_cid] == 30 ? '高级会员' : ( $val[s_cid] == 20 ? '钻石会员' : '铂金会员');}</td>
+            <td width="9%" height="30" align="center">{php echo $val[allto_time] ? date('Y-m-d H:i:s',$val[allto_time]) : '';}</th>
+   		  <td width="10%" height="30" align="center">推荐{$val[recommend]},模拟{php echo $val[chat]+$val[email];},关注{php echo $val[rose]+$val[mandate]+$val[leer];}</th>
+      <td width="9%" height="30" align="center">{$val[sid]}</td>
+            <td width="9%" height="30" align="center"> <a href="#" onclick="parent.addTab('查看{$val[uid]}资料','index.php?action=allmember&h=view_info&uid={$val[uid]}','icon')">查看TA的资料</a></td>
+        </tr>
+        {/loop}
+        
+        {if $page_links}
+            <tr>
+                <td height="30" colspan="14" align="center">{$page_links} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="text1" type="text" style="width:20px">&nbsp;&nbsp;&nbsp;<a href="javascript:goto();" class="button-s">GO</a></td>
+            </tr>
+        {/if}
+</table>
+<a href="#" class="button"></a>
+<div style="clear:both"></div>
+</div>
+</form>
+</body>
+</html>

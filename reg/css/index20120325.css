@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,   
+form,fieldset,input,textarea,p,th,td {padding: 0;margin: 0; }   
+body{font-family:"宋体", Arial, Vrinda;font-size:12px;color:#666; }
+.clear{ clear:both;}
+img{border:none;}
+a{text-decoration:none; outline:none;color:#F00;}
+a:hover, a:active{color:#f00;cursor:pointer;}
+ol, ul{list-style:none;}
+img{font-size:0; line-height:0; border:none;}
+
+
+
+
+/*红娘推广页*/
+
+#box{ margin:0 auto;background:url(../images/bg.jpg)  top center no-repeat;}
+#content{width:1000px; margin:0 auto;}
+#header{width:1000px;height:110px;}
+.logo{ background:url(../images/logo.png) no-repeat;width:255px;height:96px;float:left;margin-top:10px;}
+.service{ background:url(../images/service.png) no-repeat;width:636px;height:51px;float:left;margin-top:35px;}
+.login{ background:url(../images/login_btn.gif) no-repeat;width:73px;height:20px;float:right;line-height:20px;text-align:center;margin-top:10px;}
+.login a{color:#333;}
+.title{ background:url(../images/title.png) no-repeat;width:1000px;height:44px;}
+.regisiter{width:984px;height:371px; background:url(../images/regisiter_bg.png) no-repeat; font-size:14px; font-weight:bold;color:#030;}
+.regisiter ul{width:300px;padding:50px 0 0 130px;}
+.regisiter ul li{height:28px;line-height:28px;}
+#regsiter_btn{ background:url(../images/regisiter_btn.png) no-repeat;width:202px;height:42px;border:none;margin-top:20px; cursor:pointer;}
+#telphone{ margin-left:6px;}
+.regisiter ul li .reg-info-text{border:1px solid #CCCCCC;color:#666666;height:18px;line-height:18px;width:184px;}
+
+/*搜索*/
+.member{width:962px;margin:5px auto;}
+.search{
+	background:url(../images/search_bg.gif) repeat-x;
+	width:950px;
+	height:38px;
+	float:left;
+	font-size:14px;
+	margin-top: 5px;
+	margin-right: auto;
+	margin-bottom: 5px;
+	margin-left: auto;
+	padding-top: 5px;
+	padding-right: 0;
+	
+	padding-left: 12px;
+}
+.search p{ background:url(../images/search_icon.gif) no-repeat;width:29px;height:29px;float:left;}
+.search_choose{float:left;height:30px;margin-top:5px;margin-left:10px;line-height:30px;}
+#search_more{width:600px;float:left;margin-top:5px;margin-left:10px;height:30px;line-height:30px;}
+
+#search_uid{width:170px;float:left;margin-top:10px;margin-left:10px; height: 30px; line-height:30px;}
+#search_btn{
+	background:url(../images/search_btn.gif) no-repeat;
+	border:none;
+	width:71px;
+	height:30px;
+	float:left;
+	margin-top:2px;
+	cursor:pointer;
+}
+
+.regisiter select{width:65px;}
+.searchid-bar{padding:0px 10px 4px 0;float:left;}
+/*钻石会员*/
+
+.diamonds p{ background:url(../images/diamonds_tilte.gif) no-repeat;width:962px;height:57px;}
+.diamonds p img,.recommend p img,.story p img,.honor p img{float:right;padding:20px;}
+.diamonds ul{width:952px;height:191px;border:1px solid #deef6b; border-top:none;padding-top:13px;padding-left:8px;background:#f8fefe;}
+.diamonds ul li {width:209px;height:140px;margin-left:17px;text-align:center;font-size:14px;color:#690;float:left;display:inline;}
+.diamonds ul li img{border:4px #64d8e5 solid;}
+.diamonds ul li b{height:30px;line-height:30px;}
+
+
+/*会员推荐*/
+.recommend p{background:url(../images/recommend_title.gif) no-repeat;width:962px;height:55px;}
+.recommend ul{width:960px;height:255px;border:1px solid #deef6b; border-top:none;padding-top:13px;background:#f8fefe;margin-bottom:3px;}
+.recommend ul li{width:140px;height:201px;text-align:center;color:#690;float:left;margin-left:44px;display:inline;}
+.recommend ul li img{margin-bottom:10px;}
+
+
+.diamonds p img,.recommend p img,.honor_story p img,.hn_honor p img{float:right;padding:20px;}
+/*成功故事*/
+.honor_story {width:962px;}
+.honor_story p{ background:url(../images/story_title.gif) no-repeat;width:962px;height:55px;}
+.honor_storybg{width:960px;height:359px;border:1px solid #deef6b; border-top:none; background:#f8fefe;}
+.honor_storybg dl{width:425px;height:151px;margin-left:30px;float:left;margin-top:14px;display:inline;}
+.honor_storybg dl dd{float:left;}
+.honor_storybg dl dd h3{color:#099;font-size:14px;height:30px;line-height:30px;}
+.story_content {margin-left:15px;float:left;}
+.story_content ol li{height:18px;line-height:18px;width:155px;}
+.story_content ol li a{float:right;}
+/*红娘荣誉*/
+.hn_honor{width:962px;margin-top:4px;}
+.hn_honor p{background:url(../images/honor_title.gif) no-repeat;width:962px;height:55px;}
+.honor_bg{height:390px;border:1px solid #deef6b; border-top:none; background:#f8fefe;width:960px; background:url(../images/honor_pic.gif) no-repeat 0 8px #f8fefe;}
+
+/*footer*/
+#footer{height:150px;width:1000px;}
+#footer p{background:url(../images/tele.gif) no-repeat;height:18px;width:421px; margin:20px auto;}
+#footer h2{font-size:12px;color:#060;font-weight:normal; text-align:center;}

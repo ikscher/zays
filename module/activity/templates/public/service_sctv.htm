@@ -1,0 +1,355 @@
+<!DOCTYPE html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>闻香识女人</title>
+<style type="text/css">
+*{ padding:0; margin:0 auto;}
+body{ background:#a41153 url(module/activity/templates/default/images/sctv/sctv.jpg) no-repeat center 0; font-size:12px; font-family:"宋体", Arial, Vrinda; }
+img { font-size:0; line-height:0; border:none;}
+a:link, a:visited{ color:#333; text-decoration:none; }
+a:hover, a:active{ color:#999; text-decoration:none; }
+.clear { clear:both; }
+ol, ul { list-style:none; }
+span {color:#ff1596; }
+tt { color:#26acd2; }
+#box{ width:1002px; margin-top:0px; background:url(module/activity/templates/default/images/sctv/bg.jpg) repeat-y #cd1262; padding-top:33px; overflow:hidden;}
+.shuoming { background:url(module/activity/templates/default/images/sctv/shuoming.gif) no-repeat center 0; height:69px; padding:80px 95px 0 95px;}
+.shuoming tt{ display:block; text-indent:24px;}
+.tiaojian { background:url(module/activity/templates/default/images/sctv/tiaojian.gif) no-repeat center 0; height:328px; padding:0px 95px 0 95px;}
+.tiaojian .sm_left { width:278px; float:left; line-height:18px; padding:20px 0 0 20px;}
+.tiaojian .sm_right { width:312px; float:right; font-family:"黑体"; font-size:16px; font-weight:500; padding:20px 20px 0 0; line-height:1.8em;}
+.leixing { background:url(module/activity/templates/default/images/sctv/leixing.gif) no-repeat center 0; line-height:20px; height:216px; padding:85px 95px 0 95px;}
+.leixing .lx_left { width:326px; float:left;}
+.leixing .lx_right { width:330px; float:right;}
+.baoming { background:url(module/activity/templates/default/images/sctv/main_bg.gif) repeat-y center 0;}
+.form{ width:1002px; height:260px; background:url(module/activity/templates/default/images/sctv/baoming.gif) no-repeat center 0; color:#a742e3;}
+ol{width:460px; padding-top:100px; }
+ol li{ float:left; height:20px; line-height:20px; padding:0 15px 20px 0; text-align:center;}
+.manu { width:187px; height:49px; clear:both; padding:35px 42px 0 0; }
+/* 评论 */
+.comment { width:889px; font-size:12px; font-family:"宋体", Arial, Vrinda; padding-bottom:20px;}
+.comment .renshu { background: url(module/activity/templates/default/images/sctv/pinglun.gif) no-repeat; height:47px; line-height:30px; padding:48px 0px 0px 107px;}
+.comment .pinglun{ float:none; padding:10px 0 0 0; width:842px; }
+.comment .pinglun li{ float:none; padding:10px 0; border-bottom:1px #999 dashed; height:45px; width:842px; overflow:hidden; }
+.comment .pinglun li tt{ float:left; }
+.comment .pinglun li span, .renshu span { float:right; color:#039; }
+.pinglun li p { color:#90C; clear:both; text-align:left; padding:5px 0 0 30px; height:1em; }
+.footer { color:#FFF; text-align:center; line-height:18px; height:130px; padding-top:16px; }
+.footer a:link, .footer a:visited { color:#FFF; }
+.photo, .video { width:850px; background-color:#FFFFFF;}
+.photo p { text-align:right;width:830px; padding:1000px 20px 0 0; height:24px;}
+.photo ol { width:820px; list-style:none; overflow:hidden; height:160px;padding-top:0px;}
+.photo ol li{ float:left;  padding:5px 2px 0 0 ; width:200px; height:160px; }
+
+
+.video_ul { width:840px;  float:left; padding:20px 0 0 10px;} 
+.video_ul li {float:left; width:260px; height:212px; overflow:hidden; padding:0 5px; }
+</style>
+<script src="public/system/js/sys.js?v=1"></script>
+<script src="public/system/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript">
+  function checkForm() {
+	var username = $("#username").val();
+    var mobile = $("#mobile").val();
+    var year = $("#year").val();
+    var month = $("#month").val();
+    var workprovince = $("#workprovince").val();
+    var workcity = $("#workcity").val();
+    if(!username || username==''){
+        alert('您的用户名格式不对!');
+        return false;
+    }
+    if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(mobile)) || mobile==''){ 
+        alert('您输入的手机号格式不对!');
+        return false;
+    }
+    if(year=='0'||year==''){
+        alert('您忘记选择出生年份');
+        return false;
+    }
+    if(month=='0'||month==''){
+        alert('您忘记选择出生月份');
+        return false;
+    }
+    if(workprovince == '10101201' || workprovince =='10102000' || workprovince =='10103000' || workprovince =='10101002' || workprovince =='10104000' || workprovince =='10105000' || workprovince =='10132000' || workprovince =='10133000' || workprovince =='10134000'){
+        return true;
+    }else{   
+        if(workprovince == '0' || workprovince == '' || workcity=='0' || workcity==''){
+            alert('您忘记选择地区这项了!');
+            return false;
+        }
+    }
+    return true; 
+  }
+  $(function(){
+      $("#useryear").attr("disabled","disabled");
+      $("#usermonth").attr("disabled","disabled");
+      $("#userworkprovince").attr("disabled","disabled");
+      $("#userworkcity").attr("disabled","disabled");
+
+  });
+  function checkRemark(){
+    var uid = $("#userid").val();
+	var content = $("#content").val();
+	
+	if(!uid){
+	   alert('您还没有登录！');
+	   return false;
+	}
+
+    if (content.length<=1 || content==''){
+	  alert("请输入您的评论内容!");
+	  return false;
+   }
+
+
+
+ }    
+ //检测验证码是否正确
+ /*
+$(function().blur(function(){
+		var seccode = $('#seccode').val();
+	
+		var url = 'ajax.php?n=activity&h=seccode&updates='+Math.random();
+		$.get(url,{seccode:seccode},function(data){							
+			if(data == '2'){
+				alert('验证码输入不正确');
+			}						
+		   
+    });
+
+  });
+
+*/
+        //分页跳转
+  /*       function gotoPage() {
+            var page = $("#pageGo").val();
+            var page = parseInt(page);
+            
+            if(page<1) page = 1;
+            if(page>{php echo ceil($total/$page_per);})
+        
+            page = {php echo ceil($total/$page_per);};
+            window.location.href = "{$currenturl}&page="+page;
+        }
+        function enterHandler(event){
+            var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+               gotoPage();  //调用函数
+             } 
+        } */
+
+</script>
+</head>
+
+<body>
+<div id="heade"  style="margin-left:auto; margin-right:auto; width:1002px;"><img src="module/activity/templates/default/images/sctv/sctv.jpg"/></div>
+<div id="box">
+	<div class="shuoming">
+    	<tt>
+        	2011，四川卫视大型相亲娱乐节目《闻香识女人》！王牌主持文振，续写爱情神话！通过更新颖，更刺激，更有趣的方式成全您的爱情！每期节目现场将有8位充满个性的靓丽单身女嘉宾、1位单身男嘉宾来到现场，选择他们心仪的男生。男生女生快来报名吧，约会您的心仪对象。千里姻缘一线牵，让我们连线您的爱情!
+        </tt>
+    </div>
+    <div class="tiaojian">
+        <div class="sm_left">
+        	<p><span>报名条件：</span></p>
+			<p><span>1、18到35岁的单身人士，学历大专及以上；</span></p>
+			<p><span>2、形象气质佳，语言表达能力强，表现欲及表现力俱佳；</span></p>
+			<p><span>3、希望通过电视展示自己对幸福生活美好追求的意愿；</span></p>
+            <p><span>4、愿意将自己的世界观、人生观、恋爱观等与别人分享；</span></p>
+			<p><span>5、个人出身，学历，经历、情感经历、或才艺等任一方面与众不同；</span></p>
+			<p><span>6、可根据节目录制要求安排个人时间；</span></p>
+			<p><span>7、必须是真爱一生网升级会员，钻石会员重点推荐，其他会员视情况推荐；</span></p>
+        </div>
+        <div class="sm_right">
+        	<p><span>活动简介：</span></p>
+        	<p><span>【播出时间】：每周星期一、星期二、星期三晚9点播出</span></p>
+        	<p><span>【播出频道】：四川卫视</span></p>
+        	<p><span>【咨询电话】：400-678-0405</span></p>
+        	<p><span>活动时间：2011年9月11日（暂定）</span></p>
+        	<p><span>活动地点：四川成都</span></p>
+        </div>
+    </div>
+    <div class="leixing">
+    	<div class="lx_left">
+       		<p><tt>电视相亲活动</tt></p>
+            <span>如果您是乐意通过电视展示自己对幸福生活美好追求的单身人士；如果您想彰显个人独特的魅力；如果您想在这个自由而真实的舞台上“两情相悦”牵手心仪的对象；就赶快报名吧！</span>
+        </div>
+        <div class="lx_right">
+        	<span>为感谢广大会员6年来对真爱一生网的支持，真爱一生网携手四川卫视《闻香识女人》栏目举行大型真情反馈活动。希望能够帮助真爱一生网更多的单身白领会员，在2011年能够收获甜美爱情，在2012年收获美满姻缘。活动期间，凡升级钻石会员，均享受优先推荐权，并赠送专业造型建议。名额有限，先到先得。赶快行动吧！ </span>
+        </div>
+    </div>
+    <div class="baoming">
+        <div class="form">
+        <form name="reguser" action="index.php?n=activity&h=register&channel=7" method="post" onSubmit="return checkForm();" >
+                <ol>
+                {if empty($userid)}
+                    <li>姓名：<input type="text" style="width:55px; height:18px; border:1px #b7caf5 solid; " id="username" name="username" /></li>
+                    <li>性别：<select name="gender" style="height:20px; border:1px #b7caf5 solid; " >
+                      <option value='0'>男</option><option value='1'>女</option>
+                  </select></li>
+                    <li>出生&nbsp;<script>getYearsSelect('','year','year','','0');</script>
+                    年&nbsp;<script>getMonthsSelect('','month','month','','0');</script>
+                    月 </li>
+                    <li>手机号： <input name="mobile" id="mobile" type="text" style="width:96px; height:18px; border:1px #b7caf5 solid;" /></li>
+                    <li>地区：<script>getProvinceSelect43rds('','workprovince','workprovince','workcity','','10100000');</script>
+                    省&nbsp;<script>getCitySelect43rds('','workcity','workcity','','');</script>
+                    市</li>
+                {else}
+                    <li>姓名：<input type="text" style="width:55px; height:18px; border:1px #b7caf5 solid; " id="username" name="username" value="{php echo $user_arr['username'];}" disabled="disabled"/></li>
+                    <li>性别：<select name="gender" style="height:20px; border:1px #b7caf5 solid; " >
+                      <option value='0' {if $user_arr['gender']=='0'} selected="selected" {/if} disabled="disabled">男</option>
+                      <option value='1' {if $user_arr['gender']=='1'} selected="selected" {/if} disabled="disabled">女</option>
+                  </select></li>
+                    <li>出生&nbsp;<script>getYearsSelect('','useryear','year',{php echo $user_arr['birthyear'];},'0');</script>
+                    年&nbsp;<script>getMonthsSelect('','usermonth','month',{php echo $user_arr['birthmonth'];},'0');</script>
+                    月 </li>
+                    <li>手机号： <input name="mobile" id="mobile" value="{php echo $user_arr['telphone'];}" disabled="disabled" type="text" style="width:96px; height:18px; border:1px #b7caf5 solid;" /></li>
+                    <li>地区：<script>getProvinceSelect43rds('','userworkprovince','workprovince','workcity','{php echo $user_arr['province'];}','10100000');</script>
+                    省&nbsp;<script>getCitySelect43rds('','userworkcity','workcity','{php echo $user_arr['city'];}','');</script>
+                    市</li>
+                {/if}
+                </ol>
+            <div class="manu">
+                <input name="" type="submit" value="" style="width:177px; height:46px; background:url(/module/activity/templates/default/images/sctv/name.jpg) no-repeat; border:none;cursor:pointer; " />
+            </div>
+            </form>
+        </div>
+   		<!-- 评论 -->
+        <div class="comment">
+            <div>
+            	<div class="renshu">
+                    <span>{if !empty($GLOBALS['userid'])}昵称:{php echo $user_arr['nickname'];}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID:{php echo $user_arr['uid'];} {else}<a href="index.php?n=login">重新登录</a> <a href="index.php?n=register">立即注册</a>{/if}</span>
+                	总点击人数：<tt>{php echo $click_num;}</tt> 人&nbsp;&nbsp;&nbsp;已报名人数：<tt>{php echo $num;}</tt> 人&nbsp;&nbsp;&nbsp;男：<tt>{php echo $male_num;}</tt> 人&nbsp;&nbsp;&nbsp;女：<tt>{php echo $female_num;}</tt> 人
+                </div>
+                <div style="width:842px;"><textarea name="content" id="content" cols="" rows="" style="width:842px; height:150px; background:none; border:1px #999 solid; "></textarea></div>
+                <div style="width:842px; padding-top:10px; ">
+                	<ol style="padding:0; float:left; width:500px;">
+                    	<li style="line-height:28px; font-size:14px; ">验证码：</li>
+                        <li><input  name="seccode" id="seccode" type="text" style="width:120px; height:26px; font-size:20px;" ></li>
+                        <li><img src="index.php?n=activity&h=seccode" id="code" border="0" onClick="javascript:this.src='index.php?n=activity&h=seccode&update=' + Math.random();" style="margin-top:2px;cursor:pointer;"></li>
+                        <li style="line-height:28px; font-size:14px; "><a style="cursor:pointer;" onClick="javascript:$('#code').attr('src','index.php?n=activity&h=seccode&updatak='+Math.random())" >←看不清</a></li>
+                    </ol>
+                    <span style="float:right; ">
+                    	<input name="" type="button" style="width:75px; height:25px; background:url(/module/activity/templates/default/images/sctv/fabiao.jpg) no-repeat; border:none; cursor:pointer;" />
+                    </span>
+                </div>
+                <ol class="pinglun">
+                {loop $result  $value}
+                	<li>
+                    	<div><tt>网友 <a href="#">{php echo $value['username'];}</a> 发表评论 &nbsp;{php echo $value['operationtime'];}</tt></div>
+                        <div><p>{php echo $value['remark'];}</p></div>
+                    </li>
+                 {/loop}
+                 </ol>
+                 <br/>
+              <table cellpadding="4" cellspacing="0">
+                <tr>
+                  <td align="center">{$pages}
+                  &nbsp;&nbsp;&nbsp;
+                    转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onKeyDown="enterHandler(event)"/> 页 &nbsp;
+                  <input type="button"  value="跳转" class="button" onClick="gotoPage()"/>
+                  </td>
+                </tr>
+              </table>
+            </div>
+			<!-- 图片及视频 -->
+		<div style="height:10px; clear:both; "></div>
+            	<div class="photo">
+                	
+                    <div style="width:848px; padding-bottom:10px; margin-left:10px;">
+                        <ol>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/01.jpg" /></li>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/02.jpg" /></li>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/03.jpg" /></li>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/04.jpg" /></li>
+                        </ol>
+                        <ol>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/05.jpg" /></li>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/06.jpg" /></li>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/07.jpg" /></li>
+                            <li><img  style="width:200px; height:160px;"src="module/activity/templates/default/images/sctv/08.jpg" /></li>
+                        </ol>
+						<ol>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/09.jpg" /></li>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/10.jpg" /></li>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/11.jpg" /></li>
+                            <li><img style="width:200px; height:160px;" src="module/activity/templates/default/images/sctv/12.jpg" /></li>
+                        </ol>
+                    </div>
+					
+                </div>
+                <div style="height:10px; clear:both; "></div>
+                <div class="video">
+                	
+                    <div style="width:848px; padding-bottom:20px; height:180px; +height:200px; overflow:hidden; border-left:1px #f583b0 solid; border-right:1px #f583b0 solid; ">
+                        <ol class="video_ul">
+                            <li><div id="v1"></div></li>
+                            <li><div id="v2"></div></li>
+                            <li><div id="v3"></div></li>
+                        </ol>
+                    </div>
+                   
+                </div>
+            <!-- 图片及视频 结束 -->
+        </div>
+    
+    </div>
+    <div style="text-align:center; padding-bottom:50px;"><img src="/module/activity/templates/default/images/sctv/bottom.gif"></div>
+</div>
+<div class="footer">
+    	<p><a href="index.php?n=about&h=us">关于我们</a>|  <a href="index.php?n=about&h=contact">联系我们</a>  |<a href="index.php?n=about&h=links">合作伙伴</a> |<a href="index.php?n=about&h=getsave">意见反馈</a> |<a href="index.php?n=story">成功故事</a> | <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> |  
+		{if !empty($user_arr['s_cid'])} <a href="index.php?n=index&h=add_vip&s_cid=$user_arr['s_cid']">其他信息</a>{else}<a href="index.php?n=index&h=add_vip">其他信息</a>{/if}
+		</p>
+        <p style="padding:10px 0; "><img src="module/activity/templates/default/images/sctv/kefu.gif" /></p>
+        <p>Copyright 2005-2010 版权所有：真爱一生网 闽ICP备09064513号</p>
+		<p>真爱一生网备用域名： www.hongniangw.com | www.hongniangwang.com</p>
+</div>
+<script type="text/javascript" src="public/system/js/jwplayer.js"></script>
+	<script type="text/javascript">
+	var w='260px',h='212px';
+		jwplayer("v1").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/activity/templates/default/images/flv/sctv/1.flv",
+			image: "module/activity/templates/default/images/sctv/1.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("v2").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/activity/templates/default/images/flv/sctv/2.flv",
+			image: "module/activity/templates/default/images/sctv/2.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("v3").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/activity/templates/default/images/flv/sctv/3.flv",
+			image: "module/activity/templates/default/images/sctv/3.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+	</script>
+		{template system/service_foot public}
+</body>
+</html>

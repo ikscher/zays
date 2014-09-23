@@ -1,0 +1,102 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+function search_group(){
+	var keyword = $("#keyword").val();
+	if( keyword=="" ){
+		alert("搜索内容不能为空！");
+		return;
+	}
+	var url = "./ajax.php";
+    $.getJSON(url,{n:"search_group",keyword:keyword},function(data){alert(data);
+		var len = data.length;
+		$("#group").empty();
+		var optionStr = "<option value =''>搜索出 "+len+" 条结果 请选择</option>";
+		for(i=0;i<len;i++){
+			optionStr += "<option value='"+data[i]['id']+"'>"+data[i]['manage_name']+"</option>";
+		}
+		$("#group").append(optionStr);
+    });
+}
+function team_add_member(){
+	if($("#group").val() == ''){
+		alert("请选择一个客服");
+		return;
+	}
+	var url="./ajax.php";
+	var id = $("#group").val();
+	
+	$.get(url,{n:"judge_group",id:id},function(data){
+		if(data==1){
+			alert("该组已经在其它队中不能再添加到其它队！");
+		}else{
+			if($("#ispost").val() == 0){
+				$("#ispost").val(1);
+				$("#add").css("display","block");
+			}
+	
+			var name = $("#group option:selected").text();
+			$("#user_list").append('<input type="checkbox" name="grouparr[]" value="'+id+'" checked="checked" />&nbsp;'+name);
+		}											 
+	});
+}
+
+function group_user(){
+	if($("#ispost").val() == 0){
+		alert('请选择添加组');
+		return false;
+	}else{
+		return true;
+	}
+}
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 添加队  </span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<form method="POST" action="index.php?action=system_adminteam&h=addteam" name="theFrom" onsubmit="return checkform();">
+<input name="ispost" type="hidden" value="1" />
+<div class="list-div">
+<table cellspacing='1' id="list-table">
+	<tr>
+	   <td width="18%" valign="top" class="first-cell">
+	       	队名称 ：
+	   </td>
+	   <td>
+	       <input type="text" name="manage_name" id="manage_name" value=""/><span class="require-field">*</span>
+	   </td>
+	</tr>
+	<tr>
+	 	<td width="18%" valign="top" class="first-cell">
+	     	队描述 ：
+	  	</td>
+	  	<td>
+	      	<textarea name="manage_desc" id="manage_desc" style="width:400px;"></textarea><span class="require-field">*</span>
+	  	</td>
+	</tr>
+	<tr><td class="first-cell">队主管ID：</td><td><input type="text" name="team_leader"  value=""/>多人以逗号分隔</td></tr>
+	<tr>
+		<td width="18%" valign="top" class="first-cell">
+	     	添加队成员 ：
+	  	</td>
+	  	<td>
+	   	按组ID或组名搜索
+		<input type="text" id="keyword" name="keyword" value="">
+		<input type="button" name="search" value=" 搜索 " onclick="search_group();">
+		<select style="width:170px;" id="group" name="group">
+			<option value="">请选择</option>
+		</select>
+		<input type="button" onclick="team_add_member();" name="add_member" value="添加队成员">
+		<div id="user_list"></div>
+	  	</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="button" value="确定" /></td>
+	</tr>
+</table>
+
+</div>
+</form>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <config_name>从旧表web_members_op,web_choice_op中导入内心独白到新表web_members_introduce</config_name>
+	<table>
+		<name>web_members_introduce</name><!-- 要插入数据的表 -->
+		<pretable>web_choice_op,web_members_op</pretable><!-- 数据来源的表 -->
+		<step>1000</step><!-- 一次插入多少条 -->
+		<fk>web_members_op.uid=web_choice_op.uid</fk><!-- 来源表关联 单表来源 写数字1 -->
+		<field>
+			<isint>1</isint>
+			<name>uid</name>
+			<from>web_choice_op.uid</from>
+		</field>		
+		<field>
+			<name>introduce</name>
+			<from>web_choice_op.introduce</from>
+		</field>
+		<field>
+			<name>introduce_check</name>
+			<from>web_choice_op.introduce_check</from>
+		</field>
+		<field>
+			<name>introduce_pass</name>
+			<from>web_choice_op.introduce_pass</from>
+			
+		</field>
+	</table>
+	
+</root>
+
+<!-- 目的：把旧表里面的数据导入到新表 前提： 获取旧表的字段 获取新表的字段 获取新表字段的数据的来源 通过确定的来源，拼凑出向新表插入的数据 
+	步骤： 1：确定要向哪个表插入数据 2：确定每个字段的数据来源 3：插入 -->

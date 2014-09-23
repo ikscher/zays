@@ -1,0 +1,120 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+function bind_del(bindid){
+	var rs = confirm("你确定解除本次绑定？\n解除后本条记录将会删除...");
+	if(rs === false){ return; };
+	var id = bindid;
+	var url = "./active_ajax.php?n=bind_del&id="+id;
+	$.get(url,function(str){
+		if(str == 1){
+			alert("删除成功");
+			$("#bind_"+id).hide();
+		}else{
+			alert("操作异常！请联系管理员...");	
+		}
+	})
+}
+
+function bind_bind(bindid){
+	var rs = confirm("你确定对方已经同意？");
+	if(rs === false){ return; };
+	var id = bindid;
+	var length = $("input[name=length_"+id+"]").val();
+	var url = "./active_ajax.php?n=bind_bind&id="+id;
+	$.get(url,{length:length},function(str){
+		if(str == 1){
+			alert("成功绑定"+length+"小时");
+			$("#bind_"+id+" td:eq(6)").html("<span style=\"color:#F00\">已绑定</span>");
+		}else{
+			alert("操作异常！请联系管理员...");	
+		}
+	})
+	
+}
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 会员绑定</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+<form action="" method="get">
+  <tr border="2">
+  	<td>
+     <select name="choose" id="choose">
+	    <option value="a_uid">请求绑定ID</option>
+		<option value="b_uid" {if $choose=='b_uid'}selected="selected"{/if}>绑定对方ID</option>
+	 </select> &nbsp; 
+     <input name="uid" type="text" value="{$uid}" size="10" maxlength="10"/>
+	 </td>
+	 <td>&nbsp;&nbsp;
+	 </td>
+	 <td>
+		
+		<input type="hidden" name="action" value="active_bind" />
+		<input type="hidden" name="h" value="list" />
+		<input name="" type="submit" value="搜 索" class="button" />
+	</td>
+</tr>
+</form>
+</div>
+<br />
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>绑定ID</th>
+    <th>申请会员</th>
+    <th>绑定会员</th>
+    <th>申请时间</th>
+    <th>申请时长</th>
+    <th>申请语</th>
+    <th>绑定状态</th>
+    <th>开始时间</th>
+    <th width="112">实际时长</th>
+	<th width="80">操作</th>
+  </tr>
+  {loop $bindrs $v}
+  <tr id="bind_{$v['id']}" align="center">
+  	<td>{$v['id']}</td>
+    <td><a href="#" onclick="parent.addTab('查看{$v['a_uid']}资料','index.php?action=allmember&h=view_info&uid={$v['a_uid']}','icon');return false;">{$v['a_uid']}</a></td>
+    <td><a href="#" onclick="parent.addTab('查看{$v['b_uid']}资料','index.php?action=allmember&h=view_info&uid={$v['b_uid']}','icon');return false;">{$v['b_uid']}</a></td>
+    <td>{php echo date('Y-m-d H:s:i',$v['dateline'])}</td>
+    <td>{$v['apply_ltime']}</td>
+    <td>{$v['apply_con']}</td>
+    <td>{php echo $bindArr[$v['bind']]}</td>
+    <td>{php echo empty($v['start_time']) ? '' : date('Y-m-d H:s:i',$v['start_time']) ;}</td>
+    <td>
+    {if $v['length_time'] > 0}
+	<span>{php echo($v['length_time']/3600)}</span>
+    {else}
+    <input type="text" name="length_{$v['id']}" value="" size=="6" maxlength="4" />单位小时
+    {/if}
+    </td>
+    <td>{if $v['bind'] != 2}<a onclick="bind_bind({$v['id']});return false;" href="#">绑定</a> | {/if}
+    	<a onclick="bind_del({$v['id']});return false;" href="#">解除</a></td>
+  </tr>
+  {/loop}
+  </table>
+{if $pages}
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$pages}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+    </tr>
+  </table>
+{/if}
+</div>

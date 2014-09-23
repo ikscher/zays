@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>推荐会员</title>
+<style type="text/css">
+*{
+	margin:0px;
+	padding:0px;
+}
+
+img{
+	border:none;
+}
+.clear{
+	clear:both;
+	font-size:12px;
+	line-height:0px;
+	height:0px;
+	margin:0px;
+	padding:0px;
+}
+li{ list-style:none}
+a{
+	color:#bd0000;
+	text-decoration:none}
+a:hover{
+}
+body{
+	font-size:13px;
+	font:Arial, Helvetica, sans-serif;
+	color:#666;
+	margin:0px auto;
+	text-align:center;
+}
+.warp{
+	width:760px;
+	margin:0 auto;
+	border-left:1px solid #666;
+	border-right:1px solid #666;
+	border-bottom:1px solid #666;
+	background:#f4f4f4;
+
+}
+.warp .top{
+	background:url(module/crontab/templates/default/images/top.jpg);
+	width:760px;
+	height:273px;
+	position:relative
+}
+.top .link{
+	position:absolute;
+	color:#ac5aad;
+	font-weight:bold;
+	left:420px;
+	top:45px;
+	width:330px;
+}
+.link li{
+	float:left;
+	font-weight:bold;
+}
+.link li a{
+	color:#ac5aad;
+	padding:0px 8px;
+	font-size:12px;
+}
+.link li a:hover{
+	text-decoration:underline}
+.post_load{
+	position:absolute;
+	bottom:100px;
+	right:40px;
+	width:150px;
+}
+.post_load a{
+	background:url(module/crontab/templates/default/images/mail_btn1.jpg);
+	width:135px;
+	height:29px;
+	display:block
+}
+.post_load a:hover{
+	background-position:0px -29px;
+}
+.hello{
+	position:absolute;
+	bottom:10px;
+	left:40px;}
+.main{
+	height:auto;
+	width:696px !important;
+	width:730px;
+	border:2px solid #e9d9e9;
+	border-top:none;
+	margin:0px 16px;
+	background:#fff;
+	padding:0px 15px;
+}
+.text{
+	text-align:left;
+	text-indent:20px;
+	line-height:25px;
+	padding:20px 0px;
+	border-bottom:1px dashed #ccc;
+}
+.text p{
+	padding-top:20px;
+	padding-left:30px;}
+.text a{
+	text-decoration:underline}
+.text a:hover{
+	text-decoration:none}
+.bigtext{
+	margin-top:15px;
+
+}
+.bigtext a{
+	text-decoration:underline}
+.bigtext a:hover{
+	text-decoration:none}
+.bigtext dl{text-align:left;
+}
+.bigtext dl dt{
+	float:right;
+	text-align:left;
+	width:520px;
+
+}
+.bigtext dl dd{}
+.bigtext dl dd.pic{
+	float:left;
+	margin-left:30px;
+	display:inline
+}
+.bigtext dl dd.text1{
+	float:left;
+	line-height:25px;
+	width:500px;
+	margin-left:30px;
+	text-indent:20px;
+	margin-top:10px;
+	text-align:left;
+}
+.zhiding{
+	border:1px solid #e8e8e8;
+	background:#fff6fa;
+	font-size:12px;
+	margin-top:20px;
+	line-height:25px;
+	padding:10px;
+	text-align:left;
+}
+.cred{
+	color:#d53b81
+}
+.zhiding a{
+	color:#d53b81;
+	text-decoration:underline}
+.zhiding a:hover{
+	text-decoration:none}
+.mail_list{
+	margin-top:10px;}
+.mail_list h3{
+	text-align:left;
+	font-size:12px;
+	color:#a4a4a4}
+.mail_list dl{
+	width:200px;
+	float:left;
+	height:100px;
+	padding-top:10px;
+	font-size:12px;
+	display:inline;
+	border-bottom:1px dashed #ccc
+}
+.mail_list dl dt{
+	float:right;
+	text-align:left;
+	line-heght:25px;
+	color:#bd0000;
+	width:120px;
+}
+.mail_list dl dd{
+	float:left;
+	line-height:25px;}
+.mail_list dl dd.pic1{
+	float:left;
+	width:60px;
+	height:73px;
+}
+.mail_list dl dd.text2{
+	text-align:left;
+	float:left;
+	width:100px;
+	margin-left:20px;
+}
+.mail_btn_box{
+	margin:10px auto;
+	width:160px;
+}
+.mail_btn_box a{
+	background:url(module/crontab/templates/default/images/mail_btn.jpg);
+	width:148px;
+	height:32px;
+	text-align:center;
+	color:#fff;
+	font-size:14px;
+	display:block;
+	font-weight:bold;
+	line-height:32px;
+}
+.mail_btn_box a:hover{
+	background-position:0px -32px;}
+.footer{
+	text-align:center;
+	line-height:22px;
+	font-size:12px;
+	color:#999999
+}
+.footer a{
+	text-decoration:underline}
+</style>
+</head>
+
+<body>
+	<div class="warp">
+		<div class="top">
+			<ul class="link">
+				<li><a href="http://{MOOPHP_HOST}/index.php?n=login&h=backpassword" target="blank">找回密码</a>|</li>
+				<li><a href="http://{MOOPHP_HOST}/index.php?n=service" target="blank">我的真爱一生</a>|</li>
+				<li><a href="http://{MOOPHP_HOST}/index.php?n=search" target="blank">真爱一生寻友</a>|</li>
+				<li><a href="http://{MOOPHP_HOST}/index.php?n=payment" target="blank">升级高级会员</a></li>
+			</ul>
+			<div class="post_load">
+			</div>
+			<div class="hello">亲爱的{if isset($user_arr["nickname"]) && $user_arr["nickname"]} {php echo htmlspecialchars($user_arr["nickname"])}{elseif isset($user_arr['uid'])}{$user_arr['uid']}{/if},您好！</div>
+		</div>
+		<div class="main">
+			<div class="text">
+				我们诚意向您推荐真爱人选{$recommend_member_href}，同时也将您推荐给了Ta。经过真爱一生网的精准计算，我们发现在您们俩从内在物质和外在条件都高度匹配，符合双方的要求。{$recommend_member_href}或许已经给您发出了消息，现在就回<a href="http://{MOOPHP_HOST}/index.php">真爱一生网</a>看看吧，感受一下与真爱人选沟通的高契合度。
+				<p>温馨提示：真爱一生网会持续为您推荐优质人选，请保持登陆查看。</p>
+			</div>
+			
+			<div class="bigtext">
+				<dl>
+					<dt>{$recommend_member_href}{if $recommend_member["birthyear"]}{php echo date("Y") - $recommend_member["birthyear"]}岁{else}年龄保密{/if}，{$recommend_member["height"]}厘米，{if $provice_list[$recommend_member["hometownprovince"]]}{php if(isset($provice_list[$recommend_member["hometownprovince"]])) echo $provice_list[$recommend_member["hometownprovince"]]}{php if(isset($city_list[$recommend_member["hometowncity"]])) echo $city_list[$recommend_member["hometowncity"]]}人{else}没有填写{/if}</dt>
+					<dd class="pic"><img src="{php echo thumbImgPath(2, $recommend_member["pic_date"], $recommend_member["pic_name"])}" width="102" height="127" /></dd>
+					<dd class="text1">
+						{php echo MooStrReplace(htmlspecialchars(MooCutstr($choice["introduce"], 130)))}
+					</dd>
+				</dl>
+			</div>
+			<div class="clear"></div>
+			<div class="zhiding">
+				<p><font class="cred">您订制的搜索名称：</font><b>{$searchsign}</b></p>
+				<p><font class="cred">您订制的搜索条件：</font>{$condition_str}<a href="http://{MOOPHP_HOST}/index.php?n=search&h=list">更多条件 <img src="http://{MOOPHP_HOST}/module/crontab/templates/default/images/sanjiao.jpg"/></a></p>
+			</div>
+			
+			<div class="mail_list">
+				<h3>您订制的搜索结果</h3>
+				 {loop $user $key $tmp}
+				 {if $key == 0}
+				 	{php continue}
+				 {/if}
+				<dl>
+					<dt><a href="http://{MOOPHP_HOST}/index.php?n=space&h=viewpro&uid={$tmp["uid"]}">{php echo htmlspecialchars(MooCutstr($tmp["nickname"], 10))}</a></dt> 
+					<dd class="pic2"><a href="http://{MOOPHP_HOST}/index.php?n=space&h=viewpro&uid={$tmp["uid"]}"><img src="http://{MOOPHP_HOST}/{php echo thumbImgPath(1, $tmp["pic_date"], $tmp["pic_name"])}" width="58" height="72" border="0" /></a></dd>
+					<dd class="text2">{if $tmp["birthyear"]}{php echo date("Y") - $tmp["birthyear"]}岁{else}年龄保密{/if}，{$tmp["height"]}厘米 </dd>
+					<dd class="text2">{if isset($provice_list[$tmp["hometownprovince"]])}{php if (isset($provice_list[$tmp["hometownprovince"]])) echo $provice_list[$tmp["hometownprovince"]]}{php if(isset($city_list[$tmp["hometowncity"]])) echo $city_list[$tmp["hometowncity"]]}人{else}没有填写{/if}</dd>
+				</dl>
+				{/loop}
+				<div class="clear"></div>
+				<div class="mail_btn_box">
+					<a href="http://{MOOPHP_HOST}/index.php?n=search" class="mail_btn">查看更多搜索结果</a>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<p>请不要直接回得该电子邮件。如需帮助，请发邮件到service@7651.com</p>
+			<p>您收到这封邮件是因为您是我们的会员。如果您不希望再收到类似邮件，请点击<a href="http://{MOOPHP_HOST}/index.php?n=search&h=list" target="blank">邮件退订</a></p>
+		</div>
+	</div>
+</body>
+</html>

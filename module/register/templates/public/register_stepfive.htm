@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员注册-兴趣爱好填写——真爱一生网</title>
+{template system/js_css public}
+<link href="module/register/templates/{$GLOBALS['style_name']}/css/register-info.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;会员注册&nbsp;&gt;&gt;&nbsp;兴趣爱好</span><a href="#"></a></p>
+		<form action="./index.php?n=register&h=stepfive" method="post">
+			<div class="content-title">
+				<span class="right-title">完善注册信息</span>
+			</div><!--content-title end-->
+			<div class="c-center">
+			<div class="register-step"><p class="step04"><a href="#">基本资料</a><a href="#">详细资料</a><a href="#">生活态度</a><a href="#" class="in-on">兴趣爱好</a></p>
+			<div class="clear"></div>
+			</div>
+			<h4>&nbsp;<span class="f-aeaeae">&gt;</span>&nbsp;生活状态：</h4>
+			<dl class="c-center-data">				
+			<dt>喜欢的活动：</dt>
+					<dd class="height-auto">
+						<ul class="all-input">
+							<script>getCheckbox43rdsok('fondactions','fondactions[]',',{php echo isset($userinfo[fondactivity])?$userinfo[fondactivity]:'';},',fondactions);</script> 
+						</ul>						
+					</dd>
+			<dt>喜欢的运动：</dt>
+					<dd class="height-auto">
+						<ul class="all-input">
+							<script>getCheckbox43rdsok('fondsports','fondsports[]',',{php echo isset($userinfo[fondsport])?$userinfo[fondsport]:'';},',fondsports);</script>
+						</ul>						
+					</dd>
+			
+			<dt>喜欢的音乐：</dt>
+					<dd class="height-auto">
+						<ul class="all-input">
+							<script>getCheckbox43rdsok('fondmusics','fondmusics[]',',{php echo isset($userinfo[fondmusic])?$userinfo[fondmusic]:'';},',fondmusics);</script>
+						</ul>						
+					</dd>
+					
+		  <dt>喜欢的电影：</dt>
+					<dd class="height-auto">
+						<ul class="all-input">
+							<script>getCheckbox43rdsok('fondprograms','fondprograms[]',',{php echo isset($userinfo[fondprogram])?$userinfo[fondprogram]:'';},',fondprograms);</script>
+						</ul>						
+					</dd>
+			</dl>
+			<p class="p-bottom"><input name="register_submitfive" type="submit"  class="btn btn-primary go-on" value="保存数据"/></p>
+		<div class="clear"></div>
+			</div><!--c-center-data end-->
+            </form>
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

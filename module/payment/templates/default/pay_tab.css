@@ -1,0 +1,81 @@
+
+.clear{ clear:both;}
+img { border:none;}
+a { text-decoration:none; outline:none;}
+a:link, a:visited { color:#000;}
+a:hover, a:active { color:#C00;}
+ol, ul{ list-style:none;}
+img { font-size:0; line-height:0; }
+.org{ color:#F60;}
+
+#pay_page_card { width:882px;}
+#pay_page_card .pay_header a { display:block; float:left; width:118px; cursor:pointer; height:30px; padding-top:8px; background:#eeeeee; text-align:center;}
+#pay_page_card .pay_header a * { vertical-align:middle;}
+#pay_page_card .pay_header a em{ font-style:normal;  }
+
+#pay_page_card .pay_header .click_p{ background:#fd6395; font-weight:700; color:#fff;}
+
+
+#pay_page_card .pay_main { width:100%; border:2px solid #D73E90; padding:20px 0 20px 20px;}
+#pay_page_card .pay_main .explain { width:672px; height:30px; background:#ffffcc; border:1px #ffcd9a solid; border-bottom:none; font-weight:bold; text-indent:28px; line-height:30px;}
+
+
+#pay_page_card .pay_main #credit ol { padding:10px;}
+#pay_page_card .pay_main #credit ol li {  float:left; height:50px;}
+#pay_page_card .pay_main #credit ol li span { display:block; height:30px; width: 125px;}
+#pay_page_card .pay_main #credit ol li .boc { background:url(images/telphone/bank.jpg) no-repeat 0 -326px; }
+#pay_page_card .pay_main #credit ol li .icbc { background:url(images/telphone/bank.jpg) no-repeat 0 -8px; }
+#pay_page_card .pay_main #credit ol li .cmb { background:url(images/telphone/bank.jpg) no-repeat 0 -48px; }
+#pay_page_card .pay_main #credit ol li .ccb { background:url(images/telphone/bank.jpg) no-repeat 0 -126px; }
+#pay_page_card .pay_main #credit ol li .citic { background:url(images/telphone/bank.jpg) no-repeat 0 -165px; }
+#pay_page_card .pay_main #credit ol li .ceb { background:url(images/telphone/bank.jpg) no-repeat 0 -246px; }
+#pay_page_card .pay_main #credit ol li .cmbc { background:url(images/telphone/bank.jpg) no-repeat 0 -88px; }
+#pay_page_card .pay_main #credit ol li .shbank { background:url(images/telphone/bank.jpg) no-repeat 0 -205px; }
+#pay_page_card .pay_main #credit ol li .abc { background:url(images/telphone/bank.jpg) no-repeat 0 -286px; }
+#pay_page_card .pay_main #credit ol li .spabank { background:url(images/telphone/bank.jpg) no-repeat 0 -366px; }
+
+#pay_page_card .pay_main #credit ul { padding:15px 0 0 30px;}
+#pay_page_card .pay_main #credit ul span * { vertical-align:middle;}
+#pay_page_card .pay_main #credit ul li {clear:both; display:block; height:35px;}
+#credit ul span { float:left; font-size:12px;line-height:25px;}
+#pay_page_card .pay_main #credit ul .infor { padding-right:10px; font-size:14px; width:265px;}
+#pay_page_card .pay_main #credit ul .infor input { height:25px; border:1px #CCC solid; line-height:25px; font-size:14px;}
+#pay_page_card .pay_main #credit ul .infor .name{ margin-left:28px;}
+#pay_page_card .pay_main #credit ul .a { display:inline;}
+#pay_page_card .pay_main #credit ul .prompt { background:url(images/telphone/tipr.gif) no-repeat right 0; }
+#pay_page_card .pay_main #credit ul .prompt span { display:block; color:#F60; height:25px; background:url(images/telphone/tipl.gif) no-repeat; padding:0 8px 0 12px;}
+#pay_page_card .pay_main #credit ul .prompt_bottom { 
+    background:url(images/telphone/gantan.png) no-repeat 0 center;
+    color: #FF6600;
+    padding-left:25px;
+	line-height:35px;
+}
+#pay_page_card .pay_main ul .begin_pay { text-align:center; padding-top:10px;}
+#pay_page_card .pay_main ul .begin_pay input { width:115px; height:32px; background:url(images/telphone/big_btbg.gif) no-repeat; border:none; color:white; font-size:14px; font-weight:bold;}
+#pay_page_card .pay_main #credit .pay_show { width:800px; margin:0 auto; padding-top:40px; border-top:1px #CCC solid;}
+#pay_page_card .pay_main #credit .pay_show h3 { padding-bottom:40px;}
+#pay_page_card .pay_main #credit .pay_show ol { width:654px; height:75px; padding:0; margin:0 auto;}
+#pay_page_card .pay_main #credit .pay_show ol li { width:110px; height:58px; float:left; background:url(images/telphone/liucheng_bg.png) no-repeat; padding:15px 40px 0 5px;}
+
+#debit_card ol { padding:5px 0 0 40px;}
+#debit_card ol li{ float:left; width:190px; padding:15px 10px 0px 0; height:40px;}
+#debit_card ol li * { vertical-align:middle; }
+#debit_card ul { padding:20px 290px 20px 70px; clear:both;}
+#debit_card ul li { display:block; clear:both; padding-bottom:10px;}
+#debit_card ul li input { height:30px; border:1px #CCC solid; width:180px; line-height:30px; font-size:14px;}
+#debit_card ul li p { float:right; width:250px; height:38px;}
+#debit_card ul li p span { padding-left:40px; line-height:38px;}
+#debit_card ul li .p_red { background:url(images/telphone/reg09-tipbg-m.gif) no-repeat; }
+#debit_card ul li .p_yellow { background: url(images/telphone/reg09-tipbg-y.gif) no-repeat; }
+
+#debit_card .pay_show { width:800px; margin:0 auto; padding-top:40px; border-top:1px #CCC solid;}
+#debit_card .pay_show h3 { padding-bottom:40px;}
+#debit_card .pay_show ol { width:654px; height:75px; padding:0; margin:0 auto;}
+#debit_card .pay_show ol li { width:110px; height:58px; float:left; background:url(images/telphone/liucheng_bg.png) no-repeat; padding:15px 40px 0 5px;}
+
+
+
+
+
+
+

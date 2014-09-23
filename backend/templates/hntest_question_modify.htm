@@ -1,0 +1,221 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+var optData = {
+	fuhe:["完全不符合","不符合","很难说","符合","完全符合"],
+	tongyi:["完全同意","同意","基本同意","看具体情况","有些方面不同意","不同意","完全不同意"],
+	zhongyao:["完全不重要","不重要","不是很重要","看具体情况","比较重要","很重要","极其重要"]
+};
+
+$(function(){
+	var parent = $("#father_class").val();
+	if(parent){
+		var url = "hntest_ajax.php?h=class_children&parent="+parent+"&select=<!--{$question['ctype']}-->";
+		$.get(url,function(str){
+			$("#children_class").empty();
+			if(str == 'no'){
+				$("#children_class").append("<option value=\"\">请选择</option>");
+			}else{
+				$("#children_class").append(str);
+			}
+		});
+	}
+	$("#father_class").change(function(){
+		  var parent = this.value;
+		  $.get("hntest_ajax.php?h=class_children&parent="+parent,function(str){
+	           if(str == 'no'){
+				//alert('没有子类别');
+			   }else{
+			   $("#children_class").empty();
+				$("#children_class").append(str);
+			   }
+	       });
+	});
+})
+function installOpt(targ){
+	var targ = targ;
+	var opt_arr = [];
+	switch(targ){
+		case 'fuhe':
+			opt_arr = optData.fuhe;
+		break;
+		case 'tongyi':
+			opt_arr = optData.tongyi;
+		break;
+		case 'zhongyao':
+			opt_arr = optData.zhongyao;
+		break;
+	}
+	var opt_num = opt_arr.length;
+	var tr_num = $("#question_box tr").length;
+	if(opt_num > 0 && opt_num != tr_num){
+		var flag = opt_num > tr_num ? '+' : '-';
+		while(tr_num != opt_num){
+			tr_num = myOption(flag);
+		}
+		
+	}else{
+		$("input[name='option[]']").each(function(i){
+			$(this).attr('disabled','');
+			$("input:button").attr('disabled','');
+		});
+	}
+
+	if(opt_num == 0) return;
+	$("input[name='option[]']").each(function(i){
+		$(this).val(opt_arr[i]).attr('disabled','disabled');
+	});
+	$("input:button").attr('disabled','disabled');
+}
+function myOption(flag){
+	var tr_num = $("#question_box tr").length;
+	var op_str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	var html = "<tr><td>测试选项[option]：<input type=\"text\" name=\"option[]\" size=\"40\" \/>分数：<input type=\"text\" name=\"scores[]\" maxlength=\"3\" size=\"4\" \/><\/td><\/tr>";
+	//var i = tr_num - 2;
+	html = html.replace(/\[option\]/,op_str[tr_num]);
+	if(flag == "+"){
+		$("#question_box tr").eq(tr_num - 1).after(html);
+		++tr_num;
+	}else if(flag == "-"){
+		if(tr_num>2){
+			$("#question_box tr").eq(tr_num - 1).remove();
+		}
+		--tr_num;
+	}
+	return tr_num;
+}
+<!--{if $targ}-->
+$(document).ready(function(){
+	var targ = "<!--{$targ}-->";
+	var scores = <!--{$str_scores}-->;
+	if(targ){
+		installOpt(targ);
+		$("input[name='scores[]']").each(function(i){
+			$(this).val(scores[i]);
+		});
+	}
+	$("input:button").attr('disabled','disabled');
+});
+<!--{/if}-->
+
+function check(){
+	//alert('here');return false;
+	var test_name = $("input[name='question']").val().replace(/\s/g,"");
+	if(test_name == ""){
+		alert("测试名称不能为空！");
+		return false;
+	}
+	var input_scores = $("input[name='scores[]']");
+	var flag = 0;
+	$("input[name='option[]']").each(function(i){
+		if ($(this).val().trim() == '' || input_scores.eq(i).val().trim() == '') {
+			flag = 1;
+		}
+	});
+	if(flag){
+		alert("所有选项需要填写完整");
+		return false;
+	}
+	return true;
+}
+
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 测试管理</a> </span><span id="search_id" class="action-span1"> - 测试题目</span>
+<span class="action-span"><a href="index.php?action=hntest&h=question_list">返回</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<form name="classForm" action="" method="post" onsubmit="return check();">
+<table>
+	<tr>
+    	<td>
+        测试题目：
+        <select name="father_id" id="father_class">
+        	{loop $parent_class $v}
+            <option value="{$v['tc_id']}"{if $question['tc_id'] == $v['tc_id']} selected="selected"{/if}>{$v['test_name']}</option>
+            {/loop}
+        </select>
+        测试类别：
+        <select name="tc_id" id="children_class">
+        	<option value="">请选择</option>
+        </select>
+        </td>
+    </tr>
+    <!--<tr>
+    	<td>
+        测试显示模板：
+        <input type="radio" name="tpl_radio" value="1" checked="checked" />模板一 
+        <input type="radio" name="tpl_radio" value="2" />模板二 
+        <input type="radio" name="tpl_radio" value="3" />模板三 
+        <input type="radio" name="tpl_radio" value="4" />模板四 
+        </td>
+    </tr>-->
+    <tr>
+    	<td>
+        答案显示形式：
+        <!--{if !isset($question['show_type']) || $question['show_type']==1 }-->
+        <input type="radio" name="show_type" value="1" checked="checked" onclick="installOpt('');" />自定义 
+        <!--{/if}
+        {if !isset($question['show_type']) || $question['show_type']==2 }-->
+        <input type="radio" name="show_type" value="2"{if $question['show_type']==2} checked="checked"{/if} onclick="installOpt('fuhe');" />符合（5级） 
+        <!--{/if}
+        {if !isset($question['show_type']) || $question['show_type']==3 }-->
+        <input type="radio" name="show_type" value="3"{if $question['show_type']==3} checked="checked"{/if} onclick="installOpt('tongyi');" />同意（7级） 
+        <!--{/if}
+        {if !isset($question['show_type']) || $question['show_type']==4 }-->
+        <input type="radio" name="show_type" value="4"{if $question['show_type']==4} checked="checked"{/if} onclick="installOpt('zhongyao');" />重要（7级）
+        <!--{/if}-->
+        </td>
+    </tr>
+	<tr>
+		<td>题目内容：<input type="text" name="question" size="80" value="{$question['question']}" /></td>
+	</tr>
+    <tr>
+    	<td>
+        <table id="question_box">
+{if empty($options)}
+    <tr>
+    	<td>测试选项A：<input type="text" name="option[]" size="40" /> 
+        分数：<input type="text" name="scores[]" maxlength="3" size="4" /></td>
+    </tr>
+    <tr>
+    	<td>测试选项B：<input type="text" name="option[]" size="40" /> 
+        分数：<input type="text" name="scores[]" maxlength="3" size="4" /></td>
+    </tr>
+    <tr>
+    	<td>测试选项C：<input type="text" name="option[]" size="40" /> 
+        分数：<input type="text" name="scores[]" maxlength="3" size="4" /></td>
+    </tr>
+    <tr>
+    	<td>测试选项D：<input type="text" name="option[]" size="40" /> 
+        分数：<input type="text" name="scores[]" maxlength="3" size="4" /></td>
+    </tr>
+{else}
+	{loop $options $k $op}
+    {php $option_box[] = $op['op_id'];}
+    <tr>
+    	<td>测试选项{php echo chr($k+65);}：<input type="text" name="option[{$op['op_id']}]" size="40" value="{$op['option']}" /> 
+        分数：<input type="text" name="scores[{$op['op_id']}]" maxlength="3" value="{$op['scores']}" size="4" /></td>
+    </tr>
+    {/loop}
+    <input type="hidden" name="option_box" value="{php echo implode(',',$option_box);}" />
+{/if}
+		</table>
+    	</td>
+    </tr>
+    <tr>
+		<td>
+        <input type="submit" class="button" value="提 交" />
+        <input type="button" onclick="myOption('+')" value="选项+" />
+        <input type="button" onclick="myOption('-')" value="选项-" />
+        <input type="hidden" name="qid" value="{$qid}" />
+        <input type="hidden" name="action" value="hntest" />
+        <input type="hidden" name="h" value="question_modify" />
+        </td>
+	</tr>
+</table>
+</form>
+</div>

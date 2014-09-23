@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>售后工作情况报表</title>
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/news.css" rel="stylesheet" type="text/css" />
+<script>
+	function goto(){
+		var page = document.getElementById('text1').value.replace(/\s/g,'');
+		if(page){
+			window.location.href='index.php?action=financial_wordbook&h=list&page='+page;
+		}
+	}
+	function checkform(){
+		var sid = document.getElementById('sid').value.replace(/\s/g,'');
+		if(!sid || sid == '请输入管理员的姓名或ID'){
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="index.php?action=financial_wordbook&h=list" onsubmit="return checkform();">
+<h1><span style="float:left; color:#000" class="action-span1">红娘网管理中心—<font color="#FFFFFF">售后工作报表</font></span><span style="float:right" class="action-span"><a href="index.php?action=financial_wordbook&h=list">刷新</a></span>
+<div style="clear: both;"></div>
+</h1>	
+	 {if in_array($groupid,$GLOBALS['admin_service_after']) || in_array($groupid,$admin_service_arr) ||in_array($groupid,$admin_aftersales_service) || in_array($groupid,$admin_aftersales_service_fu)}
+	<div>
+        <font color="#000000">客服搜索：</font><input type="text" id="sid" name="sid" value="请输入管理员的姓名或ID" onfocus="this.value=''">&nbsp;<input type="submit" name="button" value="&nbsp;&nbsp;查&nbsp;找&nbsp;&nbsp;" class="button">
+    </div>
+    {/if}
+    <div class="list-div">
+    {if in_array($groupid,$GLOBALS['admin_service_after']) || in_array($groupid,$admin_service_arr)}
+    	{if $sid}    
+        	 <table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="list-table">
+                <tr>
+                <td height="30" colspan="6" bgcolor="#7F99BE"><p>{$groupname_uid[manage_name]}</p></td>
+                </tr>
+                <tr>
+                    <th width="10%" align="center" bgcolor="#7F99BE">管理员名ID</th>
+                  <th width="15%" height="30" align="center" bgcolor="#7F99BE">管理员登录名</th>
+                  <th width="15%" align="center" bgcolor="#7F99BE">管理员姓名</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">角色分类</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">最后登录时间</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">操作</th>
+                </tr>
+                {if in_array($member_backinfo[groupid],$admin_aftersales)}
+               <tr>
+                    <td width="10%" align="center">{$member_backinfo[uid]} </td>
+                    <td width="15%" height="30" align="center">{$member_backinfo[username]}</td>
+                    <td width="15%" align="center">{$member_backinfo[name]}</td>
+                    <td width="15%" align="center">{$member_backinfo[groupname]}</td>
+                    <td width="15%" align="center">{if $member_backinfo[lastlogin]}{php echo date('Y-m-d',$member_backinfo[lastlogin])}{/if}</td>
+                    <td width="15%" align="center"> <a href="#" onclick="parent.addTab('查看售后{$member_backinfo[username]}工作情况报表资料','index.php?action=financial_wordbook&h=month&sid={$member_backinfo[uid]}&username={$member_backinfo[username]}')">售后工作情况表</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="parent.addTab('查看售后{$member_backinfo[username]}日报表资料','index.php?action=financial_wordbook&h=day&sid={$member_backinfo[uid]}&username={$member_backinfo[username]}')">售后工作日报表</a></td>
+               </tr>
+               {/if}
+       		</table>
+        {else}
+            {loop $group_num $num $member_backinfo}
+               <table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="list-table">
+                <tr>
+                <td height="30" colspan="6" bgcolor="#7F99BE">{php echo $arr[$num]['manage_name'];}</td>
+                </tr>
+                <tr>
+                    <th width="10%" align="center" bgcolor="#7F99BE">管理员名ID</th>
+                  <th width="15%" height="30" align="center" bgcolor="#7F99BE">管理员登录名</th>
+                  <th width="15%" align="center" bgcolor="#7F99BE">管理员姓名</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">角色分类</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">最后登录时间</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">操作</th>
+                </tr>
+                    {loop $member_backinfo $val}
+                    <tr>
+                        <td width="10%" align="center">{$val[uid]} </td>
+                      <td width="15%" height="30" align="center">{$val[username]}</td>
+                      <td width="15%" align="center">{$val[name]}</td>
+                        <td width="15%" align="center">{$val[groupname]}</td>
+                        <td width="15%" align="center">{if $val[lastlogin]}{php echo date('Y-m-d',$val[lastlogin])}{/if}</td>
+                        <td width="15%" align="center"> <a href="#" onclick="parent.addTab('查看售后{$val[username]}工作情况报表资料','index.php?action=financial_wordbook&h=month&sid={$val[uid]}&username={$val[username]}')">售后工作情况表</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="parent.addTab('查看售后{$val[username]}日报表资料','index.php?action=financial_wordbook&h=day&sid={$val[uid]}&username={$val[username]}')">售后工作日报表</a></td>
+                    </tr>
+                    {/loop}
+                </table>
+            {/loop}
+        {/if}
+    {elseif in_array($groupid,$admin_aftersales_service) || in_array($groupid,$admin_aftersales_service_fu)}
+    	{if $sid}    
+        	 <table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="list-table">
+                <tr>
+                <td height="30" colspan="6" bgcolor="#7F99BE"><p>{$groupname_uid[manage_name]}</p></td>
+                </tr>
+                <tr>
+                    <th width="10%" align="center" bgcolor="#7F99BE">管理员名ID</th>
+                  <th width="15%" height="30" align="center" bgcolor="#7F99BE">管理员登录名</th>
+                  <th width="15%" align="center" bgcolor="#7F99BE">管理员姓名</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">角色分类</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">最后登录时间</th>
+                    <th width="15%" align="center" bgcolor="#7F99BE">操作</th>
+                </tr>
+                {if in_array($member_backinfo[groupid],$admin_aftersales)}
+               <tr>
+                    <td width="10%" align="center">{$member_backinfo[uid]} </td>
+                    <td width="15%" height="30" align="center">{$member_backinfo[username]}</td>
+                    <td width="15%" align="center">{$member_backinfo[name]}</td>
+                    <td width="15%" align="center">{$member_backinfo[groupname]}</td>
+                    <td width="15%" align="center">{if $member_backinfo[lastlogin]}{php echo date('Y-m-d',$member_backinfo[lastlogin])}{/if}</td>
+                    <td width="15%" align="center"> <a href="#" onclick="parent.addTab('查看售后{$member_backinfo[username]}工作情况报表资料','index.php?action=financial_wordbook&h=month&sid={$member_backinfo[uid]}&username={$member_backinfo[username]}')">售后工作情况表</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="parent.addTab('查看售后{$member_backinfo[username]}日报表资料','index.php?action=financial_wordbook&h=day&sid={$member_backinfo[uid]}&username={$member_backinfo[username]}')">售后工作日报表</a></td>
+               </tr>
+               {/if}
+       		</table>
+        {else}
+           <table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="list-table">
+            <tr>
+            <td height="30" colspan="6" bgcolor="#7F99BE">{php echo $group_list['manage_name'];}</td>
+            </tr>
+            <tr>
+                <th width="10%" align="center" bgcolor="#7F99BE">管理员名ID</th>
+              <th width="15%" height="30" align="center" bgcolor="#7F99BE">管理员登录名</th>
+              <th width="15%" align="center" bgcolor="#7F99BE">管理员姓名</th>
+                <th width="15%" align="center" bgcolor="#7F99BE">角色分类</th>
+                <th width="15%" align="center" bgcolor="#7F99BE">最后登录时间</th>
+                <th width="15%" align="center" bgcolor="#7F99BE">操作</th>
+            </tr>
+                {loop $group_num $val}
+                <tr>
+                    <td width="10%" align="center">{$val[uid]} </td>
+                  <td width="15%" height="30" align="center">{$val[username]}</td>
+                  <td width="15%" align="center">{$val[name]}</td>
+                    <td width="15%" align="center">{$val[groupname]}</td>
+                    <td width="15%" align="center">{if $val[lastlogin]}{php echo date('Y-m-d',$val[lastlogin])}{/if}</td>
+                    <td width="15%" align="center"> <a href="#" onclick="parent.addTab('查看售后{$val[username]}工作情况报表资料','index.php?action=financial_wordbook&h=month&sid={$val[uid]}&username={$val[username]}')">售后工作情况表</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="parent.addTab('查看售后{$val[username]}日报表资料','index.php?action=financial_wordbook&h=day&sid={$val[uid]}&username={$val[username]}')">售后工作日报表</a></td>
+                </tr>
+                {/loop}
+            </table>
+        {/if}
+    
+    {elseif in_array($groupid,$admin_aftersales_service2)}
+        <table width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="list-table">
+        <tr>
+        <td colspan="6" height="30" bgcolor="#6699CC">{$groupname_uid[manage_name]}</td>
+        </tr>
+        <tr>
+            <th width="10%" height="45" align="center" bgcolor="#7F99BE">管理员名ID</th>
+            <th width="15%" align="center" bgcolor="#7F99BE">管理员登录名</th>
+            <th width="15%" align="center" bgcolor="#7F99BE">管理员姓名</th>
+            <th width="15%" align="center" bgcolor="#7F99BE">角色分类</th>
+            <th width="15%" align="center" bgcolor="#7F99BE">最后登录时间</th>
+            <th width="15%" align="center" bgcolor="#7F99BE">操作</th>
+        </tr>
+       <tr>
+            <td width="10%" height="35" align="center">{$member_backinfo[uid]} </td>
+            <td width="15%" align="center">{$member_backinfo[username]}</td>
+            <td width="15%" align="center">{$member_backinfo[name]}</td>
+            <td width="15%" align="center">{$member_backinfo[groupname]}</td>
+            <td width="15%" align="center">{if $member_backinfo[lastlogin]}{php echo date('Y-m-d',$member_backinfo[lastlogin])}{/if}</td>
+            <td width="15%" align="center"> <a href="#" onclick="parent.addTab('查看售后{$member_backinfo[username]}工作情况报表资料','index.php?action=financial_wordbook&h=month&sid={$member_backinfo[uid]}&username={$member_backinfo[username]}')">售后工作情况表</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="parent.addTab('查看售后{$member_backinfo[username]}日报表资料','index.php?action=financial_wordbook&h=day&sid={$member_backinfo[uid]}&username={$member_backinfo[username]}')">售后工作日报表</a></td>
+       </tr>
+       </table>
+    {/if}
+    	
+<a href="#" class="button"></a>
+<div style="clear:both"></div>
+</div>
+</form>
+</body>
+</html>

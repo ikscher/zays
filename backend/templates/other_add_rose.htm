@@ -1,0 +1,78 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+var s_cid=new Array();
+s_cid['10']='铂金会员';
+s_cid['20']='钻石会员';
+s_cid['30']='高级会员';    
+s_cid['40']='普通会员';
+s_cid['50']='红娘';
+var search=function(){
+    var uid=$('#uid').val();
+    var telphone=$('#telphone').val();
+        $.getJSON('other_ajax.php',{n:'getuser',uid:uid,telphone:telphone},function(data){
+            var html=new Array();
+            var length=data.length;
+            if(length==0){
+                alert('尚未找到会员');
+                return false;
+            }
+            $('.userdata').hide();
+            for(var i=0;i<length;i++){
+                var v=data[i];
+                if($('#uid_'+v.uid).html()){
+                $('#uid_'+v.uid).show();
+                }else{
+                    html.push('<tr id="uid_'+v.uid+'" class="userdata">');
+                    html.push('<td align="center"><a class="userinfo" onclick="parent.addTab(\'查看'+v.uid+'资料\',\'index.php?action=allmember&h=view_info&uid='+v.uid+'\',\'icon\')">'+v.uid+'</a></td>');
+                    html.push('<td align="center">'+(v.gender?'<img title="女" alt="女" src="templates/images/w.gif">':'<img title="男" alt="男" src="templates/images/m.gif">')+v.username+'</td>');
+                    html.push('<td align="center">'+v.nickname+'</td>');
+                    html.push('<td id="rosenumber_'+v.uid+'" align="center">'+v.rosenumber+'</td>');
+                    html.push('<td align="center">'+s_cid[v.s_cid]+'</td>');
+                    html.push('<td align="center">'+v.sid+'</td>');
+                    html.push('<td align="center"><a onclick="add_rose(\''+v.uid+'\')" href="#">赠送鲜花</a></td>');
+                    html.push('</tr>');
+               }
+            }
+            $("#list-table").append(html.join(''));
+        });
+}
+var add_rose=function(uid){
+    var old_rose=parseInt($("#rosenumber_"+uid).html());
+    var new_rose=parseInt(window.prompt("请输入要添加鲜花的个数:(只允许输入整数,负数为减少，正数为加)", "0"));
+    if(new_rose==0){
+        return false;
+    }
+    $.post('index.php?action=other&h=add_rose',{uid:uid,rosenumber:new_rose},function(data){
+        if(data.flag==0){
+            alert(data.msg);
+            return false;
+        }else{
+            alert(data.msg);
+            $("#rosenumber_"+uid).html(old_rose+new_rose);
+           return true;
+        }
+    },'json');
+}
+</script>
+<h1> 
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 鲜花赠送</span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="margin-bottom:10px;padding:5px;">
+    <label for="uid">会员id：</label><input type="text" name="uid" id="uid" /><label for="telphone">手机号码：</label><input type="text" name="telphone" id="telphone"><input type="button" value="检索" onclick="search()">
+</div>
+<div class="list-div">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>会员id</th>
+	<th>用户名</th>
+	<th>昵称</th>
+	<th>鲜花数量</th>
+	<th>会员级别</th>
+	<th>所属客服ID</th>
+	<th>操作</th>
+  </tr>
+</table>
+</div>

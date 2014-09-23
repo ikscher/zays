@@ -1,0 +1,256 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+
+
+function checkForm(){
+    var startTime=$("#alloctimeStart").val();
+    var endTime=$("#alloctimeEnd").val();
+  
+    if((!startTime && endTime) || (startTime && !endTime)){
+        alert('请选择起始日期和结束日期！');
+        return false;
+    }
+   
+    if(startTime>endTime){
+        alert("起始日期不能大于结束日期！");
+        return false;
+    }
+
+    return true;
+  
+} 
+
+
+$(function(){
+    $(".csstab tr").mouseover(function(){
+        $(this).addClass("over");
+    }).mouseout(function(){
+        $(this).removeClass("over");	
+    });
+	
+	
+    $(".csstab tr:lt(3)").css("background","#7F99BE");
+
+});
+
+
+</script>
+
+
+<style>
+    tr.over td {background:#11eeae;}
+    td.t1{background-color:#fdc;}	
+	td.t4{background-color:#cfcfcf;}	
+	td.t5{background-color:#dce;}	
+	td.t6{background-color:#2bd;}	
+	th{color:#fff;}
+	td.cs{background:#7f99be;}
+    label{ display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+
+    .ui-dialog .ui-state-error { padding: .3em; } 
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+	.gid{float:left;margin-left:10px;display:inline-block;}
+	label{display:inline-block;cursor:pointer;}
+</style>
+</head>
+<body>
+    <h1 style="margin-bottom:15px;">
+        <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 客服当日 会员 类 统计报表 </span>
+        <span class="action-span"><a href="index.php?action=financial&h=NewClassStat">刷新</a></span>
+        <div style="clear:both"></div>
+    </h1>
+
+
+
+    <div>
+        <form name="frmV" action="#" method="get" >
+            <div>
+                {if !empty($group)}
+				    {loop $group $k $v}
+					<span class="gid"><input type="radio"  name="groupid" id="gid{$k}" value="{$v['id']}" {if $v['id']==$groupid}checked="checked"{/if} /><label for="gid{$k}">{$v['manage_name']}</label></span>
+					{/loop}
+				{/if}
+               
+            </div>
+
+
+            <a href="#" id="restorePosition" style="font-weight:bold;font-size:14px;margin-left:100px;padding-top:10px;">弹框位置复原</a>
+            <input type="hidden" name="action" value="financial" />
+            <input type="hidden" name="h" value="NewClassStat"  />
+
+        </form>
+        <div style="clear:both;height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+        <div class="list-div" id="listDiv">
+            <table width="100%" cellspacing='1' cellpadding='1' id='list-table' class ="csstab" style="table-layout:fixed;">
+                <!--表头开始-->
+                <tr>
+                    <th rowspan='2' width="10%" align="center">所属客服</th>
+                    {loop $grade $k $v}
+                    <th  colspan='4' width="20%" style="word-break:break-all;text-align:center;" >{php echo $k-1;}类</th>
+                    {/loop}
+                   
+                </tr>
+                <tr>
+					{for $i=0;$i<count($grade);$i++ }
+						<th>原有</th>
+						<th>{if $i==0}新分{else}新开{/if}</th>
+						<th>{if $i==0}去电{else}跟进{/if}</th>
+						<th>{if $i==0}删除{else}移出{/if}</th>
+					{/for}
+				 </tr>
+					{if count($effectGradeArr)>0}
+                    {loop $effectGradeArr $key $value}
+                    <tr >
+                        <td align="left" class="cs">{$value['sid']}：{$value['usercode']}号{$value['username']}</td>
+ 
+
+                        {if !empty($value['effectGrade'])}
+
+                        {loop $value['effectGrade'] $k__ $v__}
+						<td align="center" data-uid="{if !empty($v__[0])}{php echo implode(',',array_keys($v__[0]));}{/if}" class="t{$k__}"><a href="#">{php echo count($v__[0]);}</a></td>
+						<td align="center" data-uid="{if !empty($v__[1])}{php echo implode(',',array_keys($v__[1]));}{/if}" class="t{$k__}"><a href="#">{php echo count($v__[1]);}</a></td>
+                        <td align="center" data-uid="{if !empty($v__[2])}{php echo implode(',',array_keys($v__[2]));}{/if}" class="t{$k__}"><a href="#">{php echo count($v__[2]);}</a></td><!--<a href="#" onclick="parent.addTab('查看客服{$value[1]["sid"]}的{php echo $k__-1;}类当日跟进','index.php?action=allmember&h=class&choose=sid&keyword={$value["sid"]}&effect_grade={$k__}&end={$tEnd}&start={$tStart}&clear=1')" >-->
+                        <td align="center" data-uid="{if !empty($v__[3])}{php echo implode(',',array_keys($v__[3]));}{/if}" class="t{$k__}"><a href="#">{php echo count($v__[3]);}</a></td>
+                        {/loop}
+                        {/if}
+
+
+
+                    </tr>
+                    {/loop}
+                    {/if}
+
+
+            </table>
+
+
+        </div>
+
+    </div>
+	
+	<div  id="showUid" style="display:none;" >
+	    <table  style="border-color:#C0C0C0"  border="1">
+		    <thead><tr><th>序号</th>
+			<th>UID</th></tr></thead>
+			<tbody></tbody>
+		</table>
+	</div>
+    <script type="text/javascript">
+	
+	    $("input[name=groupid]").click(function(e){
+		    document.frmV.submit();
+		
+		});
+		
+	
+		$('#listDiv tr td').click(function(e){
+		    $('td').removeAttr('style');
+		    $(this).css({'background-color':'#f00'});
+		    var str=$(this).attr('data-uid');
+			if(!str) return ;
+		    var e=window.event||e;
+			
+			var X=getCookie('posX');
+			var Y=getCookie('posY');
+            
+			
+			if(typeof X=='undefined' || !X) X=e.pageX;
+			if(typeof Y=='undefined' || !Y) Y=e.pageY;
+			
+	        $('#showUid').css({'position':'absolute','left':X,'top':Y});
+		    $('#showUid').css({'display':'block','z-index':100,'background-color':'#fcc','border':'1px solid #000'});
+
+			//显示UID数据
+			var html='';
+			
+			if(str){
+			    var uidList=str.split(',');
+				var len=uidList.length;
+				for(var i=0;i<len;i++){
+				    html+='<tr>';
+					html+='<td>'+(i+1)+'</td>';
+					var url='parent.addTab(\''+uidList[i]+'资料\',\'index.php?action=allmember&h=view_info&uid='+uidList[i]+'\',\'icon\')';
+				    html+='<td><a href="#" onclick="'+url+'">'+uidList[i]+'</a></td>';
+			        html+='</tr>';
+				}
+			    $('#showUid tbody').html(html);
+			}
+			return false;
+		});
+		
+		$('#showUid').click(function(){
+		    return false;
+		});
+		
+		$(document).click(function(){
+		    $('#showUid').css({'display':'none'});
+		});
+		
+		
+		//以下部分实现弹出层的拖拽效果
+		var posX;
+		var posY;
+		Idiv=document.getElementById('showUid');
+		Idiv.style.cursor = "move";//鼠标样式
+		Idiv.onmousedown=function(e){
+			if(!e) e = window.event; //IE
+			posX = e.clientX - parseInt(Idiv.style.left);
+			posY = e.clientY - parseInt(Idiv.style.top);
+			document.onmousemove = mousemove;
+			
+		}
+		
+		Idiv.onmouseup=function(ev){
+		    if(ev==null) ev = window.event;//IE
+			Idiv.style.left = (ev.clientX - posX) + "px";
+			Idiv.style.top = (ev.clientY - posY) + "px";
+		    setCookie('posX',Idiv.style.left);
+			setCookie('posY',Idiv.style.top);
+		}
+		
+		document.onmouseup = function(e){
+		    document.onmousemove = null;
+		}
+		
+		function mousemove(ev){
+			if(ev==null) ev = window.event;//IE
+			Idiv.style.left = (ev.clientX - posX) + "px";
+			Idiv.style.top = (ev.clientY - posY) + "px";
+            return false;
+		}
+		
+		function setCookie(name,value){
+			var never = new Date();
+			//设置never的时间为当前时间加上十年的毫秒值
+		    never.setTime(never.getTime()+10*365*24*60*60*1000);    
+			var expString = "expires="+ never.toGMTString()+";";
+			 document.cookie = name + "="+ escape (value) + ";expires=" + expString+ 'path=/;';
+			
+		}
+		
+		
+		function getCookie(name) {
+			var arr = document.cookie.split('; ');
+			var i = 0;
+			for(i=0; i<arr.length; i++) {
+				var arr2 = arr[i].split('=');
+				if(arr2[0] == name) {return arr2[1];}
+			}
+			return '';
+		}
+		function removeCookie(name) {
+			setCookie(name,'',-1);
+		}
+		
+		var rp=document.getElementById('restorePosition');
+		rp.onclick=function(){
+		    removeCookie('posX');
+			removeCookie('posY');
+		}
+	
+	</script>

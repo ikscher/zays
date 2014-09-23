@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--投票结果</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<SCRIPT LANGUAGE="Javascript" SRC="FusionCharts.js"></SCRIPT>	
+<link href="Style.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+
+<script>
+	function gotoPage(){
+		var page = document.getElementById('pageGo').value;
+		
+		location.href = 'vote.php?page_now='+page;
+	}
+	function check(){
+		return true;
+	}
+</script>
+</head>
+
+<body>
+	<a href="vote_add.php?act=add"  style="font-size:15px;">新增</a>
+	<div class="list-div" id="listDiv" onmouseout="hiddend();">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		<tr>
+			<td align="center">提票题目</td>
+			<td align="center">提票类型</td>
+			<td align="center">是否显示</td>
+			<td align="center">开始时间</td>
+			<td align="center">结束时间</td>
+			<td align="center">操作</td>
+		</tr>
+	
+		{loop $content  $k  $v}
+		
+			<tr>
+				<td align='center'>{$v[vote_title]}</td>
+			 	<td align='center'>{$v[vote_style]}</td>
+			 	<td align='center'>{$v[is_show]}</td>
+			 	<td align='center'>{$v[vote_starttime]}</td>
+				<td align='center'>{$v[vote_endtime]}</td>
+			 	<td align='center'>
+					<a href ='vote.php?act=edit&vid={$v[vid]}'>编辑</a>
+					<a href ='vote.php?act=delect&vid={$v[vid]}' onclick="return confirm('确定删除吗?')">删除</a>
+					<a href ='vote.php?act=view&vid={$v[vid]}'>查看</a>
+				</td>
+			</tr>
+		
+		{/loop}
+	
+	</table>
+	<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">
+	  	{loop $page  $k  $v}
+			{if $page_now == $v}
+				<span style="color:#333333; font-weight:600;">{$v}</span>
+			{else}
+			<a href="vote.php?page_now={$v}">{$v}</a>
+			{/if}
+		{/loop}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+      <td>
+      </td>
+    </tr>
+	<tr><td>
+			<form action="vote.php?act=update_view" method="post" onsubmit="return check()">
+  <p>页面显示第几组：<select name = 'group' style="margin-left:50px;">
+  		{loop $group $k $v}
+		<option style="width:100px;">{$v[group]}</option>
+		{/loop}
+  </select></p>
+  <p style="margin-top:20px; margin-bottom:10px;">页&nbsp;面&nbsp;显示&nbsp;几&nbsp;条：<input type="text" style="width:120px; margin-left:50px;" name = 'number' / value="{$number}"></p>
+  <p style="margin-left:70px; margin-bottom:10px;"><input style="width:100px;" type="submit" value="提交" /></p>
+  </form>
+	</td></tr>
+  </table>
+  
+	</div>
+	
+</body>
+</html>﻿﻿﻿

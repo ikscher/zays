@@ -1,0 +1,252 @@
+@charset "utf-8";
+/* CSS Document */
+.color_2093a2{
+	color:#ff3d64;
+	}
+.vodio{
+	float:left;
+	width:434px;
+	height:354px;
+	margin:10px 0 0px 8px;
+	display:inline;
+	}
+.vodio_info{
+	margin:10px 5px 0;
+	width:288px;
+	float:right;
+	display:inline
+	}
+.vodio_info .v_title{
+	height:36px;
+	line-height:36px;
+	float:left;
+	border-bottom:1px solid #facbf1}
+.vodio_info .v_title .left{
+	background:url(images/xinxi_left.gif);
+	width:8px;
+	height:36px;
+	float:left}
+.vodio_info .v_title .v_center{
+	border-top:1px solid #facbf1;
+	float:left;
+	width:auto;
+	width:262px;
+	height:36px;
+	padding-left:10px;
+	display:inline
+	}
+.vodio_info .v_title .v_center h3{
+	border-left:1px solid #facbf1;
+	border-right:1px solid #facbf1;
+	background:url(images/xincenter.gif);
+	line-height:35px;
+	color:#ff3d64;
+	height:35px;
+	width:100px;
+}
+.vodio_info .v_title .v_right{
+	background:url(images/xinxi_right.gif);
+	width:8px;
+	float:left;
+	height:36px;
+	text-align:center}
+.vodio_infobox{
+	font-size:12px;
+	border:1px solid #facbf1;
+	border-top:none;
+	padding:10px;
+	float:left;
+	line-height:22px;
+	width:266px;
+	height:290px;
+	color:#666}
+.vodio_infobox .img1{
+	float:left;
+	width:100px;
+	height:125px;
+	margin-right:10px;}
+
+.space_list{
+	padding:20px 10px;
+	font-size:12px;}
+.space_left_btn1{
+	float:left;
+	width:8px;
+	height:90px;
+	background:url(images/btn1.gif) no-repeat center
+	}
+.space_center{
+	width:690px;
+	float:left;}
+.space_list dl{
+	float:left;
+	width:130px;
+	line-height:20px;
+	color:#666;
+	display:inline;
+	margin:0px 20px}
+.space_list dl dt img{
+	border:1px solid #c0c0c0;
+	padding:5px;
+	width:120px;
+	height:75px;}
+.space_list a{
+	color:#ff3d64;
+	text-decoration:underline}
+.space_list a:hover{ text-decoration:none}
+.space_left_btn2{
+	float:left;
+	width:8px;
+	height:90px;
+	background:url(images/btn2.gif) no-repeat center}
+.space_img{
+	float:left;
+	width:690px}
+.space_img li{ 
+	float:left;
+	width:100px;
+	line-height:20px;
+	color:#666;
+	display:inline;
+	margin:0px 18px
+	}
+.zhuanjia{
+	padding:10px;
+	line-height:20px;
+	color:#666}
+.v_word{
+	background:url(images/v_center.jpg);
+	width:705px;
+	height:51px;
+	margin:10px}
+.v_word .w_left{
+	float:left;
+	width:6px;
+	height:51px;
+	background:url(images/v_word.jpg);}
+.v_word .w_right{
+	float:left;
+	width:6px;
+	height:51px;
+	background:url(images/v_wordright.jpg) right}
+.w_center{
+	position:relative;
+	float:left;
+	margin:10px 0px 0px 10px;
+	display:inline;
+	width:682px;}
+.w_center .inputbox{
+	float:left;
+	width:560px;
+	height:30px;
+	border:1px solid #ccc;
+	border-right:0px;
+	margin-right:10px;
+	font-size:14px;
+	color:#666;
+	line-height:30px}
+.w_center .down_div{
+	position:absolute;
+	width:14px;
+	height:30px;
+	background:url(images/v_btn.jpg) no-repeat;
+	top:0px;
+	right:106px;
+	border:1px solid #ccc;
+	border-left:0px;
+	cursor:pointer;
+	}
+.w_center .face_img{
+	position:absolute;
+	width:33px;
+	height:23px;
+	cursor:pointer;
+	top:4px;
+	right:70px;
+	background:#000;
+	}
+.w_center .mess_btn{
+	position:absolute;
+	width:50px;
+	height:26px;
+	text-align:center;
+	line-height:26px;
+	cursor:pointer;
+	top:4px;
+	right:10px;
+	background:#ffffff;
+	border:1px solid #ccc;
+	color:#999;
+	font-size:14px;
+	font-weight:bold;
+	}
+.w_center .w_submit{
+	background:url(images/v_submit.jpg);
+	width:69px;
+	height:54px;
+	border:none;
+	cursor:pointer;}
+	
+.w_center .list_div{
+	position:absolute;
+	width:574px;
+	height:150px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	border:1px solid #ccc;
+	background:#fff;
+	top:30px;
+	left:0px;
+	}
+.w_center .list_div ul li{
+	float:left;
+	width:99%;
+	height:30px;
+	line-height:30px;
+	color:#666;
+	padding-left:5px;
+	cursor:pointer;
+	}
+.w_center .list_div ul li:hover{
+	background:#f3f3f3;
+	font-weight:bold;
+	}
+.li_background{
+	font-weight:bold;
+	background:#f3f3f3;
+	}
+.w_commit{
+	border-bottom:1px dashed #ccc;
+	padding:10px;
+	font-size:12px;
+	line-height:20px;
+	color:#666;
+	margin:0px 10px;
+	zoom:1;
+	}
+.w_commit a{ text-decoration:underline; color:#ff3d64;}
+.w_commit a:hover{ text-decoration:none}
+.page{
+	float:right;
+	font-size:12px;
+	padding:10px;
+	color:#ff3d64}
+.page a{
+	color:#ff3d64;
+	padding:0px 5px;}
+.page a:hover{
+	text-decoration:underline}
+	
+.face{
+	width:440px;
+	*width:440px;
+	height:200px;
+	padding:5px;
+	background:#fff;
+	border:1px solid #ddd;
+	overflow-y:scroll;
+	}
+.face img{
+	margin:5px;
+	cursor:pointer;
+	}

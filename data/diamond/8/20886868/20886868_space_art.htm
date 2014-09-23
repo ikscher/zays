@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的爱情观——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>爱情观点 <i>love view</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="l-view">
+			   <div class="l-view1"> 
+			     <p>我喜欢感性一点的女孩子，很容易让人感动和心软，从内心里升起一种保护欲，然后就想让她被自己捧在手心里，呵护一辈子。当然，前提是那种比较顾家、温柔、孝顺的女孩子。</p>
+			     <p>一生一世一双人，是我对爱情和婚姻的渴望。现在满世界都是情侣的身影，我们可以在生活的每一个角落看见别人大秀恩爱，然而我并不羡慕他们。我反而觉得那些在夕阳中漫步的老人，在落日的余晖下相互依靠的身影，更能触动我的内心。有机会我希望，我可以和我喜欢的人在30年以后，还可以手牵手看着日出日落。就像一首歌里唱的那样：“我能想到最浪漫的事，就是和你一起慢慢变老，一路上收藏点点滴滴的欢笑，留到以后坐着摇椅慢慢聊，我能想到最浪漫的事，就是和你一起慢慢变老，直到我们老得哪儿也去不了，你还依然把我当成手心里的宝。”</p>
+			     <p> 我的人生，从来都不是一个人的事情，那是需要两个人在一起才能建立的美满的生活。爱情、婚姻是靠两个人经营的，需要包容、宽容、理解、诚实。我希望我和我的另一半组成的家是一个可以让我感觉到温暖，想要依靠的地方，让我有归属感。我希望，我可以通过这个平台找到一个爱我的、我爱的那个人她！ </p>
+			     <p>我父亲独自经营着一个公司，我现在没有能力，所以我一直在学习。我学习东西虽然跟我父亲的不是属于一类，但是我觉得殊途同归。只要学会待人、学会管理，那么我父亲的公司，我相信自己也可以漂漂亮亮的经营起来。未来我想先在网新颐和工作几年，学习经验，学习如何与人沟通交流，然后，进入我父亲公司，好好继承和发扬它。</p>
+			   </div>
+   
+               
+                           
+</div>
+			  </div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

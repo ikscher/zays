@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if $media_detail['type'] == 'tv'}电视报道{elseif $media_detail['type'] == 'new'}最新报道{elseif $media_detail['type'] == 'nice'}精品报道{/if}——媒体关注——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/about/templates/{$GLOBALS['style_name']}/about.css");
+</style>
+</head>
+<body>
+<div class="clear"></div>
+{template system/header public}
+ <!--头部结束-->
+<div class="clear"></div>
+<div class="content">
+		<div class="c-title">
+		<span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;媒体关注</span>
+		<div class="loaction_right">
+			<a href="index.php?n=invite" target="_blank">邀请好友</a>
+		</div>
+		</div>
+			<div class="content-title">
+			</div><!--content-title end-->
+			<div class="c-center">
+			<!--左边开始-->
+			 {template public/about_left module}
+			<!--左边结束-->	
+			<!--右边开始-->	
+			<div class="about-right">
+		  		<div class="a_text"> <img src="{$src}" width="720" height="450"/></div>
+				<div class="a_back"><a href="index.php?n=about&h=media">返回媒体关注 >></a></div>
+<!--留言开始-->
+<script>
+function check() 
+{ 
+var len = 0; 
+var str=document.getElementById("content").value; 
+for (var i=0; i<str.length; i++) 
+{ 
+if (str.charCodeAt(i)>127 || str.charCodeAt(i)==94) { 
+len += 2; 
+} else { 
+len ++; 
+} 
+} 
+if(len>200) 
+{ 
+alert("对不起，评论不能大于200个字节，中文算两个！"); return false;
+} 
+return true;
+} 
+</script>
+<!--
+	<div class="a_feedback">
+	{loop $comment['list'] $v}
+	<li>
+		<p class="s_title">
+			<span>{php echo gmdate('Y-m-d H:s',$v['dateline'])}</span>
+			<a href="#">{if $v['username']==''}ID {$v['uid']}{else}{$v['username']}{/if}</a>
+			评论道：{$v['comment']}
+		</p>
+	</li>
+	{/loop}
+		<form action="index.php?n=about&amp;h=addcomment&amp;id={$id}" method="post" onsubmit="return check();">
+			<textarea class="s_text" name="content" id="content"></textarea>
+			<p style="margin:20px 0 20px 10px;"><input type="submit" class="getsave-butt" value="提交"/></p>
+		</form>
+	</div>
+-->
+</div>
+	<!--右边结束-->	
+	<div class="clear"></div>
+</div><!--c-center end-->
+		<div class="content-bottom">	</div>
+		<!--content-bottom end-->
+	<div class="clear"></div>
+{template system/footer public}
+</div><!--content end-->
+
+</body>
+</html>

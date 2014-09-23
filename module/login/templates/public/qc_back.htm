@@ -1,0 +1,44 @@
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
+<script type="text/javascript" src="public/system/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="public/system/js/json2.js"></script>
+<script type="text/javascript">
+    var ake=location.hash;
+    ake=ake.split('&');
+    var accessToken;
+    if(ake) accessToken=ake[0].replace(/#access_token=/gi,'');
+    
+	//需要php开启openssl的支持
+	$.ajax({
+	    url:'ajax.php?n=login&h=getOpenID',
+		type:'get',
+		data:{access_token:accessToken},
+		dataType:'text',
+		success:function(str){
+		    var json=str.match(/"(\w+)":"(\w+)"/gi);
+			var client_id=json[0].replace(/"client_id":/,'').replace(/"/g,'');
+			var open_id=json[1].replace(/"openid":/,'').replace(/"/g,'');
+			//console.log(client_id);
+			//console.log(open_id);
+			$.ajax({
+				url:'ajax.php?n=login&h=getuserinfo',
+				type:'get',
+				data:{accessToken:accessToken,appid:client_id,openid:open_id},
+				dataType:'json',
+				success:function(json){
+					var json=JSON.stringify(json);
+					//console.log(json);
+					$.ajax({
+						url:'ajax.php?n=login&h=login_qq',
+						type:'post',
+						data:{qqinfo:json,open_id:open_id},
+						dataType:'text',
+						success:function(str){
+						    //console.log(str);
+							location.href="service.html";
+						}
+					});
+				}
+			});
+	    }
+	});
+</script>

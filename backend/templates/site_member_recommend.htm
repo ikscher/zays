@@ -1,0 +1,233 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+img{border:none;}
+</style>
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/sys1.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+	function checkForm(){
+		var workprovince = $("#workprovince option:selected").val();
+		var workcity = $("#workcity option:selected").val();
+		if(workprovince == 0){
+			alert('请选择省和市查看');
+			return false;
+		}
+		return true;
+	}
+</script>
+<script type="text/javascript">
+var userdata;
+function search_member(){
+	var keyword = $("#keyword").val();
+	if(keyword==""){
+		alert("请输入搜索条件");
+		return false;
+	}
+	
+	$("#uid").empty();
+	var optionStr = "<option>正在搜索...</option>";
+	$("#uid").append(optionStr);
+	
+	var url = './site_ajax.php';
+	$.getJSON(url,{n:"searchMember",keyword:keyword},function(data){
+		userdata = data;
+		var len = data.length;
+		$("#uid").empty();
+		var optionStr = "<option value =''>搜索出 "+len+" 条结果 请选择</option>";
+		for(var i = 0; i < len; i++){
+			optionStr += "<option value ='"+data[i]['uid']+"'>"+data[i]['nickname']+"(ID:"+data[i]['uid']+")</option>";
+		}
+		$("#uid").append(optionStr);
+	});
+}
+
+function setRec(){
+	var uid = $("#uid").val();
+	var len = userdata.length;
+	for(var i = 0; i < len; i++){
+		if(uid == userdata[i]['uid']){
+			var p = userdata[i]['province'];
+			var c = userdata[i]['city'];
+		}
+	}
+
+	$("#ps").html(getProvinceSelect43rds('','province','province','city','',p));
+	$("#cs").html(getCitySelect43rds('','city','city','',c));
+}
+
+function parseCity(number,arrayobj) {
+	var arrname = arrayobj;
+	for(i=0;i < arrayobj.length; i++) {
+		var valueArray  = arrayobj[i].split(",");
+		if(valueArray[0] == number) {
+			if(valueArray[0] == '0' && valueArray[1] != '男士') {
+				document.write("不限");
+			} else {
+				document.write(valueArray[1]);
+			}	
+		}
+	}
+}
+
+//加入到此省市首页
+function add_recommend(){
+	if(!confirm('确定加入到此省市首页吗？')){
+		return false;
+	}
+	var province = $("select[name='province']").val();
+	var city = $("select[name='city']").val();
+	var uid = $("#uid").val();
+	if(uid==""){
+		alert("请输入搜索条件并搜索");
+		return false;
+	}
+	var index_userlist = $("#index_userlist").val();
+	var url = './site_ajax.php';
+	$.get(url,{n:"add_recommend",uid:uid,index_userlist:index_userlist,city:city,province:province},function(data){
+		if(data == 'exists' || data == 'repeat'){
+			alert('此会员在该城市首页已存在');
+		} else if (data == 'full') {
+			alert('此城市首页展示已满');
+		} else if (data == 'error') {
+		 	alert('该会员不存在或被锁定');
+		}else{
+			$(data).appendTo("#list-table");
+		}
+		
+	});
+}
+
+function modify_sort(uid){
+	var sort = $("#sort_"+uid).val();
+	if(sort > 24) {
+		alert('首页排序不能大于24');
+		return false;
+	}
+	var url = './site_ajax.php';
+	$.get(url,{n:"modify_sort",uid:uid,sort:sort},function(data){
+		if(data == 'error') {
+			alert('首页排序不能大于24');
+		} else if(data == 'ok'){
+			alert('操作成功');
+		}else{
+			alert('操作失败，请联系技术处理');
+		}
+	});
+}
+
+function del_recommend(uid){
+	if(!confirm('确定删除吗？')){
+		return false;
+	}
+	var url = './site_ajax.php';
+	$.get(url,{n:"del_recommend",uid:uid},function(data){
+		if(data == 'ok'){
+			alert('操作成功');
+			$("#uid_"+uid).css("display","none");
+		}else{
+			alert('操作失败，请联系技术处理');
+		}
+	});
+}
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 首页会员推荐列表</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+<div>
+	<form action="index.php?action=site&amp;h=search_index" method="post" onsubmit="return checkForm();">
+		请先选择要添加或查看的省市：
+		<script>getProvinceSelect66('m2 s67','workprovince','workprovince','workcity','{php echo empty($province)?'':$province;}','10100000');</script>
+		<script>getCitySelect66('m2 s67','workcity','workcity','{php echo empty($city)?'':$city}','');</script>
+		<input type="submit" name="submitname" value="查看" />
+
+		<span style="font-weight:bold;margin:5px;">
+			<a href="../index.php?province={php echo isset($province)?$province:'';}&city2={php echo isset($city)?$city:'';}" target="_blank" style="text-decoration:underline;">以选择的省市进入到前台查看</a>
+		</span>
+	</form>
+</div>
+
+
+	添加首页推荐会员：
+		<input name="keyword" type="text" id="keyword" onfocus="this.value=''" value="输入会员ID或会员昵称" /> 
+		<input name="" type="button" value=" 搜 索 " onclick="search_member()" />&nbsp;&nbsp;
+		<select name="uid" id="uid" style=" width:165px;" onchange="setRec()">
+			<option value="">请选择</option>
+		</select>&nbsp;&nbsp;
+		推荐省市：
+		<script>getProvinceSelect66('m2 s67','province','province','city','{$province}','10100000');</script>
+		<script>getCitySelect66('m2 s67','city','city','{$city}','');</script>
+		</span>&nbsp;&nbsp;
+		<input name="提交" type="button" value="加入到此省市首页" onclick="add_recommend()" />
+		<br />
+        (13~20为不想在首页显示的会员)
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+<div class="list-div" id="append_table">
+
+</div>
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th><a href="javascript:changeOrder('uid','{php echo isset($order)?$order:'';}','{php echo isset($where)?$where:'';}','{php echo isset($value)?$value:'';}');">ID{if (isset($field)?$field:'') == 'uid'}<img src="./templates/images/{$order}.gif" style="margin-left:5px;width:12px;height:12px;" />{/if}</a></th>
+    <th><a href="javascript:changeOrder('nickname','{php echo isset($order)?$order:'';}','{php echo isset($where)?$where:'';}','{php echo isset($value)?$value:'';}');">昵称{if (isset($field)?$field:'') == 'nickname'}<img src="./templates/images/{$order}.gif" style="margin-left:5px;width:12px;height:12px;" />{/if}</a></th>
+    <th><a href="javascript:changeOrder('birthyear','{php echo isset($order)?$order:'';}','{php echo isset($where)?$where:'';}','{php echo isset($value)?$value:'';}');">年龄{if (isset($field)?$field:'') == 'birthyear'}<img src="./templates/images/{$order}.gif" style="margin-left:5px;width:12px;height:12px;" />{/if}</a></th>
+    <th><a href="javascript:changeOrder('marriage','{php echo isset($order)?$order:'';}','{php echo isset($where)?$where:'';}','{php echo isset($value)?$value:'';}');">婚姻状况{if (isset($field)?$field:'') == 'marriage'}<img src="./templates/images/{$order}.gif" style="margin-left:5px;width:12px;height:12px;" />{/if}</a></th>
+	<th>会员等级</th>
+	<th>推荐时间</th>
+	<th>形象照</th>
+	<th>排序</th>
+	<th>操作</th>
+  </tr>
+  {if empty($user_arr)}
+  <tr>
+  	<td colspan="8" align="center">
+    	此城市暂无首页展示会员
+    </td>
+  </tr>
+  {else}
+  {loop $user_arr $v}
+  {php $style='style="background-color:#cfeefe"';}
+  <tr id="uid_{$v['uid']}">
+    <td align="center" class="first-cell" {$style}><a href="#" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{$v['uid']}</a>
+    </td>
+    <td align="center" {$style}>
+    	{php // echo isset($v['gender'])?$v['gender']:'';}
+        {if (isset($v['gender'])?$v['gender']:'')==1}
+        <a href="javascript:changeOrder('{php echo isset($field)?$field:'';}','{php echo isset($order)?$order:'';}','gender','1');"><img src="templates/images/w.gif" style="border:none""/></a>
+        {else}
+        <a href="javascript:changeOrder('{php echo isset($field)?$field:'';}','{php echo isset($order)?$order:'';}','gender','0');"><img src="templates/images/m.gif" style="border:none"/></a>
+        {/if}
+		<a href="#" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{php echo !empty($v['nickname'])?$v['nickname']:''}</a>
+	</td>
+    <td align="center" {$style}>{php echo date("Y") - (empty($v['birthyear'])?0:$v['birthyear']);}</td>
+    <td align="center" {$style}>{if (isset($v['marriage'])?$v['marriage']:'')==1}未婚{else}离异{/if}</td>
+	{if (isset($v['city_star'])?$v['city_star']:'') > 0}
+		<td align="center" {$style}>城市之星</td>
+	{else}
+		<td align="center" {$style}>{php echo !empty($v['s_cid'])?$GLOBALS['member_level'][$v['s_cid']]:''}</td>
+	{/if}
+	<td align="center" {$style}>{php echo date('Y-m-d H:i:s',$v['dateline']);}</td>
+	<td align="center" {$style}>{php $img=MooGetphotoAdmin($v['uid'],'small');}{if $img}<img src="{$img}" />{else}无{/if}</td>
+	<td {$style} align="center">
+		
+		<input type="text" style="width:50px;" id="sort_{$v['uid']}" name="sort_{$v['uid']}" value="{$v['sort']}" />
+        <input type="button" onclick="modify_sort({$v['uid']})" value="修改" />
+		
+	</td>
+	<td {$style} align="center">
+		<a href="#" onclick="del_recommend($v['uid'])">删除</a>
+	</td>
+  </tr>
+  {/loop}
+  {/if}
+  </table>
+</div>
+<div style="margin-top:100px;">
+	<span style="display:none;"><input type="text"  value="{php empty($allow_uid)?'':$allow_uid;}" name="index_userlist" id="index_userlist" /></span>
+</div>

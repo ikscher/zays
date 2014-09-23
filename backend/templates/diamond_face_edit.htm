@@ -1,0 +1,27 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 表情图片编辑/添加</span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+	<form action="" method="post" enctype="multipart/form-data">
+		<table>
+        	{if @$face['comment']}
+			<tr><td>表情图片:</td>
+            	<td>
+                	<img src="{$face['comment']}" width="50px" height="50px" />
+                </td>
+            </tr>
+            {/if}
+			<tr>
+				<td>选择表情图片：</td>
+				<td><input type="file" name="pic_file" /></td>
+			</tr>
+			<tr><td colspan="2" align="center">
+					<input type="hidden" name="id" value="{php echo isset($face['id'])?$face['id']:'';}" />
+					<input type="submit" value="提交" /></td></tr>
+		</table>
+	</form>
+</div>

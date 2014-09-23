@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+
+.wrap{width:620px;}
+.bg{height:880px; background:url(../images/boyMail2.png) no-repeat center top;}
+.main{left:40px; top:400px;}
+.photo li{height:175px; width:110px; background:url(../images/member.png) no-repeat center top; float:left; display:inline; margin-left:15px; position:relative; overflow:hidden; text-align:center;}
+.photo li img{ position:absolute;top:8px; left:6px;}
+.photo li p{bottom:5px; left:25px;}
+.photo li p a{text-decoration:underline; color:#393937;}

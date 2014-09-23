@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>升级{$payurl['title']}——真爱一生网</title>
+{template system/js_css public}
+<link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<div class="c-title">
+			<span class="f-000">
+			<a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;升级结果</span>
+			<div class="loaction_right">
+				<a href="index.php?n=invite" target="_blank">邀请好友</a>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="payment">
+			<div class="pm-bank-banner">
+				<h5 style="padding:30px 20px 0;"><img src="{$payurl['img']}" /></h5>
+			</div><!--pm-bank-banner end-->
+			<div class="pm-content">
+			<p class="pay-show-title">{if $payurl['trade_state']=='0'}付款成功{else}付款失败{/if}</p>
+			<div class="pay-show-box">
+				<div class="pay-show-img">
+					<img src="{$payurl['get_img']}" />
+				</div>
+				<div class="pay-show-msg">
+					<h4>系统出错！</h4>
+					<dl>
+						<dd>客服热线：400-8787-920（9:00-21:00）免长途</dd>
+						<dd><p>详情请咨询客服热线！</p></dd>
+						<dd><p>{$payurl['errorinfo']}</p></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>			
+			</div>
+			</div><!--pm-content end-->
+		</div>
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网-情感诊所</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/about/templates/{$GLOBALS['style_name']}/about.css");
+</style>
+</head>
+<body>
+{template system/header public}
+<!--头部结束-->
+<div class="clear"></div>
+ <div class="content">
+		<div class="c-title">
+			<span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=about&amp;h=clinic">情感诊所</a>&nbsp;&gt;&gt;&nbsp;{$type_name}</span>
+			<div class="loaction_right">
+				<a href="index.php?n=invite" target="_blank">邀请好友</a>
+			</div>
+		</div>
+			<div class="content-title">
+			</div><!--content-title end-->
+			<div class="c-center">
+			<!--左边开始-->
+			{template public/about_left module}
+			<!--左边结束-->	
+			<!--右边开始-->	
+			<div class="about-right">
+				<dl class="about-right-text">
+					<dt style="padding-top:0px; width:710px; border-bottom:1px solid #999; ">{$type_name}</dt>
+					<dd class="an-answer">
+						<p class="p_user">
+						<em>&nbsp;</em>
+						{$content['title']}
+						</p>
+						<div class="user_content">{$content['question']}</div>
+						<p class="p_hn">
+						<em>&nbsp;</em>
+						专家解答
+						</p>
+						<div class="hn_content">{$content['answer']}</div>
+					</dd>
+                    {if $userid}
+					<dt style="padding-top:0px; width:710px; border-bottom:1px solid #999">提交情感问题</dt>
+					<dd>
+						<div class="my-clinic">
+                        <script type="text/javascript">
+//字数
+function textCounter(field,countfieldId,leavingsfieldId,maxlimit) {
+	var countfield = document.getElementById(countfieldId);
+	var leavingsfield = document.getElementById(leavingsfieldId);
+	if (field.value.length > maxlimit) // if too long...trim it!
+	{
+		field.value = field.value.substring(0, maxlimit);
+		alert(" 限" + maxlimit + "字内！");
+	} else { 
+		leavingsfield.innerHTML=maxlimit - field.value.length;
+		countfield.innerHTML=field.value.length;
+	}
+}
+
+function checkClinic(obj){
+	var fObj = obj.form;
+	var title = fObj.title.value.replace(/\s/g,'').length;
+	var clinic = fObj.clinic.value.replace(/\s/g,'').length;
+	var msg = '';
+	if(title == 0){
+		msg = '请输入标题。';
+	}else if(title > 60){
+		msg = '标题应保持在100字以内。';
+	}else if(clinic == 0){
+		msg = '请填写您的情感问题以便我们的专家给您做专业的解答。';
+	}
+	if(msg.length){alert(msg);return false}
+	fObj.submit();
+}
+</script>
+                        <form action="index.php?n=about&h=clinic_add" name="form" method="post">
+							<ul>
+								<li><span class="fright" style="padding-right:170px;">选择问题类型：
+                                <select name="clinictype">
+                                	{loop $arr_clinic_type $k $v}
+									<option value="{$k}"{if $content['type'] == $k} selected="selected"{/if}>{$v}</option>
+                                    {/loop}
+								</select></span>提问标题：
+                                </li>
+								<li><input name="title" type="text" maxlength="60" style="height:20px; width:500px;"/></li>
+								<li>提问内容（您可以输入<span style="display:none;" id="countsize">0</span><span id="leavsize" style="color:#00f">500</span>字）：</li>
+								<li>
+									<textarea name="clinic" onkeyup="textCounter(this,'countsize','leavsize',500);" onblur="textCounter(this,'countsize','leavsize',500);" onfocus="textCounter(this,'countsize','leavsize',500);" style="height:100px; width:500px;"></textarea>
+								</li>
+								<li>
+                                <input type="button" onclick="checkClinic(this);" class="getsave-butt" value="提交问题" /></li>
+							</ul>
+                        </form>
+						</div>
+					</dd>	
+					{/if}
+					<dt style="padding-top:0px; width:710px; border-bottom:1px solid #999">相关问答</dt>
+					<dd>
+					<ul class="clinic-ol">
+					{loop $list $k $v}
+						<li><a href="index.php?n=about&amp;h=clinic_content&amp;id={$v['id']}">{php echo $k+1;}、{php echo MooStrReplace(Moorestr(MooCutstr($v['title'], 80, $dot = ' ...')))}</a></li>
+					{/loop}
+					</ul>
+					</dd>
+
+				</dl>
+			</div>
+			<!--右边结束-->	
+			<div class="clear"></div>
+		</div><!--c-center end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+{template system/footer public}
+	</div><!--content end-->
+
+</body>
+</html>

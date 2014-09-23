@@ -1,0 +1,122 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+	function search_kefu(){
+		var keyword = $("#keyword").val();
+		if( keyword=="" ){
+			alert("搜索内容不能为空！");
+			return;
+		}
+		var url = "./ajax.php";
+	    $.getJSON(url,{n:"searchKefu",keyword:keyword},function(data){
+	     	var userStr = data;
+			var len = data.length;
+			$("#user").empty();
+			var optionStr = "<option value =''>搜索出 "+len+" 条结果 请选择</option>";
+			for(i=0;i<len;i++){
+				optionStr += "<option value='"+data[i]['usercode']+"'>"+data[i]['username']+"</option>";
+			}
+			$("#user").append(optionStr);
+	    });
+	}
+	function group_add_member(){
+		if($("#user").val() == ''){
+			alert("请选择一个客服");
+			return;
+		}
+		var url="./ajax.php";
+		var uid = $("#user").val();
+		
+		$.get(url,{n:"judgeMember",uid:uid},function(data){
+			if(data==1){
+				alert("该客服已经在其它组中不能添加到此组！");
+			}else{
+				if($("#ispost").val() == 0){
+					$("#ispost").val(1);
+					$("#add").css("display","block");
+				}
+		
+				var name = $("#user option:selected").text();
+				$("#user_list").append('<input type="checkbox" name="userlist[]" value="'+uid+'" checked="checked" />&nbsp;'+name);
+			}											 
+		});
+	}
+	
+	function group_user(){
+		if($("#ispost").val() == 0){
+			alert('还没有选择客服');
+			return false;
+		}else{
+			return true;
+		}
+	}
+	function remove(u){
+		var uid = u;
+		var id = $("#id").val();
+		var url = "ajax.php";
+		$.post(url,{n:'remove_group',uid:uid,id:id},function(str){
+			if(str == 'ok'){
+				alert('该客服成功移除本组');
+				$("#user_"+uid).remove();
+			}else{
+				alert('移除失败');
+			}
+		})
+	}
+</script>
+<h1>
+
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {if isset($group['groupname'])}{$group['groupname']}{/if}组成员添加 </span>
+<span class="action-span"><a href="index.php?action=system_adminmanage&h=groupmember&id={$id}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<p style="margin:0"><strong>添加客服</strong></p>
+<form method="post" action="index.php?action=system_adminmanage&h=addgroupmember" onsubmit="return group_user()">
+	<input type="hidden" value="0" id="ispost" name="ispost" />
+    <input type="hidden" value="{$id}" id="id" name="id" />
+<div class="list-div" id="user_list">
+
+</div>
+	<input name="add" type="submit" id="add" value="添加" style="display:none" />
+</form>
+<p/>
+<div class="list-div" id="listDiv">
+<p>
+	<span class="require-field">添加组成员</span>按客服ID或客服用户名
+	<input type="text" id="keyword" name="keyword" value="">
+	<input type="button" name="search" value=" 搜索 " onclick="search_kefu();">
+	<select style="width:170px;" id="user" name="user">
+		<option value="">请选择</option>
+	</select>
+	<input type="button" onclick="group_add_member();" name="add_member" value="添加组成员">
+</p>
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>客服ID</th>
+    <th>客服名称</th>
+    <th>登录名称</th>
+    <th>客服权限</th>
+    <th>操作</th>
+  </tr>
+  {loop $admin_user_list $u}
+  <tr id="user_{$u['uid']}">
+    <td class="first-cell" >{$u['usercode']}</td>
+    <td align="left">{$u['username']}</td>
+    <td align="center">{$u['name']}</td>
+    <td align="center">{$u['groupname']}</td>
+    <td align="center">
+    	<a href="index.php?action=system_adminmanage&h=del_groupmember&groupid={$id}&uid={$u['uid']}" onclick="return confirm('确定删除吗？')">从此组中删除</a>
+		&nbsp;&nbsp;
+		<a href="index.php?uid={$u['uid']}" onclick="parent.location.href='index.php?change_uid={$u['uid']}'">以此会员登录</a>
+    </td>
+  </tr>
+  {/loop}
+  </table>
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right"> </td>
+    </tr>
+  </table>
+</div>

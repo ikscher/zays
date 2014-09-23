@@ -1,0 +1,52 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//跳转
+	function gotoPage(){
+		var page=document.getElementById("pageGo").value;
+		window.location="index.php?action=site_skin&h={$_GET['h']}&page="+page;
+	}
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 皮肤管理</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<span class="action-span"><a href="#" onclick="parent.addTab('添加皮肤','index.php?action=site_skin&h=add','icon')">添加皮肤</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="margin-bottom:10px;padding:5px;">
+<form action="#" method="post">
+	皮肤名称：&nbsp;&nbsp;<input type="text" name="skiname" value="{if !empty($skiname)}$uid{/if}" />&nbsp;&nbsp;<input type="submit" value=" 查 找 " />
+</form>
+</div>
+<div style=" margin-top:10px;">
+	
+</div>
+<div class="list-div" id="listDiv">
+<table width="100%" cellspacing='1' cellpadding='3' id='list-table' style="word-wrap: break-word; overflow: hidden;">
+  <tr>
+    <th width="%16">皮肤ID</th>
+    <th width="%17">皮肤模板名称</th>
+	<th width="%17">图片名称</th>
+	<th width="%17">图片路径</th>
+	<th width="%17">皮肤上传时间</th>
+	<th width="%16">操作</th>
+  </tr>
+  {loop $site_skin_list $v}
+  <tr onmousemove="this.bgColor='#cfeefe';" onmouseout="this.bgColor='#ffffff';">
+    <td align="center">{$v['uid']}</td>
+    <td align="center">{$v['skin_style']}</td>
+	<td align="center">{$v['skiname']}</td>
+	<td align="center">{$v['image']}</td>
+	<td align="center">{php echo date('Y-m-d',$v['date']);}</td>
+    <td align="center" style="word-wrap:break-word;word- break:break-all;">
+    	<a href="#" onclick="parent.addTab('修改{$v['skiname']}皮肤','index.php?action=site_skin&h=check&uid={$v['uid']}','icon')">编辑</a> | <a href="index.php?action=site_skin&h=del&uid={$v['uid']}" onclick="javascript:return confirm('确定删除吗？');">删除</a>
+    </td>
+  </tr>
+  {/loop}
+  <tr>
+  	<td colspan="6" align="center">{if $page_links}{$page_links}{/if}
+     	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:35px" value=""/>  页
+     	<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+  	</tr>
+  </table>
+</div>

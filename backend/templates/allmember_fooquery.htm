@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type=text/javascript src="../module/index/templates/default/js/jquery1.4.2.min.js"></script> 
+<script>!window.jQuery && document.write('<SCRIPT src="./../public/system/js/jquery-1.4.2.min.js"><\\/SCRIPT>');</script>
+
+<!--  <script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>-->
+
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<style type="text/css">
+
+tr.over td {
+	background:#cfeefe;
+} 
+</style>
+
+<script type="text/javascript">
+
+
+$(function(){
+    $(".csstab tr").mouseover(function(){
+        $(this).addClass("over");
+    }).mouseout(function(){
+        $(this).removeClass("over");    
+    });
+
+});
+
+
+//分页跳转
+function gotoPage() {
+    var page = $("#pageGo").val();
+	
+    var page = parseInt(page);
+    
+    if(page<1) page = 1;
+    if(page>{php echo ceil($total/$page_per);})
+	
+    page = {php echo ceil($total/$page_per);};
+    window.location.href = "{$currenturl}&page="+page;
+}
+
+function enterHandler(event){
+    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+    if (keyCode == 13) {
+       gotoPage();  //调用函数
+     } 
+}
+
+$(function(){
+	$("#send_id").change(function(){
+		$("#sid").val(0);
+	});
+
+	$("#sid").change(function(){
+		$("#send_id").val(0);
+	});
+	
+});
+
+//当鼠标移过时显示图框
+var xPos;
+var yPos;
+var timerID;
+function showinfo(evt,uid){
+        evt=evt || window.event;
+    if(evt.pageX){          
+        xPos=evt.pageX;
+        yPos=evt.pageY;
+    } else {      
+        xPos=evt.clientX+document.body.scrollLeft-document.body.clientLeft;
+        yPos=evt.clientY+document.body.scrollTop-document.body.clientTop;      
+    }
+        timerID = setTimeout("xy("+xPos+","+yPos+","+uid+")",500);
+}
+function xy(xPos,yPos,uid){
+        
+        if(xPos+70+600<window.screen.width){
+              $("#callinfo").css('left',xPos+70);
+              $("#callinfo").css('top',yPos-70);
+              $("#userid").html(uid);
+              $.get("ajax.php?n=callinfo",{uid:uid},function(str){
+                      var arr=new Array();
+                      arr=str.split('||');
+                      $("#usertelphone").html(arr[0]);
+                      $("#userbezhucontent").html(arr[1]);
+                      $("#usercause").html(arr[2]);
+                      $("#usercallstate").html(arr[3]);
+                      $("#usercallremark").html(arr[3]);
+              });
+              $("#callinfo").css('display','block');
+        //alert(xPos+'|'+yPos);
+              }else {$("#callinfo").css('display','none'); }
+}
+function hiddend(){
+   $("#callinfo").css('display','none');
+   clearTimeout(timerID);
+}
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+.callinfo{
+position:absolute;
+top:100px;
+left:100px;
+width:600px;
+height:125px;
+background:#ffffff;}
+#callinfo table{
+backgroung:#ffffff;}
+#callinfo td{
+border:#cccccc solid 1px;
+}
+</style>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="{$currenturl}">刷新当前页</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$title} </span>
+<div style="clear:both"></div>
+</h1>
+
+<form action="" method="post">
+		<span class="desc">查询时间：</span>
+		<input type="text" name="startdate" value="{$starttime}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/> 到
+		<input type="text" name="enddate" value="{$endtime}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+        
+        
+        <select name="channel"  > 
+			  <option value='0'  {if $channel=='0'} selected="selected" {/if}>不限</option>
+              <option value='1'  {if $channel=='1'} selected="selected" {/if}>未处理</option>
+              <option value='2'  {if $channel=='2'} selected="selected" {/if}>已处理</option>
+        </select>
+		
+		{if $myservice_idlist == 'all' || sizeof($listGroup)>1}
+		    400客服：
+			 <select name="send_id" id="send_id"  >
+			 	 <option value='0'  {if $send_id =='0'} selected="selected" {/if}>不限</option>
+	            {loop $name $k $v}
+				<option value="{$v['uid']}"  {if $send_id==$v['uid']} selected="selected" {/if}>{$v['username']}</option>
+				{/loop}
+	         </select>
+	         
+	                  客服：
+	       <select name="sid" id="sid">
+		  <option value='0'  {if $sid =='0'} selected="selected" {/if}>不限</option>
+	           {loop $adminUser $k $v}
+	      <option value="{$v['uid']}"  {if $sid==$v['uid']} selected="selected" {/if}>【{$v['uid']}】{$v['username']}</option>
+	       {/loop}
+	       </select>
+	                 
+        {elseif empty($myservice_idlist)}
+               
+        
+        {/if}
+        
+        <input type="hidden" value="1" name="page" />
+		<input type="submit" name="Dealsubmit" value="搜索"  class="button" />
+		
+		{if $isPost && (sizeof($listGroup)>1 || $myservice_idlist == 'all') }
+			<span style="margin-left:20px;">售前：{$num_1['num_1']}条</span>
+			<span style="margin-left:20px;">售后：{$num_2['num_2']}条</span>
+			<span style="margin-left:20px;">未分配：{$num_3['num_3']}条</span>
+			<span style="margin-left:20px;">总共：{$total}条</span>
+		{/if}
+
+</form>
+
+
+
+<div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+<div class="list-div" id="listDiv" onmouseout="hiddend();">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	 <tr>
+		<th>序号</th>
+        <th>会员邮箱</th>
+        <th>会员类别</th>
+        <th>所属客服</th>
+        <th>日期</th>
+        <th>标题</th>
+        <th>内容</th>
+		<th>是否处理</th>
+        <th>类型</th>
+
+	 </tr>
+
+     {loop $remark $k $v}
+	 <tr>
+		<td align="center">{php echo $k+1;}</td>
+        {php $matches=array(); 
+        preg_match('/(\d+)/',$v['title'],$matches);
+        $uid=$matches[0];
+        $userinfo=empty($uid)?array():MooMembersData($uid);
+        }
+        <td align="left" style="text-indent:10px;" onmouseover="showinfo(event,{$userinfo['uid']});">{if $userinfo['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>
+		{else}<img src="templates/images/m.gif" alt="男" title="男"/>
+		{/if}
+		<a href="#" onclick="parent.addTab('查看{$userinfo['uid']}资料','index.php?action=allmember&h=view_info&uid={$userinfo['uid']}','icon')">{$userinfo['username']}</a></td>
+        <td align="center">{if $userinfo['s_cid'] =='10'}铂金会员{else}$GLOBALS['member_level'][$userinfo['s_cid']]{/if}</td>
+		<td align="center">{php echo $v['sid'];}</td>
+		<td align="center">{php echo Date('Y-m-d H:i:s',$v['dateline']);}</td>
+		<td align="center">{php echo $v['title'];}</td>
+		<td align="center">{php echo $v['content'];}</td>
+		<td align="center">{if $v['status']==1}已处理{else}未处理{/if}</td>
+		<td align="center">{if  $v['flag']==1}售前{elseif $v['flag']==2}售后{else}未分配{/if}</td>
+
+	 </tr>
+     {/loop}
+    
+	 <tr>
+		<td colspan="9" align="center">{$pages}
+			&nbsp;&nbsp;&nbsp;
+			转到第
+			<input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+			<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+		
+	 </tr>
+      
+	 </table>
+</div>
+
+<div class="callinfo" id="callinfo" style="display:none;">
+<table width="600" border="1">
+  <tr>
+    <td width="50" height="20">会员ID</td>
+    <td width="50" id="userid">&nbsp;</td>
+    <td width="50">手机号</td>
+    <td width="78" id="usertelphone">&nbsp;</td>
+    <td width="50">下次联系时间</td>
+    <td width="150" id="usercause">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="43" id="userbezhu">会员备注</td>
+    <td colspan="5" id="userbezhucontent">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="43">下次联系要点</td>
+    <td colspan="5" id="usercallremark">&nbsp;</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

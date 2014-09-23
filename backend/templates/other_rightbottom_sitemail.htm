@@ -1,0 +1,102 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="./templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+$(function(){
+	$("#list-table tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+	
+	$("#group_change").change(function(){
+		  var groupid = this.value;
+		  $.get("other_ajax.php?n=get_groupmember&id="+groupid,function(str){
+	           if(str == 'no'){
+					alert('此组无成员');
+			   }else{
+					$("#kefu_sid").empty();
+					$("#kefu_sid").append(str);
+			   }
+	       });
+	})
+	
+	$("#button_click").click(function(){
+		var obj = $("#kefu_sid option:selected");
+		if(obj.val() ==''){
+			alert('请选择');
+		}else{
+			var sid = obj.val();
+			var username = obj.text();
+			$("#msg_sid").val(sid);
+			$("#msg_username").val(username);
+		}
+		
+	})
+})
+
+function check_form(){
+	var msg_sid = $("#msg_sid").val();
+	var msg_username = $("#msg_username").val();
+	var msg_title = $("#msg_title").val();
+	var msg_content = $("#msg_content").val();
+	if($.trim(msg_sid)=='' && $.trim(msg_username)==''){
+		alert('ID与用户名必须填写一个');
+		return false;
+	}
+	if($.trim(msg_title) == ''){
+		alert('标题不能为空');
+		return false;
+	}
+	
+	return true;
+}
+</script>
+<h1>
+<span class="action-span1"><a href="#">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> ----- 红娘站内邮件</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+请选择人员：
+		组别:
+		<select name="group" id="group_change">
+			<option value="">请选择</option>
+			{loop $group_list $list}
+			<option value="{$list['id']}">{$list['manage_name']}</option>
+			{/loop}
+		</select>
+		人员:
+		<select name="sid" id="kefu_sid" style="width:100px;">
+			<option value="">请选择</option>
+		</select>
+		<input type="button" value="确定" id="button_click" />
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+	<form action="" method="post" onsubmit="return check_form();">
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+		<tr>
+			<td>　收件人ID：<input type="text" name="msg_sid" id="msg_sid" /></td>
+		</tr>
+		<tr>
+			<td>　　用户名：<input type="text" name="msg_username" id="msg_username" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">　　标　题：<input type="text" name="msg_title" id="msg_title" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				　　内　容：
+				<textarea name="msg_content" id="msg_content" rows="10" cols="60"></textarea>
+			</td>
+		</tr>
+	</table>
+  
+	<div style="padding:20px;background:#fff">
+		<input type="submit" value="提交" class="button" />
+	</div>
+	</form>
+</div>

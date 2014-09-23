@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的真爱一生--我的相册——真爱一生网</title>
+<link href="module/material/templates/{$GLOBALS['style_name']}/left.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<style type="text/css">
+@import url("module/material/templates/{$GLOBALS['style_name']}/material.css");
+</style>
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<div class="main">
+	{template system/header public}<!--head-search end-->
+	<div class="content">
+	<p class="c-title"><span class="f-000">真爱一生首页&nbsp;&gt;&gt;&nbsp;我的真爱一生&nbsp;&gt;&gt;&nbsp;我的相册</span><a href="#"></a></p>
+	{template system/simp_left public}<!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=material&h=show" class="r-title-black">&lt;&lt;返回相册列表</a>
+			<span class="right-title f-ed0a91">我的相册</span>
+			</div>
+			<div class="r-center-ccontent">
+				<p class="m-accountinfo-title" style="padding:20px;">点击确定删除按钮，可删除该照片！</p>
+				<h4>我的形象照</h4>
+				<div class="del-photo-box">
+					<dl>
+						<dt>您确定要删除这张形象照吗？</dt>
+						<dd>真爱一生网经过七年经验研究发现，删除您的形象照后，您被心仪对象所搜索几率将至少比现在减少50%，并且您的个人信息也将不会显示在真爱一生网会员人气搜索最高的相册搜索频道。</dd>
+					</dl>
+					<div class="ml-img-box">
+						<img  src="{if $user1['imgurl']}{$user1['imgurl']}{elseif $user2['mainimg']}{$user2['mainimg']}{/if}" />
+					</div>
+					<div class="mr-img-box">
+						<input name="" type="button" class="del-photo" value="确认删除" onclick="javascript:if( confirm('确定删除此张照片吗？')){window.location.href='{if $_GET['imageid']}index.php?n=material&h=del&isimage={$_GET['isimage']}&imageid={$_GET['imageid']}&s=1{elseif $_GET['mid']}index.php?n=material&h=del&mid={$_GET['mid']}&isimage={$_GET['isimage']}&s=1{/if}'}" />
+						<input name="" type="button" class="del-photo" value="取消删除"  onclick="javascript:window.location.href='index.php?n=material&h=show'" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}<!--foot end-->
+</div><!--main end-->
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>真爱一生休闲吧——真爱一生网</title>
+    {template system/js_css public}
+    <link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+
+    <link type="text/css" rel="stylesheet" href="module/lovestation/templates/default/basic.css">
+    <link type="text/css" rel="stylesheet" href="module/lovestation/templates/default/relax.css">
+</head>
+
+ <body>
+ {template system/header public}
+ <!--头部结束-->
+
+
+ <div class="wrap bc w980">
+
+     <div class=" w980 mt20 pr">
+         <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="980" height="600">
+             <param name="movie" value="{$href}" />
+             <param name="quality" value="high" />
+             <param name="allowFullScreen" value="true" />
+             <embed src="{$href}" allowfullscreen="true" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="980" height="600"></embed>
+         </object>
+     </div>
+     <div class="cb"></div>
+     <div class="w980 game pr">
+         <ul class="gameImage pa">
+             {loop $games $k $v}
+             <li ><a href="index.php?n=lovestation&h=carrelaxbargame&id={$v['id']}"><img src="{$v['imgfile']}" width="180" height="200" ></a></li>
+             {/loop}
+         </ul>
+     </div>
+     {template system/footer public}
+
+ </div>
+ </body>
+</html>

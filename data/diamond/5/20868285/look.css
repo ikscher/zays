@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+.yingyue{
+	padding:10px 30px;
+	position:relative;
+	color:#303030;
+	line-height:25px;
+	border-bottom:1px dashed #ccc;
+	}
+.yingyue .yingyue_btn{
+	background:url(images/yingyue.gif);
+	width:97px;
+	height:34px;
+	text-align:center;
+	color:#2093a2;
+	font-weight:bold;
+	position:absolute;
+	font-size:14px;
+	cursor:pointer;
+	border:none;
+	right:40px}
+.yingyue  a{
+	color:#2096a2;
+	text-decoration:underline}
+.yingyue a:hover{
+	text-decoration:none}

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的亲友印象——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" /><link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->  
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3 style="padding-left:5px;"><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">亲友助阵</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px;font-weight:400;">Relatives<br />and friends</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="impression">
+					 <div class="impression1">
+					 	<p>  小玉&amp;蓝默蝶的父母说：“她是一个从小就很懂事的孩子，从不和家人拌嘴，很乐意接受长辈的意见。她虽然话不多，但是很讨大家的喜欢，她周围的朋友也都很喜欢她。只是不知道怎么的，对待爱情，就那么迟钝。她可以把人照顾的很好，但就不懂得怎么去照顾自己。所以，我们对她找男朋友基本上没有什么要求，只要对她好、会照顾她就好了。”</p>
+</div>
+				   <div class="impression3">
+				   	<p>          同事们都觉得小玉&amp;蓝默蝶是一个很简单的人，同时是一个很坚持原则的人。另外，她还是一个很好的听众，能严守秘密，所以大家有什么话都愿意和她说，永远不用担心她会把话告诉其他的人。和同事们都很熟悉了，所以她在同事们面前是很活泼开朗的，很喜欢说话，并且很少有停下来的时候，停下来了就意味着她在工作。大家觉得她同情心有些泛滥，开玩笑地说她不适合做医生，如果非要做，或者做兽医更适合她。</p>
+			   		
+   </div>
+   <div class="impression4">
+				   	<p>         “和她在一起会很开心，即使不开心，她也会逗你开心。和她说话也会很开心，心情差的时候会想到和她打电话，常常挂掉电话以后根本不知道和她说了什么，但是却很开心，和她在一起永远没有尔虞我诈，永远可以简简单单。就两个字“单纯”可以形容”；“几乎看不见她不开心的时候，她会微笑着对待每一个人。如果找不到她了，如果她不愿意和你说话或者是对你说话没什么反应的时候，就是她心情不好的时候”；“她最大的缺点就是有什么事情都喜欢自己扛，在爱情上出了问题即使自己在那要死要活的，也不会让对方知道，对方只要来个电话，不管是否道歉她都会很快忘了。其实她不需要征婚，真的不需要，只要她愿意，我们身边很多异性朋友都会飞奔到她的跟前。只是她想要寻找一种感觉，一种周围的人都找不到的她所谓的爱情的感觉。”</p>
+			   		
+   </div>
+   <div class="impression5">
+				   	<p>         小玉&amp;蓝默蝶的个性是很讨人喜欢的，她的身边也不乏追求者，但是她对感情一直抱着宁缺毋滥的态度，她相信缘分，相信感觉。衷心希望这一次她能够在红娘网上找到让自己心动的人。</p>
+   </div></div></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

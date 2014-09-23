@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>发送秋波短信提醒</title>
+<style type="text/css">
+
+*{
+	margin:0px;
+	padding:0px;
+}
+img{
+	border:none;
+}
+.clear{
+	clear:both;
+	font-size:12px;
+	line-height:0px;
+	height:0px;
+	margin:0px;
+	padding:0px;
+}
+a{
+	text-decoration:none
+}
+</style>
+</head>
+
+<body style="font-size:12px;font:Arial, Helvetica, sans-serif;color:#666">
+
+<div style="width:760px;
+	margin:0 auto;
+	border-left:1px solid #666;
+	border-right:1px solid #666;
+	border-bottom:1px solid #666;
+	background:#f4f4f4;
+	font-size:12px;
+	color:#666;">
+<table width="760" cellpadding="0" cellspacing="0" >
+<tr>
+  <td>
+     <div style="background:url(http://www.7651.com/public/system/mailtamp/images/top.jpg);width:760px;height:273px;font-size:12px;">
+       <table width="100%" cellpadding="0" cellspacing="0" style="font-size:12px">
+	    <tr>
+		  <td width="420px"></td>
+		  <td height="50px;" colspan="4">&nbsp;</td>
+		</tr>
+		<tr style="color:#ac5aad; font-weight:bold">
+		  <td width="420px">&nbsp;</td>
+		  <td><a style="color:#ac5aad; font-weight:bold" href="http://www.7651.com/index.php?n=login&h=backpassword">找回密码</a>|</td>
+		  <td><a style="color:#ac5aad;font-weight:bold" href="http://www.7651.com/index.php?n=service">我的红娘</a>|</td> 
+		  <td><a style="color:#ac5aad;font-weight:bold" href="http://www.7651.com/index.php?n=search">红娘寻友</a>|</td>
+		  <td><a style="color:#ac5aad;font-weight:bold" href="http://www.7651.com/index.php?n=payment">升级高级会员</a></td>
+	   </tr>
+	  <tr>
+	   <td width="420px"></td>
+	   <td colspan="4" height="80px">&nbsp;</td>
+	  </tr>
+	   
+	<tr>
+	<td width="420px">&nbsp;</td>
+     <td colspan="4"><div style="padding-left:150px"> <a href="http://www.7651.com" style="display:block;width:135px;height:30px;background:url(http://www.7651.com/public/system/mailtamp/images/teng7651.gif)"></a></div></td>
+     </tr>  
+	 <tr>
+	   <td colspan="5" height="70px"></td>
+	 </tr> 
+	<tr>
+	 <td colspan="5"><div style="padding-left:50px;font-size:12px;">亲爱的 {$res['username']},您好！</div> </td>
+	</tr>
+   </table>
+  </div><!--头部结束-->
+  </td>
+  </tr>
+  <tr>
+    <td>
+	<div style="height:auto;background:url(http://www.7651.com/public/system/mailtamp/images/bg7651.gif);font-size:12px;">
+<div style="padding:0 35px;">
+  <div style="text-indent:20px;line-height:25px;padding:20px 0px;">
+      <a href="http://www.7651.com/index.php?n=space&h=viewpro&uid={$send_user_info['uid']}" style="color:#bd0000">{$send_username}</a>在红娘网浏览了您相关的资料后，对您的情况很感兴趣，已经给您发送了<font style="color:#bd0000">秋波</font>，还在犹豫什么，赶快去<a style="color:#bd0000" href="http://www.7651.com">红娘网</a>了解下TA的<a href="http://www.7651.com/index.php?n=space&h=viewpro&uid={$send_user_info['uid']}" style="color:#bd0000">详情资料</a>吧，或许会有非常的惊喜哦。
+     <p>温馨提示：红娘网会持续为您推荐优质人选，请保持登陆查看。</p>
+  </div>
+  
+   <div style="margin-top:15px;">
+   <h3 	style="border-bottom:1px dashed #ccc;line-height:30px;font-size:12px;margin-bottom:20px;background:url(http://www.7651.com/public/system/mailtamp/images/jiantou.gif) no-repeat 0px 10px;padding-left:5px;">&nbsp;TA的简明资料</h3>
+    <table cellpadding="0" cellspacing="0" style="font-size:12px;">
+	 <tr>
+	  <td width="118" rowspan="5" > <div style="height:132px;width:110px;background:url(http://www.7651.com/{$img_path}) no-repeat;"></div></td>
+	  <td width="576"></td>
+	 <tr>
+	  <tr>
+	    <td height="25"  >
+	    <a style="color:#bd0000; text-decoration:underline" href="http://www.7651.com/index.php?n=space&h=viewpro&uid={$send_user_info['uid']}">{php echo $send_user_info['nickname'] ? $send_user_info['nickname'] : $send_user_info['username']}</a> 年龄:{if $send_user_info['birthyear']}{php echo (gmdate('Y', time()) - $send_user_info['birthyear']);}岁{else}保密{/if}，身高:{if $send_user_info[height] == '-1'}保密{else} {$height}厘米{/if}，地区:{if $send_user_info[province] == '-1' && {$send_user_info[city]} == '-1'}保密{else} {$province}{$city}{/if}
+	    </td>
+	 </tr>
+	 <tr>
+       <td height="25"> TA于 {php echo date("Y-m-d");} 给您发送了<b style="color:#bd0000">秋波</b></td>
+	</tr>
+	<tr> 
+	 <td style="line-height:25px; text-indent:20px">
+       {php echo MooStrReplace($send_user_info['introduce'])}
+	  </td>
+		
+  </tr>
+  <tr>
+  <td colspan="2" align="center" height="40px">
+	<div style=" margin-left:200px"><a style="background:url(http://www.7651.com/public/system/mailtamp/images/btn.gif);width:102px;height:25px;line-height:25px;color:#fff;font-size:12px;border:none;text-align:center;float:left;margin-right:30px;cursor:pointer" href="http://www.7651.com/index.php?n=space&h=viewpro&uid={$send_user_info['uid']}">查看详细资料>></a><a style="background:url(http://www.7651.com/public/system/mailtamp/images/btn.gif);width:102px;height:25px;line-height:25px;color:#fff;font-size:12px;border:none;text-align:center;float:left;margin-right:30px;cursor:pointer" href="http://www.7651.com/index.php?n=service&h=commission&t=sendcontact&sendid={$send_user_info['uid']}">委托红娘联系</a></div>
+	</td>
+    </tr>
+	</table>
+   </div>
+   <div class="clear"></div>
+  </div>
+  <div style="text-align:center;line-height:22px;font-size:12px;color:#999999">
+  <p>请不要直接回得该电子邮件。如需帮助，请发邮件到service@7651.com</p>
+  <p>您收到这封邮件是因为您是我们的会员。如果您不希望再收到类似邮件，请点击<a href="http://www.7651.com">邮件退订</a></p>
+  </div>
+  </div>
+  </td>
+  </tr>
+  </table>
+</div>
+
+</body>
+</html>

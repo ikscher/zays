@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>升级{$title}——真爱一生网</title>
+
+
+<link rel="stylesheet" type="text/css" href="public/default/css/global_import_new.css">
+
+<script type="text/javascript" src="./public/system/js/jquery-1.3.2.min.js"></script>
+<script src="public/system/js/sys.js"></script>
+
+
+<link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
+<!-- <script type="text/javascript" src="module/payment/templates/default/js/payReturn.js"></script>
+ -->
+ 
+ 
+<script type="text/javascript">
+  //var Date.parse(new Date())/1000 ;//获取当前时间的时间戳
+    
+  var transDateTimeStamp = {$transDateTimeStamp};
+
+  //var onlineTime = (Date.parse(new Date())/1000) - transDateTimeStamp;
+  
+  $(function(){
+    telPayRefresh();
+  });
+  
+  function redirect() {
+      window.location.href='index.php?n=service';
+  }
+            
+  
+  //var transDateTimeStamp={$transDateTimeStamp};
+  var sysTraceNum={$sysTraceNum};
+  var pa_MP={$pa_MP};
+  var Pan="{$card}";
+	
+  function telPayRefresh(){
+    //var url="index.php?n=payment&h=telPayAjax&transDateTime={$transDateTime}&sysTraceNum={$sysTraceNum}";
+	var url="index.php?n=payment&h=telPayAjax";
+	
+   
+    $.post(url,{transDateTime:transDateTimeStamp,sysTraceNum:sysTraceNum,Pan:Pan,pa_MP:pa_MP},function(str){
+      
+	  //alert(Date.parse(new Date())/1000 +'and'+transDateTimeStamp+'and'+((Date.parse(new Date())/1000) - transDateTimeStamp)+'and'+str);
+	  if(str==0 && (Date.parse(new Date())/1000) - transDateTimeStamp>=300){
+	     //$(".pay-show-title").html("您的交易失败！");
+		 $(".pay-show-title").html("");
+		 $(".pay-return-msg:eq(0)").css("display","none");
+		 $(".pay-return-msg:eq(1)").css("display","block");
+		 //setTimeout('redirect();', 5000);
+	     return false;
+	  }else if (str==1){
+	     //$(".pay-show-title").html("您的交易成功！");
+		 $(".pay-show-title").html("");
+		 $(".pay-return-msg:eq(0)").css("display","none");
+		 $(".pay-return-msg:eq(2)").css("display","block");
+		 setTimeout('redirect();', 5000);
+	     //return false;
+	  }
+	 
+      });
+   
+	
+	if((Date.parse(new Date())/1000) - transDateTimeStamp<= 300){//不到5分钟
+		if(k) window.clearTimeout(k);
+
+	    var k=setTimeout("telPayRefresh()", 5000);//5秒发一次
+	    
+	}else{
+	   
+	
+	}
+  }
+ </script>
+</head>
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<div class="c-title">
+			<span class="f-000">
+			<a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;升级结果</span>
+			<div class="loaction_right">
+				<a href="index.php?n=invite" target="_blank">邀请好友</a>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="payment">
+			<div class="pm-bank-banner">
+				<h5 style="padding:30px 20px 0;">{$img}</h5>
+			</div><!--pm-bank-banner end-->
+			<div class="pm-content">
+			<p class="pay-show-title">您的支付正在进行。。。</p>
+			<div class="pay-show-box">
+			    <div class="pay-return-msg">
+					<h4>
+					 <img src="module\payment\templates\default\images\paying_card.gif" />
+					</h4>
+					<dl>
+						<dd>
+						   <p style="margin-top:10px;">（1）您的手机将收到<span>（021）95156</span>的来电，请注意接听，请根据来电中的语音提示输入密码，完成支付。
+						   <p>（2）这是您今天第<span>{$sendedPayCount}</span>次电话支付，请注意您一天最多能支付 6 次。
+						   <p>（3）系统会在半小时之内用短信通知您的支付状态，请勿在收到短信之前重复支付。</p>
+						</dd>
+					</dl>
+				</div> 
+				
+				<!-- 失败 -->
+				<div class="pay-return-msg" style="display:none">
+                  <div class="failure">
+				  <img src="module\payment\templates\default\images\failure.gif" width="93" height="82" />
+                  <ol>
+               	    <span>支付失败</span>
+                    <li>支付失败，持卡人未接听或拒绝支付</li>
+                  </ol>
+				  </div>
+                 <div style="clear:both;">
+                   <input id="order_btn" type="submit" value="" name="order_btn" onclick="window.location.href='index.php?n=payment&h=telPay'" />
+                 </div>
+				</div> 
+				
+				<!-- 成功 -->
+				<div class="pay-return-msg" style="display:none">
+                <div class="success"><img src="module\payment\templates\default\images\success.gif" width="94" height="82" />
+                  <h3>您已成功支付!</h3>
+                  </div>
+                </div>
+				
+				<div class="clear"></div>			
+			</div>
+			</div><!--pm-content end-->
+		</div>
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+<!-- <script src="module/payment/telPaySend.php" ></script> -->
+</html>

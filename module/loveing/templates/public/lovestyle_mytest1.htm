@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>爱情测试——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+
+<script src="module/lovestyle/templates/public/js/Drag.js"></script>
+<style type="text/css">
+@import url("module/lovestyle/templates/{$GLOBALS['style_name']}/lovestyle.css");
+</style>
+<script>
+var num={$num};
+function check_next(id1,id2,tl){
+   if(tl){
+   var d=$("#is_vote_"+tl).attr("value");
+	 if(!d){
+	  alert("请选择您的答案");
+	  return false;
+	 }    
+   }
+  var r=(id2/num*100).toFixed(0); 
+  var pic_w=r*2;
+  $("#sche").html(r);
+  $("#schedule").width=pic_w;
+  $("#schedule").height=12;
+  
+  auto_show(id2,id1);
+}
+function check_value(tl,val,lnum,id){
+	var url = 'ajax.php?n=lovestyle&h=actio';
+    var id = $("#id_"+tl+"_"+val).val();
+	var lid = $("#tid_"+tl).val();
+	var type = $("#ty_pe_"+tl).val();
+	alert(url+"&id="+id+"&lid="+lid+"&type="+type);
+	document.getElementById("is_vote_"+tl).value=val;
+    var posx =document.getElementById("pic_"+tl).offsetWidth;
+	//alert(posx);
+    document.getElementById("pic_"+tl).style.left=posx+lnum+"px";	
+	var is_auto=document.getElementById('is_auto').checked;
+	//alert(is_auto);
+	//alert(id);
+	var r=(tl/num*100).toFixed(0); 
+	var pic_w=r*2;
+    document.getElementById("sche").innerHTML=r;
+    document.getElementById("schedule").width=pic_w;
+	document.getElementById("schedule").height=12;
+	if(id<=num&&is_auto){    
+	 setTimeout("auto_show("+tl+","+id+")",300);
+	}	 
+}
+function auto_show(tl,id){
+
+ $("#q_"+tl).hide(); 
+ $("#q_"+id).show();
+}
+
+function check_pic(tl,t2){
+   var vat=document.getElementById("pas_"+tl).val;
+   if(!vat){
+          vat=25; 
+    }
+	//alert(vat);
+   Drag.init(document.getElementById("pic_"+tl),document.getElementById("pic_"+tl),vat,tl,t2);
+}
+function check(){
+  var d=$("#is_vote_"+num).attr("value");
+	 if(!d){
+	  alert("请选择您的答案");
+	  return false;
+	 }  
+
+}
+
+function check_back(id1,id2){
+    $("#q_"+id2).hide(); 
+    $("#q_"+id1).show();
+}
+</script>
+</head>
+<body>
+<!--头部结束-->
+{template system/header public}
+<div class="clear"></div>
+         
+  
+       <form id="form1" name="form1" method="post" action="index.php?n=lovestyle&h=actio" onsubmit="return check();">
+       <div class="main">
+        {template system/nav public}
+      <div class="result">
+        <div class="add1">
+        <div class="addtext1">
+          <p>
+          想知道，在您内心深处珍藏着怎样的爱情故事吗？
+          在恋爱舞台上您会扮演什么角色，面对困境又该如何把握幸福呢？现在就来测试一下吧！
+         </p>
+          <p> 请耐心填写以下题目，完成提交后，我们将立即告诉您答案。</p>
+        </div>
+        </div>
+        <div class="clear"></div>
+        <div class="test_result">
+         <div class="top1">
+           <div class="ladding">
+              <div class="chas">
+                 <div style="float:left">完成率：</div>
+            <div class="kuang">
+                <img id="schedule" src="module/lovestyle/templates/default/images/jindu.gif"  /></div>
+            </div>
+            &nbsp;完成：<font id="sche">0</font>%
+            </div>
+         </div>
+         <div class="resultbox">
+         
+         
+         {loop $result $res}  {php $i++;}
+         
+             <div class="love_test" id="q_{$i}" style="display:{if $i!=1}none{/if}">
+             
+               <dl>
+                 <dt>{$i}.{$res[title]}</dt>
+                 <dd class="p30">我觉得与现实的我：</dd>
+                 <div id="pic_{$i}" onmouseover="check_pic({$i},{php $b=$i+1;echo $b;});" class="upbtn"></div>
+                 <dd>
+                   <ul class="love_loadd" >
+                     <li><a href="###" id="link_{$res[ask1]}_{$i}" onclick="check_value({$i},1,40,{php $b=$i+1;echo $b;});"  class="t1 ">完全不符合</a></li>
+                     <li><a href="###" id="link_{$res[ask2]}_{$i}"  onclick="check_value({$i},2,120,{php $b=$i+1;echo $b;});" class="t2">不符合</a></li>
+                     <li><a href="###" id="link_{$res[ask3]}_{$i}"  onclick="check_value({$i},3,200,{php $b=$i+1;echo $b;});" class="t3">很难说</a></li>
+                     <li><a href="###" id="link_{$res[ask4]}_{$i}"  onclick="check_value({$i},4,280,{php $b=$i+1;echo $b;});" class="t4">符合</a></li>
+                     <li><a href="###" id="link_{$res[ask5]}_{$i}"  onclick="check_value({$i},5,360,{php $b=$i+1;echo $b;});" class="t5">完全符合</a>                     </li>
+                   </ul>
+                   <input type="hidden" name="tid[{$i}]" id="tid[{$i}]" value="{$res[lid]}" />
+                   <input type="hidden" name="ty_pe[{$i}]" id="ty_pe[{$i}]" value="{$res[ty_pe]}" />
+                   <input name="pas_{$i}" type="hidden" id="pas_{$i}" />
+                   <input name="is_vote_{$i}" type="hidden" id="is_vote_{$i}" value="" /></dd>
+                 <dd class="btn">
+                 <div style="display:none">
+                  <input type="radio" name="id[{$i}]" id="id_{$i}_1" value="{$res[ask1]}" />
+                  <input type="radio" name="id[{$i}]" id="id_{$i}_2" value="{$res[ask2]}" />
+                  <input type="radio" name="id[{$i}]" id="id_{$i}_3" value="{$res[ask3]}" />
+                  <input type="radio" name="id[{$i}]" id="id_{$i}_4" value="{$res[ask4]}" />
+                  <input type="radio" name="id[{$i}]" id="id_{$i}_5" value="{$res[ask5]}" />
+                 </div>
+                 {if $i==$num}
+                 <input type="submit" class="yesbtn" name="button" id="button" value="查看结果" />
+                 {else}
+                   <input name="but_{$i}" type="button" class="yesbtn" value="下一题" onclick="check_next('{php $b=$i+1;echo $b;}','{$i}','{$i}');" />
+                 {/if}  
+                   {if $i>1}
+                     <a href="###" onclick="check_back('{php $b=$i-1;echo $b;}','{$i}');">返回上一题</a>                   {/if}                      </dd>
+               </dl>
+           </div>
+             
+        {/loop}     
+             
+             
+              <div class="love_sto">
+              </div>
+            
+            
+            
+           <div class="clear"></div>
+         <div class="love_bottom">
+          <input name="is_auto" type="checkbox"  value="1" id="is_auto" /> 
+          <label for="is_auto">选中答案自动跳转到下一题</label>
+         </div> 
+            
+            
+         </div>
+        </div>
+      </div>
+        
+        
+        <div class="clear"></div>
+        
+      </div>
+       </form>
+       <!--左边结束-->
+       
+    </div>
+ <div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

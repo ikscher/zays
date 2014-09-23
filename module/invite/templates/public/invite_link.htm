@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>邀请好友——真爱一生网</title>
+<link href="module/invite/templates/{$GLOBALS['style_name']}/invite.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<script>
+function copyToClipboard(txt) {       
+     if(window.clipboardData) {       
+              window.clipboardData.clearData();       
+              window.clipboardData.setData("Text", txt);       
+              alert("复制成功！")      
+      } else if(navigator.userAgent.indexOf("Opera") != -1) {       
+           window.location = txt;       
+      } else if (window.netscape) {       
+          try {       
+                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");       
+           } catch (e) {       
+                alert("被浏览器拒绝！\n请在浏览器地址栏输入'about:config'并回车\n然后将 'signed.applets.codebase_principal_support'设置为'true'");       
+           }       
+          var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);       
+          if (!clip)       
+               return;       
+          var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);       
+          if (!trans)       
+               return;       
+           trans.addDataFlavor('text/unicode');       
+          var str = new Object();       
+          var len = new Object();       
+          var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);       
+          var copytext = txt;       
+           str.data = copytext;       
+           trans.setTransferData("text/unicode",str,copytext.length*2);       
+          var clipid = Components.interfaces.nsIClipboard;       
+          if (!clip)       
+               return false;       
+           clip.setData(trans,null,clipid.kGlobalClipboard);       
+           alert("复制成功！")       
+      }       
+}
+
+function check(id,txt){
+
+ window.document.getElementById(id).value=txt;
+}
+    
+</script>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;邀请好友</span></p>
+		
+			<div class="content-title">
+				<span class="right-title">填写注册信息</span>
+			</div><!--content-title end-->
+			<div class="c-center">
+			<!--导航-->
+			<div class="service-title">
+				<ul>
+					<li><a href="index.php?n=invite" class="onthis"><span>发送链接邀请给朋友</span></a></li>
+					<!-- <li><a href="index.php?n=invite&h=into"><span>导入MSN联系人到邀请名单</span></a></li> -->
+					<li><a href="index.php?n=invite&h=mail"><span>通过E-mail邀请朋友</span></a></li>
+				</ul>
+			<div class="clear"></div>
+			</div>
+			<!--导航 end-->				
+			<h4>1、直接复制以下的链接在QQ、旺旺、SKYPE、GOOGLE TALK等即时通信软件上粘帖给好友</h4>
+			<div class="invite-box">
+				<dl>
+					<dt>选择想要对好友说的话：</dt>
+					<dd><input name="one" id="one_1" type="radio" value="" onclick="check('one_copy','真爱一生网真的很不错哦！里面有很多高质量征婚会员！http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}')" /> <label for="one_1">真爱一生网真的很不错哦！里面有很多高质量征婚会员！</label></dd>
+					<dd><input name="one" id="one_2" type="radio" onclick="check('one_copy','真爱一生网，我寻找幸福的地方！http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}')" checked="checked" /> <label for="one_2">真爱一生网，我寻找幸福的地方！</label></dd>
+					<dd><input name="one" id="one_3" type="radio" value="" onclick="check('one_copy','真爱一生网4年真挚服务，让您的缘分实现！！http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}')"/> <label for="one_3">真爱一生网5年真挚服务，让您的缘分实现！</label></dd>
+					<dd><input name="one" id="one_4" type="radio" value=""  onclick="check('one_copy','您想结婚吗？来真爱一生网吧！！！http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}')"/> <label for="one_4">您想结婚吗？来真爱一生网吧！</label></dd>
+				</dl>				
+				<div class="invite-box-text">
+					<div class="ibt-left">生成内容：</div>
+					<div class="ibt-right">
+                        <textarea name="one_copy" id="one_copy" class="textarea-hw">真爱一生网，我寻找幸福的地方!http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}</textarea>
+					</div>
+					<p class="ibt-text"><span class="f-ed0a91">*</span> 选择地址：http://www.zhenaiyisheng.cc<span class="f-ed0a91">（在您发消息时记得附上您的邀请地址哦！）</span>
+					<input type="button" class="btn btn-default" value="复 制" onclick="copyToClipboard(document.getElementById('one_copy').value)" /></p>
+				</div>
+				<div class="clear"></div>
+			</div><!--box end-->
+			<h4>2、直接复制以下的链接贴在您经常光顾的QQ群里</h4>
+			<div class="invite-box">
+				<dl>
+					<dt>选择想要对好友说的话：</dt>
+					<dd><input name="two" type="radio" id="two_1" onclick="check('twocopy','真爱一生网真的很不错哦！他们的客服很懂我们的心事！http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}')" /> <label for="two_1">真爱一生网真的很不错哦！他们的客服很懂我们的心事！</label></dd>
+					<dd><input name="two" type="radio" id="two_2" onclick="check('twocopy','真爱一生网上面好多帅哥美女！企业白领、管理者、高级工程师..... http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}')" /> <label for="two_2">真爱一生网上面好多帅哥美女！企业白领、管理者、高级工程师.....</label></dd>
+					<dd><input name="two" type="radio" id="two_3" onclick="check('twocopy','您的缘分在哪里呀！真爱一生网告诉您答案！http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}')" /> <label for="two_3">您的缘分在哪里呀！真爱一生网告诉您答案！</label></dd>
+					<dd><input name="two" type="radio" id="two_4" onclick="check('twocopy','真爱一生网您和那个他（她）之间的红线！http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}')" /> <label for="two_2">真爱一生网您和那个他（她）之间的红线！</label></dd>
+				</dl>
+				<div class="invite-box-text">
+					<div class="ibt-left">生成内容：</div>
+					<div class="ibt-right">
+                        <textarea name="twocopy" id="twocopy" class="textarea-hw">真爱一生网您和那个他（她）之间的红线！！http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}</textarea>
+					</div>
+					<p class="ibt-text"><span class="f-ed0a91">*</span> 选择地址：http://www.zhenaiyisheng.cc<span class="f-ed0a91">（在您发消息时记得附上您的邀请地址哦！）</span>
+					<input type="button" class="btn btn-default" value="复 制" onclick="copyToClipboard(document.getElementById('twocopy').value)" /></p>
+				</div>
+				<div class="clear"></div>
+			</div><!--box end-->
+			<h4>3、直接复制以下的链接贴在您经常玩的论坛帖子里或者您的博客里</h4>
+			<div class="invite-box">				
+				<div class="invite-box-text">
+					<div class="ibt-left">生成内容：</div>
+					<div class="ibt-right">
+						<textarea name="threecopy" id="threecopy" class="textarea-hw">
+每个小女孩从小就有的梦想，我从小也是这样的，梦想着有一天能像灰姑娘那样，等待白马王 子的到来，这无疑是最幸福的事，唉！我发现我挺爱幻想的呢？~~o(∩_∩)o。身边的朋友基本上都有男朋友了，有的还结婚了，呜呜……一直忙碌工作上的事，感情的问题若隐若现的， 有的时候感觉像是有曙光了，但是又消失了。直到有一天在一个很平静很平凡的日子里，我们在真爱一生网里认识了，经过一段时间的交流，两颗心越靠越近，并擦出了爱情的火花，爱得那么深，爱得那么真。没有爱情的人生是不完美的；没有婚姻的人生也是不完美的，我要用真爱一生网见证咱俩的爱情，并做咱俩的证婚人，如果我没有做到，我将会十分伤心难过！
+
+您，找到心中的TA了吗？如果没有，常来真爱一生网看看（http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}），付出您的真心与真情，真爱一生必定为您牵线连理，让您轻松、快捷地找到知己好友 ，祝愿天下有情人终成眷属！
+
+您恋爱了吗?您结婚了吗?如果没有，就来真爱一生网看看（ http://www.zhenaiyisheng.cc/index.php?puid={$user_arr[uid]}）吧！
+</textarea>
+					</div>
+					<p class="ibt-text"><span class="f-ed0a91">*</span> 选择地址：http://www.zhenaiyisheng.cc<span class="f-ed0a91">（在您发消息时记得附上您的邀请地址哦！）</span>
+					<input type="button" class="btn btn-default" value="复 制" onclick="copyToClipboard(document.getElementById('threecopy').value)" /></p>
+				</div>
+				<div class="clear"></div>
+			</div><!--box end-->			
+			
+			<div class="clear" style="height:30px;"></div>
+			</div><!--c-center-data end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

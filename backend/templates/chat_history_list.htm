@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+body {
+	padding:0px;
+	margin:0px;
+	font-size:10pt;
+}
+</style>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+function goDate(v){
+	window.location.href = "chat_ajax.php?n=show&uid={$uid}&sid={$sid}&date="+v;	
+}
+</script>
+</head>
+<body>
+<div style="margin-left:5px; margin-top:10px;">
+	<table width="400" border="0" cellspacing="0" cellpadding="0">
+		{loop $mes $v}
+		<tr align="left">
+			<td height="25" style="font-size:10pt;{if $v['s_uid']==$uid}color:#060{/if}">{if $v['nickname']}{$v['nickname']}{else}{$v['s_uid']}{/if}&nbsp;&nbsp;&nbsp;{php echo date("Y-m-d H:i:s",$v['s_time'])}{if $v['is_server']}&nbsp;&nbsp;&nbsp;(红娘模拟){/if}</td>
+		</tr>
+		<tr>
+			<td style="padding-left:25px;font-size:11pt;">{$v['s_content']}</td>
+		</tr>
+		{/loop}
+		
+		{if empty($mes)}
+			<tr><td>今日无聊天记录</td></tr>
+		{/if}
+		<tr>
+			<td height="50" valign="bottom"><input type="text" value="{$date}" size="6" onclick="WdatePicker()" onchange="goDate(this.value)" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$pages}</td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

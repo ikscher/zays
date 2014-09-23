@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>相亲齐上阵</title>
+<script src="public/system/js/sys.js?v=1"></script>
+<script src="public/system/js/jquery-1.3.2.min.js"></script>
+<style type="text/css">
+*{ padding:0; margin:0 auto;}
+body{ background:#410102; font-size:12px; font-family:"宋体", Arial, Vrinda; }
+img { font-size:0; line-height:0; border:none; }
+a:link, a:visited{ color:#FFF; text-decoration:none; }
+a:hover, a:active{ color:#FFF; text-decoration:none; }
+#box{ width:980px; }
+.form{ width:980px; height:142px; background:url(module/activity/templates/default/images/d.jpg) no-repeat; color:#f01004;}
+ol{ list-style:none; width:450px; padding-top:25px; }
+li{ float:left; height:20px; line-height:20px; padding:0 15px 20px 0; text-align:center;}
+.dibu { width:980px; height:108px; background:url(module/activity/templates/default/images/f.jpg) no-repeat; }
+.manu { width:177px; height:0px; clear:both; padding-right:30px;}
+.footer { color:#FFF; text-align:center; line-height:18px; height:130px; padding-top:16px; }
+
+/* 评论 */
+.comment { background:#63020b; height:295px; font-size:12px; font-family:"宋体", Arial, Vrinda;}
+.com_left { width:385px; height:267px; border:1px #CCC solid; background:#F9F0D7; float:left; overflow:hidden;}
+.com_left_header{ border-bottom:1px #CCC solid; height:29px; }
+.com_left_header span{ display:block; width:73px; height:22px; background:#fad0ae; padding-top:7px; text-align:center; font-family:"黑体"; font-size:14px; float:left;}
+.comment ol{ list-style:none; width:350px; padding:3px 0 0 5px; line-height:18px; }
+.comment ol li {text-align:left;  height:26px; width:350px; border-bottom:1px #CCC solid; padding-top:12px;}
+.name { color:#06F; }
+.name a{ color:#f90;}
+.name span{ float:right; }
+
+.com_right{ font-size:14px; color:#FFF; font-family:"黑体"; width:540px; padding-left:33px; float:left;}
+.com_right span{ color:#f90;}
+.com_right a:link, .com_right a:visited{ text-decoration:none; color:#fff; }
+.com_right_header { padding-bottom:10px;}
+.neirong { width:36px; float:left;}
+.key { clear:both; padding-top:10px; line-height:21px; height:21px;}
+.key span{ float:right; display:block; width:94px; height:29px; }
+
+.ol_two { float:left; width:380px; list-style:none; }
+.ol_two li{ float:left; padding:0 5px 0 0 ; height:30px; line-height:30px;}
+
+.footer { color:#FFF; text-align:center; line-height:18px; height:130px; padding-top:16px; }
+
+/* 人数 */
+.number {
+	background:#F9F0D7;
+	width:540px;
+	border:1px #CCC solid;
+	font-size:14px;
+	font-family:"黑体";
+	color:#666;
+	line-height:1em;
+	text-align:center;height:21px; padding-top:8px; 
+}
+
+.number span{ color:#F90;}
+.number .man{ color:#03C;}
+.number .lady { color:#C03;}
+
+
+</style>
+
+<style>
+	html, html body /* 修正IE6振动bug */{_background-image:url(about:blank); _background-attachment:fixed;}
+.bottombar {
+	_width: 6000px;
+    background:#d0307e;
+    bottom: 0;
+	font-size:12px;
+    color: #F8D0EE;
+    display: block;
+    left: 0px;
+    min-height: 25px;
+    position: fixed;
+    right: 0px;
+    z-index: 0;
+	overflow:hidden;
+	line-height:25px;
+	height:25px;
+	border-top:1px #999 solid; 
+	_position:absolute; _bottom:auto; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+}
+.bottombar ul { width:962px; _width:5560px; margin:0 auto; }
+.bottombar li{height:30px; float:none; padding: 0; line-height: 25px; text-align:left;}  
+.bottombar li a { color: #d4f905; text-decoration: none; }
+
+.photo, .video { width:950px;   background:#63020b;}
+.photo p { text-align:right;  no-repeat center 0; width:930px; padding:0px 20px 0 0; height:24px;}
+.photo ol { width:920px; list-style:none; overflow:hidden; height:165px; margin-top:5px; padding-top:0px;}
+.photo ol li{ float:left; padding:0px 1px 0 0 ; }
+
+
+.video_ul { width:940px;  float:left; padding:10px 0 0 10px; height:180px; overflow:hidden;} 
+.video_ul li {float:left; width:290px; height:212px; overflow:hidden; padding:0 10px; }	
+
+</style>
+
+<script type="text/javascript">
+  function checkForm() {
+	var username = $("#username").val();
+    var mobile = $("#mobile").val();
+    var year = $("#year").val();
+    var month = $("#month").val();
+    var workprovince = $("#workprovince").val();
+    var workcity = $("#workcity").val();
+    if(!username || username==''){
+        alert('您的用户名格式不对!');
+        return false;
+    }
+    
+    
+    if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(mobile)) || mobile==''){ 
+        alert('您输入的手机号格式不对!');
+        return false;
+    }
+    
+    if(year=='0'||year==''){
+        alert('您忘记选择出生年份');
+        return false;
+    }
+
+    if(month=='0'||month==''){
+        alert('您忘记选择出生月份');
+        return false;
+    }
+
+    if(workprovince == '10101201' || workprovince =='10102000' || workprovince =='10103000' || workprovince =='10101002' || workprovince =='10104000' || workprovince =='10105000' || workprovince =='10132000' || workprovince =='10133000' || workprovince =='10134000'){
+        return true;
+    }else{   
+        if(workprovince == '0' || workprovince == '' || workcity=='0' || workcity==''){
+            alert('您忘记选择地区这项了!');
+            return false;
+        }
+    }
+    
+    return true;
+    
+  }
+
+  $(function(){
+      $("#useryear").attr("disabled","disabled");
+      $("#usermonth").attr("disabled","disabled");
+      $("#userworkprovince").attr("disabled","disabled");
+      $("#userworkcity").attr("disabled","disabled");
+
+  });
+
+
+  function checkRemark(){
+    var uid = $("#userid").val();
+	var content = $("#content").val();
+	
+	if(!uid){
+	   alert('您还没有登录！');
+	   return false;
+	}
+
+    if (content.length<=1 || content==''){
+	  alert("请输入您的评论内容!");
+	  return false;
+   }
+
+
+
+ }
+
+    
+ //检测验证码是否正确
+ /*
+$(function().blur(function(){
+		var seccode = $('#seccode').val();
+	
+		var url = 'ajax.php?n=activity&h=seccode&updates='+Math.random();
+		$.get(url,{seccode:seccode},function(data){							
+			if(data == '2'){
+				alert('验证码输入不正确');
+			}						
+		   
+    });
+
+  });
+
+*/
+
+
+</script>
+
+</head>
+<body>
+
+
+<form id='reguser' action='index.php?n=activity&h=register&channel=3' method='post'  onsubmit="return checkForm();" >
+<div id="box">
+	<div><img src="module/activity/templates/default/images/a.jpg" /></div>
+    <div><img src="module/activity/templates/default/images/e.jpg" /></div>
+    <div><img src="module/activity/templates/default/images/b.jpg" /></div>
+    <div><img src="module/activity/templates/default/images/c.jpg" /></div>
+    <div class="form">
+	    {if empty($GLOBALS['userid'])}
+            <ol>
+            	<li>姓名：<input name='username' id="username" type="text" style="width:55px; height:18px; border:1px #b7caf5 solid; " /></li>
+                <li>性别：<select name="gender"  style="height:20px; border:1px #b7caf5 solid; ">
+                  <option>男</option>
+                  <option>女</option>
+              </select></li>
+                <li>出生年月 ： <script>getYearsSelect('','year','year','','0');</script>
+                          <script>getMonthsSelect('','month','month','','0');</script>
+			    </li>
+
+                <li>手机号： <input name="mobile" id="mobile" type="text" style="width:96px; height:18px; border:1px #b7caf5 solid;" /></li>
+                <li>地区：地区：<script>getProvinceSelect43rds('','workprovince','workprovince','workcity','','10100000');</script>                  
+                       <script>getCitySelect43rds('','workcity','workcity','','');</script>  </li>
+            </ol>
+		{else}
+		    <ol>
+            	<li>姓名：<input name='username'  id="username" value="{php echo $user_arr['username'];}" type="text" disabled="disabled" style="width:55px; height:18px; border:1px #b7caf5 solid; " /></li>
+                <li>性别：<select name="gender" disabled="disabled" style="height:20px; border:1px #b7caf5 solid; " >
+                  <option value='0' {if $user_arr['gender']=='0'} selected="selected" {/if} disabled="disabled">男</option>
+				  <option value='1' {if $user_arr['gender']=='1'} selected="selected" {/if} disabled="disabled">女</option>
+              </select></li>
+                <li>出生&nbsp;<script>getYearsSelect('','useryear','year',{php echo $user_arr['birthyear'];},'0');</script>
+						  <script>getMonthsSelect('','usermonth','month',{php echo $user_arr['birthmonth'];},'0');</script> </li>
+                <li>手机号： <input name="mobile" id="mobile"  type="text" value="{php echo $user_arr['telphone'];}" style="width:96px; height:18px; border:1px #b7caf5 solid;" disabled="disabled" /></li>
+                <li>地区：<script>getProvinceSelect43rds('','userworkprovince','workprovince','workcity','{php echo $user_arr['province'];}','10100000');</script>                  
+					   <script>getCitySelect43rds('','userworkcity','workcity','{php echo $user_arr['city'];}','');</script> </li>
+            </ol>
+		{/if}
+    </div> 
+        <div class="dibu">
+        	<div class="manu"><input name="" value='' type="submit" style="width:179px; height:48px; background:url(module/activity/templates/default/images/manu.jpg) no-repeat; border:none; cursor:pointer; " />
+			</div>
+
+    	</div>
+</form>   
+    
+  <div style="padding:10px 0 0 10px; background:#63020b;">
+			<div class="comment">
+			  <div class="com_left">
+					<div class="com_left_header"><span>网友评论</span></div>
+					<ol>
+					   {loop $result  $value}
+						<li>
+							<p class="name"><span>{php echo $value['operationtime'];}</span>网友 <a>{php echo $value['username'];}</a> 发表评论</p>
+							<p>{php echo $value['remark'];}</p>
+						</li>
+					   {/loop}
+					</ol>
+			  </div>
+			  <div class="com_right">
+                <form id='remark' action='index.php?n=activity&h=hbtv' method="post" onsubmit="return checkRemark();">
+				<div class="com_right_header">{if !empty($GLOBALS['userid'])}昵称:<span>{php echo $user_arr['nickname'];}</span> ID:<span>{php echo $user_arr['uid'];}</span> {else}<a href="index.php?n=login">重新登录</a> <a href="index.php?n=register">立即注册</a>{/if}</div>
+           
+                
+				 <!-- 人数统计 begin -->
+				<div class="number">总点击人数:<span>{php echo $click_num;}</span>人&nbsp;已报名人数:<span>{php echo $num;}</span>人&nbsp;<span class="man">♂男:{php echo $male_num;}人</span>&nbsp;<span class="lady">♀女:{php echo $female_num;}人</span>&nbsp;</div>
+				<!-- 人数统计 end -->
+				<div style="clear:both;"><p>&nbsp;</p></div>
+
+
+				<div class="neirong">内容:</div>
+				<div><textarea name="content" id="content" rows="6" cols="62" > </textarea></div>
+				
+				<div class="key">
+                 
+				<span><input type="submit"  name="" value="" style="width:94px; height:29px; background:url(module/activity/templates/default/images/submit_remark.jpg); border:none;" /></span>
+
+				<ul class="ol_two">
+				<li>验证码：</li> <li><input name="seccode" type="text" id="seccode" style="width:100px; height:30px; border:none;" /></li>
+				<li><img id="code" src="index.php?n=activity&h=seccode" border="0" onclick="javascript:this.src='index.php?n=activity&h=seccode&update=' + Math.random();" style="margin-top:2px;cursor:pointer;" /></li>
+			    <li><a class="next-yz" onclick="javascript:$('#code').attr('src','index.php?n=activity&h=seccode&updatak='+Math.random())" style="cursor:pointer;">&larr; 看不清</a></li>
+			   
+               </div>
+			   <input type='hidden' id='userid' value="{php echo $user_arr['uid'];}" />
+
+              
+
+                </form>
+              </div>
+			 
+			  
+               
+			</div>        
+    </div>
+		 <div style="height:10px; clear:both; "></div>
+ <!-- 图片及视频 -->
+ <div style="padding:0px 0 0 0px; background:#63020b;">
+		
+            	<div class="photo" style="padding-left:17px;">
+					<ol>
+						<li><img src="module/activity/templates/default/images/hbtv/01.jpg" /></li>
+						<li><img src="module/activity/templates/default/images/hbtv/02.jpg" /></li>
+						<li><img src="module/activity/templates/default/images/hbtv/03.jpg" /></li>
+						<li><img src="module/activity/templates/default/images/hbtv/04.jpg" /></li>
+					</ol>
+					<ol>
+						<li><img src="module/activity/templates/default/images/hbtv/05.jpg" /></li>
+						<li><img src="module/activity/templates/default/images/hbtv/06.jpg" /></li>
+						<li><img src="module/activity/templates/default/images/hbtv/07.jpg" /></li>
+						<li><img src="module/activity/templates/default/images/hbtv/08.jpg" /></li>
+					</ol>		
+                </div>
+                    
+   
+				
+   <div style="padding:10px 0 0 0px; background:#63020b;">
+                <div class="video">
+					<ol class="video_ul">
+						<li><div id="v1"></div></li>
+						<li><div id="v2"></div></li>
+						<li><div id="v3"></div></li>
+					</ol>
+                </div>
+    </div>                  
+             
+	
+				 <div style="height:10px; clear:both; "></div>
+            <!-- 图片及视频 结束 -->
+	</div>
+	<div class="footer">
+    	<p><a href="index.php?n=about&h=us">关于我们</a>|  <a href="index.php?n=about&h=contact">联系我们</a>  |<a href="index.php?n=about&h=links">合作伙伴</a> |<a href="index.php?n=about&h=getsave">意见反馈</a> |<a href="index.php?n=story">成功故事</a> | <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> | 
+		{if !empty($user_arr['s_cid'])} <a href="index.php?n=index&h=add_vip&s_cid=$user_arr['s_cid']">其他信息</a>{else}<a href="index.php?n=index&h=add_vip">其他信息</a>{/if}
+		 </p>
+        <div style="padding:20px 0; "><img src="module/activity/templates/default/images/g.jpg" /></div>
+        <p>Copyright 2005-2010 版权所有：真爱一生网 闽ICP备09064513号</p>
+		<p>真爱一生网备用域名： www.hongniangw.com | www.hongniangwang.com</p>
+    </div>
+</div>
+{template system/service_foot public}
+</body>
+	<script type="text/javascript" src="public/system/js/jwplayer.js"></script>
+	<script type="text/javascript">
+	var w='280px',h='212px';
+		jwplayer("v1").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/activity/templates/default/images/flv/hbtv/1.flv",
+			image: "module/activity/templates/default/images/hbtv/1.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("v2").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/activity/templates/default/images/flv/hbtv/2.flv",
+			image: "module/activity/templates/default/images/hbtv/2.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+		
+		jwplayer("v3").setup({
+			flashplayer: "public/system/js/player.swf",
+			file: "module/activity/templates/default/images/flv/hbtv/3.flv",
+			image: "module/activity/templates/default/images/hbtv/3.jpg",
+			height:h,
+			'frontcolor': 'ffffff',
+    'lightcolor': 'cc9900',
+    'screencolor': 'ffffff',
+    'stretching': 'fill',
+    		'controlbar': 'bottom',
+			'skin':'public/system/js/b.zip',
+			width:w
+		});
+	</script>
+</html>

@@ -1,0 +1,105 @@
+<style>
+	html, html body /* 修正IE6振动bug */{_background-image:url(about:blank); _background-attachment:fixed;_overflow-x:hidden;_overflow-y:auto;}
+.bottombar {
+	_width: 6000px;
+    background:#d0307e;
+    bottom: 0;
+	font-size:12px;
+    
+    display: block;
+    left: 0px;
+    min-height: 25px;
+    position: fixed;
+    right: 0px;
+    z-index: 0;
+	overflow:hidden;
+	line-height:25px;
+	height:25px;
+	border-top:1px #999 solid; 
+	_position:absolute; _bottom:auto; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+}
+.bottombar ul { width:962px; _width:5560px; margin:0 auto; }
+.bottombar li{height:30px;}  
+.bottombar li a { color: #d4f905; text-decoration: none; }
+</style>
+
+
+<script src="public/system/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript">  
+(function($){   
+$.fn.extend({   
+        Scroll:function(opt,callback){   
+                //参数初始化   
+                if(!opt) var opt={};   
+                var _btnUp = $("#"+ opt.up);//Shawphy:向上按钮   
+                var _btnDown = $("#"+ opt.down);//Shawphy:向下按钮   
+                var timerID;   
+                var _this=this.eq(0).find("ul:first");   
+                var     lineH=_this.find("li:first").height(), //获取行高   
+                        line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度   
+                        speed=opt.speed?parseInt(opt.speed,10):500; //卷动速度，数值越大，速度越慢（毫秒）   
+                        timer=opt.timer //?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）   
+                if(line==0) line=1;   
+                var upHeight=0-line*lineH;   
+                //滚动函数   
+                var scrollUp=function(){   
+                        _btnUp.unbind("click",scrollUp); //Shawphy:取消向上按钮的函数绑定   
+                        _this.animate({   
+                                marginTop:upHeight   
+                        },speed,function(){   
+                                for(i=1;i<=line;i++){   
+                                        _this.find("li:first").appendTo(_this);   
+                                }   
+                                _this.css({marginTop:0});   
+                                _btnUp.bind("click",scrollUp); //Shawphy:绑定向上按钮的点击事件   
+                        });   
+  
+                }   
+                //Shawphy:向下翻页函数   
+                var scrollDown=function(){   
+                        _btnDown.unbind("click",scrollDown);   
+                        for(i=1;i<=line;i++){   
+                                _this.find("li:last").show().prependTo(_this);   
+                        }   
+                        _this.css({marginTop:upHeight});   
+                        _this.animate({   
+                                marginTop:0   
+                        },speed,function(){   
+                                _btnDown.bind("click",scrollDown);   
+                        });   
+                }   
+               //Shawphy:自动播放   
+                var autoPlay = function(){   
+                        if(timer)timerID = window.setInterval(scrollUp,timer);   
+                };   
+                var autoStop = function(){   
+                        if(timer)window.clearInterval(timerID);   
+                };   
+                 //鼠标事件绑定   
+                _this.hover(autoStop,autoPlay).mouseout();   
+                _btnUp.css("cursor","pointer").click( scrollUp ).hover(autoStop,autoPlay);//Shawphy:向上向下鼠标事件绑定   
+                _btnDown.css("cursor","pointer").click( scrollDown ).hover(autoStop,autoPlay);   
+  
+        }         
+})   
+})(jQuery);
+  
+$(document).ready(function(){   
+        $("#imon").Scroll({line:1,speed:500,timer:4000});   
+});   
+</script>  
+
+
+ 
+ 
+
+{php $text_list = text_show();}
+{if isset($_GET['n']) && $_GET['n'] != 'search'}
+<div id="imon" class="bottombar clearfix" style="bottom: 0pt;   _bottom:-1px;_height:28px;_overflow:hidden;">
+	<ul >
+	{loop $text_list $key $v}
+		<li style="margin-top: 0pt; color: #F8D0EE;"><span style="color:#000000; font-weight:600;">相亲动态：</span>{php echo $v['list']}</li>
+	{/loop}
+	</ul>
+</div>
+{/if}﻿

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{php echo $user['nickname']?$user['nickname']:'ID:'.$user['uid']}的征婚交友信息——成就美好姻缘——真爱一生网</title>
+{template system/js_css public}
+<link type='text/css' rel='stylesheet' href='module/space/templates/default/liquidcarousel.css' />
+<link rel="stylesheet" type="text/css" href="module/space/templates/default/jquery.fancybox.css?v=2.1.5" media="screen" />
+<link rel="stylesheet" type="text/css" href="module/space/templates/default/jquery.fancybox-buttons.css?v=1.0.5" />
+<link href="module/space/templates/gray/space.css" rel="stylesheet" type="text/css" />
+<link href="module/space/templates/default/common.css" rel="stylesheet" type="text/css" />
+<link href="public/default/css/gototop.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="module/space/templates/public/js/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="module/space/templates/public/js/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script type="text/javascript" src="module/space/templates/public/js/jquery.liquidcarousel.pack.js"></script>
+<script type="text/javascript" src="module/space/templates/public/js/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+<script type="text/javascript">
+
+window.onload=function(){
+    var uid={$userid};
+	if(typeof(uid)== "undefined" || uid == 0){
+	    //$('#myModal .modal-header button').remove();
+	    openLogin();
+	}
+};
+
+function openLogin(){
+	$('#myModal').modal({
+		backdrop: 'static',
+		keyboard: true
+	})
+}
+
+$(document).ready(function() {
+	$('#liquid').liquidcarousel({
+		height: 100,		//the height of the list
+		duration: 100,		//the duration of the animation
+		hidearrows: true	//hide arrows if all of the list items are visible
+	});
+});
+
+
+
+$('.fancybox-buttons').fancybox({
+	openEffect  : 'none',
+	closeEffect : 'none',
+
+	prevEffect : 'none',
+	nextEffect : 'none',
+
+	closeBtn  : false,
+
+	helpers : {
+		title : {
+			type : 'inside'
+		},
+		buttons	: {}
+	},
+
+	afterLoad : function() {
+		//this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+		this.title = '第 ' + (this.index + 1) + ' 张， 共' + this.group.length +'张'+ (this.title ? ' - ' + this.title : '');
+	}
+});
+
+$(function(){
+	$("input[name=search_type][value=1]").attr("checked","checked");
+	$("input[name=search_type]").click(function(){
+		if(this.value == 1){
+			$("#search_more").css("display","");
+			$("#search_uid").css("display","none");
+		}
+		if(this.value == 2){
+			$("#search_uid").css("display","");
+			$("#search_more").css("display","none");
+		}
+		
+	})
+})
+
+function checkquicksearch(){
+	var age1 = document.getElementById("age1").value;
+	var age2 = document.getElementById("age2").value;
+	if( age1 == 0 && age2 == 0) {
+	alert("请选择年龄");
+	document.getElementById("age1").focus();
+	return false;
+	}
+	if(age1!=null && age1!='' && age1==0 && age2!=null && age2!='' && age2!=0) {
+	alert("请选择年龄下限");
+	document.getElementById("age1").focus();
+	return false;
+	}
+	if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2==0) {
+	alert("请选择年龄上限");
+	document.getElementById("age2").focus();
+	return false;
+	}
+	if(age1!=null && age1!='' && age1!=0 && age2!=null && age2!='' && age2!=0 && age1>age2) {
+	alert("您选择的年龄范围不正确，请重新选择");
+	document.getElementById("age1").focus();
+	return false;
+	}
+	return;
+}
+
+</script>
+</head>
+<body>
+	<div class="center">
+	<div class="head">
+		<div class="head-top">
+			<a href="http://www.zhenaiyisheng.cc/" class="logobox"></a>
+			
+			<div class="toptel"></div>
+			{if $GLOBALS['MooUid']}
+            	<div class="topmsg">欢迎您 <span class="f-b90101">{php echo MooCutstr($GLOBALS["user_arr"]['nickname'],8,'')}</span> ，您是今天第 <span class="f-000-a">{php echo MooLogin();}</span>  位登陆用户</div>
+           		<div class="topmsg">您的ID是 <span class="f-b90101">{$GLOBALS["user_arr"]['uid']}</span> <a href="index.php?n=service&h=message" class="f-000-a">最新邮件</a>（<span class="f-b90101">{php echo $message_total = header_show_total($GLOBALS["user_arr"]['uid']);}</span>） <a href="index.php?n=material&h=password" class="f-000-a">修改密码</a>  <a href="./index.php?n=index&h=logout" class="f-000-a">安全退出</a></div>
+			{else}
+            	<div class="topmsg2">您好，欢迎来到真爱一生网！[<a href="index.php?n=login" class="f-000-a">请登陆</a>] [<a href="index.php?n=register" class="f-000-a">免费注册</a>]</div>
+			{/if}		
+       </div>
+		<div class="topnav">
+			<ul class="navbar">
+			    <li><a href="index.html">首&nbsp;&nbsp;页</a><b></b></li>
+				<li><a href="service.html">我的真爱</a><b></b></li>
+				<li><a href="search.html">真爱寻友</a><b></b></li>
+				<li><a href="material.html">我要征婚</a><b></b></li>
+				<li><a href="lovetest.html">爱情测评</a><b></b></li>
+				<li><a href="myaccount.html">信用认证</a><b></b></li>
+				<li><a href="vote.html">E见钟情</a><b></b></li>
+				<li><a href="introduce.html">服务介绍</a></li>
+			</ul>
+			<a href="upgrade.html" class="dmenber2" title="升级成高级、钻石、铂金会员"></a>
+		</div>
+		<div class="clear"></div>
+	</div><!--head end-->
+	
+	<!-- <div class="searchbar">
+    <form action="index.php" method="get" onsubmit="return checkquicksearch();">
+		<div class="search-cts">
+				<label for="s1"><input name="search_type" type="radio" value="1" checked id="s1"/>按条件搜索</label>
+				<label for="s2"><input name="search_type" type="radio" value="2" id="s2"/>按ID号搜索</label>
+			</div>
+			<ul class="search-cts-list" id="search_more">
+				<li>性别
+                    <select name="gender">
+                    <option value="0" {if $GLOBALS["user_arr"]['gender'] == 1}selected{/if}>男</option>
+                    <option value="1" {if $GLOBALS["user_arr"]['gender'] == 0}selected{/if}>女</option>
+                    </select>
+                </li>
+				<li>年龄
+					<script>getSelect('','age1','agebegin','','21',age);</script>&nbsp;至&nbsp;<script>getSelect('','age2','ageend','','45',age) ;</script>
+                </li>
+				<li>地区
+					<script>getProvinceSelect66('m2 s67','workprovince','workprovince','workcity','','10100000');</script>
+					<script>getCitySelect66('m2 s67','workcity','workcity','','');</script>
+                </li>
+				<li><input name="photo" type="checkbox" id="isphoto" value="1" checked="checked" />有照片</li>
+			</ul>
+			<input type="text" name="search_uid" id="search_uid" class="reg-info-text" style="display:none"/>
+			<input type="hidden" name="n" value="search" />
+			<input type="hidden" name="h" value="quick" />
+			<input type="hidden" name="quick_search" value="search" id="quick_search" />
+            <input type="submit" id="quick_search" name="" class="btn btn-default" value="搜索意中人" />
+    </form>
+	</div> -->
+	
+	
+	<div class="content">
+		<div class="c-right">
+			<div class="c-rightbox">					
+				<div class="right-title"><span class="r-title">{if $uid != $userid}{php echo $user['nickname']?MooCutstr($user['nickname'], 12, ''):'ID:'.$user['uid']}{else}我{/if}的征婚资料</span></div>
+				<div class="pInfo">
+					<div class="myself">
+						<p style="width:110px;height:138px;overflow:hidden;padding-top:5px;margin-left:8px;">
+						{if $user['images_ischeck']=='1'&& $user['mainimg']}
+							 <img id="show_pic_1"  class="fixphoto_" src="{php   
+							  if(MooGetphoto($user['uid'],'mid')) echo IMG_SITE.MooGetphoto($user['uid'],'mid');
+							  elseif($user['gender'] == '1')echo 'public/system/images/woman_1.gif';
+							  else  echo 'public/system/images/man_1.gif';
+							  }" flag=''/></a>
+					   {elseif $user['mainimg']}
+							{if $user['gender'] == '1'}
+								<img id="show_pic_1" src="public/system/images/woman.gif"/>
+							{else}
+								<img id="show_pic_1" src="public/system/images/man.gif" />
+							{/if}
+							</a>
+					   {else}                                        
+							{if $user['gender'] == '1'}
+								<img id="show_pic_1" src="public/system/images/service_nopic_woman.gif"/>
+							{else}
+								<img  id="show_pic_1" src="public/system/images/service_nopic_man.gif"/>
+							{/if}
+							</a>
+					   {/if} 
+					   </p>
+					</div>
+					
+					<div class="vmcd">
+						<div>						
+							<div>
+							<span class="f-ed0a91">
+							{if $user['s_cid'] == 20}
+							<a href="#"><img src="module/space/templates/default/images/zuan0.gif" /></a>
+							{elseif $user['s_cid'] == 30}
+							<a href="#"><img src="module/space/templates/default/images/zuan1.gif" /></a></span>
+							{/if}
+							<span class="myname">{php echo $user['nickname']?$user['nickname']:'ID:'.$user['uid']}</span>&nbsp;<span class="memberid">（ID：$user['uid']）</span>	
+							<span>诚信度：</span>
+								{php echo get_integrity($user['certification']);}
+							</div>
+							
+						</div>
+						
+						<div>{if $user['birthyear']}{php echo (date('Y', time()) - $user['birthyear']);}岁{else}年龄保密{/if}，{php echo loveStatus($status);}，居住在<span class="address">{if $user['province'] == '0' && {$user['city']} == '0'}保密{else}<script>userdetail('{$user['province']}',provice)</script><script>userdetail('{$user['city']}',city)</script>{/if}</span>的<script>userdetail('{$user['gender']}',sex)</script>，寻找一位年龄{if $c['age1'] == '0'}不限的{else}在<script>userdetail('{$c['age1']}',age)</script>-<script>userdetail('{$c['age2']}',age)</script>岁{/if}{if $user['gender'] == 0}女士{else}男士{/if}。</div>
+						<div>
+							<ul class="right-cer">
+								{if !$usercer['telphone']}
+									<li class="cer-phone-no"><a href="index.php?n=myaccount&h=telphone" title="现在就去验证号码">未通过号码验证</a></li>
+								{else}
+									<li class="cer-phone-yes">已通过号码验证</li>
+								{/if}
+								{if !$usercer['sms']}
+									<li class="cer-card-no"><a href="index.php?n=myaccount&h=smsindex" title="现在就去身份通认证">未通过身份通验证</a></li>
+								{else}
+									<li class="cer-card-yes">已通过身份通认证</li>
+								{/if}
+								{if $usercer['email'] != 'yes'}
+									<li class="cer-email-no"><a href="index.php?n=myaccount&h=emailindex" title="现在就去邮箱认证">未通过邮箱验证</a></li>
+								{else}
+									<li class="cer-email-yes">已通过邮箱认证</li>
+								{/if}
+								{if $usercer['video_check']!=3}
+									<li class="cer-video-no"><a href="index.php?n=myaccount&h=videoindex" title="现在就去视频认证">未通过视频验证</a></li>
+								{else}
+									<li class="cer-video-yes">已进行视频认证</li>
+								{/if}
+							</ul>
+						</div>
+						<div class="clear"></div>
+						<div>
+						{if $usercer['identity_check'] == 3 || $usercer['education_check'] == 3 || $usercer['occupation_check'] == 3 || $usercer['salary_check'] == 3 || $usercer['house_check'] == 3 || $usercer['marriage_check'] == 3}
+							<span class="f-ed0a91">已认证证件：</span>{if $usercer['identity_check'] == 3}身份证   {/if}{if $usercer['education_check'] == 3}学历证   {/if}{if $usercer['occupation_check'] == 3}工作证   {/if}{if $usercer['salary_check'] == 3}工资证   {/if}{if $usercer['house_check'] == 3}房产证 {/if}{if $usercer['marriage_check'] == 3}婚育证{/if} 
+						{else}
+							<span class="f-ed0a91">已认证证件：</span>暂未验证任何证件 
+						{/if}
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="c-rightbox">
+				<div class="right-title">{if $userid == $uid}<a href="index.php?n=material&h=show" class="f-ed0a91-a">修改</a>{/if}<span class="r-title">相册</span></div>
+				<div class="rightbox-in">
+					<div id="liquid" class="liquid">
+						<span class="previous"></span>
+						<div class="wrapper">
+							
+							<ul>
+								{loop $user_pic $k $v} 
+								<li><a  class="fancybox-buttons" data-fancybox-group="button" href="{php echo IMG_SITE.$v['imgurl']}" ><img src="{php echo thumbImgPath('2',$v['pic_date'],$v['pic_name']);}"   /></a></li>
+								{/loop}
+							</ul>
+						</div>
+						<span class="next"></span>
+					</div>
+				</div>
+			</div>
+				
+            {if $user['gender'] == '1'}
+                {php $TA = '她'}
+            {else}
+                {php $TA = '他'}
+            {/if}
+			<div class="c-rightbox">
+				<div class="right-title">{if $userid == $uid}<a href="index.php?n=material&h=upinfo#person_message">修改</a>{/if}<span class="r-title">基本资料</span></div>
+				<div class="rightbox-in">
+					<ul class="dtable">
+                        <li>性&nbsp;&nbsp;&nbsp;&nbsp;别：<script>userdetail('{php echo  $user['gender']?1:0}',sex);</script></li>
+                        <li>年&nbsp;&nbsp;&nbsp;&nbsp;龄：{if $user['birthyear']}{php echo (date('Y', time()) - $user['birthyear']);}岁{else}保密{/if}
+                            {if $user2}{if ($c2['age1'] == '0' and $c2['age2'] =='0') || ($c2['age1'] == '0' and  (date('Y', time()) - $user['birthyear'])< $c2['age2']) || ($c2['age1'] < (date('Y', time()) - $user['birthyear']) and  (date('Y', time()) - $user['birthyear'])< $c2['age2']) || ($c2['age1'] < (date('Y', time()) - $user['birthyear']) and  $c2['age2'] == '0')}<font title="{$TA}的年龄符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的年龄符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>宗教信仰：{if $user['religion'] == '0'}保密{else}<script>userdetail('$user['religion']',belief)</script>{/if}</li>
+                        <li>身&nbsp;&nbsp;&nbsp;&nbsp;高：{if $user['height'] == '0'}保密{else}<script>userdetail('$user['height']',height)</script>厘米{/if}
+                            {if $user2}{if ($c2['height1'] == '0' and $c2['height2'] =='0') || ($c2['height1'] == '0' and  ($user['height'])< $c2['height2']) || ($c2['height1'] < ($user['height']) and  ($user['height'])< $c2['height2']) || ($c2['height1'] < ($user['height']) and  $c2['height2'] == '0')}<font title="{$TA}的身高符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的身高符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>体&nbsp;&nbsp;&nbsp;&nbsp;重：{if $user['weight'] == '0'}保密{else}<script>userdetail('$user['weight']',weight)</script>公斤{/if}
+                            {if $user2}{if ($c2['weight1'] == '0' and $c2['weight2'] =='0') || ($c2['weight1'] == '0' and  ($user['weight'])< $c2['weight2']) || ($c2['weight1'] < ($user['weight']) and  ($user['weight'])< $c2['weight2']) || ($c2['weight1'] < ($user['weight']) and  $c2['weight2'] == '0')}<font title="{$TA}的体重符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的体重符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>学&nbsp;&nbsp;&nbsp;&nbsp;历：{if $user['education'] == '0'}保密{else}<script>userdetail('$user['education']',education)</script>{/if}
+                            {if $user2}{if  $c2['education'] == '0' || ($c2['education'] ==  $user['education'])}<font title="{$TA}的学历符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的学历符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>民&nbsp;&nbsp;&nbsp;&nbsp;族：{if $user['nation'] == '0'}保密{else}<script>userdetail('$user['nation']',stock)</script>{/if}</li>
+                        <li>所在地区：{if $user['province'] == '0' && {$user['city']} == '0'}保密{else}<script>userdetail('{$user['province']}',provice)</script><script>userdetail('{$user['city']}',city)</script>{/if}
+                            {if $user2}{if ($c2['workprovince']<>'0' && $c2['workcity']<>'0')}{if ($c2['workprovince'] ==  $user['province']) && $c2['workcity'] == $user['city']}<font title="{$TA}的所在地区符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的所在地区符合您择偶要求"></font>{/if}{elseif $c2['workprovince']<>'0'}{if $c2['workprovince']==$user['province']}<font title="{$TA}的所在地区符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的所在地区符合您择偶要求"></font>{/if}{elseif $c2['workprovince'] =='0'}<font title="{$TA}的所在地区符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的所在地区符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>户口地区：{if $user['hometownprovince'] == '0' && {$user['hometowncity']} == '0'}保密{else}<script>userdetail('{$user['hometownprovince']}',provice)</script><script>userdetail('{$user['hometowncity']}',city)</script>{/if}
+                            {if $user2}{if ($c2['hometownprovince']<>'0' && $c2['hometowncity']<>'0')}{if ($c2['hometownprovince'] ==  $user['hometownprovince']) && $c2['hometowncity'] == $user['hometowncity']}<font title="{$TA}的户口所在地符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的户口所在地符合您择偶要求"></font>{/if}{elseif $c2['hometownprovince']<>'0'}{if $c2['hometownprovince']==$user['hometownprovince']}<font title="{$TA}的户口所在地符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的户口所在地符合您择偶要求"></font>{/if}{elseif $c2['hometownprovince'] =='0'}<font title="{$TA}的户口所在地符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的户口所在地符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>职&nbsp;&nbsp;&nbsp;&nbsp;业：{if $user['occupation'] == '0'}保密{else}<script>userdetail('$user['occupation']',occupation)</script>{/if}
+                            {if $user2}{if $c2['occupation']<>'0'}{if $c2['occupation'] ==  $user['occupation']}<font title="{$TA}的职业符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的职业符合您择偶要求"></font>{/if}{elseif $c2['occupation']=='0'}<font title="{$TA}的职业符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的职业符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>婚姻状况：{if $user['marriage'] == '0'}保密{else}<script>userdetail('$user['marriage']',marriage)</script>{/if}
+                            {if $user2}{if $c2['marriage']<>'0'}{if $c2['marriage'] ==  $user['marriage']}<font title="{$TA}的婚姻状况符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的婚姻状况符合您择偶要求"></font>{/if}{elseif $c2['marriage']=='0'}<font title="{$TA}的婚姻状况符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的婚姻状况符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>生&nbsp;&nbsp;&nbsp;&nbsp;肖：{if $user['birthyear'] == '0'}保密{else}{php echo get_signs($user['birthyear'])}{/if}</li>
+                        <li>公司类型：{if $user['corptype'] == '0'}保密{else}<script>userdetail('$user['corptype']',corptype)</script>{/if}</li>
+                        <li>是否有孩子：{if $user['children'] == '0'}保密{else}<script>userdetail('$user['children']',children)</script>{/if}
+                            {if $user2}{if $c2['children']<>'0'}{if $c2['children'] ==  $user['children']}<font title="{$TA}的有无孩子符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的有无孩子符合您择偶要求"></font>{/if}{elseif $c2['children']=='0'}<font title="{$TA}的有无孩子符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的有无孩子符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>星&nbsp;&nbsp;&nbsp;&nbsp;座：{if $user['constellation'] == '0'}保密{else}<script>userdetail('$user['constellation']',constellation)</script>{/if}</li>
+                        <li>居住情况：{if $user['house'] == '0'}保密{else}<script>userdetail('$user['house']',house)</script>{/if}</li>
+                        <li>月&nbsp;&nbsp;&nbsp;&nbsp;薪：{if $user['salary'] == '0'}保密{else}<script>userdetail('$user['salary']',salary1)</script>{/if}
+                            {if $user2}{if $c2['salary']<>'0'}{if $c2['salary'] ==  $user['salary']}<font title="{$TA}的月薪符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的月薪符合您择偶要求"></font>{/if}{elseif $c2['salary']=='0'}<font title="{$TA}的月薪符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的月薪符合您择偶要求"></font>{/if}{/if}
+                            </li>
+                        <li>血&nbsp;&nbsp;&nbsp;&nbsp;型：{if $user['bloodtype'] == '0'}保密{else}<script>userdetail('$user['bloodtype']',bloodtype)</script>{/if}</li>
+                        <li>购车情况：{if $user['vehicle'] == '0'}保密{else}<script>userdetail('$user['vehicle']',vehicle)</script>{/if}</li>
+                        <li>兄弟姐妹：{if $user['family'] == '0'}保密{else}<script>userdetail('$user['family']',family)</script>{/if}</li>
+                        <li>绑定情况：{if $user['isbind'] == '1'}<span style="color:#F00">绑定中...</span>{else}未绑定{/if}</li>
+					</ul>
+						<p>语言能力：{php $lg = explode(",",$user['language']);}
+                            {loop $lg $v}
+                                {if $v== ''}
+                                    保密
+                                {else}
+                                    <script>userdetail('$v',tonguegifts)</script>
+                                {/if}
+                            {/loop}
+                        </p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="c-rightbox">
+				<div class="right-title">{if $userid == $uid}<a href="index.php?n=material&h=upinfo&#choose_person">修改</a>{/if}<span class="r-title">择偶要求</span></div>
+				<div class="rightbox-in">
+					<ul class="dtable">
+						<li>年&nbsp;&nbsp;&nbsp;&nbsp;龄：{if $c['age1'] == '0'}不限{else}<script>userdetail('{$c['age1']}',age)</script>~<script>userdetail('{$c['age2']}',age)</script>岁 {/if}</li>
+						<li>身&nbsp;&nbsp;&nbsp;&nbsp;高：{if $c['height1'] == '0'}不限{else}<script>userdetail('$c['height1']',height)</script>~<script>userdetail('$c['height2']',height)</script>厘米{/if} </li>
+						<li>体&nbsp;&nbsp;&nbsp;&nbsp;重：{if $c['weight1'] == '0'}不限{else}<script>userdetail('$c['weight1']',weight)</script>~<script>userdetail('$c['weight2']',weight)</script>公斤{/if}</li>
+						<li>体&nbsp;&nbsp;&nbsp;&nbsp;型：{if $c['body'] == '0'}不限{else}<script>userdetail('{$c['body']}',body{php echo $user['gender']?0:1;})</script>{/if}</li>
+						<li>是否有照片：{if $c['hasphoto'] == '1'}有{else}无{/if}</li>
+						<li>征友地区：{if $c['hometownprovince'] == '0' && {$c['hometowncity']} == '0'}不限{else}<script>userdetail('{$c['hometownprovince']}',provice)</script><script>userdetail('{$c['hometowncity']}',city)</script>{/if}</li>
+						<li>教育程度：{if $c['education'] == '0'}不限{else}<script>userdetail('{$c['education']}',education)</script>{/if}</li>
+                        <li>职&nbsp;&nbsp;&nbsp;&nbsp;业：{if $c['occupation'] == '0'}不限{else}<script>userdetail('{$c['occupation']}',occupation)</script>{/if}</li>
+                        <li>月&nbsp;&nbsp;&nbsp;&nbsp;薪：{if $c['salary'] == '0'}不限{else}<script>userdetail('$c['salary']',salary1)</script>{/if}</li>
+                        <li>工&nbsp;作&nbsp;地：{if $c['workprovince'] == '0' && {$c['workcity']} == '0'}不限{else}<script>userdetail('{$c['workprovince']}',provice)</script><script>userdetail('{$c['workcity']}',city)</script>{/if}</li>
+                        <li>是否抽烟：{if $c['smoking'] == '0'}不限{else}<script>userdetail('{$c['smoking']}',smoking)</script>{/if}</li>
+                        <li>婚姻状况：{if $c['marriage'] == '0'}不限{else}<script>userdetail('{$c['marriage']}',marriage)</script>{/if}</li>
+                        <li>是否有孩子：{if $c['children'] == '0'}不限{else}<script>userdetail('{$c['children']}',children)</script>{/if}</li>
+                        <li>是否要孩子：{if $c['wantchildren'] == '0'}不限{else}<script>userdetail('{$c['wantchildren']}',wantchildren)</script>{/if}</li>
+
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="c-rightbox">
+				<div class="right-title">{if $userid == $uid}<a href="index.php?n=material&h=upinfo&actio=2">修改</a>{/if}<span class="r-title">生活方式</span></div>
+				<div class="rightbox-in">
+					<ul class="dtable">
+						<li>是否吸烟：{if $user['smoking'] == '0'}保密{else}<script>userdetail('{$user['smoking']}',isSmoking)</script>{/if}
+                   			{if $user2}{if $c2['smoking']<>'0'}{if $c2['smoking'] ==  $user['smoking']}<font title="{$TA}的是否吸烟符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的是否吸烟符合您择偶要求"></font>{/if}{elseif $c2['smoking']=='0'}<font title="{$TA}的是否吸烟符合您择偶要求"><img src="public/system/images/123.gif" alt="{$TA}的是否吸烟符合您择偶要求"></font>{/if}{/if}
+                        </li>
+                        <li>是否饮酒：{if $user['drinking'] == '0'}保密{else}
+                            <script>userdetail('{$user['drinking']}',isDrinking)</script>{/if}
+                        </li>
+					</ul>	
+					<p>喜欢的美食：{php $fd = explode(",",$user['fondfood']);}
+                        {loop $fd $v}
+                            {if $v == '0'}
+                                保密
+                            {else}
+                                 <script>userdetail('$v',fondfoods)</script>
+                            {/if}
+                        {/loop}
+                    </p>
+                    <p>喜欢的地方：{php $fd = explode(",",$user['fondplace']);}
+                        {loop $fd $v}
+                            {if $v == '0'}<span class="w350">保密</span>{else}
+                                <script>userdetail('$v',fondplaces)</script>
+                            {/if}
+                        {/loop}
+                    </p>					
+                    <div class="clear"></div>
+				</div>
+			</div>
+			<div class="c-rightbox">
+				<div class="right-title">{if $userid == $uid}<a href="index.php?n=material&h=upinfo&actio=3">修改</a>{/if}<span class="r-title">兴趣爱好</span></div>
+				<div class="rightbox-in">
+					<p style="margin-top:30px;">喜欢的运动：{php $fda = explode(",",$user['fondsport']);}
+                        {loop $fda $v}
+                            {if $v == '0'}<span class="w350">保密</span>{else}
+                                <script>userdetail('$v',fondsports)</script>
+                            {/if}
+                        {/loop}
+                    </p>
+					<p>喜欢的活动：{php $fda = explode(",",$user['fondactivity']);}
+                        {loop $fda $v}
+                            {if $v == '0'}<span class="w350">保密</span>{else}
+                                <script>userdetail('$v',fondactions)</script>
+                            {/if}
+                        {/loop}
+                     </p>				
+					<p>喜欢的音乐：{php $fda = explode(",",$user['fondmusic']);}
+                        {loop $fda $v}
+                            {if $v == '0'}<span class="w350">保密</span>{else}
+                                <script>userdetail('$v',fondmusics)</script>
+                            {/if}
+                        {/loop} 
+                    </p>
+                    <p>喜欢的影视：{php $fda = explode(",",$user['fondprogram']);}
+                        {loop $fda $v}
+                            {if $v == '0'}<span class="w350">保密</span>{else}
+                                <script>userdetail('$v',fondprograms)</script>
+                            {/if}
+                        {/loop}
+                    </p>					
+                    <div class="clear"></div>
+				</div>
+			</div>
+			<div class="c-rightbox">
+				<div class="right-title">{if $userid == $uid}<a href="index.php?n=material&h=upinfo&#person_introduce">修改</a>{/if}<span class="r-title">内心独白</span></div>
+				<div class="rightbox-in">
+					<p class="my-heart">
+                    {php $u = MooGetGPC('uid','integer');}
+                    {if !$u}
+                        {if $c['introduce'] != ''}
+                            {php echo Moorestr($c['introduce'])}
+                        {elseif  $c['introduce_check'] != ''}
+                            {php echo Moorestr($c['introduce_check'])}
+                            （<font class="f-ed0a91-a" style="text-decoration:none;">正在审核中</font>）
+                        {else}
+                            您还没有内心独白<font style="cursor:pointer;" color="#c10202" onclick="javascript:location.href='index.php?n=material&h=upinfo'"> 马上填写</font>
+                        {/if}           
+                    {else}
+                        {php echo $c['introduce']?Moorestr($c['introduce']):'还没有填写内心独白内容'}
+
+                    {/if}
+                    </p>
+					<div class="clear"></div>
+				</div>
+			</div>
+           
+			
+		</div><!--c-right end-->
+		
+		{template public/space_leftmenu_new module}
+		<div class="clear"></div>
+	</div><!--content end-->
+</div><!--center end-->
+{template public/space_footer module}
+<!--[if lte IE 6]>
+<script type="text/javascript" src="./public/default/js/bootstrap-ie.js"></script>
+<![endif]-->
+</body>
+</html>

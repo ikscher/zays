@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../public/system/js/sys.js?v=1"></script>
+
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+
+<style type="text/css" >
+    tr.over td {
+        background:#cfeefe;
+    } 
+   
+</style>
+<script  type="text/javascript">
+    //显示用户信息
+    function userdetail(number,arrayobj) {
+        var arrname = arrayobj;
+            for(i=0;i<arrayobj.length;i++) {
+                var valueArray  = arrayobj[i].split(",");
+                if(valueArray[0] == number) {
+                    if(valueArray[0] == '0' && valueArray[1] != '男士') {
+                        document.write("未选择");
+                    } else {
+                        document.write(valueArray[1]);
+                    }   
+                }
+        }
+    }
+
+
+    //分页跳转
+    function gotoPage() {
+        var page = $("#pageGo").val();
+        var page = parseInt(page);
+        
+        if(page<1) page = 1;
+        if(page>{php echo ceil($total/$page_per);})
+    
+        page = {php echo ceil($total/$page_per);};
+        window.location.href = "{$currenturl}&page="+page;
+    }
+
+
+
+    function enterHandler(event){
+        var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+        if (keyCode == 13) {
+           gotoPage();  //调用函数
+         } 
+    }
+
+
+    //排序
+    function chang_order(field,order){
+        location.href="{$currenturl}&order="+field+"&method="+order;
+    }
+
+    
+    //是否通过审核
+    function isIndex(id,value){
+        var isIndex;
+        if($("#"+id).attr("checked")==true){
+             isIndex=1;
+         }else{
+             isIndex=0;
+         }
+        //alert(isIndex+'and'+value+'and'+id);
+       
+         var url = "./site_ajax.php?n=index_diamond_recommend";
+         $.post(url,{isIndex:isIndex,value:value},function(data){
+             alert("Data Loaded: " + data);
+             
+         }); 
+       
+    }
+
+    
+    //更新钻石会员
+    function update_diamond(){
+         var url = "./site_ajax.php?n=update_diamond";
+         $.post(url,function(data){
+             if(data=='ok'){
+               alert("更新成功: " + data);
+             }else{
+               alert("更新失败: " + data);
+             }
+         }); 
+    }   
+
+    function clear_cache(){
+       var url="./site_ajax.php?n=clear_cache";
+       $.post(url,function(data){
+	       alert(data)
+           if(data=='ok'){
+               alert('清除成功！');
+           }else{
+               alert('清除失败！');
+           }
+       });
+    } 
+
+    //隔行换色
+    $(function(){
+        $(".csstab tr").mouseover(function(){
+            $(this).addClass("over");
+        }).mouseout(function(){
+            $(this).removeClass("over");    
+        });
+
+        $("#page_per").change(function(){
+            var page_per = this.value;
+            location.href="$currenturl"+"&page_per="+page_per;
+        });
+    });
+
+    //全选
+    function chooseall(){
+        var id=new Array();
+        if($("#choose_all").attr("checked")){
+            $("input[name='changesid[]']").attr("checked",true);//全选
+           
+            $("input[name^='changesid']").each(function(i){
+               id[i]=$(this).val();
+               //alert(id);
+              
+            });
+
+            var url="./site_ajax.php?n=batch_diamond_recommend";
+            $.post(url,{uid:id,isIndex:1},function(data){
+               if(data=='ok'){
+                  alert("Data Loaded: " + data);
+               }else{
+                  alert("Data Loaded: " + data);
+               }
+            });
+            
+        }else{
+            $("input[name='changesid[]']").attr("checked",false);//反选
+            $("input[name^='changesid']").each(function(i){
+               id[i]=$(this).val();
+               //alert(id);
+               
+            });
+            var url="./site_ajax.php?n=batch_diamond_recommend";
+            $.post(url,{uid:id,isIndex:0},function(data){
+                if(data=='ok'){
+                    alert("Data Loaded: " + data);
+                 }else{
+                    alert("Data Loaded: " + data);
+                 }
+            });
+            
+        }
+    }
+    function change_sort(uid,sort){
+        var new_sort=$("#sort_"+uid).val();
+        if(new_sort==sort){
+            return true;
+        }else{
+            var url='./site_ajax.php?n=change_diamond_sort';
+            $.post(url,{uid:uid,sort:new_sort},function(data){
+                if(data){
+                alert("设置成功");
+                }else{
+                alert("设置失败");
+                }
+            });
+        }
+    }
+    
+</script>
+
+</head>
+<body>
+<h1 style="margin-bottom:15px;">
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 首页钻石会员推荐（地区） </span>
+	<span class="action-span"><a href="index.php?action=site_recommend_diamond&h=district">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+
+
+
+<form action="" method="post">
+
+  
+&nbsp;&nbsp;<input type="button" name="updatediamond" value="更新钻石会员"    onclick="javascript:update_diamond();" />
+            <input type="button" name="clearcache" value="清除缓存"  onclick="javascript:clear_cache();" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+		<span class="desc">按有效期 时间段：</span>
+		<input type="text" name="startdate" value="{php echo $startdate;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/> 到
+		<input type="text" name="enddate" value="{php echo $enddate;}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <span class="desc"> 按 地区查询：</span>
+      <script>getProvinceSelect43rds('','workprovince','workprovince','workcity',"{php echo empty($province)?'10100000':$province;}",'');</script>
+     <script>getCitySelect43rds('','workcity','workcity',"{php echo empty($city)?'':$city;}",'');</script>
+      &nbsp; <label><input type="checkbox" name="isindex"  value='1' />已推荐</label>
+     
+    &nbsp; &nbsp;  <span class="desc"> 按 UID查询：</span><input type="text" name="uid" value='' />
+        
+  
+        &nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" name="submit" value="搜索"   />
+		<!--  <input type="reset" value="重置" class="button" />
+        
+        
+        <a href ="./index.php?action=financial_ahtv_reguser&h=list&type=reg"  >非本站注册用户</a>-->
+    
+        
+      
+</form>
+</br>
+<p>
+注：请选择  有形象照  并且 形象照通过审核 的会员 ，打勾的即为 推荐到首页 的钻石 会员！（本省女或男 钻石会员分别小于5个的，请不要推荐  ，会采用 默认方式推荐！）</p>
+<p>排列顺序默认为0,顺序值越大越靠前，变更之后最好清楚缓存并更新钻石会员</p>
+<div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	 <tr>
+		<th>序号</th>
+        <th>UID</th>
+        <th>昵称</th>
+        <th><a href="javascript:chang_order('gender','{$rsort_arr['gender']}')"  style="text-decoration:underline;">性别</a></th>
+        <th><a href="javascript:chang_order('birthyear','{$rsort_arr['birthyear']}')"  style="text-decoration:underline;">年龄</a></th>
+        <th><a href="javascript:chang_order('mainimg','{$rsort_arr['mainimg']}')"  style="text-decoration:underline;">形象照</a></th>
+        <th><a href="javascript:chang_order('images_ischeck','{$rsort_arr['images_ischeck']}')"  style="text-decoration:underline;">形象照是否审核</a></th>
+        <th><a href="javascript:chang_order('bgtime','{$rsort_arr['bgtime']}')"  style="text-decoration:underline;">升级开始时间</a></th>
+        <th><a href="javascript:chang_order('endtime','{$rsort_arr['endtime']}')"  style="text-decoration:underline;">升级结束时间</a></th>
+		<th>工作地区</th>
+        <th><input type="checkbox" id="choose_all" value="choose_all" onclick="javascript:chooseall();" />首页推荐</th>
+        <th>顺序</th>
+         </tr>
+    
+     {loop $comment $v}
+	 <tr>
+		 <td align="center">{$v['k']}</td>
+        <td align="center"><a href="#" onclick="parent.addTab('{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{php echo $v['uid'];}</a></td>
+		<td align="center">{php echo $v['nickname'];}</td>
+        <td align="center">{if $v['gender']==0}男{else}女{/if}</td>
+        <td align="center">{if $v['birthyear']}{php echo date('Y')-$v['birthyear'];}{else}未知{/if}</td>
+        <td align="center">{if $v['mainimg']}有{else}无{/if}</td>
+        <td align="center">{if $v['images_ischeck']=='1'}是{else}否{/if}</td>
+        <td align="center">{php echo $v['bgtime'];}</td>
+        <td align="center">{php echo $v['endtime'];}</td>
+        <td align="center"><script>userdetail("$v['province']",provice);userdetail("$v['city']",city);</script></td>
+         <td align="center"><input id="isIndex{$v['uid']}"  name="changesid[]" type="checkbox" value="{$v['uid']}" {if $v['isindex']==1} checked="checked" {/if} onclick="javascript:isIndex(this.id,this.value);"  /></td>
+         <td align="center"><input id="sort_{$v['uid']}" name="sort[]" type="txt" value="{$v['sort']}" onchange="change_sort({$v['uid']},{$v['sort']});"></td>
+	 </tr>
+	 {/loop}
+     
+	 </table>
+     
+         <table cellpadding="4" cellspacing="0">
+        <tr>
+          <td align="center">{$pages}
+          &nbsp;&nbsp;&nbsp;
+            转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+          <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+          </td>
+        </tr>
+      </table>
+</div>
+
+</body>
+
+
+
+</html>

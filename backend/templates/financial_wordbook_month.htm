@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>售后客服{$username}工作情况报表</title>
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/news.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/sys1.js?v=1"></script>
+</head>
+<script>
+	function checkform(){
+		var year = $('#year').val();	
+		var month = $('#month').val();
+		if(year == '-1' || month == '-1'){
+			return false;
+		}
+		return true;
+	}
+	var page=1;
+	var date=0;
+	var count_page = {$count_page};
+	var count_date = {$count_date}; 
+	
+	//会员升级时间查询
+	function search_bgtime(){
+		var uid = $('#uid').val().replace(/\s/g,'');	
+		var url = 'ajax.php?n=search_bgtime&uptimes='+Math.random();
+		if(uid && uid != '请输入会员ID号'){
+			$.get(url,{uid:uid},function(data){
+				//alert(data);
+				if(data){
+					$('#bgtime').html(uid+'会员升级时间:'+data);
+				}
+			})
+		}
+	}
+	
+</script>
+<body>
+	
+    <form name="form1" action="index.php?action=financial_wordbook&h=search&sid={$sid}&username={$username}" method="post" onsubmit="return checkform();">
+         <h1><span style="float:left; color:#000">真爱一生网&nbsp;管理中心—<font color="#FFFFFF">售后客服{$username}工作情况报表</font></span><span style="float:right" class="action-span"><a href="index.php?action=financial_wordbook&h=month&username={$username}&sid={$sid}">刷新</a>
+         </span>
+         <div style="clear:both;"></div>
+         </h1>
+          <h1>
+          <span style="float:left; color:#000">
+        		当前是{php echo date('Y年-m月');}升级的所有会员的维护日志	 
+          </span>
+          <div style="clear:both;"></div>
+         </h1>
+         <div>
+                工作情况日期时间：
+            <script>getYearsSelect('','year','year','-1','')</script>  年
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <script>getMonthsSelect('','month','month','-1','')</script>  月
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="查看"  class="button" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       		会员升级时间搜索：<input type="text" id="uid" value="请输入会员ID号" onclick="this.value=''" style="width:100px">&nbsp;&nbsp;&nbsp;<input type="button" value="查看"  class="button" onclick="search_bgtime();"/>&nbsp;&nbsp;&nbsp;&nbsp;<font id="bgtime"></font>
+        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="导出"  class="button" onclick="javascript:location.href='index.php?action=financial_wordbook&h=export&sid={$sid}&username={$username}&year={$year}&month={$date}'"/>
+        </div>
+     </form>
+    <div class="big-box">
+    <div class="bb-left" onclick="javascript:ajax('向左');" title="上一页" style="cursor:hand"></div>
+    <div class="big-box-in">
+        <div class="bb-top" onclick="javascript:ajax('向上');" title="上一个月" style="cursor:hand"></div>
+        <div class="bb-center">
+             <table id="" width="100%" border="0" align="left" cellpadding="3" cellspacing="1" class="table">	
+                <tr class="f-f00">
+                    <td width="10%" height="30" style="color:#000; background:url(templates/images/tab_bg.gif)"><p align="right"><strong>ID&nbsp;&nbsp;</strong></p><p><strong>日期</strong></p></td>
+                    {loop $member_arr $id}
+                        <td width="15%" height="30" align="center">{$id[uid]}</td>
+                    {/loop}
+                </tr>
+                {php $a = date('Y-m-',$bgtime);}
+                {for $i=1;$i<=$date_num;$i++}
+                <tr>
+                    <td width="10%" height="30" align="center">{php echo $a.$i}</td>
+                    {loop $member_arr $member_val} 
+              <td width="15%" height="30" align="center">
+                        {php $f = 0;}
+                        {php $all_val = '';}
+                        {loop $member_arrs $vals}
+                            {if $i <= 9}{php $date2 = $a.'0'.$i;}{else}{php $date2 = $a.$i;}{/if}
+                            {php $date = date('Y-m-d',$vals[dateline]);}
+                            {if $vals[uid] == $member_val[uid] && $date == $date2}
+                                {php $f = $f+1;}
+                                {php $all_val.='('.$f.')'.$vals[comment].'<br>';}
+                            {/if}
+                        {/loop}
+                        <font title="{$all_val}">{php echo $all_val;}</font>
+                     </td>
+                    {/loop}
+                </tr>
+                {/for}
+            </table>
+        </div>
+        <div class="bb-bottom" onclick="javascript:ajax('向下');" title="下一个月" style="cursor:hand"></div>
+    </div>	
+    <div class="bb-right" onclick="javascript:ajax('向右');" title="下一页" style="cursor:hand"></div>
+    <div style="clear:both"></div>
+</div>  
+    <script>
+        function ajax(val){
+            if(val == '向上'){
+                if(date < count_date){
+                    date = date+1;
+                    //page = 1;
+                }
+            }else if(val == '向下'){
+                if(date > 0){
+                    date = date-1;	
+                  //  page = 1;
+                }
+            }
+            
+            if(val == '向右'){
+                if(page < count_page){
+                    page = page+1;
+                }
+            }else if(val == '向左'){
+                if(page > 1){
+                    page = page-1;
+                }
+            }
+    
+            var url = 'ajax.php?n=excel_book&page='+page+'&date='+date+'&sid={$sid}&username={$username}&update='+Math.random();
+            $.get(url,function(data){
+                $('.bb-center').html(data);
+            })
+        };
+    </script>   
+</body>
+</html>

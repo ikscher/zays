@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网——光棍节专题活动</title>
+<link href="module/activity/templates/default/new_css.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,   
+form,fieldset,input,textarea,p,th,td {   
+padding: 0;   
+margin: 0;   
+}   
+.clearfix { display: inline-block; }
+a { text-decoration:none; outline:none;}
+ol, ul{ list-style:none;}
+img { border:none; line-height:0; font-size:0; }
+
+#wrap { width:960px; margin:0 auto;}
+.liuyan { width:930px; height:149px; background:url(module/activity/templates/default/images/ggj/11_liuyan.jpg) no-repeat; padding:60px 0 0 30px;}
+.liuyan * { vertical-align:middle; }
+</style>
+
+</head>
+
+<body>
+<div id="wrap">
+	<div><a  href="index.php?n=index&h=govip"><img src="module/activity/templates/default/images/ggj/11_a.jpg" /></a></div>
+    <div><img src="module/activity/templates/default/images/ggj/11_b.jpg" /></div>
+    <div><a href="index.php?n=payment"><img src="module/activity/templates/default/images/ggj/zuanshi.gif" /></a></div>
+    <div><img src="module/activity/templates/default/images/ggj/11_zs.jpg" /></div>
+    <div><a href="index.php?n=payment&h=diamond"><img src="module/activity/templates/default/images/ggj/gaoji.gif" /></a></div>
+    <div><img src="module/activity/templates/default/images/ggj/11_gj.jpg" /></div>
+	
+</div>
+ <div id="footer">
+            <p><a href="index.php?n=about&h=us">关于我们</a>| <!--  <a href="index.php?n=about&h=media">媒体关注</a> | --> <a href="index.php?n=about&h=contact">联系我们</a> | <a href="index.php?n=about&h=links">合作伙伴</a> | <a href="index.php?n=about&h=getsave">意见反馈</a> | <a href="index.php?n=story">成功故事</a>| <a href="index.php?n=payment&h=channel_diamond">汇款信息</a> |
+      {if (isset($user_arr['s_cid'])?$user_arr['s_cid']:'' == 30 && isset($user_arr['bgtime'])?$user_arr['bgtime']:'' > time()-604800) || !empty($GLOBALS['h_pay'])} <a href="index.php?n=payment&h=add_money">其他信息</a> {else} <a href="index.php?n=payment&h=channel">其他信息</a> {/if}</p>
+            <p></p>
+            <div style="text-align:center; font-size:0;  line-height:0;"><img src="module/activity/templates/default/images/activity_new/footer.jpg" /></div>
+            <p>Copyright 2005-2010 版权所有：真爱一生网 闽ICP备09064513号</p>
+            <p>真爱一生网备用域名：www.hongniangw.com | www.hongniangwang.com</p>
+            <div style="height:20px;"></div>
+        </div>
+    </div>
+</body>
+</html>

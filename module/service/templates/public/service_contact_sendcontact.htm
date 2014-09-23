@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的真爱一生--受理委托——真爱一生网</title>
+<link href="module/service/templates/default/service.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+</head>
+<script type="text/javascript">
+// 读取数组显示用户信息
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+  	for(i=0;i<arrayobj.length;i++) {
+		var valueArray  = arrayobj[i].split(",");
+		if(valueArray[0] == number) {
+			if(valueArray[0] == '0' && valueArray[1] != '男士') {
+				document.write("不限");
+			} else {
+				document.write(valueArray[1]);
+			}	
+		}
+  	}
+  }
+function closeNum () {
+	var msg_num = document.getElementById("msg_num");
+	msg_num.style.display = "none";
+	
+}
+
+String.prototype.Trim = function() { 
+	return this.replace(/(^\s*)|(\s*$)/g,""); 
+} 
+
+function textCounter(field,tip,maxlimit) {
+	var tipobj = document.getElementById(tip);
+	if (field.value.Trim().length > maxlimit) // if too long...trim it!
+	{
+	 
+	  alert(" 限" + maxlimit + "字内！");
+	  field.value=field.value.substring(0,100);
+	  return;
+	}
+} 
+function addphone(){
+	var phone = $('#phone').val();
+	if(phone == ''){
+		alert('请填入您的手机号码');
+	}else if(!phone.match(/^((1[35]\d{9,9})|(18[4689]\d{8,8}))$/)){
+		alert('请填入您正确的手机号码');
+	}else{
+		var changeurl = 'ajax.php?n=service&h=addphone&phone='+phone;
+		$.get(changeurl,function(str){
+			if(str == phone){
+				is_login('yes');
+			}else{
+				alert('提交失败，请从新提交');
+			}
+		});
+	}
+}
+</script>
+<script language="javascript"> 
+function alertWin(title, msg, w, h){  
+    var titleheight = "25px";
+    var bordercolor = "#b75bad";
+    var titlecolor = "#FFFFFF";
+    var titlebgcolor = "#666699";
+    var bgcolor = "#FFFFFF";
+     
+    var iWidth = document.documentElement.clientWidth;  
+    var iHeight = document.documentElement.clientHeight;  
+    var bgObj = document.createElement("div");  
+    bgObj.style.cssText = "position:absolute;left:0px;top:0px;width:"+iWidth+"px;height:"+Math.max(document.body.clientHeight, iHeight)+"px;filter:Alpha(Opacity=30);opacity:0.3;background-color:#000000;z-index:101;"; 
+    document.body.appendChild(bgObj);  
+     
+    var msgObj=document.createElement("div"); 
+    msgObj.style.cssText = "position:absolute;top:"+(iHeight-h)/2+"px;left:"+(iWidth-w)/2+"px;z-index:102;border:3px solid #b75bad;width:345px;padding:10px;color:#666;background:#fff"; 
+    document.body.appendChild(msgObj); 
+     
+    var table = document.createElement("table"); 
+    msgObj.appendChild(table); 
+    table.style.cssText = "margin:0px;border:0px;padding:0px;"; 
+    table.cellSpacing = 0; 
+    var tr = table.insertRow(-1); 
+    var titleBar = tr.insertCell(-1); 
+    titleBar.style.cssText = "cursor:move"; 
+    titleBar.style.paddingLeft = "10px"; 
+    titleBar.innerHTML = title; 
+    var moveX = 0; 
+    var moveY = 0; 
+    var moveTop = 0; 
+    var moveLeft = 0; 
+    var moveable = false; 
+    var docMouseMoveEvent = document.onmousemove; 
+    var docMouseUpEvent = document.onmouseup; 
+    titleBar.onmousedown = function() { 
+        var evt = getEvent(); 
+        moveable = true;  
+        moveX = evt.clientX; 
+        moveY = evt.clientY; 
+        moveTop = parseInt(msgObj.style.top); 
+        moveLeft = parseInt(msgObj.style.left); 
+         
+        document.onmousemove = function() { 
+            if (moveable) { 
+                var evt = getEvent(); 
+                var x = moveLeft + evt.clientX - moveX; 
+                var y = moveTop + evt.clientY - moveY; 
+                if ( x > 0 &&( x + w < iWidth) && y > 0 && (y + h < iHeight) ) { 
+                    msgObj.style.left = x + "px"; 
+                    msgObj.style.top = y + "px"; 
+                } 
+            }     
+        }; 
+        document.onmouseup = function () {  
+            if (moveable) {  
+                document.onmousemove = docMouseMoveEvent; 
+                document.onmouseup = docMouseUpEvent; 
+                moveable = false;  
+                moveX = 0; 
+                moveY = 0; 
+                moveTop = 0; 
+                moveLeft = 0; 
+            }  
+        }; 
+    } 
+     
+    var closeBtn = tr.insertCell(-1); 
+    //closeBtn.style.cssText = "cursor:pointer; padding:2px;background-color:" + titlebgcolor; 
+    //closeBtn.innerHTML = "<span style='font-size:15pt; color:"+titlecolor+";'>×</span>"; 
+    closeBtn.onclick = function(){  
+        document.body.removeChild(bgObj);  
+        document.body.removeChild(msgObj);  
+    }  
+    var msgBox = table.insertRow(-1).insertCell(-1);  
+    msgBox.style.cssText = "font:10pt '宋体';"; 
+    msgBox.colSpan  = 2; 
+    msgBox.innerHTML = msg; 
+     
+    // 获得事件Event对象，用于兼容IE和FireFox 
+    function getEvent() { 
+        return window.event || arguments.callee.caller.arguments[0]; 
+    } 
+}  
+
+function is_login(uid){
+	if(uid == 'yes'){
+		location.href = self.location.href;
+	}
+	if(typeof(uid)== "undefined" || uid == 0){
+		$("html").css("overflow","hidden");
+		$("select").css("display","none");
+		alertWin('','<table width="345" border="0" cellpadding="0" cellspacing="0" ><tr><td colspan="2" height="38px;" style="background:#f9f9fb"><strong> <img src="module/space/templates/default/images/zhixiang.jpg" style="margin-right:5px;" />填写真实的手机号码，免费获得真爱一生委托</strong></td></tr><tr ><td align="right"  height="38px">手机号：</td><td><input name="phone" type="text"  style="width:160px;" id="phone"/></td></tr><tr><td>&nbsp;</td><td style="padding-bottom:10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="button" class="input" value="确定" onclick="addphone()"/></td></tr><tr><td colspan="2" height="38px;" style="background:#f9f9fb; border-top:1px dashed #ccc"></td></tr></table>',300,200);
+	}else{
+		$("html").css("overflow","");
+		$("select").css("display","");
+	}
+}
+function check(){
+        var content1=$("#content1").attr('value');
+        if(content1==''){alert("请填写介绍内容");return false;}else return true;
+}
+
+</script> 
+<body onload="is_login({$tel})">
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;资料设置</span><a href="index.php?n=invite" target="_blank" class="loaction_right">邀请好友</a></p>
+	<div class="content-lift">
+		<div class="c-lift-content">
+		<div class="c-lift-title">
+		我的联系情况
+		</div>
+		<div class="c-lift-content-in">
+			<dl class="cl-photo-show">
+				<dt>
+                	{if !empty($user_s['city_star'])}<a href="#" class="citystar" style="margin:-10px 0 0 -10px;"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
+					<div class="cl-photo-img">
+						<p>
+                        <a style="display:block;" href="index.php?n=space&h=viewpro&uid={$user_s[uid]}" target="_blank">
+                        {if $user_s['images_ischeck']=='1'&& $user_s['mainimg']}
+                                      <img src="{php   
+                                      if(MooGetphoto($user_s[uid],'com')) echo MooGetphoto($user_s[uid],'com');
+                                      elseif(MooGetphoto($user_s[uid],'medium')) echo MooGetphoto($user_s[uid],'medium');
+                                      elseif($user_s['gender'] == '1')echo 'public/system/images/woman.gif';
+                                      else  echo 'public/system/images/man.gif';
+                                      }" onload="javascript:DrawImage(this,110,138)" />
+                        {elseif $user_s['mainimg']}
+                            {if $user_s['gender'] == '1'}
+                                <img src="public/system/images/woman.gif"/>
+                            {else}
+                                <img src="public/system/images/man.gif"  />
+                            {/if}
+                        {else}
+                                {if $user_s['gender'] == '1'}
+                                    <img src="public/system/images/service_nopic_woman.gif"/>
+                                {else}
+                                    <img src="public/system/images/service_nopic_man.gif"/>
+                                {/if}
+                         {/if}
+                         </a>
+                        </p>
+					</div>
+				</dt>
+				<dd>
+                {if $user_s['s_cid'] != 30 && $user_s['s_cid'] != 40 && $user_s['s_cid'] != 50}
+                    <a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+                {elseif  $user_s['s_cid'] == 30}
+                    <a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+                {/if}
+                {php $nickname=$user_s['nickname']?$user_s['nickname']:$user_s['nickname']}{php echo $nickname?$nickname:'ID:'.$user_s['uid']}
+                </dd>
+				<dd class="f-ed0a91">&lt; 
+                 {php echo activetime($send_user1['lastvisit'],$send_user1['usertype']);}
+                &gt;</dd>
+				<dd>{if $user_s['birthyear']}{php echo (gmdate('Y', time()) - $user_s['birthyear']);}岁{else}年龄保密{/if}，<script>userdetail('{$user_s[marriage]}',marriage)</script></dd>
+				<dd>{if $user_s[province] == '0' && {$user_s[city]} == '0'}保密{else}<script>userdetail('{$user_s[province]}',provice)</script><script>userdetail('{$user_s[city]}',city)</script>{/if}</dd>
+				<dd>照片（{$pic_total}）</dd>
+			</dl>
+		</div>
+		<div class="c-lift-bottom"></div>
+		</div><!--c-lift-content-->
+		<div class="left-tips">
+			<div class="left-tips-side"></div>
+			<div class="left-tips-center">
+			<dl>
+				<dt><img src="module/service/templates/default/images/left-tips-img.gif" />
+					<p><a href="index.php?n=about&h=getsave" class="f-ed0a91-a">意见反馈</a></p>
+				</dt>
+				<dd>拨打<strong>400-8787-920</strong><br />咨询真爱一生网提供的专业征婚服务
+				</dd>
+				<!-- <dd>我们会用<strong>0551</strong>开头电话号码和您保持沟通联系 -->
+				</dd>
+			</dl>
+			</div>
+			<div class="left-tips-side" style="background-position:right;"></div>
+		</div>
+		
+	</div><!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=service" class="r-title-black">&lt;&lt; 返回我的真爱一生</a>
+			<a href="index.php?n=space&h=viewpro&uid={$user_s['uid']}" class="r-title-black">&lt;&lt; 返回{php echo $user_s['gender']?'她':'他'}的详细资料</a>
+			<span class="right-title f-ed0a91">受理委托</span>			
+			</div>
+			<div class="r-center-ccontent" style="padding:0 0 40px; width:753px;">
+            	<form action="" method="post" style="position:relative" onsubmit="return check();">
+				<div class="r-comment-box">
+					<p class="f-14x">委托现在开始：请将您的情况告诉红娘！ </p>
+					<p>当红娘向 <span class="f-ed0a91">{php $nickname=$user_s['nickname2']?$user_s['nickname2']:$user_s['nickname']}{php echo $nickname?$nickname:'ID '.$user_s['uid']}</span> 介绍您时， 您希望红娘着重介绍您的哪些方面？您有没有情况想让红娘帮您去了解？（选填,限100字内.在您发送委托成功后，我们会将您的照片也彩信的方式发送到对方手机上！）</p>					
+					<p><textarea name="content1" id="content1" style="width:500px; height:100px;" onkeyup="textCounter(this,'content1',100);"></textarea></p>
+					<p align="center"><input type="submit" name="formsubmit1" class="btn btn-default" value="提 交" style="float:none;"/></p>
+				</div>
+                 <input type="hidden" name="sendid" value="{$sendid}">
+                </form>
+				<div class="line" style="margin:0 20px;"></div>
+				<dl class="r-con-text">
+					<dt>什么是委托红娘联系？</dt>
+					<dd>“委托红娘联系”就是您委托红娘帮您联系感兴趣的对象。</dd>
+				</dl>
+				<dl class="r-con-text">
+					<dt>红娘怎么帮我联系对方？</dt>
+					<dd>红娘收到您的委托后，会通过电话向对方介绍您的优点，并询问{php echo $user_s['gender']?'她':'他'}与您的交往意愿。</dd>
+					<dd>如果对方愿意与您交往，红娘会尽快给您电话反馈，请耐心等候。</dd>
+				</dl>
+				<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

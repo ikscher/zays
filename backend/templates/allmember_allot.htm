@@ -1,0 +1,20 @@
+<br/>
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+		<tr>
+			<th>客服ID</th>
+			<th>分配情况</th>
+			<th>分配时间</th>
+		</tr>
+		{loop $allots $v}
+		<tr>
+			<td align="center">{$v['sid']}</td>
+			<td align="center">{$v['allot_con']}</td>
+			<td align="center">{php echo date("Y-m-d H:i",$v['allot_time']);}</td>
+		</tr>
+		{/loop}
+		<tr>
+			<td colspan="3" align="center">{if $pages>=2}<div style="text-align:center">第&nbsp;{php for($i=1;$i<=$pages;$i++) echo '<a href="javascript:letgopage('.$i.');">&nbsp;'.$i .'&nbsp;</a>';}&nbsp;页</div>{/if}</td>
+		</tr>
+	</table>
+</div>

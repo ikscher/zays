@@ -1,0 +1,101 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<style type="text/css">
+.desc {
+    color: #333333;
+    font-weight: bold;
+}
+tr.over td {
+	background:#cfeefe;
+} 
+</style>
+<script type="text/javascript">
+
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1){ 
+	page = 1;
+	}
+	if(page><?php echo ceil($total/$page_per);?>){
+	page = <?php echo ceil($total/$page_per);?>;
+	}
+
+	
+	
+	window.location.href = "<?php echo $currenturl;?>&page="+page;
+}
+
+
+
+
+</script>
+
+<h1 style="margin-bottom:15px;">
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 文字轮播 </span>
+	<span class="action-span"><a href="index.php?action=other&h=text_show">刷新</a></span>
+	<span class="action-span"><a href="index.php?action=other&h=text_show_add">新增</a></span>
+	<div style="clear:both"></div>
+</h1>
+
+
+
+
+<div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+<div class="list-div" id="listDiv">
+	
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	 <tr>
+		<th>序号</th>
+		<th>提交客服</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>内容</th>
+		<th>提交时间</th>
+		<th>提交客服</th>
+		<th>UID</th>
+		<th>类型</th>
+		<th>是否显示</th>
+		<th>排序</th>
+		<th>操作</th>
+	 </tr>
+     
+     <?php foreach((array)$result as $v) {?>
+	 <tr>
+		<td align="center"><?php echo $v['k'];?></td>
+		<td align="center"><?php echo $v['username'];?></td>
+		<td align="center"><?php echo $v['start_time'];?></td>
+		<td align="center"><?php echo $v['end_time'];?></td>
+		<td align="center"><?php echo $v['content'];?></td>
+		<td align="center"><?php echo $v['reg_time'];?></td>
+		<td align="center"><?php echo $v['username'];?></td>
+		<td align="center"><?php echo $v['uid'];?></td>
+		
+		<td align="center"><?php echo $v['type'];?></td>
+		<td align="center"><?php echo $v['show'];?></td>
+	
+		<td align="center"><?php echo $v['order'];?></td>
+		<td align="center"><a href="index.php?action=other&h=text_show_edit&id=<?php echo $v['id'];?>">编辑</a>  
+		<a href ='index.php?action=other&h=text_show_dele&id=<?php echo $v['id'];?>' onclick="return confirm('确定删除吗?')">删除</a>
+		</td>
+	 </tr>
+	 <?php } ?>
+     
+	 </table>
+     
+         <table cellpadding="4" cellspacing="0">
+        <tr>
+          <td align="center"><?php echo $pages;?>
+          &nbsp;&nbsp;&nbsp;
+            转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+          <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+          </td>
+        </tr>
+      </table>
+</div>
+
+﻿﻿

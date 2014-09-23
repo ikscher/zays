@@ -1,0 +1,511 @@
+<script type="text/javascript">
+<!--
+//查询ID的信息
+function searchid(a){
+	var b = '';
+	b = $("#"+a).val();
+	$.ajax({
+		type:"GET",
+		url:"./allmember_ajax.php?n=check_searchid"+'&rand='+Math.random(),
+		dataType:"json",
+		data:"idname="+a+"&id="+b,
+		success:function(rep){
+			if(rep['0'] == 'no'){
+				alert("没有此用户！");
+			}else{
+				var userinfo = rep['0'];
+				var idname = rep['1'];
+				var content = '';
+				if(idname == 'recommend') content = '推荐 '+userinfo['uid'] +' 与 '+"{$member['uid']}"+' 认识 ';
+				else if(idname == 'email') content = userinfo['uid']+' 发送邮件给 '+"{$member['uid']}";
+				else if(idname == 'commission'){
+					content = userinfo['uid']+' 发送委托给 '+"{$member['uid']}";
+					var concernsearch = $("#concernsearch").val();
+					$("#concernsearch").val(','+concernsearch+idname+',');
+				}
+				else if(idname == 'rose'){
+					content = userinfo['uid']+' 发送鲜花给 '+"{$member['uid']}";
+					var concernsearch = $("#concernsearch").val();
+					$("#concernsearch").val(','+concernsearch+idname+',');
+				}
+				else if(idname == 'leer'){
+					content = userinfo['uid']+' 发送秋波给 '+"{$member['uid']}";
+					var concernsearch = $("#concernsearch").val();
+					$("#concernsearch").val(','+concernsearch+idname+',');
+				}
+				else if(idname == 'chat'){
+					content = userinfo['uid']+' 与 '+"{$member['uid']}"+'  聊天';
+					$('#chathavenum').val(userinfo['uid']);
+				}
+				else content = "错误操作！";
+				var d = new Date();
+				var year = d.getFullYear()-userinfo['birthyear'];
+				var gender='';
+				if(userinfo['gender'] == '0') gender = '男 ';
+				else gender = '女 ';
+				if(userinfo['usertype'] == '1'){
+					usertype = ' 本站注册会员';
+				}else if(userinfo['usertype'] == '2'){
+					usertype = ' 外站加入会员';
+				}else if(userinfo['usertype'] == '3'){
+					usertype = ' 采集会员';
+				}else if(userinfo['usertype'] == '4'){
+					usertype = ' 联盟会员';
+				}else{
+					usertype = '内部会员';
+				}
+				var str = userinfo['uid']+gender+year+usertype;
+				$("#"+idname).val(str);
+				if(idname == 'recommend'){
+					var sellcontact = '联系方式：';
+					var sellcontactcall = '';
+					if(userinfo['telphone']!='' && userinfo['qq']!='') sellcontactcall += "手机 "+userinfo['telphone']+"  QQ "+userinfo['qq'];
+					else if(userinfo['telphone']!='' && userinfo['qq']=='') sellcontactcall += "手机 "+userinfo['telphone'];
+					else if(userinfo['telphone']=='' && userinfo['qq']!='') sellcontactcall += "QQ "+userinfo['qq'];
+					else sellcontactcall += "邮箱 "+userinfo['username'];
+					$("#sellcontact").html(sellcontact);
+					$("#sellcontactcall").html(sellcontactcall);
+				}
+				var idname_t = idname+'_t';
+				$("#"+idname_t).val(userinfo['uid']);
+				var sellcontent = '';
+				if(idname == 'commission' || idname == 'rose' || idname == 'leer' || idname == 'chat' || idname == 'email'){
+					sellcontent = $("#sellcomment").val();
+					if(sellcontent=='') sellcontent=' ';
+				}
+				$("#sellcomment").val(sellcontent+' '+content);
+			}
+		}
+	});
+}
+
+//检测邮件能否发送
+function contectFor(a){
+	var from = $("#"+a+"_t").val();
+	var b = '';
+	b = $("#"+a+"_t").val();
+	$.ajax({
+		type:"GET",
+		url:"./allmember_ajax.php?n=check_searchid"+'&rand='+Math.random(),
+		dataType:"json",
+		data:"idname="+a+"&id="+b,
+		success:function(rep){
+			if(rep['0'] == 'no'){
+				alert("没有此用户！");
+			}else{
+				var userinfo = rep['0'];
+				var idname = rep['1'];
+				var d = new Date();
+				if(userinfo['gender'] == "{$member['gender']}") {
+					alert("不能与性别一样人发邮件！");
+				}else {
+					contactsell(3,from,"{$member['uid']}");
+				}
+			}
+		}
+	});
+}
+//发送邮件
+function contactsell(type,from,to){
+	var tel2=$("#callno").html();
+	if(!tel2) tel2="";
+	var url = "./allmember_ajax.php?n=contact&uid={$uid}&tel={$member['telphone']}&tel2="+tel2+"&type="+type+"&from="+from+"&to="+to+'&rand='+Math.random();
+	$.get(url,function(data){
+		$("body").append(data);
+		$("#sendsuccess").val("发送成功");
+	});
+}
+//检测委托鲜花秋波能否发送
+function confirmSendFor(a){
+	var b = '';
+	b = $("#"+a+"_t").val();
+	$.ajax({
+		type:"GET",
+		url:"./allmember_ajax.php?n=check_searchid"+'&rand='+Math.random(),
+		dataType:"json",
+		data:"idname="+a+"&id="+b,
+		success:function(rep){
+			if(rep['0'] == 'no'){
+				alert("没有此用户！");
+			}else{
+				var userinfo = rep['0'];
+				var idname = rep['1'];
+				var typename = rep['2'];
+				if(idname == 'commission') var name = '委托';
+				if(idname == 'leer') var name = '秋波';
+				if(idname == 'rose') var name = '鲜花';
+				var d = new Date();
+				if(userinfo['gender'] == "{$member['gender']}") {
+					alert("不能与性别一样人发"+name+"!");
+				}else {
+					sendFor(idname);
+				}
+			}
+		}
+	});
+}
+//发送委托、鲜花、秋波
+function sendFor(type){
+	if(type == 'commission') var name = '委托';
+	if(type == 'leer') var name = '秋波';
+	if(type == 'rose') var name = '鲜花';
+	var from = $("#"+type+"_t").val();
+	var to = "{$member['uid']}";
+	var url = './allmember_ajax.php?n=sellsendactive&uid={$uid}&type='+type+'&from='+from+'&to='+to+'&rand='+Math.random();
+	$.get(url,function(data){
+		if(data == 'ok'){
+			alert(name+"发送成功");
+			$("#sendsuccess").val('发送成功');
+			var concernsend = $("#concernsend").val();
+			$("#concernsend").val(','+concernsend+type+',');
+		}else if(data == 'having'){
+			alert(name+"已经发送过了！");
+			var concernsend = $("#concernsend").val();
+			$("#concernsend").val(','+concernsend+type+',');
+		}else{
+			alert(name+"发送失败");
+		}
+	});
+}
+
+//跟进步骤佩戴的功能
+function appeareg(){
+	var grade = $("#effect").val();
+	if(grade == '1'){
+		$("#recom").css("display","block");
+		$("#simulated").css("display","none");
+		$("#concern").css("display","none");
+		$("#comfirmsave").css("display","none");
+	}else if(grade == '2'){
+		$("#recom").css("display","none");
+		$("#simulated").css("display","block");
+		$("#concern").css("display","none");
+		$("#comfirmsave").css("display","none");
+	}else if(grade == '3'){
+		$("#recom").css("display","none");
+		$("#simulated").css("display","none");
+		$("#concern").css("display","block");
+		$("#comfirmsave").css("display","none");
+	}else{
+		$("#recom").css("display","none");
+		$("#simulated").css("display","none");
+		$("#concern").css("display","none");
+		$("#comfirmsave").css("display","block");
+	}
+}
+
+//检测能否推荐
+function confirmrecom(a){
+	var b = '';
+	b = $("#"+a+"_t").val();
+	$.ajax({
+		type:"GET",
+		url:"./allmember_ajax.php?n=check_searchid"+'&rand='+Math.random(),
+		dataType:"json",
+		data:"idname="+a+"&id="+b,
+		success:function(rep){
+			if(rep['0'] == 'no'){
+				alert("没有此用户！");
+			}else{
+				var userinfo = rep['0'];
+				var d = new Date();
+				if(userinfo['gender'] == "{$member['gender']}") {
+					alert("不能推荐性别一样的人");
+				}else {
+					$("#sendsuccess").val('推荐成功');
+					var success = $("#sendsuccess").val();
+					if(success == '推荐成功'){
+						alert("推荐成功！");
+					}
+				}
+			}
+		}
+	});
+}
+
+//调用聊天窗口
+function openChatWin(a){
+	var b = '';
+	b = $("#"+a+"_t").val();
+	$.ajax({
+		type:"GET",
+		url:"./allmember_ajax.php?n=check_searchid"+'&rand='+Math.random(),
+		dataType:"json",
+		data:"idname="+a+"&id="+b,
+		success:function(rep){
+			if(rep['0'] == 'no'){
+				alert("没有此用户！");
+			}else{
+				var userinfo = rep['0'];
+				var d = new Date();
+				if(userinfo['gender'] == "{$member['gender']}") {
+					alert("不能与性别一样的人聊天！");
+				}else{
+					$("#sendsuccess").val('发送成功');
+					var i=1;
+					window.open('templates/chat.htm',i,'width=520,height=480,status=no,location=no');
+				}
+			}
+		}
+	});
+}
+
+//检测是否能保存
+function checksellFrom(){
+	var effect=$('#effect').val();
+	var comment = $('#sellcomment').val();
+	var success = $("#sendsuccess").val();
+	var comfirmsend = $("#comfirmsend").val();
+	var phonecall = $("input[id=phonecall]:checked").val();
+	if(!phonecall){
+		alert("是否打电话! ");
+		return false;
+	}
+	if(effect == ''){
+		alert("请选择跟进步骤！");
+		return false;
+	}else{
+		if(comment == ''){
+			alert("请输入内容！");
+			return false;
+		}else{
+			if(effect == '4' || effect == '5'){
+				return true;	
+			}
+			if(success=='推荐成功' || success=='发送成功'){
+				if(effect == '3'){
+					var concernsend = $("#concernsend").val();
+					var concernsearch = $("#concernsearch").val();
+					var csearch = concernsearch.split(',');
+					var csend = concernsend.split(',');
+					//判断关注点查询的是否都发送了
+					var wrong = checkconcerns(csearch,csend);
+					if(wrong==''){
+						return true;
+					}else{
+						wronglen = wrong.length;
+						for(var i=0;i<wronglen;i++){
+							if(wrong[i] == 'commission'){
+								alert('委托没点发送！');
+							}else if(wrong[i] == 'rose'){
+								alert('鲜花没点发送！');
+							}else{
+								alert('秋波没点发送！');
+							}
+						}
+						return false;
+					}
+				}
+			}else{
+				alert("请发送或确定！");
+				return false;
+			}
+		}
+	}
+}
+
+function checkconcerns(aArr,bArr){   //第一个数组减去第二个数组
+    if(bArr.length==0){return aArr}
+    var diff=[];
+    var str=bArr.join("&quot;&quot;");
+    for(var e in aArr){
+        if(str.indexOf(aArr[e])==-1){
+            diff.push(aArr[e]);
+        }
+    }
+    return diff;
+}
+
+//-->
+</script>
+		<form action="index.php?action=allmember&h=sellafter" method="post" onsubmit="return checksellFrom()">
+		<input type="hidden" name="uid" id="uid" value="{$member['uid']}">
+        <input type="hidden" name="usertype" id="usertype" value="{$member['usertype']}">
+		<input type="hidden" name="ispost" id="ispost" value="1"/>
+		<input type="hidden" name="sendsuccess" id="sendsuccess">
+		<input type="hidden" name="sendrecommend" id="sendrecommend">
+		<!--  -->
+		<input type="hidden" name="concernsearch" id="concernsearch">
+		<input type="hidden" name="concernsend" id="concernsend">
+		<input type="hidden" name="chathavenum" id="chathavenum">
+		<!--  -->
+		<div id="item_d" style="">
+			<table width="95%" border="0" align="center" cellpadding="3" cellspacing="0">
+				<tr>
+					<td colspan="3">升级时间：{php echo date("Y-m-d H:i:s",$begintime)} 到 {php echo date("Y-m-d H:i:s",$endtime)} &nbsp;&nbsp;&nbsp;已升级{$alreadyday}天 &nbsp;&nbsp;&nbsp;
+					危险等级：
+					{php 
+					if($danger_leval == '1') echo "<font color='#33CC00'>非常满意</font>";
+					elseif($danger_leval == '2') echo "<font color='#339900'>满意</font>";
+					elseif($danger_leval == '3') echo "<font color='#336600'>一般</font>";
+					elseif($danger_leval == '4') echo "<font color='#FF00FF'>不满意</font>";
+					elseif($danger_leval == '5') echo "<font color='#FF0000'>非常不满意</font>";
+					else echo "<font color='#339900'>未选择</font>";}
+&nbsp;&nbsp;&nbsp;&nbsp;是否打了电话<input type="radio" name="phonecall" value="1" id="phonecall">是
+					<input type="radio" name="phonecall" value="0" id="phonecall">否
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;升级后完成三大步的时间是：{$finishedperiod}天
+					</td>
+				</tr>
+				<tr>
+					<td width="33%">
+						<table border="0">
+							<tr>
+								<td>
+									<!-- {if $count_recommend>=1} -->
+									<img src="templates/images/reg09-correct.gif">
+									<!-- {else} -->
+									<img src="templates/images/cha.gif">
+									<!-- {/if} -->
+									推荐{$count_recommend}
+								</td>
+								<td>
+									<!--{if $simulated_count_all>=2}-->
+										<img src="templates/images/reg09-correct.gif">
+									<!--{else}-->
+										<img src="templates/images/cha.gif">
+									<!--{/if}-->
+										模拟 &nbsp;&nbsp;聊天{$count_chat} | 邮件{$count_email}
+								</td>
+								<td>
+									<!--{if $oncern_count_all>=3}-->
+										<img src="templates/images/reg09-correct.gif">
+									<!--{else}-->
+										<img src="templates/images/cha.gif">
+									<!--{/if}-->
+										关注 &nbsp;&nbsp;
+										委托{$count_commiss} | 
+										鲜花{$count_rose} | 
+										秋波{$count_leer}
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td>续费状态：
+						<select name="renewals_status">
+							<!-- {loop $renewals_status_grade $k $v} -->
+							<option value="{$k}" {if $renewals_status==$k}selected="selected"{/if}>{$v}</option>
+							<!-- {/loop} -->
+						</select>
+					</td>
+					<td>会员进展：
+						<select name="member_progress">
+							<!-- {loop $member_progress_grade $k $v} -->
+							<option value="{$k}" {if $member_progress==$k}selected="selected"{/if}>{$v}</option>
+							<!-- {/loop} -->
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						跟进步骤：
+						<select id="effect" name="effect" onchange="appeareg()">
+							<option value="" selected>请选择跟进步骤</option>
+							<!--{loop $sell_after_grade $k $v}-->
+							<option value="{$k}">{$v}</option>
+							<!--{/loop}-->
+						</select>
+						&nbsp;&nbsp;&nbsp;危险等级:
+						<!-- <input type="radio" name="isdanger" value="1" {php if($danger_leval['danger_leval'] == '1') echo "checked";}>非常满意 
+						<input type="radio" name="isdanger" value="2" {php if($danger_leval['danger_leval'] == '3') echo "checked";}>满意
+						<input type="radio" name="isdanger" value="3" {php if($danger_leval['danger_leval'] == '3') echo "checked";}>一般
+						<input type="radio" name="isdanger" value="4" {php if($danger_leval['danger_leval'] == '4') echo "checked";}>不满意
+						<input type="radio" name="isdanger" value="5" {php if($danger_leval['danger_leval'] == '5') echo "checked";}>非常不满意 -->
+						{loop $reprating $k $v}
+							<input type="radio" name="isdanger" value="{$k}" {php if($danger_leval['danger_leval'] == $k) echo "checked";}>{$v} 
+						{/loop}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						下次联系时间：<input type="text" onfocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" name="time" id="time"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="31%">
+						<textarea cols="45" rows="6" id="sellcomment" name="sellcomment"></textarea>
+					</td>
+					<td width="33%" style="">
+						<div id="recom" style="display:none;border:1px solid #7F99BE;height:90px;">
+							<table border="0" cellpadding="3" cellspacing="0">
+								<tr>
+									<td width="70px">
+										推荐ID：
+									</td>
+									<td>
+										<input type="text" name="recommend" id="recommend">
+										<input type="hidden" name="recommend_t" id="recommend_t">
+										<input type="button" value="查询" onclick="searchid('recommend')">
+										<input type="button" value="确定" onclick="confirmrecom('recommend')">
+									</td>
+								</tr>
+								<tr>
+									<td><div id="sellcontact" style="height:25px;"></div></td>
+									<td><div id="sellcontactcall" style="height:25px;"></div></td>
+								</tr>
+							</table>
+						</div>
+						<div id="simulated" style="display:none;border:1px solid #7F99BE;height:95px;">
+							<table border="0" cellpadding="3" cellspacing="0" style="text-align:left;">
+								<tr>
+									<td width="60px">聊天ID：</td>
+									<td>
+										<input type="text" name="chat" id="chat">
+										<input type="hidden" name="chat_t" id="chat_t">
+										<input type="button" value="查询" onclick="searchid('chat')">
+										<input type="button" value="聊天" onclick="openChatWin('chat')">
+									</td>
+								</tr>
+								<tr>
+									<td width="60px">邮件ID：</td>
+									<td>
+										<input type="text" name="email" id="email">
+										<input type="hidden" name="email_t" id="email_t">
+										<input type="button" value="查询" onclick="searchid('email')">
+										<input type="button" value="发站内信" onclick="contectFor('email')">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="concern" style="display:none;border:1px solid #7F99BE;height:90px;">
+							<table border="0" cellpadding="3" cellspacing="0">
+								<tr>
+									<td width="60px">委托ID：</td>
+									<td>
+										<input type="text" name="commission" id="commission">
+										<input type="hidden"  name="commission_t" id="commission_t"/>
+										<input type="button" value="查询" onclick="searchid('commission')">
+										<input type="button" value="发送" onclick="confirmSendFor('commission')">
+									</td>
+								</tr>
+								<tr>
+									<td width="60px">鲜花ID：</td>
+									<td>
+										<input type="text" name="rose" id="rose">
+										<input type="hidden" name="rose_t" id="rose_t">
+										<input type="button" value="查询" onclick="searchid('rose')">
+										<input type="button" value="发送" onclick="confirmSendFor('rose')">
+									</td>
+								</tr>
+								<tr>
+									<td width="60px">秋波ID：</td>
+									<td>
+										<input type="text" name="leer" id="leer">
+										<input type="hidden" name="leer_t" id="leer_t">
+										<input type="button" value="查询" onclick="searchid('leer')">
+										<input type="button" value="发送" onclick="confirmSendFor('leer')">
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+					<td width="40%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input type="hidden" name="telphone" value="{$member['telphone']}">
+						<input type="submit" class="sysbtn" value="保存"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</form>

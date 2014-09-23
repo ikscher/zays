@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>您的搜索结果——相册模式——真爱一生寻友——真爱一生网</title>
+{template system/js_css public}
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/search.css");
+</style>
+</head>
+<body onload="is_login({$userid})">
+{template system/header public}
+<!--头部结束-->
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+$(".search-photo-img2").mouseenter(function(){
+		$(this).css("background","url(module/search/templates/default/images/photo-img-onbg2.gif)").mouseleave(function(){
+		$(this).css("background","");
+	});
+});
+});	
+//控制弹出登录框
+function is_login(uid){
+	if(typeof(uid)== "undefined" || uid == 0){
+		$("html").css("overflow","hidden");
+		$("select").css("display","none");
+		alertWin('','<form action="index.php?n=index&h=submit" method="post"><table width="345" border="0" cellpadding="0" cellspacing="0" ><tr><td colspan="2" height="38px;" style="background:#f9f9fb"><strong> <img src="module/space/templates/default/images/zhixiang.jpg" style="margin-right:5px;" />请进行登录，立即查看他人的详细资料。</strong></td></tr><tr><td  align="right" height="38px;">用户名：</td><td align="left"><input name="username" type="text" style="width:160px;"/></td></tr><tr ><td align="right"  height="38px">密 码：</td><td><input name="password" type="password"  style="width:160px;"/></td></tr><tr><td>&nbsp;</td><td style="padding-bottom:10px"><input type="hidden" name="loginsubmit"  value="登录" /><input type="submit" style=" background:url(module/space/templates/default/images/space_btn.jpg); width:75px;height:30px;border:none;cursor:pointer" value=""/><input type="button" style="width:85px;height:30px;border:none;cursor:pointer;background:url(module/space/templates/default/images/forget.gif);margin-left:10px;"value="" onclick="javascript:location.href=\'index.php?n=register\'" /><input id="returnurl" type="hidden" value="{$returnurl}" name="returnurl"/></td></tr><tr><td colspan="2" height="38px;" style="background:#f9f9fb; border-top:1px dashed #ccc"><a href="index.php?n=login&h=backpassword" style="color:#bd0000; font-size:12px;">&nbsp;&nbsp;&nbsp;&nbsp;忘记密码？</a></td></tr></table></form>',300,200);
+	}else{
+		$("html").css("overflow","");
+		$("select").css("display","");
+	}
+}
+//控制弹出浮动窗口
+function alertWin(title, msg, w, h){  
+    var titleheight = "25px";
+    var bordercolor = "#b75bad";
+    var titlecolor = "#FFFFFF";
+    var titlebgcolor = "#666699";
+    var bgcolor = "#FFFFFF";
+     
+    var iWidth = document.documentElement.clientWidth;  
+    var iHeight = document.documentElement.clientHeight;  
+    var bgObj = document.createElement("div");  
+    bgObj.style.cssText = "position:absolute;left:0px;top:0px;width:"+iWidth+"px;height:"+Math.max(document.body.clientHeight, iHeight)+"px;filter:Alpha(Opacity=30);opacity:0.3;background-color:#000000;z-index:101;"; 
+    document.body.appendChild(bgObj);  
+     
+    var msgObj=document.createElement("div"); 
+    msgObj.style.cssText = "position:absolute;top:"+(iHeight-h)/2+"px;left:"+(iWidth-w)/2+"px;z-index:102;border:3px solid #b75bad;width:345px;padding:10px;color:#666;background:#fff"; 
+    document.body.appendChild(msgObj); 
+     
+    var table = document.createElement("table"); 
+    msgObj.appendChild(table); 
+    table.style.cssText = "margin:0px;border:0px;padding:0px;"; 
+    table.cellSpacing = 0; 
+    var tr = table.insertRow(-1); 
+    var titleBar = tr.insertCell(-1); 
+    titleBar.style.cssText = "cursor:move"; 
+    titleBar.style.paddingLeft = "10px"; 
+    titleBar.innerHTML = title; 
+    var moveX = 0; 
+    var moveY = 0; 
+    var moveTop = 0; 
+    var moveLeft = 0; 
+    var moveable = false; 
+    var docMouseMoveEvent = document.onmousemove; 
+    var docMouseUpEvent = document.onmouseup; 
+    titleBar.onmousedown = function() { 
+        var evt = getEvent(); 
+        moveable = true;  
+        moveX = evt.clientX; 
+        moveY = evt.clientY; 
+        moveTop = parseInt(msgObj.style.top); 
+        moveLeft = parseInt(msgObj.style.left); 
+         
+        document.onmousemove = function() { 
+            if (moveable) { 
+                var evt = getEvent(); 
+                var x = moveLeft + evt.clientX - moveX; 
+                var y = moveTop + evt.clientY - moveY; 
+                if ( x > 0 &&( x + w < iWidth) && y > 0 && (y + h < iHeight) ) { 
+                    msgObj.style.left = x + "px"; 
+                    msgObj.style.top = y + "px"; 
+                } 
+            }     
+        }; 
+        document.onmouseup = function () {  
+            if (moveable) {  
+                document.onmousemove = docMouseMoveEvent; 
+                document.onmouseup = docMouseUpEvent; 
+                moveable = false;  
+                moveX = 0; 
+                moveY = 0; 
+                moveTop = 0; 
+                moveLeft = 0; 
+            }  
+        }; 
+    } 
+     
+    var closeBtn = tr.insertCell(-1); 
+    //closeBtn.style.cssText = "cursor:pointer; padding:2px;background-color:" + titlebgcolor; 
+    //closeBtn.innerHTML = "<span style='font-size:15pt; color:"+titlecolor+";'>×</span>"; 
+    closeBtn.onclick = function(){  
+        document.body.removeChild(bgObj);  
+        document.body.removeChild(msgObj);  
+    }  
+    var msgBox = table.insertRow(-1).insertCell(-1);  
+    msgBox.style.cssText = "font:10pt '宋体';"; 
+    msgBox.colSpan  = 2; 
+    msgBox.innerHTML = msg; 
+     
+    // 获得事件Event对象，用于兼容IE和FireFox 
+    function getEvent() { 
+        return window.event || arguments.callee.caller.arguments[0]; 
+    } 
+}  
+//-->
+</script>
+<div class="clear"></div>
+<div class="main">
+<div class="content">
+<div class="c-title">
+<span class="f-000">
+<a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;搜索结果</span>
+<div class="loaction_right">
+	<a href="index.php?n=invite" target="_blank">邀请好友</a>
+</div>
+</div>
+<!-- 标签列表头部 -->
+{template public/search_tag_top module}
+<!-- 标签列表头部结束 -->
+<div class="c-center" style="border-left:none;">
+
+<!-- search-left-title begin -->
+{template public/search_sort module}
+<!-- search-left-title  end -->
+
+<!-- search-left-content -->
+{template public/search_photo_left module}
+<!-- search-left-content  end-->
+
+<div class="content-bottom">			
+</div>
+<!--content-bottom end-->
+</div><!--centent-lift end-->
+<!--左边结束-->
+
+<!--右边开始-->
+{template public/search_tag_right module}
+<!--右边结束-->
+
+</div>
+<div class="clear"></div>
+</div><!--content end-->
+{template system/footer public}
+</div>
+<div class="clear"></div>
+</body>
+</html>

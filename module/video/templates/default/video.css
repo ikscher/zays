@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{padding:0;margin:0;}   
+body{font-family:"宋体", Arial, Vrinda;font-size:12px;background:#fff;}
+.clear{clear:both;}
+a{text-decoration:none; border:none;}
+a:link, a:visited {color:#000;}
+a:hover, a:active {color:#900;}
+ol,ul{list-style:none;}
+img{font-size:0; line-height:0; border:none;}
+
+.red{color:#C00;}
+.leftfloat{float:left;}
+.rightfloat{float:right;}
+#button{ border:none; cursor:pointer;}
+
+
+
+
+
+#video{margin:0 auto;width:982px;}
+#video_header{background:url(images/video_bg.jpg) no-repeat center top;height:83px;width:795px;padding:390px 0 0 187px; position:relative;}
+#video_header ul{width:600px;height:57px;}
+#video_header ul li{ display:inline;}
+.l_tab{width:130px;height:27px; position:absolute;padding-top:30px;left:400px;}
+.m_tab{padding-top:10px;position:absolute;height:47px;left:620px;}
+#video_content{ background:url(images/video_bg.gif) top center;width:982px;}
+.tv p,.tv_video p{ background:url(images/title_bg.gif) repeat-x;width:967px;height:33px;padding-left:15px;padding-top:3px;}
+#tv_content,#outline_content{padding-top:16px;height:390px;width:982px;}
+.tv_pic{background:url(images/tvcontent_bg.gif) repeat-x #FFF;width:938px;height:368px;border:1px #ff900d solid;float:left;overflow:hidden;}
+
+.tv_pic_width{width:7000%;}
+.tv_pic ul{margin-top:2px;}
+.tv_pic ul li{float:left;padding-left:14px;display:inline;width:218px;}
+.tv_pic ul li img{display:block;margin-top:14px;}
+
+#arrow_leftG,#arrow_rightG,#arrow_leftD,#arrow_rightD{ width:15px;height:32px;float:left;margin:170px 2px 0; cursor:pointer;display:inline;}
+#arrow_leftG,#arrow_leftD{background:url(images/arrow_icon.png) no-repeat 0 0;}
+#arrow_rightG,#arrow_rightD{background:url(images/arrow_icon.png) no-repeat -21px 0;}
+
+.tv_video p img{float:left;}
+.tv_video p a:link,.tv_video p a:visited {margin-right:20px;color:#fff;float:right;height:24px;line-height:24px;}
+#tv_video_content{padding:16px 0;height:278px;width:982px;}
+.tv_video p{padding-top:7px;height:26px;}
+#tv_video_content ul{margin-left:8px;float:left;display:inline;}
+#tv_video_content ul li{margin-left:9px;width:228px;height:280px;line-height:20px;float:left;}
+#tv_video_content ul h3{font-size:12px;font-weight:400;color:#fff;margin-top:10px;}
+#tv_video_content ul h3 a{font-size:12px;font-weight:400;color:#fff;}
+
+#List1,#List2,#List3,#List4{float:left;}

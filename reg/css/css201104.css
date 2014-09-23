@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+/*公共*/
+*{margin:0;padding:0;}
+body,img,ul,li,a,dl,dd,p{margin:0;padding:0;border:none;list-style:none;text-decoration:none;font-family: "宋体";}	
+.clear{ clear:both;width:0px; height:0px; overflow:hidden; line-height:0px; font-size:0px;}
+body{background:url(../images/bg.gif) repeat-x #fee9e8;font-size:12px;}
+.main{ width:962px; margin:0 auto;}
+
+/*头部*/
+.head{ width:962px; margin:0 auto; padding-top:10px;}
+.logo{ float:left; display:inline; margin-left:55px; padding-top:10px;}
+.toplogin{ float:right; color:#666; padding-top:5px; margin-right:40px; display:inline}
+.toplogin a{ color:#666;}
+.toplogin a:hover{ text-decoration:underline;}
+.toptel{ width:564px; height:43px; background:url(../images/top_tel.gif) no-repeat;float:left; display:inline; margin:30px 0 0 70px;}
+
+/*注册模块*/
+.regbox{ width:958px; margin:14px auto 0; background:#fedfdb; border:1px solid #fee4ea; padding:1px;}
+.regbox-s-c{ width:946px;border:1px solid #ffd9d3; padding:5px; background:#FbFfff}
+.regbox-s-b{ background-position:bottom}
+.r-box-l{ width:583px; height:395px; float:left}
+.r-box-r{ width:356px; height:395px;float:right; background:url(../images/reg_bg.gif) repeat-y;}
+.reg-box-title{ line-height:24px;color:#e85267; padding:15px 30px; text-indent:26px;}
+.reg-info,.reg-info dl{ width:326px; float:left;}
+.reg-info dt,.reg-info dd{ float:left; margin-bottom:14px; line-height:20px; height:20px;}
+.reg-info dt{ font-size:14px; width:100px; text-align:right;}
+.reg-info dd{ width:226px;}
+.reg-info dd select{ width:65px; height:19px;}
+.reg-info-text{border: 1px solid #CCCCCC;color: #666666;height: 18px;line-height: 18px;width: 184px;}
+.reg-btn-box{ height:70px; width: 326px;text-align:center; margin:0 auto}
+.reg-btn{border:none;cursor: pointer;height:36px;width: 192px; background:url(../images/reg_btn.gif) no-repeat;margin-top:15px;}
+
+/*搜索条*/
+.search-bar{width:962px;height:28px;background:#ffdcda url(../images/s_icon.gif) no-repeat;padding-top:12px; color:#666; margin:10px auto 0;}
+.search-cts{width:190px;float:left; margin-left:105px; display:inline}
+.search-cts input{margin-left:5px;}
+.search-cts-list{float:left;width:555px;}
+.search-cts-list li{float:left;margin-right:10px;*margin-right:5px;}
+.search-cts-list li select{width:60px;}	
+.search-btn{width:100px;height:27px;border:none;cursor:pointer; margin-top:-5px; background:url(../images/s_btn.gif) no-repeat;}
+.searchid-bar{padding:4px 10px 4px 0;float:left;}
+.reg-info-text {border: 1px solid #CCCCCC; color: #666666; height: 18px; line-height: 18px; width: 184px;}
+
+/*钻石会员展示*/
+.c-reg-box{margin:0 auto; width:962px; padding-top:8px; background:#FFF}
+.c-reg-box-title{height:49px;background:url(../images/u_line.gif) no-repeat bottom; padding-bottom:1px;}
+.c-reg-box-title a{margin-right:15px;display:inline;float:right; background:url(../images/more.gif) no-repeat; width:45px; height:17px; margin-top:10px;}
+.c-reg-box-c{width:978px;}
+.reg-member-show{padding:16px 18px 0;width:208px;overflow:hidden;float:left;}	
+.reg-member-show dd{height:32px;font-size:14px;font-weight:700;text-align:center; line-height:32px; color:#999}
+.reg-member-show dt{height:140px;}
+
+/*会员推荐*/
+.mmlist{ float:left; padding-top:16px;}
+.mmlist li{ width:177px;float:left; text-align:center; color:#ff4a83; margin:0 7px; display:inline;}
+.mmlist li a{ width:177px; height:196px; display:block; background:url(../images/img_bg.gif) no-repeat;}
+.mmlist li p{ height:34px; line-height:34px;}
+
+/*成功故事模块*/
+.reg-story{padding-bottom:40px; width:962px; margin:0 auto; color:#666; background:#FFF url(../images/b_bg.gif) no-repeat bottom;}
+.reg-story-right{float:left;width:631px; border:1px solid #fddfdf; border-top:8px solid #fddfdf; padding-bottom:15px;}
+.reg-story .c-reg-box-title{ height:32px; padding:10px 0 1px 10px;}
+.reg-story-box{width:308px;height:90px;float:left;padding:20px 3px 0;line-height:18px;}
+.reg-story-img{width:150px;height:90px;float:left;padding-right:9px;}
+.reg-story-box dt{font-size:14px;color:#024890;}
+.reg-story-box dl{padding-right:8px;}	
+.reg-story-box dd p{text-indent:24px;}
+.reg-story-box dd p a{color:#d93576;}
+.mm-honor{width:315px;float:right; border:1px solid #fddfdf; border-top:8px solid #fddfdf; padding-bottom:10px;}	
+.mm-honor-list{padding:0 5px;line-height:18px;}
+.mm-honor-list li{padding-top:20px;}
+.mm-honor-list li h4{font-weight:400;font-size:12px; padding-left:15px; background:url(../images/li_icon.gif) 3px no-repeat;}
+
+/*底部*/
+.bottom{ height:115px; width:962px; margin: 0 auto 10px;}
+.bottom-c{ width:972px; float:left; height:115px;color:#666;}

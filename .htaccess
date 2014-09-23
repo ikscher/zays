@@ -1,0 +1,65 @@
+RewriteEngine On
+RewriteBase /
+
+
+RewriteRule  index.html$ index.php
+RewriteRule  space_(\d+).html$      index.php?n=space&uid=$1 
+RewriteRule  space_([A-Za-z]+).html$  index.php?n=space&skiname=$1
+RewriteRule  service.html$          index.php?n=service
+RewriteRule  material.html$         index.php?n=material
+RewriteRule  lovetest.html$         index.php?n=lovestyle 
+
+RewriteRule myaccount.html$         index.php?n=myaccount 
+RewriteRule vote.html$         index.php?n=vote 
+
+RewriteRule introduce.html$    index.php?n=payment&h=introduce 
+RewriteRule upgrade.html$      index.php?n=index&h=govip 
+RewriteRule platinum.html$     index.php?n=payment&h=platinum 
+RewriteRule diamond.html$      index.php?n=payment&h=diamond 
+RewriteRule higher.html$       index.php?n=payment 
+RewriteRule search.html$       index.php?n=search 
+
+RewriteRule aboutus.html$      index.php?n=about&h=us 
+RewriteRule contact.html$      index.php?n=about&h=contact 
+RewriteRule story.html$        index.php?n=story 
+RewriteRule links.html$        index.php?n=about&h=links 
+RewriteRule advices.html$      index.php?n=about&h=getsave 
+RewriteRule payDetail.html$    index.php?n=payment&h=payDetail 
+RewriteRule othervip.html$     index.php?n=index&h=add_vip 
+RewriteRule cityStar.html$     index.php?n=payment&h=city_star_intro 
+
+RewriteRule register.html$     index.php?n=register 
+RewriteRule login.html$        index.php?n=login 
+RewriteRule logout.html$        index.php?n=index&h=logout
+
+RewriteRule forget.html$          index.php?n=login&h=backpassword 
+RewriteRule aboutus.html$         index.php?n=about&h=us 
+RewriteRule contact.html$         index.php?n=about&h=contact 
+RewriteRule story.html$           index.php?n=story 
+RewriteRule links.html$           index.php?n=about&h=links 
+RewriteRule advices.html$         index.php?n=about&h=getsave 
+RewriteRule payDetail.html$       index.php?n=payment&h=payDetail 
+RewriteRule othervip.html$        index.php?n=index&h=add_vip 
+RewriteRule cityStar.html$        index.php?n=payment&h=city_star_intro 
+RewriteRule story(\d+).html$      index.php?n=story&h=content&sid=$2 
+RewriteRule storyList.html$       index.php?n=story&h=list 
+
+RewriteRule message.html$         index.php?n=service&h=message 
+RewriteRule commission.html$      index.php?n=service&h=commission 
+RewriteRule leer.html$            index.php?n=service&h=leer 
+RewriteRule gift.html$            index.php?n=service&h=gift 
+RewriteRule liker.html$           index.php?n=service&h=liker 
+RewriteRule browser.html$         index.php?n=service&h=mindme&t=iadvertwho 
+RewriteRule mycomment.html$       index.php?n=service&h=mycomment 
+RewriteRule realinfo.html$        index.php?n=service&h=request_sms_list 
+RewriteRule bind(\d+).html$       index.php?n=service&h=commission&t=mebind&bind_id=$2 
+RewriteRule attention.html$       index.php?n=service&h=attention 
+RewriteRule black.html$           index.php?n=service&h=black 
+RewriteRule safetyguide.html$     index.php?n=service&h=safetyguide 
+RewriteRule compensate.html$      index.php?n=about&h=compensate 
+
+
+
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule search.html?([\w|&%=]+)$  index.php?n=search&$1

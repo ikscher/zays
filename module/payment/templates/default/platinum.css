@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* CSS Document */
+
+img { border:none; line-height:0; font-size:0; }
+a { text-decoration:none; }
+ol,ul,dl{ list-style:none; }
+.clear { clear:both; }
+
+.content { width:982px;padding-top:5px; font-size:12px; font-family:"宋体", Arial, Vrinda;}
+/* banner部分 */
+.pt_banner { background:url(images/platinum/banner_bg.jpg) no-repeat; width:982px; height:254px; position:relative;}
+.pt_logo {
+	width:97px;
+	height:98px;
+	background:url(images/platinum/pt_pic.gif) -103px -388px no-repeat ;
+	position:absolute;
+	left: -6px;
+	top: -5px;
+}
+.manu_one {
+	position:absolute;
+	display:block;
+	width:200px;
+	height:43px;
+	background:url(images/platinum/pt_pic.gif) no-repeat left -258px;
+	left: 391px;
+	top: 187px;
+}
+
+/* main部分 */
+.pt_main{ width:982px; padding-top:1px;}
+/* main部分头部渐变 */
+.main_header { height:32px; background:url(images/platinum/pt_bg.jpg) repeat-x; }
+.main_header_left{ width:5px; height:32px; background:url(images/platinum/pt_pic.gif) no-repeat -187px top; float:left;}
+.main_header_right{ width:5px; height:32px; background:url(images/platinum/pt_pic.gif) no-repeat -194px top; float:right;}
+
+/* main部分会员、功能介绍 */
+.main_con { width:980px;  border:1px #babb10 solid; border-top:none; padding-bottom:58px;}
+.pt_mem, .pt_func{ padding-left:23px;}
+.pt_mem li,.pt_func li{ float:left;}
+.rings{ width:55px; height:33px; background:url(images/platinum/pt_pic.gif) no-repeat left -302px;}
+.mem_title { width:106px; height:27px; background:url(images/platinum/pt_pic.gif) no-repeat -85px -230px;}
+.mem_font{ font-size:14px; padding-left:78px; line-height:26px; padding-bottom:9px;}
+.func_font{ font-size:16px; padding-left:78px; line-height:26px; padding-bottom:9px; color:#996600; font-family:"黑体";}
+.func_title { width:75px; height:27px; background:url(images/platinum/pt_pic.gif) no-repeat left -230px;}
+
+/* main部分主体 */
+.ol { width:842px; padding-bottom:40px;margin:0 auto;}
+.ol li { font-size:0; line-height:0;}
+
+
+.manu_two {	display:block;
+	width:200px;
+	height:43px;
+	margin-left:350px;
+	background:url(images/platinum/pt_pic.gif) no-repeat left -258px;
+}

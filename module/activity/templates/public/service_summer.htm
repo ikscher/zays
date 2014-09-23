@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网-—仲夏之恋</title>
+<link href="module/activity/templates/default/new_css.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+
+<script LANGUAGE="Javascript" src="module/activity/templates/public/js/jquery.jplayer.min.js"></script>
+<SCRIPT language="JavaScript" type="text/javascript">
+var two=1;
+var sex=1;
+			function changeboxDiv(o)
+			{
+				if(o == 2){
+					sex = 0;
+				}else{
+					sex = 1;
+				}
+
+				for(var i=1;i<=2;i++)
+				{
+					if(o==i)
+						{
+							document.getElementById("class"+i).style.background="url(module/activity/templates/default/images/activity_new/sidebar_h2_thisclass.jpg) no-repeat";
+							document.getElementById("class"+i).style.color="#de016b";
+							document.getElementById("cont"+i).style.display="";
+						}
+					else
+						{
+							document.getElementById("class"+i).style.background="url(module/activity/templates/default/images/activity_new/sidebar_h2_otherclass.jpg) no-repeat";
+							document.getElementById("class"+i).style.color="#2b73c7";
+							document.getElementById("cont"+i).style.display="none";
+						}
+				}
+			two=o;
+			}
+
+
+
+	function page(pg){
+
+    if(sex=='1'){
+        var total=$("#nv_total").val();
+		var np=$("#now").html();
+    }else{
+        var total=$("#nan_total").val();
+		var np=$("#now").html();
+    }
+
+   if(pg=='up'){
+       if(np==1){
+           np=1;
+        }else{
+        	np=parseInt(np)-1;
+		}
+
+    }
+
+    if(pg=='next'){
+        if(np==total){
+           np=total;
+        }else{
+           np=parseInt(np)+1;
+		}
+    }
+
+   $.get('ajax.php',{n:"activity",h:"page",sex:sex,page:np,channel:'26'},function(data){
+
+        if(sex=='1'){
+            $("#cont1").html(data);
+			$("#now").html(np);
+        }else{
+            $("#cont2").html(data);
+			$("#now").html(np);
+        }
+
+   });
+}
+
+$(document).ready(function(){
+	$("#jquery_jplayer_2").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				mp3: "module/activity/templates/public/js/luck.mp3"
+			}).jPlayer("play");
+		},
+
+		swfPath: "module/activity/templates/public/js",
+		supplied: "mp3"
+	});
+
+});
+
+ </SCRIPT>
+
+</head>
+
+<body>
+<div id="jquery_jplayer_2"></div>
+
+<div id="activity_wrap">
+{template system/header public}
+	<div id="activity_content">
+    	<div class="category">
+        	<div class="post post_sign">
+            	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/round_l_t_bg.jpg" /></div>
+                <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/round_r_t_bg.jpg" /></div>
+                <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/round_l_b_bg.jpg" /></div>
+                <div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/round_r_b_bg.jpg" /></div>
+            	<div class="sign_cont clearfix">
+                	<h2>{$activity[0]['title']}</h2>
+                    <div class="sign">
+                    	<div class="sign_btn"><a href="index.php?n=activity&h=register&channel=26"><img src="module/activity/templates/default/images/activity_new/sign_btn.jpg" /></a></div>
+                        <p class="times">{$last_time}</p>
+                        <p class="number">已经有<span>{$num_all}</span>名会员报名参加</p>
+                        <ul class="boyandgirl clearfix">
+                        	<li>
+                            	<img src="module/activity/templates/default/images/activity_new/boy.jpg" />
+                                <span>{$qixi_regest_count[0]}</span>男士
+                            </li>
+                            <li>
+                            	<img src="module/activity/templates/default/images/activity_new/girl.jpg" />
+                                <span>{$qixi_regest_count[1]}</span>女士
+                            </li>
+                        </ul>
+                        <ul class="logo clearfix">
+<!--                        	<li><img src="module/activity/templates/default/images/activity_new/activity_logo1.jpg" /></li>
+                            <li><img src="module/activity/templates/default/images/activity_new/sk.jpg" /></li>
+-->                            <li class="other_sign"><a href="http://7651.com/index.php?n=activity&h=activity"><img src="module/activity/templates/default/images/activity_new/other_sign_btn.jpg" /></a></li>
+                        </ul>
+                    </div>
+                    <div class="gallery">
+                    	<img src="module/activity/templates/default/images/midsummer/activity.jpg" />
+                        <ul>
+                        	<li class="line">
+                            	<dl>
+                                	<dt>提示：</dt>
+                                    <dd><span>活动时间：</span>2012-08-12</dd>
+
+                                    <dd><span>活动地点：</span>武汉红悦汇酒庄</dd>
+                                </dl>
+                            </li>
+                            <li>
+                            	<dl>
+                                	<dt>要求：</dt>
+                                    <dd><span>特别要求：</span>诚邀都市适龄单身男女，具有完全民事行为能力；敢于展现自我，文明交流，听从组织者安排。</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="post activity_infor">
+            	<div class="entry">
+                	<h2>活动详情</h2>
+                    <ul class="infor">
+                    	<li>活动主办： 真爱一生网<span>（www.zhenaiyisheng.cc）</span></li>
+                        <li>主&nbsp;&nbsp;&nbsp;&nbsp;题：<span>仲夏之恋</span></li>
+						<li>承办单位：真爱一生网活动组</li>
+                        <li>聚会时间：2012-08-12</li>
+                        <li>地&nbsp;&nbsp;&nbsp;&nbsp;点：武汉红悦汇酒庄（报名成功者将以短信方式告知具体活动地址）</li>
+                        <li>费&nbsp;&nbsp;&nbsp;&nbsp;用：AB  制男士80/人  女士50/人</li>
+                        <li>支付方式：网上支付、现场支付</li>
+                        <li>咨询热线：<span>400-678-0405</span></li>
+                        <li>报名须知：诚邀都市单身男女参加本次活动。</li>
+                        <li>特别要求：<span>诚邀都市适龄单身男女，具有完全民事行为能力；敢于展现自我，文明交流，听从组织者安排。</span></li>
+                    </ul>
+                </div>
+                <div class="entry">
+                	<h2>活动寄语</h2>
+                    <p>炎炎夏日，在最耀眼的阳光下，我们寻找爱情；在挥洒的汗水里，我们见证爱情。热浪滔滔，阻挡不了缘分的相聚，这样的一次相聚，是上天在给我们缘定一生的机会。</p>
+                        <p>我们正是为了你的爱情而来，再酷晒的阳光也阻挡不了我们的热情，再高的温度也阻止不了整个城市热恋一夏。本次活动主要针对在高温的夏天里，被禁锢在空调屋里的你们。别被炎热的夏天所打倒。在这充满激情的仲夏里，让我们冲出禁锢，寻找属于自己的爱情。我们的努力只为让烈日的红写满爱情篇章，只为有情人可以终成眷属。</p>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="activity_sidebar">
+    	<div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b.jpg" /></div>
+        	<h2>已报名
+            	<a href="#" id="class2" onMouseMove="changeboxDiv(2)">男生</a>
+                <a href="#" id="class1" onMouseMove="changeboxDiv(1)">女生</a>
+				           </h2>
+<div id="cont1" class="entry" >
+            	<dl class="apply" id="cont1" style="height:285px;">
+				  {php $occupation_list = array("1" => "金融业", "2" => "计算机业", "3" => "商业", "4" => "服务行业", "5" => "教育业", "6" => "工程师", "7" => "主管，经理", "8" => "政府部门", "9" => "制造业", "10" => "销售/广告/市场", "11" => "资讯业", "12" => "自由业", "13" => "农渔牧", "14" => "医生", "15" => "律师", "16" => "教师", "17" => "幼师", "18" => "会计师", "19" => "设计师", "20" => "空姐", "21" => "护士", "22" => "记者", "23" => "学者", "24" => "公务员", "26" => "职业经理人", "27" => "秘书", "28" => "音乐家", "29" => "画家", "30" => "咨询师", "31" => "审计师", "32" => "注册会计师", "33" => "军人", "34" => "警察", "35" => "学生", "36" => "待业中", "37" => "消防员", "38" => "经纪人", "39" => "模特", "40" => "教授", "41" => "IT工程师", "42" => "摄影师", "43" => "企业高管", "44" => "作家", "99" => "其他行业");}
+                	<dt><span class="name">呢称</span><span class="age">年龄</span><span class="education">职业</span></dt>
+					{loop $woman_qixi_regest  $key $nv}
+                    <dd><span class="name"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></span>
+					<!-- <span class="sex"><img src="module/activity/templates/default/images/activity_new/girl_icon.jpg" /></span> -->
+					<span class="age">{php echo empty($nv[birthyear])?'保密':(date('Y')-$nv[birthyear]);}</span>
+					<span class="education">{php echo empty($occupation_list[$nv[occupation]])?'保密':$occupation_list[$nv[occupation]];}</span></dd>
+					{/loop}
+
+                </dl>
+
+            </div>
+            <div id="cont2" class="entry" style="display: none;">
+				<dl class="apply" style="height:285px;">
+                	<dt><span class="name">呢称</span><span class="age">年龄</span><span class="education">职业</span></dt>
+					{loop $man_qixi_regest  $key $nv}
+                    <dd><span class="name"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></span>
+					<!-- <span class="sex"><img src="module/activity/templates/default/images/activity_new/man.jpg" /></span> -->
+					<span class="age">{php echo empty($nv[birthyear])?'保密':(date('Y')-$nv[birthyear]);}</span>
+					<span class="education">{php echo empty($occupation_list[$nv[occupation]])?'保密':$occupation_list[$nv[occupation]];}</span></dd>
+                   {/loop}
+                </dl>
+
+
+
+
+            </div>
+			<div class="pagenav">
+			<input type="hidden" value="{php echo ($qixi_regest_count[1]%9)?(intval($qixi_regest_count[1]/9)+1):(intval($qixi_regest_count[1]/9))}" id="nv_total">
+                            <input type="hidden" value="{php echo ($qixi_regest_count[0]%9)?(intval($qixi_regest_count[0]/9)+1):(intval($qixi_regest_count[0]/9))}" id="nan_total">
+			<p><a href="javascript:page('up');">上一页</a><span id="now">1</span><a href="javascript:page('next');">下一页</a></p>
+			 </div>
+        </div>
+        <div class="post clearfix" style="height:180px;">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>近期活动</h2>
+            <ul class="news">
+				{loop $act_con $k $v}
+				<li>{$v[time]} <a href="{$v['href']}">{$v[title]}</a><img src="module/activity/templates/default/images/activity_new/new.jpg" /></li>
+				{/loop}
+				{loop $act_con_last $k $v}
+				<li>{$v[time]} <a href="{$v['href']}">{$v[title]}</a></li>
+				{/loop}
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>往期回顾<a href="#" class="more">更多</a></h2>
+
+            <ul class="review">
+			{loop $act_con2 $k $v}
+			<li><a href="{$v['href']}">{$v[title]}</a></li>
+			{/loop}
+
+
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>活动合作</h2>
+            <img class="cooperation_img" src="module/activity/templates/default/images/activity_new/sidebar_cooperation.jpg" />
+            <ul class="cooperation">
+            	<li>希望与真爱一生网合作举办活动<a href="index.php?n=cooperation&h=company&cooptype=1">进入>></a></li>
+                <li>希望为活动赞助物品或现金<a href="index.php?n=cooperation&h=company&cooptype=2">进入>></a></li>
+                <li>让会员和您企单身员工联谊<a href="index.php?n=cooperation&h=company&cooptype=3">进入>></a></li>
+                <li>让我们策划主持您企业活动<a href="index.php?n=cooperation&h=company&cooptype=4">进入>></a></li>
+            </ul>
+        </div>
+        <div class="post" style="height:320px;">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>活动志愿者报名</h2>
+            <img class="volunteer_img" src="module/activity/templates/default/images/activity_new/sidebar_volunteer.jpg" />
+            <dl class="volunteer">
+            	<dt>我口齿伶俐思维敏捷有主持经验
+想成为志愿者</dt>
+                <dd>希望与真爱一生网提供主持服务<a href="index.php?n=cooperation&h=company&cooptype=7">点击进入>></a></dd>
+                <dd>希望为活动提供志愿者服务<a href="index.php?n=cooperation&h=personal&a=4">点击进入>></a></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="friend_link clearfix">
+    	<h2><img src="module/activity/templates/default/images/activity_new/friend_link.jpg" /></h2>
+        <div class="entry clearfix">
+        	<ul>
+            	<li><a href="http://www.sina.com.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon1.jpg" /></a></li>
+                <li><a href="http://www.sohu.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon2.jpg" /></a></li>
+                <li><a href="http://www.baidu.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon3.jpg" /></a></li>
+                <li><a href="http://www.qq.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon4.jpg" /></a></li>
+                <li><a href="http://www.k666.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon5.jpg" /></a></li>
+                <li><a href="http://www.163.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon6.jpg" /></a></li>
+                <li><a href="http://www.114la.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon7.jpg" /></a></li>
+                <li><a href="http://www.chinaunicom.com.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon8.jpg" /></a></li>
+                <li><a href="index.php?n=payment&h=ifyouaretheone_index"><img src="module/activity/templates/default/images/activity_new/friend_icon9.jpg" /></a></li>
+                <li><a href="http://www.ahtv.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon10.jpg" /></a></li>
+                <li><a href="http://www.52hbtv.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon11.jpg" /></a></li>
+            </ul>
+        </div>
+        <div><img src="module/activity/templates/default/images/activity_new/friend_bottom.jpg" /></div>
+    </div>
+</div>
+ 	{template system/footer public}
+</body>
+</html>
+

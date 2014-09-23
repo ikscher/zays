@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>爱情测试-测试结果——真爱一生网</title>
+<link href="module/lovestyle/templates/{$GLOBALS['style_name']}/lovestyle.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<div class="main">
+	{template system/header public}
+    <!--head-search end-->
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=lovestyle">爱情测试</a>&nbsp;&gt;&gt;&nbsp;测试结果</span></p>
+		<div class="lt-score">
+			<div class="lt-score-top">
+				<ul class="top-style">
+					<li>您的恋爱类型是：<span class="f-ed0a91">{$results[12]['ctypename']}</span></li>
+					<li>您的匹配类型是：<span class="f-ed0a91">{$results[16]['ctypename']}</span></li>
+				</ul>
+				<a href="index.php?n=lovestyle&h=restart&tcid=2" onclick="return confirm('重新测试将会覆盖现有的测试结果？');" class="go-again"></a>
+			</div>
+			<div class="lt-score-content">
+				<div class="lt-score-title">
+				测试结果
+				</div>
+				<div class="score-center">
+				<h2>您的得分是：{$scores_count}分</h2>
+				<div class="score-center-box">
+					<dl>
+						<dt class="mun01">
+							您的恋爱类型：{$results[12]['ctypename']}
+						</dt>
+						<dd>
+							{$results[12]['result']}</dd>
+					</dl>
+				</div><!--score-center-box end-->
+				
+				<div class="score-center-box bgc">
+					<dl>
+						<dt class="mun02">
+							您的恋爱状态：{$results[13]['ctypename']}
+						</dt>
+						<dd>
+                        {$results[13]['result']}
+						</dd>						
+					</dl>
+				</div><!--score-center-box end-->
+				
+				<div class="score-center-box">
+					<dl>
+						<dt class="mun03">
+							您的婚姻类型：{$results[14]['ctypename']}
+						</dt>
+						<dd>
+						{$results[14]['result']}
+						</dd>						
+					</dl>
+				</div><!--score-center-box end-->
+				
+				<div class="score-center-box bgc">
+					<dl>
+						<dt class="mun04">
+							您的人格特征：{$results[15]['ctypename']}
+						</dt>
+						<dd>
+							{$results[15]['result']}
+                        </dd>						
+					</dl>
+				</div><!--score-center-box end-->
+				
+				<div class="score-center-box">
+					<dl>
+						<dt class="mun05">
+							您的匹配类型：{$results[16]['ctypename']}
+                            {if false}
+								<a href="#" class="check-it">点我查看此类型</a>
+                            {/if}
+						</dt>
+                        {if $results[16]['result']}
+                        <dd>
+                       {$results[16]['result']}
+                        </dd>
+                        {/if}
+					</dl>
+				</div><!--score-center-box end-->
+				<div class="mm-bottom"></div>
+				</div>				
+				<div class="lt-score-bottom">
+				
+				</div>
+			</div>
+		</div>			
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}
+    <!--foot end-->
+</div><!--main end-->
+</body>
+</html>

@@ -1,0 +1,60 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+function check(){
+	var test_name = document.classForm.test_name.value.replace(/\s/g,"");
+	if(test_name == ""){
+		alert("测试名称不能为空！");
+		return false;
+	}
+	return true;
+}
+$(function(){
+	$("#father_class").change(function(){
+		  var parent = this.value;
+		  $.get("hntest_ajax.php?h=class_children&parent="+parent,function(str){
+	           if(str == 'no'){
+				alert('没有子类别');
+			   }else{
+			   $("#children_class").empty();
+				$("#children_class").append(str);
+			   }
+	       });
+	})
+})
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 测试管理</a> </span><span id="search_id" class="action-span1"> - 测试类别</span>
+<span class="action-span"><a href="index.php?action=hntest&h=class_list">返回类别列表</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<form name="classForm" action="" method="post" onsubmit="return check();">
+<table>
+	<tr>
+    	<td>
+        类别选择：
+        <select name="parent"{if $tc_id > 0} disabled="disabled"{/if}>
+        	<option value="0">作为新的测试大类</option>
+        	{loop $parent_class $v}
+            <option value="{$v['tc_id']}"{if $class['tc_id'] == $tc_id} selected="selected"{/if}>{$v['test_name']}</option>
+            {/loop}
+        </select>
+        </td>
+    </tr>
+	<tr>
+		<td>测试名称:<input type="text" name="test_name" value="{$class['test_name']}" /></td>
+	</tr>
+    <tr>
+		<td>
+        <input type="submit" class="button" value="提 交" />
+        <input type="hidden" name="tc_id" value="{$tc_id}" />
+        <input type="hidden" name="action" value="hntest" />
+        <input type="hidden" name="h" value="class_modify" />
+        </td>
+	</tr>
+</table>
+</form>
+</div>

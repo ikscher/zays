@@ -1,0 +1,112 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+$(function(){
+	$("#list-table tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+})
+
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$page_num})
+
+	page = {$page_num};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+</style>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 用户委托</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;" onmouseover="$('#aboutorder').hide()">
+<form action="" method="get">
+  <tr border="2">
+  	<td>
+     <select name="choose" id="choose">
+	    <option value="">请选择搜索条件</option>
+	    <option value="other_contact_you" {if $choose=='other_contact_you'}selected="selected"{/if}>发送委托会员ID</option>
+	 </select>
+	 </td>
+	 <td>&nbsp;&nbsp;
+	 </td>
+	 <td>
+		<input name="keyword" type="text" id="keyword" value="{$keyword}"/>
+		<input type="hidden" name="action" value="active_commission" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input name="" type="submit" value="搜 索"/>
+	</td>
+	  </tr>
+</form>
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>发送委托会员ID</th>
+    <th>发送委托会员昵称</th>
+    <th>发送委托会员年龄</th>
+    <th>发送委托会员性别</th>
+    <th>接收委托的会员</th>
+  </tr>
+  {loop $user_arr $v}
+  <tr id="group_{$group['groupid']}">
+    <td align="center"><a href="#" class="userinfo" onclick="parent.addTab('查看{$v['other_contact_you']}资料','index.php?action=allmember&h=view_info&uid={$v['other_contact_you']}','icon')">
+     {if in_array("$v[other_contact_you]",$member_arr)} <span style='color: #33F;'>{$v['other_contact_you']}</span>{else}{$v['other_contact_you']}{/if}
+    </a></td>
+    <td align="center">{$v['nickname']}</td>
+    <td align="center">{php echo (gmdate('Y', time()) - $v['birthyear']);}
+    </td>
+    <td align="center">
+    {if $v['gender'] == '0'}男{/if}
+    {if $v['gender'] == '1'}女{/if}					
+    </td>
+
+   <td style="text-align: left;">
+     {loop $v['contact_list'] $vv}
+		<input type="checkbox" value="1217691:1216628" name="id_list[]" id="id_1217691:1216628">
+			<label>
+				<a href="#" class="userinfo" onclick="parent.addTab('查看{$vv['uid']}资料','index.php?action=allmember&h=view_info&uid={$vv['uid']}','icon')">{if empty($vv['nickname'])}{$vv['uid']}{else}{$vv['nickname']}{/if}</a>																</label>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;接受会员年龄：{$vv['birthyear']}&nbsp;&nbsp;&nbsp;&nbsp;接受会员性别：{if $vv['gender'] == '0'}男{/if}{if $vv['gender'] == '1'}女{/if}
+			&nbsp;&nbsp;&nbsp;&nbsp;发送委托时间：	{$vv['sendtime']} 
+			</span>
+			<br>
+	 {/loop}		
+	 
+	</td>
+    
+ </tr>
+  {/loop}
+  </table>
+
+  <div style="padding:5px;background:#fff">
+	
+</div>
+
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$pages}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+    </tr>
+  </table>
+  
+</div>

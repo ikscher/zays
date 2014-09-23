@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>红娘币PK-选择挑战对手</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="templates/css/jquery-ui.css" type="text/css" media="all"  />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<!-- <script type="text/javascript" src="templates/js/onmousemove_minutes.js"> -->
+<script type="text/javascript">
+<!--
+$(function() {	
+	$( ".open" ).dialog({
+		bgiframe:true, //兼容IE6
+		autoOpen: false,
+		height: 395,
+		width: 370,
+		modal: true,
+		position:['top','left']
+	});
+	$( "#dialog-form" ).dialog({
+		buttons: {
+			"确定": function() {
+				var bValid = true;
+				var post=new Array();
+				post.recipient=$('#recipient').val();
+				post.money=$.trim($('#money').val());
+				post.msg=$.trim($('#msg').val());
+				post.start=$.trim($('#start').val());
+				post.end=$.trim($('#end').val());
+				post.money=parseInt(post.money);
+				if(post.money<=0){
+					alert('红娘币输入格式不正确');
+					return false;
+				}
+				if(post.msg==''){
+					alert('简述不能为空');
+					return false;
+				}
+				if(post.start==''){
+					alert('请选择开始时间');
+					return false;
+				}
+				if(post.end==''){
+					alert('请选择结束时间');
+					return false;
+				}
+				$.post('index.php?action=matchmaker&h=add_pk',{recipient:post.recipient,start:post.start,amount:post.money,end:post.end,msg:post.msg},function(data){
+					alert(data.msg);
+					if(data.flag){
+						$( "#dekaron-"+post.recipient).attr('disabled','disabled');
+						$( "#dialog-form" ).dialog( "close" );
+					}
+				},'json');
+				
+			},
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});	
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$page_num})
+
+	page = {$page_num};
+	window.location.href = "{$currenturl}&page="+page;
+}
+function enterHandler(event){
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if (keyCode == 13) {
+	   gotoPage();	//调用函数
+	 } 
+}
+function make_pannel(id){
+		$("#recipient").val(id);
+		$("#uname").html($("#username-"+id).html());
+		$("#money").val('');
+		$("#msg").val('');
+		$("#dialog-form").dialog("open");	
+}
+//-->
+</script>
+</head>
+<body>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 奖惩理由基本配置列表 </span>
+<span class="action-span"><a href="{php echo $_SERVER['REQUEST_URI'];}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>UID</th>
+    <th>用户名</th>
+    <th>真实姓名</th>
+    <th>组</th>
+    <th>pk胜利次数</th>
+    <th>pk战败次数</th>
+   	<th>拥有的红娘币</th>
+    <th>操作</th>
+  </tr>
+  {loop $data $v}
+  <tr onmousemove="this.bgColor='#cfeefe';"  id="tr_{$v['uid']}" onmouseout="this.bgColor='#ffffff';" class="listclass">
+  <td>{$v['uid']}</td>
+  <td id="username-{$v['uid']}">{$v['username']}</td>
+  <td>{$GLOBALS['groupname']}</td>
+  <td>{$v['name']}</td>
+  <td>{$v['victory']}</td>
+  <td>{$v['failure']}</td>
+  <td>{$v['balance']}</td>
+  <td><input type="button" value="挑战" id="dekaron-{$v['uid']}" onclick="make_pannel({$v['uid']})"></td>
+  </tr>
+  {/loop}
+  </table>
+   <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$pages}
+	  &nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+      <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+	  </td>
+    </tr>
+  </table>
+</div>
+<div id="dialog-form" title="奖惩理由编辑" class="open">
+	<p>PK的时间范围是指开始日期的0点到结束时间的0点之间的时间</p>
+	<input type="hidden" id="recipient" value="0" name="recipient">
+    <p><label>{$GLOBALS['username']}</label><span style="margin:0 10px;">PK</span><label id="uname"></label></p>
+    <p><label>PK资本：</label><input type="text" name="money" id="money"></p>
+    <p><label>开始时间：</label><input type="text" name="start" id="start" class="Wdate" onFocus="WdatePicker({isShowClear:false,readOnly:true,errDealMode:1,maxDate:'#F{\$dp.\$D(\'end\')}',minDate:'{php echo date('Y-m-d');}'})" value="{php echo date('Y-m-d');}"></p>
+    <p><label>结束时间：</label><input type="text" name="end" id="end" class="Wdate" onFocus="WdatePicker({isShowClear:false,readOnly:true,errDealMode:1,minDate:'#F{\$dp.\$D(\'start\',{d:+1})}'})" ></p>
+    <p><label for="msg">备注：</label></p><p><textarea cols="40" rows="4" name="msg" id="msg" class="text ui-widget-content ui-corner-all" ></textarea></p>
+</div>
+<div style="display:none" id="rewarddata">
+</div>
+</body>
+</html>

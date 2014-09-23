@@ -1,0 +1,269 @@
+@charset "utf-8";
+/* CSS Document */
+.regesit_l{
+	width:665px;
+	height:auto;
+	float:left;
+	}
+.regesit_l h3{
+	background:url(images/regesit_top.gif);
+	height:37px;
+	line-height:37px;
+	color:#6a4078;
+	font-size:14px;
+	padding-left:25px;
+	}
+.regesit_box{
+	border:1px solid #ccaecc;
+	border-top:none;
+	padding:20px;
+	color:303030;
+	background:#fff
+	}
+.regesit_box table td{
+	
+	height:45px;
+	}
+.inputtext{
+	width:230px;
+	}
+	
+.regesit_box table td a{
+	color:#d22224;
+	text-decoration:underline;
+  }
+.regesit_box table td a:hover{
+	color:#6a4078}
+.regesit_btn{
+	background:url(images/regesit_btn.gif);
+	width:78px;
+	height:32px;
+	text-align:center;
+	line-height:25px;
+	color:#bd0000;
+	cursor:pointer;
+	border:none;
+	}
+.regesit_r{
+	width:282px;
+	float:right;
+	height:auto;
+	background:#CCCC66
+	
+	}
+.regesit_r .top{
+	background:url(images/regesit_r_top.gif);
+	height:7px;
+	overflow:hidden;
+	}
+.regesit_rbox{
+	border:1px solid #ccaecc;
+	border-top:none;
+	padding:10px;
+	height:400px;
+	background:#fff url(images/regesit_r_bg.gif) no-repeat center bottom
+	}
+.regesit_rbox img{
+	margin-left:10px;
+	margin-top:20px;
+	}
+.regesit_rbox ul{
+	padding-top:60px;
+	
+	}
+.regesit_rbox ul li{
+	background:url(images/regesit_li.gif);
+	width:246px;
+	height:25px;
+	margin-bottom:13px;
+	color:#bd0000;
+	line-height:25px;
+	padding-left:12px;
+	}
+.regesit{
+	width:965px;
+	height:auto;
+	}
+.regesit h3{
+	background:url(images/regesit.gif);
+	height:37px;
+	line-height:37px;
+	color:#6a4078;
+	font-size:14px;
+	padding-left:25px;
+	}
+.regesit .r_title{
+	font-size:14px;
+	border-bottom:1px solid #f5d9f5;
+	border-top:1px solid #f5d9f5;
+	background:#fcf1fc;
+	height:22px;
+	color:#a424a6;
+	font-weight:normal;
+	line-height:25px;
+	padding-left:25px;
+	padding-top:5px;
+	width:935px;
+	
+	}
+.regesit .r_title img{
+	margin-right:10px;
+	}
+.regesit_content{
+	border:1px solid #ccaecc;
+	border-top:none;
+	background:#fff;
+	font-size:12px;
+	height:auto;
+	zoom:1
+	}
+.step{
+	padding:20px 10px;
+	float:right;
+	height:50px;
+	line-height:32px;
+	font-size:12px;
+	color:#6d327c;
+}
+.step1{
+	background:url(images/step1.gif);
+	width:412px;
+	height:32px;
+	line-height:32px;
+	float:left;
+	}
+.step2{
+	background:url(images/step2.gif);
+	width:412px;
+	height:32px;
+	line-height:32px;
+	float:left;
+	}
+.step3{
+	background:url(images/step3.gif);
+	width:412px;
+	height:32px;
+	line-height:32px;
+	float:left;
+	}
+.step4{
+	background:url(images/step4.gif);
+	width:412px;
+	height:32px;
+	line-height:32px;
+	float:left;
+	}
+	.step a{
+	color:#747474;
+	font-weight:bold;
+	font-size:12px;
+	width:95px;
+	text-align:right;
+	float:left;
+	height:32px;
+	display:block;
+	
+	}
+.step a.over{
+	color:#be0000
+	}
+.step a:hover{
+	color:#be0000}
+.m_info1_maincontent{
+	width:958px;
+	height:auto;
+	padding-bottom:15px;
+	color:#303030
+	}
+.mm_input{ 
+	text-align:center; 
+	padding-top:30px;}
+.red{
+	color:#be0000;
+	margin-left:5px;
+	margin-right:5px;
+	}
+.m_info_main_ul li{
+	list-style-type:none;
+	margin-top:10px;
+	line-height:20px;
+	margin-left:152px;
+	}
+.span_24px{
+	margin-left:24px;
+	}
+.span_12px{
+	margin-left:12px;
+	}
+.text{
+	width:500px;
+	height:60px;
+	color:#333;
+	}
+.save_btn{
+	width:108px;
+	height:31px;
+	background:url(images/re_btn.gif) no-repeat;
+	border:0px;
+	color:#be0000;
+	font-size:14px;
+	
+	text-align:center;
+	cursor:pointer;
+	}
+.checkbox_dl dl{ 
+	margin-left:152px; 
+	width:810px; 
+	height:auto;}
+.checkbox_dl dl dt{ 
+	line-height:30px; 
+	float:left; 
+	width:80px; 
+	margin-top:0px; 
+	_margin-top:5px; 
+	display:inline}
+.checkbox_dl dl dd{
+	 float:left;  
+	 width:660px;  
+	 margin-top:10px; 
+	 display:inline}
+/*兴趣爱好*/
+.l_body{
+	width:880px;
+	height:auto;
+	margin-top:10px;
+	line-height:20px;
+	margin-left:80px;
+	}	
+.l_left1{
+	float:left;
+	width:100px;
+	text-align:right;
+	margin-right:5px;
+	*margin-right:0px;
+	}
+
+.l_right2{
+	float:left;
+	width:660px;
+	}
+.l_ul li{
+	float:left;
+	width:150px;
+	list-style-type:none;
+	margin-bottom:10px;
+	margin-left:5px;
+	}	
+.l_right2 li input{
+	margin-right:5px;
+	}
+.green{
+	color:#007700
+	}
+.red{
+	color:#bd0000
+	}
+
+
+
+

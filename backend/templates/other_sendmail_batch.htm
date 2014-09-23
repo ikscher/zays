@@ -1,0 +1,137 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../public/system/js/sys.js?v=1"></script>
+<script type="text/javascript" src="./templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script src="templates/js/ckeditor/ckeditor.js" type="text/javascript"></script>
+<script type="text/javascript" src="templates/js/ckeditor/ck.jquery.js"></script>
+<script>
+
+
+function check_form(){
+	var workprovince = $("#workprovince").val();
+	var workcity = $("#workcity").val();
+	var age1 = $("#age1").val();
+	var age2 = $("#age2").val();
+	var gender = $("#gender").val();
+	var msg_title = $("#msg_title").val();
+	var msg_content = $("#msg_content").val();
+	
+	if($.trim(workprovince)==''){
+		alert('必须选择省');
+		return false;
+	}
+	
+	if($.trim(msg_content)==''){
+		alert('内容必须填写');
+		return false;
+	}
+	if($.trim(msg_title) == ''){
+		alert('标题不能为空');
+		return false;
+	}
+	
+	return true;
+}
+function show(v){
+	if(v == '1'){
+		 $("#znx").css("display","block");
+		 $("#yj").css("display","none");
+	}else{
+		 $("#znx").css("display","none");
+		 $("#yj").css("display","block");
+	}
+
+}
+function checkForm(){
+	var content = $("#content").val();
+	var uid_list = $("#uid_list").val();
+	if( !content||!uid_list){
+		alert("请将信息填写完整");
+		return false;
+	}
+}
+</script>
+<h1>
+<span class="action-span1"><a href="#">真爱一生网 管理中心</a> </span>
+<span id="search_id" class="action-span1">
+	<span  style="cursor:pointer;"  onclick="show(1)">群发站内信</span>	
+	<span style="cursor:pointer;"  onclick="show(2)">群发邮件</span>
+</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<form action="" method="post" onsubmit="return check_form();" id = 'znx'>
+<div class="list-div" style="padding:5px;">
+地区：
+	  <script>getProvinceSelect43rds('','workprovince','workprovince','workcity','','10100000');</script>
+     <script>getCitySelect43rds('','workcity','workcity','','');</script>
+	  年龄：<script>getSelect("",'age1','age_start','','21',age);</script>到<script>getSelect("",'age2','age_end','','45',age);</script>
+		性别： <select name="gender" style="width:63px;">
+          <option value="0" >男</option>
+          <option value="1"  selected >女</option>
+        </select>
+		<!-- <input type="button" value="确定" id="button_click" /> -->
+</div>
+
+<p/>
+<div class="list-div" id="listDiv">
+	
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+		<!-- <tr>
+			<td>　收件人ID：<input type="text" name="msg_sid" id="msg_sid" /></td>
+		</tr> -->
+	
+		<tr>
+			<td colspan="2">　　标　题：<input type="text" name="msg_title" id="msg_title" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				　　内　容：
+				<textarea style="width:100%" name="msg_content" id="msg_content" class="msg_content" rows="10" cols="60"></textarea>
+				
+			</td>
+		</tr>
+	</table>
+  
+	<div style="padding:20px;background:#fff">
+		<input type="submit" name="post" value="提交" class="button" />
+	</div>
+	
+</div>
+</form>
+<script type="text/javascript">
+$(document).ready(function(){
+$( 'textarea.msg_content' ).ckeditor({ skin : 'v2',filebrowserBrowseUrl : 'templates/js/ckfinder/ckfinder.html',
+        filebrowserImageBrowseUrl : 'templates/js/ckfinder/ckfinder.html?Type=Images',
+        filebrowserFlashBrowseUrl : 'templates/js/ckfinder/ckfinder.html?Type=Flash',
+        filebrowserUploadUrl : 'templates/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl : 'templates/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl : 'templates/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash' });
+});
+</script>
+<form action="index.php?action=other&h=sendmail_batch_2" method="post" onsubmit="return checkForm();" id ='yj' style="display:none;">
+<div class="list-div">
+		<table width="100%">
+		<tr>
+				<td width="100" height="25" align="right">接收会员ID：</td>
+				<td align="left"><input name="uid_list" value="" id="uid_list" size="80"/></td><td>以逗号分隔开,如：1747188,1747898</td>
+			</tr>
+			<tr>
+			<td colspan="3">　　&nbsp; 标   &nbsp; &nbsp; &nbsp;   　题：&nbsp;  <input type="text" name="title" id="title" /></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+				　　内　容：
+					<textarea style="width:100%" name="content" id="content"  rows="10" cols="60"></textarea>
+				
+				</td>
+			</tr>
+			<tr>
+				<td width="100" height="25" align="right"></td>
+				<td align="left"><input name="提交" type="submit" value="发 送" /></td><td></td>
+			</tr>
+		</table>
+</div>
+<p/>
+</form>

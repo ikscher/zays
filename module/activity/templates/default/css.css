@@ -1,0 +1,146 @@
+@charset "utf-8";
+/* 活动专区页 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,   
+form,fieldset,input,textarea,p,th,td {   
+	padding: 0;   
+	margin: 0;   
+    color: #666666;
+    font-family: "宋体",Arial,Vrinda;
+    font-size: 12px;
+    line-height: 24px;
+}   
+img { border:none; line-height:0; font-size:0; }
+a { text-decoration:none; border:none; }
+a:link, a:visited{ color:#666;}
+a:hover, a:active{ color:#C03;}
+ol, ul{ list-style:none; }
+.clear { clear:both; font-size:0; line-height:0; }
+#box{ width:982px; margin:0 auto;}
+.ing {
+	position:absolute;
+	left: 725px;
+	top: 15px;
+}
+span {color:#ff0066;}
+tt { color:#04aeee; }
+
+
+
+
+.content{ width:982px; height:100%; }
+.content_left { border:1px #f585b2 solid; width:748px; float:left; overflow:hidden; padding-bottom:20px;}
+/* 活动页面头部及导航*/
+.left_a h1{ font-size:14px; height:44px; width:100%; background:url(images/activity_new/s_bg1.gif) repeat-x; border-bottom:1px #ff91bd solid; position:relative; }
+.left_a h1 span { display:block; background:url(images/activity_new/hd.gif) no-repeat 8px 0; height:44px; padding-left:46px; line-height:44px;}
+
+.left_a h1 ol {
+	
+	height:32px;
+	position:absolute;
+	left: 122px;
+	top: 13px;
+}
+.left_a h1 ol li {height:30px; background:#FFF; border:1px #ffb1cc solid; border-bottom:1px #FFF solid; line-height:30px; float:left; margin-right:10px; }
+.left_a h1 ol .li { padding:0 10px; color:#C03;}
+.left_a h1 ol li a { display:block; padding:0 10px; height:30px;  background:#fff0f3; border-bottom:1px #ffb1cc solid; float:left;  color:#666;} 
+.left_a h1 ol li a:hover {background:#FFF; border-bottom:1px #fff solid;  color:#C03;}
+.left_a h1 ol li a.hover{background:#FFF; border-bottom:1px #fff solid;  color:#C03;}
+/* 活动页面 banner部分*/
+.left_a .hd_place { padding:10px 16px 0 16px;}
+.left_a .hd_place p { width:300px; float:right; text-align:right;} 
+
+/* 图片轮播样式 */
+.hd_banner { padding:10px;  padding-bottom:0; } 
+.hd_banner .hd_banner_lunbo { width: 327px; float:left;}
+.hd_banner .container {
+	width: 307px;
+	height: 216px
+}
+.hd_banner .container a img {
+	width: 307px;
+	height: 216px
+}
+.hd_banner .container img {
+	border-bottom-style: none;
+	border-right-style: none;
+	border-top-style: none;
+	border-left-style: none
+}
+.hd_banner .td_f a img {
+	padding-bottom: 0px;
+	margin: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px
+}
+.hd_banner .num {
+    float: right;
+    left: 170px;
+    position: absolute;
+    top: 194px;
+    width: 152px;
+}
+.hd_banner .num li {
+	text-align: center;
+	line-height: 15px;
+	margin: 1px;
+	width: 15px;
+	font-family: arial;
+	background: url(images/activity_new/flashbutton.gif) no-repeat -15px 0px;
+	float: left;
+	height: 15px;
+	color: #86a2b8;
+	font-size: 12px;
+	cursor: pointer
+}
+.hd_banner .num li.on {
+	line-height: 15px;
+	width: 15px;
+	background: url(images/activity_new/flashbutton.gif) no-repeat;
+	height: 15px;
+	color: #ffffff
+}
+.hd_banner .hd_banner_news { width:350px; float:left; }
+.hd_banner .hd_banner_news li { width:350px; border-bottom:1px #CCC dashed; height:30px; line-height:30px;}
+.hd_banner .hd_banner_news li p { width:60px; float:right; height:30px; line-height:30px;}
+/* 图片轮播样式 结束 */
+
+/* 电视活动 */
+.left_tv { width:730px; margin:0 auto; height:100%;}
+.left_tv dl{  height:180px;  background:#fff7fa; border-top:1px #fbccdf solid; margin-top:8px; padding:10px 0 10px 35px;}
+.left_tv span, .left_tv span p{ color:#eb3684; }
+.left_tv dt, .left_tv dd{ float:left;}
+.left_tv dt { padding:11px 24px 0 0;}
+.left_tv dt img { width:176px; height:109px; padding:1px; border:1px #ffb1cc solid; }
+.left_tv dd { padding-top:6px; width:330px;}
+
+.number{ width:120px; text-align:center; border:1px #f583b0 solid; float:right; margin:6px 5px 0 0; _margin-right:5px;}
+.number div { height:31px; line-height:31px; }
+
+.mail_page { padding-top:20px; text-align:center; }
+.mail_page a { padding:3px 5px; border:1px #CCC solid; }
+.mail_page a:hover { background:#FFF0F0; }
+.mail_page .this_page {background:#FFF0F0; }
+.mail_page .this_page:hover { background:none; }
+
+
+/* 右侧边栏 */
+.content_right{ float:right; width:220px; overflow:hidden;}
+.header{ position:relative; }
+.header_l{ width:2px; height:27px; height:27px; background:url(images/activity_new/side.jpg) repeat-y; float:left; }
+.header_m { height:27px; background:#fddfeb; width:216px; float:left; }
+.header_m b{ color:#C00; padding-left:10px; }
+.header_r{ width:2px; height:27px; height:27px; background:url(images/activity_new/side.jpg) repeat-y -2px 0; float:left; }
+
+
+.huiyuan { padding-top:10px; width:218px; border:1px #f585b2 solid; height:266px; margin:0;}
+.huiyuan li { padding-left:4px; }
+.huiyuan li div { float:left; text-align:center; }
+
+.huigu{ width:218px; border:1px #f585b2 solid; border-bottom:none; height:100%; margin:0;}
+.huigu li {width:210px; margin:0 auto; padding-top:5px; }
+.huigu li a:link, .huigu li a:visited { color:#666; }
+.huigu li a:hover, .huigu li a:active { color:#c03; }
+
+/* 七夕活动页 结束 */
+#footer{text-align:center; }

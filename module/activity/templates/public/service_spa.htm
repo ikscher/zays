@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网-—恋上温泉，恋上爱</title>
+<link href="module/activity/templates/default/new_css.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+
+<script LANGUAGE="Javascript" src="module/activity/templates/public/js/jquery.jplayer.min.js"></script>
+<SCRIPT language="JavaScript" type="text/javascript">
+var two=1;
+var sex=1;
+			function changeboxDiv(o)
+			{
+				if(o == 2){
+					sex = 0;
+				}else{
+					sex = 1;
+				}
+				
+				for(var i=1;i<=2;i++)
+				{
+					if(o==i)
+						{
+							document.getElementById("class"+i).style.background="url(module/activity/templates/default/images/activity_new/sidebar_h2_thisclass.jpg) no-repeat";
+							document.getElementById("class"+i).style.color="#de016b";
+							document.getElementById("cont"+i).style.display="";
+						}
+					else
+						{
+							document.getElementById("class"+i).style.background="url(module/activity/templates/default/images/activity_new/sidebar_h2_otherclass.jpg) no-repeat";
+							document.getElementById("class"+i).style.color="#2b73c7";
+							document.getElementById("cont"+i).style.display="none";
+						}
+				}
+			two=o;
+			}
+
+
+			
+	function page(pg){
+	
+    if(sex=='1'){
+        var total=$("#nv_total").val();
+		var np=$("#now").html();
+    }else{
+        var total=$("#nan_total").val();
+		var np=$("#now").html();
+    }
+	
+   if(pg=='up'){
+       if(np==1){
+           np=1;
+        }else{
+        	np=parseInt(np)-1;
+		}
+	
+    }
+	
+    if(pg=='next'){
+        if(np==total){
+           np=total;
+        }else{
+           np=parseInt(np)+1;
+		}
+    }
+	
+   $.get('ajax.php',{n:"activity",h:"page",sex:sex,page:np,channel:'20'},function(data){
+  		
+        if(sex=='1'){
+            $("#cont1").html(data);
+			$("#now").html(np);
+        }else{
+            $("#cont2").html(data);
+			$("#now").html(np);
+        }
+       
+   });
+}		
+$(document).ready(function(){
+	$("#jquery_jplayer_2").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				mp3: "module/activity/templates/public/js/spa.mp3"
+			}).jPlayer("play");
+		},
+		
+		swfPath: "module/activity/templates/public/js",
+		supplied: "mp3"
+	});
+	
+});	
+ </SCRIPT>
+	
+</head>
+
+<body>
+<div id="jquery_jplayer_2"></div> 
+
+<div id="activity_wrap">
+{template system/header public}
+	<div id="activity_content">
+    	<div class="category">
+        	<div class="post post_sign">
+            	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/round_l_t_bg.jpg" /></div>
+                <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/round_r_t_bg.jpg" /></div>
+                <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/round_l_b_bg.jpg" /></div>
+                <div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/round_r_b_bg.jpg" /></div>
+            	<div class="sign_cont clearfix">
+                	<h2>{$activity[0]['title']}</h2>
+                    <div class="sign">
+                    	<div class="sign_btn"><a href="index.php?n=activity&h=register&channel=20"><img src="module/activity/templates/default/images/activity_new/sign_btn.jpg" /></a></div>
+                        <p class="times">{$last_time}</p>
+                        <p class="number">已经有<span>{$num_all}</span>名会员报名参加</p>
+                        <ul class="boyandgirl clearfix">
+                        	<li>
+                            	<img src="module/activity/templates/default/images/activity_new/boy.jpg" />
+                                <span>{$qixi_regest_count[0]}</span>男士
+                            </li>
+                            <li>
+                            	<img src="module/activity/templates/default/images/activity_new/girl.jpg" />
+                                <span>{$qixi_regest_count[1]}</span>女士
+                            </li>
+                        </ul>
+                        <ul class="logo clearfix">
+                        	<li><img src="module/activity/templates/default/images/activity_new/nj.jpg" /></li>
+                            <li><img src="module/activity/templates/default/images/activity_new/f.jpg" /></li>
+                            <li class="other_sign"><a href="http://7651.com/index.php?n=activity&h=activity"><img src="module/activity/templates/default/images/activity_new/other_sign_btn.jpg" /></a></li>
+                        </ul>
+                    </div>
+                    <div class="gallery">
+                    	<img src="module/activity/templates/default/images/activity_new/spa.jpg" />
+                        <ul>
+                        	<li class="line">
+                            	<dl>
+                                	<dt>提示：</dt>
+                                    <dd><span>活动时间：</span>2011年11月20日</dd>
+									
+                                    <dd><span>活动地点：</span>{$last_place}</dd>
+                                </dl>
+                            </li>
+                            <li>
+                            	<dl>
+                                	<dt>要求：</dt>
+                                    <dd><span>特别要求：</span>男士22-38岁，女士秀自我，邀约身边的朋友
+漫时光一起幸福告别单身！</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="post activity_infor">
+            	<div class="entry">
+                	<h2>活动详情</h2>
+                    <ul class="infor">
+
+                    	<li>活动主办： 真爱一生网<span>（www.zhenaiyisheng.cc）</span></li>
+                        <li>主&nbsp;&nbsp;&nbsp;&nbsp;题：<span>恋上温泉，恋上爱</span></li>
+						 <li>合作单位：南京电视台，庐江金孔雀温泉旅游度假村</li>
+                        <li>聚会时间：2011年11月20日（星期日，一天）</li>
+                        <li>地&nbsp;&nbsp;&nbsp;&nbsp;点：{$last_place}</li>
+						<li>集合地点：合肥</li>
+                        <li>对&nbsp;&nbsp;&nbsp;&nbsp;象：男士25-38岁，女士22-35岁。</li>
+                        <li>费&nbsp;&nbsp;&nbsp;&nbsp;用：298元/位</li>
+
+						
+                        <li>咨询热线：<span>400-678-0405</span></li>
+                        <li>报名须知：诚邀都市男女参加本次活动，本活动报名日期为11月5日——11月19日。</li>
+                       
+                    </ul>
+                </div>
+                <div class="entry">
+                	<h2>活动详情</h2>
+							
+                         <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/spa_1.jpg" /></p> 		
+						  <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/spa_2.jpg" /></p> 		
+						   <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/spa_3.jpg" /></p> 	
+						 <p align="center">（庐江金孔雀温泉旅游度假村）</p>  
+						     <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/fuyang.jpg" /></p> 
+							   <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/fuyang_1.jpg" /></p> 	
+					<p align="center">（往期活动照片）</p>  
+						
+						<p>一了相思愿，钱唤水多情；</p>
+	
+						<p>腾腾临浴日，蒸蒸热浪生。</p>
+	
+                        <p>浑身爽如酥，怯病妙如神；</p>
+	
+						<p>不慕天池鸟，甘做温泉人。</p>	
+						
+<p style="margin-top:10px;">2011年11月20日，真爱一生网携手南京电视台，为您在初冬的寒冷里倾情注入温暖的活力————泡温泉，洗去刺骨的寒意，洗去满身的疲惫，在温泉的故乡里，我们一起期待，期待温泉乡里属于您的那一抹艳遇。还等什么呢？恋恋温泉乡，恋上温泉，恋上爱！我们期待您的参与！</p>
+<p  style="margin-top:10px;">1 泡温泉。徐霞客的《温泉》诗可谓一语道出了温泉的妙处。在这寒冷的季节里，泡泡温泉，脱去满身的疲惫，不失为一个放松的选择；在忙碌的工作之余，泡泡温泉，在这水气蒸腾氤氲中洗涤爽身，如梦如幻，欲醉欲仙，妙不可言。大有“浴罢恍若肌骨换”之感，难怪现代都市人都泡温泉为快，以至“解衣浴罢仍留连”。</p>
+<p  style="margin-top:10px;">2 相亲派对。在泡温泉之余，真爱一生网专业制作团队为参加活动的单身男女努力营造了温馨浪漫的相亲派对，精彩好玩的游戏，大胆真挚的表白，让您在旅途之余可以更加自然的找到那个心目中的ta，来一场恋恋温泉乡的恋爱之旅。</p>
+<p style="margin-top:10px;">3 电视节目的录制。真爱一生网合作团队南京电视台录制组会全程跟拍旅途中的精彩环节，并会从中选出最优秀的，善于并勇于表现的男女，专门录制一期节目。让您在以后的岁月里可以时时回味。</p>
+	<h2>活动场地介绍</h2>
+<p  style="margin-top:10px;">孔雀温泉旅游度假村成立于2003年12月，总面积约5000多亩，是迄今为止华东地区最大的温泉旅游度假村，是“国家4A级旅游风景区”和“国家四星级旅游饭店”。</p>
+<p  style="margin-top:10px;">度假村使用的温泉水在当地被称为“神水”，含有对身体有益且必须的多种微量元素，如：钾、钠、钙、镁、锶、铝、锰、钼、钡等，PH值为8左右，对神经性骨痛、消化道、风湿、心血管等多种疾病具有特殊疗效，能起到舒筋活络、强身健体、润肤美颜、安神定神、抗衰老等功效。宋代大诗人王安石曾到此入池沐浴，留下了“寒泉时所咏，独此沸如蒸”的千古佳句。 </p>
+<p  style="margin-top:10px; margin-bottom:10px;"> 度假村拥有华东地区最大的园林动态式温泉疗养娱乐中心，包括大型露天、半露天、室内温泉浴场，能满足客人的不同需要，还包括SPA水疗馆及漂流河、造浪池、水上滑梯、儿童戏池、人造沙滩、风情水吧等各种娱乐服务设施，拥有各种名木、药汤、名酒等温泉池给人以全新的洗浴理念及洗浴文化，另外还为客人提供传统的医疗保健按摩及其他各种按摩服务以增加温泉沐浴疗效，还增加了KTV、游戏室、保龄球馆、商场、棋牌室、健身房等附属娱乐服务设施。</p>
+                </div>
+				  <div class="entry">
+                	<h2>活动亮点</h2>
+                    <ul class="lightspot">
+                    	<li>1.更省心  由真爱一生网专业团队全权负责的往返车程、游玩路线、饮食活动等，您只需用心体会温泉的妙处与活动的乐趣。 </span></li>
+                        <li>2.更诱人 来自天南地北的帅哥美女云集于此，思想碰撞、情感交流、近距离接触，让您的温泉之旅充满了艳遇和惊喜。</li>
+                        <li>3.更实惠  专业的游玩安排，精彩的派对活动，知名情感专家的情感讲堂，让您在游玩之余可以尽情的感受真爱一生网的诚挚用心。</span></li>
+                       
+                    </ul>
+                </div>
+				 <div class="entry">
+                	<h2>行程安排</h2>
+                    <ul class="lightspot">
+                    	<li><span>上午：</span></li>
+						<li><span>07:30合肥安徽大剧院集合，抵达目的地后参观景点：</span></li>
+                        <li>1、天然氧吧----相思林，罗汉石窟、十二生肖易学村</li>
+                        <li>2、孔雀传说----孔雀东南飞纪念祠堂</span></li>
+						<li>3、红色回忆----新四军江北指挥部</span></li>
+						<li>4、结识与您----互动活动</span></li>
+						<li><span>金孔雀中餐厅：团餐</span></li>
+                       	<li><span>下午：</span></li>
+						<li>1、放松身心，享受温泉，温泉中心所含内容（露天漂流、室内SPA水疗、冲浪沙滩、玫瑰花瓣汤、护肤汤、八珍汤、玉女汤、粗盐汤、中药汤、薄荷汤、肾宝汤、祛感汤、石板疗、儿童乐园等十几余种各赋特色、各具功能的温泉池。</li>
+						<li>2、抒发情感之爱的表达</li>
+						<li>3、约下午17：00于金孔雀返程，约18：20抵达合肥</li>
+                    </ul>
+                </div>
+                <div class="entry">
+                	<h2>温馨提示</h2>
+                    <ul class="lightspot">
+                    	<li>1.可邀请网上喜欢的异性或朋友一起报名参加。 </span></li>
+                        <li>2.活动前夕准备好一份小礼物，现场可赠送给与您心心相惜的ta。</li>
+                        <li>3.最好不要独自一人泡，以免发生意外。</span></li>
+                        <li>4.一定要记得把身上的金属饰品摘下来，不然首饰会被硫化成黑色。 </li>
+						<li>5.皮肤干燥者浸泡温泉之后最好立刻抹上滋润乳液，以免肌肤水分大量流失引起不适。</li>
+						<li>6.泡温泉时，记住合上双眼，以冥想的心情，缓缓地深呼吸数次，才能真正地释放身心压力。</li>
+						
+                    </ul>
+                </div>
+				
+				<div class="entry">
+                	<h2>注意事项 ：</h2>
+                    <ul class="lightspot">
+                    	<li>请所有会员为了保证自己的权益，仔细阅读以下内容！</li>
+                       
+                        <li>支付方式：为了您的权益，请您通过真爱一生网活动专区网页上的在线支付渠道付到公司账户上，不要在其他账号上进行任何与现金有关的操作，以避免受到不必要的损失。
+							
+
+</li>
+                     
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="activity_sidebar">
+    	<div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b.jpg" /></div>
+        	<h2>已报名
+            	<a href="#" id="class2" onMouseMove="changeboxDiv(2)">男生</a>
+                <a href="#" id="class1" onMouseMove="changeboxDiv(1)">女生</a> 
+				           </h2>
+<div id="cont1" class="entry" >
+            	<dl class="apply" id="cont1" style="height:285px;">
+				  {php $edu_array=array('3'=>'高中及以下','4'=>'大专','5'=>'大学本科','6'=>'硕士','7'=>'博士')}
+                	<dt><span class="name">呢称</span><span class="sex">性别</span><span class="age">年龄</span><span class="education">学历</span></dt>
+					{loop $woman_qixi_regest  $key $nv}
+                    <dd><span class="name"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv['nickname'], 8,'')}</a></span>
+					<span class="sex"><img src="module/activity/templates/default/images/activity_new/girl_icon.jpg" /></span>
+					<span class="age">{php echo empty($nv['birthyear'])?'保密':(date('Y')-$nv['birthyear']);}</span>
+					<span class="education">{php echo empty($edu_array[$nv['education']])?'保密':$edu_array[$nv['education']];}</span></dd>
+					{/loop}
+                
+                </dl>
+              
+            </div>
+            <div id="cont2" class="entry" style="display: none;">
+				<dl class="apply" style="height:285px;">
+                	<dt><span class="name">呢称</span><span class="sex">性别</span><span class="age">年龄</span><span class="education">学历</span></dt>
+					{loop $man_qixi_regest  $key $nv}
+                    <dd><span class="name"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></span><span class="sex"><img src="module/activity/templates/default/images/activity_new/man.jpg" /></span>
+					<span class="age">{php echo empty($nv['birthyear'])?'保密':(date('Y')-$nv['birthyear']);}</span>
+					<span class="education">{php echo empty($edu_array[$nv['education']])?'保密':$edu_array[$nv['education']];}</span></dd>
+                   {/loop}
+                </dl>
+				 
+				 	
+                	
+               
+            </div>
+			<div class="pagenav">
+			<input type="hidden" value="{php echo ($qixi_regest_count[1]%9)?(intval($qixi_regest_count[1]/9)+1):(intval($qixi_regest_count[1]/9))}" id="nv_total">
+                            <input type="hidden" value="{php echo ($qixi_regest_count[0]%9)?(intval($qixi_regest_count[0]/9)+1):(intval($qixi_regest_count[0]/9))}" id="nan_total">
+			<p><a href="javascript:page('up');">上一页</a><span id="now">1</span><a href="javascript:page('next');">下一页</a></p>
+			 </div>
+        </div>
+        <div class="post clearfix" style="height:170px;">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>近期活动</h2>
+            <ul class="news">
+				{loop $act_con $k $v}
+				<li>{$v['time']} <a href="{$v['href']}">{$v['title']}</a><img src="module/activity/templates/default/images/activity_new/new.jpg" /></li>
+				{/loop}
+				{loop $act_con_last $k $v}
+				<li>{$v['time']} <a href="{$v['href']}">{$v['title']}</a></li>
+				{/loop}
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>往期回顾<a href="#" class="more">更多</a></h2>
+            
+            <ul class="review">
+			{loop $act_con2 $k $v}
+			<li><a href="{$v['href']}">{$v['title']}</a></li>
+			{/loop}
+            	
+				
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>活动合作</h2>
+            <img class="cooperation_img" src="module/activity/templates/default/images/activity_new/sidebar_cooperation.jpg" />
+            <ul class="cooperation">
+            	<li>希望与真爱一生网合作举办活动<a href="index.php?n=cooperation&h=company&cooptype=1">进入>></a></li>
+                <li>希望为活动赞助物品或现金<a href="index.php?n=cooperation&h=company&cooptype=2">进入>></a></li>
+                <li>让会员和您企单身员工联谊<a href="index.php?n=cooperation&h=company&cooptype=3">进入>></a></li>
+                <li>让我们策划主持您企业活动<a href="index.php?n=cooperation&h=company&cooptype=4">进入>></a></li>
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>活动志愿者报名</h2>
+            <img class="volunteer_img" src="module/activity/templates/default/images/activity_new/sidebar_volunteer.jpg" />
+            <dl class="volunteer">
+            	<dt>我口齿伶俐思维敏捷有主持经验
+想成为志愿者</dt>
+                <dd>希望与真爱一生网提供主持服务<a href="index.php?n=cooperation&h=company&cooptype=7">点击进入>></a></dd>
+                <dd>希望为活动提供志愿者服务<a href="index.php?n=cooperation&h=personal&a=14">点击进入>></a></dd>
+            </dl>
+        </div>
+    </div>
+  
+    <div class="friend_link clearfix">
+    	<h2><img src="module/activity/templates/default/images/activity_new/friend_link.jpg" /></h2>
+        <div class="entry clearfix">
+        	<ul>
+            	<li><a href="http://www.sina.com.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon1.jpg" /></a></li>
+                <li><a href="http://www.sohu.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon2.jpg" /></a></li>
+                <li><a href="http://www.baidu.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon3.jpg" /></a></li>
+                <li><a href="http://www.qq.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon4.jpg" /></a></li>
+                <li><a href="http://www.k666.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon5.jpg" /></a></li>
+                <li><a href="http://www.163.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon6.jpg" /></a></li>
+                <li><a href="http://www.114la.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon7.jpg" /></a></li>
+                <li><a href="http://www.ct10000.com/"><img src="module/activity/templates/default/images/activity_new/zgdx.jpg" /></a></li>
+                <li><a href="http://www.10086.cn/index.htm"><img src="module/activity/templates/default/images/activity_new/zgyd.jpg" /></a></li>
+				<li><a href="http://www.peacockspa.com/"><img src="module/activity/templates/default/images/activity_new/s.jpg" /></a></li>
+                <li><a href="http://www.ahtv.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon10.jpg" /></a></li>
+                <li><a href="http://www.52hbtv.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon11.jpg" /></a></li>
+            </ul>
+        </div>
+        <div><img src="module/activity/templates/default/images/activity_new/friend_bottom.jpg" /></div>
+    </div>
+</div>
+   	{template system/footer public}
+</body>
+</html>

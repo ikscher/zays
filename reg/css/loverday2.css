@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* CSS Document */
+/*--公共--*/
+*{margin:0;padding:0;}
+body,img,ul,li,a,dl,dd,p{margin:0;padding:0;border:none;list-style:none;text-decoration:none;font-family: "宋体";}	
+.clear{ clear:both;width:0px; height:0px; overflow:hidden; line-height:0px; font-size:0px;}
+body{background:url(../loverday_images_2/bg.jpg) repeat-x top #fbf3e8;font-size:12px;}
+.fleft{float:left;}	
+.logobox,.toptel,.reg-box-title,.reg-btn,.reg-box-bottom,.search-bar,.search-btn,.ms-title,.rsc h4,.mm-honor,.bottom-tel{ background:url(../loverday_images_2/allimg.gif)}
+.head,.main,.reg-story{ width:962px; margin:0 auto;}
+.head-bg{ width:100%; height:171px; margin:0 auto; background:url(../loverday_images_2/topbg.gif) center top no-repeat;}
+
+/*头部*/
+.head{ height:171px;}
+.logobox{ width:259px; height:106px; float:left; background-position:0 -197px; display:inline; margin:0 0 0 45px;}
+.toptel{ width:596px; height:37px; background-position:-10px -121px; float:left; display:inline; margin:25px 0 0 60px;}
+.toplogin{ float:right; color:#FFF; padding-top:5px;}
+.toplogin a{ color:#FFF;}
+.toplogin a:hover{ text-decoration:underline;}
+
+/*注册模块*/
+.regbox{width:958px; background:url(../loverday_images_2/reg_box_bg.gif) repeat-y; margin-left:3px!important; margin-left:4px;}
+.l-regbox{ float:left; width:613px; height:415px; text-align:center}
+.l-regbox img{ margin-top:3px;}
+.r-regbox{ float:right; width:326px; height:415px;/* background:url(../loverday_images_2/r-bg.gif) repeat-y;*/}
+.reg-box{ width:326px; height:415px; float:left}
+.reg-box-title{ background-position:-300px -206px; width:306px; height:52px; margin:10px 0 0 10px;}
+.reg-info,.reg-info dl{ width:326px; float:left;}
+.reg-info dl{ padding-top:20px; color:#FFF;}
+.reg-info dt,.reg-info dd{ float:left; margin-bottom:14px; line-height:20px; height:20px;}
+.reg-info dt{ font-size:14px; width:100px; text-align:right;}
+.reg-info dd{ width:226px;}
+.reg-info dd select{ width:60px;}
+.reg-info-text{border: 1px solid #CCCCCC;color: #666666;height: 18px;line-height: 18px;width: 184px;}
+.reg-btn-box{ height:70px; width: 326px; float:left; text-align:center;}
+.reg-btn{border:none;cursor: pointer;height: 37px;width: 183px; background-position:-451px -271px; margin-top:30px;}
+.reg-box-bottom{ height:44px; width:957px; float:left;}
+
+/*搜索条*/
+.search-bar{width:962px;height:30px;background-position:0 -45px; padding-top:15px; color:#000;}
+.search-cts{width:190px;float:left; margin-left:95px; display:inline}
+.search-cts input{margin-left:5px;}
+.search-cts-list{float:left;width:555px;}
+.search-cts-list li{float:left;margin-right:10px;*margin-right:5px;}
+.search-cts-list li select{width:60px;}	
+.search-btn{width:100px;height:27px;border:none;cursor:pointer; margin-top:-5px; background-position:-300px -276px;}
+.searchid-bar{padding:4px 10px 4px 0;float:left;}
+.reg-info-text {border: 1px solid #CCCCCC; color: #666666; height: 18px; line-height: 18px; width: 184px;}
+
+/*钻石会员展示*/
+.c-reg-box{ width:952px; margin:0 auto;}
+.c-reg-box-side{ width:952px; border:1px solid #eae8d9;margin:10px auto 0; padding:4px; background:#fff;}
+.c-reg-box-title{width:942px; background-position:0 -91px; height:23px; background:#ec4886;padding:5px 0 0 10px;}
+.c-reg-box-title p{width:112px; height:24px; color:#ff4a8c; text-align:center;font-size:14px;font-weight:700; line-height:24px; background:#fff;}
+.c-reg-box-title a{color:#fff;margin-right:20px;display:inline;float:right; line-height:20px;}
+.c-reg-box-c{width:952px; background:#fff8dc;}
+.reg-member-show{padding:10px 15px 20px;width:208px;overflow:hidden;float:left;}	
+.reg-member-show dd{height:32px;font-size:14px;font-weight:700;text-align:center; line-height:32px; color:#FFF}
+.reg-member-show dt{height:140px;}
+
+/*会员推荐*/
+.ms-box{ width:960px; border:1px solid #fdc8dc; margin-top:10px;}
+.ms-title{ background-position:0 -91px; height:29px; line-height:29px;width:960px;}
+.ms-title p{ text-indent:40px; font-size:14px; color:#fff;width:180px;font-weight:700;}
+.ms-title a{color:#000;margin-right:20px;display:inline;float:right; line-height:29px;}
+.mmlist{ float:left; padding-top:10px; width:960px; background:#FFF;}
+.mmlist li{ width:177px;float:left; text-align:center; color:#ff4a83; margin:0 7px; display:inline;}
+.mmlist li a{ width:177px; height:206px; display:block;}
+.mmlist li a img{ border:1px solid #e8e5e5; padding:3px;}
+.mmlist li p{ height:34px; line-height:34px;}
+
+/*成功故事模块*/
+.reg-story-right{ float:left; width:621px;}
+.rsc{ width:636px; background:#fff; border-bottom:1px solid #ffcae3;}
+.rsc h4{ font-size:14px; color:#fe009b;text-indent:14px; height:31px; line-height:31px; background-position:0 -161px; border-bottom:1px solid #ffcae3}
+.rsc h4 a{ font-size:12px; font-weight:400; float:right; color:#000}
+.rsc dl{ float:left; width:150px; padding:5px 28px 20px;line-height:18px;}
+.rsc dt{font-size:14px;color:#024890; padding-top:10px;}
+.rsc dd p{text-indent:24px;}
+.rsc dd p a{color:#ff4a8c;}
+
+.mm-honor{ float:right; width:312px; height:260px; background-position:-650px -120px;}
+.mm-honor-title{ line-height:32px; font-size:14px; color:#fff; text-indent:35px;font-weight:700;}
+.mm-honor-title a{ float:right; margin-right:5px; font-size:12px; color:#000; display:inline; font-weight:400; padding-top:5px;}
+.mm-honor dl{ padding:20px 13px 0 18px; line-height:18px;}
+.mm-honor dt{color:#d93576;}
+.mm-honor dd{ padding-left:12px; margin-bottom:10px;}
+
+
+/*底部*/
+.reg-bottom{background:#96032a;padding-top:10px;padding-bottom:10px;font-size:12px; margin-top:20px}
+.reg-bottom p{line-height:24px;text-align:center;color:#fba1b3;}
+.reg-bottom p a,.bottom-copyright a,.reg-bottom{color:#fba1b3;}
+.reg-bottom p a:hover,.bottom-copyright a:hover,.reg-story-box dd p a:hover{text-decoration:underline;}
+.bottom-tel{ width:529px; margin:10px auto 0; height:35px;background-position:0 -317px;}
+.bottom-copyright{padding-bottom:30px;line-height:24px;font-size:12px;text-align:center;}	
+
+/*添加*/
+.r-img{width:571px; height:397px; display:block; margin:10px auto 0; background:url(../loverday_images_2/reg_img02.gif) no-repeat;}
+#countdown{color:#0159BA; font-size: 64px; left: 190px;position: relative;top: 68px; font-family:"黑体"}

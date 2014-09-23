@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的星座生肖——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span><b style="margin-top:12px; margin-right:3px;">星座生肖</b><b style="width: 100px; display: inline-block;line-height:12px;margin-top:5px; font-weight:400;">Signs<br />and zodiac</b></h3>
+			<div class="space_rbox">
+              <div class="s_box_time">
+			    <div class="horoscope">
+			<div class="horoscope1">
+				  	<p>许多著名的艺术家皆为巨蟹肖牛者，他有强烈的决心。巨蟹座者深厚的敏感性配合肖牛者踏实追求目标的力量。使这类人有强韧的情感力量，非其他星座者所能及，这种人对工作总是较努力尝试。这类人的肖牛属性使他们有丰富的创新力，巨蟹座则提供创造力，他们常孤注一掷地追求其想要的东西。对巨蟹属牛者来说，一项工作是一个活儿，是一个指标，也是宗教。应该完成的就应该完成，绝没有第二条路，没有捷径，也无取巧之路。</P>
+                  </div>
+<div class="horoscope2">
+				  	<p>琉璃厌恶失败，也不喜欢受人指使，她自己有一套规律。琉璃对她所喜欢与向她表现忠诚的人，她可以非常慷慨，对敌人则以牙还牙。任何人想试着在她的自我防卫中找漏洞，琉璃将干脆除去他们， 她有强烈复仇心理而不轻易原谅。琉璃显现出金光闪烁的优越性，他她知道何时独处，知道逐步来，知道如何努力研读，知道重要事件发生的前晚要有充足的睡眠，她的确是完美得令人汗颜，她能够成功地达到自己的目标，就是因为这个因素，而非只因她有天赋。</P>
+				  	<p>琉璃很聪明，不会疏忽任何技巧，但她并非知识份子型的人，甚至差得远。琉璃是有勇气与耐力的直觉者，她知道两点间最短的距离是直线，所以他们身体力行，直赴目标。</P>
+				  	<p>对琉璃来说，爱情是私人的事，她为所爱者而活，且经常终生相守，她在爱情上有其在事业上同样的天赋，长远而认真的情感关系与婚姻需要耐心，勇气与诸多妥协；罗曼史与对他人的关怀是琉璃认为自己辛勤工作的最大奖赏。她在最艰辛的风暴中皆能支撑到底，然而不要期待经常有鲜花或香摈，这类人是天生理智型，她对情感的兴趣限于不影响其原本的计划而定。</P>
+</div>              
+				 
+			  </div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+    </div>	
+</div>
+<div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

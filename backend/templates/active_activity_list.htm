@@ -1,0 +1,58 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script type="text/javascript">
+//显示用户信息
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+</script>
+<h1>
+<span class="action-span"><a href="index.php?action=active_activity&h=add" onclick="parent.addTab('添加活动','index.php?action=active_activity&h=add','icon');return false;">添加活动</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 活动列表 </span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both;"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>活动ID</th>
+    <th>活动分类</th>
+    <th>活动主题</th>
+    <th>活动地区</th>
+    <th>活动价格(元)</th>
+    <th>创建时间</th>
+    <th>操作</th>
+  </tr>
+  {loop $data $activity}
+  <tr id="activity_{$activity['id']}">
+    <td class="first-cell" >{$activity['id']}</td>
+    <td align="left">{$activity['type']}</td>
+    <td align="center">{$activity['title']}</td>
+    <td align="center"><script type="text/javascript">userdetail("{$activity['province']}",provice);userdetail("{$activity['city']}",city);</script></td>
+    <td align="center">{$activity['price']}</td>
+    <td align="center">{php echo date('Y-m-d H:i:s',$activity['regtime']);}</td>
+    <td align="center">
+    	<a href="index.php?action=active_activity&h=edit&id={$activity['id']}" title="编辑" onclick="parent.addTab('编辑活动-{if isset($group['groupname'])}{$group['groupname']}{/if}','index.php?action=active_activity&h=edit&id={php echo $activity['id']}','icon');return false;">编辑活动</a>
+    </td>
+  </tr>
+  {/loop}
+  </table>
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right">{php echo multi($count,$limit,$page,'index.php?action=active_activity&h=list')}</td>
+    </tr>
+  </table>
+</div>

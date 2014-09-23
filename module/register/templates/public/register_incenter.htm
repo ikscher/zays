@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>内心独白--注册——真爱一生网</title>
+<link href="module/register/templates/{$GLOBALS['style_name']}/regesit.css" type="text/css" rel="stylesheet" />
+<style>.left-list li a.a_ajax{color:#177DAE;}</style>
+
+<script>
+	$(function(){
+		$('a').click(function(){
+			$('a').removeClass('a_ajax');
+			$(this).addClass('a_ajax');
+			var vals = $(this).attr('flag');
+			var url = 'ajax.php?n=register&h=text&update='+Math.random();
+			$.get(url,{vals:vals},function(data){
+				$('dl[class=heart-text]').html(data);			 
+			})
+		});
+	})
+</script>
+</head>
+{template system/js_css public}
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content" style="font-size:12px">
+	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;注册</span><a href="#"></a></p>
+	<div class="content-lift">
+		<div class="c-lift-content">
+		<div class="c-lift-title">
+		常见问题
+		</div>
+		<div class="c-lift-content-in">
+			<ul class="left-list">
+				<li><a href="#" flag='1'>何为“内心独白”？</a></li>
+				<li><a href="#" flag="2">内心独白撰写技巧？</a></li>
+				<li><a href="#" flag="3">如何修改、补充内心独白？</a></li>
+				<li><a href="#" flag="4">哪些独白无法通过客服审核？</a></li>
+			</ul>
+			<div class="c-lift-title">精彩“内心独白”样例</div>
+			<div class="clear"></div>
+			<ul class="left-list">
+				<li><a href="#" flag="5">真爱一生网</a></li>
+				<li><a href="#" flag="6">女会员</a></li>
+				<li><a href="#" flag="7">男会员</a></li>
+				<li><a href="#" flag="8">60\70\80\90后</a></li>
+				<li><a href="#" flag="9">真诚幽默型</a></li>
+				<li><a href="#" flag="10">通用型</a></li>					
+			</ul>
+		</div>
+		<div class="c-lift-bottom"></div>
+		</div><!--c-lift-content-->
+	</div><!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="#" class="r-title-black">我的资料设置 &gt;&gt;</a>
+			<span class="right-title f-ed0a91">内心独白</span>
+			</div>
+			<div class="r-center-ccontent">
+				<dl class="heart-text">
+					<dt>通用型内心独白样例</dt>
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●一个细微动作，一个飘忽眼神，抑或是一个转身的距离，相爱的人应该有着缘分的默契，找一个爱我懂我的人，生活也会因默契而和谐。</dd>
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●也许我很平凡，但是我绝不缺乏生活的热情和生命的梦想，也许我会孤单，但是我会一路找寻您的踪迹。遇见您，将是我生命中最绚烂的时刻。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●有时候望着地平线的方向，我在想，自己一路走来，明天又将去向哪里呢。快乐过也失落过，一个人旅途太漫长，如果您愿意，我希望能拉着您的手，一起奔跑，一起去寻找我们的幸福</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●这个世界上，总有一个人在等您，总有一个人会给您安心的幸福，总有一个人会陪您到老，这个人，要珍惜，要感恩。您是我要找的幸福吗？</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●是我没有遇见缘分，还是没有遇见您，无论外面的世界如何纷繁复杂，只想和您过一种简单的生活，相濡以沫，白头到老。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●一个人走得久了，会累，有个人，陪您在冬日的午后晒太阳，为您递上一杯热气腾腾的绿茶，和心爱的人慢慢变老，还有什么比这更幸福呢？</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●来到这里是个偶然，遇见您也许也是偶然，但是，过去的已然过去，未来的还没有到来，我们都不知道下一颗巧克力的味道，无数个偶然或许就是生活送给我们最美的礼物，您的偶然出现或许就是我生命中最美的必然。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●遇到您之前，幸福对我来说无论怎样都是单薄。期待牵着您的手，一直向前走去。我相信，幸福就跟在我们身后。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●对整个世界来说，您是一个人，而对一个人来说，您就是整个世界。我会在这里等着您的到来，期待我们的爱情开花结果，期待把我们的小窝布置得浪漫温馨，一回到家就有幸福的感觉。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●如果让我在这里遇见您，会不会是个奇迹呢，曾经无数次幻想过未来另一半的样子，朦胧而亲切，找寻至今，我才相信，爱情终究是缘分，茫茫人海两个人的相识相爱，本身就是一种巧合，您会是我的那个巧合吗？</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●家应该像冰冷冬天里的一杯热茶，让您在疲惫的时候感到温暖，家应该像黑夜里鹅黄的灯光，让您知道心的那头始终有份期盼，两个人在一起，搜集一点一滴的幸福。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●我一直在这里，没有离开，我一直在等待，等着那个和我终生相伴相爱一生的您的出现。因缘而聚，我始终这样认为，所以觉得真爱一生网真的很好，美丽的缘分，也许就是给我的最美丽的暗示吧。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●在遇到梦中人之前，上天也许会安排我们先遇到别的人；在我们终于遇见心仪的人时，便应当心存感激。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●遇见您我便变得很低很低，一直低到尘埃里去，但我的心是欢喜的。并且在那里开出一朵花来。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●人生不止，寂寞不已。寂寞人生爱无休，寂寞是爱永远的主题。我和我的影子独处，它说它有悄悄话想跟我说，它说它很想念您。原来，我和我的影子，都在想您。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●您当我是个风筝，要不把我放了，要不然收好带回家，别用一条看不见的情思拴着我，让我心伤。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●如果爱上，就不要轻易放过机会。莽撞，可能使您后悔一阵子；怯懦，却可能使您后悔一辈子。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●躲在某一时间，想念一段时光的掌纹；躲在某一地点，想念一个站在来路也站在去路的、让我牵挂的人。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●我想抽签一个人，看到他就和他说，就是您了，我不想在寻觅，感情不是交易，要反反复复的选来选去，可没有这样的人和我呼应，如果您用爱来和呼应，我什么都有愿意为您。</dd>
+                    
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●感谢那些浏览我的资料的人，感谢那些关注我的人，感谢那些给我带来爱情希望的人，在真爱一生网，在寻找缘分的旅途上，我走得并不孤单。而最应该感谢的，就是您，我未来的所爱，我相信您一定在这里，在一个我还不曾到达的角落，在一个我们的目光不曾交汇的地方。</dd>
+					
+				</dl>
+				<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom">
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

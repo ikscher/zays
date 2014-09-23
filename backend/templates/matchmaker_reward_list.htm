@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>奖惩理由基本配置列表</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="templates/css/jquery-ui.css" type="text/css" media="all"  />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.min.js"></script>
+<!-- <script type="text/javascript" src="templates/js/onmousemove_minutes.js"> -->
+<script type="text/javascript">
+<!--
+$(function() {	
+	$( ".open" ).dialog({
+		bgiframe:true, //兼容IE6
+		autoOpen: false,
+		height: 400,
+		width: 400,
+		modal: true,
+		position:['top','left']
+	});
+	$( "#dialog-form" ).dialog({
+		buttons: {
+			"确定": function() {
+				var bValid = true;
+				var post=new Array();
+				post.id=$('#cid-dialog-form').val();
+				var action=post.id==0?'add':'edit';
+				post.type=$('[name=rewardtype]:checked').val();
+				post.money=$.trim($('#money-dialog-form').val());
+				post.title=$.trim($('#title-dialog-form').val());
+				post.msg=$.trim($('#msg-dialog-form').val());
+				if(post.type!=0&&post.type!=1){
+					alert('请选择类型');
+					return false;
+				}
+				post.money=parseInt(post.money);
+				if(post.money<=0){
+					alert('红娘币输入格式不正确');
+					return false;
+				}
+				if(post.title==''){
+					alert('简述不能为空');
+					return false;
+				}
+				$.post('index.php?action=matchmaker&h='+action+'_config_reward',{id:post.id,type:post.type,money:post.money,title:post.title,msg:post.msg},function(data){
+					alert(data.msg);
+					$( "#dialog-form" ).dialog( "close" );
+				},'json');
+				
+			},
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+	$( "#reward_form" ).dialog({
+		buttons: {
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});	
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$page_num})
+
+	page = {$page_num};
+	window.location.href = "{$currenturl}&page="+page;
+}
+function enterHandler(event){
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if (keyCode == 13) {
+	   gotoPage();	//调用函数
+	 } 
+}
+function make_pannel(id,msg){
+	if(id!=0){
+		var rewarddata=$('#rewarddata').data('rewarddata_'+id);
+		if(rewarddata==undefined){
+			$.get('index.php?action=matchmaker&h=get_config_reward',{id:id},function(rewarddata){
+				if(rewarddata.flag){
+					$('#rewarddata').data('rewarddata_'+id,rewarddata.msg);
+					coom_pannel(rewarddata.msg,msg);
+				}else{
+					alert(rewarddata.msg);
+				}
+			},'json');
+		}else{
+			coom_pannel(rewarddata,msg);
+		}
+	}else{
+		$("#cid-"+msg).val('0');
+		$("#money-"+msg).val('');
+		$("#title-"+msg).val('');
+		$("#msg-"+msg).val('');
+		$('[name=rewardtype]').removeAttr('checked');
+		$("#"+msg).dialog("open");	
+	}
+}
+function coom_pannel(data,id){
+	if(id=='dialog-form'){
+		$("#cid-"+id).val(data.id);
+		if(data.type){
+			$("#reward-"+id).attr('checked','checked');
+		}else{
+			$("#punishment-"+id).attr('checked','checked');
+		}
+		$("#money-"+id).val(data.money);
+		$("#title-"+id).val(data.title);
+		$("#msg-"+id).val(data.msg);	
+	}else{
+		if(data.type){
+			$("#rewardtype-"+id).html('奖励');
+		}else{
+			$("#rewardtype-"+id).html('惩罚');
+		}
+		$("#money-"+id).html(data.money);
+		$("#title-"+id).html(data.title);
+		$("#msg-"+id).html(data.msg);
+	}
+	$("#"+id).dialog("open");
+}
+//-->
+</script>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="##" onclick="make_pannel(0,'dialog-form')">奖惩理由</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 奖惩理由基本配置列表 </span>
+<span class="action-span"><a href="{php echo $_SERVER['REQUEST_URI'];}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>ID</th>
+    <th>奖惩类别</th>
+    <th>参考值</th>
+    <th>奖惩种类</th>
+    <th>操作</th>
+  </tr>
+  {loop $data $v}
+  <tr onmousemove="this.bgColor='#cfeefe';"  id="tr_{$v['id']}" onmouseout="this.bgColor='#ffffff';" class="listclass">
+  <td>{$v['id']}</td>
+  <td>{if $v['type']}奖励{else}惩罚{/if}</td>
+  <td>{$v['money']}</td>
+  <td>{$v['title']}</td>
+  <td><a href="javascript:;" title="编辑" onclick="make_pannel({$v['id']},'dialog-form')">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" title="详情" onclick="make_pannel({$v['id']},'reward_form')">详情</a></td>
+  </tr>
+  {/loop}
+  </table>
+   <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$pages}
+	  &nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+      <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+	  </td>
+    </tr>
+  </table>
+</div>
+<div id="dialog-form" title="奖惩理由编辑" class="open">
+	<input type="hidden" id="cid-dialog-form" value="0" name="cid-dialog-form">
+    <p><label>红娘币奖惩类别：</label><label><input type="radio" name="rewardtype" id="reward-dialog-form" value="1">奖励</label><label><input type="radio" name="rewardtype" id="punishment-dialog-form" value="0">惩罚</label></p>
+    <p><label>红娘币参考值：</label><input type="text" name="money" id="money-dialog-form"></p>
+    <p><label>红娘币奖惩种类：</label><input type="text" name="title" id="title-dialog-form"></p>
+    <p><label for="msg">备注：</label></p><p><textarea cols="50" rows="5" name="msg" id="msg-dialog-form" class="text ui-widget-content ui-corner-all" ></textarea></p>
+</div>
+<div id="reward_form" title="奖惩信息详细" class="open">
+<p><label>红娘币奖惩类别：</label><span id="rewardtype-reward_form"></span></p>
+<p><label>红娘币参考值：</label><span id="money-reward_form"></span></p>
+<p><label>红娘币奖惩种类：</label><span id="title-reward_form"></span></p>
+<p><label for="msg">备注：</label></p><p id="msg-reward_form" ></p>   	
+</div>
+<div style="display:none" id="rewarddata">
+</div>
+</body>
+</html>

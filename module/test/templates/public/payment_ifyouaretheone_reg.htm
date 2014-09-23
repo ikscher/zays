@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>非诚勿扰报名——真爱一生网</title>
+<link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
+</head>
+{template system/js_css public}
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<script type="text/javascript" src="./public/system/js/youaretheone.js"></script>
+<body>
+<script type="text/javascript">
+var text1 = "（包括个人性格、爱好、特长等多个方面，越详细，越具备个人特色，将会获得优先权。）";
+var text2 = "（您期待的爱情是什么样的，对待爱情你有什么样的想法，大胆说出来吧！）"; 
+$(document).ready(function() {
+	$("#description").text(text1);
+	$("#lovede").text(text2);
+});
+
+function cleardescriptionText(){
+	if($("#description").text() == text1){
+		$("#description").text("");
+	}	
+}
+
+function clearlovedeText(){
+	if($("#lovede").text() == text2){
+		$("#lovede").text("");
+	}
+}
+</script>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=payment&h=ifyouaretheone_index">非诚勿扰</a>&nbsp;&gt;&gt;&nbsp;非诚勿扰报名</span></p>
+			<div class="fcwr-banner"><img src="module/payment/templates/default/images/fcwr-banner.jpg"/></div>
+			<div class="content-title">
+				<span class="right-title">非诚勿扰报名</span>
+			</div><!--content-title end-->
+			<div class="c-center">
+				<div class="fcwr-box">
+                <form id="form1" name="form1" method="post" action=""  onsubmit="return checkConsignee(this);">
+					<dl class="enroll-reg">
+						<dt><span class="f-ed0a91">*</span> 真实姓名：</dt>
+						<dd><p style="width:160px;">
+                        <input type="text" name="name" id="name" maxlength="8" class="enroll-reg-text" /></p></dd>
+						<dt><span class="f-ed0a91">*</span> 职&nbsp;&nbsp;&nbsp;&nbsp;业：</dt>
+						<dd><p style="width:160px;">
+                        <input name="profession" id="profession" maxlength="20" type="text" class="enroll-reg-text" />
+                        </p></dd>
+						<dt><span class="f-ed0a91">*</span> 手&nbsp;&nbsp;&nbsp;&nbsp;机：</dt>
+						<dd><p style="width:160px;">
+                        <input name="mobile" id="mobile" type="text" maxlength="11" class="enroll-reg-text" />
+                        </p></dd>
+						<dt>固定电话：</dt>
+						<dd><p style="width:160px;">
+                        <input name="telphone" id="telphone" type="text" maxlength="13" class="enroll-reg-text" />
+                        </p></dd>
+						<dt>Q&nbsp;&nbsp;&nbsp;Q ：</dt>
+						<dd><p style="width:160px;"><input name="qq" id="qq" maxlength="12" type="text" class="enroll-reg-text" /></p></dd>
+						<dt>M&nbsp;S&nbsp;N ：</dt>
+						<dd><p style="width:160px;"><input name="msn" id="msn" maxlength="50" type="text" class="enroll-reg-text" /></p></dd>
+						<dt>E-mail ：</dt>
+						<dd><p style="width:160px;"><input name="email" id="email" type="text" maxlength="50" class="enroll-reg-text" /></p></dd>
+						<dt><span class="f-ed0a91">*</span> 爱情宣言（500字）：</dt>
+						<dd class="height-auto">
+							<p>
+                            <textarea style="width:460px;height:120px;" onCLICK="clearlovedeText()" onSELECT="clearlovedeText()" onKEYUP="clearlovedeText()" name="lovede" id="lovede" cols="60" rows="5">（您期待的爱情是什么样的，对待爱情你有什么样的想法，大胆说出来吧！）
+                    </textarea>
+							</p>
+						</dd>
+						<dt><span class="f-ed0a91">*</span> 自我描述（500字）：</dt>
+						<dd class="height-auto">
+							<p>
+                            <textarea style="width:460px;height:120px;" onCLICK="cleardescriptionText()" onSELECT="cleardescriptionText()" onKEYUP="cleardescriptionText()" name="description" id="description" cols="60" rows="10"></textarea>
+							</p>
+						</dd>
+						<dt>&nbsp;</dt>
+						<dd class="height-auto">
+							<p style="padding-top:20px;">
+                            <input type="hidden" name="lovede1" value="（您期待的爱情是什么样的，对待爱情你有什么样的想法，大胆说出来吧！）"  />
+              	<input type="hidden" name="description1" value="（包括个人性格、爱好、特长等多个方面，越详细，越具备个人特色，将会获得优先权。）"  />
+                            <input type="submit" class="submit-enroll" value="确认提交" /></p></dd>
+					</dl>
+                </form>
+					<div class="clear"></div>
+				</div>
+			</div><!--c-center end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+	</div><!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

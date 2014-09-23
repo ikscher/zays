@@ -1,0 +1,156 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+$(function(){
+	$("#list-table tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+})
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+//分页跳转
+function gotoPage() {
+	
+	var page = document.getElementById("pageGo2").value;
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	
+	window.location.href = "{$currenturl2}&page="+page;
+}
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+input[type="button"]  {
+background-color:#cfeefe;
+}
+
+.coolbg {
+background: #a4cafd;
+border-bottom:2px solid #ACACAC;
+border-right:2px solid #ACACAC;
+cursor:pointer;
+padding:2px 5px;
+}
+
+.np {
+border:medium none;
+}
+
+
+</style>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 合作者</span>
+<span class="action-span"><a href="{if isset($currenturl)}{$currenturl}{/if}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+<form action="index.php?action=active_cooperation&h=list&act=search" method="post">
+  <tr border="2">
+  	<td>
+    合作方式:
+     <select name="cooperation" id="cooperation">
+        {loop $cooperation_config $key $value}
+	    <option value="{$key}">{$value}</option>
+        {/loop}
+	 </select>
+	  活动名称:
+     <select name="activities" id="activities">
+	 {if empty($activitie)}
+        {loop $activities $key $value}
+	    <option value="{$value}">{$value}</option>
+        {/loop}
+	 {else}
+	 	{loop $activities $key $value}
+	    	<option {if $value == $activitie} selected="selected"{/if}">{$value}</option>
+        {/loop}
+	 {/if}
+	 </select>
+	 受理客服ID:
+	 {if empty($sids)}
+	 <input type="text" value="{$GLOBALS['adminid']}" name="sid" />
+	 {else}
+	 <input type="text" value="{$sids}" name="sid" />
+	 {/if}
+	 </td>
+	 <td>&nbsp;&nbsp;
+	 </td>
+	 <td>
+		<!--<input name="keyword" type="text" id="keyword" value="{$keyword}"/>-->
+		<input type="hidden" name="action" value="{$GLOBALS['action']}" />
+		<input type="hidden" name="h" value="{$GLOBALS['h']}" />
+		<input name="" type="submit" value="搜 索"/>
+		
+		<!--<input type="button" value="显示未处理过的" onclick="showUndeal()" class="coolbg np">
+    	<input type="button" value="显示已处理过的" onclick="showDealed()" class="coolbg np">
+    	<input type="button" value="显示所有的" onclick="showAll()" class="coolbg np">-->
+	</td>
+	  </tr>
+</form>
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>会员的ID</th>
+    <th>合作的联系人</th>
+    <th>地区</th>
+    <th>联系人电话</th>
+    <th>合作登记时间</th>
+	<th>报名的活动</th>
+	<th>受理客服ID</th>
+     <th>操作</th>
+  </tr>
+  {if isset($data)}
+  {loop $data $v}
+  <tr id="tr_{$v['id']}">
+    <td align="center">{if !empty($v['uid'])}<a href="#" class="userinfo" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">
+		<span style='color: #33F;'>{$v['uid']}</span>
+    </a>{else}未注册合作者{/if}</td>
+     <td  align="center" >{$v['cooperation']}</td>
+	 <td align="center"><script>userdetail({$v['province']},provice);userdetail({$v['city']},city);</script></td>
+    <td  align="center">{$v['phone']}</td>   
+    <td align="center">{php echo date("Y-m-d H:i:s",$v['time']);}</td>
+	 <td align="center">{$v['activities']}</td>
+	  <td align="center">{$v['sid']}</td>
+    <td align="center">
+    <!--<a href="#" class="userinfo" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')"></a>-->
+    <a href="index.php?action=active_cooperation&h=list&act=edit&o&uid={$v['uid']}">修改报名活动</a> &nbsp;<a href="index.php?action=active_cooperation&h=list&act=remark&uid={$v['uid']}">备注</a>
+    </td>
+  </tr>
+  {/loop}
+  {/if}
+  </table>
+ <div style="padding:5px;background:#fff">
+	
+</div>
+
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{if isset($pages)}{$pages}{/if}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo2" type="text" style="width:20px;height:15px;" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+    </tr>
+  </table>
+  
+</div>

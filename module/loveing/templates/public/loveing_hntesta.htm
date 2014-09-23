@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>爱情测试——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<script src="module/lovestyle/templates/public/js/Drag.js"></script>
+<style type="text/css">
+@import url("module/lovestyle/templates/{$GLOBALS['style_name']}/lovestyle.css");
+</style>
+<script type="text/javascript">
+function check_value( scores ){
+	var lock = $("#lock");
+	if(lock.val() == 1) return;
+	lock.val("1");
+	var qid = $("#qid").val();
+	var tc_id = $("#tc_id").val();
+	var ctype = $("#ctype").val();
+	var url = "ajax.php?n=loveing&h=actio&qid="+qid+"&tc_id="+tc_id+"&ctype="+ctype+"&scores="+scores+"&rand="+Math.random();
+	//alert(url);
+	$.get(url,function(str){
+		alert(str);
+		lock.val("0");
+		$("#is_vote").val('1')
+	})
+}
+function test_next(){
+	if($("#is_vote").val() == 1){
+		location.href = "index.php?n=loveing&h=hntesta&r="+Math.random();
+	}else{
+		alert("请完成本道测试。");
+	}
+}
+</script>
+</head>
+<body>
+<!--头部结束-->
+{template system/header public}
+<div class="clear"></div>
+         
+  
+       <form id="form1" name="form1" method="post" action="index.php?n=lovestyle&h=actio" onsubmit="return check();">
+       <div class="main">
+        {template system/nav public}
+      <div class="result">
+        <div class="add1">
+        <div class="addtext1">
+          <p>
+          想知道，在您内心深处珍藏着怎样的爱情故事吗？
+          在恋爱舞台上您会扮演什么角色，面对困境又该如何把握幸福呢？现在就来测试一下吧！
+         </p>
+          <p> 请耐心填写以下题目，完成提交后，我们将立即告诉您答案。</p>
+        </div>
+        </div>
+        <div class="clear"></div>
+        <div class="test_result">
+         <div class="top1">
+           <div class="ladding">
+              <div class="chas">
+                 <div style="float:left">完成率：</div>
+            {php 
+            	$percent = (int)($test['num']/$test['count']*100);
+            	$width = 2*$percent;
+            }
+            <div class="kuang">
+                <img width="{$width}" height="12" src="module/lovestyle/templates/default/images/jindu.gif" /></div>
+            </div>
+            &nbsp;完成：<font id="percent">{$percent}</font>%
+            </div>
+         </div>
+         <div class="resultbox">
+             <div class="love_test">
+             
+               <dl>
+                 <dt>{php echo $test['num']+1;}.{$test['question']['question']}</dt>
+                 <dd class="p30">我觉得与现实的我：</dd>
+                 <div id="pic_{$i}" onmouseover="check_pic({$i},{php $b=$i+1;echo $b;});" class="upbtn"></div>
+                 <dd>
+                   <ul class="love_loadd" >
+                   {loop $test['option'] $op}
+                     <li><a href="#" id="option_{$op['id']}" onclick="check_value({$op['scores']});return false;"  class="t1 ">{$op['option']}</a></li>
+                   {/loop}
+                   </ul>
+                   <input type="hidden" name="qid" id="qid" value="{$test['question']['qid']}" />
+                   <input type="hidden" name="tc_id" id="tc_id" value="{$test['question']['tc_id']}" />
+                   <input type="hidden" name="ctype" id="ctype" value="{$test['question']['ctype']}" />
+                   <input name="lock" type="hidden" id="lock" value="0" />
+                   <input name="is_vote" type="hidden" id="is_vote" value="0" /></dd>
+                 <dd class="btn">
+                 {if $test['count']==$test['num']+1}
+                 <input type="button" class="yesbtn" name="button" id="button" value="查看结果" onclick="test_next();" />
+                 {else}
+                   <input name="but_{$i}" type="button" class="yesbtn" value="下一题" onclick="test_next();" />
+                 {/if}  
+                   {if $i>1}
+                     <a href="###" onclick="check_back('{php $b=$i-1;echo $b;}','{$i}');">返回上一题</a>
+                     {/if}
+                     </dd>
+               </dl>
+           </div>
+              <div class="love_sto">
+              </div>
+           <div class="clear"></div>
+         <div class="love_bottom">
+          <input name="is_auto" type="checkbox"  value="1" id="is_auto" /> 
+          <label for="is_auto">选中答案自动跳转到下一题</label>
+         </div> 
+            
+            
+         </div>
+        </div>
+      </div>
+        
+        
+        <div class="clear"></div>
+        
+      </div>
+       </form>
+       <!--左边结束-->
+       
+    </div>
+ <div class="clear"></div>
+{template system/footer public}
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<script>
+function chatgopage(p){
+	var url = './allmember_ajax.php?n=chatrecord&uid={$uid}&page='+p;
+	$.get(url,function(data){
+		$("#chat_showarea").html(data);
+	});	
+}
+
+function del_chat_message(cid){
+	var url="./allmember_ajax.php?n=delchatinfo&chatid="+cid;
+	$.get(url,function(data){
+		$("#chat_"+cid).remove();
+	});
+}
+</script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<div id="chat_showarea">
+<br/>
+<div style="border: 1px solid #1C3F80; margin:0 auto; width:100%;">
+<table width="100%" cellpadding="3" cellspacing="1" style="background:#FFF">
+	<tr>	
+		<th>发送方</th>
+		<th>接收方发送方</th>
+		<th>聊天内容</th>
+		<th>时间</th>
+		<th>读取状态</th>
+		<th>历史记录</th>
+		<th>是否客服模拟</th>
+		{if in_array($GLOBALS['groupid'],$GLOBALS['system_admin'])}<th>操作</th>{/if}
+		</tr>
+	{loop $chats $v}
+	<tr id = "chat_{$v['s_id']}">
+    	<td align="center"><a href="#" onclick="parent.addTab('{$v['s_fromid']}资料','index.php?action=allmember&h=view_info&uid={$v['s_fromid']}','icon')">
+		{if $v['is_server'] && $v['s_fromid'] != $uid}（红娘）{/if}
+		{$v['s_fromid']}</a></td>
+		<td align="center"><a href="#" onclick="parent.addTab('{$v['s_uid']}资料','index.php?action=allmember&h=view_info&uid={$v['s_uid']}','icon')">
+		{if $v['is_server'] && $v['s_uid'] != $uid}（红娘）{/if}
+		{$v['s_uid']}
+		</a></td>
+		<td>{$v['s_content']}</td>
+		<td align="center">{php echo date('Y-m-d H:i:s',$v['s_time']);}</td>
+		<td align="center">{if $v['s_status']==1}已读{else}未读{/if}</td>
+		<td align="center"><a href="#" onclick="parent.addTab('{php echo $v['s_uid']}历史记录','index.php?action=allmember&h=view_info&type=chathistory&uid={$v['s_uid']}&fromid={$v['s_fromid']}','icon')">查看聊天历史记录</a></td>
+		<td align="center">{if $v['is_server']==0}否{else}是{/if}</td>
+		{if in_array($GLOBALS['groupid'],$GLOBALS['system_admin'])}<td><a href="#" onclick="del_chat_message('"{php echo $v['s_id']}"')">删除</a></td>{/if}
+		</tr>
+	{/loop}
+</table>
+</div>
+<br/>
+{if $pages>=2}<div style="text-align:center">第&nbsp;{php for($i=1;$i<=$pages;$i++) echo '<a href="javascript:chatgopage('.$i.');">&nbsp;'.$i .'&nbsp;</a>';}&nbsp;页</div>{/if}
+</div>

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$dating['subject']}</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/liftimes.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+{template system/js_css public}
+<script type="text/javascript">
+	function chk_data(){
+		var message = $("#message").val();
+		if($.trim(message)==''){
+			alert("请输入约会留言");
+			return false;
+		}
+		return true;
+	}
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end-->
+</head>
+
+<body>
+	{template system/header public}
+	<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+		{template nav data}
+	<div class="clear"></div>
+	{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>查看约会</h3>
+			<div class="space_rbox">
+			<P>&nbsp;</P>
+			<h4>{$GLOBALS['TA']}的基本资料</h4>
+			<ul class="appoint">
+				<li class="photo">
+					<div class="pic_vaign">
+						<p>
+						<a href="index.php?n=space&uid={$uid}">
+						<img src="{php   
+		                      if(MooGetphoto($members['uid'],'com')) echo MooGetphoto($members['uid'],'com');
+		                      elseif(MooGetphoto($members['uid'],'medium')) echo MooGetphoto($members['uid'],'medium');
+		                      elseif($members['uid']['gender'] == '1')echo 'public/system/images/woman.gif';
+		                      else  echo 'public/system/images/man.gif';
+		                      }" style="width:98px;height:123px;" />
+						</a></p>
+					</div>
+				</li>
+				<li class="sex color_333">
+					<p>性别：{if $members['gender'] == 0}男{else}女{/if}</p>
+					<p>年龄：{php echo date("Y")-$members['birthyear']}岁</p>
+					<p>身高：{if $members['height']=='-1'}保密{else} $members['height']CM {/if}</p>
+					<p>
+					婚姻状况：{if $members['marriage'] == '-1'}
+						保密
+					{else} 
+						{if $members['marriage'] == '1'}
+							 未婚
+						{elseif $members['marriage'] == 3}
+							离婚
+						{else}
+							丧偶
+						{/if}
+					{/if}</p>
+				</li>
+				<li class="outro color_333">
+				<p>	内心独白:</p>
+				<p>
+					{$choice['introduce']}
+				</p>
+				</li>
+			</ul>
+			<div class="clear"></div>
+			<h4>{$GLOBALS['TA']}的约会详情</h4>
+			<ul class="detail">
+				<li>
+				<span class="w300">主题：{$dating['subject']}</span>
+				<span>发起人：<a href="index.php?n=space&uid={$uid}">
+					{if $dating['nickname']}
+						$dating['nickname']
+					{else}
+						ID:$dating['uid']
+					{/if}
+				</a>
+				</span>
+				</li>
+				<li>约会有效期：{$dating['expire_time']}前</li>
+				<li>约会城市：$provice_list[$province_key] $city_list[$city_key]</li>
+				<li>约会对象：{php echo $user_arr['gender']==0 ? '男' : '女'}， {$choice['age1']}-{$choice['age2']}岁， $provice_list[$choice['workprovince']] $city_list[$choice['workcity']], 收入$salary_list[$choice['salary']]</li>
+				<li>婚姻状况：$marriage_list[$choice['marriage']]</li>
+				<li>约会安排：$how_to_go[$dating['how_to_go']] </li>
+				<li>如何去约会地点：$how_to_return[$dating['how_to_return']]</li>
+				<li>约会结束后：$how_to_return[$dating['how_to_return']]</li>
+				<li>约会费用：$fee_assign[$dating['fee_assign']]</li>
+			</ul>
+			<div class="clear"></div>
+			<h4>响应约会给{$GLOBALS['TA']}留言</h4>
+			<form action="index.php?n=space&h=dating&did={$did}&uid={$uid}" method="post" onsubmit="return chk_data()">
+			<div class="v_word">
+				<div class="w_left"></div>
+				{if $dating_respond['count']>0}
+       				<div class="w_center">您已经同意了这个约会</div>
+	       		{else}
+	       			<div class="w_center">
+					<textarea name="message" id="message"></textarea> 
+					<input type="submit" class="w_submit1"  value=""/>
+					</div>
+	       		{/if}
+				<div class="w_right"></div>
+			</div>
+			</form>
+			<div class="appoint_tips">
+				把您想说的话告诉他，真诚的表白、有特色的自我介绍，都会让您获得更大的约会机会！为保护您的
+				交友安全，<span class="color_ff0000">请勿在此透露您的联系方式</span>；不要填写任何广告、色情、反动内容。 
+			</div>
+			<div class="clear"></div>
+			<h4>{$GLOBALS['TA']}的其它约会</h4>
+			{loop $dating_list $dating}
+			<div class="yingyue">
+				<input type="button" class="yingyue_btn" value="我要应约" onclick="location.href='index.php?n=space&h=dating&did={$dating['did']}&uid={$uid}'" />
+				<b>主题：</b><a href="index.php?n=space&h=dating&did={$dating['did']}&uid={$uid}">{$dating['subject']} </a>
+				<p><b>约会有效期：</b>{$dating['expire_time']} 前</p>
+				<p><b>内容：</b>{$dating['content']}</p>
+			</div>
+			{/loop}
+		</div>
+	</div>
+    </div>	
+
+{template system/footer public}
+</body>
+</html>

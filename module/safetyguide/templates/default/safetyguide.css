@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+body{ font-size:12px;}
+.content-title,.content-bottom,.sgleft{ width:738px;}
+.c-center{ width:737px; float:left; padding:17px 0 50px;}
+.sgbanner{ margin-bottom:1px;}
+.lbox{ float:left; margin-left:23px; margin-top:23px;}
+.lboxcenter{border-left:1px solid #ccc;	border-right:1px solid #ccc; width:212px;}
+.lboxside{ background:url(images/lboxside.gif) no-repeat; width:214px; height:9px; font-size:0px;}
+.lboxside.bottom{ background-position:bottom;}
+.lboxcenter dl{ padding:20px 0 26px 124px; background:url(images/imgs.jpg) no-repeat;}
+.lboxcenter dt{ font-size:14px; margin-bottom:15px; font-weight:700;}
+.lboxcenter dl.lbox02{ background-position:0 -100px}
+.lboxcenter dl.lbox03{ background-position:0 -200px}
+.lboxcenter dl.lbox04{ background-position:0 -300px}
+.lboxcenter dl.lbox05{ background-position:0 -400px}
+.sgright-side{ background:url(images/rboxside.gif) no-repeat; font-size:0px; width:234px; height:4px;}
+.sgright-c{ border-left:1px solid #e8e5e5;	border-right:1px solid #e8e5e5;width:232px; padding-bottom:20px;}
+.sgright-title{ background:#f0eff0; border-bottom:1px solid #e8e5e5; line-height:24px; height:24px; font-size:14px; color:#d73c90; padding-left:15px; font-weight:700}
+.sgright-side.bottom{ background-position:bottom;}
+.sgright-c p{ padding:20px 10px 12px; text-indent:24px; line-height:18px; }
+.sgright-c dl{ padding:5px 5px; line-height:18px; border-top:1px dashed #dadada; margin:0 10px;}
+.sgright-c dt{ font-weight:700; color:#d73c90;}
+.sgbox,.sgnav{ width:680px; margin:0 auto;}
+.sgnav,.sgnav li{ float:left;}
+.sgnav li{ float:left; width:136px; height:108px; background:url(images/navbg.gif) no-repeat; cursor:pointer;}
+.sgnav li.nav-l{ background-position:0 0;}
+.sgnav li.nav-c{ background-position:-136px 0;}
+.sgnav li.nav-r{ background-position:-274px 0;}
+.sgnav li.nav-l-on{ background-position:0px -108px;}
+.sgnav li.nav-c-on{ background-position:-136px -108px;}
+.sgnav li.nav-r-on{ background-position:-274px -108px;}
+.sgnav li p{ background:url(images/imgs02.gif) no-repeat; font-size:14px; text-align:center; padding-top:75px;}
+.sgnav li p.sgnav01{ background-position:30px 10px;}
+.sgnav li p.sgnav02{ background-position:30px -80px;}
+.sgnav li p.sgnav03{ background-position:30px -170px;}
+.sgnav li p.sgnav04{ background-position:30px -260px;}
+.sgnav li p.sgnav05{ background-position:30px -350px;}
+.sgbox-center{ border-left:1px solid #ccc; border-right:1px solid #ccc; widows:638px; padding:20px 20px;}
+.sgbox-center h4{ font-size:14px; color:#d70c90; margin-bottom:15px;}
+.sgbox-center h4 a{font-size:12px; color:#d73c90; font-weight:400; float:right}
+.sgbox-center dl{ line-height:22px; margin-bottom:30px;}
+.sgbox-center dd{ text-indent:24px;}
+.sgbox-center dt{ color:#d73c90;}
+.sgbox-bottom{ background:url(images/sgbox-bottom.gif) no-repeat; width:680px; font-size:0px; height:11px;}

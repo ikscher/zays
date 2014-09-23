@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+   <script type="text/javascript">
+   function textCounter(field,countfieldId,leavingsfieldId,maxlimit) {
+	    var countfield = document.getElementById(countfieldId);
+	    var leavingsfield = document.getElementById(leavingsfieldId);
+		if (field.value.length > maxlimit) // if too long...trim it!
+		{
+		  field.value = field.value.substring(0, maxlimit);
+		  alert(" 限" + maxlimit + "字内！");
+		} else { 
+		  leavingsfield.innerHTML=maxlimit - field.value.length;
+		  countfield.innerHTML=field.value.length;
+		}
+	} 
+	$(function(){
+		$("input[type!=button],select").attr("disabled","disabled");
+	})
+   </script>
+</head>
+
+<body>
+<form action="" method="post">
+<div class="main-div">
+	<table width="100%">
+	<tr>
+		<td>
+			<table>
+			 <tr>
+			    <td class="label">会员昵称:</td>
+			    <td><input name="nickname" type="text" value="{$userinfo['nickname']}"/> &nbsp;操作后：<input name="nickname" type="text" value="{$userinfo_new['nickname']}"/> </td>
+			  </tr>
+			  <tr>
+			    <td class="label">重设密码:</td>
+			    <td>
+			
+				</td>
+			  </tr>
+			  <tr>
+			    <td class="label">手机:</td>
+			    <td><input name="telphone" value="{$userinfo['telphone']}" type="text" />
+					操作后：
+					<input name="telphone" value="{$userinfo_new['telphone']}" type="text" />
+				</td>
+			  </tr>
+			  <tr>
+			  	<td class="label">婚姻状况:</td>
+			  	<td>
+					<script>getSelect('','marriage1','marriage1','{$userinfo[marriage]}','1',marriage);</script>
+					操作后：
+					<script>getSelect('','marriage1','marriage1','{$userinfo_new[marriage]}','1',marriage);</script>
+				</td>
+			  </tr>
+			   <tr>
+			    <td class="label">身高:</td>
+			    <td><script>getSelect('','height','height','{$userinfo[height]}','0',height);</script>
+					操作后：
+					<script>getSelect('','height','height','{$userinfo_new[height]}','0',height);</script>
+				</td>
+			  </tr>
+			  <tr>
+			    <td class="label">月收入:</td>
+			    <td> 
+					<script>getSelect('','salary','salary','{$userinfo[salary]}','0',salary1);</script>
+					操作后：
+					<script>getSelect('','salary','salary','{$userinfo_new[salary]}','0',salary1);</script></td>
+			  </tr>
+			   <tr>
+			    <td class="label">QQ:</td>
+			    <td><input type="text" name="qq" value="{$userfield['qq']}"/>
+					操作后：
+					<input type="text" name="qq" value="{$userfield_new['qq']}"/>
+			  </tr>
+			   <tr>
+			    <td class="label">MSN:</td>
+			    <td><input type="text" name="msn" value="{$userfield['msn']}"/>
+					操作后：
+					<input type="text" name="msn" value="{$userfield_new['msn']}"/>
+				</td>
+			  </tr>
+			   <tr>
+			    <td class="label">最高学历:</td>
+			    <td>
+					<script>getSelect('','education1','education1','{$userinfo[education]}','0',education);</script>
+					操作后：
+					<script>getSelect('','education1','education1','{$userinfo_new[education]}','0',education);</script></td>
+			  </tr>
+			  <tr>
+			    <td class="label">有无小孩:</td>
+			    <td>
+					<script>getSelect('','children1','children1','{$userinfo[children]}','0',children);</script> 
+					操作后：
+					<script>getSelect('','children1','children1','{$userinfo_new[children]}','0',children);</script></td>
+			  </tr>
+			    <tr>
+			    <td class="label">住房情况:</td>
+			    <td>
+					<script>getSelect('','house','house','{$userinfo[house]}','0',house);</script> 
+					操作后：
+					<script>getSelect('','house','house','{$userinfo_new[house]}','0',house);</script></td>
+			  </tr>
+			  <tr>
+				<td class="label">性别：</td>
+				<td>
+				<select name="gender">
+					<option value=0 {if $userinfo['gender']==0}selected="selected"{/if}>男</option>
+					<option value=1 {if $userinfo['gender']==1}selected="selected"{/if}>女</option>
+				</select>
+				操作后：
+				<select name="gender">
+					<option value=0 {if $userinfo_new['gender']==0}selected="selected"{/if}>男</option>
+					<option value=1 {if $userinfo_new['gender']==1}selected="selected"{/if}>女</option>
+				</select>
+				</td>
+			  </tr>
+
+			  <tr>
+				<td class="label">会员等级</td>
+				<td>
+					<input type="text" value="$GLOBALS['member_level'][$userinfo['s_cid']]" />
+					操作后：
+					<input type="text" value="$GLOBALS['member_level'][$userinfo_new['s_cid']]" />
+				</td>
+			  </tr>
+
+			  
+			</table>
+		</td>
+		<td>
+			<table>
+			 <tr>
+			    <td class="label">多久内找到对象:</td>
+			    <td>
+					<script>getSelect('','expectlovedateid','oldsex','{$userinfo[oldsex]}','0',expectlovedate);</script>
+					操作后：
+					<script>getSelect('','expectlovedateid','oldsex','{$userinfo_new[oldsex]}','0',expectlovedate);</script>
+				</td>
+	 	 	</tr>
+			<tr>
+			    <td class="label">工作地区:</td>
+			    <td>
+			    <script>getProvinceSelect66('','','workprovince','workCity','{$userinfo[province]}','10100000');</script>
+				省
+				<script>getCitySelect66('','workCity','workCity','{$userinfo[city]}','0');</script>
+				市
+				操作后：
+				   <script>getProvinceSelect66('','','workprovince','workCity','{$userinfo_new[province]}','10100000');</script>
+				省
+				<script>getCitySelect66('','workCity','workCity','{$userinfo_new[city]}','0');</script>
+				市
+			    </td>
+			</tr>
+		  	<tr>
+			    <td class="label">性格:</td>
+			    <td><script>getSelect('','nature3','nature3','{$userfield[nature]}','1',nature);</script>
+				操作后：
+					<script>getSelect('','nature3','nature3','{$userfield_new[nature]}','1',nature);</script>
+				</td>
+		 	</tr>
+	  	  <tr>
+		    <td class="label">体重:</td>
+		    <td> <script>getSelect('selectSize','weight','weight','{$userfield[weight]}','0',weight);</script>
+			操作后：
+				<script>getSelect('selectSize','weight','weight','{$userfield_new[weight]}','0',weight);</script>
+			</td>
+	  	  </tr>
+	  	  <tr>
+	    	<td class="label">体型:</td>
+	    	<td>
+		    {if $userinfo[gender] == 0}
+				<script>getSelect('','body','body','{$userfield[body]}','1',body0);</script>
+			{else}
+				<script>getSelect('','body','body','{$userfield[body]}','1',body1);</script>
+			{/if}
+			操作后：
+			{if $userinfo_new[gender] == 0}
+				<script>getSelect('','body','body','{$userfield[body]}','1',body0);</script>
+			{else}
+				<script>getSelect('','body','body','{$userfield[body]}','1',body1);</script>
+			{/if}
+	   	 	</td>
+	  	 </tr>
+	  	 <tr>
+		    <td class="label">职业:</td>
+		    <td><script>getSelect('','occupation2','occupation2','{$userfield[occupation]}','0',occupation);</script> 
+			操作后：
+				<script>getSelect('','occupation2','occupation2','{$userfield_new[occupation]}','0',occupation);</script> 
+			</td>
+	 	 </tr>
+	 	 <tr>
+		    <td class="label">民族:</td>
+		    <td>
+				<script>getSelect('','stock2','stock2','{$userfield[nation]}','0',stock);</script>
+				操作后：
+			    <script>getSelect('','stock2','stock2','{$userfield_new[nation]}','0',stock);</script>
+			</td>
+	  	</tr>
+	   <tr>
+		    <td class="label">户口地区:</td>
+		    <td>
+		    <script>getProvinceSelect66('','hometownProvince2','hometownProvince2','hometownCity2','{$userfield[hometownprovince]}','10100000');</script>
+			<script>getCitySelect66('','hometownCity2','hometownCity2','{$userfield[hometowncity]}','0');</script>
+			操作后：
+			<script>getProvinceSelect66('','hometownProvince2','hometownProvince2','hometownCity2','{$userfield_new[hometownprovince]}','10100000');</script>
+			<script>getCitySelect66('','hometownCity2','hometownCity2','{$userfield_new[hometowncity]}','0');</script>
+		    </td>
+	   </tr>
+	   <tr>
+	    <td class="label">是否抽烟:</td>
+	    <td>
+	    <script>getSelect('','issmoking','issmoking','{$userfield[smoking]}','0',smoking);</script>
+		操作后：
+		<script>getSelect('','issmoking','issmoking','{$userfield_new[smoking]}','0',smoking);</script>
+	    </td>
+	  </tr>
+	   <tr>
+	    <td class="label">是否喝酒:</td>
+	    <td>
+	    <script>getSelect('','isdrinking','isdrinking','{$userfield[drinking]}','0',drinking);</script>
+		操作后：
+		<script>getSelect('','isdrinking','isdrinking','{$userfield_new[drinking]}','0',drinking);</script>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td class="label">是否封锁:</td>
+	    <td>
+	    <select name='is_lock'>
+		   	<option value='1' {if $userinfo['is_lock']==1}selected="selected"{/if}>未封锁</option>
+			<option value='0' {if $userinfo['is_lock']==0}selected="selected"{/if}>封锁</option>
+		</select>
+		操作后：
+		  <select name='is_lock'>
+		   	<option value='1' {if $userinfo_new['is_lock']==1}selected="selected"{/if}>未封锁</option>
+			<option value='0' {if $userinfo_new['is_lock']==0}selected="selected"{/if}>封锁</option>
+		</select>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td class="label">会员来源:</td>
+	    <td>
+		   <select name="usertype">
+	  			<option value="1" {if $userinfo['usertype'] == 1}selected{/if}>本站注册</option>
+	  			<option value="2" {if $userinfo['usertype'] == 2}selected{/if}>外站加入</option>
+	  			<option value="3" {if $userinfo['usertype'] == 3}selected{/if}>全权会员</option>
+	  			<option value="4" {if $userinfo['usertype'] == 4}selected{/if}>联盟会员</option>
+	  		</select>
+			操作后：
+			 <select name="usertype">
+	  			<option value="1" {if $userinfo_new['usertype'] == 1}selected{/if}>本站注册</option>
+	  			<option value="2" {if $userinfo_new['usertype'] == 2}selected{/if}>外站加入</option>
+	  			<option value="3" {if $userinfo_new['usertype'] == 3}selected{/if}>全权会员</option>
+	  			<option value="4" {if $userinfo_new['usertype'] == 4}selected{/if}>联盟会员</option>
+	  		</select>
+	    </td>
+	  </tr>
+
+	  <tr>
+		<td class="label">vip到期时间:</td>
+		<td>
+			<span>{php if($userinfo['bgtime']) echo date('Y-m-d H:i:s',$userinfo['bgtime']);}</span>
+			操作后：
+			<span style="color:red">{php if($userinfo_new['bgtime']) echo date('Y-m-d H:i:s',$userinfo_new['bgtime']);}</span>
+		</td>
+	  </tr>
+
+	</table>
+	</td>
+   </tr>
+</table>
+<div style="margin:0 auto;margin-left:500px;">
+	<input name="uid" type="hidden" value="{$uid}" />
+    <input type="button" value="确认修改" onclick="location.href='index.php?action=check_memberinfo&h=detail&id={$id}&status=1'" class="button" />
+	<input type="button" value="不通过" onclick="location.href='index.php?action=check_memberinfo&h=detail&id={$id}&status=2'" class="button" />
+</div>
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-Type" content="text/html;charset=gb2312">
+<title>短信发送查询</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+
+<script type="text/javascript">
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{$total}){
+	   page = {$total};
+	}
+	window.location.href = "{$currenturl}&page="+page;
+}
+function enterHandler(event){
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if (keyCode == 13) {
+	   gotoPage();	//调用函数
+	 } 
+}
+
+
+/*
+function checkPhone()   
+{
+  var phone=$("#search_tel").val();
+//验证电话号码手机号码，包含至今所有号段   
+var ab=/^(13[0-9]|15[0|3|6|7|8|9]|18[8|9])\d{8}$/;
+
+  if(ab.test(phone) == false)
+  {
+    alert("请正确填写手机号码!");
+    return false;
+  }else{
+   alert("手机号码正确");
+   }
+}
+*/
+
+</script>
+</head>
+<body>
+
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 短信发送记录 </span>
+<span class="action-span"><a href="{php echo $_SERVER['REQUEST_URI'];}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv" style="margin-bottom:10px;padding:5px;">
+<form action="index.php?action=other&h=sendmsg_record" method="post" onsubmit="return checkPhone();">
+<label>电话：</label><input type="text" id="search_tel" name="search_tel" value="{php echo empty($telphone)?'':$telphone;}" />
+    <input name="post" type="hidden" value='1' />
+   <input type="submit" value="查询"  />
+
+</form>
+</div>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th style="width:3%">ID</th>
+    <th style="width:8%">电话</th>
+    <th style="width:80%">内容</th>
+    <th style="width:10%">时间</th>
+
+  </tr>
+
+  {loop $data $v}
+  <tr onmousemove="this.bgColor='#cfeefe';"  id="tr_{$v['id']}" onmouseout="this.bgColor='#ffffff';" class="listclass">
+  <td>{$v['id']}</td>
+  <td>{$v['tel']}</td>
+  <td>{$v['content']}</td>
+  <td>{php echo date('Y-m-d',$v['dateline']);}</td>
+ 
+  </tr>
+  {/loop}
+  </table>
+   <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$pages}
+	  &nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+      <input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+	  </td>
+    </tr>
+  </table>
+</div>
+
+</div>
+</body>
+
+
+
+</html>

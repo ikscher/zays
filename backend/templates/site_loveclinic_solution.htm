@@ -1,0 +1,61 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 情感诊所用户提交问题列表</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="display:none;">
+<span class="but_a">
+{if $type==1}<b>{/if}<a href="index.php?action=site_loveclinic&h=list&type=1&page={$page}">相识问题</a></b>{if $type==2}<b>{/if}<a href="index.php?action=site_loveclinic&h=list&type=2&page={$page}">相恋问题</a></b>{if $type==3}<b>{/if}<a href="index.php?action=site_loveclinic&h=list&type=3&page={$page}">相见问题</a></b>{if $type==4}<b>{/if}<a href="index.php?action=site_loveclinic&h=list&type=4&page={$page}">其它问题</a></b>
+</span>
+</div>
+<div class="list-div">
+	<form action="index.php?action=site_loveclinic&h=solution" method="post" onsubmit="">
+		搜索 
+		UID:<input name="s_uid" type="text" maxlength="10" size="10" value="$_POST['s_uid']"  />
+		&nbsp;&nbsp;&nbsp;	
+        <select name="s_type">
+        	<option value="0">全部问题</option>
+            <option value="1"{if $type == 1} selected="selected"{/if}>相识问题</option>
+            <option value="2"{if $type == 2} selected="selected"{/if}>相恋问题</option>
+            <option value="3"{if $type == 3} selected="selected"{/if}>相见问题</option>
+            <option value="4"{if $type == 4} selected="selected"{/if}>其他问题</option>
+        </select>
+		<input name="提交" type="submit" class="button" value="搜 索" />
+	</form>
+</div>
+<br />
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+  	<th>序号</th>
+    <th>提交用户</th>
+    <th>标题</th>
+    <th>问题类型</th>
+    <th>添加时间</th>
+    <th>操作</th>
+  </tr>
+  {php $i=($page-1)*$limit+1;}
+  {loop $ret_list $k $v}
+  <tr>
+  	<td align="center">{$i}</td>
+    <td lang="center"><a href="#"  onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$v['uid']}</a></td>
+    <td align="left">{$v['title']}</td>
+    <td align="center">{php if($v['type']=='1')echo "相识问题";if($v['type']=='2')echo "相恋问题";if($v['type']=='3')echo "相见问题";if($v['type']=='4')echo "其它问题";}</td>
+    <td align="center">{php echo date("Y-m-d",$v['add_time']);}</td>
+    <td align="center">
+	<a href="#" onclick="parent.addTab('解决{$v['uid']}情感问题','index.php?action=site_loveclinic&h=edit&id={$v['id']}','icon');return false;">解决此问题</a>
+    <a href="index.php?action=site_loveclinic&h=del&id={$v['id']}">删除</a>
+    </td>
+  </tr>
+  {php $i++;}
+  {/loop}
+  		<tr>
+			<td colspan="5" align="center">{$pages}</td>
+		</tr>
+  </table>
+</div>

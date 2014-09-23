@@ -1,0 +1,56 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<h1> 
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 客服短信评分</span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+	<form action="" method="get">
+	查询组:
+	<select name="groupid">
+		<option value="" selected="selected">请选择</option>
+		{loop $all_group_name $group_name}
+		<option value="{$group_name['id']}" {if isset($groupid)}{if  $groupid==$group_name['id']}selected{/if}{/if}>$group_name['manage_name']</option>
+		{/loop}
+	</select>
+	客服ID:
+	<input type="text" name="user_sid">
+		时间：
+		<input type="text" name="start_time" value="{if isset($_GET['start_time'])}$_GET['start_time']{/if}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+		<input type="text" name="end_time" value="{if isset($_GET['end_time'])}$_GET['end_time']{/if}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>
+        <input type="hidden" name="action" value="financial" />
+		<input type="hidden" name="h" value="msm_grade_count" />
+		<input name="提交" type="submit" value="查看" />
+	</form>
+</div>
+{if isset($note)}<span style="float:left;margin-left:10px;padding:5px;">{$note}</span>{/if}
+<br /><br />
+<div class="list-div">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	<tr><td colspan="7">评价得分：分高的为优，(5为非常满意，1为非常不满意) </td></tr>
+		  <tr>
+			<th>客服ID</th>
+			<th>客服名称</th>
+			<th>有效联系数量</th>
+			<th>评价人数</th>
+			<th>平均得分</th>
+			<th>不满意数量</th>
+			<th>非常不满意数量</th>
+		  </tr>
+		  {loop $msm_back_info $c}
+			<tr>
+            	<td>{$c['sid']}</td>
+                <td>{php echo isset($GLOBALS['kefu_arr'][$c['sid']])?$GLOBALS['kefu_arr'][$c['sid']]:''}</td>
+				<td>{php echo isset($effect_num[$c['sid']])?$effect_num[$c['sid']]:''}</td>
+                <td>{$c['num']}</td>
+				<td>{php echo (6-$c['div'])}</td>
+				<td>{$c['rep4']}</td>
+				<td>{$c['rep5']}</td>
+			</tr>
+		  {/loop}
+		  
+	  </table>
+</div>
+

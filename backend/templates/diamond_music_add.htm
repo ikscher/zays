@@ -1,0 +1,50 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 添加会员音乐</span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<script type="text/javascript" src="../public/system/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("form").submit(function(){
+			if( $("#title").val() == '' ){
+				alert("请填写标题...");
+				return false;
+			}
+			return ( /\.mp3$/.test($("#mp3").val()));
+		});		
+	});
+</script>
+<div class="list-div" id="listDiv">
+	<table>
+						<form enctype="multipart/form-data" action="index.php?action=diamond_music&h=add&uid={php echo @$GLOBALS['arr_user']['uid']}" method="post" >
+							<input type="hidden" name="ispost" value="1" />
+                            <input type="hidden" name="old_uid" value="{$old_uid}" />
+                            <tr>
+                            	<td>指定会员UID(默认当前会员[{$old_uid}])</td>
+                                <td><input type="text" name="uid" /></td>
+                            </tr>
+							<tr>
+								<td style="text-align:left;">mp3文件(*): </td>
+								<td style="text-align:left;"><input id="mp3" name="mp3" type="file" size="40" /></td>
+							</tr>
+							<tr>
+								<td style="text-align:left;">名称(*):</td>
+								<td style="text-align:left;"><input id="title" name="title" type="text" size="40" /></td>
+							</tr>
+							<tr>
+								<td style="text-align:left;">说明: </td>
+								<td style="text-align:left;"><textarea cols="40" rows="4" name="note"></textarea></td>
+							</tr>
+							<tr>
+								<td style="text-align:left;"></td>
+								<td style="text-align:left;"><input type="submit" value="确定上传" /></td>
+							</tr>
+							
+							
+						</form>
+						</table>
+</div>

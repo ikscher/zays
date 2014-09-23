@@ -1,0 +1,41 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<h1><span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 会员分配记录列表</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+	<form action="index.php?action=other&h=member_allot_record" method="post">
+		时间：
+		<input type="text" name="allot_time1" value="{if isset($allot_time1)}$allot_time1{/if}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>到
+		<input type="text" name="allot_time2" value="{if isset($allot_time2)}$allot_time2{/if}" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>
+		
+		<input name=" 搜 索 " type="submit" id="搜 索" value=" 搜 索 " />
+	</form>
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table'>
+		<tr>
+			<th>组ID</th>
+			<th>组名称</th>
+			<th>组客服数量</th>
+			<th>分配会员数</th>
+			<th>查看</th>
+		</tr>
+		{loop $ret $v}
+		<tr>			
+			<td align="center">{$v['uid']}</td>
+			<td align="center">{$v['username']}</td>
+			<td align="center">{$v['kefu_num']}</td>
+			<td align="center">{$v['allot_member']}</td>
+			<td align="center"><a href="#" onclick="parent.addTab('{$v['username']}分配会员情况','index.php?action=other&h=member_allot_record&groupid={$v['uid']}','icon')">点击查看详细</a></td>
+		</tr>
+		{/loop}
+		<tr>
+			<td colspan="5" align="center">{$pages}</td>
+		</tr>
+	</table>
+</div>

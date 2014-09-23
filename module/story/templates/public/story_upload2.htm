@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>成功故事——真爱一生网</title>
+{template system/js_css public}
+<link href="module/story/templates/{$GLOBALS['style_name']}/story.css" rel="stylesheet" type="text/css" />
+</head>
+
+<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
+<body>
+<script>
+//字数
+function textCounter(field,countfieldId,leavingsfieldId,maxlimit) {
+	var countfield = document.getElementById(countfieldId);
+	var leavingsfield = document.getElementById(leavingsfieldId);
+	if (field.value.length > maxlimit) // if too long...trim it!
+	{
+		field.value = field.value.substring(0, maxlimit);
+		alert(" 限" + maxlimit + "字内！");
+	} else { 
+		//alert(leavingsfieldId.innerHTML);
+		//leavingsfieldId.innerHTML=maxlimit - field.value.length;
+		countfield.innerHTML=field.value.length;
+	}
+}
+function setDefaultImg(imgid,a){
+	if (a.checked) return false;
+	if(confirm("您真的要将此照片设为首页照吗？")){
+	    window.location.href="index.php?n=story&h=setindex&pid="+imgid+"#1"
+	} else {
+		return false;
+	}
+	return true;
+}
+function checkFile() {
+	var file1 = document.getElementById("pic1").value;
+	var isagreen = document.form2.agreen.checked;
+	if(!file1) {
+		alert("请选择上传的文件");
+		document.getElementById("pic1").focus();
+		return false;
+	}else if(isagreen) {
+		try {
+			document.forms["form2"].submit();
+		} catch (e) {
+			alert("没有找到要上传的文件，请重新选择。");
+		}
+	}else{
+		alert('请勾选肖像许可使用说明');
+	}
+}
+function checkForm(){
+	var subject = document.form2.subject;
+	var content = document.form2.content;
+	var isagreen = document.form2.agreen.checked;
+	if(subject.value.replace(/\s/g,'') == ''){
+		alert('故事主题不合法')
+		subject.focus();
+		return false;
+	}
+	if(content.value.replace(/\s/g,'') == ''){
+		alert('故事内容不合法')
+		content.focus();
+		return false;
+	}else if(content.value.length < 100){
+		alert('故事内容最少100字');
+		return false;
+	}
+	if(!isagreen){
+		alert('请勾选肖像许可使用说明');
+		return false;
+	}
+	return true;
+}
+
+
+//删除图片
+function del_ajax(obj){
+		var tr_id = "pid_" + obj.id;
+		var pid = obj.id;
+		if(dn()){
+			try{
+			  	$.ajax({
+							url: "./index.php",
+	                        type: 'GET',
+							data:"n=story&h=del&pid="+pid,
+					        dataType: 'html',
+	                        timeout: 20000,
+	                        error: function(){
+								alert("删除发生错误，请刷新重试");
+	                        },
+	                        success: function(html){
+								if(html == 1){
+									$("#"+tr_id).css("display","none");
+								}else{
+									alert("删除出错，请重试");
+								}
+	                        }
+	                });
+			
+			}catch(e){}  
+		}else{
+			return false;
+		}
+		
+	 
+}
+function dn(){
+	return confirm("确定删除吗？");
+}
+</script>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=story">成功故事</a>&nbsp;&gt;&gt;&nbsp;上传/修改 成功故事</span></p>
+		<div class="clear"></div>
+		<div class="story">
+			<div class="up_top">
+				<div class="clear"></div>
+			</div>
+			<div class="marrybig">
+				<div class="marrysmall">
+					<div style="padding-bottom: 15px; border-bottom: 1px solid rgb(228, 228, 228);">
+					    <div style="padding-left: 0px; font-weight:700" class="m_fleft">
+						 上传/修改 成功故事
+						 </div>
+						 <div class="m_fright">
+						   <a href="index.php?n=story">返回成功故事首页&gt;&gt;</a>
+						 </div>
+						 <div class="clear"></div>
+					 </div>
+                     <form name="form2" action="index.php?n=story&h=step2#1" method="post" onsubmit="return checkForm();" enctype="multipart/form-data">
+             			<input type="hidden" name="tid" value="{$insert_id}" />
+					 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="up-data-table">
+						<tr>
+							<td width="26%" align="right">故事主题：</td>
+							<td width="74%"><input size="45" name="subject" maxlength="30" type="text" class="input1" value="{$love_story['title']}"/></td>
+						</tr>
+						<tr>
+							<td width="26%" align="right" valign="top">故事内容：</td>
+							<td width="74%">
+							<textarea style="height:120px; width:500px;" name="content" id="content" class="textarea"  onkeyup="textCounter(this,'counter2','leavings2',3000);">{$love_story['content']}</textarea>
+							<p class="f-12x"> （字数100字以上。您已输入<font id="counter2">0</font> 字。）</p>
+							</td>
+						</tr>
+						<tr>
+							<td width="26%" align="right" valign="top">上传幸福合影：</td>
+							<td width="74%" valign="top">
+							<p class="f-12x">幸福的合影是时光的定格，更是爱的见证！上传您们的合影，让瞬间记载永恒！ <br />
+							建议照片清晰，婚纱照最佳，最多可上传30张。</p> 
+							<p>
+                            <input id= "pic1" type="file" name="pic" class="input1" style="padding:3px;" />
+                             <input type="hidden" name="insertId" value="{$insert_id}">
+							<input type="hidden" name="pics" value="1">
+							<input  type="button" class="btn btn-default" value="上传照片" style="float:none" onclick="javascript:checkFile();"/>
+                            </p>
+                            <p class="f-12x"><input name="agreen" type="checkbox" value="1" checked/> 我已阅读并同意<a target="_blank" href="index.php?n=story&h=announce" class="f-ed0a91">《肖像许可使用说明》</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td width="26%" align="right">&nbsp;</td>
+							<td width="74%" class="f-b-d73c90">照片预览</td>
+						</tr>
+                        {loop $album $albums}
+						<tr  id="pid_{$albums['mid']}">
+							<td width="26%" align="right">&nbsp;</td>
+							<td width="74%">
+							{if $albums['img']}
+                            <p><img src="{php echo STORY_IMG_PATH.$albums['img']}" onload="setheight(this)" /></p>	
+                			{/if}
+							<p><input type="radio" {if $love_story['is_index'] == $albums['mid']}checked{/if} onmousedown="javascript:setDefaultImg($albums['mid'],this)"/> 设为首页照 <span id="{$albums['mid']}" style="cursor:pointer;color:#D73C90;" onclick="del_ajax(this)"> 删除</span></p>
+							</td>
+						</tr>
+                        {/loop}
+                        <script type="text/javascript">
+							function setheight(e) {
+								if(e.height > 224) {
+									e.height = 224;
+								}
+							}
+						</script>
+						<tr>
+							<td width="26%" align="right">&nbsp;</td>
+							<td width="74%"><input name="story2" type="submit" class="btn btn-default up-data-buttons" value="提交成功故事" style="float:none"/>
+                            <input type="button" onclick="javascript:window.location.href='index.php?n=story&h=upload';" class="btn btn-default up-data-buttons" value="返回上一步" style="float:none"/>
+                            </td>
+						</tr>
+					</table>
+						</form>
+					 <div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+		</div>	
+	</div>		
+	</div><!--content end-->
+	{template system/footer public}
+    <!--foot end-->
+</div><!--main end-->
+</body>
+</html>

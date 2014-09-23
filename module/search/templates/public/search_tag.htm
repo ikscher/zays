@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>标签搜索——真爱一生寻友——真爱一生网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/search.css");
+</style>
+<style type="text/css">
+@import url("module/search/templates/{$GLOBALS['style_name']}/search-tag.css");
+</style>
+<!--<script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>-->
+</head>
+<body>
+<div class="clear"></div>
+{template system/header public}
+<!--头部结束-->
+<div class="content">
+	<div class="c-title">
+		<span class="f-000">
+			<a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;标签搜索
+		</span>
+		<div class="loaction_right">
+			<a href="index.php?n=invite" target="_blank">邀请好友</a>
+		</div>
+	</div>
+		<div class="content-title">
+			<span class="right-title">标签搜索</span>
+		</div><!--content-title end-->
+		<div class="c-center">			
+			<div class="c-search-label">
+				<p class="search-label-titel">用关键词汇来分类描述会员的各种特征，这些关键的词汇就像贴在身上的标签一样。使用标签搜索会让您更快地找寻到符合您要求的理想对象。</p>
+				<p class="search-label-titel" style="padding-bottom:40px;">我 要 找：
+				<input name="vo.searchSex" type="radio" value="0" id="man" {if isset($GLOBALS["user_arr"]['gender']) && $GLOBALS["user_arr"]['gender'] == '1'}checked{/if}/>&nbsp;
+				<label for="a1">男士</label>
+				<input name="vo.searchSex" type="radio" value="1" id="women" {if isset($GLOBALS["user_arr"]['gender']) && $GLOBALS["user_arr"]['gender'] == '0'}checked{/if}/>&nbsp;
+				<label for="a2">女士</label>
+
+				<input name="vo.hasPhoto" type="checkbox" value="1"  id="a3" checked/>&nbsp;<label for="a3">必须有照片</label>
+				<!--里面的ID，我是自己设置的，您可以用自己的ID，就是在后面的LABEL和前面的ID要保持一致-->
+				</p>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label01">
+						<dl>
+							<dt>年龄标签</dt>
+							<dd>
+								<a href="./index.php?n=search&h=tag&tagname=age&s={$gender}&tagid=1&linktag={php echo base64_encode('情窦初开')}">情窦初开(18-25岁)</a>
+								<a href="./index.php?n=search&h=tag&tagname=age&s={$gender}&tagid=2&linktag={php echo base64_encode('花样年华')}">花样年华(26-35岁)</a>
+								<a href="./index.php?n=search&h=tag&tagname=age&s={$gender}&tagid=3&linktag={php echo base64_encode('风华正茂')}">风华正茂(36-45岁)</a>
+							</dd>
+							<dd>
+								<a href="./index.php?n=search&h=tag&tagname=age&s={$gender}&tagid=4&linktag={php echo base64_encode('人到中年')}">人到中年(46-55岁)</a>
+								<a href="./index.php?n=search&h=tag&tagname=age&s={$gender}&tagid=5&linktag={php echo base64_encode('晚秋邂逅')}">晚秋邂逅(56-65岁)</a>
+								<a href="./index.php?n=search&h=tag&tagname=age&s={$gender}&tagid=6&linktag={php echo base64_encode('夕阳正红')}">夕阳正红(66-75岁)</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label02">
+						<dl>
+							<dt>收入标签</dt>
+							<dd>
+								<a href="./index.php?n=search&h=tag&tagname=salary&s=0&tagid=1&linktag={php echo base64_encode('钻石王老五')}" {if isset($GLOBALS["user_arr"]['gender']) && $GLOBALS["user_arr"]['gender'] == '0'}style="display: none;"{/if} id="salary0">钻石王老五(月入10000元以上)</a>
+								<a href="./index.php?n=search&h=tag&tagname=salary&s={$gender}&tagid=1&linktag={php echo base64_encode('金领丽人')}" {if isset($GLOBALS["user_arr"]['gender']) && $GLOBALS["user_arr"]['gender'] == '1'}style="display: none;"{/if} id="salary1">金领丽人(月入10000元以上)</a>
+								<a href="./index.php?n=search&h=tag&tagname=salary&s={$gender}&tagid=2&linktag={php echo base64_encode('白领小资')}">白领小资(月入5001-10000元)</a>
+							</dd>
+							<dd>
+								<a href="./index.php?n=search&h=tag&tagname=salary&s={$gender}&tagid=3&linktag={php echo base64_encode('单身贵族')}">单身贵族(月入3000-5000元)</a>
+								<a href="./index.php?n=search&h=tag&tagname=salary&s={$gender}&tagid=4&linktag={php echo base64_encode('奋斗一族')}">奋斗一族(月入3000元以下)</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label03">
+						<dl>
+							<dt style="padding-top:20px;">学历标签</dt>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=education&s={$gender}&tagid=1&linktag={php echo base64_encode('博士')}">博士</a>
+								<a href="index.php?n=search&h=tag&tagname=education&s={$gender}&tagid=2&linktag={php echo base64_encode('硕士')}">硕士</a>
+								<a href="index.php?n=search&h=tag&tagname=education&s={$gender}&tagid=3&linktag={php echo base64_encode('本科')}">本科</a>
+								<a href="index.php?n=search&h=tag&tagname=education&s={$gender}&tagid=4&linktag={php echo base64_encode('大专')}">大专</a>
+								<a href="index.php?n=search&h=tag&tagname=education&s={$gender}&tagid=5&linktag={php echo base64_encode('高中以下')}">高中以下</a>
+							</dd>								
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label04">
+						<dl>
+							<dt style="padding-top:20px;">车房标签</dt>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=housvehicle&s={$gender}&tagid=1&linktag={php echo base64_encode('有车一族')}">有车一族</a>
+								<a href="index.php?n=search&h=tag&tagname=housvehicle&s={$gender}&tagid=2&linktag={php echo base64_encode('有房一族')}">有房一族</a>
+							</dd>								
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label05">
+						<dl>
+							<dt style="padding-top:8px;">地区标签</dt>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10102000&linktag={php echo base64_encode('北京')}">北京</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10103000&linktag={php echo base64_encode('上海')}">上海</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10101002&linktag={php echo base64_encode('广州')}">广州</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10101201&linktag={php echo base64_encode('深圳')}">深圳</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10115001&linktag={php echo base64_encode('武汉')}">武汉</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10131001&linktag={php echo base64_encode('杭州')}">杭州</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10127001&linktag={php echo base64_encode('成都')}">成都</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10105000&linktag={php echo base64_encode('重庆')}">重庆</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10126001&linktag={php echo base64_encode('西安')}">西安</a>
+							</dd>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10104000&linktag={php echo base64_encode('天津')}">天津</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10118001&linktag={php echo base64_encode('南京')}">南京</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10120001&linktag={php echo base64_encode('沈阳')}">沈阳</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10116001&linktag={php echo base64_encode('长沙')}">长沙</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10124003&linktag={php echo base64_encode('济南')}">济南</a>
+								<a href="index.php?n=search&h=tag&tagname=city&s={$gender}&tagid=10134000&linktag={php echo base64_encode('台湾')}">台湾</a>
+							</dd>
+							<dd><a href="index.php?n=search&h=tagmore">点击可查看更多地区标签&gt;&gt;</a></dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label06">
+						<dl>
+							<dt style="padding-top:8px;">性格标签</dt>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=1&linktag={php echo base64_encode('幽默开朗')}">幽默开朗</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=2&linktag={php echo base64_encode('浪漫感性')}">浪漫感性</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=3&linktag={php echo base64_encode('精明能干')}">精明能干</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=4&linktag={php echo base64_encode('乐观积极')}">乐观积极</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=5&linktag={php echo base64_encode('热情豪爽')}">热情豪爽</a>
+							</dd>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=6&linktag={php echo base64_encode('爱心多多')}">爱心多多</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=7&linktag={php echo base64_encode('活泼大方')}">活泼大方</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=8&linktag={php echo base64_encode('浪漫感性')}">浪漫感性</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=9&linktag={php echo base64_encode('认真理性')}">认真理性</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=10&linktag={php echo base64_encode('感慨大方')}">感慨大方</a>							
+							</dd>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=11&linktag={php echo base64_encode('成熟稳重')}">成熟稳重</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=12&linktag={php echo base64_encode('多愁善感')}">多愁善感</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=13&linktag={php echo base64_encode('温柔贤惠')}">温柔贤惠</a>
+								<a href="index.php?n=search&h=tag&tagname=nature&s={$gender}&tagid=14&linktag={php echo base64_encode('婉约含蓄')}">婉约含蓄</a>							
+							</dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label07">
+						<dl>
+							<dt style="padding-top:8px;">职业标签</dt>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=1&linktag={php echo base64_encode('企业高管')}">企业高管</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=2&linktag={php echo base64_encode('职业经理人')}">职业经理人</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=3&linktag={php echo base64_encode('为人师表')}">为人师表</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=4&linktag={php echo base64_encode('妙手仁心')}">妙手仁心</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=5&linktag={php echo base64_encode('人民子弟兵')}">人民子弟兵</a>							
+							</dd>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=6&linktag={php echo base64_encode('媒介精英')}">媒介精英</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=7&linktag={php echo base64_encode('IT一族')}">IT一族</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=8&linktag={php echo base64_encode('金融精英')}">金融精英</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=9&linktag={php echo base64_encode('行业先锋')}">行业先锋</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=10&linktag={php echo base64_encode('职场精英')}">职场精英</a>
+							</dd>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=11&linktag={php echo base64_encode('行政文秘')}">行政文秘</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=12&linktag={php echo base64_encode('艺术工作者')}">艺术工作者</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=13&linktag={php echo base64_encode('专业人士')}">专业人士</a>
+								<a href="index.php?n=search&h=tag&tagname=occupation&s={$gender}&tagid=14&linktag={php echo base64_encode('学者')}">学者</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label08">
+						<dl>
+							<dt>外貌标签</dt>
+							<dd {if isset($GLOBALS['user_arr']['gender']) && $GLOBALS['user_arr']['gender'] == '0'} style="display: none;" {/if} id="color0">
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=10&linktag={php echo base64_encode('矮壮结实')}">矮壮结实</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=11&linktag={php echo base64_encode('皮肤白皙')}">皮肤白皙</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=15&linktag={php echo base64_encode('黝黑健康')}">黝黑健康</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=2&linktag={php echo base64_encode('瘦长')}">瘦长</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=16&linktag={php echo base64_encode('眉清目秀')}">眉清目秀</a>
+								<br />
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=5&linktag={php echo base64_encode('体格健硕')}">体格健硕</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=3&linktag={php echo base64_encode('运动员型')}">运动员型</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=1&linktag={php echo base64_encode('身材匀称')}">身材匀称</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=17&linktag={php echo base64_encode('浓眉大眼')}">浓眉大眼</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=4&linktag={php echo base64_encode('微胖')}">微胖</a>
+							</dd>
+							<dd {if isset($GLOBALS['user_arr']['gender']) && $GLOBALS['user_arr']['gender'] == '1'} style="display: none;" {/if} id="color1">
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=12&linktag={php echo base64_encode('长发飘飘')}">长发飘飘</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=9&linktag={php echo base64_encode('富线条美')}">富线条美</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=6&linktag={php echo base64_encode('身材苗条')}">身材苗条</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=13&linktag={php echo base64_encode('时尚卷发')}">时尚卷发</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=7&linktag={php echo base64_encode('高大美丽')}">高大美丽</a>
+								<br />
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=8&linktag={php echo base64_encode('身材丰满')}">身材丰满</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=11&linktag={php echo base64_encode('皮肤白皙')}">皮肤白皙</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=14&linktag={php echo base64_encode('干练短发')}">干练短发</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=1&linktag={php echo base64_encode('身材匀称')}">身材匀称</a>
+								<a href="index.php?n=search&h=tag&tagname=body&s={$gender}&tagid=2&linktag={php echo base64_encode('瘦长')}">瘦长</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label09">
+						<dl>
+							<dt style="padding-top:20px;">血型标签</dt>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=bloodtype&s={$gender}&tagid=1&linktag={php echo base64_encode('完美A型')}">完美A型</a>
+								<a href="index.php?n=search&h=tag&tagname=bloodtype&s={$gender}&tagid=2&linktag={php echo base64_encode('感性B型')}">感性B型</a>
+								<a href="index.php?n=search&h=tag&tagname=bloodtype&s={$gender}&tagid=4&linktag={php echo base64_encode('浪漫O型')}">浪漫O型</a>
+								<a href="index.php?n=search&h=tag&tagname=bloodtype&s={$gender}&tagid=3&linktag={php echo base64_encode('自信AB型')}">自信AB型</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label10">
+						<dl>
+							<dt>星座标签</dt>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=1&linktag={php echo base64_encode('牡羊座')}">牡羊座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=2&linktag={php echo base64_encode('金牛座')}">金牛座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=3&linktag={php echo base64_encode('双子座')}">双子座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=4&linktag={php echo base64_encode('巨蟹座')}">巨蟹座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=5&linktag={php echo base64_encode('狮子座')}">狮子座</a>
+							</dd>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=6&linktag={php echo base64_encode('处女座')}">处女座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=7&linktag={php echo base64_encode('天秤座')}">天秤座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=8&linktag={php echo base64_encode('天蝎座')}">天蝎座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=9&linktag={php echo base64_encode('射手座')}">射手座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=10&linktag={php echo base64_encode('魔羯座')}">魔羯座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=11&linktag={php echo base64_encode('水瓶座')}">水瓶座</a>
+								<a href="index.php?n=search&h=tag&tagname=constellation&s={$gender}&tagid=12&linktag={php echo base64_encode('双鱼座')}">双鱼座</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="search-labels">
+					<div class="search-labels-side"></div>
+					<div class="search-labels-center label11">
+						<dl>
+							<dt style="padding-top:8px;">生肖标签</dt>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=1&linktag={php echo base64_encode('鼠年出生')}">鼠年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=2&linktag={php echo base64_encode('牛年出生')}">牛年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=3&linktag={php echo base64_encode('虎年出生')}">虎年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=4&linktag={php echo base64_encode('兔年出生')}">兔年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=5&linktag={php echo base64_encode('龙年出生')}">龙年出生</a>
+							</dd>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=6&linktag={php echo base64_encode('蛇年出生')}">蛇年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=7&linktag={php echo base64_encode('马年出生')}">马年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=8&linktag={php echo base64_encode('羊年出生')}">羊年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=9&linktag={php echo base64_encode('猴年出生')}">猴年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=10&linktag={php echo base64_encode('鸡年出生')}">鸡年出生</a>
+							</dd>
+							<dd>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=11&linktag={php echo base64_encode('狗年出生')}">狗年出生</a>
+								<a href="index.php?n=search&h=tag&tagname=animalyear&s={$gender}&tagid=12&linktag={php echo base64_encode('猪年出生')}">猪年出生</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="search-labels-side right"></div>
+				</div>
+				<div class="clear"></div>
+				<p class="serach-lable-bottom">
+					请输入对方的标签：<input name="tagnameid" type="text" class="searche-label-text" /><input name="tags" type="button" class="searche-labels-button" value="开始搜索" /></p>
+			</div>
+		<div class="clear"></div>
+		</div><!--c-center end-->
+		<div class="content-bottom">			
+		</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+		{template system/footer public}
+	</div><!--content end-->
+</div><!--main end-->
+<div class="clear"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#women").click(
+		function() {
+			$("#salary1").css('display','');
+			$("#salary0").css('display','none');
+			$("#color1").css('display','');
+			$("#color0").css('display','none');
+		});
+
+		$("#man").click(
+		function() {
+			$("#salary1").css('display','none');
+			$("#salary0").css('display','');
+			$("#color1").css('display','none');
+			$("#color0").css('display','');
+		});
+
+
+		$("a").click(
+		function(){
+			if($("#man").attr("checked"))
+			{
+				this.href = this.href.replace('&s=1','&s=0');
+			}
+			if($("#women").attr("checked"))
+			{
+				this.href = this.href.replace('&s=0','&s=1');
+			}
+		});
+
+		$("#tags").click(
+		function() {
+			var tagname = $("#tagnameid").attr("value");
+			var all_a = $("a");
+			for(i=0;i<all_a.length;i++){
+				if(all_a[i].text == tagname) {
+					self.location.href = all_a[i].href;
+				}
+			}
+		});
+	});
+</script>
+</body>
+</html>

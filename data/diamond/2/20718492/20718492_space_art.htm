@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GLOBALS['style_user_arr']['nickname']}的爱情观——红娘网</title>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/left.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/cyan.css" />
+{template system/js_css public}
+<script src="module/space/templates/public/js/js_nextpage.js"></script>
+<script src="module/space/templates/public/js/face.js"></script>
+<script src="module/space/templates/public/js/comment.js"></script>
+<script src="module/space/templates/public/js/dialog.js"></script>
+<style type="text/css">
+	#preview{display:none; position:absolute;}
+</style>
+<link rel="stylesheet" type="text/css" href="public/system/js/fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+<script type="text/javascript" src="public/system/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	imagePreview();
+	$("a.zoom").fancybox();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/global_import2.css" />
+<link rel="stylesheet" type="text/css" href="{$GLOBALS['diamond_dir']}/nav.css" />
+
+<!--背景音乐 --> 
+<script type="text/javascript" src="public/system/js/jquery.jplayer.js"></script> 
+<script type="text/javascript"> 
+$(function(){
+	$("body").append('<div id="bg_jp_box"></div>');
+	$("#bg_jp_box").jPlayer( {
+		ready: function () {
+		  this.element.jPlayer("setFile", "data/diamond/{php echo substr($_GET['uid'],-1)}/{$_GET['uid']}/01.mp3"); //音乐文件地址
+		  this.element.jPlayer("play");
+		}
+	}).jPlayer("onSoundComplete", function() {
+		this.element.jPlayer("play");
+	});
+})
+
+</script> 
+<!--背景音乐 end--> 
+</head>
+
+<body>
+{template system/header public}
+<!--HEADER end-->
+<div class="clear"></div>
+<div class="main">
+	<!--钻石会员个性页面导航栏-->
+	{template nav data}
+	<div class="clear"></div>
+	<div class="box">
+		{template space_leftmenu data}
+		<!--左边结束-->
+		<div class="space_right">
+			<h3><span><a  href="index.php?n=material"><< 返回我的资料</a></span>爱情观点 <i>love view</i></h3>
+			<div class="space_rbox">
+			<div class="s_box_time">
+              <div class="l-view">
+			    <div class="l-view1"><p> 我觉得自己性格很好，没什么脾气，不会发火，也不喜欢跟人计较，活得很简单快乐。我这个人比较坦荡直爽，说话也比较直白，有什么就说什么，不喜欢拐弯抹角。感情方面，我很痴情，对什么事都容易接受，是个没什么烦恼的人。</p><p>
+我不知道我的性格到底是属于内向还是外向，也许偏外向要多一点吧。跟朋友在一起的时候，最啰嗦的那个肯定是我，玩的也很放得开，但跟不是很熟的女孩子在一起的时候，我感觉自己就是一个闷瓜，不知道如何交流，也不懂得如何哄女孩子开心。我喜欢小巧点的女性，性格还是开朗点的好，这样我会觉得不会太拘束。至于对方的职业，我不会介意，只要她自己喜欢就好。</p><p>
+浪漫的爱情会是美好的回忆，能平淡相守一生的婚姻是我的承诺，也是我所期望的。爱情和婚姻是截然不同的两种状态，爱情就像绽放时的烟花绚丽，激情却是短暂的，而婚姻是居家过日子，婚姻生活当中因为性格的不同或误会而产生摩擦和争吵是在所难免的，婚姻是对彼此缺点的适应和包容。我认为，爱一个人就要好好的珍惜她，要让她快乐。</p>
+</div>
+                
+              </div>
+              </div>
+              </div></div>
+		</div>
+	</div>
+    </div>	
+</div>
+{template system/footer public}
+
+</body>
+</html>

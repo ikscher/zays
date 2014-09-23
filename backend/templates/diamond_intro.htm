@@ -1,0 +1,54 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 首页推荐会员介绍</span>
+    <span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<div class="list-div">
+<form action="index.php?action=site_diamond&h=intro" method="post">
+		<strong>请输入您想搜索的钻石会员的UID:</strong>
+		<input type="text" name="search_uid" />
+		<input type="submit" name="search" value="搜索" />
+</form>
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+		{if !empty($userarr)}
+					<table>
+					 <tr>
+						<th>ID</th>
+						<th>昵称</th>
+						<th>用户名</th>
+						<th>性别</th>
+						<th>年龄</th>
+						<th>操作</th>
+					 </tr>
+					 {loop $userarr $user}
+					 <tr>
+					 	<td>
+					 	<!--{if $user['sid']}-->
+						<a href="index.php?action=kefu&uid={$user['uid']}">{$user['uid']}</a>
+						<!--{else}-->
+						<a class="box_a" name="lytebox" href="index.php?action=contact&head=1&uid={$user['uid']}" rel="group">{$user['uid']}</a>
+						<!--{/if}-->
+					 	</td>
+					 	<td>{$user['nickname']}</td>
+					 	<td>{$user['username']}</td>
+					 	<td>{php echo $user['gender']==1 ? '女':'男'}</td>
+					 	<td>{php echo date('Y')-$user['birthyear']}</td>
+					 	<td>
+							<a href="index.php?action=site_diamond&h=diamond_recommend&uid={$user['uid']}">设为首页钻石会员介绍</a>&nbsp;
+							{if $flag!='hidden'}
+							<a href="index.php?action=site_diamond&h=intro&d=del&uid={$user['uid']}">取消首页钻石会员介绍</a>
+							{/if}
+						</td>
+					 </tr>
+					 {/loop}
+					</table>
+					{else}
+						<div style="padding:40px auto;color:#F00">暂无此钻石会员,请重新输入搜索条件</div>
+					{/if}
+</div>

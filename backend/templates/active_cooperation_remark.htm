@@ -1,0 +1,87 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/city.js?v=1"></script>
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+$(function(){
+	$("#list-table tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+})
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+input[type="button"]  {
+background-color:#cfeefe;
+}
+
+.coolbg {
+background: #a4cafd;
+border-bottom:2px solid #ACACAC;
+border-right:2px solid #ACACAC;
+cursor:pointer;
+padding:2px 5px;
+}
+
+.np {
+border:medium none;
+}
+
+
+</style>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 合作者</span>
+<span class="action-span"><a href="{if isset($currenturl)}{$currenturl}{/if}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+
+<form action="index.php?action=active_cooperation&h=list&act=remark_update" method="post">
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>会员的ID</th>
+   
+    <th>备注</th>
+	<th>操作</th>
+  </tr>
+ 
+  <tr id="tr_{$v['id']}">
+    <td align="center">{if !empty($v['uid'])}<a href="#" class="userinfo" onclick="parent.addTab('查看{$v['uid']}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">
+		<span style='color: #33F;'>{$v['uid']}</span>
+    </a>{else}未注册合作者{/if}</td>
+   
+	 <td><input type="text" name="remark" style="width:100%;" value="{$v['remark']}" /></td>
+    <td align="center">
+		<input type="hidden" name="uid" value="{$v['uid']}" />
+   		<input type="submit" name="" value="提交"  />
+    </td>
+  </tr>
+  
+  </table>
+  </form>
+ <div style="padding:5px;background:#fff">
+	
+</div>
+
+
+  
+</div>﻿﻿

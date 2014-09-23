@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网-—邂逅扬州，邂逅爱情</title>
+<link href="module/activity/templates/default/new_css.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+
+<script LANGUAGE="Javascript" src="module/activity/templates/public/js/jquery.jplayer.min.js"></script>
+<SCRIPT language="JavaScript" type="text/javascript">
+var two=1;
+var sex=1;
+			function changeboxDiv(o)
+			{
+				if(o == 2){
+					sex = 0;
+				}else{
+					sex = 1;
+				}
+				
+				for(var i=1;i<=2;i++)
+				{
+					if(o==i)
+						{
+							document.getElementById("class"+i).style.background="url(module/activity/templates/default/images/activity_new/sidebar_h2_thisclass.jpg) no-repeat";
+							document.getElementById("class"+i).style.color="#de016b";
+							document.getElementById("cont"+i).style.display="";
+						}
+					else
+						{
+							document.getElementById("class"+i).style.background="url(module/activity/templates/default/images/activity_new/sidebar_h2_otherclass.jpg) no-repeat";
+							document.getElementById("class"+i).style.color="#2b73c7";
+							document.getElementById("cont"+i).style.display="none";
+						}
+				}
+			two=o;
+			}
+
+
+			
+	function page(pg){
+	
+    if(sex=='1'){
+        var total=$("#nv_total").val();
+		var np=$("#now").html();
+    }else{
+        var total=$("#nan_total").val();
+		var np=$("#now").html();
+    }
+	
+   if(pg=='up'){
+       if(np==1){
+           np=1;
+        }else{
+        	np=parseInt(np)-1;
+		}
+	
+    }
+	
+    if(pg=='next'){
+        if(np==total){
+           np=total;
+        }else{
+           np=parseInt(np)+1;
+		}
+    }
+	
+   $.get('ajax.php',{n:"activity",h:"page",sex:sex,page:np,channel:'21'},function(data){
+  		
+        if(sex=='1'){
+            $("#cont1").html(data);
+			$("#now").html(np);
+        }else{
+            $("#cont2").html(data);
+			$("#now").html(np);
+        }
+       
+   });
+}		
+$(document).ready(function(){
+	$("#jquery_jplayer_2").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				mp3: "module/activity/templates/public/js/yz.mp3"
+			}).jPlayer("play");
+		},
+		
+		swfPath: "module/activity/templates/public/js",
+		supplied: "mp3"
+	});
+	
+});	
+ </SCRIPT>
+	
+</head>
+
+<body>
+<div id="jquery_jplayer_2"></div> 
+
+<div id="activity_wrap">
+{template system/header public}
+	<div id="activity_content">
+    	<div class="category">
+        	<div class="post post_sign">
+            	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/round_l_t_bg.jpg" /></div>
+                <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/round_r_t_bg.jpg" /></div>
+                <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/round_l_b_bg.jpg" /></div>
+                <div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/round_r_b_bg.jpg" /></div>
+            	<div class="sign_cont clearfix">
+                	<h2>{$activity[0]['title']}</h2>
+                    <div class="sign">
+                    	<div class="sign_btn"><a href="index.php?n=activity&h=register&channel=21"><img src="module/activity/templates/default/images/activity_new/sign_btn.jpg" /></a></div>
+                        <p class="times">{$last_time}</p>
+                        <p class="number">已经有<span>{$num_all}</span>名会员报名参加</p>
+                        <ul class="boyandgirl clearfix">
+                        	<li>
+                            	<img src="module/activity/templates/default/images/activity_new/boy.jpg" />
+                                <span>{$qixi_regest_count[0]}</span>男士
+                            </li>
+                            <li>
+                            	<img src="module/activity/templates/default/images/activity_new/girl.jpg" />
+                                <span>{$qixi_regest_count[1]}</span>女士
+                            </li>
+                        </ul>
+                        <ul class="logo clearfix">
+						
+							<li><img src="module/activity/templates/default/images/activity_new/activity_logo1.jpg" /></li>
+                        	<li><img src="module/activity/templates/default/images/activity_new/nj.jpg" /></li>
+                            
+                            <li class="other_sign"><a href="http://7651.com/index.php?n=activity&h=activity"><img src="module/activity/templates/default/images/activity_new/other_sign_btn.jpg" /></a></li>
+                        </ul>
+                    </div>
+                    <div class="gallery">
+                    	<img src="module/activity/templates/default/images/activity_new/yz.jpg" />
+                        <ul>
+                        	<li class="line">
+                            	<dl>
+                                	<dt>提示：</dt>
+                                    <dd><span>活动时间：</span>2011年11月26日—27日</dd>
+									
+                                    <dd><span>活动地点：</span>{$last_place}</dd>
+                                </dl>
+                            </li>
+                            <li>
+                            	<dl>
+                                	<dt>要求：</dt>
+                                    <dd><span>特别要求：</span>男士22-38岁，女士秀自我，邀约身边的朋友
+漫时光一起幸福告别单身！</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="post activity_infor">
+            	<div class="entry">
+                	<h2>活动详情</h2>
+                    <ul class="infor">
+                    	<li>活动主办： 真爱一生网<span>（www.zhenaiyisheng.cc）</span></li>
+                        <li>主&nbsp;&nbsp;&nbsp;&nbsp;题：<span>邂逅扬州，邂逅爱情</span></li>
+						 <li>合作单位：安徽耕华传媒公司、南京电视台、安徽天成商务旅行社</li>
+                        <li>聚会时间：2011年11月26日—27日（双休日，两天）</li>
+                        <li>地&nbsp;&nbsp;&nbsp;&nbsp;点：{$last_place}</li>
+						
+                       
+                        <li>费&nbsp;&nbsp;&nbsp;&nbsp;用：580元/位</li>
+						
+                        <li>咨询热线：<span>400-678-0405</span></li>
+                        <li>报名须知：诚邀都市男女参加本次活动，本活动报名日期为11月15日——11月25日。</li>
+                       
+                    </ul>
+                </div>
+                <div class="entry">
+                	<h2>活动详情</h2>
+							
+                         <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/yz_1.jpg" /></p> 
+						 <p align="center">瘦西湖的风光</p>
+						 <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/yz_3.jpg" /></p> 
+						  <p align="center">个园</p>
+						 <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/yz_2.jpg" /></p> 
+						  <p align="center">古运河夜景</p>
+						 <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/yz_4.jpg" /></p> 
+						  <p align="center">凤凰岛上凤凰游</p>
+		
+						 <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/yz_5.jpg" /></p> 
+						  <p align="center">旅途中的游戏精彩好玩</p>
+						 <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/yz_6.jpg" /></p> 
+						  <p align="center">吸引会员全身心投入的篝火晚会</p>
+						 <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/yz_7.jpg" /></p> 
+						  <p align="center">真爱一生网精心设计的交友派对，让您High翻天</p>
+						  <p align="center" style="margin-top:10px; margin-bottom:10px;"><img src="module/activity/templates/default/images/activity_new/yz_8.jpg" /></p> 			
+						 <p align="center">资深情感专家的情感讲堂，让会员们受益匪浅</p>
+					 
+						
+						<p>雨过一蝉噪，飘萧松桂秋。</p>
+	
+						<p>青苔满阶砌，白鸟故迟留。</p>
+	
+                        <p>暮霭生深树，斜阳下小楼。</p>
+	
+						<p>谁知竹西路，歌吹是扬州。</p>	
+						
+<p style="margin-top:10px;">扬州的美不消细说，徐凝的“天下三分明月夜，二分无奈是扬州”，黄慎的“人生只爱扬州住，夹岸垂柳春风熏”以及大诗人杜牧的“谁知竹西路，歌吹是扬州”都一一为我们讲述了千年的扬州是如何的风光与诱人。而今真爱一生网携手南京电视台，于2011年11月26日—27日倾情奉献了一场精彩的邂逅之旅——游扬州。抛却烦恼，丢掉羁绊，投入扬州的怀抱，感受扬州的灼灼风华。还等什么呢？邂逅扬州，邂逅爱情！我们期待着您的参与！</p>
+<p  style="margin-top:10px;">1 扬州艳遇。 “维扬自古多佳丽”，“扬州出美人”，在游览扬州的山水名胜时，顺带展开一场随时可能开始的艳遇，这似乎是每一位来扬州的游客的梦想。试想一下，在风景秀美的瘦西湖偶遇一位温柔似水的美女；在诗情画意的个园巧遇一位眉清目秀的淑女；在灯火通明的古运河邂逅一位志同道合的知己。爱情，可以简简单单的就从第一眼开始……</p>
+<p  style="margin-top:10px;">2 浪漫Party。在游览扬州美景之余，真爱一生网专业制作团队为参加活动的单身男女努力营造了温馨浪漫的相亲派对，精彩好玩的游戏，大胆真挚的表白，让您在饱览美景之余可以更加自然的找到那个心目中的ta，来一场邂逅扬州的浪漫寻爱之旅。</p>
+<p style="margin-top:10px;">3 电视节目的录制。真爱一生网合作团队南京电视台录制组会全程跟拍旅途中的精彩环节，并会从中选出最优秀的，善于并勇于表现的男女，专门录制一期节目。无论是一见倾心的美女靓男还是倾心相恋的甜蜜情侣，都可以在荧幕上分享您的甜蜜与幸福，更可以带着这份甜蜜，让您在以后的岁月里可以时时回味。</p>
+<p style="margin-top:10px;">4 知名情感专家的现场指导。很多人对于爱情与婚姻总会有或多或少的迷惑，怎样邂逅伴侣，怎样相处，怎样维护一段爱情……对于这些，知名情感专家会与您面对面沟通，为您解答爱情的迷惑。</p>
+	<h2>旅游景点介绍</h2>
+<p  style="margin-top:10px;">1	瘦西湖， 1988年被国务院列为“具有重要历史文化遗产和扬州园林特色的国家重点名胜区”。2010年成为扬州首家国家5A级旅游景区。四时八节，风晨月夕，使瘦西湖幻化出无穷的天然之趣。丰富的历史文化，使瘦西湖如醇厚的佳酿，常看常新，品味其中，回味无穷。</p>
+<p  style="margin-top:10px;">2	个园  1988年个园被国务院授予第三批“全国重点文物保护单位”。个园是以竹石取胜。其四季假山各具特色，表达出“春山艳冶而如笑，夏山苍翠而如滴，秋山明净而如妆，冬山惨淡而如睡”和“春山宜游，夏山宜看，秋山宜登，冬山宜居”的诗情画意。个园旨趣新颖，结构严密，是中国园林的孤例，也是扬州最富盛名的园景之一。 </p>
+<p  style="margin-top:10px; margin-bottom:10px;"> 3	古运河  古运河扬州段是整个运河中最古老的一段。现在扬州境内的运河与2000多年前的古邗沟路线大部分吻合，与隋炀帝开凿的运河则完全契合。这一段运河最为古老，可谓历史遗迹星列、人文景观众多。</p>
+<p  style="margin-top:10px; margin-bottom:10px;">4	凤凰岛  扬州凤凰岛又称凤凰岛生态旅游区，是扬州市区目前唯一的一家生态休闲度假类景区。更是华东地区保存最完好的原生态旅游区。扬州凤凰岛生态旅游区内的休闲性项目有凤凰阁、凤凰台、瓷韵山庄、水岸咖啡吧、乡村烧烤、露营地、越野车、跑马场、丛林飞鼠、激光战船、动力伞和有游轮、画舫、摩托艇等组成的水上俱乐部。</p>
+                </div>
+				  <div class="entry">
+                	<h2>活动亮点</h2>
+                    <ul class="lightspot">
+                    	<li>1.	更省心  由真爱一生网专业团队全权负责的游玩路线、饮食活动等，您只需用心体会游览的妙处与活动的乐趣。 </li>
+                        <li>2.  更珍贵  有真爱一生网合作团队南京电视台派出专门的摄影团队，全程跟拍旅游活动的精彩亮点，让您在旅游之余共同分享您的甜蜜与幸福。在专业摄影团队的记录下，让您的扬州之旅更加的丰富与珍贵。</li>
+                        <li>3.	更诱人 来自天南地北的帅哥美女云集于此，思想碰撞、情感交流、近距离接触，让您的扬州之旅充满了艳遇和惊喜。</li>
+                        <li>4.  更实惠  专业的游玩安排，精彩的派对活动，知名情感专家的情感讲堂，真爱一生网精心准备的纪念礼物，让您在游玩之余可以尽情的感受真爱一生网的诚挚用心。</li>
+                    </ul>
+                </div>
+				 <div class="entry">
+                	<h2>行程安排</h2>
+                    <ul class="lightspot">
+                    	<li><span>11月26日：</span></li>
+					
+                        <li>1  游览国家5A级风景名胜区－瘦西湖。</li>
+                        <li>2  晚饭后乘船畅游古运河。 </li>
+						<li>3  回酒店进行联谊活动、情感课堂等。 </li>
+					
+                       	<li><span>11月27日：</span></li>
+						<li>1  游全国四大名园之一个园。</li>
+						<li>2  参观天然氧吧，回归自然的好去处－凤凰岛。</li>
+						<li>3  参观人杰地灵，名人迭出的扬州东关古街。</li>
+						<li>4  采买纪念品，结束愉快的行程。</li>
+                    </ul>
+                </div>
+               
+				
+				<div class="entry">
+                	<h2>注意事项 ：</h2>
+                    <ul class="lightspot">
+                    	<li>请所有会员为了保证自己的权益，仔细阅读以下内容！</li>
+                       
+                        <li>支付方式：为了您的权益，请您通过真爱一生网活动专区网页上的在线支付渠道付到公司账户上，不要在其他账号上进行任何与现金有关的操作，以避免受到不必要的损失。
+							
+
+</li>
+                     
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="activity_sidebar">
+    	<div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b.jpg" /></div>
+        	<h2>已报名
+            	<a href="#" id="class2" onMouseMove="changeboxDiv(2)">男生</a>
+                <a href="#" id="class1" onMouseMove="changeboxDiv(1)">女生</a> 
+				           </h2>
+<div id="cont1" class="entry" >
+            	<dl class="apply" id="cont1" style="height:285px;">
+				  {php $edu_array=array('3'=>'高中及以下','4'=>'大专','5'=>'大学本科','6'=>'硕士','7'=>'博士')}
+                	<dt><span class="name">呢称</span><span class="sex">性别</span><span class="age">年龄</span><span class="education">学历</span></dt>
+					{loop $woman_qixi_regest  $key $nv}
+                    <dd><span class="name"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></span>
+					<span class="sex"><img src="module/activity/templates/default/images/activity_new/girl_icon.jpg" /></span>
+					<span class="age">{php echo empty($nv[birthyear])?'保密':(date('Y')-$nv[birthyear]);}</span>
+					<span class="education">{php echo empty($edu_array[$nv[education]])?'保密':$edu_array[$nv[education]];}</span></dd>
+					{/loop}
+                
+                </dl>
+              
+            </div>
+            <div id="cont2" class="entry" style="display: none;">
+				<dl class="apply" style="height:285px;">
+                	<dt><span class="name">呢称</span><span class="sex">性别</span><span class="age">年龄</span><span class="education">学历</span></dt>
+					{loop $man_qixi_regest  $key $nv}
+                    <dd><span class="name"><a href='index.php?n=space&uid={$nv[uid]}' target="_blank">{php echo MooCutstr($nv[nickname], 8,'')}</a></span><span class="sex"><img src="module/activity/templates/default/images/activity_new/man.jpg" /></span>
+					<span class="age">{php echo empty($nv[birthyear])?'保密':(date('Y')-$nv[birthyear]);}</span>
+					<span class="education">{php echo empty($edu_array[$nv[education]])?'保密':$edu_array[$nv[education]];}</span></dd>
+                   {/loop}
+                </dl>
+				 
+				 	
+                	
+               
+            </div>
+			<div class="pagenav">
+			<input type="hidden" value="{php echo ($qixi_regest_count[1]%9)?(intval($qixi_regest_count[1]/9)+1):(intval($qixi_regest_count[1]/9))}" id="nv_total">
+                            <input type="hidden" value="{php echo ($qixi_regest_count[0]%9)?(intval($qixi_regest_count[0]/9)+1):(intval($qixi_regest_count[0]/9))}" id="nan_total">
+			<p><a href="javascript:page('up');">上一页</a><span id="now">1</span><a href="javascript:page('next');">下一页</a></p>
+			 </div>
+        </div>
+        <div class="post clearfix" style="height:170px;">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>近期活动</h2>
+            <ul class="news">
+				{loop $act_con $k $v}
+				<li>{$v['time']} <a href="{$v['href']}">{$v['title']}</a><img src="module/activity/templates/default/images/activity_new/new.jpg" /></li>
+				{/loop}
+				{loop $act_con_last $k $v}
+				<li>{$v['time']} <a href="{$v['href']}">{$v['title']}</a></li>
+				{/loop}
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>往期回顾<a href="#" class="more">更多</a></h2>
+            
+            <ul class="review">
+			{loop $act_con2 $k $v}
+			<li><a href="{$v['href']}">{$v['title']}</a></li>
+			{/loop}
+            	
+				
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>活动合作</h2>
+            <img class="cooperation_img" src="module/activity/templates/default/images/activity_new/sidebar_cooperation.jpg" />
+            <ul class="cooperation">
+            	<li>希望与真爱一生网合作举办活动<a href="index.php?n=cooperation&h=company&cooptype=1">进入>></a></li>
+                <li>希望为活动赞助物品或现金<a href="index.php?n=cooperation&h=company&cooptype=2">进入>></a></li>
+                <li>让会员和您企单身员工联谊<a href="index.php?n=cooperation&h=company&cooptype=3">进入>></a></li>
+                <li>让我们策划主持您企业活动<a href="index.php?n=cooperation&h=company&cooptype=4">进入>></a></li>
+            </ul>
+        </div>
+        <div class="post">
+        	<div class="round_l_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_t.jpg" /></div>
+            <div class="round_r_t"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_t.jpg" /></div>
+            <div class="round_l_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_l_b_nobg.jpg" /></div>
+			<div class="round_r_b"><img src="module/activity/templates/default/images/activity_new/sidebar_round_r_b_nobg.jpg" /></div>
+        	<h2>活动志愿者报名</h2>
+            <img class="volunteer_img" src="module/activity/templates/default/images/activity_new/sidebar_volunteer.jpg" />
+            <dl class="volunteer">
+            	<dt>我口齿伶俐思维敏捷有主持经验
+想成为志愿者</dt>
+                <dd>希望与真爱一生网提供主持服务<a href="index.php?n=cooperation&h=company&cooptype=7">点击进入>></a></dd>
+                <dd>希望为活动提供志愿者服务<a href="index.php?n=cooperation&h=personal&a=21">点击进入>></a></dd>
+            </dl>
+        </div>
+    </div>
+  
+    <div class="friend_link clearfix">
+    	<h2><img src="module/activity/templates/default/images/activity_new/friend_link.jpg" /></h2>
+        <div class="entry clearfix">
+        	<ul>
+            	<li><a href="http://www.sina.com.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon1.jpg" /></a></li>
+                <li><a href="http://www.sohu.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon2.jpg" /></a></li>
+                <li><a href="http://www.baidu.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon3.jpg" /></a></li>
+                <li><a href="http://www.qq.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon4.jpg" /></a></li>
+                <li><a href="http://www.k666.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon5.jpg" /></a></li>
+                <li><a href="http://www.163.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon6.jpg" /></a></li>
+                <li><a href="http://www.114la.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon7.jpg" /></a></li>
+                <li><a href="http://www.ct10000.com/"><img src="module/activity/templates/default/images/activity_new/zgdx.jpg" /></a></li>
+                <li><a href="http://www.10086.cn/index.htm"><img src="module/activity/templates/default/images/activity_new/zgyd.jpg" /></a></li>
+				
+                <li><a href="http://www.ahtv.cn/"><img src="module/activity/templates/default/images/activity_new/friend_icon10.jpg" /></a></li>
+                <li><a href="http://www.52hbtv.com/"><img src="module/activity/templates/default/images/activity_new/friend_icon11.jpg" /></a></li>
+            </ul>
+        </div>
+        <div><img src="module/activity/templates/default/images/activity_new/friend_bottom.jpg" /></div>
+    </div>
+</div>
+  	{template system/footer public}
+</body>
+</html>

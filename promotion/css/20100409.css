@@ -1,0 +1,312 @@
+/* CSS Document */
+*{ margin:0; padding:0; font-size:12px; color:#333333; font-family:Arial;}
+body{ background:#fff6e4;}
+img{ border:0;}
+a{ text-decoration:none; color:#333333; outline:none; star:expression(this.onFocus=this.blur());}
+a:hover{ text-decoration:underline;}
+ul,li{ list-style:none;}
+.clear{	clear:both;}
+
+/*========== header begin ==========*/
+.header{
+	margin:0 auto;
+	width:1000px;
+	background:url(../images/regist_bg.jpg) no-repeat 0px -20px;
+	}
+	.logo{
+		display:inline;
+		float:left;
+		margin-left:20px;
+		background:#FFF;
+		}
+	.search{
+		display:inline;
+		float:right;
+		width:712px;
+		margin-top:20px;
+		margin-right:25px;
+		height:46px;
+		line-height:46px;
+		background:url(../images/search_bg.jpg) no-repeat;
+		}
+		.search p{
+			margin-left:30px;
+			*margin-left:10px;
+			_margin-left:10px;
+			margin-top:0;
+			*margin-top:-3px;
+			_margin-top:8px;
+			}
+			.search p .select{
+				position:relative;
+				top:2px;
+				*top:1px;
+				_top:1px;
+				}
+			.search p .search_button{
+				border:0;
+				width:80px;
+				height:25px;
+				background:url(../images/search_button.jpg) no-repeat;
+				position:relative;
+				top:2px;
+				*top:2px;
+				_top:2px;
+				margin-left:20px;
+				*margin-left:10px;
+				_margin-left:10px;
+				cursor:pointer;
+				}
+/*========== header end ==========*/
+
+/*========== regist begin ==========*/
+.regist{
+	margin:0 auto;
+	width:1000px;
+	height:408px;
+	background:url(../images/regist_bg.jpg) no-repeat 0px -141px;
+	*background:url(../images/regist_bg.jpg) no-repeat 0px -144px;
+	_background:url(../images/regist_bg.jpg) no-repeat 0px -144px;
+	}
+	.regist table{
+		display:inline;
+		float:right;
+		width:350px;
+		margin-right:25px;
+		*margin-right:24px;
+		margin-top:30px;
+		}
+		.regist table td{
+			height:32px;
+			line-height:32px;
+			padding-left:10px;
+			}
+			.regist table td p{
+				line-height:25px;
+				text-indent:25px;
+				}
+			.regist table td span{
+				font-family:Verdana;
+				position:relative;
+				top:3px;
+				color:#F00;
+				}
+		.regist table td .select{
+			position:relative;
+			top:1px;
+			}
+		.regist table td .text{
+			width:150px;
+			height:18px;
+			line-height:18px;
+			border:1px solid #666;
+			}
+		.regist table td .regist_button{
+			border:0;
+			width:150px;
+			height:50px;
+			background:url(../images/regist_button.gif) no-repeat;
+			margin-top:10px;
+			cursor:pointer;
+			}
+/*========== regist end ==========*/
+
+/*========== zhanshi begin ==========*/
+.zhanshi{
+	margin:0 auto;
+	width:1000px;
+	}
+	.zhanshi .zhanshi_title{
+		width:1000px;
+		height:36px;
+		background:url(../images/zhanshi_title.jpg) no-repeat;
+		}
+		.zhanshi .zhanshi_title a{
+			display:inline-block;
+			float:right;
+			margin-top:10px;
+			margin-right:20px;
+			font-size:14px;
+			color:#C39;
+			}
+	.zhanshi .zhanshi_content{
+		width:1000px;
+		height:197px;
+		background:url(../images/zhanshi_contentbg.jpg) repeat-x;
+		}
+		.zhanshi .zhanshi_content table{
+			}
+/*========== zhanshi end ==========*/
+
+/*========== tuijian begin ==========*/
+.tuijian{
+	margin:0 auto;
+	width:1000px;
+	}
+	.tuijian_title{
+		width:1000px;
+		height:36px;
+		background:url(../images/tuijian_title.jpg) no-repeat;
+		}
+		.tuijian .tuijian_title a{
+			display:inline-block;
+			float:right;
+			margin-top:10px;
+			margin-right:20px;
+			font-size:14px;
+			color:#C39;
+			}
+	.tuijian_content{
+		background:#ffe7da;
+		padding-top:10px;
+		}
+		.tuijian_content ul{}
+			.tuijian_content ul li{
+				display:inline;
+				float:left;
+				width:105px;
+				height:180px;
+				text-align:center;
+				margin-left:17px;
+				_margin-left:16px;
+				}
+			.tuijian_content ul li.last{
+				float:right;
+				margin-right:20px;
+				}
+				.tuijian_content ul li span{
+					display:block;
+					width:105px;
+					height:20px;
+					line-height:20px;
+					overflow:hidden;
+					color:#666;
+					}
+					.tuijian_content ul li span a{
+						color:#C39;
+						}
+				.tuijian_content ul li a img{
+					width:100px;
+					height:125px;
+					padding:2px;
+					border:1px solid #F69;
+					}
+/*========== tuijian end ==========*/
+
+/*========== maincontent begin ==========*/
+.box{
+	margin:0 auto;
+	width:1000px;
+	background:url(../images/maincontent_bg.jpg) repeat-x;
+	padding-top:40px;
+	}
+	.maincontent{
+		display:inline;
+		float:left;
+		width:495px;
+		}
+		.m_title{
+				height:36px;
+				line-height:36px;
+				margin-bottom:20px;
+				background:url(../images/cggs.gif);
+				}
+			.m_title img{
+				float:left;
+				}
+			.m_title a{
+				display:block;
+				float:right;
+				color:#C39;
+				font-size:14px;
+				margin-right:20px;
+				}
+		.story{
+			float:left;
+			margin-bottom:20px;
+			padding:0 10px;
+			}
+			.story a img{
+				float:left;
+				margin-right:10px;
+				width:150px;
+				height:90px;
+				padding:2px;
+				border:1px solid #CCC;
+				}
+			.story h1{
+				font-size:14px;
+				margin-bottom:5px;
+				}
+				.story a{
+					font-size:14px;
+					color:#C39;
+					}
+				.story span{
+					color:#C39;
+					}
+				.story p{
+					line-height:20px;
+					}
+				.story p.text{
+					text-indent:2em;
+					}
+					.story p.text a{
+						color:#C39;
+						font-size:12px;
+						}
+		.shurong{
+			display:inline;
+			float:right;
+			width:495px;
+			}
+			.s_title{
+				height:36px;
+				line-height:36px;
+				background:url(../images/shsr.gif);
+				}
+				.s_title img{
+				float:left;
+				}
+				.s_title a{
+					display:block;
+					float:right;
+					margin-right:20px;
+					font-size:14px;
+					color:#C39;
+					}
+			.shurong h2{
+				color:#C39;
+				font-size:14px;
+				margin-bottom:10px;
+				margin-top:20px;
+				margin-left:20px;
+				margin-right:20px;
+				}
+			.shurong p{
+				line-height:25px;
+				margin-bottom:50px;
+				margin-left:20px;
+				margin-right:20px;
+				}
+/*========== maincontent end ==========*/
+
+/*========== footer begin ==========*/
+.footer{
+	margin:0 auto;
+	width:1000px;
+	text-align:center;
+	margin-bottom:30px;
+	margin-top:20px;
+	}
+	.footer p{
+		line-height:30px;
+		color:#666;
+		}
+		.footer p a{
+			color:#C39;
+			}
+			.footer p span{
+					color:#C39;
+					}
+/*========== footer end ==========*/

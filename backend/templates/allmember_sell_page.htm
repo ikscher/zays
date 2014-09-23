@@ -1,0 +1,36 @@
+<script type="text/javascript">
+<!--
+$(function(){
+	$(".table_list ul:odd").css("background","#e6f0fd");
+	$(".table_list ul:even").css("background","#CEDAEA");	
+})
+
+function letgopage(p){
+	var url = './allmember_ajax.php?n=sell_page&uid={$uid}&t={$t}&page='+p+'&rand='+Math.random();
+	$.get(url,function(data){
+		$("#item_d_d").html(data);
+	});	
+}
+
+//-->
+</script>
+{loop $res_sellafter $k $v}
+		<ul>
+			<li><strong>{php echo ($page-1)*$limit+$k+1;}.</strong>
+				{php echo date('Y-m-d H:i:s',$v['dateline']);}&nbsp;&nbsp;&nbsp;{$v['mid']}号客服{$v['manager']}   {php echo $v['effect_grade'];}类
+			</li>
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{php echo $sell_after_grade[$v['effect_grade']];}&nbsp;&nbsp;&nbsp;
+			{php $time = time();}
+			{if $v['next_contact_time'] > $time }
+			-&gt; &nbsp;下次联系时间：{php echo date('Y-m-d H:i:s',$v['next_contact_time']);}
+			{/if}
+			&nbsp;&nbsp;&nbsp;&nbsp;-&gt; &nbsp;$v['comment'];</li>
+		</ul>
+	{/loop}
+		<div style=" text-align:center;height:30px;" id="sellpage">
+			{if $pages>=2}
+				<div style="text-align:center">第&nbsp;{php for($i=1;$i<=$pages;$i++){}
+	<a href="javascript:letgopage({$i});" style="line-height:30px;text-decoration:none;{if $page==$i}border:1px solid #3E679A; background:#7F99BE;{/if}">&nbsp;{$i}&nbsp;</a>&nbsp;
+{/for}&nbsp;页</div>
+			{/if}
+		</div> 

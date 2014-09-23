@@ -1,0 +1,33 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 预设彩信列表</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<span class="action-span"><a href="index.php?action=other&h=mmspre_add" onclick="parent.addTab('添加预设彩信','index.php?action=other&h=mmspre_add','icon');return false;">添加预设彩信</a></span>
+
+<div style="clear:both"></div>
+</h1>
+<p/>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr>
+    <th>ID</th>
+    <th>短信标题</th>
+    <th>短信内容</th>
+    <th>操作</th>
+  </tr>
+  {loop $sms $v}
+  <tr>
+    <td align="center">{$v['id']}</td>
+	 <td align="center">{$v['title']}</td>
+    <td align="left">{$v['content']}</td>
+   
+    <td align="center"><a href="#"onclick="parent.addTab('编辑预设彩信','index.php?action=other&h=mmspre_edit&id={$v['id']}','icon');return false;">编辑</a>    &nbsp;&nbsp;&nbsp;<a href="index.php?action=other&h=mmspre_del&id={$v['id']}">删除</a></td>
+  </tr>
+  {/loop}
+   <tr>
+	<td colspan="4" align="center">{$pages}</td>
+	</tr>
+  </table>
+</div>

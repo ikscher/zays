@@ -1,0 +1,249 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	font-size:14px;
+	word-wrap:break-word;
+	}
+.mm-top-banner{
+	width:980px;
+	margin:0 auto;
+	height:191px;
+	background:url(images/top-banner.jpg) no-repeat;
+	}
+.mk-live,.mk-new{
+	background:url(images/buttons.gif) no-repeat;
+	width:88px;
+	height:26px;
+	position:relative;
+	display:block;
+	}
+.mk-live{
+	left:630px;
+	top:47px;
+	}
+.mk-live:hover{
+	background-position:0 -26px;
+	}	
+.mk-new{
+	background-position:-88px 0;
+	left:730px;
+	top:45px;
+	}
+.mk-new:hover{
+	background-position:-88px -26px;
+	}	
+.mm-content{
+	width:982px;
+	margin:0 auto;
+	}
+.mm-c-left{
+	width:231px;
+	background:url(images/left-bg.gif) no-repeat;
+	float:left;
+	margin-left:-10px;
+	/*position:relative;
+	height:896px;*/
+	height:1186px;
+	}
+.mm-list{
+	/*padding:123px 25px 0;*/
+	padding:123px 20px 0;
+	float:left
+	}	
+.mm-list li{
+	/*height:60px;*/
+	/*background:url(images/l-img-bg.gif) no-repeat right;*/
+	/*padding:5px 6px 5px 0;*/
+	/*width:175px;*/
+	margin-bottom:8px;
+	float:left;
+	width:182px;
+	_width:175px;
+	margin-left:10px;
+	_margin-left:5px;
+	}
+.mm-list li a {
+	/*font: bold 24px "楷体_GB2312";*/
+	/*padding-left:45px;
+	color:#000;
+	*/
+	font: bold 22px "楷体_GB2312";
+	line-height:60px;
+	_line-height:60px;
+	float:left;
+	color:#333;
+	cursor:pointer;
+	}
+.mm-list li a img{
+	float:right;
+	/*添加*/
+	border:1px solid #ccc;
+	padding:2px;
+	}	
+.mm-list li a span{
+	float:left;
+	/*padding-right:20px;*/
+	padding-right:16px;
+	}
+.mmc-right-box{
+	margin-top:10px;
+	}	
+.mmc-right-box,.mmc-right-bottom{
+	float:right;
+	width:757px;
+	}
+.mmc-right-top,.mmc-right-bottom{
+	background:url(images/right-title.gif) no-repeat;
+	}
+.mmc-right-top{
+	width:742px;
+	padding-left:15px;
+	height:32px;
+	line-height:32px;
+	color:#FFF;
+	font-weight:700;
+	}
+.mmc-right-bottom{
+	height:8px;
+	background-position:bottom;
+	font-size:0px;
+	}
+.mmc-right-content{
+	background:url(images/right-bg.gif) repeat-y;
+	float:right;
+	width:750px;
+	padding:0 4px 0 3px;
+	}
+.mmc-r-c{
+	width:750px;
+	background:url(images/r-c-bg.gif)
+	}
+.mm-show{
+	padding:25px 20px;
+	background:url(images/right-line.gif) no-repeat bottom;
+	}
+.mm-show-photo{
+	width:213px;
+	float:left;
+	}
+.mm-show-photo dt{
+	width:200px;
+	background:url(images/r-big-img-bg.gif) repeat-y;
+	border-top:1px solid #f4e9ef;
+	border-bottom:1px solid #c3babf;
+	padding:6px 6px 8px 7px;
+	}
+.mm-show-photo dd{
+	height:50px;
+	line-height:50px;
+	font-size:16px;
+	font-weight:700;
+	text-align:center;
+	}
+.mm-show-text,.mm-show-text-side{
+	width:470px;
+	float:right;
+	}	
+.mm-show-text-side{
+	background:url(images/right-side.gif) no-repeat;
+	height:7px;
+	font-size:0px;
+	}
+.mm-show-textcontent{
+	width:438px;
+	padding:0 15px;
+	border-left:1px solid #ca4693;
+	border-right:1px solid #ca4693;
+	float:right;
+	background:url(images/bg-img.gif) no-repeat right bottom #fff3fa;
+	padding-bottom:10px;
+	}
+.mm-show-text h6{
+	color:#d73e90;
+	width:438px;
+	float:left;	
+	}
+h6{
+	line-height:24px;
+	height:24px;
+	font-size:14px;
+	}	
+.mm-show-text p{
+	width:438px;
+	float:left;
+	line-height:24px;
+	text-indent:14px;
+	display:block;
+	}	
+.show-text{
+	width:438px;
+	float:left;
+	padding:15px 0;
+	}
+.show-text dt,.show-text dd{
+	line-height:26px;
+	height:26px;
+	float:left;
+	}
+.show-text dt{
+	width:120px;
+	text-align:right;
+	}
+.show-text dd{
+	width:310px;
+	}
+.member-msg-box{
+	padding:15px 20px;
+	}
+.member-msg-right{
+	padding-left:10px;
+	width:422px;
+	float:left;
+	}
+.member-msg-list{
+	background:url(images/line.gif) repeat-x bottom;
+	padding:5px 0;
+	}
+.member-msg-list dt{
+	text-indent:28px;
+	line-height:26px;
+	}
+.member-msg-list dd{
+	text-align:right;
+	line-height:26px;
+	}
+.member-img-list{
+	width:261px;
+	float:left;
+	padding-left:17px;
+	}
+.member-img-list li{
+	width:247px;
+	height:174px;
+	background:url(images/right-img-bg.gif) no-repeat;
+	margin-bottom:18px;
+	padding:5px 8px 7px 6px;
+	}
+.pages{
+	text-align:center;
+	padding-top:30px;
+	height:40px;
+	}
+.pages a{
+	padding:3px 5px;
+	border:1px solid #e8e5e5;
+	background:#FFF5FC;
+	color:#666;
+	}
+.pages a:hover{
+	border:1px solid #ccc;
+	}	
+.pages a.onpage{
+	color:#d73e90;
+	font-weight:700;
+	}
+.mm-bottom{
+	background:#FFF;
+	border:1px solid #e8e5e5;
+	height:26px;
+	}	

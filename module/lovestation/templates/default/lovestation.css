@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+body{font-size:12px}
+.content {margin: 0 auto; width:980px;}
+a{color:#333333;text-decoration:none}
+a.hover{color:#00F}
+
+.lovefooter {position:absolute;}
+.lovefooter .lovenav  {margin-top:18px;margin-left:185px ;background:#CFF;}
+.lovefooter .lovenav  ul li{list-style:none;}
+.lovefooter .lovenav  ul li {float:left;}
+
+.lovefooter .lovenav  ul li a{padding:0px 6px;}
+
+.lovefoo {clear:both;height: 28px;background-image:url(images/loverstation_footer.gif) ; background-repeat: no-repeat;margin-top:55px ;margin-left:250px ;}
+			
+.lovefooter p{margin-left:305px;margin-top:15px;color:#333333;}
+
+.lovefooter p a{color:#333333;text-decoration:none}
+/*.footer .nav  ul li span{background:url(../images/span.gif) no-repeat ;}*/

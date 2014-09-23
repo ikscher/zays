@@ -1,0 +1,70 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> -钻石会员列表</span>
+	<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+	<form action="index.php?action=site_diamond&h=list" method="post">
+		搜索：
+		<select name="type" id="type">
+			<option value="" selected="selected">请选择</option>
+			<option value="uid">用户ID</option>
+			<option value="username">用户名</option>
+		</select>&nbsp;&nbsp;
+		<input name="keyword" type="text" id="keyword" />&nbsp;&nbsp;
+		<input name=" 搜 索 " type="submit" id="搜 索" value=" 搜 索 " />
+        <span class="but_a">
+        <a onclick="parent.addTab('视频列表','index.php?action=site_diamond&h=video_list')" href="#">视频管理</a>
+        <a onclick="parent.addTab('音频列表','index.php?action=diamond_music&h=list')" href="#">音频管理</a>
+        <a onclick="parent.addTab('发布约会列表','index.php?action=site_diamond&h=dating')" href="#">发布约会</a>
+        <a onclick="parent.addTab('响应约会列表','index.php?action=site_diamond&h=redating')" href="#">响应约会</a>
+        <a onclick="parent.addTab('留言&amp;表情列表','index.php?action=site_diamond&h=comment')" href="#">留言与表情</a>
+        <a onclick="parent.addTab('钻石会员介绍列表','index.php?action=site_diamond&h=intro')" href="#">钻石会员介绍</a>
+        <a onclick="parent.addTab('留言列表','index.php?action=site_diamond&h=words')" href="#">留言管理</a> 
+        </span>
+	</form>
+</div>
+<br />
+<div class="list-div" id="listDiv">
+	<table cellpadding="3" cellspacing="1" id='list-table'>
+		<tr>
+			<th>用户ID</th>
+			<th>用户名</th>
+			<th>昵称</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th>开始时间</th>
+			<th>到期时间</th>
+			<th>状态</th>
+			<th>操作</th>
+		</tr>
+		{loop $members $v}
+		<tr id="trs_{php echo isset($u['uid'])?$u['uid']:'';}">
+			<td align="center"><a href="#" onclick="parent.addTab('{php echo isset($v['uid'])?$v['uid']:'';}资料','index.php?action=allmember&h=view_info&uid={$v['uid']}','icon')">{php echo isset($v['uid'])?$v['uid']:'';}</a></td>
+			<td align="left">{$v['username']}</td>
+			<td align="left">
+            {if $v['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>
+            {else}<img src="templates/images/m.gif" alt="男" title="男"/>
+            {/if}
+            {$v['nickname']}</td>
+			<td align="center">{if $v['gender']}女{else}男{/if}</td>
+			<td align="center">{php echo date("Y") - $v['birthyear'];}</td>
+			<td align="center">{php if($v['bgtime']) echo date("Y-m-d H:i",$v['bgtime']);}</td>
+			<td align="center">{php if($v['endtime']) echo date("Y-m-d H:i",$v['endtime']);}</td>
+			<td align="center"><a onclick="return confirm('你确定要更改此会员到上一个状态吗?');" href="index.php?action=site_diamond&h=list&page={$page}&c=left&uid={$v['uid']}">← </a>
+							<span>&nbsp;$arr_status[$v['status']]&nbsp;</span>
+			<a onclick="return confirm('你确定要更改此会员到下一个状态吗?');" href="index.php?action=site_diamond&h=list&page={$page}&c=right&uid={$v['uid']}"> →</a></td>
+			<td align="center">
+			<a onclick="parent.addTab('{$v['uid']}号会员视频','index.php?action=site_diamond&h=video_list&uid={$v['uid']}','icon');return false;" href="#" >视频</a> |
+			<a onclick="parent.addTab('{$v['uid']}号会员约会','index.php?action=site_diamond&h=dating&uid={$v['uid']}','icon');return false;" href="#">约会</a> |
+			<a onclick="parent.addTab('{$v['uid']}号会员定制模板','index.php?action=site_diamond&h=template&uid={$v['uid']}','icon');return false;" href="#">模板</a> |
+			<a onclick="parent.addTab('{$v['uid']}号会员音频','index.php?action=diamond_music&h=list&uid={$v['uid']}','icon');return false;" href="">音频</a> |
+			<a onclick="parent.addTab('{$v['uid']}号会员皮肤','index.php?action=site_diamond&h=skin&uid={$v['uid']}','icon');return false;" href="">皮肤</a></td>
+		</tr>
+		{/loop}
+		<tr><td colspan="9" align="center">{$pages}</td></tr>
+	</table>
+</div>

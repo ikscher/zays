@@ -1,0 +1,72 @@
+@charset "utf-8";body{font-size:14px}
+.content-title,.content-bottom{width:982px;height:4px;font-size:0;border:0}
+.c-center{width:980px;float:left}
+.about-left,.about-left-box{float:left;width:180px}
+.about-left-box{background:#fff7fb;margin-top:15px}
+.about-left{padding-left:20px}
+.about-left-box-side{background:url(images/left-side.gif) no-repeat;height:3px;font-size:0}
+.about-left-box-center{width:178px;border-left:1px solid #fde0fb;border-right:1px solid #fde0fb}
+.about-left-nav{padding:15px 0;line-height:30px}
+.about-left-nav li{background:url(images/left-line.gif) no-repeat bottom;padding-left:60px}
+.about-left-nav li a{color:#000}
+.about-left-nav li a:hover{text-decoration:underline}
+.go-reg{display:block;position:relative;width:180px;height:78px}
+.about-right{padding-left:25px;width:755px;float:left;margin-top:20px}
+.about-right-text{padding-top:10px;line-height:20px}
+#about-media{background-image:url(images/about-bg.gif);width:755px;background-repeat:no-repeat;background-position:right bottom}
+.about-right-text .about-content{line-height:2}
+.about-right-text dt,.about-left-nav li a.onthis{font-weight:700;color:#d73c90}
+.about-left-nav li a.onthis{background:url(images/about-icon.gif) right 2px no-repeat;padding-right:10px}
+.about-right-text dt{padding:10px 0}
+.about-right-text .fontb{font-size:14px;font-weight:200}
+.about-right-text .media-img{margin-left:100px;margin-bottom:20px}
+.about-right-text h1{color:#d73c90;background:url(images/cup-icon.gif) 0 5px no-repeat;line-height:45px;font-size:35px;border-bottom:1px solid #d73c90;margin-right:70px;padding-left:50px}
+.underline{border-bottom:1px solid #d73c90;height:2px;font-size:0;margin-left:10px;margin-right:60px;margin-top:0;_margin-top:-18px}
+.about-right-text .cup-year{list-style-image:none;list-style-type:none;margin-top:10px;margin-bottom:10px}
+.about-right-text .cup-year li{line-height:30px}
+.about-right-text .cup-year li a{color:#333}
+.about-right-text .cup-year li a:hover{color:#d73c90}
+.cup-year li a .paper{color:#d73c90}
+.about-right-text .media-more{text-align:right;margin-right:80px}
+.media-more a{color:#d73c90}
+.media-more a:hover{text-decoration:underline}
+.a_back{text-align:center;margin-top:20px}
+.a_back a{color:#d73c90}
+.a_feedback{margin-top:30px}
+.s_text{margin-top:20px;width:700px;height:50px}
+.s_title{line-height:24px}
+.frendlink{list-style-image:none;list-style-type:none}
+.frendlink li{height:30px}
+.frendlink li a{color:#005279;text-decoration:underline;line-height:30px}
+.frendlink li a:hover{text-decoration:none}
+.clinic-more{color:#999;float:right}
+.clinic-more a{color:#999}
+.clinic-more a:hover{text-decoration:underline}
+.clinic-ol{list-style-type:disc;width:71px;margin-bottom:20px;margin-top:5px}
+.clinic-ol li{height:30px;border-bottom-width:1px;border-bottom-style:dashed;border-bottom-color:#999;list-style-type:none;width:710px;padding:0}
+.clinic-ol li a{line-height:30px;color:#333;width:720px}
+.clinic-ol li a:hover{color:#d73c90}
+.clinic-honor{padding-left:95px;line-height:40px}
+.clinic-honor dt a{color:#d73c90}
+.clinic-honor dt a:hover{color:#F06}
+.my-clinic{padding:20px;width:670px;font-size:14px}
+.my-clinic li{padding:0 0 5px}
+.an-answer{color:#333;font-size:12px;line-height:24px;margin-bottom:30px}
+.p_user{color:#d73c90;font-weight:bold}
+.p_hn{color:#333;font-weight:bold}
+.p_user em{background:url("images/icon_user.gif") no-repeat scroll 0 0 transparent;display:block;float:left;height:24px;margin-right:5px;width:20px}
+.p_hn em{background:url("images/icon_hn.gif") no-repeat scroll 0 0 transparent;display:block;float:left;height:24px;margin-right:5px;width:20px}
+.user_content{color:#666;font-size:12px;line-height:180%;margin-left:20px;text-indent:2em}
+.hn_content{color:#666;font-size:12px;line-height:180%;margin-left:20px;text-indent:2em}
+.getsave-text{height:150px;width:620px;margin:20px 0 0}
+.getsave-butt{margin:20px 0 20px 10px}
+.a_text{text-align:center}
+.pagebar{text-align:center;padding:10px 0 20px}
+.pagebar a,.pagebar strong{padding:3px 5px 2px;border:1px solid #e8e5e5}
+.pagebar a{color:#666}
+.pagebar a:hover{border:1px solid #999}
+.honnrtop{width:720px;border:1px solid #f0c0d0;padding-bottom:20px}
+.i-honor-content{width:225px;float:left;margin-left:10px;display:inline}
+.i-honor-content dt{text-align:center;padding:15px 0}
+.i-honor-content dd{background:url(images/medal-icon.gif) no-repeat 0 2px;color:#F00;font-size:12px;line-height:25px;padding-left:35px}
+.i-honor-content dd a{color:#F00}

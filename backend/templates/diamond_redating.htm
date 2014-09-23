@@ -1,0 +1,83 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../public/system/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+function checkredating(uid,rid,pass){
+	var url = "ajax.php?n=checkredating&r"+rid;
+	$.post(url,{uid:uid,rid:rid,pass:pass},function(str){
+	 	if(str == 2){
+			$("#sta_"+rid).html("通过");
+		}else if(str == 3){
+			$("#sta_"+rid).html("未通过");
+		}
+	})
+}
+</script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 相应约会管理</span>
+    <span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+<div class="list-div" style="padding:5px;">
+	<form action="index.php" method="get">
+		UID:
+		<input type="text" name="uid" id="uid" value="{php echo isset($_GET['uid'])?$_GET['uid']:'';}" style="width:50px;"/>
+		是否同意:
+		<select name="agree">
+			<option value="">请选择</option>
+			<option value="1">等待回复</option>
+			<option value="2">同意</option>
+			<option value="3">不同意</option>
+		</select>
+		审核状态:
+		<select name="flag">
+			<option value="">请选择</option>
+			<option value="1">审核中</option>
+			<option value="2">通过</option>
+			<option value="3">不通过</option>
+		</select>
+		<input type="hidden" name="action" value="site_diamond" />
+		<input type="hidden" name="h" value="redating" />
+		<input type="submit" value="搜索" />
+	</form>
+</div>
+<p/>
+<div class="list-div" id="listDiv">
+	<table id="properties-table">
+		<tr>
+			<th>响应用户UID</th>
+			<th>用户留言</th>
+			<th>发起者约会主题</th>
+			<th>发起者是否同意</th>
+			<th>响应时间</th>
+			<th>状态</th>
+			<th>审核</th>
+			<th>操作</th>
+		</tr>
+		{loop $data['list'] $dating}
+		<tr>
+			<td>
+			<a onclick="parent.addTab('查看{$dating['uid']}资料','index.php?action=allmember&h=view_info&uid={$dating['uid']}','icon')" href="#">{$dating['uid']}</a>
+			</td>
+			<td width="55%">{$dating['message']}</td>
+			<td><a href="index.php?action=site_diamond&h=dating&did={$dating['did']}">$subject_arr[$dating['did']]</a></td>
+			<td>{php echo dating_respond_status($dating,1)}</td>
+			<td>{php echo date("Y-m-d",$dating['dateline'])}</td>
+			<td id="sta_{$dating['rid']}">{php echo dating_respond_status($dating,2)}</td>
+			<td>
+			<a onclick="checkredating({$dating['uid']},{$dating['rid']},2)" href="#">通过</a>&nbsp;<a onclick="checkredating({$dating['uid']},{$dating['rid']},3)" href="#">不通过</a>
+			</td>
+			<td>
+			<a onclick="checkredating({$dating['uid']},{$dating['rid']},2)" href="#">通过</a>&nbsp;<a onclick="parent.addTab('编辑{$dating['rid']}响应约会','index.php?action=site_diamond&h=redating_edit&rid={$dating['rid']}','icon')" href="">编辑</a>&nbsp;
+			<a href="index.php?action=site_diamond&h=redating_del&rid={$dating['rid']}" onclick="return confirm('确定删除？')">删除</a>
+			</td>
+		</tr>
+		{/loop}
+        <tr>
+        	<td colspan="8" align="right">{$data['page_links']}</td>
+        </tr>
+	</table>
+</div>
+

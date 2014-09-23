@@ -1,0 +1,138 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+//跳转
+	function gotoPage(){
+		var page=$("#pageGo").attr("value");
+		window.location="index.php?action=check&h={$_GET['h']}&type=list&page="+page;
+	}
+	function showreport(id){
+		$("#report").css('display','none');
+		$("#report_div").css('display','block');
+		$("#report_iframe").attr('src','index.php?action=check&h={$_GET['h']}&type=show&id='+id);
+	}
+	function unshowreport(){
+		$("#report").css('display','');
+		$("#report_div").css('display','none');
+	}
+	function jump(id,uid){
+	       window.location="index.php?action=check&h={$_GET['h']}&type=show&id="+id+"&uid="+uid;
+	}
+	function checkF(F){
+		var arg = F.elements["uid"].value || F.elements["paper_type"].value;
+		if(arg.length == 0){
+			alert("请按照ID或者验证类型查找...");
+			return false;
+		}
+		return true;
+	}
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$lei} </span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" style="padding:5px;">
+<form action="{$currenturl2}" method="post" onsubmit="return checkF(this);">
+	会员ID：
+    <input type="text" name="uid" value="" />
+    &nbsp;&nbsp;
+    <select name="paper_type">
+    	<option value="">证件类型</option>
+        <option value="identity"{if $paper_type == 'identity'} selected="selected"{/if}>身份证明</option>
+        <option value="marriage"{if $paper_type == 'marriage'} selected="selected"{/if}>婚育证明</option>
+        <option value="education"{if $paper_type == 'education'} selected="selected"{/if}>学历证明</option>
+        <option value="occupation"{if $paper_type == 'occupation'} selected="selected"{/if}>工作证明</option>
+        <option value="salary"{if $paper_type == 'salary'} selected="selected"{/if}>工资证明</option>
+        <option value="house"{if $paper_type == 'house'} selected="selected"{/if}>房产证明</option>
+        <option value="video"{if $paper_type == 'video'} selected="selected"{/if}>视频认证</option>
+    </select>
+    &nbsp;&nbsp;
+    <select name="typeas">
+    	<!--<option value="1"></option>-->
+        <option value="2"{if $type_as == 2} selected="selected"{/if}>等待验证</option>
+        <option value="3"{if $type_as == 3} selected="selected"{/if}>已通过验证</option>
+        <option value="4"{if $type_as == 4} selected="selected"{/if}>未通过验证</option>
+    </select>
+   {if $myservice_idlist && $myservice_idlist!=$GLOBALS['adminid']}
+	
+	客服：<select name="usersid" id="usersid" onchange="option_gourl(this.value,{$pass})" style="height:21px;margin-top:3px;" >
+	   <option value='-1' {if $usersid==-1}selected="selected"{/if}> 不限</option>
+	   <option value="0" {if $usersid == 0} selected="selected"{/if}>0：</option>
+	   {loop $adminUser $value}
+	   <option value="{$value['uid']}" {if $usersid == $value[uid]} selected="selected"{/if}>{$value['uid']}：{$value['username']}</option>
+	   {/loop}
+	</select>
+{/if} 
+    &nbsp;&nbsp;
+    <input type="submit" value=" 查 找 " />
+</form>
+</div>
+<br/>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table'>
+  <tr class="tr_td1">
+	<th>会员id</th>
+	<th>昵称</th>
+	<th>年龄
+	</th><th>身份证明</th>
+	<th>婚育证明</th>
+	<th>学历证明</th>
+	<th>工作证明</th>
+	<th>工资证明</th>
+	<th>房产证明</th>
+	<th>视频认证</th>	
+	<th>所属客服ID</th>
+  </tr>
+  <!--{loop $list $list}-->
+  <tr onmousemove="this.bgColor='#cfeefe';" onmouseout="this.bgColor='#ffffff';">
+    <td align="center"><a href="#" onclick="parent.addTab('{$list['uid']}资料','index.php?action=allmember&h=view_info&uid={$list['uid']}','icon')">{$list['uid']}</a></td>
+			<td align="center">{if $list['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>{else}<img src="templates/images/m.gif" alt="男" title="男"/>{/if} {$list['nickname']}</td>
+			<td align="center">{php if($list['birthyear'])echo date('Y')-$list['birthyear'];else echo "无";}</td>
+				<td align="center">{php if($list['identity_check']==1)echo "暂无"; 
+                if($list['identity_check']==2)echo "<a onclick=\"parent.addTab('会员".$list['uid']."身份证明审核','index.php?action=check&h=paper&type=show&mintype=identity&check=1&uid=".$list['uid']."');return false;\" href=\"#\" style=\"color:#ff0000;\">未审核</a>"; 
+                if($list['identity_check']==3)echo "<a onclick=\"parent.addTab('会员".$list['uid']."身份证明审核','index.php?action=check&h=paper&type=show&mintype=identity&check=0&uid=".$list['uid']."');return false;\" href=\"#\">已审核(查看)</a>";
+            if($list['identity_check']==4)echo "<a onclick=\"parent.addTab('会员".$list['uid']."身份证明审核','index.php?action=check&h=paper&type=show&mintype=identity&check=1&uid=".$list['uid']."');return false;\" href=\"#\">未通过(查看)</a>";}</td>
+                
+				<td align="center">{php if($list['marriage_check']==1)echo "暂无"; 
+                if($list['marriage_check']==2)echo "<a onclick=\"parent.addTab('会员".$list['uid']."婚育证明审核','index.php?action=check&h=paper&type=show&mintype=marriage&check=1&uid=".$list['uid']."');return false;\" href=\"#\" style=\"color:#ff0000;\">未审核</a>"; 
+                if($list['marriage_check']==3)echo "<a onclick=\"parent.addTab('会员".$list['uid']."婚育证明审核','index.php?action=check&h=paper&type=show&mintype=marriage&check=0&uid=".$list['uid']."');return false;\" href=\"#\">已审核(查看)</a>";
+            if($list['marriage_check']==4)echo "<a onclick=\"parent.addTab('会员".$list['uid']."婚育证明审核','index.php?action=check&h=paper&type=show&mintype=marriage&check=1&uid=".$list['uid']."');return false;\" href=\"#\">未通过(查看)</a>";}</td>
+                
+				<td align="center">{php if($list['education_check']==1)echo "暂无"; 
+                if($list['education_check']==2)echo "<a onclick=\"parent.addTab('会员".$list['uid']."学历证明审核','index.php?action=check&h=paper&type=show&mintype=education&check=1&uid=".$list['uid']."');return false;\" href=\"#\" style=\"color:#ff0000;\">未审核</a>"; 
+                if($list['education_check']==3)echo "<a onclick=\"parent.addTab('会员".$list['uid']."学历证明审核','index.php?action=check&h=paper&type=show&mintype=education&check=0&uid=".$list['uid']."');return false;\" href=\"#\">已审核(查看)</a>";
+            if($list['education_check']==4)echo "<a onclick=\"parent.addTab('会员".$list['uid']."学历证明审核','index.php?action=check&h=paper&type=show&mintype=education&check=1&uid=".$list['uid']."');return false;\" href=\"#\">未通过(查看)</a>";}</td>
+                
+				<td align="center">{php if($list['occupation_check']==1)echo "暂无"; 
+                if($list['occupation_check']==2)echo "<a onclick=\"parent.addTab('会员".$list['uid']."工作证明审核','index.php?action=check&h=paper&type=show&mintype=occupation&check=1&uid=".$list['uid']."');return false;\" href=\"#\" style=\"color:#ff0000;\">未审核</a>"; 
+                if($list['occupation_check']==3)echo "<a onclick=\"parent.addTab('会员".$list['uid']."工作证明审核','index.php?action=check&h=paper&type=show&mintype=occupation&check=0&uid=".$list['uid']."');return false;\" href=\"#\">已审核(查看)</a>";
+            if($list['occupation_check']==4)echo "<a onclick=\"parent.addTab('会员".$list['uid']."工作证明审核','index.php?action=check&h=paper&type=show&mintype=occupation&check=1&uid=".$list['uid']."');return false;\" href=\"#\">未通过(查看)</a>";}</td>
+                
+				<td align="center">{php if($list['salary_check']==1)echo "暂无"; 
+                if($list['salary_check']==2)echo "<a onclick=\"parent.addTab('会员".$list['uid']."工资证明审核','index.php?action=check&h=paper&type=show&mintype=salary&check=1&uid=".$list['uid']."');return false;\" href=\"#\" style=\"color:#ff0000;\">未审核</a>"; 
+                if($list['salary_check']==3)echo "<a onclick=\"parent.addTab('会员".$list['uid']."工资证明审核','index.php?action=check&h=paper&type=show&mintype=salary&check=0&uid=".$list['uid']."');return false;\" href=\"#\">已审核(查看)</a>";
+            if($list['salary_check']==4)echo "<a onclick=\"parent.addTab('会员".$list['uid']."工资证明审核','index.php?action=check&h=paper&type=show&mintype=salary&check=1&uid=".$list['uid']."');return false;\" href=\"#\">未通过(查看)</a>";}</td>
+                
+				<td align="center">{php if($list['house_check']==1)echo "暂无"; 
+                if($list['house_check']==2)echo "<a onclick=\"parent.addTab('会员".$list['uid']."房产证明审核','index.php?action=check&h=paper&type=show&mintype=house&check=1&uid=".$list['uid']."');return false;\" href=\"#\" style=\"color:#ff0000;\">未审核</a>"; 
+                if($list['house_check']==3)echo "<a onclick=\"parent.addTab('会员".$list['uid']."房产证明审核','index.php?action=check&h=paper&type=show&mintype=house&check=0&uid=".$list['uid']."');return false;\" href=\"#\">已审核(查看)</a>";
+            if($list['house_check']==4)echo "<a onclick=\"parent.addTab('会员".$list['uid']."房产证明审核','index.php?action=check&h=paper&type=show&mintype=house&check=1&uid=".$list['uid']."');return false;\" href=\"#\">未通过(查看)</a>";}</td>
+                
+				<td align="center">{php if($list['video_check']==1)echo "暂无"; 
+                if($list['video_check']==2)echo "<a onclick=\"parent.addTab('会员".$list['uid']."视频审核','index.php?action=check&h=paper&type=show&mintype=video&check=1&uid=".$list['uid']."');return false;\" href=\"#\" style=\"color:#ff0000;\">未审核</a>"; 
+                if($list['video_check']==3)echo "<a onclick=\"parent.addTab('会员".$list['uid']."视频审核','index.php?action=check&h=paper&type=show&mintype=video&check=0&uid=".$list['uid']."');return false;\" href=\"#\">已审核(查看)</a>";
+                if($list['video_check']==4)echo "<a onclick=\"parent.addTab('会员".$list['uid']."视频审核','index.php?action=check&h=paper&type=show&mintype=video&check=1&uid=".$list['uid']."');return false;\" href=\"#\">未通过(查看)</a>";}</td>
+				<td align="center"><a href="{$currenturl2}&usersid={$list['sid']}">{$list['sid']}</a></td>
+  </tr>
+  {/loop}
+    <tr>
+  	<td colspan="11" align="center">{$pageLists}
+     	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:35px" value=""/>  页
+     	<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+  	</tr>
+  </table>
+
+</div>

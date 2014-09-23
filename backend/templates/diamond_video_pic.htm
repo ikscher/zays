@@ -1,0 +1,34 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 视频封面图片设置</span>
+	<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+	<table id="properties-table">
+		<tr>
+			<th>图片</th>
+			<th>操作</th>
+		</tr>
+		{for $i=1;$i<=8;$i++}
+		<tr>
+			<td align="center"><img src="{$video['filepath']}/pic/{php echo md5($vid.MOOPHP_AUTHKEY)}_{$i}.jpg" width="100px" /></td>
+			<td>
+			{if $video['pic']==$i} 
+				<span style="color:red">已设为封面</span>
+			{else}
+				<a href="index.php?action=site_diamond&h=video_pic&vid={$vid}&d={$i}">设为封面</a>
+			{/if}
+			</td>
+		</tr>
+		{/for}
+		{if file_exists($pic_path_9)}
+		<tr>
+			<td><img src="{$video['filepath']}/{$pic_path}_9.jpg" width="50px" height="50px"/></td>
+			<td><a href="index.php?action=site_diamond&h=video_pic&vid={$vid}&d=9">设为封面</a></td>
+		</tr>
+		{/if}
+	</table>
+</div>
+

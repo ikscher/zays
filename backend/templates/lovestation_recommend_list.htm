@@ -1,0 +1,102 @@
+{if !isset($_GET['ajax'])}
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>用户推荐表</title>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+	//分页跳转
+	function gotoPage(page) {
+		if (!page) {
+			var page = $("#pageGo").val();
+			page = parseInt(page);
+			if(page < 1 || isNaN(page)) page = 1;	
+		}
+		$('#listDiv').load(gotoPage.href + "&page="+page);
+	}
+	
+	function enterHandler(event){
+		var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+		if (keyCode == 13) {
+			gotoPage();
+		} 
+	}
+
+</script>
+
+<h1 style="margin-bottom:15px;">
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 用户推荐表 </span>
+	<span class="action-span"><a href="index.php?action=lovestation&h=recommend_list">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+
+<form action="" method="get">
+	推荐人ID: <input name="uid" type="text" id="uid" />&nbsp;&nbsp;
+	被推荐会员ID: <input type="text" name="ruid" id="ruid" />
+	<input type="button" value="搜索" id="search"  class="button" />
+</form>
+<div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+<div class="list-div" id="listDiv">
+{/if}
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		<thead><tr>
+			<th>序号</th>
+			<th>UID</th>
+			<th>被推荐会员</th>
+			<th>推荐日期</th>
+			<th>操作</th>
+		</tr>
+		</thead>
+		<tbody>
+		{loop $recommend_list $v}
+		<tr>
+			<td align="center" role="id">{$v['id']}</td>
+			<td align="center" role="uid"><a href="javascript:;">{$v['uid']}</a></td>
+			<td align="center" role="uid"><a href="javascript:;">{$v['ruid']}</a></td>
+			<td align="center">{php echo date('Y-m-d H:i:s', $v['dateline']);}</td>
+			<td align="center" class="operation">
+				<a href="javascript:;" role="delete">删除</a>
+			</td>
+		{/loop}
+		</tbody>
+	</table>
+
+	<table cellpadding="4" cellspacing="0">
+        <tr>
+			<td align="center">{$pages}
+				&nbsp;&nbsp;&nbsp;
+				转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+				<input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+			</td>
+        </tr>
+	</table>
+<script type="text/javascript">	gotoPage.href = '{$currenturl}';</script>
+{if !isset($_GET['ajax'])}
+</div>
+<script type="text/javascript">
+	var RecList = {
+		search: function() {
+			$('#listDiv').load('index.php?action=lovestation&h=recommend_list&ajax=&' + $('form').serialize());
+		},
+		deleteid: function() {
+			if (confirm('确定要删除本条么?')) {
+				var id = $(this).parent().siblings('[role=id]').text();
+				$.get(location.href + '&ajax=&n=delete&id=' + id, function(data) {
+					$('#listDiv').html(data);
+				});
+			}
+		},
+		openuid: function() {
+			var uid = $(this).text();
+			parent.addTab(uid + '资料','index.php?action=allmember&h=view_info&uid=' + uid,'icon')
+		}
+	}
+	$('#search').click(RecList.search);
+	$('#listDiv').delegate('td[role=uid] a', 'click', RecList.openuid);
+	$('#listDiv').delegate('.operation a[role=delete]', 'click', RecList.deleteid);
+</script>
+{/if}

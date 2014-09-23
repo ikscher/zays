@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+<script>!window.jQuery && document.write('<SCRIPT src="./../public/system/js/jquery-1.4.2.min.js"><\\/SCRIPT>');</script>
+
+<!--  <script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>-->
+
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<!--  <script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>-->
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<style type="text/css">
+.desc {
+    color: #333333;
+    font-weight: bold;
+}
+tr.over td {
+	background:#cfeefe;
+} 
+</style>
+
+<script type="text/javascript">
+
+//显示用户信息
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+
+
+$(document).ready(function(){
+	//=====telephone
+	$("#telephone").click(function(){
+	   var telephone=$.trim($(this).val());
+	   if(telephone=='请输入手机号'){
+		   $(this).val('');
+	   }
+	   $("#memberid").val('请输入会员UID');
+	   $("#qq").val('请输入QQ号');
+	   $("#callno").val('请输入备用手机号');
+
+	   $("#SearchType").val('tel');
+	});
+
+	$("#telephone").mouseover(function(){
+		$(this).select();   	   
+    });
+
+    //=====uid
+	$("#memberid").click(function(){
+	   var memberid=$.trim($(this).val());
+	   if(memberid=='请输入会员UID'){
+		   $(this).val('');
+	   }
+	   $("#telephone").val('请输入手机号');
+	   $("#qq").val('请输入QQ号');
+	   $("#callno").val('请输入备用手机号');
+	   $("#SearchType").val('memberid');
+	});
+
+	$("#memberid").mouseover(function(){
+		$(this).select();   	   
+    });
+
+	//======QQ
+	$("#qq").click(function(){
+	   var qq=$.trim($(this).val());
+	   if(qq=='请输入QQ号'){
+		   $(this).val('');
+	   }
+	   $("#memberid").val('请输入会员UID');
+	   $("#telephone").val('请输入手机号');
+	   $("#callno").val('请输入备用手机号');
+	   $("#SearchType").val('qq');
+	});
+
+	$("#qq").mouseover(function(){
+		$(this).select();   	   
+    }); 
+
+	//====callno
+	$("#callno").click(function(){
+	   var callno=$.trim($(this).val());
+	   if(callno=='请输入备用手机号'){
+		   $(this).val('');
+	   }
+	   $("#memberid").val('请输入会员UID');
+	   $("#qq").val('请输入QQ号');
+	   $("#telephone").val('请输入手机号');
+	   $("#SearchType").val('callno');
+	});
+
+	$("#callno").mouseover(function(){
+		$(this).select();   	   
+    }); 
+		
+});
+
+function checkSearch(){
+	//var choose=$("#choose").val();
+	//var keyword=$("#keyword").val();
+	//var value=$("#choose>option:selected").text();
+
+	//if(choose=='' || !choose){
+	//	alert("请选择查询条件");
+	//	return false;
+	//}
+
+	//if (keyword=='' || !keyword){
+	//	alert("请输入"+value);
+	//	return false;
+	//}
+	//表单验证
+
+     
+      var telephone=$("#telephone").val();
+      var memberid=$("#memberid").val();
+      var qq=$("#qq").val();
+      var callno=$("#callno").val();
+   
+      if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(telephone)) && telephone!='请输入手机号'){ 
+        alert('您输入的手机号格式不正确！');
+	    return false;
+      }
+
+      if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(callno)) && callno!='请输入备用手机号'){ 
+         alert('您输入的手机号格式不正确！');
+  	     return false;
+      }
+ 
+
+      if(!/^\d{5,9}$/.test(memberid) && memberid!='请输入会员UID'){
+          alert('您输入的会员号格式不正确！');
+  	      return false;
+      }
+
+      if(!/^\d{5,11}$/.test(qq) && qq!='请输入QQ号'){
+          alert('您输入的QQ号格式不正确！');
+  	      return false;
+      }
+      
+      return true;
+ 
+     
+}
+
+
+
+function checkForm(){
+	var uid=$("#uid").val();
+	var sid=$("#sid").val();
+	var content=$("#content").val();
+	var type=$("input[type=radio]:checked").val();
+
+    if(uid=='' || sid=='' || content=='' ){
+        return false;
+    }
+
+    if(!type){
+        alert('请选择售前，售后，未分配！');
+        return false;
+    }
+}
+
+
+//字数
+function textCounter(field,countfieldId,leavingsfieldId,maxlimit) {
+	var countfield = document.getElementById(countfieldId);
+	var leavingsfield = document.getElementById(leavingsfieldId);
+	if (field.value.length > maxlimit) // if too long...trim it!
+	{
+		field.value = field.value.substring(0, maxlimit);
+		alert(" 限" + maxlimit + "字内！");
+	} else { 
+		leavingsfield.innerHTML=maxlimit - field.value.length;
+		countfield.innerHTML=field.value.length;
+	}
+}
+
+//分页跳转
+/*function gotoPage() {
+    var page = $("#pageGo").val();
+    var page = parseInt(page);
+    
+    if(page<1) page = 1;
+    if(page>{php echo ceil($total/$page_per);})
+
+    page = {php echo ceil($total/$page_per);};
+    window.location.href = "{$currenturl}&page="+page;
+}*/
+
+
+
+function enterHandler(event){
+    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+    if (keyCode == 13) {
+       gotoPage();  //调用函数
+     } 
+}
+
+
+</script>
+
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="{$currenturl}">刷新当前页</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - {$title} </span>
+<div style="clear:both"></div>
+</h1>
+<div>
+<form action="" method="post" onsubmit="return checkSearch();">
+ 
+  	    <!-- 
+		搜索内容：
+		<input name="keyword" type="text" id="keyword" value="{$keyword}"/>
+		<select name="choose" id="choose">
+		    <option value="">不选择</option>
+		    <option value="m.telphone" {if $choose=='m.telphone'}selected="selected"{/if}>手机号</option>
+		    <option value="m.uid" {if $choose=='m.uid'}selected="selected"{/if}>UID</option>
+			<option value="m.username" {if $choose=='m.username'}selected="selected"{/if}>用户名</option>
+		
+			<option value="mf.qq" {if $choose=='mf.qq'}selected="selected"{/if}>QQ</option>
+			
+			<option value="m.callno" {if $choose=='m.callno'}selected="selected"{/if}>备用号码</option>
+		</select>
+	     -->
+	    
+	    <input type="text" id="telephone" name="telephone"  {if $telephone} value="{$telephone}" {else} value="请输入手机号" {/if}  style="border:1px solid #cccccc; width:160px; color:#666; height:20px;" />  &nbsp;&nbsp;
+    
+	    <input type="text" id="memberid" name="memberid" {if $memberid} value="{$memberid}" {else} value="请输入会员UID"  {/if} style="border:1px solid #cccccc; width:160px; color:#666; height:20px;" />   &nbsp;&nbsp;
+  
+	    <input type="text" id="qq" name="qq" {if $qq} value="{$qq}" {else} value="请输入QQ号" {/if} style="border:1px solid #cccccc; width:160px; color:#666; height:20px;" />  &nbsp;&nbsp;
+	    
+	    <input type="text" id="callno" name="callno" {if $callno} value="{$callno}" {else} value="请输入备用手机号"  {/if} style="border:1px solid #cccccc; width:160px; color:#666; height:20px;"  />  
+		
+		<input type="hidden" id="SearchType" name="SearchType" {if $SearchType} value="{$SearchType}" {else} value="" {/if} />
+		<input name="searchSubmit" type="submit" value="搜 索"/>
+
+	
+</form>
+</br>
+</div>
+
+<div class="list-div" id="listDiv">
+	<form action="index.php?action=allmember&h=foo" method="post" onsubmit="return checkForm();" >
+	  <table style="width:100%;table-layout: fixed;">
+	     <tr>
+		      <td style="width:10%; text-align:center;">会员ID：</td><td style="width:23%;"><a href="#" onclick="parent.addTab('查看{$uid}资料','index.php?action=allmember&h=view_info&uid={$uid}','icon')">{$uid}</a>&nbsp;&nbsp;&nbsp;{$nickname}</td>
+		      <td style="width:10%; text-align:center;">所属客服：</td> <td>{$sid}&nbsp;&nbsp;&nbsp;{$username}</td>
+		 </tr> 
+		   
+         <tr>
+		      <td style="width:10%; text-align:center;">注册时间：</td><td style="width:23%;">{php if($regdate) echo date("Y-m-d H:i",$regdate);}</td>
+		      <td style="width:10%; text-align:center;">分配时间：</td> <td>{php if($allotdate) echo date("Y-m-d H:i",$allotdate);}</td>
+		 </tr> 
+		 
+		  <tr>
+		     <td style="width:10%; text-align:center;">工作地：</td><td colspan="3"><script>userdetail("$province",provice);userdetail("$city",city);</script></td>
+		 </tr>
+		 
+	     <tr>
+		      <td style="width:10%; text-align:center;"> 请输入信息：（限 156 字，已输入<span id="counter2" style="color:#d22224;"> 0 </span>字，还可以输入 <span style="color:#d22224;" id="leavings2">156</span> 字。）</td>
+		      <td colspan="3"><textarea id="content" name="content" cols="60" rows="5"  onfocus="textCounter(this,'counter2','leavings2',156);" onblur="textCounter(this,'counter2','leavings2',156);" onkeyup="textCounter(this,'counter2','leavings2',156);" ></textarea></td>
+		 </tr>
+		 <tr>
+		     <td></td><td colspan="3"><input type="radio"  name="type" value="1">售前</input>&nbsp;&nbsp;<input type="radio"  name="type" value="2">售后</input>&nbsp;&nbsp;<input type="radio"  name="type" value="3">未分配</input></td>
+		 </tr>
+		
+		 <tr>
+		   <td colspan="4">  
+		   <input type="hidden" name='uid' value="{$uid}" />
+	       <input type="hidden" name='sid' value="{$sid}" />
+	       <input style="margin-left:50px;" type="submit" name="submit" value='发送' /></td>
+		 </tr> 
+	  </table>
+	  
+   </form>
+</div>
+</body>
+</html>

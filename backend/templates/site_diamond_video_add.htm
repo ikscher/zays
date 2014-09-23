@@ -1,0 +1,59 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+function checkForm(){
+	var subject = $("#subject").val();
+	var intro = $("#intro").val();
+	var comment = $("#comment").val();
+	if( !subject || ! intro || !comment){
+		alert("请将信息填写完整");
+		return false;
+	}
+}
+</script>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 编辑\上传视频</span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+
+<div class="list-div" id="listDiv">
+<form action="index.php?action=site_diamond&h={if $isedit==1 }video_edit{else}video_add{/if}" method="POST" onsubmit="return checkForm();">
+		<table cellpadding="3" cellspacing="1">
+			<tr>
+			<th colspan="2" align="left">编辑视频</th></tr>
+			{if isedit !=1}
+			<tr>
+            	<input type="hidden" value="{$uid}" name="uid" />
+				<td valign="top">上传视频：</td>
+				<td><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" id="makepic" align="middle" width="375" height="65">
+								<param name="allowScriptAccess" value="sameDomain">
+								<param name="movie" value="../public/system/images/upload.swf?server={php echo urlencode("ajax.php?n=add_video")}">
+								<param name="quality" value="high">
+								<param name="bgcolor" value="#ffffff">
+								<embed src="../public/system/images/upload.swf?server={php echo urlencode("ajax.php?n=add_video")}" quality="high" bgcolor="#ffffff" name="makepic" swliveconnect="true" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="middle" width="375" height="65">
+				</object></td>
+			</tr>
+			{/if}
+			<tr>
+				<td>视频标题：</td>
+				<td><input name="subject" id="subject" type="text" value="{$video['subject']}" style="width:600px"/></td>
+			</tr>
+			<tr>
+				<td valign="top">视频介绍：</td>
+				<td><textarea name="intro" id="intro" style="width:600px; height:150px;">{$video['intro']}</textarea></td>
+			</tr>
+			<tr>
+				<td valign="top">专家点评：</td>
+				<td><textarea name="comment" id="comment" style="width:600px; height:150px;">{$video['expert_comment']}</textarea></td>
+			</tr>
+		</table>
+<input name="ispost" type="hidden" value="1" />
+<input name="vid" type="hidden" id="vid" value="{$vid}" />
+<input name="uid" type="hidden" id="uid" value="{$uid}" />
+<input type="submit" id="addnews" name="addnews" value=" 提 交 "/>
+</form>        
+</div>
+<p/>
+

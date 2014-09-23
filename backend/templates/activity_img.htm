@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--投票结果</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<SCRIPT LANGUAGE="Javascript" SRC="FusionCharts.js"></SCRIPT>	
+<link href="Style.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+
+<script>
+	function gotoPage(){
+		var page = document.getElementById('pageGo').value;
+		
+		location.href = 'activity_img.php?page_now='+page;
+	}
+	function check(){
+		return true;
+	}
+</script>
+</head>
+
+<body>
+	<a href="activity_img.php?act=add"  style="font-size:15px;">新增</a>
+	<div class="list-div" id="listDiv" onmouseout="hiddend();">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		<tr>
+			<td align="center">图片</td>
+			<td align="center">链接地址</td>
+			<td align="center">类型</td>
+			<td align="center">排序</td>
+			<td align="center">操作</td>
+		</tr>
+	
+		{loop $content  $k  $v}
+		
+			<tr>
+				<td align='center'><img src = '../{$v[address]}' style="width:180px; height:100px;" /></td>
+			 	<td align='center'><a href = '{$v[href]}'>{$v[href]}</a></td>
+			 	<td align='center'>{if $v[group] == 2}线下相亲活动图片{elseif $v[group] == 3}电视相亲活动图片{else}全部相亲活动图片{/if}</td>
+			 	<td align='center'>{$v[sort]} <br/>相同类型排序越前越可能显示，共显示7个。</td>
+				
+			 	<td align='center'>
+					<a href ='activity_img.php?act=edit&mid={$v[mid]}'>编辑</a>
+					<a href ='activity_img.php?act=delect&mid={$v[mid]}' onclick="return confirm('确定删除吗?')">删除</a>
+					
+				</td>
+			</tr>
+		
+		{/loop}
+	
+	</table>
+	<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">
+	 
+	  	{loop $page_num  $k  $v}
+			{if $page_now == $v}
+				<span style="color:#333333; font-weight:600;">{$v}</span>
+			{else}
+			<a href="activity_img.php?page_now={$v}">{$v}</a>
+			{/if}
+		{/loop}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+      <td>
+      </td>
+    </tr>
+	
+  </table>
+  
+	</div>
+	
+</body>
+</html>﻿﻿﻿﻿

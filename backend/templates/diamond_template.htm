@@ -1,0 +1,28 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<h1>
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 上传钻石会员定制模板</span>
+	<div style="clear:both"></div>
+</h1>
+<p/>
+当前钻石会员ID: <b><font color="green">{$uid}</font></b>
+<div class="list-div" id="listDiv">
+	<p>
+    <form enctype="multipart/form-data" action="index.php?action=site_diamond&h=template&uid={$uid}" method="post" >
+		<input type="hidden" name="ispost" value="1" />
+		<input type="hidden" name="MAX_FILE_SIZE" value="50485760" /><!--限 10M-->
+		模板文件: <input id="zip_file" name="zip_file" type="file" size="40" />
+		<input type="submit" value="确定上传" />
+	</form>
+    </p>
+    <p>
+   	{loop $list $k $v}
+		{if $v==0}
+			<font color="red">失败 -- {$k}</font><br />
+		{else}
+			<font color="green">成功 -- {$k}</font><br />
+		{/if}
+	{/loop}
+    </p>
+</div>

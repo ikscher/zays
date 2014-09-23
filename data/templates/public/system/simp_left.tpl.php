@@ -1,0 +1,94 @@
+	<div class="content-lift">
+		<div class="c-lift-content">
+		<div class="c-lift-title">		
+		我的认证
+		</div>
+		<div class="c-lift-content-in">
+		<div class="clear"></div>
+			<dl class="left-my-data">
+				<dt>
+                	<div class="mat-limg">
+						<p>
+                <?php if($user_arr['images_ischeck']=='1'&& $user_arr['mainimg']) { ?>
+                                <a id="show_big_pic" href="<?php   
+                          if(MooGetphoto($user_arr['uid'],'mid')) echo MooGetphoto($user_arr['uid'],'mid');
+                          elseif($user_arr['gender'] == '1')echo 'public/system/images/woman_1.gif';
+                          else  echo 'public/system/images/man_1.gif';
+                          ?>" onclick="return false;">
+                         <img id="show_pic_1" src="<?php   
+                          if(MooGetphoto($user_arr['uid'],'mid')) echo MooGetphoto($user_arr['uid'],'mid');
+                          elseif($user_arr['gender'] == '1')echo 'public/system/images/woman_1.gif';
+                          else  echo 'public/system/images/man_1.gif';
+                          ?>"  class="preview"  onload="javascript:DrawImage(this,110,138)" /></a>
+                        <?php } elseif ($user_arr['mainimg']) { ?>
+                        	<a id="show_big_pic" href="###" onclick="return false;">
+                               <img id="show_pic_1" src="public/system/images/<?php echo $user_arr['gender'] == 1 ? 'woman' : 'man' ;?>.gif"  class="preview" />
+                        	</a>
+                        <?php } else { ?>
+                         	<a id="show_big_pic" href="###" onclick="return false;">
+                            <img id="show_pic_1" src="public/system/images/service_nopic_<?php echo $user_arr['gender'] == 1 ? 'woman' : 'man' ;?>.gif"  class="preview"  />
+                        	</a>
+                        <?php } ?> 
+                        </p>
+                        </div>
+                        </dt>
+				<dd><?php echo $user_arr['nickname'];?></dd>
+				<dd><?php echo $user_arr['uid'];?></dd>
+				<dd class="f-b-d73c90">[<?php if($user_arr['s_cid']==40) { ?>普通会员<?php } elseif ($user_arr['s_cid']==30) { ?>高级会员<?php } elseif ($user_arr['s_cid']==20) { ?>钻石会员<?php } elseif ($user_arr['s_cid']==10) { ?>铂金会员<?php } ?>]</dd>
+			</dl>	
+			<div class="let-line"></div>
+			<ul class="left-cer-list">
+            	<?php if($usercer['telphone']) { ?>
+				<li class="cer-phone-yes">已通过号码验证</li>
+                <?php } else { ?>
+                <li class="cer-phone-no">
+                <a target="_blank" href="index.php?n=myaccount&h=telphone" title="现在就去验证号码">未通过号码验证</a></li>
+                <?php } ?>
+                <?php if($usercer['sms'] == 1) { ?>
+				<li class="cer-card-yes">已通过身份通认证</li>
+                <?php } else { ?>
+                <li class="cer-card-no"><a target="_blank" href="index.php?n=myaccount&h=smsindex" title="现在就去身份通认证">未通过身份通验证</a></li>
+                <?php } ?>
+                <?php if($usercer['email'] == 'yes') { ?>
+				<li class="cer-email-yes">已通过邮箱认证</li>
+                <?php } else { ?>
+                <li class="cer-email-no"><a target="_blank" href="index.php?n=myaccount&h=emailindex" title="现在就去邮箱认证">未通过邮箱验证</a></li>
+                <?php } ?>
+                <?php if($usercer['video_check'] == 3) { ?>
+				<li class="cer-video-yes">已进行视频认证</li>
+                <?php } else { ?>
+                <li class="cer-video-no"><a target="_blank" href="index.php?n=myaccount&h=videoindex" title="现在就去视频认证">未通过视频验证</a></li>
+                <?php } ?>
+			</ul>
+			<div class="left-content-c">
+			<span class="fleft">诚信度：</span>            		
+					  <?php echo get_integrity($user_arr['certification']);?>
+				<div class="clear"></div>
+			</div>
+			<div class="left-content-c"><?php $all_len = (int)(getUserinfo_per($user_arr)*100);?>
+			<span class="fleft">资料完整度：</span>
+				<div class="all-data">
+					<p style="width:<?php echo $all_len;?>%"></p>
+				</div>
+				<span class="fleft f-ed0a91">&nbsp;<?php echo $all_len.'%';?></span>
+				<div class="clear"></div>
+			</div>			
+		</div>
+		<div class="c-lift-bottom"></div>
+		</div><!--c-lift-content-->
+		<div class="left-tips">
+			<div class="left-tips-side"></div>
+			<div class="left-tips-center">
+			<dl>
+				<dt><img src="module/service/templates/default/images/left-tips-img.gif" />
+					<p><a target="_blank" href="index.php?n=about&h=getsave" class="f-ed0a91-a">意见反馈</a></p>
+				</dt>
+				<dd>拨打<strong>400-8787-920</strong><br />咨询真爱一生网提供的专业征婚服务
+				</dd>
+				
+			</dl>
+			</div>
+			<div class="left-tips-side" style="background-position:right"></div>
+		</div>
+		
+	</div>

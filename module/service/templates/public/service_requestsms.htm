@@ -1,0 +1,162 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>请示查看身份证信息提示——我的真爱一生——真爱一生网</title>
+<link href="module/service/templates/default/service.css" rel="stylesheet" type="text/css" />
+{template system/js_css public}
+</head>
+
+<body>
+<div class="main">
+	{template system/header public}
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=service">我的真爱一生</a>&nbsp;&gt;&gt;&nbsp;身份证查看信息</span><a href="index.php?n=invite" target="_blank" class="loaction_right">邀请好友</a></p>
+	<div class="content-lift">
+		<div class="c-lift-content">
+		<div class="c-lift-title">
+		我的联系情况
+		{php $send_user1 = leer_send_user1($sendtoid);}
+		</div>
+		<div class="c-lift-content-in">
+			<dl class="cl-photo-show">
+				<dt>
+                	{if !empty($send_user1['city_star'])}<a href="#" class="citystar" style="margin:-10px 0 0 -10px;"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
+					<div class="cl-photo-img">
+						<p><a style="display:block;" href="index.php?n=space&h=viewpro&uid={$sendtoid}" target="_blank">
+             {if $send_user1['images_ischeck']=='1'&& $send_user1['mainimg']}
+         			  <img src="
+                      {php if(MooGetphoto($send_user1[uid],'com')) echo MooGetphoto($send_user1[uid],'com');
+                      elseif(MooGetphoto($send_user1[uid],'medium')) echo MooGetphoto($send_user1[uid],'medium');
+                      elseif($send_user1['gender'] == '1') echo 'public/system/images/woman.gif';
+                      else echo 'public/system/images/man.gif';
+                       }
+                      " onload="javascript:DrawImage(this,110,138)" />
+                       {elseif $send_user1['mainimg']}
+            	        {if $send_user1['gender'] == '1'}
+         					<img src="public/system/images/woman.gif"/>
+         				{else}
+          					<img src="public/system/images/man.gif"  />
+          				{/if}
+            	
+                	{else}
+         				{if $send_user1['gender'] == '1'}
+         					<img src="public/system/images/service_nopic_woman.gif" />
+         				{else}
+          					<img src="public/system/images/service_nopic_man.gif"  />
+          				{/if}
+         		 	{/if}
+         	</a></p>
+					</div>
+				</dt>
+				<dd> {if $send_user1['s_cid'] ==20}
+					<a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+					{elseif $send_user1['s_cid'] == 30}
+					<a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+					{else}
+					{/if}
+					 {php $nickname=$send_user1['nickname2']?$send_user1['nickname2']:$send_user1['nickname']}{php echo $nickname?$nickname:'ID:'.$send_user1['uid']}
+				</dd>
+				<dd class="f-ed0a91">&lt; {php echo activetime($send_user1['lastvisit'],$send_user1['usertype']);}
+			   &gt;</dd>
+				<dd>{if $send_user1['birthyear']}{php echo (gmdate('Y', time()) - $send_user1['birthyear']);}岁{else}年龄保密{/if}，<script>userdetail('{$send_user1[marriage]}',marriage)</script></dd>
+				<dd>{if $send_user1[province] == '0' && {$send_user1[city]} == '0'}居住处保密{else}居住在<script>userdetail('{$send_user1[province]}',provice)</script><script>userdetail('{$send_user1[city]}',city)</script>{/if}</dd>
+				<dd>照片（{$pic_total}）</dd>
+			</dl>
+		</div>
+		<div class="c-lift-bottom"></div>
+		</div><!--c-lift-content-->
+		<div class="left-tips">
+			<div class="left-tips-side"></div>
+			<div class="left-tips-center">
+			<dl>
+				<dt><img src="module/service/templates/default/images/left-tips-img.gif" />
+					<p><a href="#" class="f-ed0a91-a">意见反馈</a></p>
+				</dt>
+				<dd>拨打<strong>400-8787-920</strong><br />咨询真爱一生网提供的专业征婚服务
+				</dd>
+				
+			</dl>
+			</div>
+			<div class="left-tips-side" style="background-position:right;"></div>
+		</div>
+		
+	</div><!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=service" class="r-title-black">&lt;&lt; 返回我的真爱一生</a>
+			<a href="index.php?n=space&h=viewpro&uid={$send_user1['uid']}" class="r-title-black">&lt;&lt; 返回{php echo $send_user1['gender']?'她':'他'}的详细资料</a>
+			<span class="right-title f-ed0a91">请求成功</span>			
+			</div>
+			<div class="r-center-ccontent" style="padding:0 0 60px; width:753px;">
+				<div class="r-comment-box">
+					<p class="f-14x">恭喜您，请求成功。如果{php echo $send_user1['gender']?'她':'他';}对您感兴趣，会很快回应您的请求，请记得常回真爱一生网看看。</p>
+					<div class="sendnewleer">
+						您想跟{php echo $send_user1['gender']?'她':'他';}更进一步吗？现在就&nbsp;&nbsp;<a href="index.php?n=service&h=commission&t=sbind&sendid={$send_user1['uid']}" class="sendto">委托真爱一生联系{php echo $send_user1['gender']?'她':'他';}</a>
+					</div>
+				</div>
+				<h3>查看与  <span class="f-ed0a91">{$nickname}（ID:{$send_user1['uid']}）</span> 资料相似的会员</h3>
+				<p style="padding:10px; text-align:right"><a href="index.php?n=search&h=more&gender={$send_user1['gender']}&workprovince={$send_user1['province']}&education={$send_user1['education']}&workcity={$send_user1['city']}&marriage=&more_search=1" class="fright f-000">查看更多相似资料的会员&gt;&gt;</a></p>
+				<div class="r-like-conter" style="border:none">
+                    <ul class="fleft">
+                    {php $similar_user = similarUser($sendtoid,5)}	
+					{loop $similar_user $users}
+                        <li>
+                            <dl class="r-like-c-data">
+                                <dt><div>
+                                	<a href="index.php?n=space&h=viewpro&uid={$users[uid]}" style="display:block">
+                                    {if $users['images_ischeck']=='1'&& $users['mainimg']}
+                                      <img src="{php if(MooGetphoto($users[uid],'mid')) echo MooGetphoto($users[uid],'mid');
+                                      elseif(MooGetphoto($users[uid],'medium')) echo MooGetphoto($users[uid],'medium');
+                                      elseif($users['gender'] == '1') echo 'public/system/images/woman_100.gif';
+                                      else echo 'public/system/images/man_100.gif';
+                                      }
+                                      " onload="javascript:DrawImage(this,100,125)" />
+                                       {elseif $users['mainimg']}
+                                        {if $users['gender'] == '1'}
+                                            <img src="public/system/images/woman_100.gif"/>
+                                        {else}
+                                            <img src="public/system/images/man_100.gif"  />
+                                        {/if}
+                                
+                                    {else}
+                                        {if $users['gender'] == '1'}
+                                            <img src="public/system/images/nopic_woman_100.gif" />
+                                        {else}
+                                            <img src="public/system/images/nopic_man_100.gif"  />
+                                        {/if}
+                                    {/if}
+          							</a></div>
+                                </dt>
+                                <dd>
+                                {if $users['s_cid'] ==20}
+                                <a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>
+                                {elseif $users['s_cid'] == 30}
+                                <a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
+                                {else}
+                                {/if}
+                                {php echo $users['nickname']?$users['nickname']:'ID '.$users['uid']}
+                                </dd>
+                                <dd>{if $users['birthyear']}{php echo (gmdate('Y', time()) - $users['birthyear']);}岁{else}年龄保密{/if}</dd>
+                            </dl>
+                        </li>
+                    {/loop}
+                    </ul>
+                    <div class="clear"></div>
+				</div>
+                <div class="clear"></div>
+			</div>
+			<div class="r-center-bottom"></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	{template system/footer public}
+</div><!--main end-->
+</body>
+</html>

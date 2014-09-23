@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>版权政策——红娘网</title>
+{template system/js_css public}
+<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
+<style type="text/css">
+@import url("module/about/templates/{$GLOBALS['style_name']}/about.css");
+</style>
+</head>
+<body>
+<div class="clear"></div>
+{template system/header public}
+ <!--头部结束-->
+<div class="clear"></div>
+<div class="clear"></div>
+<div class="content">
+		<div class="c-title">
+			<span class="f-000"><a href="index.php">红娘首页</a>&nbsp;&gt;&gt;&nbsp;版权政策</span>
+			<div class="loaction_right">
+				<a href="index.php?n=invite" target="_blank">邀请好友</a>
+			</div>
+		</div>
+			<div class="content-title">
+			</div><!--content-title end-->
+			<div class="c-center">
+			<!--左边开始-->
+			{template public/about_left module}
+			<!--左边结束-->	
+			<!--右边开始-->	
+			<div class="about-right">
+				<dl class="about-right-text">
+					<dt style="padding-top:0px;">版权政策</dt>
+					<dd class="about-content">
+						<p>作为网络服务提供者，红娘网是提供用户上传视听、文案、相片等资料的严肃婚恋平台，历来十分重视网络版权及其他知识产权的保护，红娘网坚决反对任何  违反中华人民共和国版权法律法规的行为。一经发现，红娘网会立即移除并停止继续传播任何非法使用侵权以及其他侵权行为的作品，并根据《中国人民共和国著作  权法》、《信息网络传播权保护条例》、《互联网著作权行政保护办法》、《互联网视听节目服务管理规定》等相关法律、法规的规定，红娘网针对网络侵权采取如  下版权政策:</p>
+						<p>1、红娘网对网络版权保护尽合理、审慎的义务，在有理由确信存在明显侵犯任何第三方版权的作品时，有权不事先通知并随时删除该涉嫌侵权作品；<br />
+							2、红娘网在接到符合法定要求的版权通知后，将迅速删除涉嫌侵权作品 ；<br />
+							3、红娘网采取必要的技术措施，尽可能防止相同的侵权作品的再次上传；<br />
+							4、红娘网对有证据证明存在反复上传侵权作品行为的用户，有权随时停止向其提供资料存取的技术服务及其它服务。</p>
+						
+					</dd>
+					<dt>版权投诉的程序</dt>
+					<dd class="about-content">
+						<p><b>一、通知程序</b></p>
+						<p>如果您是某一作品的著作权人和/或依法可以行使信息网络传播权的权利人，且您认为红娘网站上用户上传内容侵犯了您对该等作品的信息网络传播权或著作权，请您务必通过在线或线下两个途径向红娘网提交维权通知，红娘网所设立的专门接受版权投诉和侵权通知的NOTICE邮箱为 notice@7651.com，您可以通过此发送邮件，通知本公司，要求红娘网删除该侵权作品或者断开该侵权作品的链接。通知书需由权利人或其合法授权人亲笔签名，若为单位则需加盖单位公章，阁下应对书面通知陈述之真实性负责。</p>
+						<p>通知书应当包含下列内容（请使用国家版权局发布的示范格式，详见下文附件）：</p>
+						<p>1、权利人的姓名（名称）、联系方式、地址、身份证复印件（自然人）、单位登记证明复印件（单位）；<br />
+							2、要求删除或者断开链接的侵权作品的准确名称和网络地址，以便红娘网能够发现并初步审核涉嫌侵权作品；<br />
+							3、认为构成侵权的初步证明材料，包括但不限于对作品享有版权或依法享有信息网络传播权的权属证明等。</p>
+						<p>权利人应对通知书的真实性负责。若通知书的内容不真实，权利人将承担由此造成的全部法律责任。</p>
+						<p>红娘网收到权利人的通知后，将：<br />
+							1、在合理时间内删除涉嫌侵权的作品，或者断开涉嫌侵权作品的链接，并同时将通知书转送作品提供者；<br />
+							2、 除履行反通知程序外，对使用同一账号多次上传同一侵权作品的用户，红娘网有权不事先通知并随时终止该账号的使用。</p>
+						<p>权利人应对通知书的真实性负责。若通知书的内容不真实，权利人将承担由此造成的全部法律责任。<br />
+							版权投诉的程序</p>
+						<p><b>二、反通知程序</b></p>
+						<p>作品提供者收到红娘网转送的通知书后，认为其提供的作品并未侵犯他人权利的，可向红娘网提交反通知的书面说明，要求恢复被删除的作品或被断开的作品链接。反通知书需作品提供者或其合法授权人亲笔签名，若为单位则需加盖单位公章。</p>
+						<p>反通知应当包含下列内容（请使用国家版权局发布的示范格式，详见下文附件）：</p>
+						<p>1、作品提供者的姓名（名称）、联系方式、地址、身份证复印件（自然人）、单位登记证明复印件（单位）；<br />
+							2、要求恢复被删除的作品，或者被断开链接的作品的准确名称和网络地址，以便红娘网能够发现并初步审核涉嫌侵权作品；<br />
+							3、认为不构成侵权的初步证明材料，包括但不限于对作品享有著作权或依法享有信息网络传播权的权属证明等。</p>
+						<p>版权作品提供者应对反通知书的真实性负责。若通知书的内容不真实，提供者将承担由此造成的全部法律责任。</p>
+						<p>红娘网收到版权作品提供者的反通知后，将立即恢复被删除的作品或者被断开的作品链接，同时将作品提供者的反通知转送权利人。红娘网对恢复被删除作品，或者被断开作品链接的行为不承担任何法律责任。</p>
+						<p>权利人不得再通知红娘网删除该作品，或者断开与该作品的链接。</p>
+					
+					</dd>
+					<dt>线下版权通知</dt>
+					<dd class="about-content">投诉请邮寄至如下地址：<br />
+						安徽省合肥市濉溪东路 邮编：230001<br />
+						合肥市红心娘网络婚恋信息科技有限公司<br />
+						电话: (0551)2629228<br />
+						传真: (0551) 2629228-602
+					
+					</dd>
+					<dt>线下版权投诉专用邮箱</dt>
+					<dd>
+						<p>NOTICE邮箱：<a href="mailto:notice@7651.com" class="f-024890">notice@7651.com</a></p>
+						<p>附件一：<br />
+							国家版权局发布的示范格式：</p>
+						<p><a href="module/about/copyright_del.doc" class="f-024890">《要求删除或断开链接侵权网络内容的通知》</a><br />
+							<a href="module/about/copyright_resume.doc" class="f-024890">《要求恢复被删除或断开链接的网络内容的说明》</a><br />
+							<a href="module/about/copyright_intro.doc" class="f-024890">《要求删除或断开链接侵权网络内容的通知》填写说明</a> </p>
+						<br />
+					</dd>
+				</dl>
+			</div>
+			<!--右边结束-->	
+			<div class="clear"></div>
+		</div><!--c-center end-->
+			<div class="content-bottom">			
+			</div>
+			<!--content-bottom end-->
+		<div class="clear"></div>
+{template system/footer public}
+	</div><!--content end-->
+
+</body>
+</html>

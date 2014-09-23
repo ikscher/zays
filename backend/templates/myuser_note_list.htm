@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+
+
+//显示用户信息
+function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+
+//分页跳转
+function gotoPage() {
+	var page = $("#pageGo").val();
+	var page = parseInt(page);
+	
+	if(page<1) page = 1;
+	if(page>{php echo ceil($total/$page_per);})
+
+	page = {php echo ceil($total/$page_per);};
+	window.location.href = "{$currenturl}&page="+page;
+}
+
+//全选
+function choose_all(){
+	if($("#choose_all").attr("checked")){
+		$("input[name='changesid[]']").attr("checked",true);
+	}else{
+		$("input[name='changesid[]'").attr("checked",false);
+	}
+}
+
+//分配客服
+function changeusersid(){
+	var kefuuid = $("#kefuuid option:selected").val(); 
+	var uidlist = "";
+	$("input[name='changesid[]']:checked").each(function(){
+		uidlist += this.value+',';
+	})
+	if(uidlist==''){
+		alert('请选择需要分配的会员');
+		return;
+	}
+	location.href="index.php?action=allmember&h=changeusersid&uidlist="+uidlist+"&kefuuid="+kefuuid;
+
+}
+
+$(function(){
+	$(".csstab tr").mouseover(function(){
+		$(this).addClass("over");
+	}).mouseout(function(){
+		$(this).removeClass("over");	
+	})
+	
+	$("#listDiv input[name^='is_awoke_']").click(function(){
+		var uid = this.value;
+		$.get("myuser_ajax.php?n=change_awoke",{uid:uid},function(str){
+			if(str == 'error') alert('意外出错,请稍后再试');
+		})
+	})
+
+
+})
+</script>
+<style>
+tr.over td {
+	background:#cfeefe;
+} 
+
+a img{
+	border:0px;
+}
+</style>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="index.php?action=myuser&h={$_GET['h']}">刷新</a></span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> -- 最后操作小记列表(打电话填写小记的时间顺序)</span>
+<div style="clear:both"></div>
+</h1>
+<div>
+<form action="" method="get">
+  <tr>
+  	<td colspan="8" style="text-align:left">
+		UID：<input type="text" name="uid" value="" />
+		<input type="hidden" name="action" value="myuser" />
+		<input type="hidden" name="h" value="note_list" />
+		<input type="submit" name="submitname" value="搜索" />
+	</td>
+  </tr>
+</form>
+</div>
+<div class="list-div" id="listDiv">
+<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+  <tr>
+    <th>ID</th>
+    <th>昵称</th>
+    <th>年龄</th>
+    <th>等级</th>
+    <th>照片</th>
+    <th>收入</th>
+    <th>工作地</th>
+    <th>分配时间</th>
+    <th>注册时间</th>
+    <th>来源</th>
+    <th>登录</th>
+    <th>业务员</th>
+    <th>最后登录时间
+	</th>
+    <th>下次联系时间</th>
+	<th>重点会员</th>
+	<th>在线状态</th>
+	<th>小记记录时间
+		<a href="{$currenturl}&order={$order}"><img src="templates/images/{$order}.gif" /></a>
+	</th>
+  </tr>
+  {loop $member_list $member}
+   <tr>
+    <td align="center">
+    	<a href="#" class="userinfo" onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['uid']}</a>
+    </td>
+    <td align="left" style="text-indent:30px;"> 
+		{if $member['gender']==1}<img src="templates/images/w.gif" alt="女" title="女"/>
+		{else}<img src="templates/images/m.gif" alt="男" title="男"/>
+		{/if}
+		<a href="#" onclick="parent.addTab('查看{$member['uid']}资料','index.php?action=allmember&h=view_info&uid={$member['uid']}','icon')">{$member['nickname']}</a>
+	</td>
+    <td align="center">{php echo date("Y")-$member['birthyear'];}</td>
+    <td align="center">$GLOBALS['member_level'][$member['s_cid']]</td>
+    <td align="center">{php echo isset($member['mainimg'])?"有":"无";}</td>
+    <td align="center"><script>userdetail("$member['salary']",salary1);</script></td>
+    <td align="center"><script>userdetail("$member['province']",provice);userdetail("$member['city']",city);</script></td>
+    <td align="center">{php if($member['allotdate']) echo date("Y-m-d H:i",$member['allotdate']);}</td>
+    <td align="center">{php echo date("Y-m-d H:i",$member['regdate']);}</td>
+    <td align="center">{$member['source']}</td>
+    <td align="center">{$member['login_meb']}</td>
+    <td align="center">
+    	{php echo @$GLOBALS['kefu_arr'][$member['sid']];}
+    </td>
+    <td align="center">{php echo date('Y-m-d H:i:s',$member['last_login_time']);}</td>
+     <td align="center">{php echo date('Y-m-d H:i:s',$member['next_contact_time']);}</td>
+	 <td align="center">{if $member['master_member']==1}是{else}否{/if}</td>
+	 <td align="center">
+	 				{if (time()-$member['real_lastvisit'])<600}
+	 					<span style="color:red">在线</span>
+	 				{else}
+	 					离线
+	 				{/if}
+	 </td>
+     <td align="center">{php echo date("Y-m-d H:i:s",$member['dateline'])}</td>
+  </tr>
+  {/loop}
+ </table>
+ 
+<div style="padding:5px;background:#fff">
+
+</div>
+
+<table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="center">{$page_links}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+      <td>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

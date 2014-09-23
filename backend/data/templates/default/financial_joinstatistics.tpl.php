@@ -1,0 +1,241 @@
+<?php if(!isset($_GET['ajax'])) { ?>
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<style type="text/css">
+	.desc {
+		color: #333333;
+		font-weight: bold;
+	}
+	tr.over td {
+		background:#cfeefe;
+	}
+	#kefuid { width: 130px; }
+	#addition { position: absolute; }
+	#addition li { display: none; position: absolute; width: 600px; background: #cfeefe; padding: 3px; left: 300px; top: -30px; }
+	#addition span.keyword { margin-left: 30px; color: blue; font-weight: bold; }
+	#addition div.info span { display: block; margin-top: 5px; font-weight: bold; }
+	#addition div.info p { margin: 3px 0 0 0; border-bottom: 1px #4B76AC dotted; text-indent: 2em; }
+</style>
+<script type="text/javascript">
+	//分页跳转
+	function gotoPage(page) {
+		if (!page) {
+			var page = $("#pageGo").val();
+			page = parseInt(page);
+			if(page < 1 || isNaN(page)) page = 1;	
+		}
+		$('#listDiv').load(gotoPage.href + "&page="+page, financial_join.convert);
+	}
+	
+	function enterHandler(event){
+		var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+		if (keyCode == 13) {
+			gotoPage();
+		} 
+	}
+
+</script>
+
+<h1 style="margin-bottom:15px;">
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 会员交接统计 </span>
+	<span class="action-span"><a href="index.php?action=financial_joinstatistics">刷新</a></span>
+	<span class="action-span"><a href="javascript:parent.addTab('添加会员交接','allmember_ajax.php?n=join&from=','icon');" id="addjoin">添加</a></span>
+	<div style="clear:both"></div>
+</h1>
+
+<form action="" method="get">
+	搜索内容: <input name="keyword" type="text" id="keyword" />
+	<select name="choose" id="choose">
+		<option value="">未选择</option>
+		<option value="uid">ID号</option>
+		<option value="telephone">手机号</option>
+	</select>
+	<span>组名: </span><select name="manageid" id="manageid">
+		<option value="0">未选择</option>
+		<?php foreach((array)$manage_list as $v) {?>
+		<option value="<?php echo $v['id'];?>"><?php echo $v['manage_name'];?></option>
+		<?php } ?>
+	</select>
+	<span>客服: </span><select value="kefuid" id="kefuid">
+		<option value="0">未选择</option>
+		<?php foreach((array)$current_group_kefu_list as $v) {?>
+		<option value="<?php echo $v;?>"><?php echo $v;?>号  <?php echo $server_arr[$v];?></option>
+		<?php } ?>
+	</select>
+	<span class="desc">升级时间：</span>
+	<input type="text" name="startdate" id="startdate" value="<?php echo Date('Y-m-d H:i:s',MooMembersData($uid,'bgtime'))?Date('Y-m-d H:i:s'):Date('Y-m-d H:i:s',MooMembersData($uid,'bgtime'));?>" class="WdateFmtErr" maxlength="30" /> 到
+	<input type="text" name="enddate" id="enddate" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+	牵线模式: <select name="mode" id="mode">
+		<option value="0">未选择</option>
+		<?php foreach((array)$modes as $k=>$v) {?>
+		<option value='<?php echo $k;?>'><?php echo $v;?></option>
+		<?php }?>
+	</select>
+	服务期限: <select name="period" id="period">
+		<option value="0">未选择</option>
+		<?php foreach((array)$periods as $k=>$v) {?>
+		<option value='<?php echo $k;?>'><?php echo $v;?></option>
+		<?php }?>
+	</select>
+	<input type="button" value="搜索" id="search"  class="button" />
+</form>
+<div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+<div class="list-div" id="listDiv">
+<?php } ?>
+<ul id="addition">
+	<?php foreach((array)$join_list as $v) {?>
+	<li>
+		<span style="margin-right: 20px; font-weight: bold;">序号: <?php echo $v['id'];?></span>
+		<span><?php echo date('Y-m-d H:i', $v['dateline']);?></span>
+		<span><span class="keyword"><?php echo $v['isfake'] == 1 ? '有' : '没有';?></span> 网站模拟行为</span>
+		<span><span class="keyword"><?php echo $v['istalk'] == 1 ? '已经' : '没有';?></span> 和VIP(全权会员)交流过</span>
+		<span><span class="keyword"><?php echo $v['isnegative'] == 1 ? '有' : '没有';?></span> 见过负面</span>
+		<div class="info">
+			<span>升级会员的具体集重点情况: </span>
+			<p><?php echo $v['maininfo'];?></p>
+			<span>模拟的会员详细情况: </span>
+			<p><?php echo $v['simulateinfo'];?></p>
+			<span>最后一次沟通情况: </span>
+			<p><?php echo $v['lastinfo'];?></p>
+			<span>备注: </span>		
+			<p style="border-bottom: none; padding-bottom: 5px;"><?php echo $v['remark'];?></p>
+		</div>
+	</li>
+	<?php } ?>
+</ul>
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		<thead><tr>
+			<th>序号</th>
+			<th>UID</th>
+			<th class="needconvert" data-role="manageid">组名</th>
+			<th class="needconvert" data-role="kefuid">客服</th>
+			<th>金额</th>
+			<th class="needconvert" data-role="period">服务期限</th>
+			<th class="needconvert" data-role="mode">牵线模式</th>
+			<th>委托本站ID</th>
+			<th>全权会员ID</th>
+			<th>升级日期</th>
+			<th>分配日期</th>
+			<th>手机</th>
+			<th>操作</th>
+		</tr>
+		</thead>
+		<tbody>
+		<?php foreach((array)$join_list as $v) {?>
+		<tr>
+			<td align="center" role="id"><?php echo $v['id'];?></td>
+			<td align="center" role="uid"><a href="javascript:;"><?php echo $v['uid'];?></a></td>
+			<td align="center"><?php echo $v['gid'];?></td>
+			<td align="center"><?php echo $v['sid'];?></td>
+			<td align="center"><?php echo $v['money'];?></td>
+			<td align="center"><?php echo $v['period'];?></td>
+			<td align="center"><?php echo $v['mode'];?></td>
+			<td align="center"><?php echo $v['mid'];?></td>
+			<td align="center"><?php echo $v['fid'];?></td>
+			<td align="center"><?php echo date('Y-m-d', $v['bgtime']);?></td>
+			<td align="center"><?php echo date('Y-m-d', $v['allottime']);?></td>
+			<td align="center"><?php echo $v['telephone'];?></td>
+			<td align="center" class="operation">	
+				<a href="javascript:;" role="addition">其他信息</a>&nbsp;|&nbsp; 
+				<a href="javascript:;" role="update">修改</a>&nbsp;|&nbsp; 
+				<a href="javascript:;" role="delete">删除</a>
+			</td>
+		<?php } ?>
+		</tbody>
+	</table>
+
+	<table cellpadding="4" cellspacing="0">
+        <tr>
+			<td align="center"><?php echo $pages;?>
+				&nbsp;&nbsp;&nbsp;
+				转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" onkeydown="enterHandler(event)"/> 页 &nbsp;
+				<input type="button"  value="跳转" class="button" onclick="gotoPage()"/>
+			</td>
+        </tr>
+	</table>
+<script type="text/javascript">	gotoPage.href = '<?php echo $currenturl;?>';</script>
+<?php if(!isset($_GET['ajax'])) { ?>
+</div>
+<script type="text/javascript">
+	var financial_join = {
+		manageids: <?php echo $manageids;?>,
+		mapindex: {},
+		change: function() {
+			var manageid = this.value;
+			var group_users = financial_join.manageids[manageid];
+			var option_values = '<option value="0">未选择</option>';
+			for (var id in group_users) {
+				option_values += '<option value="' + id + '">' + id + '号 ' + group_users[id] + '</option>';
+			}
+			$('#kefuid').html(option_values);
+		},
+		convert: function() {
+			var mapindex = financial_join.mapindex;
+			var trs = $('#list-table tbody tr');
+			for (var i = 0; i < trs.length; ++i) {
+				var tds = trs.eq(i).children();
+				for (var index in mapindex) {
+					var td = tds.eq(index);
+					var id = mapindex[index];
+					if (id == 'manageid') { var manageid =  td.text(); }
+					if (id == 'kefuid') {
+						var kefuid =  td.text();
+						var kefutd = td;
+					}
+					td.text($('#' + id + ' option[value=' + td.text() + ']').text());
+				}
+				kefutd.text(kefuid + '号 ' + financial_join.manageids[manageid][kefuid]);
+			}
+		},
+		search: function() {
+			$('#listDiv').load('index.php?action=financial_joinstatistics&ajax=&' + $('form').serialize(), financial_join.convert);
+		},
+		update: function() {
+			var uid = $(this).parent().siblings('[role=uid]').find('a').text();
+			var id = $(this).parent().siblings('[role=id]').text();
+			parent.addTab(uid + '交接表', 'allmember_ajax.php?n=join&from=up&uid=' + uid + '&id=' + id, 'icon');
+		},
+		deleteid: function() {
+			if (confirm('确定要删除本条么?')) {
+				var id = $(this).parent().siblings('[role=id]').text();
+				var tr = $(this).parent().parent();
+				$.get('allmember_ajax.php?n=join&from=&act=delete&id=' + id, function(data) {
+					if (data == 'ok') {
+						tr.remove();
+						alert('删除成功');
+					} else { alert('fail'); }
+				});
+			}
+		},
+		openuid: function() {
+			var uid = $(this).text();
+			parent.addTab(uid + '资料','index.php?action=allmember&h=view_info&uid=' + uid,'icon')
+		},
+		show: function(e) {
+			if (financial_join.showstatus) return;
+			var index = $(this).parent().parent().index();
+			$('#addition li:eq(' + index + ')').css('display', 'block');
+			financial_join.showstatus = 1;
+		},
+		hidden: function() {
+			financial_join.showstatus = 0;
+			var index = $(this).parent().parent().index();
+			$('#addition li:eq(' + index + ')').css('display', 'none');
+		}
+	}
+	$('#list-table thead th.needconvert').map(function(i, n) {
+		financial_join.mapindex[$(n).index()] = $(n).attr('data-role');
+	});
+	financial_join.convert();
+	$('#manageid').change(financial_join.change);
+	$('#search').click(financial_join.search);
+	$('#listDiv').delegate('td[role=uid] a', 'click', financial_join.openuid);
+	$('#listDiv').delegate('.operation a[role=update]', 'click', financial_join.update);
+	$('#listDiv').delegate('.operation a[role=delete]', 'click', financial_join.deleteid);
+	$('#listDiv').delegate('.operation a[role=addition]', 'mouseover', financial_join.show);
+	$('#listDiv').delegate('.operation a[role=addition]', 'mouseout', financial_join.hidden);
+</script>
+<?php } ?>

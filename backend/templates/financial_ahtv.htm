@@ -1,0 +1,98 @@
+
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<style type="text/css">
+.desc {
+    color: #333333;
+    font-weight: bold;
+}
+tr.over td {
+	background:#cfeefe;
+} 
+</style>
+<script type="text/javascript">
+//分页跳转
+function gotoPage() {
+    var page = $("#pageGo").val();
+    var page = parseInt(page);
+    
+    if(page<1) page = 1;
+    if(page>{php echo ceil($total/$page_per);})
+
+    page = {php echo ceil($total/$page_per);};
+    window.location.href = "{$currenturl}&page="+page;
+}
+
+
+
+function enterHandler(event){
+    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+    if (keyCode == 13) {
+       gotoPage();  //调用函数
+     } 
+}
+</script>
+
+<h1 style="margin-bottom:15px;">
+	<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 活动统计 </span>
+	<span class="action-span"><a href="index.php?action=financial_ahtv">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+
+
+
+<form action="" method="post">
+		<span class="desc">查询时间：</span>
+		<input type="text" name="startdate" value="" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/> 到
+		<input type="text" name="enddate" value="" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"  style="width:100px;"/>
+
+        <select name="channel"  >
+              <option value='1'  {if $channel=='1'} selected="selected" {/if}>周日我最大</option>
+              <option value='2'  {if $channel=='2'} selected="selected" {/if}>幸福来敲门</option>
+			  <option value='3'  {if $channel=='3'} selected="selected" {/if}>相亲齐上阵</option>
+        </select>
+        
+		<input type="submit" name="submit" value="搜索"  class="button" />
+		<!--  <input type="reset" value="重置" class="button" />-->
+	
+</form>
+
+
+<div style="height:10px;border-bottom:1px solid #999;margin:10px auto;"></div>
+<div class="list-div" id="listDiv">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+	 <tr>
+		<th>序号</th>
+        <th>日期</th>
+        <th>点击数</th>
+        <th>注册数</th>
+        <th>升级数</th>
+
+	 </tr>
+     
+     {loop $sum $v}
+	 <tr>
+		<td align="center">{php echo $v['k'];}</td>
+		<td align="center">{php echo $v['date'];}</td>
+		<td align="center">{php echo $v['click'];}</td>
+		<td align="center">{php echo $v['reg'];}</td>
+		<td align="center">{php echo $v['upgrade'];}</td>
+
+	 </tr>
+	 {/loop}
+     
+	 <tr>
+		<td colspan="9" align="center">{$pages}
+			&nbsp;&nbsp;&nbsp;
+			转到第
+			<input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+			<input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></td>
+		
+	 </tr>
+      
+	 </table>
+</div>
+

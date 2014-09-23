@@ -1,0 +1,75 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+function checkForm(){
+	var uid = $("#uid").val();
+	var oid = $("#order_id").val();
+	var money = $("#money").val();
+	if(!uid || !oid || !money){
+		alert("请将信息填写完整");
+		return false;
+	}
+}
+</script>
+<style>
+	.list-div table td{
+		height:28px;
+		line-height:28px;
+	} 
+</style>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 会员升级线下支付</span>
+<span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<form action="index.php?action=vipuser&h=downline" method="post" onsubmit="return checkForm();">
+	<div class="list-div">
+		<table>
+			<tr>
+				<td width="200" align="right">用户ID：</td>
+				<td><input name="uid" type="text" id="uid" /></td>
+			</tr>
+			<tr>
+				<td align="right">支付类型：</td>
+				<td><select name="code">
+						{loop $bankarr $key $val}
+						<option value="{$key}">{$val}</option>
+						{/loop}
+					</select></td>
+			</tr>
+			<tr>
+				<td align="right">升级类型：</td>
+				<td><select name="upgrade">
+						<option value="1">高级会员</option>
+						<option value="0">钻石会员</option>
+						<option value="2">城市之星</option>
+					</select></td>
+			</tr>
+			<tr>
+				<td align="right">订单号：</td>
+				<td><input name="order_id" type="text" id="order_id" /></td>
+			</tr>
+			<tr>
+				<td align="right">订单状态：</td>
+				<td><select name="staus">
+						<option value="1">已付</option>
+						<option value="0">未付</option>
+					</select></td>
+			</tr>
+			<tr>
+				<td align="right">支付总金额：</td>
+				<td><input name="money" type="text" id="money" value="" />
+					元 </td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-indent:230px;">
+					<input name="ispost" type="hidden" id="ispost" value="1" />
+					<input name="提交" type="submit" value=" 提 交" />
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<p/>
+</form>

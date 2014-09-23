@@ -1,0 +1,177 @@
+{if $val == 1}
+		<div class="video-title-c">
+                <!--选项卡-->
+            <p id="video_guide" class="video-top-tips"><font class="right-title f-ed0a91" style="font-size:12px">{php echo 20>$user_pic['c'] ?'【您当前还可以拍'.(20-$user_pic['c']).'张照片】': '【温馨提示：您已经上传20照片了,已经不可以在线拍照上传】';}</font>如不明白视频拍照流程，请点击  <a href="index.php?n=myaccount&h=phelp" target="_blank" class="f-ed0a91">查看拍照流程</a></p>
+            <div class="myaccount-title">
+                <ul>
+                    <li><a href="#" id="menu1" onclick="javascript:change_ajax(1);return false;" class="onthis"><span>视频拍照</span></a></li>
+                   <!--  <li><a href="#" id="menu2" onclick="javascript:change_ajax(2);return false;"><span>在线录制</span></a></li>
+                    <li><a href="#" id="menu3" onclick="javascript:change_ajax(3);return false;"><span>在线录音</span></a></li> -->
+                </ul>
+                <div class="clear"></div>
+            </div>
+                <!--选项卡结束-->  
+            <div class="clear"></div>
+        </div>
+        
+        <div id="choose">
+            <div class="video-windows">
+                 <!--放照片flash的开始-->
+                 <iframe src="index.php?n=myaccount&h=picflash" scrolling="no" frameborder="0" width="600" height="467"></iframe>
+                 <!--放照片flash的结束-->
+            </div>
+            <div class="video">
+                 <ul id="pic_flash">
+                    {if $flash_pic}
+                         {loop $flash_pic  $r_pic}
+                             <li>
+                             <img src="{php echo thumbImgPath(2,$r_pic[pic_date],$r_pic[pic_name])}" />
+                             {if $acc_pic==$r_pic[pic_url]}
+                                  <p style="font-size:12px;"> 我的形象照</p>
+                             {else}
+                                  <p><a href="index.php?n=myaccount&h=videoindex&pic_url={$r_pic[pic_url]}&actio=u">设为形象照</a> <a href="index.php?n=myaccount&h=videoindex&tmp_id={$r_pic[tmp_id]}&pic_url={$r_pic[pic_url]}&actio=d">删除</a></p>
+                             {/if}  
+                             </li>
+                        {/loop} 
+                   {/if}
+                </ul> 
+                <div class="clear"></div>
+            </div>
+            <p style="text-align:center; padding-left:120px;"> 
+    
+            <input type="button"  onclick="javascript:ajax_pic();" class="video-button" value="一键转到相册" style="float:right; margin-right:20px;"/>
+            <div class="clear"></div>
+            </p>
+        </div>
+        
+        <div class="cer-line"></div>
+        <dl class="cer-video-faq">
+            <dt>视频拍照申明：</dt>
+            <dd>1. 您可以提交三张视频照片，但被客服审核通过后的视频照片在当月内不可删除。</dd>
+            <dd>2. 视频照片可以帮助用户提高交友诚信度，可以展示自我。</dd>
+            <dd>3. 我们会对用户上传的视频照片进行质量审核，因此请务必上传清晰的个人视频照片。</dd>
+        </dl>
+        <dl class="cer-video-faq">
+            <dt>视频拍照的前提条件 ：</dt>
+            <dd>1. 您的电脑必须有安装摄像头；</dd>
+            <dd>2. 请确认您的摄像头和电脑正确链接并且能够正常使用。</dd>
+			<dd>3.为保障视频拍照的正常进行，在申请视频拍照的时候，请不要用QQ等其他聊天软件与别人视频聊天，否则会造成视频拍照失败。</dd>
+        </dl>
+        <dl class="cer-video-faq">
+            <dt>视频拍照的注意事项 ：</dt>
+            <dd>1. 当网页弹出“是否允许FLASH使用您的摄像头和麦克风”时，请选择“允许”。</dd>
+            <dd>2. 当视频拍照不可以拍照的时候，<a href='http://get.adobe.com/cn/flashplayer/' style="font-size:12px" target="_blank" class="f-ed0a91-a">请点击这里……</a>且下载并安装这个播放器组件。</dd>
+        </dl>
+        <div class="clear"></div>        
+{elseif $val == 2}
+	  <div class="video-title-c">
+                <!--选项卡-->
+            <p id="video_guide" class="video-top-tips">如不明白录制视频流程，请点击  <a href="index.php?n=myaccount&h=vhelp" target="_blank" class="f-ed0a91">查看视频流程</a></p>
+            <div class="myaccount-title">
+                <ul>
+                    <li><a href="#" id="menu1" onclick="javascript:change_ajax(1);return false;" ><span>视频拍照</span></a></li>
+                    <li><a href="#" id="menu2" onclick="javascript:change_ajax(2);return false;" class="onthis"><span>在线录制</span></a></li>
+                    <li><a href="#" id="menu3" onclick="javascript:change_ajax(3);return false;"><span>在线录音</span></a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+                <!--选项卡结束-->  
+            <div class="clear"></div>
+        </div>
+        
+	  <div id="choose">
+          <div class="video-windows" style="margin-bottom:0">
+             <!--放照片flash的开始-->
+             <iframe src="index.php?n=myaccount&h=videoflash" scrolling="no" frameborder="0" width="320" height="240"></iframe>
+             <!--放照片flash的结束-->
+          </div>
+    
+          <p style="text-align:center; padding:0px 0 0 120px;"> 
+          
+              <input id="upload_video_button" name="upload_video_button" type="button" class="video-button" value="确定上传" onclick="javascript:upload_video();"/>
+              
+              <div class="clear"></div>
+          </p>
+      </div>
+      
+   <div class="cer-line"></div>
+    <dl class="cer-video-faq">
+        <dt>视频录制申明：</dt>
+        <dd>1. 首先确保您电脑上的摄像头能正常使用，然后再打开（或刷新）视频认证的页面，再点击在线录制选项卡，请点击“录制”按钮。</dd>
+        <dd>2. 当点击录制后，视频此时便在正常录制中，为了确保视频正常上传，请您最少要录制20秒，如果想停止此次录制，请再次点击“录制”按钮。</dd>
+        <dd>3. 视频录制时间最长90秒，到了90秒视频录制会自动终止。</dd>
+        <dd>4. 视频录制完后请点击“确定上传”。</dd>
+        <dd>5. 如果不满意之前自己录制的视频，可以重新再录制一个，然后上传。</dd>
+        <dd>6. 每个会员只能有一个视频，如果重新录制视频并且上传，这个视频将替换之前的视频！</dd>
+        <dd>7. 我们会对用户录制的视频进行质量审核，因此请务录制清晰的个人视频。</dd>
+    </dl>
+    <dl class="cer-video-faq">
+        <dt>视频录制的前提条件 ：</dt>
+        <dd>1. 您的电脑必须有安装摄像头。</dd>
+        <dd>2. 请确认您的摄像头和电脑正确链接并且能够正常使用。</dd>
+		<dd>3.为保障视频录制的正常进行，在申请视频录制的时候，请不要用QQ等其他聊天软件与别人视频聊天，否则会造成视频录制失败。</dd>
+    </dl>
+    <dl class="cer-video-faq">
+        <dt>视频录制的注意事项 ：</dt>
+        <dd>1. 当网页弹出“是否允许FLASH使用您的摄像头和麦克风”时，请选择“允许”。</dd>
+        <dd>2. 为了保护您的个人信息，请勿在视频录制的时候透露自己家庭住址，手机号码，以及其他联系方式，否则将审核不通过。</dd>
+        <dd>3. 当视频不可以录制的时候，<a href='http://get.adobe.com/cn/flashplayer/' style="font-size:12px" target="_blank" class="f-ed0a91-a">请点击这里……</a>且下载并安装这个播放器组件。</dd>
+    </dl>
+    <div class="clear"></div>
+{elseif $val == 3}
+	<div class="video-title-c">
+            <!--选项卡-->
+        <p id="video_guide" class="video-top-tips">如不明白录制录音流程，请点击  <a href="index.php?n=myaccount&h=rhelp" target="_blank" class="f-ed0a91">查看录音流程</a></p>
+        <div class="myaccount-title">
+            <ul>
+                <li><a href="#" id="menu1" onclick="javascript:change_ajax(1);return false;" ><span>视频拍照</span></a></li>
+                <li><a href="#" id="menu2" onclick="javascript:change_ajax(2);return false;" ><span>在线录制</span></a></li>
+                <li><a href="#" id="menu3" onclick="javascript:change_ajax(3);return false;" class="onthis"><span>在线录音</span></a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+            <!--选项卡结束-->  
+        <div class="clear"></div>
+    </div>
+    
+   <div id="choose">
+        <div class="voice-windows">
+             <!--放照片flash的开始-->
+             <iframe src="index.php?n=myaccount&h=voiceflash" scrolling="no" frameborder="0" width="320" height="160"></iframe>
+             <!--放照片flash的结束-->
+        </div>
+    
+        <p style="text-align:center; padding:20px 0 0 120px;">  
+        
+            <input name="upload_voice_button" type="button" class="video-button" value="确定上传" onclick="javascript:upload_voice();"  id="upload_video_button"/>   
+            <div class="clear"></div>
+    
+        </p>
+   </div>
+   
+   <div class="cer-line"></div>
+    <dl class="cer-video-faq">
+        <dt>录音录制申明：</dt>
+        <dd>1.首先确保您的电脑有麦克风， 打开（或刷新）视频认证的页面，再点击在线录音选项卡，请点击“录音”按钮。</dd>
+        <dd>2. 当点击录音后，录音此时便在正常录制中，如果想停止此次录制，请再次点击“录音”按钮。</dd>
+		<dd>3.录音时，如果说话无蓝线跳动，请检查麦克风是否连接正常。</dd>
+        <dd>4. 录音录制时间最长90秒，到了90秒录音录制会自动终止。</dd>
+        <dd>5. 录音录制完后请点击“确定上传”。</dd>
+        <dd>6. 如果不满意之前自己录制的录音，可以重新再录制一个，然后上传。</dd>
+        <dd>7. 每个会员只能有一个录音，如果重新录制录音并且上传，这个录音将替换之前的录音！</dd>
+        <dd>8. 我们会对用户录制的录音进行质量审核，因此请务必录制清晰的个人录音。</dd>
+    </dl>
+    <dl class="cer-video-faq">
+        <dt>录音录制的前提条件 ：</dt>
+        <dd>1. 您的电脑必须有安装麦克风。</dd>
+        <dd>2. 请确认您的麦克风和电脑正确链接并且能够正常使用。</dd>
+		<dd>3.为保障录音录制的正常进行，在申请录音录制的时候，请不要用QQ等其他聊天软件与别人视频聊天，否则会造成录音录制失败。</dd>
+    </dl>
+    <dl class="cer-video-faq">
+        <dt>录音录制的注意事项 ：</dt>
+			<dd>1. 当网页弹出“是否允许FLASH使用您的摄像头和麦克风”时，请选择“允许”。</dd>
+			<dd>2. 为了保护您的个人信息，请勿在录音录制的时候透露自己家庭住址，手机号码，以及其他联系方式，否则将审核不通过。</dd>
+			<dd>3. 当录音不可以录制的时候，<a href='http://get.adobe.com/cn/flashplayer/' style="font-size:12px" target="_blank" class="f-ed0a91-a">请点击这里……</a>且下载并安装这个播放器组件。</dd>
+    </dl>
+    <div class="clear"></div> 
+{/if}

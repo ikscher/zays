@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会员注册——真爱一生网</title>
+<link rel="shortcut icon" href="public/default/images/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="public/default/images/favicon.ico" type="image/x-icon">
+<link type="text/css" rel="stylesheet" href="module/register/templates/default/css/register.a.css" />
+<link rel="stylesheet" type="text/css" href="public/default/css/bootstrap.min.css"/>
+<script type="text/javascript">
+   //year(年份)
+	var years = new Array("1996","1995","1994","1993","1992","1991","1990","1989","1988","1987","1986","1985","1984","1983","1982","1981",
+						   "1980","1979","1978","1977","1976","1975","1974","1973","1972","1971",
+						   "1970","1969","1968","1967","1966","1965","1964","1963","1962","1961",
+						   "1960","1959","1958","1957","1956","1955","1954","1953","1952","1951");
+	//生成年份下拉框
+	function getYearsSelect(classStyle,id,name,realValue,defaultValue){
+		var htmlStr = '<select  class="'+classStyle+'" id="'+id+'" name="'+name+'">';
+		htmlStr = htmlStr + '<option value="0">----请选择----</option>';
+		for(i=0;i<years.length;i++){
+			var selected = '';
+			if(realValue!=null&&realValue!=''&&realValue==years[i]){
+				selected = 'selected="selected"';
+			}else if(realValue==null||realValue==''){
+				if(defaultValue==years[i]){
+					selected = 'selected="selected"';
+				}
+			}
+			htmlStr = htmlStr + '<option value="'+years[i]+'" '+selected+'>'+years[i]+'</option>';
+		}
+		htmlStr = htmlStr + '</select>';
+		document.write(htmlStr);
+	}
+	
+</script>
+</head>
+<body>
+<div class="main">
+  <div class="left fl">
+    <div class="logo"></div>
+    <div class="pb"></div>
+    <div class="illustration"> <span>*严格的身份认证体系</span> <span>*500万约会基金赔偿计划为您保障</span> <span>*3000多万的单身男女会员</span> <span>*庞大资深的专业红娘团队为您牵线</span> </div>
+  </div>
+  <div class="right fl">
+    <div class="head"> <span class="ss">花一分钟注册，找一辈子的幸福</span> <span class="lg"><a href="index.php?n=login">已有账号，立即登录>></a></span> </div>
+    <div class="line"></div>
+    <div class="regContent clearfix">
+	  <form name="register" action="index.php?n=register&h=step_one" method="POST" >
+      <dl class="fl">
+        <dt>我是一位:</dt>
+        <dd>
+          <input type="radio" name="gender" value="0" id="male" class="fl" checked="checked" />
+          <label for="male" class="gender male fl">男士</label>
+          <input type="radio" name="gender" value="1" id="female" class="fl"  />
+          <label for="female" class="gender female fl">女士</label>
+		  <p id="gender" class="register-clue" style="display:none;"><span>此项注册后不可更改，请谨慎填写</span></p>
+        </dd>
+		
+		<dt>出生年份:</dt>
+        <dd>
+          <script type="text/javascript">getYearsSelect('fl','','birthyear');</script>
+          <p id="birthyear" class="register-clue" style="display:none"></p>
+        </dd>
+		
+        <dt>我的手机号:</dt>
+        <dd>
+          <input name="telphone"  type="text" maxlength="11"   value="" class="fl"/>
+          <p id="telphone" class="register-clue" style="display:none"></p>
+        </dd>
+        <dt>验证码:</dt>
+        <dd>
+          <input type="text" name="vcode"  value="" class="fl" maxlength="4" style="width:100px;margin-right:10px;"/>
+		  <input type="button" name="getCode" class="btn btn-default fl" value="获取验证码" />
+          <p id="vcode" class="register-clue" style="display:none"></p>
+        </dd>
+        <dt>创建密码:</dt>
+        <dd>
+          <input type="password" name="password"   value="" class="fl"/>
+          <p id="password" class="register-clue" style="display:none"></p>
+        </dd>
+        <dt> 确认密码:</dt>
+        <dd>
+          <input type="password" name="password2"   value="" class="fl" />
+
+          <p id="password2" class="register-clue" style="display:none"></p>
+        </dd>
+        <dt>&nbsp;</dt>
+        <dd>
+          <input name="agree" type="checkbox"  value="1" checked="checked" class="fl" />
+          <span class="tos fl">已阅读和同意真爱一生网<a href="index.php?n=register&h=serverrule" target="_blank" class="f-ed0a91-a">注册服务条款</a> </span>
+		  <p id="agree" class="register-clue" style="display:none"></p>
+		</dd>
+        <dt>&nbsp;</dt>
+        <dd>
+          <input id="register_submitone" name="register_submitone" type="button"  class="btn btn-large btn-primary ml" value="免费注册，马上找对象" />
+        </dd>
+      </dl>
+	  <form>
+	  <span class="note">【温馨提示】验证手机有利于增加自身诚信度和异性的关注。</span>
+    </div>
+    <div class="footer"> <span>CopyRight@ 2006- 2014真爱一生网.All Right Reserved </span> <span>ICP备案:皖ICP备14002819号</span> </div>
+  </div>
+</div>
+<script type="text/javascript" src="public/system/js/jquery-1.8.3.min.js"></script>
+<script src="public/system/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('input[name=gender]').focus(function(){
+	    $('#gender').css('display','');
+	}).blur(function(){
+	    $('#gender').css('display','none');
+	});
+	
+	
+	$('select[name=birthyear]').focus(function(){
+	    $('#birthyear').css('display','');
+		$('#birthyear').html("<span style='font-size:12px;color:#000'>请填写您的出生年份</span>");
+	}).blur(function(){
+	    $('#birthyear').css('display','none');
+	});
+	
+	var arr = new Array();
+	var tf=false;
+	$('input[name=telphone]').focus(function(){
+	    $('#telphone').css('display','');	
+		$('#telphone').html("<span style='color:#000'>可以使用手机号码作为账号登录，绝对不会公开</span>");
+	}).blur(function(){
+	    var telphone = $.trim($('input[name=telphone]').val());
+
+	    if (telphone && checkPhone(telphone)){
+			var url = 'ajax.php?n=register&h=checktel';
+			$.get(url,{tel_val:telphone},function(str){
+				if(str!= ''){	
+					$('#telphone').css('display','');
+					$('#telphone').html("<span id='a1' style='font-size:12px;color:#f00'>手机号码已经被其他会员绑定</span>");
+	                arr[0]='mobile is binded';
+				}else{
+					$('#telphone').css('display','none');
+					arr[0]='';
+					tf=true;
+				}
+		   });
+		}else{
+		    $('#telphone').css('display','');
+            $('#telphone').html("<span  id='a1' style='font-size:12px;color:#f00'>手机号码不能为空或格式不正确</span>");
+			arr[0]='mobile is error';
+		}
+	});
+	
+	$('input[name=vcode]').focus(function(){
+	    $('#vcode').css('display','');	
+		$('#vcode').html("<span style='color:#000'>请填写您的手机收到的验证码</span>");
+	}).blur(function(){
+	    var tel_mack = $('input[name=vcode]').val();
+		var update = Math.random();
+		if(!tel_mack ||  !/^\d{4,4}$/gi.test(tel_mack)){
+		    $('#vcode').css('display','');	
+		    $('#vcode').html("<span style='color:#f00'>验证码不能为空或格式不正确</span>");
+			arr[1]='vcode is empty or unformated';
+		}else{
+		    var tel_mack = $('input[name=vcode]').val();
+			var update = Math.random();
+			if(tel_mack && /^\d{4,4}$/gi.test(tel_mack)){
+				$.get('ajax.php?n=register&h=setVcode&update='+update,{mack:tel_mack},function(str){		
+					if(str!='ok'){
+						$('#vcode').css('display','');	
+						$('#vcode').html("<span style='color:#f00'>填写的手机验证码不正确！</span>");
+						arr[1]='vcode is error';
+					}else{
+						$('#vcode').css('display','none');	
+						arr[1]='';
+					}
+				});
+			}	
+		}
+	});
+	
+	$('input[name=password]').focus(function(){
+	    $('#password').css('display','');	
+		$('#password').html("<span style='color:#000'>请输入6-20位数字和字母</span>");
+	}).blur(function(){
+	    $('#password').css('display','none');	
+	});
+	
+	$('input[name=password2]').focus(function(){
+	    $('#password2').css('display','');	
+		$('#password2').html("<span style='color:#000'>两次输入的密码要一致</span>");
+	}).blur(function(){
+	    $('#password2').css('display','none');	
+	});
+	
+	
+	function checkForm(){
+	  
+	    var telphone = $.trim($('input[name=telphone]').val());
+	    if (!telphone ||　!checkPhone(telphone)){
+		    $('#telphone').css('display','');
+            $('#telphone').html("<span style='font-size:12px;color:#f00'>手机号码不能为空或格式不正确</span>");
+            arr[0]='mobile is empty or unformated';		
+		}
+		
+		var vcode = $.trim($('input[name=vcode]').val());
+		if(!vcode || !/\w{4,4}/gi.test(vcode)){
+		    $('#vcode').css('display','');
+			$('#vcode').html("<span style='color:#f00;'>手机验证码填写不正确</span>");
+			arr[1]='vcode is empty or unformated';
+		}
+		
+		var password = $.trim($('input[name=password]').val());
+		if(!password || !/\w{6,20}/gi.test(password)){
+		    $('#password').css('display','');
+		    $('#password').html("<span style='color:#f00'>密码不能为空或格式不正确</span>");
+			arr[2]='password is empty';
+		}else{
+		    arr[2]='';
+		}
+		
+		
+		var password2 = $.trim($('input[name=password2]').val());
+		if(!password2 || !/\w{6,20}/gi.test(password2) || password2!=password){
+		    $('#password2').css('display','');
+		    $('#password2').html("<span style='color:#f00'>格式不正确或者两次输入的密码不一致</span>");
+			arr[3]='password is not the same';
+		}else{
+		    arr[3]='';
+		}
+		
+		var agree =$('input[name=agree]:checked').val();
+		$('#agree').css('display','none');
+		if(agree==undefined || !agree){
+		    $('#agree').css('display','');
+		    $('#agree').html("<span style='color:#f00'>您需要赞同真爱一生网的服务条款！</span>");
+			arr[4]='you must agree tos';
+		}else{
+		    arr[4]='';
+		}
+		
+		var birthyear = $('select[name=birthyear]').val();
+		if(birthyear<=0){
+		    $('#birthyear').css('display','');
+		    $('#birthyear').html("<span style='color:#f00'>请填写您的出生年份</span>");
+			arr[5]='you must select birthyear';
+		}else{
+		    arr[5]='';
+		}
+		
+	
+
+		
+		for(var i=0;i<arr.length;i++){
+		    if(arr[i]!=''){
+			    return false;
+				break;
+			}
+		}
+		
+		return true;
+	}
+	
+	
+	//判断手机号是否正确
+	function checkPhone(phone){
+		var reg = /^((1[345]\d{9,9})|(18[0-9]\d{8,8}))$/;
+		var my=false;
+		if (reg.test(phone)) my=true;
+		return my;
+	}
+	
+	
+	var num=60;
+    var t;
+	//获取手机验证码
+	function number(){
+		num--;
+		if(num>=0){
+			//如果一分钟内未收到确认码，请50秒后点此重发
+			$('input[name=getCode]').val('倒计时'+num+'秒');
+			$('input[name=getCode]').attr('disabled','true');
+			t = setTimeout('number()',1000);
+
+		}else{
+			if (t) clearTimeout(t);
+			$('input[name=getCode]').removeAttr('disabled');
+			$('input[name=getCode]').val("获取验证码");
+		}	
+	}
+	
+	
+	function Send(){
+		if(num == -1){
+			num = 60;
+		}
+		//获取手机验证码
+		var url,telphone;
+		var telphone = $.trim($('input[name=telphone]').val());
+		url = 'ajax.php?n=register&h=getVcode&sec='+Math.random();
+		$.get(url,{telphone:telphone},function(){
+		    number();	
+		})
+    }
+	
+	$('input[name=getCode]').on('click',function(){
+	    var telphone = $.trim($('input[name=telphone]').val());
+	    if (tf && telphone && checkPhone(telphone)) Send();
+	});
+	
+	
+	$('input[type=password],input[name=vcode]').keydown(function(e) {
+	    if (e.keyCode == 13){
+			$('#register_submitone').trigger('click');
+		}
+	});
+
+	//表单提交
+	$('#register_submitone').on('click',function(){
+		if(checkForm()){
+			$('#register_submitone').attr('disabled','disabled').val('提交中...');
+			setTimeout(function(){ document.register.submit();},1000);
+		}
+	});
+	
+	
+	
+	
+
+	
+</script>
+</body>
+</html>

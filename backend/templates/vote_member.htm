@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>真爱一生网--投票会员管理</title>
+<style type="text/css">
+ @import url("templates/css/kefu.css");
+ @import url("templates/css/login.css");
+</style>
+<SCRIPT LANGUAGE="Javascript" SRC="FusionCharts.js"></SCRIPT>	
+<link href="Style.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
+<script>
+	function gotoPage(){
+		var page = document.getElementById('pageGo').value;
+		
+		location.href = 'vote_member.php?page_now='+page;
+	}
+	function check(){
+		return true;
+	}
+	function userdetail(number,arrayobj) {
+	var arrname = arrayobj;
+		for(i=0;i<arrayobj.length;i++) {
+			var valueArray  = arrayobj[i].split(",");
+			if(valueArray[0] == number) {
+				if(valueArray[0] == '0' && valueArray[1] != '男士') {
+					document.write("未选择");
+				} else {
+					document.write(valueArray[1]);
+				}	
+			}
+	}
+}
+</script>
+
+
+</head>
+
+<body>
+	
+	<div class="list-div" id="listDiv" onmouseout="hiddend();">
+	<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+		<tr>
+			<td align="center">ID</td>
+			<td align="center">昵称</td>
+			<td align="center">性别</td>
+			<td align="center">地区</td>
+			<td align="center">出生日期</td>
+			<td align="center">固话</td>
+			<td align="center">手机</td>
+			<td align="center">婚姻状况</td>
+			<td align="center">教育水平</td>
+			<td align="center">E-mail</td>
+			<td align="center">操作</td>
+		</tr>
+	
+		{loop $member  $k  $v}
+		
+			<tr>
+				<td align='center'>{$v[uid]}</td>
+			 	<td align='center'>{$v[nick_name]}</td>
+			 	<td align='center'>{$v[sex]}</td>
+			 	<td align='center'><script>userdetail("$v['region']",provice);userdetail("$v['region_city']",city);</script></td>
+				<td align='center'>{$v[birthdate]}</td>
+				<td align='center'>{$v[phone]}</td>
+				<td align='center'>{$v[cellphone]}</td>
+				<td align='center'>{$v[marriage]}</td>
+				<td align='center'>{$v[education]}</td>
+				<td align='center'>{$v[email]}</td>
+			 	<td align='center'>
+					
+					<a href ='vote_member.php?act=edit&uid={$v[uid]}'>编辑</a>
+					<a href ='vote_member.php?act=delect&uid={$v[uid]}' onclick="return confirm('确定删除吗?')">删除</a>
+					<a href ='vote_member.php?act=listall&uid={$v[uid]}'>查看</a>
+				</td>
+			</tr>
+		
+		{/loop}
+	
+	</table>
+	
+	  <div align="center">	{loop $page  $k  $v}
+			{if $page_now == $v}
+				<span style="color:#333333; font-weight:600;">{$v}</span>
+			{else}
+			<a href="vote_member.php?page_now={$v}">{$v}</a>
+			{/if}
+		{/loop}
+      	&nbsp;&nbsp;&nbsp;
+      	转到第   <input name="pageGo"  id="pageGo" type="text" style="width:20px;height:15px;" value="" /> 页 &nbsp;
+      <input type="button"  class="ser_go" value="跳转" onclick="gotoPage()"/></div>
+  
+  
+	</div>
+	
+</body>
+</html>

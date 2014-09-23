@@ -1,0 +1,21 @@
+*{margin:0;padding:0;}
+body,img,ul,li,a,dl,dd,p{margin:0;padding:0;border:0;list-style:none;text-decoration:none;font-family:"宋体"}
+.sendflower{width:550px;border:1px solid #d73c90;font-size:14px;color:#666;background:#fff;position:absolute;left:50%;margin-left:-275px;}
+.sendflower-top{height:32px;width:550px;line-height:32px;text-indent:15px;color:#FFF;font-weight:700;background:#c83183;}
+.sendflower-top a{float:right;padding:10px;}
+.sf-left{padding:23px 27px;float:left;}
+.sf-left-img{background:url(images/likes-img-bg.gif) no-repeat;width:109px;height:132px;text-align:center;vertical-align:middle;display:table-cell;overflow:hidden;position:relative;}
+.sf-left-img p{position:static;+position:absolute;top:50%;*padding:0 0 0 2px;}
+.sf-left-img img{position:static;+position:relative;top:-50%;left:-50%}
+.sf-right{width:375px;float:right;}
+.sf-right dl{padding-top:23px;}
+.sf-right dt{font-weight:700;color:#d70c90;line-height:30px;}
+.sf-right dd,.sf-right p{line-height:24px;}
+.c-line-flo{background:url(images/c_line.gif);font-size:0;height:2px;width:373px;margin:10px 0;}
+.f-064089{color:#064089;}
+.sfbtn,.bakbtn{background:url(images/save-button.gif) no-repeat;width:76px;height:28px;display:inline;float:left;margin:15px;font-size:14px;line-height:28px;text-align:center;font-weight:700;}
+.sfbtn{color:#FFF;}
+.bakbtn{color:#d73c90;background-position:bottom;}
+.btn{width:326px;}
+.tt1{border:1px solid #d95a99;}
+#preview{display:none;position:absolute;}

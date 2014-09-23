@@ -1,0 +1,37 @@
+.login{width:980px;float:left;margin-top:20px;height:36px;line-height:36px;background-position:0 0;background-color:#6495c6;border:#5b88b8 1px solid;border-radius:3px 3px 0 0}
+.c-center{width:980px;float:left;font-size:14px}
+.content-bottom{width:981px;float:left;font-size:0}
+.login-left{width:570px;background:#e1f1fc;float:left}
+.login-box{width:550px;padding:30px 0;float:left}
+.login-box dt{width:140px;text-align:right}
+.login-box dd{width:400px}
+.login-box dt,.login-box dd{float:left;padding:9px 0;line-height:36px;height:36px}
+.login-text{width:160px;height:18px;border:1px solid #7f9db9;color:#666;line-height:18px}
+.login-button{width:78px;height:28px;text-align:center;line-height:28px;color:#FFF;font-size:14px;border:0;background:url(images/buttons.gif) no-repeat;cursor:pointer}
+.login-right{width:410px;padding:50px 0;float:right}
+.login-right-text{padding-left:60px}
+.login-right-text dt{width:320px;height:17px;background:url(images/login-title.png) no-repeat}
+.login-right-text dd,.login-right-text dt{float:left;padding:3px 0}
+.login-right-text dd{width:225px;font-size:12px;color:#666}
+.go-reg{width:225px;height:30px;border:0;background:url(images/go-reg.gif) no-repeat;text-align:center;line-height:30px;font-size:14px;font-weight:700;color:#d73c90;cursor:pointer}
+.backpassword-title{padding:35px 0 0 40px}
+.email-bp,.photo-bp{float:left}
+.email-bp .f-ed0a91,.photo-bp .f-ed0a91{padding-left:40px;line-height:50px;font-size:12px}
+.bp-text{float:left}
+.bp-text dt,.bp-text dd{float:left;padding:9px 0;line-height:20px}
+.bp-text dd{width:330px}
+.bp-text dt{width:120px;text-align:right}
+.tips{padding:20px 0 20px 40px;float:left}
+.f-12px{font-size:12px;color:#666}
+.loginTitle{font-size:12px;padding-left:5px;width:980px;float:left}
+.fff{color:#fff}
+.footer{padding-top:10px;color:#999}
+.footer a{color:#999;text-decoration:none}
+dd a{margin-left:104px}
+.login-box input[type="text"],.login-box input[type="password"]{width:234px;line-height:36px;font-family:'微软雅黑'}
+.login-box input[type="submit"]{width:247px;line-height:36px;font-family:'微软雅黑'}
+.login-box input[type="text"],.login-box input[type="password"]{height:36px}
+.ft{font-size:26px}
+.s{display:'block'}
+.h{display:'none'}
+.userTips,.pwdTips{color:red;margin-left:5px}

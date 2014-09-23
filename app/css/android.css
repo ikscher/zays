@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* CSS Document */
+body, ul, dl, dt, dd, h1, h2, h3, h4, h5, h6, h7, p, form {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #eee;
+    font-family: "宋体";
+    font-size: 12px;
+	margin:0 auto;
+}
+* {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+	list-style:none;
+}
+img{border:none;}
+a {
+    text-decoration: none;
+	outline:none;blr:expression(this.onFocus=this.blur());
+	border:none;
+}
+a:link, a:visited {
+    color: #000000;
+}
+a:hover, a:active {
+    color: #0000CC;
+}
+
+/* 头部 样式   */
+#header{background: url("../images/bg1.gif") repeat-x scroll 0 0 transparent;
+    color: #333333;
+    height: 30px;
+    line-height: 30px;
+	margin:0 auto;
+}
+#header .index {
+    float: right;
+    line-height: 30px;
+	color:#F00;
+	padding-right:10px;
+	font-size:14px;
+}
+#header a {
+    color: #333333;
+}
+#header a:hover { color:#F00; text-decoration:underline;}
+/* android 样式   */
+
+#android{ margin:0 auto; position:relative;}
+.az_bg1{ background:url(../images/Android_top.jpg) no-repeat; height:54px;}
+.az_bg2{ background:url(../images/android_r2_c1.jpg) no-repeat; height:105px;}
+.az_bg3{ background:url(../images/android_r3_c1.jpg) no-repeat; height:90px;}
+.az_bg4{ background:url(../images/android_r4_c1.jpg) no-repeat; height:98px;}
+.az_bg5{ background:url(../images/android_r5_c1.jpg) no-repeat; height:115px;}
+.az_bg6{ background:url(../images/android_r6_c1.jpg) no-repeat; height:160px;}
+.az_bg7{ background:url(../images/Android_btm.jpg) no-repeat; height:65px;}
+
+.az_btn{
+	background:url(../images/button1.png) no-repeat;
+	width:266px;
+	height:85px;
+	border:none;
+	display:block;
+	position:absolute;
+	left:271px;
+	top: 367px;
+}
+.az_bg5 a:hover{ background:url("../images/button3.png") no-repeat;
+	width:266px;
+	height:85px;
+	border:none;
+	cursor:pointer;
+	position:absolute;
+	left:271px;
+	top: 367px;}
+	
+.ew{
+	position:absolute;
+	left: 562px;
+	top: 376px;
+}
+
+/*  底部样式  */
+#footer {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.line1 {
+    background: none repeat scroll 0 0 #C63384;
+    height: 8px;
+}
+#footer p {
+    color: #D83C90;
+    font-size: 12px;
+    padding-top: 13px;
+    text-align: center;
+}
+.p6 a {
+    background: url("../images/image.png") no-repeat scroll -9px -258px transparent;
+    clear: both;
+    display: block;
+    height: 25px;
+    margin: 0 auto;
+    width: 512px;
+}

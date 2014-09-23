@@ -1,0 +1,56 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<!-- <script type="text/javascript" src="./../public/system/js/jquery-1.3.2.min.js"></script> -->
+
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1">--客服删除会员统计表{if $userid}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服ID: $userid{/if}</span>
+<!-- {if in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr'])}<span class="action-span"><a href="index.php?action=financial_tele_info&h=list">返回</a></span>{/if}{if in_array($GLOBALS['groupid'],$GLOBALS['admin_service_group'])}<span class="action-span"><a href="index.php?action=financial_tele_info&h=list&groupid='$groupid'">返回</a></span>{/if} --><span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{$u[2]}&{$u[3]}">刷新</a></span>
+	<div style="clear:both"></div>
+</h1>
+<div class="main">  
+  <div class="right">   
+    <div class="search_div">
+	<h1><span class="action-span1"><a href="###">当前数据时间：{$now_start}</a></span><span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{$u[2]}&{$u[3]}&time=8">$time_array['8']['2']</a></span><span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{$u[2]}&{$u[3]}&time=7">$time_array['7']['2']</a></span><span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{$u[2]}&{$u[3]}&time=6">$time_array['6']['2']</a></span><span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{$u[2]}&{$u[3]}&time=5">$time_array['5']['2']</a></span><span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{$u[2]}&{$u[3]}&time=4">$time_array['4']['2']</a></span><span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{$u[2]}&{$u[3]}&time=3">$time_array['3']['2']</a></span><span class="action-span"><a href="{php $u=explode('&',$_SERVER['QUERY_STRING']);}index.php?{$u[0]}&{$u[1]}&{$u[2]}&{$u[3]}&time=2">$time_array['2']['2']</a></span>
+	<div style="clear:both"></div></h1>	
+    </div>
+  <div class="list-div" id="listDiv">
+		{if $kefuid_list}
+			<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+			  <tr>
+				<th>客服ID</th>
+				<th>客服名称</th>	
+				<th>客服会员数</th>
+				<th>删除会员数</th>
+				<th>操作</th>
+			  </tr>
+			  {php $kefu_list=explode(',',$kefuid_list['manage_list'])}
+			  {loop $kefe_inf_arr $key $kefu_list}
+			  
+				<tr><td>$kefu_list['uid']</td>
+					  <td>$kefu_list['username']</td>
+					  <td>$kefu_list['member_count']</td>
+					  <td>$del_user_num[$key]</td>				  
+					  <td><a onclick="parent.addTab('查看$kefu_list['uid']号客服的删除会员记录','index.php?action=financial_tele_info&h=delcount&kefuid=$kefu_list['uid']','icon')" href="#">查看</a></td>
+				</tr>
+				{/loop}
+				
+			</table>
+		{else}
+			<table cellspacing='1' cellpadding='3' id='list-table' class ="csstab">
+			  <tr>
+				<th> 会员ID</th>
+				<th>删除会员客服</th>
+				<th>删除时间</th>	
+			  </tr>
+			  {loop $del_user_num_arr $key $kefu_list}
+				<tr>
+					  <td><a href="#" class="userinfo" onclick="parent.addTab('查看{$kefu_list['uid']}资料','index.php?action=allmember&h=view_info&uid={$kefu_list['uid']}','icon')">$kefu_list['uid']</a></td>
+					  <td>$kefu_list['username']</td>
+					  <td>{php echo date("Y-m-d H:i",$kefu_list['dateline'])}</td>
+				</tr>
+				{/loop}
+				<tr><td  colspan="6">{$page_links}</td></tr>
+			</table>
+		{/if}
+	</div>
+
+ </div>

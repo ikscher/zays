@@ -1,0 +1,75 @@
+.story{font-size:12px;height:auto;width:982px}
+.marry_top{height:138px;background:url(images/story-top.gif) no-repeat;position:relative;}
+.marry_top .float{background:url(images/float.gif) no-repeat;position:absolute;width: 230px;height: 164px;z-index: 1;margin: -9px 0px 0px -9px;}
+.up_top{height:138px;background:url("images/up-data-bg.gif") no-repeat}
+.updata-box{float:right;padding-right:30px;padding-top:40px}
+.updata-box a{background:url(images/story-buttons.gif) no-repeat;color:#fff;display:inline;float:left;font-weight:bold;height:30px;line-height:30px;margin-left:15px;text-align:center;width:106px;border:0}
+.updata-box a:hover{background-position:bottom}
+.marry{padding-top:50px}
+.m_fleft{color:#666;float:left;font-size:14px;padding-left:100px}
+.m_fright{float:right;padding-right:40px}
+.m_fright a{color:#d73e90;font-size:14px}
+.marrybig{border:2px solid #e7e7e7;border-top:0;background:#fff;padding:0 22px 20px 23px}
+.marrysmall{border:1px solid #f5e3f5;border-top:0;background:#fff7ff;padding:30px 30px 100px 40px}
+.picbig{background:url(images/bigpic.jpg) repeat scroll 0 0 transparent;float:left;height:230px;width:299px}
+.lovebox{height:180px;width:280px}
+.picbig img,.picbig2 img,.picbig3 img{margin:6px 0 0 6px}
+.picbig p,.picbig2 p,.picbig3 p{color:#666;float:left;font-size:14px;padding-left:10px;padding-top:15px}
+.picbig2{background:url(images/bigpic1.gif);width:299px;height:230px;float:left}
+.picbig3{background:url(images/bigpic2.gif) bottom;width:299px;height:230px;float:left}
+.picbig img,.picbig2 img,.picbig3 img{_margin-bottom:-5px}
+.m_text{padding-left:20px;float:left;width:460px}
+.m_text h3{background:url(images/title.gif) no-repeat;height:48px;font-size:14px;color:#4d4d4d;line-height:48px;padding-left:50px}
+.detailbox h3{background:url("images/title.gif") no-repeat scroll 0 0 transparent;color:#4d4d4d;float:left;font-size:14px;height:48px;line-height:48px;padding-left:50px;width:510px}
+.detail{padding-left:30px;color:#666}
+.m_title{line-height:40px;margin-bottom:10px;width:500px;zoom:1}
+.detail p{line-height:25px;float:left;white-space:normal;word-break:break-all;word-wrap:break-word}
+.detail p a,.m_title span{color:#d73c90}
+.singmarry{display:inline;float:left;height:265px;margin-top:30px;padding-right:20px;width:265px}
+.marriage{background:url("images/smallbg.jpg") no-repeat scroll 0 0 #fef7ff;float:left;height:204px;width:265px}
+.engagement{background:url(images/smallbg2.jpg) no-repeat;width:265px;height:204px;float:left}
+.love{background:url(images/smallbg3.jpg) no-repeat;width:265px;height:204px;float:left}
+.lovesamll{height:162px;width:252px}
+.marriage img,.love img,.engagement img{display:inline;margin:7px 0 0 7px}
+.singmarry p{clear:both;padding-top:10px}
+.f146{color:#666;font-size:14px;font-weight:bold}
+.detailbox span,.singmarry span{color:#666;float:left;padding:15px 0 0 15px;width:250px}
+.detailbox-left{background:#fef7ff;float:left;height:230px;padding-right:30px;width:256px}
+.look-photo{line-height:40px;text-align:center}
+.look-photo a{background:url("images/look.jpg") no-repeat scroll right center transparent;color:#d73e90;padding:20px 30px 20px 0;text-align:center;text-decoration:underline}
+.story-text{float:left;width:500px}
+.story-text dt{line-height:40px;margin-bottom:10px;width:500px}
+.story-text dd{color:#666;line-height:25px;background:url("images/line.gif")}
+.story-text dd a{color:#d70e93}
+.pages{color:#303030;line-height:24px;padding-left:200px;padding-top:40px;text-align:center}
+.page_btn{float:left;width:68px;height:26px;border:0;color:#d73e90;background:url(images/buttons.gif) no-repeat;cursor:pointer;font-weight:700;margin:0 10px}
+.page_ye{float:left;padding:0 10px}
+.page_ye a{color:#666;font-size:14px;line-height:24px;padding:2px 10px;border:1px solid #e8e5e5;margin:0 3px}
+.page_ye font{padding:2px 10px;border:1px solid #e8e5e5;font-size:14px;line-height:24px;margin:0 3px}
+.page_link{color:#d73c90}
+.up-data-center{width:100%;margin-top:50px;font-size:14px;float:left}
+.up-data-center dt,.up-data-center dd{float:left}
+.up-data-center dt{width:40%;text-align:right;height:40px;line-height:40px}
+.up-data-center dd{width:60%;padding-top:10px!important;height:30px!important;padding-top:8px;height:32px}
+.up-data-buttons{margin-top:20px}
+.up-data-table{margin-top:50px;font-size:14px}
+.up-data-table td{line-height:25px;height:40px}
+.up-data-table td p{margin-bottom:15px}
+.f-12x{font-size:12px;color:#666}
+.s_message{padding:0;margin-top:10px}
+.s_message li{padding:5px 30px 5px 40px;background:#f6f6f6;margin-bottom:10px}
+.s_message li.none_bg{background:0}
+.s_message li.none_bg .s_btn{float:right;width:68px;height:26px;margin-top:10px;border:0;color:#d73e90;background:url(images/buttons.gif) no-repeat;cursor:pointer;font-weight:700}
+.s_text{width:860px;height:80px;border:1px solid #ccc;color:#666;overflow-y:scroll}
+.s_message li p{margin-bottom:10px}
+.s_message li .s_title{color:#333}
+.s_message li .s_title span{float:right}
+.s_message li .s_title a{color:#1f95a3}
+.s_message li .s_content{line-height:180%;color:#666}
+.s_message li.pages{color:#666}
+.s_message li.pages a{color:#c00}
+.content-title{width:982px;float:left}
+.c-center{width:980px;float:left;font-size:14px}
+.content-bottom{width:981px;float:left;font-size:0}
+.announce-box{padding:20px 25px;line-height:24px}
+.announce-box p{text-indent:28px}

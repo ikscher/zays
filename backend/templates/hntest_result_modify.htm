@@ -1,0 +1,145 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script>
+$(function(){
+	var parent = $("#father_class").val();
+	if(parent){
+		var url = "hntest_ajax.php?h=class_children&parent="+parent+"&select=<!--{$results['rtype']}-->";
+		$.get(url,function(str){
+			$("#children_class").empty();
+			if(str == 'no'){
+				$("#children_class").append("<option value=\"\">请选择</option>");
+			}else{
+				$("#children_class").append(str);
+			}
+		});
+	}
+	$("#father_class").change(function(){
+		var parent = this.value;
+		$.get("hntest_ajax.php?h=class_children&parent="+parent,function(str){
+			$("#children_class").empty();
+			if(str == 'no'){
+				$("#children_class").append("<option value=\"\">请选择</option>");
+			}else{
+				$("#children_class").append(str);
+			}
+		});
+	});
+})
+function check(){
+	var children = $("#children_class").val();
+	var st_scores = $("input[name='st_scores']").val();
+	var ed_scores = $("input[name='ed_scores']").val();
+	var result = $.trim($("#result").val());
+	if(st_scores < 1 || ed_scores < 1){
+		alert('起始分数请填写');
+		return false;
+	}
+	if(result.length < 10){
+		alert('请填写结果内容');
+		return false;
+	}
+	if(!children){
+		return confirm('没有选择子类型，结果将作为综合结果');
+	}
+	return true;
+}
+var Cursor = {start:0, end:0}
+function strEdit(act){
+	var act = act;
+	var start = Cursor.start;
+	var end = Cursor.end;
+	var textBox = document.getElementById("result");  
+	var pre = textBox.value.substr(0, start);
+	var selectstr = textBox.value.substr(start,end-start);
+	var post = textBox.value.substr(end);
+	switch(act){//<strong></strong>
+		case 'br':
+			textBox.value = pre + '<br />' + post;
+		break;
+		case 'bold':
+			textBox.value = pre + '<strong>' + selectstr + '</strong>' + post;  
+		break;
+	}
+}  
+function savePos(textBox){
+	var start = Cursor.start;
+	var end = Cursor.end;
+	if(typeof(textBox.selectionStart) == "number"){  
+		start = textBox.selectionStart;  
+		end = textBox.selectionEnd;  
+	}  
+	else if(document.selection){  
+		var range = document.selection.createRange();  
+		if(range.parentElement().id == textBox.id){
+			var range_all = document.body.createTextRange();  
+			range_all.moveToElementText(textBox); 
+			for (start=0; range_all.compareEndPoints("StartToStart", range) < 0; start++)  
+			range_all.moveStart('character', 1);  
+			for (var i = 0; i <= start; i ++){  
+				if (textBox.value.charAt(i) == '\n')  
+				start++;  
+			}
+			var range_all = document.body.createTextRange();  
+			range_all.moveToElementText(textBox);
+			for (end = 0; range_all.compareEndPoints('StartToEnd', range) < 0; end ++)  
+			range_all.moveStart('character', 1);
+			for (var i = 0; i <= end; i ++){  
+				if (textBox.value.charAt(i) == '\n')  
+				end ++;  
+			}  
+		}  
+	}
+	Cursor.start = start;
+	Cursor.end = end;
+}  
+</script>
+<h1>
+<span class="action-span1"><a href="###">真爱一生网 测试管理</a> </span><span id="search_id" class="action-span1"> - 测试结果</span>
+<span class="action-span"><a href="index.php?action=hntest&h=result_list">返回</a></span>
+<div style="clear:both"></div>
+</h1>
+<div class="list-div" id="listDiv">
+<form name="classForm" action="" method="post" onsubmit="return check();">
+<table id="question_box">
+	<tr>
+    	<td>
+        测试题目：
+        <select name="father_id" id="father_class">
+        	{loop $parent_class $v}
+            <option value="{$v['tc_id']}"{if $results['tc_id'] == $v['tc_id']} selected="selected"{/if}>{$v['test_name']}</option>
+            {/loop}
+        </select>
+        测试类别：
+        <select name="tc_id" id="children_class">
+        	<option value="">请选择</option>
+        </select>
+        </td>
+    </tr>
+    <tr>
+    	<td>分 数 段：<input type="text" name="st_scores" value="{$last_ed_scores}" maxlength="3" size="4" /> 到 
+        <input type="text" name="ed_scores" value="{$results['ed_scores']}" maxlength="3" size="4" />分 &nbsp;&nbsp;&nbsp;&nbsp; 结果名称：<input type="text" name="ctypename" value="{$results['ctypename']}" />（有需要的时候填写）
+        </td>
+    </tr>
+    <tr>
+        <td>结果内容：<input type="button" onclick="strEdit('br');" value="换 行" /><input type="button" onclick="strEdit('bold');" value="加 粗" /><br />
+        	<textarea name="result" id="result" onKeydown="savePos(this)"  
+                            onKeyup="savePos(this)"  
+                            onmousedown="savePos(this)"  
+                            onmouseup="savePos(this)"  
+                            onfocus="savePos(this)" cols="80" rows="8">{$results['result']}</textarea>
+        </td>
+    </tr>
+    <tr>
+		<td>
+        <input type="submit" class="button" value="提 交" />
+        <input type="hidden" name="id" value="{$id}" />
+        <input type="hidden" name="action" value="hntest" />
+        <input type="hidden" name="h" value="result_modify" />
+        </td>
+	</tr>
+</table>
+</form>
+</div>

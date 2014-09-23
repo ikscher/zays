@@ -1,0 +1,65 @@
+<link href="templates/css/general.css" rel="stylesheet" type="text/css" />
+<link href="templates/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<script type="text/javascript">
+function checkForm(){
+	var pid = $("#pid").val();
+	var ty_pe = $("#ty_pe").val();
+	var bgcounts  = parseInt($("#bgcounts").val());
+	var endcounts = parseInt($("#endcounts").val());
+	var results = $("#results").val();
+	
+	if( !pid || !ty_pe || !bgcounts || !endcounts || !results){
+		alert("请将信息填写完整");
+		return false;
+	}
+	if(bgcounts >= endcounts){
+		alert("请正确填写分数范围");
+		return false;
+	}
+}
+</script>
+<h1> <span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 添加测试评分结果</span>
+	<div style="clear:both"></div>
+</h1>
+<span class="action-span1">添加测试评分结果</span>：
+<form action="index.php?action=site_lovetype&h=add" method="post" onsubmit="return checkForm();">
+<div class="list-div">
+
+		<table width="100%">
+			<tr>
+				<td width="100" height="25" align="right">测试分类：</td>
+				<td align="left"><select name="pid" id="pid">
+						<option value="" selected="selected">--请选择--</option>			
+						{loop $lovetype_list $v}
+						<option value="{$v['qid']}">{$v['title']}</option>
+						{/loop}
+					</select></td>
+			</tr>
+			<tr>
+				<td width="100" height="25" align="right">爱情测试类型：</td>
+				<td align="left"><select name="ty_pe" id="ty_pe">
+				<option value="" selected="selected">--请选择--</option>	
+					{loop $love_type $k $v}
+					<option value="{$k}">{$v}</option>
+					{/loop}
+					</select></td>
+			</tr>
+			<tr>
+				<td width="100" height="25" align="right">分数范围：</td>
+				<td align="left"><input name="bgcounts" type="text" id="bgcounts"  size="5" />
+					----
+					<input name="endcounts" type="text" id="endcounts" size="5" />
+					分</td>
+			</tr>
+			<tr>
+				<td width="100" height="25" align="right">结果：</td>
+				<td align="left"><textarea name="results" id="results" cols="45" rows="5"></textarea></td>
+			</tr>
+		</table>
+</div>
+<p/>
+<input name="ispost" type="hidden" id="ispost" value="1" />
+<input name="提交" type="submit" value=" 添 加 " />
+</form>
