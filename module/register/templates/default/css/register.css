@@ -1,4 +1,4 @@
-@charset "utf-8";.content-lift,.content-title{width:678px;float:left}
+.content-lift,.content-title{width:678px;float:left}
 .c-center{width:676px;float:left;font-size:14px}
 .content-bottom{width:677px;float:left;font-size:0}
 .c-center-data{margin-top:40px;float:left}
@@ -48,3 +48,7 @@ label.female{background-position: 5px -27px;}
 .fff{color:#fff;}
 .footer{padding-top:10px;color:#999;}
 .footer a{color:#999;text-decoration:none;}
+.centent-center dl{padding: 10px 20px 0 15px;}
+.centent-center dt{margin-top:10px;}
+.centent-center dd{margin-left:1em;}
+.centent-center {padding-bottom:20px;}

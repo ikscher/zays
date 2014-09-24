@@ -15,7 +15,7 @@
     });
 </script>
 <?php if(isset($isdisp) && $isdisp) { ?>
-<div style="disptips">没有查询到完全符合条件的会员，下面是我们给您推荐的会员！</div>
+<div class="disptips">没有查询到完全符合条件的会员，下面是我们给您推荐的会员！</div>
 <?php } ?>
 <?php foreach((array)$user as $k=>$users) {?>
 <ul class="search-page-info">  <!--index.php?n=space&uid=<?php echo $users['uid'];?>-->

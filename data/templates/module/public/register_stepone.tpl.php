@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>会员注册——真爱一生网</title>
-{template system/js_css public}
+<?php include MooTemplate('system/js_css','public'); ?>
 <link rel="stylesheet" type="text/css" href="public/default/css/font.css">
 <link href="module/register/templates/default/css/register.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="module/register/templates/public/js/commonValidate.js"></script>
@@ -319,25 +319,25 @@ function secode(){
             <div class="c-center">
 			<dl class="c-center-data">
 				<!-- <dt><span class="f-ed0a91">*</span> 验 证 码：</dt>
-				<dd><p style="width:160px;"><input name="seccode" type="text" id="seccode" class="c-center-data-text" value="{php echo isset($arr2['seccode'])?$arr2['seccode']:''}"/></p><p id="show_seccode"><img id="code" src="index.php?n=register&h=seccode" border="0" onclick="javascript:this.src='index.php?n=register&h=seccode&update=' + Math.random();" style="margin-top:2px;cursor:pointer;" /></p>
+				<dd><p style="width:160px;"><input name="seccode" type="text" id="seccode" class="c-center-data-text" value="<?php echo isset($arr2['seccode'])?$arr2['seccode']:''?>"/></p><p id="show_seccode"><img id="code" src="index.php?n=register&h=seccode" border="0" onclick="javascript:this.src='index.php?n=register&h=seccode&update=' + Math.random();" style="margin-top:2px;cursor:pointer;" /></p>
 					<p><a class="next-yz" onclick="javascript:$('#code').attr('src','index.php?n=register&h=seccode&updatak='+Math.random())" style="cursor:pointer;">&larr; 看不清</a></p>
 				</dd> -->
 				
 				<dt><span class="f-ed0a91">*</span> 注册邮箱：</dt>
-				<dd><p style="width:160px;"><input type="text" name="username" id="username" class="c-center-data-text" onfocus="show_username();"  value="{php echo isset($arr2['username'])?$arr2['username']:''}"/></p><p id="validateemailID" class="register-clue" style="display:none"></p></dd>
+				<dd><p style="width:160px;"><input type="text" name="username" id="username" class="c-center-data-text" onfocus="show_username();"  value="<?php echo isset($arr2['username'])?$arr2['username']:''?>"/></p><p id="validateemailID" class="register-clue" style="display:none"></p></dd>
 				<dt><span class="f-ed0a91">*</span> 真爱一生密码：</dt>
-				<dd><p style="width:160px;"><input type="password" name="password" id="password" class="c-center-data-text" onfocus="show_password();"  value="{php echo isset($arr2['password'])?$arr2['password']:''}"/></p><p id="pwdtip" class="register-clue-w" style="display:none"></p></dd>
+				<dd><p style="width:160px;"><input type="password" name="password" id="password" class="c-center-data-text" onfocus="show_password();"  value="<?php echo isset($arr2['password'])?$arr2['password']:''?>"/></p><p id="pwdtip" class="register-clue-w" style="display:none"></p></dd>
 				<dt><span class="f-ed0a91">*</span> 确认密码：</dt>
-				<dd><p style="width:160px;"><input type="password" name="password2" id="password2" class="c-center-data-text" onfocus="show_password2();"  value="{php echo isset($arr2['password2'])?$arr2['password2']:''}"/></p><p id="pwdtip2" class="register-clue" style="display:none"></p></dd>
+				<dd><p style="width:160px;"><input type="password" name="password2" id="password2" class="c-center-data-text" onfocus="show_password2();"  value="<?php echo isset($arr2['password2'])?$arr2['password2']:''?>"/></p><p id="pwdtip2" class="register-clue" style="display:none"></p></dd>
 				<dt><span class="f-ed0a91">*</span> 性&nbsp;&nbsp;&nbsp;&nbsp;别：</dt>
 				<dd><p style="width:160px;margin-top:10px;">
-				<span style="width:80px;display:inline-block"><input type="radio" class="fn_left" name="gender" value="0" checked="checked" id="mysex1" onfocus="javascript:$('#radio_mysex').css('display','');" onblur="javascript:$('#radio_mysex').css('display','none');" {if isset($arr2['gender'])}{if $arr2['gender']==0}checked="checked"{/if}{/if} /><label for="mysex1" class="gender male fn_left">男</label></span>
+				<span style="width:80px;display:inline-block"><input type="radio" class="fn_left" name="gender" value="0" checked="checked" id="mysex1" onfocus="javascript:$('#radio_mysex').css('display','');" onblur="javascript:$('#radio_mysex').css('display','none');" <?php if(isset($arr2['gender'])) { ?><?php if($arr2['gender']==0) { ?>checked="checked"<?php } ?><?php } ?> /><label for="mysex1" class="gender male fn_left">男</label></span>
 				
-				<span style="width:70px;display:inline-block"><input type="radio" class="fn_left" name="gender" value="1" id="mysex2" onfocus="javascript:$('#radio_mysex').css('display','');" onblur="javascript:$('#radio_mysex').css('display','none');" {if isset($arr2['gender'])}{if $arr2['gender']==1}checked="checked"{/if}{/if}/><label for="mysex2" class="gender female fn_left">女</label></span>
+				<span style="width:70px;display:inline-block"><input type="radio" class="fn_left" name="gender" value="1" id="mysex2" onfocus="javascript:$('#radio_mysex').css('display','');" onblur="javascript:$('#radio_mysex').css('display','none');" <?php if(isset($arr2['gender'])) { ?><?php if($arr2['gender']==1) { ?>checked="checked"<?php } ?><?php } ?>/><label for="mysex2" class="gender female fn_left">女</label></span>
 				</p><p id="radio_mysex" class="register-clue" style="display:none;font-size:14px">此项注册后不可更改，请谨慎填写.</p></dd>
 				<dt><span class="f-ed0a91">*</span> 手&nbsp;&nbsp;&nbsp;&nbsp;机：</dt>
 				<dd><p style="width:160px;">
-				  <input name="telphone" id="telphone" type="text" maxlength="11" class="c-center-data-text" onfocus="show_telphone();"  value="{php echo isset($arr2['telphone'])?$arr2['telphone']:''}"/>
+				  <input name="telphone" id="telphone" type="text" maxlength="11" class="c-center-data-text" onfocus="show_telphone();"  value="<?php echo isset($arr2['telphone'])?$arr2['telphone']:''?>"/>
 				  <input name="mustphone" type="hidden" id="mustphone" value="1" />
                 <!--<input name="telphonecheck" type="hidden" value="1" />-->
                 </p>
@@ -346,51 +346,51 @@ function secode(){
                 <p id="phone_err" class="register-clue" style="display:none"></p></dd>
                  <!--  <dt> 备用号码：</dt>
 				<dd><p style="width:160px;">
-				  <input name="telphone_back" id="telphone_back" type="text" class="c-center-data-text" onfocus="show_phoneback();"   value="{php echo isset($arr2['callno'])?$arr2['callno']:''}"/>
+				  <input name="telphone_back" id="telphone_back" type="text" class="c-center-data-text" onfocus="show_phoneback();"   value="<?php echo isset($arr2['callno'])?$arr2['callno']:''?>"/>
                 </p>
                 <p id="phoneback_err" class="register-clue" style="display:none;"></p></dd>
 				<dt><span class="f-ed0a91">*</span> 出生日期：</dt>
 				<dd><p>
-					  <script>getYearsSelect('','year','year','{php echo isset($arr2[year])?$arr2[year]:''}','0');</script>
-					  <script>getMonthsSelect('','month','month','{php echo isset($arr2[month])?$arr2[month]:''}','0');</script>
-                      <script>getDaysSelect('','day','day','{php echo isset($arr2[hday])?$arr2[hday]:''}','0');</script>
+					  <script>getYearsSelect('','year','year','<?php echo isset($arr2['year'])?$arr2['year']:''?>','0');</script>
+					  <script>getMonthsSelect('','month','month','<?php echo isset($arr2['month'])?$arr2['month']:''?>','0');</script>
+                      <script>getDaysSelect('','day','day','<?php echo isset($arr2['hday'])?$arr2['hday']:''?>','0');</script>
                 </p></dd>
 				<dt><span class="f-ed0a91">*</span> 工作地区：</dt>
 				<dd><p> 
-				   <script>getProvinceSelect43rds('','workprovincereg','workprovincereg','workcitys','{php echo isset($arr2[workprovince])?$arr2[workprovince]:0}','10100000');</script>
+				   <script>getProvinceSelect43rds('','workprovincereg','workprovincereg','workcitys','<?php echo isset($arr2['workprovince'])?$arr2['workprovince']:0?>','10100000');</script>
 				   
-                   <script>getCitySelect43rds('','workcitys','workcity','{php echo isset($arr2[workcity])?$arr2[workcity]:''}','');</script>  
+                   <script>getCitySelect43rds('','workcitys','workcity','<?php echo isset($arr2['workcity'])?$arr2['workcity']:''?>','');</script>  
                 </p></dd>
 				<dt><span class="f-ed0a91">*</span> 目前所在地：</dt>
 				<dd><p> 
-				   <script>getProvinceSelect43rds('','currentprovince','currentprovince','currentcity','{php echo isset($arr2[currentprovince])?$arr2[currentprovince]:0}','10100000');</script>
-				   <script>getCitySelect43rds('','currentcity','currentcity','{php echo isset($arr2[currentcity])?$arr2[currentcity]:''}','');</script>  
+				   <script>getProvinceSelect43rds('','currentprovince','currentprovince','currentcity','<?php echo isset($arr2['currentprovince'])?$arr2['currentprovince']:0?>','10100000');</script>
+				   <script>getCitySelect43rds('','currentcity','currentcity','<?php echo isset($arr2['currentcity'])?$arr2['currentcity']:''?>','');</script>  
                 </p></dd>
 				<dt><span class="f-ed0a91">*</span> 籍贯所在地：</dt>
 				<dd><p> 
-					<script>getProvinceSelect43rds('','hometownprovince','hometownprovince','hometowncity','{php echo isset($arr2[hometownprovince])?$arr2[hometownprovince]:0}','10100000');</script>
-				    <script>getCitySelect43rds('','hometowncity','hometowncity','{php echo isset($arr2[hometowncity])?$arr2[hometowncity]:''}','');</script>
+					<script>getProvinceSelect43rds('','hometownprovince','hometownprovince','hometowncity','<?php echo isset($arr2['hometownprovince'])?$arr2['hometownprovince']:0?>','10100000');</script>
+				    <script>getCitySelect43rds('','hometowncity','hometowncity','<?php echo isset($arr2['hometowncity'])?$arr2['hometowncity']:''?>','');</script>
                 </p></dd>
 				<dt>期望交友地区：</dt>
 				<dd><p>  
-				   <script>getProvinceSelect43rds('','friendprovince[0]','friendprovince[0]','friendcity[0]','{php echo isset($arr2[friendprovince])?$arr2[friendprovince]:0}','10100000');</script>
-				   <script>getCitySelect43rds('','friendcity[0]','friendcity[0]','{php echo isset($arr2[friendcity])?$arr2[friendcity]:''}',''); </script>
+				   <script>getProvinceSelect43rds('','friendprovince[0]','friendprovince[0]','friendcity[0]','<?php echo isset($arr2['friendprovince'])?$arr2['friendprovince']:0?>','10100000');</script>
+				   <script>getCitySelect43rds('','friendcity[0]','friendcity[0]','<?php echo isset($arr2['friendcity'])?$arr2['friendcity']:''?>',''); </script>
                    <span style="cursor: pointer; font-size:12px; color:#d73c90" onclick="add_friendcity()"> 添加交友地区</span>
                 </p></dd>
 				</dl>
             <dl id="friendprovince_1" class="c-center-data" style="margin-top:0;display:none">
             <dt>期望交友地区：</dt>
                 <dd><p>
-                   <script>getProvinceSelect43rds('','friendprovince[1]','friendprovince[1]','friendcity[1]','{php echo isset($arr2[friendprovince1])?$arr2[friendprovince1]:0}','10100000');</script>
-				   <script>getCitySelect43rds('','friendcity[1]','friendcity[1]','{php echo isset($arr2[friendcity1])?$arr2[friendcity1]:''}','');</script>
+                   <script>getProvinceSelect43rds('','friendprovince[1]','friendprovince[1]','friendcity[1]','<?php echo isset($arr2['friendprovince1'])?$arr2['friendprovince1']:0?>','10100000');</script>
+				   <script>getCitySelect43rds('','friendcity[1]','friendcity[1]','<?php echo isset($arr2['friendcity1'])?$arr2['friendcity1']:''?>','');</script>
                    <span style="cursor: pointer;font-size:12px; color:#d73c90" onclick="hide_friendcity('1')"> 删除交友地区</span>
                 </p></dd>
                 </dl>
             <dl id="friendprovince_2" class="c-center-data" style="margin-top:0;display:none">
                 <dt>期望交友地区：</dt>
                 <dd><p>
-                   <script>getProvinceSelect43rds('','friendprovince[2]','friendprovince[2]','friendcity[2]','{php echo isset($arr2[friendprovince2])?$arr2[friendprovince2]:0}','10100000');</script>
-				   <script>getCitySelect43rds('','friendcity[2]','friendcity[2]','{php echo isset($arr2[friendcity2])?$arr2[friendcity2]:''}','');</script>
+                   <script>getProvinceSelect43rds('','friendprovince[2]','friendprovince[2]','friendcity[2]','<?php echo isset($arr2['friendprovince2'])?$arr2['friendprovince2']:0?>','10100000');</script>
+				   <script>getCitySelect43rds('','friendcity[2]','friendcity[2]','<?php echo isset($arr2['friendcity2'])?$arr2['friendcity2']:''?>','');</script>
                    <span style="cursor: pointer;font-size:12px; color:#d73c90" onclick="hide_friendcity('2')"> 删除交友地区</span>
                 </p></dd>-->
                 </dl> 
