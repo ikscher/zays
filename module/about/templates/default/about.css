@@ -1,17 +1,17 @@
-@charset "utf-8";body{font-size:14px}
+body{font-size:14px}
 .content-title,.content-bottom{width:982px;height:4px;font-size:0;border:0}
-.c-center{width:980px;float:left}
+.c-center{width:978px;float:left}
 .about-left,.about-left-box{float:left;width:180px}
 .about-left-box{background:#fff7fb;margin-top:15px}
 .about-left{padding-left:20px}
 .about-left-box-side{background:url(images/left-side.gif) no-repeat;height:3px;font-size:0}
 .about-left-box-center{width:178px;border-left:1px solid #fde0fb;border-right:1px solid #fde0fb}
-.about-left-nav{padding:15px 0;line-height:30px}
+.about-left-nav{line-height:60px}
 .about-left-nav li{background:url(images/left-line.gif) no-repeat bottom;padding-left:60px}
 .about-left-nav li a{color:#000}
 .about-left-nav li a:hover{text-decoration:underline}
 .go-reg{display:block;position:relative;width:180px;height:78px}
-.about-right{padding-left:25px;width:755px;float:left;margin-top:20px}
+.about-right{padding-left:25px;width:753px;float:left;margin-top:20px}
 .about-right-text{padding-top:10px;line-height:20px}
 #about-media{background-image:url(images/about-bg.gif);width:755px;background-repeat:no-repeat;background-position:right bottom}
 .about-right-text .about-content{line-height:2}
@@ -70,3 +70,4 @@
 .i-honor-content dt{text-align:center;padding:15px 0}
 .i-honor-content dd{background:url(images/medal-icon.gif) no-repeat 0 2px;color:#F00;font-size:12px;line-height:25px;padding-left:35px}
 .i-honor-content dd a{color:#F00}
+ul li{height:60px;line-height:60px;}

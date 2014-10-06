@@ -378,6 +378,7 @@ function SendMsg($mobile,$content,$type=0){
 	    //$uid = '55220';		//用户账号
 	    // $pwd = '8p6hri';		//密码
 		//SendMsg_gao($mobile,$content);
+		$content.='回N退订';
 		return sendSMS_mm($mobile,$content);
 	}
     //if(is_array($mobile)) $mobile=implode(',',$mobile);

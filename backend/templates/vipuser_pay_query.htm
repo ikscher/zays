@@ -59,6 +59,7 @@ $(function(){
 			<th width="10%">申请时间</th>
 			<th width="8%">会员ID</th>
 			<th width="2%">性别</th>
+			<th width="2%">年龄</th>
 			<th width="10%">购买信息</th>
 			
 			<th width="8%">支付金额</th>
@@ -71,11 +72,13 @@ $(function(){
 		  </tr>
 		  {loop $payment_list $k $pay}
 		   <tr id="tr_{$pay['id']}">
+		    
 		    <td align="center">{php echo $k+1;}</td>
 			<td align="center"><a href="index.php?action=vipuser&h=pay_query&sid={$pay['apply_sid']}">$GLOBALS['kefu_arr'][$pay['apply_sid']]</a></td>
 			<td align="center">{php if($pay['apply_time'])	echo date('Y-m-d H:i:s',$pay['apply_time'])}</td>
 			<td align="center"><a class="uid" href="#">{$pay['uid']}</a></td>
 			<td align="center">{if $pay['gender']}女{else}男{/if}</td>
+			<td align="center">{php if($pay['birth']>0) echo $age=date('Y') - $pay['birth'];}</td>
 			<td align="center">{$pay['apply_note']}</td>
 			
 			<td align="center">{$pay['pay_money']}元</td>

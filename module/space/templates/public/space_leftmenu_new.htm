@@ -354,6 +354,10 @@ function pop(){
 					    alert('同性之间不能发送绑定');
 					}else if(str=='closeInfo'){
 					    alert('对方会员资料已经关闭了！');
+					}else if(str=='alreadySended'){
+					    alert('您已经发送过了绑定！');
+					}else if(str=='alreadyBinded'){
+					    alert('您已经和对方在绑定状态中！');
 					}else if(str=='telNo'){
 					    location.href='index.php?n=myaccount&h=telphone';
 					}else{

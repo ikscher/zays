@@ -916,7 +916,7 @@ function vipuser_pay_query(){
 	$result = $GLOBALS['_MooClass']['MooMySQL']->getOne($sql);
     $total=isset($result['total'])?$result['total']:0;
     
-    $sql = "SELECT pn.apply_sid, pn.apply_time, pn.uid, pn.pay_service, pn.plus_time, pn.give_city_star, pn.pay_money, pn.pay_time, pn.pay_type, pn.pay_bank, pn.check_order_sid, pn.check_sid, pn.check_time, pn.contact, pn.pay_info, pn.apply_note, pn.status, pn.id,mb.source,ms.gender FROM web_payment_new  pn left join web_members_base mb on pn.uid=mb.uid  left join web_members_search ms on pn.uid=ms.uid $where ORDER BY pn.id DESC LIMIT {$offset},{$limit}"; // updated file
+    $sql = "SELECT pn.apply_sid, pn.apply_time, pn.uid, pn.pay_service, pn.plus_time, pn.give_city_star, pn.pay_money, pn.pay_time, pn.pay_type, pn.pay_bank, pn.check_order_sid, pn.check_sid, pn.check_time, pn.contact, pn.pay_info, pn.apply_note, pn.status, pn.id,mb.source,ms.gender,mb.birth FROM web_payment_new  pn left join web_members_base mb on pn.uid=mb.uid  left join web_members_search ms on pn.uid=ms.uid $where ORDER BY pn.id DESC LIMIT {$offset},{$limit}"; // updated file
 
     $payment_list = $GLOBALS['_MooClass']['MooMySQL']->getAll($sql,0,0,0,true);
 	

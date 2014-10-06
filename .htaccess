@@ -24,6 +24,8 @@ RewriteRule contact.html$      index.php?n=about&h=contact
 RewriteRule story.html$        index.php?n=story 
 RewriteRule links.html$        index.php?n=about&h=links 
 RewriteRule advices.html$      index.php?n=about&h=getsave 
+RewriteRule recruit.html$      index.php?n=about&h=recruit 
+RewriteRule privacy.html$      index.php?n=about&h=privacy 
 RewriteRule payDetail.html$    index.php?n=payment&h=payDetail 
 RewriteRule othervip.html$     index.php?n=index&h=add_vip 
 RewriteRule cityStar.html$     index.php?n=payment&h=city_star_intro 
@@ -31,6 +33,7 @@ RewriteRule cityStar.html$     index.php?n=payment&h=city_star_intro
 RewriteRule register.html$     index.php?n=register 
 RewriteRule login.html$        index.php?n=login 
 RewriteRule logout.html$        index.php?n=index&h=logout
+RewriteRule nationalday.html$        index.php?n=events&h=nationalday
 
 RewriteRule forget.html$          index.php?n=login&h=backpassword 
 RewriteRule aboutus.html$         index.php?n=about&h=us 

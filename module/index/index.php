@@ -821,7 +821,7 @@ function index_index() {
 	} */
     
 	include("./module/crontab/crontab_config.php");
-	$uidList='31001556,30130525,30096281,30062353,30046030 ,30189647,30047307,30094405,30074391,30118484,30075888,30195034,30096435,30057803';
+	$uidList='30189630,30130525,30115979 ,30062353,30174298 ,30189647,30151696 ,30094405,30074391,30118484,30075888,30195034,30220706,30057803';
 	//$sql="SELECT s.uid,s.nickname,s.gender,s.images_ischeck,s.province,s.city,s.birthyear,s.s_cid,s.city_star,b.mainimg,s.pic_num FROM {$dbTablePre}members_search s left join {$dbTablePre}members_base b on s.uid=b.uid WHERE s.is_lock=1 and s.showinformation=1 and s.gender=0 and s.images_ischeck=1  and s.usertype=1 and s.s_cid<=30 order by s.s_cid asc limit 7";
 	$sql="SELECT s.uid,s.nickname,s.gender,s.images_ischeck,s.province,s.city,s.birthyear,s.s_cid,s.city_star,b.mainimg,s.pic_num FROM {$dbTablePre}members_search s left join {$dbTablePre}members_base b on s.uid=b.uid WHERE s.uid in ({$uidList})";
 	$userList = $_MooClass['MooMySQL']->getAll($sql);

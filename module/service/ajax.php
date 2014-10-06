@@ -595,7 +595,7 @@ function getSMS(){
 
 //绑定申请
 function applyBind(){
-    global $_MooClass,$dbTablePre,$userid,$user_arr,$timestamp;
+    global $_MooClass,$dbTablePre,$userid,$user_arr,$timestamp,$memcached;
 	
 	$sendtouid = MooGetGPC('uid','integer','P');
     $userid=$user_arr['uid'];
@@ -623,6 +623,10 @@ function applyBind(){
 	if($sendToUser['isbind']>0) exit('other');
 	
 	
+	$isBind=$memcached->get('sendBind'.$userid.'-'.$sendtouid);
+	if(!empty($isBind)){
+	    exit('alreadySended');
+	}
 	//是否有手机号码
     if(MOOPHP_ALLOW_FASTDB){
         $_R_ = MooFastdbGet('certification','uid',$userid);
@@ -633,6 +637,12 @@ function applyBind(){
 
     if(empty($_R_['telphone']) && empty($serverid) ) { exit('telNo');}
     
+	$sql="select id from web_members_bind where a_uid='{$userid}' and b_uid='{$sendtouid}' and bind=1 limit 1";
+	$br=$_MooClass['MooMySQL']->getOne($sql);
+	if(!empty($br['id'])){
+	   exit('alreadyBinded');
+	}
+
 	$content =MooGetGPC('content','string','P');
 	$time   = MooGetGPC('time','integer','P');
 	$sql = "INSERT INTO {$dbTablePre}members_bind SET a_uid='{$userid}',b_uid='{$sendtouid}',apply_con='{$content}',dateline='{$timestamp}',apply_ltime='{$time}'";
@@ -645,6 +655,8 @@ function applyBind(){
 		$value['bind_id'] = $bind_id;
 		MooFastdbUpdate("members_base",'uid',$userid,$value);
 	}
+	
+	$memcached->set('sendBind'.$userid.'-'.$sendtouid,1,0,86400);
 	
 	$gender=$user_arr['gender']==1?"美女":"帅哥";
 	//*************提醒所属客服*************

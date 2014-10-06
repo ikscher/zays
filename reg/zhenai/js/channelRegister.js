@@ -60,6 +60,7 @@ function channelCheckForm() {
 		if(!hasFocus){hasFocus=true;}
 	}
 	
+	/*
 	if(month.value=='0'||month.value==''){
 		$(month).siblings('.tip_msg').addClass('tred').html("您忘记选择“生日”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
@@ -69,6 +70,8 @@ function channelCheckForm() {
 		$(day).siblings('.tip_msg').addClass('tred').html("您忘记选择“生日”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
 	}
+	*/
+	
 	if(month.value=='2'&&(day.value=='30'||day.value=='31')){
 		$(day).siblings('.tip_msg').addClass('tred').html("请您填写正确的出生日期。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}

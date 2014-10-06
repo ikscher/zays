@@ -381,6 +381,17 @@ function about_clinic_add(){
 		MooMessage("您的情感问题已经提交成功，真爱一生情感专家会在24小时内解决您的问题。\n感谢您对真爱一生网的信任与支持。","index.php?n=about&h=clinic",'03');
 	}
 }
+//招聘
+function recruit(){
+    $left_menu = 'recruit';
+    require MooTemplate('public/about_recruit', 'module');
+}
+
+//隐私保护
+function about_privacy(){
+    $left_menu = 'privacy';
+    require MooTemplate('public/about_privacy', 'module');
+}
 
 /***************************************   控制层(C)   ****************************************/
 $h = MooGetGPC('h', 'string');
@@ -435,7 +446,13 @@ switch($h){
 		break;
 	case 'copyright':
 		about_copyright();
-	break;
+	    break;
+	case 'recruit':
+	    recruit();
+		break;
+	case 'privacy':
+	    about_privacy();
+		break;
 	case 'getsid':
 		echo $user_arr['sid'];
 		die;

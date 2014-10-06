@@ -65,7 +65,7 @@
             <a href="index.php?n=payment" target="_blank"><img src="module/search/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
             {else}							
             {/if}
-			<a onclick="javascript:window.open('space_{$users['uid']}.html','')" href="#"><span>
+			<a onclick="javascript:window.open('space_{$users['uid']}.html','')" href="#"><span style="color:#d73c90;">
             {if isset($users['nickname']) && $users['nickname']!=''}
             {php echo MooCutstr(trim($users['nickname']),'10','');}
             {else}

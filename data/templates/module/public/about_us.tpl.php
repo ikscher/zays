@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>关于我们——真爱一生网</title>
-{template system/js_css public}
-<link rel="stylesheet" type="text/css" href="public/{$GLOBALS['style_name']}/css/font.css">
-<link href="module/about/templates/{$GLOBALS['style_name']}/about.css" rel="stylesheet" type="text/css" />
+<?php include MooTemplate('system/js_css','public'); ?>
+<link rel="stylesheet" type="text/css" href="public/<?php echo $GLOBALS['style_name'];?>/css/font.css">
+<link href="module/about/templates/<?php echo $GLOBALS['style_name'];?>/about.css" rel="stylesheet" type="text/css" />
 </style>
 <script >
  /*
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-{template system/header public}
+<?php include MooTemplate('system/header','public'); ?>
 <!--头部结束-->
 <div class="clear"></div>
 <div class="content">
@@ -47,7 +47,7 @@
 			</div> --><!--content-title end-->
 			<div class="c-center">
 			<!--左边开始-->
-			{template public/about_left module}
+			<?php include MooTemplate('public/about_left','module'); ?>
 			<!--左边结束-->	
 			<!--右边开始-->	
 			<div class="about-right">
@@ -91,7 +91,7 @@
 			</div> -->
 			<!--content-bottom end-->
 		<div class="clear"></div>
-{template system/footer public}
+<?php include MooTemplate('system/footer','public'); ?>
 	</div><!--content end-->
 
 </body>

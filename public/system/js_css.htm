@@ -1,3 +1,5 @@
+<meta name="keywords" content="真爱一生,真爱一生网,红娘,征婚,征婚网,婚介,婚恋,婚姻,交友,交友网,相亲,征婚,姻缘,牵线,寻爱" />
+<meta name="description" content="真爱一生网是由专业的红娘团队以及情感专家组成的严肃正规的婚恋网站, 针对城市白领提供专业的婚恋服务，帮助单身会员组成美满幸福家庭。" />
 <link rel="shortcut icon" href="public/default/images/favicon.ico" type="image/x-icon"/>
 <link rel="icon" href="public/default/images/favicon.ico" type="image/x-icon">
 <script type="text/javascript" src="public/system/js/jquery-1.8.3.min.js"></script>
