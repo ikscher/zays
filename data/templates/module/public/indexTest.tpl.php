@@ -126,7 +126,7 @@
             <div>
                 <a href="#" class="logo" title="真爱一生网"></a>
                 <span class="top-tel"></span>
-				<span style="position:absolute;left:185px;top:20px;background:url('public/default/images/nationalday.png') no-repeat;width:50px;height:50px;"></span> 
+				<!-- <span style="position:absolute;left:185px;top:20px;background:url('public/default/images/nationalday.png') no-repeat;width:50px;height:50px;"></span>  -->
             </div>
 			
 			<div style="margin:0 auto;width:980px;">
