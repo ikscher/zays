@@ -7,11 +7,16 @@
 <link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div class="d">
+{if $GLOBALS['MooUid']}
+	<div class="logined">
+		您的用户名是：{php echo $GLOBALS['MooUserName']?MooCutstr($GLOBALS['MooUserName'],16):$user_arr['nickname'];}
+	   &nbsp;&nbsp; 您的ID是：{$GLOBALS['MooUid']}&nbsp;&nbsp;
+		最新邮件(<a href="index.php?n=service&h=message">{php echo $GLOBALS['new_email_num']}) <a href="service.html">进入我的红娘&gt;&gt;</a> <a href="index.php?n=index&h=logout">安全退出</a>
+	</div>{/if}
+</div>
 <div class="main">
-	{template system/header public}
     <div class="content">
-		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;升级高级会员</span></p>
-		<div class="clear"></div>
 		<div class="payment">
 			<div class="vip-banner">
 				<div class="banner-box">
@@ -254,7 +259,11 @@
 			</div><!--pm-content end-->
 		</div>
 	</div><!--content end-->
-	{template system/footer public}<!--foot end-->
+	 <div style="height: 100px;text-align: center;padding-top: 20px;border-top:1px solid #999;">
+		<div class="g">品牌：8年专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
+		<div class="g">Copyright 2006-2014 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
+		<div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>
+	</div>
 </div><!--main end-->
 </body>
 </html>

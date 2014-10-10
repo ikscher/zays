@@ -2,18 +2,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>升级高级会员——真爱一生网</title>
-<?php include MooTemplate('system/js_css','public'); ?>
+<title>VIP会员通道——真爱一生网</title>
+{template system/js_css public}
 <link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="d">
-<?php if($GLOBALS['MooUid']) { ?>
+{if $GLOBALS['MooUid']}
 	<div class="logined">
-		您的用户名是：<?php echo $GLOBALS['MooUserName']?MooCutstr($GLOBALS['MooUserName'],16):$user_arr['nickname'];?>
-	   &nbsp;&nbsp; 您的ID是：<?php echo $GLOBALS['MooUid'];?>&nbsp;&nbsp;
-		最新邮件(<a href="index.php?n=service&h=message"><?php echo $GLOBALS['new_email_num']?>) <a href="service.html">进入我的红娘&gt;&gt;</a> <a href="index.php?n=index&h=logout">安全退出</a>
-	</div><?php } ?>
+		您的用户名是：{php echo $GLOBALS['MooUserName']?MooCutstr($GLOBALS['MooUserName'],16):$user_arr['nickname'];}
+	   &nbsp;&nbsp; 您的ID是：{$GLOBALS['MooUid']}&nbsp;&nbsp;
+		最新邮件(<a href="index.php?n=service&h=message">{php echo $GLOBALS['new_email_num']}) <a href="service.html">进入我的红娘&gt;&gt;</a> <a href="index.php?n=index&h=logout">安全退出</a>
+	</div>{/if}
 </div>
 <div class="main">
     <div class="content">
@@ -21,7 +21,7 @@
 			<div class="vip-banner">
 				<div class="banner-box">
 				<p style="margin-top:20px;"><img src="module/payment/templates/default/images/go-see01.gif" /></p>
-				<p><img  src="module/payment/templates/default/images/pay-num01.gif" /><a  href="index.php?n=payment&h=channel"><img src="module/payment/templates/default/images/<?php echo (isset($s_cid) && $s_cid=='30') ? 'go-on' : 'open';?>.gif" /></a>
+				<p><img  src="module/payment/templates/default/images/pay-num01.gif" /><a  href="index.php?n=payment&h=channel"><img src="module/payment/templates/default/images/{php echo (isset($s_cid) && $s_cid=='30') ? 'go-on' : 'open';}.gif" /></a>
                 </p>
 				<p><img src="module/payment/templates/default/images/top-tel.gif" /></p>
 				</div>
@@ -254,17 +254,18 @@
 					<td class="f-ed0a91">免费</td>
 				</tr>
 			</table>
-			<div class="cs-bottom"><a href="index.php?n=payment&h=channel"><img src="module/payment/templates/default/images/<?php echo (isset($s_cid) && $s_cid=='30') ? 'go-on' : 'open';?>.gif" /></a>
+			<div class="cs-bottom"><a href="index.php?n=payment&h=channel"><img src="module/payment/templates/default/images/{php echo (isset($s_cid) && $s_cid=='30') ? 'go-on' : 'open';}.gif" /></a>
             </div>
 			</div><!--pm-content end-->
 		</div>
 	</div><!--content end-->
-	 <div style="height: 100px;text-align: center;padding-top: 20px;border-top:1px solid #999;">
-		<div class="g">品牌：8年专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
-		<div class="g">Copyright 2006-2014 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
-		<div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>
-	</div>
+	 
 </div><!--main end-->
+<div style="height: 100px;text-align: center;padding-top: 20px;border-top:1px solid #999;">
+	<div class="g">品牌：8年专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
+	<div class="g">Copyright 2006-2014 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
+	<div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>
+</div>
 </body>
 </html>
 <script type="text/javascript">

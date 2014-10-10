@@ -985,26 +985,20 @@ function payment_platinum(){
     include MooTemplate('public/payment_platinum', 'module');
 }
 
-//视频疑问
-function payment_ask(){
-    include MooTemplate('public/payment_ask', 'module');
-}
-
-//真爱一生介绍
-function payment_intro(){
-    global $user_arr;
-    $GLOBALS['style_name'] = 'default';
-    require MooTemplate('public/payment_intro', 'module');
-}
-
 //城市之星介绍页面
 function payment_city_star_intro(){
     global $_MooClass,$dbTablePre,$uid,$user_arr;
     include MooTemplate('public/payment_cityStarIntro', 'module');
 }
 
+//会员升级统一显示的页面
+function payment_upgrade(){
+    global $_MooClass,$dbTablePre,$uid,$user_arr;
+    include MooTemplate('public/payment_upgrade', 'module');
+}
+
 function payIntroduce(){
-  include MooTemplate('public/payIntroduce', 'module');
+    include MooTemplate('public/payIntroduce', 'module');
 
 }
 
@@ -1046,8 +1040,8 @@ switch ($h) {
     case 'channel_platinum':
         payment_channel_platinum();
         break;
-	case 'channel_cs':
-        payment_channel_cs();
+	case 'upgrade': //钻石，铂金，高级 统一 页面
+        payment_upgrade();
 	    break; 
     //note 返回支付成功
     case 'payreturnurl':
@@ -1055,9 +1049,6 @@ switch ($h) {
         break;
     case 'ask':
         payment_ask();
-        break;
-    case 'intro':
-        payment_intro();
         break;
     case 'city_star':
         payment_city_star();

@@ -1,15 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>升级铂金会员——真爱一生网</title>
 {template system/js_css public}
-<link type="text/css" href="module/payment/templates/default/platinum.css" rel="stylesheet" />
+<link type="text/css" href="module/payment/templates/default/payment.css" rel="stylesheet" />
 </head>
 
 <body>
+<div class="d">
+{if $GLOBALS['MooUid']}
+	<div class="logined">
+		您的用户名是：{php echo $GLOBALS['MooUserName']?MooCutstr($GLOBALS['MooUserName'],16):$user_arr['nickname'];}
+	   &nbsp;&nbsp; 您的ID是：{$GLOBALS['MooUid']}&nbsp;&nbsp;
+		最新邮件(<a href="index.php?n=service&h=message">{php echo $GLOBALS['new_email_num']}) <a href="service.html">进入我的红娘&gt;&gt;</a> <a href="index.php?n=index&h=logout">安全退出</a>
+	</div>{/if}
+</div>
 <div class="main">
-    {template system/header public}
 	<div class="content">
 		<div class="pt_banner">
 			<div class="pt_logo"></div>
@@ -49,7 +56,12 @@
 			</div>
 		</div>
 	</div>
-{template system/footer public}
+   
+</div>
+ <div style="height: 100px;text-align: center;padding-top: 20px;border-top:1px solid #999;margin-top:5px;">
+	<div class="g">品牌：8年专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
+	<div class="g">Copyright 2006-2014 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
+	<div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>
 </div>
 </body>
 </html>
