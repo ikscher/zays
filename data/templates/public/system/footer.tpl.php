@@ -24,9 +24,9 @@
             <p style="font-weight:bold;height:25px;line-height:25px;font-size:13px;margin-top:5px;margin-bottom:5px;"><a href="login.html">登录</a> <a href="register.html">注册</a></p>
         </div>
         <div class="rBox3">
-            <a href="platinum.html" target="_blank" title="升级为铂金会员"><img class="nobg" src="public/default/images/platium.gif" alt="升级为铂金会员"></a> 
-            <a href="diamond.html" target="_blank" title="升级为钻石会员"><img class="nobg" src="public/default/images/diamond.gif"  alt="升级为钻石会员"></a> 
-            <a href="higher.html" target="_blank" title="升级为高级会员"><img class="nobg" src="public/default/images/vip.gif"  alt="升级为高级会员"></a> 
+            <a href="upgrade.html" target="_blank" title="升级为铂金会员"><img class="nobg" src="public/default/images/platium.gif" alt="升级为铂金会员"></a> 
+            <a href="upgrade.html" target="_blank" title="升级为钻石会员"><img class="nobg" src="public/default/images/diamond.gif"  alt="升级为钻石会员"></a> 
+            <a href="upgrade.html" target="_blank" title="升级为高级会员"><img class="nobg" src="public/default/images/vip.gif"  alt="升级为高级会员"></a> 
         </div>
         <div class="rBox4">
 

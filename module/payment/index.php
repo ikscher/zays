@@ -224,8 +224,7 @@ function telPayAjax(){
 //note 选择付款方式导航 -- 高级会员
 function payment_channel() {
     global $_MooClass,$dbTablePre,$uid,$user_arr,$yeepay_banktype,$paymoney;
-
-    if(!$uid) header("login.html");
+    if(!$uid) header("location:login.html");
     //note 分配客服
     $orderTitle="您订购了如下服务，3个月高级会员 <span>{$paymoney['vip']}</span>元，共计<span>{$paymoney['vip']}</span>元";
     $pay_h = 'pay';
@@ -235,7 +234,7 @@ function payment_channel() {
 //note 选择付款方式导航 -- 钻石会员
 function payment_channel_diamond() {
     global $_MooClass,$dbTablePre,$uid,$user_arr,$yeepay_banktype,$paymoney;
-    if(!$uid) header("login.html");
+    if(!$uid) header("location:login.html");
 	
     //note 分配客服 
     $orderTitle="您订购了如下服务，6个月钻石会员 <span>{$paymoney['diamond']}</span>元，共计<span>{$paymoney['diamond']}</span>元";
@@ -246,7 +245,7 @@ function payment_channel_diamond() {
 //note 选择付款方式导航 -- 铂金会员
 function payment_channel_platinum() {
     global $_MooClass,$dbTablePre,$uid,$user_arr,$yeepay_banktype,$paymoney;
-    if(!$uid) header("login.html");
+    if(!$uid) header("location:login.html");
     //note 分配客服 
     $orderTitle="您订购了如下服务，6个月铂金会员 <span>{$paymoney['platinum']}</span>元，共计<span>{$paymoney['platinum']}</span>元";
     $pay_h = 'pay_platinum';
@@ -258,7 +257,7 @@ function payment_channel_platinum() {
 function payment_city_star(){
     global $_MooClass,$dbTablePre,$uid,$user_arr,$yeepay_banktype,$paymoney;
 
-    if(!$uid) header("login.html");
+    if(!$uid) header("location:login.html");
     /*if(!in_array($user_arr['s_cid'],array(0,1))){
         MooMessage('只有高级会员才能开通此服务,请先升级为高级会员。','index.php?n=payment');
     }*/
@@ -272,7 +271,7 @@ function payment_city_star(){
 function payment_add_money() {
     global $_MooClass,$dbTablePre,$uid,$user_arr,$yeepay_banktype,$paymoney;
 
-    if(!$uid) header("login.html");
+    if(!$uid) header("location:login.html");
 
     if(empty($h_pay) && $user_arr['s_cid'] != 30){
         MooMessage('您的请求有误。','index.php');
@@ -288,7 +287,7 @@ function payment_add_money() {
 /*补款预付*/
 function payment_add_money_other($p3_Amt,$text) {
     global $_MooClass,$dbTablePre,$uid,$user_arr,$yeepay_banktype;
-    if(!$uid) header("login.html");
+    if(!$uid) header("location:login.html");
     //note 分配客服 
 
     $orderTitle="您订购了如下服务，{$text}，共计<span>{$p3_Amt}</span>元";
@@ -1005,7 +1004,7 @@ function payIntroduce(){
 
 function payDetail(){
   global $uid;
-  if(!$uid) header("login.html");
+  if(!$uid) header("location:login.html");
   include MooTemplate('public/payDetail', 'module');
 
 }

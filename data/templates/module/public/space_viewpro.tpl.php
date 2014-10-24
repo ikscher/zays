@@ -150,7 +150,7 @@ $('.fancybox-buttons').fancybox({
 								
 							</div>
 							
-							<div><?php if($user['birthyear']) { ?><?php echo (date('Y', time()) - $user['birthyear']);?>岁<?php } else { ?>年龄保密<?php } ?>，<?php echo loveStatus($status);?>，居住在<span class="address"><?php if($user['province'] == '0' && $user['city'] == '0') { ?>保密<?php } else { ?><script>userdetail('<?php echo $user['province'];?>',provice)</script><script>userdetail('<?php echo $user['city'];?>',city)</script><?php } ?></span>的<script>userdetail('<?php echo $user['gender'];?>',sex)</script>，寻找一位年龄<?php if($c['age1'] == '0') { ?>不限的<?php } else { ?>在<script>userdetail('<?php echo $c['age1'];?>',age)</script>-<script>userdetail('<?php echo $c['age2'];?>',age)</script>岁<?php } ?><?php if($user['gender'] == 0) { ?>女士<?php } else { ?>男士<?php } ?>。</div>
+							<div><?php echo activetime($user['lastvisit'],$user['usertype']);?>，<?php if($user['birthyear']) { ?><?php echo (date('Y', time()) - $user['birthyear']);?>岁<?php } else { ?>年龄保密<?php } ?>，<?php echo loveStatus($status);?>，居住在<span class="address"><?php if($user['province'] == '0' && $user['city'] == '0') { ?>保密<?php } else { ?><script>userdetail('<?php echo $user['province'];?>',provice)</script><script>userdetail('<?php echo $user['city'];?>',city)</script><?php } ?></span>的<script>userdetail('<?php echo $user['gender'];?>',sex)</script>，寻找一位年龄<?php if($c['age1'] == '0') { ?>不限的<?php } else { ?>在<script>userdetail('<?php echo $c['age1'];?>',age)</script>-<script>userdetail('<?php echo $c['age2'];?>',age)</script>岁<?php } ?><?php if($user['gender'] == 0) { ?>女士<?php } else { ?>男士<?php } ?>。</div>
 							<div>
 								<ul class="right-cer">
 									<?php if(!$usercer['telphone']) { ?>

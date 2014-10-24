@@ -669,6 +669,88 @@ function applyBind(){
     if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"绑定","尊敬的会员您好！ID：{$userid}的{$gender}已给委托红娘绑定您,登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
 
 }
+//发送邮件
+function sendEmail(){
+    global $_MooClass,$dbTablePre,$timestamp,$user_arr,$timestamp,$memcached; 
+    $sendtouid = MooGetGPC('uid','integer','P');
+    $userid=$user_arr['uid'];
+	$title= MooGetGPC('title','string','P');
+	$content=MooGetGPC('content','string','P');
+	
+	$serverid = Moo_is_kefu();
+	if($serverid && $user_arr['usertype']!=3){
+        exit('simulate');
+    }
+	
+	
+	if(empty($sendEmailCount)) $sendEmailCount=0;
+	$sendEmailCount=$memcached->get('sendEmail'.$userid);
+	if($sendEmailCount>3){
+	    exit('limited');
+	}
+	
+    if($sendtouid == $userid){	
+		exit('sameone');
+	}
+	
+	if(MooGetScreen($userid,$sendtouid)){
+        exit('shield');
+	}
+	
+	if(!in_array($user_arr['s_cid'],array(10,20,30))) exit('upgrade');
+	
+	
+	$sendToUser=MooMembersData($sendtouid);
+
+	if(isset($sendToUser['gender']) && $sendToUser['gender']==$user_arr['gender']){ exit('gender');}
+	
+	if(isset($sendToUser['showinformation']) && $sendToUser['showinformation']!=1) exit('closeInfo');
+	
+	//是否有手机号码
+    if(MOOPHP_ALLOW_FASTDB){
+        $_R_ = MooFastdbGet('certification','uid',$userid);
+    }else{
+	    $sql="SELECT telphone FROM {$dbTablePre}certification WHERE uid='$userid'";
+        $_R_ = $_MooClass['MooMySQL']->getOne($sql,true);
+    }
+
+    if(empty($_R_['telphone']) && empty($serverid) ) { exit('telNo');}
+	
+	$sql="select count(s_id) as cnt from web_members_search where s_fromid='{$userid}' and s_uid='{$sendtouid}' and s_type=1";
+	$_S_=$_MooClass['MooMySQL']->getOne($sql,true);
+	if(isset($_S_['cnt']) && $_S_['cnt']>3) exit('已经超出了发送邮件的数量！');
+	
+    
+	$gender=$user_arr['gender']==1?"美女":"帅哥";
+    $data['s_content'] = trim(safeFilter($content));
+	$data['s_title']=$title;
+	$data['s_fromid'] = $userid;
+    $data['s_uid'] = $sendtouid;
+	$data['s_time'] = time();
+	$data['sid']=$user_arr['sid'];
+	
+	if($user_arr['usertype']!=3 ){
+	    $data['flag']=0;
+	}else{
+	    $data['flag']=1;
+	}
+	
+	inserttable('services',$data);
+    
+	$memcached->set('sendEmail'.$userid,++$sendEmailCount,0,86400);
+
+	
+	//************提醒所属客服**************
+	$sid = $user_arr['sid'];
+	$title = '您的会员 '.$userid.' 发送邮件到'.$sendtouid;
+	$awoketime = $timestamp+3600;
+	$sql_remark = "insert into {$dbTablePre}admin_remark set sid='{$sid}',title='发邮件',content='{$title}',awoketime='{$awoketime}',dateline='{$timestamp}'";
+	$res = $_MooClass['MooMySQL']->query($sql_remark);
+	
+	
+	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"站内信","尊敬的会员您好！ID：{$userid}给您发送了邮件！幸福热线：4008787920",$userid);  
+
+}
 
 /***************************************控制层****************************************/ 
 
@@ -690,40 +772,30 @@ $serverid = Moo_is_kefu();
 switch ($h) {
 	//note 委托填号码
 	case "addphone" :
-		addphone();
-		break;
+		addphone();break;
 	case 'view_request_sms':
-		view_request_sms();
-		break;
+		view_request_sms();break;
     case 'seccode':
-		remark_seccode();
-	    break;
+		remark_seccode();break;
     case 'page':
-        activity_regist_page();
-        break;
+        activity_regist_page();break;
 	case 'getleerinfo':
-	    getLeerInfo();
-		break;
+	    getLeerInfo();break;
 	case 'sendleer':
-	    sendLeer();
-		break;
+	    sendLeer();break;
 	case 'sendCommission':
-	   sendCommission();
-	   break;
+	   sendCommission();break;
 	case 'addLiker':
-	   addLiker();
-	   break;
+	   addLiker();break;
 	case 'sendGift':
-	   sendGift();
-	   break;
+	   sendGift();break;
 	case 'sendEstimate':
-	   sendEstimate();
-	   break;
+	   sendEstimate();break;
 	case 'getSMS':
-	   getSMS();
-	   break;
+	   getSMS();break;
 	case 'applyBind':
-	   applyBind();
-	   break;
+	   applyBind();break;
+	case 'sendEmail':
+	   sendEmail();break;
 }
 ?>

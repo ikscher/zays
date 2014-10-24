@@ -367,20 +367,18 @@ function sendSMS($uid,$pwd,$mobile,$content,$time='',$mid='')
 }
 
 function SendMsg($mobile,$content,$type=0){
-    if($type==1){//只发验证码
-	    $content.='【真爱一生网】';
-	    $uid='55215';
-		$pwd='rfkda9';
-		if(is_array($mobile)) $mobile=implode(',',$mobile);
-	    return sendSMS($uid,$pwd,$mobile,$content);
+    //if($type==1){//只发验证码
+	//    $content.='【真爱一生网】';
+	//    $uid='55215';
+	//	$pwd='rfkda9';
+	//	if(is_array($mobile)) $mobile=implode(',',$mobile);
+	//    return sendSMS($uid,$pwd,$mobile,$content);
 
-	}else{
-	    //$uid = '55220';		//用户账号
-	    // $pwd = '8p6hri';		//密码
-		//SendMsg_gao($mobile,$content);
+	//}else{
 		$content.='回N退订';
 		return sendSMS_mm($mobile,$content);
-	}
+	//}
+	
     //if(is_array($mobile)) $mobile=implode(',',$mobile);
     
 	//return sendSMS($uid,$pwd,$mobile,$content);

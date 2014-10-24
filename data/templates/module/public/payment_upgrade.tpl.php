@@ -3,23 +3,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>VIP会员通道——真爱一生网</title>
-{template system/js_css public}
+<?php include MooTemplate('system/js_css','public'); ?>
 <link href="module/payment/templates/default/payment.css" rel="stylesheet" type="text/css" />
 <link href="public/default/css/gototop.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="d">
-{if $GLOBALS['MooUid']}
+<?php if($GLOBALS['MooUid']) { ?>
 	<div class="logined">
-		您的用户名是：{php echo $GLOBALS['MooUserName']?MooCutstr($GLOBALS['MooUserName'],16):$user_arr['nickname'];}
-	   &nbsp;&nbsp; 您的ID是：{$GLOBALS['MooUid']}&nbsp;&nbsp;
-		最新邮件(<a href="service.html">{php echo $GLOBALS['new_email_num']}) <a href="service.html">我的征婚信息中心&gt;&gt;</a> <a href="logout.html">安全退出</a>
+		您的用户名是：<?php echo $GLOBALS['MooUserName']?MooCutstr($GLOBALS['MooUserName'],16):$user_arr['nickname'];?>
+	   &nbsp;&nbsp; 您的ID是：<?php echo $GLOBALS['MooUid'];?>&nbsp;&nbsp;
+		最新邮件(<a href="service.html"><?php echo $GLOBALS['new_email_num']?>) <a href="service.html">我的征婚信息中心&gt;&gt;</a> <a href="logout.html">安全退出</a>
 	</div>
-{else}
+<?php } else { ?>
 	<div class="logined">
 	    <a class="_login_" href="javascript:void(0);">登录</a>&nbsp;&nbsp;<a href="register.html">注册</a>
 	</div>
-{/if}
+<?php } ?>
 </div>
 <!--升级高级会员开始-->
 <div class="main vkl" id="vf_01_">
@@ -28,7 +28,7 @@
 			<div class="vip-banner">
 				<div class="banner-box">
 				<p style="margin-top:20px;"><img src="module/payment/templates/default/images/go-see01.gif" /></p>
-				<p><img  src="module/payment/templates/default/images/pay-num01.gif" /><a   class="upgradeHeigherMember" href="javascript:void(0);"><img src="module/payment/templates/default/images/{php echo (isset($s_cid) && $s_cid=='30') ? 'go-on' : 'open';}.gif" /></a>
+				<p><img  src="module/payment/templates/default/images/pay-num01.gif" /><a   class="upgradeHeigherMember" href="javascript:void(0);"><img src="module/payment/templates/default/images/<?php echo (isset($s_cid) && $s_cid=='30') ? 'go-on' : 'open';?>.gif" /></a>
                 </p>
 				<p><img src="module/payment/templates/default/images/top-tel.gif" /></p>
 				</div>
@@ -261,7 +261,7 @@
 					<td class="f-ed0a91">免费</td>
 				</tr>
 			</table>
-			<div class="cs-bottom"><a class="upgradeHeigherMember" href="javascript:void(0);"><img src="module/payment/templates/default/images/{php echo (isset($s_cid) && $s_cid=='30') ? 'go-on' : 'open';}.gif" /></a>
+			<div class="cs-bottom"><a class="upgradeHeigherMember" href="javascript:void(0);"><img src="module/payment/templates/default/images/<?php echo (isset($s_cid) && $s_cid=='30') ? 'go-on' : 'open';?>.gif" /></a>
             </div>
 			</div><!--pm-content end-->
 		</div>
@@ -276,7 +276,7 @@
 	<div id="vip_content">
 
 
-		<div id="vip_ad"><img src="module/payment/templates/default/images/vip_ad.jpg" /><div class="into"><a  class="upgradeDiamondMember" href="javascript:void(0);"><img src="module/payment/templates/default/images/{php echo ($s_cid=='20') ? 'goon' : 'vip_button';}.jpg" /></a></div></div>
+		<div id="vip_ad"><img src="module/payment/templates/default/images/vip_ad.jpg" /><div class="into"><a  class="upgradeDiamondMember" href="javascript:void(0);"><img src="module/payment/templates/default/images/<?php echo ($s_cid=='20') ? 'goon' : 'vip_button';?>.jpg" /></a></div></div>
 		<div id="category">
 			<div class="post">
 				<h2><img src="module/payment/templates/default/images/vip_recommend.jpg" /></h2>
@@ -380,7 +380,7 @@
 					</table>
 				</div>
 			</div>
-			<a  class="upgradeDiamondMember into" href="javascript:void(0);"><img src="module/payment/templates/default/images/{php echo ($s_cid=='20') ? 'goon' : 'vip_button';}.jpg" /></a>
+			<a  class="upgradeDiamondMember into" href="javascript:void(0);"><img src="module/payment/templates/default/images/<?php echo ($s_cid=='20') ? 'goon' : 'vip_button';?>.jpg" /></a>
 		</div>
 	</div>
 </div>
@@ -501,39 +501,39 @@ window.onload = function(){var SDmodel = new scrollDoor();SDmodel.sd(["vf_01","v
 		})
 	}
 $('.upgradeHeigherMember').on('click',function(){
-    {if $GLOBALS['MooUid']}
+    <?php if($GLOBALS['MooUid']) { ?>
 		location.href='index.php?n=payment&h=channel';
-	{else}
+	<?php } else { ?>
 		openLogin();
-	{/if}
+	<?php } ?>
 });
 
 $('.upgradeDiamondMember').on('click',function(){
-    {if $GLOBALS['MooUid']}
+    <?php if($GLOBALS['MooUid']) { ?>
 		location.href='index.php?n=payment&h=channel_diamond';
-	{else}
+	<?php } else { ?>
 		openLogin();
-	{/if}
+	<?php } ?>
    
 });
 
 $('.upgradePlatinumMember').on('click',function(){
-    {if $GLOBALS['MooUid']}
+    <?php if($GLOBALS['MooUid']) { ?>
 		location.href='index.php?n=payment&h=channel_platinum';
 		return false;
-	{else}
+	<?php } else { ?>
 		openLogin();
-	{/if}
+	<?php } ?>
    
 });
 
 $('.upgradeCityStarMember').on('click',function(){
-    {if $GLOBALS['MooUid']}
+    <?php if($GLOBALS['MooUid']) { ?>
 		location.href='index.php?n=payment&h=city_star';
 		return false;
-	{else}
+	<?php } else { ?>
 		openLogin();
-	{/if}
+	<?php } ?>
    
 });
 

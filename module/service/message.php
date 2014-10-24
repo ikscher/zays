@@ -735,6 +735,7 @@ switch ($_GET['t']) {
 		break;
 		
 	//note 发信息****************************
+	/*
 	case "send" :
 		$contentid = MooGetGPC('sendtoid','string','G');		
 		//note 处理接收的数据
@@ -747,15 +748,7 @@ switch ($_GET['t']) {
  		if($user_arr['gender'] == $receive_gender){			
  			MooMessage('不可给同性别发送消息', 'javascript:history.go(-1)','02');
  		}
-        
- 		//系统管理员权限
-	    /*$result=$_MooClass['MooMySQL']->getOne("select groupid from web_admin_user where uid='{$serverid}'");
-	    $groupid=$result['groupid'];
-	    
-	    //$GLOBALS['system_admin'] = array(60);
-	    if(in_array($groupid,$GLOBALS['system_admin'])){
-	        $serverid=null;
-	    }*/
+
 	    
  		$result=$_MooClass['MooMySQL']->getOne("select groupid from web_admin_user where uid='{$serverid}'");
 	    $groupid=$result['groupid'];
@@ -802,7 +795,7 @@ switch ($_GET['t']) {
 			MooMessage('没有收件人的ID，不可发送消息', 'index.php?n=search&h=basic','002');
 		}
 		break;		
-
+    */
 	//note 回复信息****************************
 	case "hf" :
 		$contentid = MooGetGPC('sendtoid','integer');

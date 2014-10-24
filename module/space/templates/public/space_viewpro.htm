@@ -150,7 +150,7 @@ $('.fancybox-buttons').fancybox({
 								
 							</div>
 							
-							<div>{if $user['birthyear']}{php echo (date('Y', time()) - $user['birthyear']);}岁{else}年龄保密{/if}，{php echo loveStatus($status);}，居住在<span class="address">{if $user['province'] == '0' && {$user['city']} == '0'}保密{else}<script>userdetail('{$user['province']}',provice)</script><script>userdetail('{$user['city']}',city)</script>{/if}</span>的<script>userdetail('{$user['gender']}',sex)</script>，寻找一位年龄{if $c['age1'] == '0'}不限的{else}在<script>userdetail('{$c['age1']}',age)</script>-<script>userdetail('{$c['age2']}',age)</script>岁{/if}{if $user['gender'] == 0}女士{else}男士{/if}。</div>
+							<div>{php echo activetime($user['lastvisit'],$user['usertype']);}，{if $user['birthyear']}{php echo (date('Y', time()) - $user['birthyear']);}岁{else}年龄保密{/if}，{php echo loveStatus($status);}，居住在<span class="address">{if $user['province'] == '0' && {$user['city']} == '0'}保密{else}<script>userdetail('{$user['province']}',provice)</script><script>userdetail('{$user['city']}',city)</script>{/if}</span>的<script>userdetail('{$user['gender']}',sex)</script>，寻找一位年龄{if $c['age1'] == '0'}不限的{else}在<script>userdetail('{$c['age1']}',age)</script>-<script>userdetail('{$c['age2']}',age)</script>岁{/if}{if $user['gender'] == 0}女士{else}男士{/if}。</div>
 							<div>
 								<ul class="right-cer">
 									{if !$usercer['telphone']}

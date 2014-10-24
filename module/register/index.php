@@ -696,7 +696,7 @@ switch ($h) {
 				
 				
 				$rand = rand ( 1621, 9654);
-				//MooSetCookie ( "rand_",  $rand , 3600 );
+				MooSetCookie ( "rand_",  $rand , 3600 );
 				MooSetCookie ( "rand", md5 ( md5 ( $rand ) ), 3600 );
 				
 				// 希希奥信息发送手机短信接口

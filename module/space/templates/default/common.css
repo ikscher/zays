@@ -2,10 +2,10 @@
 #modalLeer{width:623px;height:527px;background:url(../../../../public/default/images/leer.png) no-repeat}
 ._modal_{display:none;background:#fff;padding:0 20px 20px;overflow:auto;z-index:1001;position:absolute;width:500px;height:auto}
 .overlay{width:100%;height:100%;position:fixed;top:0;left:0;z-index:1000;display:none}
-.leerConfirm,.commissionConfirm,.likerConfirm,.giftConfirm,.estimateConfirm,.SMSConfirm,.bindConfirm{display:inline-block;width:180px;padding:9px 0;margin:0 0 5px 0;cursor:pointer;text-decoration:none;text-align:center;-webkit-border-radius:50px;border-radius:50px;background-clip:padding-box;-webkit-transition:all .2s linear;-moz-transition:all .2s linear;-o-transition:all .2s linear;transition:all .2s linear;position:absolute}
+.leerConfirm,.commissionConfirm,.likerConfirm,.giftConfirm,.estimateConfirm,.SMSConfirm,.bindConfirm,.sendEmailConfirm{display:inline-block;width:180px;padding:9px 0;margin:0 0 5px 0;cursor:pointer;text-decoration:none;text-align:center;-webkit-border-radius:50px;border-radius:50px;background-clip:padding-box;-webkit-transition:all .2s linear;-moz-transition:all .2s linear;-o-transition:all .2s linear;transition:all .2s linear;position:absolute}
 .leerConfirm{border:2px solid #16a085;background:#f4f4f4;color:#16a085;left:300px;top:300px}
-.leerConfirm:hover,.leerConfirm:active,.estimateConfirm:hover,.estimateConfirm:active{background:#16a085;color:#f4f4f4}
-.commissionConfirm,.estimateConfirm,.bindConfirm{border:2px solid #c0392b;background:#f4f4f4;color:#c0392b}
+.leerConfirm:hover,.leerConfirm:active,.estimateConfirm:hover,.estimateConfirm:active,.sendEmailConfirm:hover,.sendEmailConfirm:active{background:#16a085;color:#f4f4f4}
+.commissionConfirm,.estimateConfirm,.bindConfirm,.sendEmailConfirm{border:2px solid #c0392b;background:#f4f4f4;color:#c0392b}
 .commissionConfirm:hover,.bindConfirm:hover{background:#c0392b;color:#f4f4f4}
 .likerConfirm,.SMSConfirm{border:2px solid #c0392b;background:#f4f4f4;color:#c0392b}
 .likerConfirm:hover,.SMSConfirm:hover{background:#c0392b;color:#f4f4f4}
@@ -33,16 +33,19 @@
 .cTips,.gTips{position:absolute;left:250px;top:280px;color:#f00;font-size:14px;font-weight:bold}
 .bTips{position:absolute;left:300px;top:290px;color:#f00;font-size:14px;font-weight:bold}
 .eTips{position:absolute;left:300px;top:280px;color:#f00;font-size:14px;font-weight:bold}
+.emailTips{position:absolute;left:300px;top:450px;color:#f00;font-size:14px;font-weight:bold}
 #modalCommission,#modalGift{width:512px;height:auto;background:0;height:490px;}
 #modalBind{width:512px;height:auto;background:0;height:550px;}
 #modalEstimate{width:512px;height:auto;background:0;height:380px;}
+#modalSendEmail{width:512px;height:auto;background:0;height:550px;}
 .h6_top{display:block;width:90%;height:80px;position:absolute;left:0;top:0;z-index:100;background:url(../../../../public/default/images/commission.png) no-repeat}
 .b_v{display:block;width:100px;height:40px;position:absolute;left:12px;top:32px}
 .tan_k_x{padding:90px 60px 28px;width:400px}
 .tan_k_v{padding:90px 30px 28px;width:460px}
 .lxcss{width:430px;}
 .lxcss dl dd{width:413px}
-.lxcss textarea{width:413px;height:90px;overflow:hidden;resize:none}
+.lxcss textarea{width:413px;height:90px;overflow:hidden;resize:none;}
+.lxcss_ textarea{width:413px;height:235px;resize:none;}
 .h6_tj{font-size:16px;color:#ef6191}
 .tan_k_z{background:#fff;position:absolute;left:0;top:20px;}
 .tan_k_z em{display:block;width:50px;height:100px;position:absolute;top:60px;left:0;background:url(../../../../public/default/images/commission.png) no-repeat -1040px 0}
