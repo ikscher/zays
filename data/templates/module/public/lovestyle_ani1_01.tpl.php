@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>爱情测试-星座、生肖、血型——真爱一生网</title>
+<?php include MooTemplate('system/js_css','public'); ?>
+<link href="module/lovestyle/templates/default/lovestyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<?php include MooTemplate('system/header','public'); ?>
+<div class="main">
+	<div class="content">
+	<!-- 生肖头部开始 -->
+	<?php include MooTemplate('public/lovestyle_ani_header','module'); ?>
+	<!-- 生肖头部结束 -->
+	<!-- 左边开始 -->
+	<?php include MooTemplate('public/lovestyle_left','module'); ?>
+	<!-- 左边结束 -->
+	<div class="content-right">
+	<div class="c-right-content">
+		<div class="r-center-tilte">
+		<span class="right-title f-ed0a91">生肖</span>
+		</div>
+		<div class="r-center-ccontent">
+			<div class="lt-con-in" style="background:url(module/lovestyle/templates/default/images/ani01.gif) no-repeat top right;">
+				<div class="lt-con-img"></div>
+				<h1>鼠（子鼠）</h1>
+				<h6>
+					<a href="index.php?n=lovestyle&h=animals&type=<?php echo $typenum;?>&animalstag=01">个性标签 &gt;&gt;</a>&nbsp;&nbsp;
+					<a href="index.php?n=lovestyle&h=animals&type=<?php echo $typenum;?>&animalstag=02">来历传说 &gt;&gt;</a>&nbsp;&nbsp;
+					<a href="index.php?n=lovestyle&h=animals&type=<?php echo $typenum;?>&animalstag=03">情缘手册 &gt;&gt;</a>&nbsp;&nbsp;
+					<a href="index.php?n=lovestyle&h=animals&type=<?php echo $typenum;?>&animalstag=04">爱情魔咒 &gt;&gt;</a>
+				</h6>
+				<h4>生肖鼠的个性标签</h4>
+				<dl>
+					<dt><span class="f-ed0a91">鼠守护神：</span>千手观音菩萨</dt>
+					<dt><span class="f-ed0a91">鼠开运水晶：</span>紫水晶</dt>
+					<dt><span class="f-ed0a91">鼠速配：</span>龙、猴、牛</dt>
+					<dd>配龙：充满朝气的龙使鼠快乐，鼠的赞美能打动龙的心。</dd>
+					<dd>配猴：鼠欣赏机灵的猴，如猴诚心对鼠，会相处愉快。</dd>
+					<dd>配牛：温和的牛使鼠发挥可爱、乐观的一面，安慰鼠激动的心。</dd>
+					<dt><span class="f-ed0a91">鼠职场：</span>将星带权，前景乐观。</dt>
+					<dt><span class="f-ed0a91">鼠理财：</span>适合投资和创业，财星高照。</dt>
+					<dt><span class="f-ed0a91">鼠性格：</span>属鼠的人天性灵巧。</dt>
+					<dt><span class="f-ed0a91">导&nbsp;&nbsp;读：</span>属鼠的人容易相处，工作努力，生活节俭，除非他非常喜欢的人，他是不会慷慨解囊的。属鼠的人天性灵巧，勤劳而且注重积蓄，一般没有衣食之忧。</dt>
+				</dl>
+				<p>属鼠的人容易相处，工作努力，生活节俭，除非他非常喜欢的人，他是不会慷慨解囊的。所以，假如您从他那里得到一件贵重礼物，那么，他对您的评价一定相当高。然而尽管他会精打细算，并以此来炫耀，但他从不需要崇拜者。</p>
+				<p>表面上，属鼠的人可能表现得沉默寡言，但实际上，他很容易激动，但他能控制自己。这一点是他为什么受欢迎，并有许多朋友的最好解释。</p>
+				<p>属鼠的人天性灵巧，勤劳而且注重积蓄，一般没有衣食之忧。中年后会有一笔可观积蓄，其胆小谨慎性格决定他们不会将之投向股票市场，而宁愿将此存入银行以稳定利息。</p>
+				<p>属鼠人的后半生仍然继续过着平稳的小康生活，或者比前半生过得更好。 属鼠人的性格魅力就像沃尔特•迪斯尼笔下和米老鼠一样诱人。他们诚实、坦率、开朗、乐观，无论在多么险恶的环境中也不会意志消沉，在愁眉苦脸的人群中，如果有一个依然谈笑风生，那么此人一定属鼠。</p>
+				<p>勤奋、积极进取，意志坚如铁。有顽强的生存能力，灵活机变的适应能力，看似渺小，也不喜欢突出表现自己，没有虎虎生威的魄力， 不具咄咄逼人的气势，但他们不屈不挠，默默奋斗，为事业，为家庭，不达目的，绝不罢休。</p>
+				<p>表面沉默寡言，实际上从来是我们想象的那么安静。他们性格开朗、快乐，善于交际。很珍惜与亲朋好友的关系，并对之有着深深的依恋。受好结伙、集会、聚会，积极参与并成功地组织。在社交场合，属鼠人总是以自己的聪明机敏使气氛活跃，大家开心。</p>
+				<p>属鼠人很勤俭，爱储存，喜收藏。生活中属鼠人没有穷困潦倒的时候，把生活安排得井井有条，过着富足、和美的日子。</p>
+				<p>属鼠人直觉敏锐，能预示危险，并因此适可而止。但也有不相信自己直觉的时候，这时就碰得头破血流。不过一生中这样的例子只有一次。机警灵活的属鼠人也喜欢冒一点小的风险，也许受老鼠神灵的何佑，成功的机会很多。</p>
+				<div class="clear"></div>
+			</div>	
+		</div>
+		<div class="r-center-bottom">
+		</div>
+	</div>
+</div><!--=====右边结束===-->
+			
+	<div class="clear"></div>
+</div><!--content end-->
+	<?php include MooTemplate('system/footer','public'); ?>
+</div><!--main end-->
+</body>
+</html>

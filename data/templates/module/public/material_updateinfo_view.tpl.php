@@ -344,8 +344,8 @@ function strlen(str){//判断字符串长度
    })
 </script>
 <body>
+<?php include MooTemplate('system/header','public'); ?>
 <div class="main">
-	<?php include MooTemplate('system/header','public'); ?>
 	<div class="content">
 	<!-- <p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;资料设置</span><a href="#"></a></p> -->
 	 <!--左边菜单-->

@@ -15,8 +15,8 @@
 </head>
 
 <body>
+<?php include MooTemplate('system/header','public'); ?>
 <div class="main">
-	<?php include MooTemplate('system/header','public'); ?>
 	<div class="content">
 	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;诚信认证</span></p>
     <?php include MooTemplate('system/simp_left','public'); ?>

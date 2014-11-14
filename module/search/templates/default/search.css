@@ -61,7 +61,7 @@ a:hover{text-decoration:none}
 .search-criteria-m2 .scbox li.title a,.search-criteria-m2 .scbox2 li.title a{background:0;position:absolute;right:20px;top:0}
 .search-criteria-m2 .scbox li{padding:0 5px 0 30px}
 .search-criteria-m2 .scbox2{border-top:1px dashed #d2d2d2;padding-top:2px}
-.search-criteria-m2 .scbox2 li{display:inline}
+.search-criteria-m2 .scbox2 li{display:inline-block;}
 .search-criteria-m2 .scbox2 li a,.search-criteria-tipt a{background:url(images/search-close-icon.gif) no-repeat}
 .search-criteria-m2 .scbox2 li.label a{background-position:30px 4px;padding:0 5px 0 50px;color:#333;display:block;height:20px;width:117px}
 .search-criteria-m2 .scbox2 li.label a:hover{color:#0e60b4}

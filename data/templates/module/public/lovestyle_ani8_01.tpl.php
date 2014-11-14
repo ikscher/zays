@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>爱情测试-星座、生肖、血型——真爱一生网</title>
+<?php include MooTemplate('system/js_css','public'); ?>
+<link href="module/lovestyle/templates/default/lovestyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<?php include MooTemplate('system/header','public'); ?>
+<div class="main">
+	<div class="content">
+	<!-- 生肖头部开始 -->
+	<?php include MooTemplate('public/lovestyle_ani_header','module'); ?>
+	<!-- 生肖头部结束 -->
+	<!-- 左边开始 -->
+	<?php include MooTemplate('public/lovestyle_left','module'); ?>
+	<!-- 左边结束 -->
+		<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<span class="right-title f-ed0a91">生肖</span>
+			</div>
+			<div class="r-center-ccontent">
+				<div class="lt-con-in" style="background:url(module/lovestyle/templates/default/images/ani08.gif) no-repeat top right;">
+					<div class="lt-con-img"></div>
+					<h1>羊（未羊）</h1>
+					<h6>
+						<a href="index.php?n=lovestyle&h=animals&type=<?php echo $typenum;?>&animalstag=01">个性标签 &gt;&gt;</a>&nbsp;&nbsp;
+						<a href="index.php?n=lovestyle&h=animals&type=<?php echo $typenum;?>&animalstag=02">来历传说 &gt;&gt;</a>&nbsp;&nbsp;
+						<a href="index.php?n=lovestyle&h=animals&type=<?php echo $typenum;?>&animalstag=03">情缘手册 &gt;&gt;</a>&nbsp;&nbsp;
+						<a href="index.php?n=lovestyle&h=animals&type=<?php echo $typenum;?>&animalstag=04">爱情魔咒 &gt;&gt;</a>
+					</h6>
+					<h4>肖羊的个性标签</h4>
+					<dl>
+						<dt><span class="f-ed0a91">羊守护神：</span>大日如来菩萨</dt>
+						<dt><span class="f-ed0a91">羊开运水晶：</span>碧水晶</dt>
+						<dt><span class="f-ed0a91">羊速配：</span>兔，马，猪，猴</dt>
+						<dt><span class="f-ed0a91">羊职场：</span>处事宜简单直接。</dt>
+						<dt><span class="f-ed0a91">羊理财：</span>财运平平没有大起大落波折。</dt>
+						<dt><span class="f-ed0a91">羊性格：</span>乐善好施者。</dt>
+						<dt><span class="f-ed0a91">导&nbsp;&nbsp;读：</span>羊是最富温情的属相。出生于这一年的人被称为乐善好施者，他们往往为人正直、亲切、易被别人不幸经历所感染。他们脾气温顺甚至有些羞怯。</dt>
+					</dl>
+					<p>在中国的历书中，羊是最富温情的属相。出生于这一年的人被称为乐善好施者，他们往往为人正直、亲切、易被别人不幸经历所感染。他们脾气温顺甚至有些羞怯。当他们的各方面都处于高潮时，往往是风度优雅的艺术家或有创造性的工人，而当他们处于事业及其他方面的低潮湿时，则是一个忧伤多感甚至悲观厌世者。</p>
+					<p>属羊人克已的外表和内心的主见容易呈现出不一致状态。遭恐吓时，他宁愿暗怒不语，也不愿将自己的想法加以反复说明，更不愿意表现出他的扫兴，他在沉默的僵持中坚持己见。属羊人大多在童年时代都是受父母娇惯的。福运之星是向属羊人微笑的，因为他们有颗纯洁、善良的心。他们在时间上慷慨、在金钱上大方，当您落得无处安身、袋空如洗时，您要相信属羊的朋友决不会见您的困境而不顾。属羊的人一生总拥有三大件：食品、住所、衣物，无论走到哪里，他都喜欢与人交往，对愿和他合作的人以诚相待。一个人属羊意味着人将来有美满婚姻，他不仅会受到生活伴侣的爱，同样会受到其他亲戚爱戴。</p>
+					<p>据说生于羊年生冬季的人一生会遇到多种坎坷，因为冬季以羊来说是一个无食季节，在这个季节中羊要挨饿，但无论属羊人陷入何种逆境，他始终不必为生活必需的条件而发愁，人们会在他受难时，加倍关心人，羊的属相排在第八位，对中国人来说“八”是安定繁荣的象征。</p>
+					<p>属羊人有极好的命运。人们常常出自内心地情愿赠给他人钱财，即使是最穷的属羊人也会从他们父母或亲属那儿得到一些有价值的物品。有钱有势的人也会成为他们的保护伞。他们会被那些名人看中，做他们的弟子，总之，命运极好地属羊人总不会遇到什么难事，他的每一次失败都会被那些关心他们的人补救回去。</p>
+					<div class="clear"></div>
+				</div>	
+			</div>
+			<div class="r-center-bottom">
+			</div>
+		</div>
+	</div><!--=====右边结束===-->
+				
+		<div class="clear"></div>
+	</div><!--content end-->
+	<?php include MooTemplate('system/footer','public'); ?>
+</div><!--main end-->
+</body>
+</html>

@@ -39,8 +39,9 @@
 </head>
 
 <body>
+<?php include MooTemplate('system/header','public'); ?><!--top end-->	
 <div class="main">
-	<?php include MooTemplate('system/header','public'); ?><!--top end-->	
+	
 	<div class="content">
 	<!-- <p class="c-title"><span class="f-000">真爱一生首页&nbsp;&gt;&gt;&nbsp;我的真爱一生</span><a href="index.php?n=invite" target="_blank" class="loaction_right">邀请好友</a></p> -->
 	<div class="content-lift">

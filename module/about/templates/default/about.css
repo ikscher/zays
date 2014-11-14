@@ -70,4 +70,4 @@ body{font-size:14px}
 .i-honor-content dt{text-align:center;padding:15px 0}
 .i-honor-content dd{background:url(images/medal-icon.gif) no-repeat 0 2px;color:#F00;font-size:12px;line-height:25px;padding-left:35px}
 .i-honor-content dd a{color:#F00}
-ul li{height:60px;line-height:60px;}
+ul.about-left-nav  li{height:60px;line-height:60px;}

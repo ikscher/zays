@@ -312,26 +312,32 @@ function rotate(){
    <tbody>
     <tr>
      <td style="width: 20%;"><b>恋爱:</b></td>
-     <td style="width: 25%;"><input type="text" value="{$story['name1']}" id="x1" name="x1" disabled="disabled"/></td>
+     <td style="width: 25%;"><input type="text" value="{$story['name1']}" id="x1" name="name1" /></td>
      <td style="width: 20%;"><b>恋爱另一方:</b></td>
-     <td><input type="text" value="{$story['name2']}" name="width" disabled="disabled"/></td>
+     <td><input type="text" value="{$story['name2']}" name="name2" /></td>
     </tr>
     <tr>
      <td style="width: 20%;"><b>故事标题:</b></td>
-     <td style="width: 25%;"><input type="text" value="{$story['title']}" id="x1" name="x1" disabled="disabled"/></td>
+     <td style="width: 25%;"><input type="text" value="{$story['title']}" id="x1" name="title" /></td>
      <td style="width: 20%;"><b>甜蜜进程:</b></td>
-     <td><input type="text" value="{php if($story['state']==1) echo "恋爱";if($story['state']==2) echo "订婚";if($story['state']==3) echo "结婚";}" name="width" disabled="disabled"/></td>
+     <td><select name="state"><option value="0">请选择</option><option value="1" {if $story['state']=='1'}selected="selected"{/if}>恋爱</option><option value="2" {if $story['state']=='2'}selected="selected"{/if}>订婚</option><option value="3" {if $story['state']=='3'} selected="selected"{/if}>结婚</option> </select></td>
     </tr>
     <tr>
     <td style="width:20%;"><b>故事内容:</b></td>
-     <td colspan="3"><div style="width:400px; height:100px; float:left;overflow-y:scroll; border:#cccccc solid 1px;word-break:break-all;">{$story['content']}</div></td>
+     <td colspan="3"><textarea  name="content" style="width:400px; height:100px; float:left;overflow-y:scroll; border:#cccccc solid 1px;word-break:break-all;">{$story['content']}</textarea></td>
     </tr>
     <tr {php if($story['recommand']==1)echo "style=\"display:none\"";}>
 		<td colspan="4">
 		<a href="#" id="recommand" onClick="recommand({$story['sid']})">推荐到首页</a>
     </tr>
-    <tr {php if($story['syscheck']==1)echo "style=\"display:none\"";}><input type="hidden" value="{$id}" name="id" /><input type="hidden" value="{$uid}" name="uid" />
-     <td colspan="4"><input class="submit" type="submit" name="nopass" value="不通过"/>&nbsp;&nbsp;&nbsp;&nbsp;<input name="pass" class="submit" type="submit" value="通过"/></td>
+	
+    <tr ><input type="hidden" value="{$id}" name="id" /><input type="hidden" value="{$uid}" name="uid" />
+	{if $story['syscheck']==1}
+	    <input type="hidden" name="Save" value="1" />
+	    <td colspan="4"><input class="submit" type="submit"  value="保存"/>
+	{else}
+        <td colspan="4"><input class="submit" type="submit" name="Pass" value="通过"/>&nbsp;&nbsp;&nbsp;&nbsp;<input name="NoPass" class="submit" type="submit" value="不通过"/></td>
+	 {/if}
     </tr>
    </tbody>
   </table>

@@ -152,7 +152,8 @@ function public_showmsg($uid) {
 	if ($chat_msg) {
 		//$num = count($chat_msg);
 		//$t_arr = array_keys($chat_msg);
-       
+        
+		//普通会员可以接受来自高级会员的聊天信息
 		$str .= '<p>您有<a style="cursor:pointer" onclick="javascript:window.open(\'index.php?n=chat&h=inline_chat&c=1&fid='.$user_arr['uid'].'&tid='.$chat_msg['fromid'].'&sid='.$serverid.'\',\''.$user_arr['uid'].'_'.$chat_msg['fromid'].'\',\'scrollbars=no,resizable=no,status=no,width=497, height=440\');setTimeout(function(){public_showmsg(1);},1000);void(0);">新的在线消息</a></p>';
 		
 		$new_message = '|new_message';

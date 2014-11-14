@@ -358,7 +358,7 @@
                     </tr>
                     <tr>
                         <td class="desc">性　别:</td>
-                        <td class="desc2" colspan=2>{if $member['gender']}女{else}男{/if}</td>
+                        <td class="desc2 gender" colspan=2>{if $member['gender']}女{else}男{/if}</td>
                     </tr>
                     <tr>
                         <td class="desc">出生年月:</td>
@@ -613,7 +613,7 @@
                     {/if}
                     <tr>
                         <td class="desc">会员来源:</td>
-                        <td class="desc2 userfrom" colspan=2 data-usertype="{$member['usertype']}">{php if($member['usertype']==1)echo "本站注册";if($member['usertype']==2)echo "外站加入";if($member['usertype']==3)echo "全权会员";if($member['usertype']==4) echo 'QQ联盟会员';}</td>
+                        <td class="desc2 userfrom" colspan=2 data-usertype="{$member['usertype']}">{php if($member['usertype']==1)echo "本站注册";if($member['usertype']==2)echo "外站加入";if($member['usertype']==3)echo "全权会员";if($member['usertype']==4) echo '联盟会员';}</td>
                     </tr>
                     <tr>
                         <td class="desc">所属客服:</td>

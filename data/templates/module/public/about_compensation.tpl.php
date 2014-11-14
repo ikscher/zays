@@ -78,8 +78,8 @@ body{
 </style>
 </head>
 <body>
-<div class="main">
-	<?php include MooTemplate('system/header','public'); ?><!--head-search end-->
+<?php include MooTemplate('system/header','public'); ?>
+<div class="main"><!--head-search end-->
 	<div class="content">
 		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=activity">我的真爱一生</a>&nbsp;&gt;&gt;&nbsp;先期赔偿计划</span></p>
 			<!-- <div class="top-banner"><img src="module/activity/templates/default/images/topbanner.jpg" /></div> -->

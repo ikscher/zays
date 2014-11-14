@@ -27,7 +27,7 @@ function story_list() {
 	//note 统计相册中的图片的总数
 	$query = $_MooClass['MooMySQL']->getOne("select count(1) as num FROM {$dbTablePre}story where syscheck = 1 ");
 	$total = $query['num'];
-	
+	$total=30;
 	//note 获得当前的url
 	$currenturl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
 	$currenturl = preg_replace("/(&page=\d+)/","",$currenturl); 

@@ -285,6 +285,7 @@ function pop(){
 				type:'post',
 				dataType:'text',
 				success:function(str){
+				    console.log(str);
 					if(str=='sameone'){
 					    alert('自己不能给自己发送秋波!');	
 					}else if(str=='simulate'){

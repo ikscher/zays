@@ -37,7 +37,7 @@ $hostname_str = $host_arr[$num_arr_int-2].'.'.$host_arr[$num_arr_int-1];
 define('MOOPHP_COOKIE_DOMAIN', $hostname_str); */
 
 //note 定义加密所需Key，请修改此处为唯一
-// !defined('MOOPHP_AUTHKEY') && define('MOOPHP_AUTHKEY', '_z_a_y_s_');
+!defined('MOOPHP_AUTHKEY') && define('MOOPHP_AUTHKEY', '_z_a_y_s_');
 
 //note 定义是否开启MooPHP的Debug功能
 define('MOOPHP_DEBUG', false);

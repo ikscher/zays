@@ -582,9 +582,9 @@ switch ($h) {
 				$puid = isset($_MooCookie ['puid'])?$_MooCookie ['puid']:'';
 				$wherefrom = isset($_MooCookie ['w_from'])?$_MooCookie ['w_from']:'';
 				$password = md5( $password );
-//					$birth = mktime ( 0, 0, 0, $birthmonth, $birthday, $birthyear );
+				$birth = mktime ( 0, 0, 0, $birthmonth, $birthday, $birthyear );
 				//$birth = strtotime("$birthyear/$birthmonth/$birthday");
-				$birth = "$birthyear-$birthmonth-$birthday";
+				//$birth = "$birthyear-$birthmonth-$birthday";
 				
 				$hometownprovince = $hometownprovince == '0' ? '0' : $hometownprovince;
 				$hometowncity = $hometowncity == '0' ? '0' : $hometowncity;

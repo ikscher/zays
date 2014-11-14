@@ -444,7 +444,7 @@ var tabtoggle2 = function(e,o){
 	</tr>
 	<tr>
 		<td>
-			<span class="desc">手机号：</span><input type="text" name="telphone" value='<?php echo $_GET['telphone'];?>' />
+			<span class="desc">手机号：</span><input type="text" name="telphone" value="<?php echo $_GET['telphone'];?>" />
 		</td>
 		<td>
 			<span class="desc">用户名：</span>
@@ -520,8 +520,9 @@ var tabtoggle2 = function(e,o){
 	<?php if($adminid=='252' || $admingroup=='60') { ?>
 	<tr>
 		<td>
-			<span class="click252"><a href="./allmember_ajax.php?n=change_public_members&uid=252&puid=52&photo=1" onclick="return confirm('确定转 有 形象照片的女会员吗？');">一键转女会员, 有形象照</a></span>
-			<span class="click252"><a href="./allmember_ajax.php?n=change_public_members&uid=252&puid=52&photo=0" onclick="return confirm('确定转 无 形象照片的女会员吗？');">一键转女会员,无形象照</a></span>
+		    <span class="desc">备注手机号：</span><input type="text" name="callno" value='<?php echo $_GET['callno'];?>' />
+			<!-- <span class="click252"><a href="./allmember_ajax.php?n=change_public_members&uid=252&puid=52&photo=1" onclick="return confirm('确定转 有 形象照片的女会员吗？');">一键转女会员, 有形象照</a></span>
+			<span class="click252"><a href="./allmember_ajax.php?n=change_public_members&uid=252&puid=52&photo=0" onclick="return confirm('确定转 无 形象照片的女会员吗？');">一键转女会员,无形象照</a></span> -->
 		</td>
 		<td><span class="desc">QQ：</span><input type="text" name="qq" />
 		    <span class="desc">上传照片时间：</span><input type="text" name="uploadtime" value="<?php if($_GET['uploadtime']) echo $_GET['uploadtime'];?>" onFocus="WdatePicker({startDate:'%y-%M-%D 00:00:00',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" style="width:100px;"/>

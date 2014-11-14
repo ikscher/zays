@@ -92,7 +92,7 @@ $('.fancybox-buttons').fancybox({
 				<li><a href="material.html">我要征婚</a><b></b></li>
 				<li><a href="lovetest.html">爱情测评</a><b></b></li>
 				<li><a href="myaccount.html">信用认证</a><b></b></li>
-				<li><a href="vote.html">E见钟情</a><b></b></li>
+				<!-- <li><a href="vote.html">E见钟情</a><b></b></li> -->
 				<li><a href="introduce.html">服务介绍</a></li>
 			</ul>
 		</div>

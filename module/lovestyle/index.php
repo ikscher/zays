@@ -16,11 +16,13 @@ function lovestyle_love(){
 
 	$sql = "SELECT * FROM {$GLOBALS['dbTablePre']}test_question WHERE `tc_id`='{$tc_id}' ";
 	$questions = $GLOBALS['_MooClass']['MooMySQL']->getAll($sql);
-
+    
 	$total = sizeof($questions);
-	$percent = (int)($comp_num / $total * 100);
-	if($percent >= 100) {MooMessage("恭喜您的测试已完成",'index.php?n=lovestyle&h=result&tcid=1');}
-
+	if($total>0) {
+	    $percent = (int)($comp_num / $total * 100);
+	    if($percent >= 100) {MooMessage("恭喜您的测试已完成",'index.php?n=lovestyle&h=result&tcid=1');}
+    }
+	
 	include MooTemplate('public/lovestyle_love', 'module');
 }
 

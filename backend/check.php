@@ -366,7 +366,7 @@ function check_photo(){
 //                fastsearch_update($uid,2); //note 写入高级搜索表
                 
                 $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; //http://7651.com/ework/index.php?action=check&h=photo&type=submit&id=21291982&uid=21291982
-				// $url=preg_replace("/www./", "", $url);
+				$url=preg_replace("/www./", "", $url);
 			
                 $usersid=MooGetGPC('usersid','string','R');
 				
@@ -973,6 +973,14 @@ function check_story(){
     $uid = MooGetGPC('uid','integer');
     $id=MooGetGPC('id','integer');
     $checkArr = array(1=>'审核通过',0=>'未审核');
+	$name1=MooGetGPC('name1','string','P');
+	$name2=MooGetGPC('name2','string','P');
+	$title=MooGetGPC('title','string','P');
+	$content=MooGetGPC('content','string','P');
+	$state=MooGetGPC('state','string','P');
+	$Save=MooGetGPC('Save','string','P');
+    $Pass=MooGetGPC('Pass','string','P');
+	$NoPass=MooGetGPC('NoPass','string','P');
     $sql_where = '';
     switch($type){
         //会员成功故事列表
@@ -1037,8 +1045,9 @@ function check_story(){
             $currentur = $currenturl2.'&usersid='.$val;
             $total_count=$GLOBALS['_MooClass']['MooMySQL']->getOne("SELECT count(1) as c FROM {$GLOBALS['dbTablePre']}story AS a JOIN {$GLOBALS['dbTablePre']}members_search AS b WHERE {$sql_where} a.uid=b.uid");
             $total = $total_count['c'];
-            $sql = "SELECT a.uid,a.sid as id,a.syscheck AS syscheck,b.nickname,b.birthyear,b.sid as sid,b.gender,c.lastvisit,d.allotdate FROM {$GLOBALS['dbTablePre']}story AS a JOIN {$GLOBALS['dbTablePre']}members_search AS b on a.uid=b.uid left join {$GLOBALS['dbTablePre']}members_base as d on b.uid=d.uid left join {$GLOBALS['dbTablePre']}members_login as c on c.uid=d.uid WHERE {$sql_where} 1 ORDER BY a.syscheck,a.submit_date DESC LIMIT $start,$prepage";
-            $list=$GLOBALS['_MooClass']['MooMySQL']->getAll($sql);
+            $sql = "SELECT a.uid,a.sid as id,a.syscheck AS syscheck,b.nickname,b.birthyear,b.sid as sid,b.gender,d.allotdate FROM {$GLOBALS['dbTablePre']}story AS a JOIN {$GLOBALS['dbTablePre']}members_search AS b on a.uid=b.uid left join {$GLOBALS['dbTablePre']}members_base as d on b.uid=d.uid WHERE {$sql_where} 1 ORDER BY a.syscheck,a.submit_date DESC LIMIT $start,$prepage";
+            
+			$list=$GLOBALS['_MooClass']['MooMySQL']->getAll($sql);
             require adminTemplate("check_list");
         
         break;
@@ -1060,20 +1069,27 @@ function check_story(){
         break;
         
         case 'submit':
-            if(isset($_POST['nopass'])){
+            if($NoPass){
                 $GLOBALS['_MooClass']['MooMySQL']->query("DELETE FROM {$GLOBALS['dbTablePre']}story WHERE `sid`='$id'");
                 serverlog(2,$dbTablePre."story",$GLOBALS['username']."未通过用户的成功故事".$id,$GLOBALS['adminid'],$uid);
                 sendusermessage($uid,"您的成功故事不符合成功故事要求，已被红娘删除，请您按要求进行操作","成功故事审核");
                 //salert('成功删除此会员的成功故事！');
                 $alert = '成功删除此会员的成功故事！';
-                
-            }elseif(isset($_POST['pass'])){
+
+            }else if($Pass){
                 $GLOBALS['_MooClass']['MooMySQL']->query("UPDATE {$GLOBALS['dbTablePre']}story SET `syscheck`=1 WHERE `sid`='$id'");
                 serverlog(3,$dbTablePre."story",$GLOBALS['username']."通过用户的成功故事".$id,$GLOBALS['adminid'],$uid);
                 sendusermessage($uid,"您的成功故事已经过红娘的审核，希望您和您的另一半白头偕老，同时也感谢您对红娘的支持","成功故事审核");
                 //salert('审核通过此会员成功故事');
                 $alert = '审核通过此会员成功故事';
-            }
+            }else if($Save){
+			    $content=addslashes($content);
+				$title=addslashes($title);
+			    $sql="update web_story set content='{$content}' ,title='{$title}' ,state='{$state}',name1='{$name1}',name2='{$name2}'  where uid='{$uid}'";
+
+				$GLOBALS['_MooClass']['MooMySQL']->query($sql);
+				$alert = '保存成功';
+			}
             salert($alert,'index.php?action=check&h=story');
         break;
         
@@ -1151,10 +1167,10 @@ function check_storyfirst(){
                 
             }
             
-            echo $sql_where;
-            $total_count=$GLOBALS['_MooClass']['MooMySQL']->getOne("SELECT count(1) as c FROM {$GLOBALS['dbTablePre']}story_pic AS a,{$GLOBALS['dbTablePre']}story AS b JOIN {$GLOBALS['dbTablePre']}members_search AS c WHERE a.uid=b.uid AND a.uid=c.uid and {$sql_where} AND a.sid=b.sid AND a.mid=b.is_index");
+            
+            $total_count=$GLOBALS['_MooClass']['MooMySQL']->getOne("SELECT count(1) as c FROM {$GLOBALS['dbTablePre']}story_pic AS a,{$GLOBALS['dbTablePre']}story AS b JOIN {$GLOBALS['dbTablePre']}members_search AS c WHERE a.uid=b.uid AND a.uid=c.uid and {$sql_where} AND a.sid=b.sid");
             $total = $total_count['c'];
-            $list=$GLOBALS['_MooClass']['MooMySQL']->getAll("SELECT a.uid,a.mid as id,a.syscheck AS syscheck,c.nickname,c.birthyear,c.gender,c.sid,d.lastvisit, e.allotdate FROM {$GLOBALS['dbTablePre']}story_pic AS a,{$GLOBALS['dbTablePre']}story AS b JOIN {$GLOBALS['dbTablePre']}members_search AS c left join {$GLOBALS['dbTablePre']}members_login as d on c.uid=d.uid left join {$GLOBALS['dbTablePre']}members_base as e on e.uid=d.uid WHERE a.uid=b.uid AND a.uid=c.uid and {$sql_where} AND a.sid=b.sid AND a.mid=b.is_index ORDER BY a.syscheck,a.submit_date DESC LIMIT $start,$prepage");
+            $list=$GLOBALS['_MooClass']['MooMySQL']->getAll("SELECT a.uid,a.mid as id,a.syscheck AS syscheck,c.nickname,c.birthyear,c.gender,c.sid, e.allotdate FROM {$GLOBALS['dbTablePre']}story_pic AS a,{$GLOBALS['dbTablePre']}story AS b JOIN {$GLOBALS['dbTablePre']}members_search AS c  left join {$GLOBALS['dbTablePre']}members_base as e on e.uid=c.uid WHERE a.uid=b.uid AND a.uid=c.uid and {$sql_where} AND a.sid=b.sid  ORDER BY a.syscheck,a.submit_date DESC LIMIT $start,$prepage");
             require adminTemplate("check_list");
         break;
         case 'show':
@@ -1281,8 +1297,8 @@ function check_storyimage(){
             $sql1="select count(1) as c from web_story_pic as p left join web_members_search as m on (p.uid = m.uid) where {$sql_where} p.mid != (select is_index from web_story as s where p.sid = s.sid)";
             $total_count=$GLOBALS['_MooClass']['MooMySQL']->getOne($sql1);
             $total = $total_count['c'];
-            $sql="select p.uid,p.mid as id,p.syscheck,m.nickname,m.birthyear,m.sid,m.gender,l.lastvisit,mb.allotdate from web_story_pic as p left join web_members_search as m on (p.uid = m.uid) left join web_members_base as mb on mb.uid=m.uid inner join web_members_login as l on l.uid=m.uid where {$sql_where} p.mid != (select is_index from web_story as s where p.sid = s.sid) order by p.syscheck,p.submit_date desc limit $start,$prepage";
-
+            $sql="select p.uid,p.mid as id,p.syscheck,m.nickname,m.birthyear,m.sid,m.gender,mb.allotdate from web_story_pic as p left join web_members_search as m on (p.uid = m.uid) left join web_members_base as mb on mb.uid=m.uid  where {$sql_where} p.mid != (select is_index from web_story as s where p.sid = s.sid) order by p.syscheck,p.submit_date desc limit $start,$prepage";
+            
             $list=$GLOBALS['_MooClass']['MooMySQL']->getAll($sql);
             require adminTemplate("check_list");
         break;

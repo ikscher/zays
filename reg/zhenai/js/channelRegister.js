@@ -4,7 +4,7 @@ var tip_common_msg='此项注册后不可更改，请慎重填写'+tip_msg_corne
 
 
 //if workCity is not null
-if(!!workCityTemp && workCityTemp.length > 0){
+/*if(!!workCityTemp && workCityTemp.length > 0){
 	registerCity = workCityTemp;
 }
 //if workProvince is not null
@@ -22,7 +22,7 @@ else{
 			registerCity = cookieTemp;
 		}
 	}	
-}
+}*/
 
 function showSexTip(){
 	$("#sexDiv").removeClass("tip_msg3").html(tip_common_msg).css("display","");
@@ -41,8 +41,8 @@ function channelCheckForm() {
 	var year = document.getElementById("register_dateFormYear");
 	var month = document.getElementById("register_dateFormMonth");
 	var day = document.getElementById("register_dateFormDay"); 
-	var workProvince = document.getElementById("workprovincereg");
-	var workCity = document.getElementById("workcity");
+	var workProvince = document.getElementById("workProvince");
+	var workCity = document.getElementById("workCity");
 
 
 	var mobile = document.getElementById("mobile");
@@ -54,43 +54,46 @@ function channelCheckForm() {
 	var hasFocus=false;
 	var hasTopFocus=false;
 	
-	
-	if(year.value=='0'||year.value==''){
-		$(year).siblings('.tip_msg').addClass('tred').html("您忘记选择“生日”这项了。"+tip_msg_corner).show();
+    
+	if(year.value=='0'||year.value=='' || month.value=='0'|| month.value=='' || day.value=='0'|| day.value==''){
+		$(year).parents('#BirthdaySelector').siblings('.tip_msg').addClass('tred').html("您忘记选择“生日”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
+	}else{
+	    $(year).parents('#BirthdaySelector').siblings("div.tip_msg").hide();
 	}
 	
-	/*
+	
 	if(month.value=='0'||month.value==''){
-		$(month).siblings('.tip_msg').addClass('tred').html("您忘记选择“生日”这项了。"+tip_msg_corner).show();
+		$(month).parents('#BirthdaySelector').siblings('.tip_msg').addClass('tred').html("您忘记选择“生日”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
 	}
 	
 	if(day.value=='0'||day.value==''){
-		$(day).siblings('.tip_msg').addClass('tred').html("您忘记选择“生日”这项了。"+tip_msg_corner).show();
-		if(!hasFocus){hasFocus=true;}
-	}
-	*/
-	
-	if(month.value=='2'&&(day.value=='30'||day.value=='31')){
-		$(day).siblings('.tip_msg').addClass('tred').html("请您填写正确的出生日期。"+tip_msg_corner).show();
+		$(day).parents('#BirthdaySelector').siblings('.tip_msg').addClass('tred').html("您忘记选择“生日”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
 	}
 	
+	
+	/* if(month.value=='2'&&(day.value=='30'||day.value=='31')){
+		$(day).parents('#BirthdaySelector').siblings('.tip_msg').addClass('tred').html("请您填写正确的出生日期。"+tip_msg_corner).show();
+		if(!hasFocus){hasFocus=true;}
+	} */
+	
+
 	if(education1.value=='0') {
-		$(education1).siblings('.tip_msg').addClass('tred').html("您忘记选择“学历”这项了。"+tip_msg_corner).show();
+		$(education1).parents('#EducationSelector').siblings('.tip_msg').addClass('tred').html("您忘记选择“学历”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
 	}else{
 	
 	}
 	
 	if(salary1.value=='0') {
-		$(salary1).siblings('.tip_msg').addClass('tred').html("您忘记选择“收入”这项了。"+tip_msg_corner).show();
+		$(salary1).parents('#SalarySelector').siblings('.tip_msg').addClass('tred').html("您忘记选择“收入”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
 	}
   
 	if(marriage1.value=='0') {
-		$(marriage1).siblings('.tip_msg').addClass('tred').html("您忘记选择“婚姻状况”这项了。"+tip_msg_corner).show();
+		$(marriage1).parents('#MarriageSelector').siblings('.tip_msg').addClass('tred').html("您忘记选择“婚姻状况”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
 	}
 	
@@ -107,25 +110,27 @@ function channelCheckForm() {
 		if(!hasFocus){hasFocus=true;}
 	}
 	
-	if(!$('#mysex_0').attr('checked') && !$('#mysex_1').attr('checked')){
-		$('#mysex_0').siblings('.tip_msg').addClass('tred').html("您忘记选择“性别”这项了。"+tip_msg_corner).show();
+	if(!$('#forgentleman').attr('checked') && !$('#forlady').attr('checked')){
+		$('#forgentleman').siblings('.tip_msg').addClass('tred').html("您忘记选择“性别”这项了。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
 	}
 
-	if(workProvince.value !='10101201' && workProvince.value !='10102000' && workProvince.value !='10103000' && workProvince.value !='10101002' && workProvince.value !='10104000' && workProvince.value !='10105000' && workProvince.value !='10132000' && workProvince.value !='10133000' && workProvince.value !='10134000'){
-		if(workCity.value=='0'){
-			$(workCity).parent('span').siblings('.tip_msg').addClass('tred').html("请选择具体工作地区。"+tip_msg_corner).show();
-			if(!hasFocus){hasFocus=true;}
-		}
-	}
-
-	if(workProvince.value=='0' && workCity.value=='0') {
-		$(workProvince).parent('span').siblings('.tip_msg').addClass('tred').html("请选择工作所在的省份。"+tip_msg_corner).show();
+	//if(workProvince.value !='10101201' && workProvince.value !='10102000' && workProvince.value !='10103000' && workProvince.value !='10101002' && workProvince.value !='10104000' && workProvince.value !='10105000' && workProvince.value !='10132000' && workProvince.value !='10133000' && workProvince.value !='10134000'){
+	if(workCity.value=='0' || workCity.value==''){
+		$(workCity).parents('#DistrictSelector').siblings('.tip_msg').addClass('tred').html("请选择具体工作地区。"+tip_msg_corner).show();
 		if(!hasFocus){hasFocus=true;}
 	}
+	//}
+
+	if(workProvince.value=='0' || workProvince.value=='') {
+		$(workProvince).parents('#DistrictSelector').siblings('.tip_msg').addClass('tred').html("请选择工作所在的省份。"+tip_msg_corner).show();
+		if(!hasFocus){hasFocus=true;}
+	}
+	
 	if(hasFocus){
 		hasTopFocus=true;		
 	}	
+	
 	if(hasFocus){
 		if(hasTopFocus){
 			window.scrollTo('0','0');
@@ -159,7 +164,7 @@ var flag=false;
 $("#mobile").blur(function(){
 
 	var tel = $(this).val();
-	
+	if (!tel) return;
 	var telurl = "ajax.php?n=register&h=checktel";
 	$.get(telurl,{tel_val:tel},function(str){
 		if(str != ''){
@@ -173,43 +178,41 @@ $("#mobile").blur(function(){
 
 
 $(function(){
+	$('input[name=gender]').on('click',function(){
+		$(this).siblings("div.tip_msg").hide();
+	});
 	
-	$("#register_dateFormYear,#register_dateFormMonth,#register_dateFormDay").blur(function(){
+	$(".year-selector,.month-selector,.day-selector").click(function(){
 		var register_dateFormYear_value =document.getElementById("register_dateFormYear").value;
 		var register_dateFormMonth_value =document.getElementById("register_dateFormMonth").value;
 		var register_dateFormDay_value =document.getElementById("register_dateFormDay").value;
-		if("0" == register_dateFormYear_value || "0" == register_dateFormMonth_value || "0" == register_dateFormDay_value){
-			$(this).siblings("div.tip_msg").addClass("tred").html("请选择“生日”" + tip_msg_corner).show();
+		if(!register_dateFormYear_value || !register_dateFormMonth_value || !register_dateFormDay_value){
+			$(this).parents('#BirthdaySelector').siblings("div.tip_msg").addClass("tred").html("请选择“出生日期”" + tip_msg_corner).show();
 		}else{
-			$(this).siblings("div.tip_msg").hide();
+			$(this).parents('#BirthdaySelector').siblings("div.tip_msg").hide();
 		}
 	});
 	
-	$("#workprovincereg,#workcity").blur(function(){
-		var workProvince = document.getElementById("workprovincereg");
-	    var workCity = document.getElementById("workcity");
+	$(".province-selector,.city-selector").click(function(){
+		var workProvince = document.getElementById("workProvince");
+	    var workCity = document.getElementById("workCity");
+
+		if(workProvince.value=='0' || workCity.value=='0') {
+			$(this).parents('#DistrictSelector').siblings("div.tip_msg").addClass('tred').html("请选择具体工作地区。"+tip_msg_corner).show();
 	
-		if(workProvince.value=='0' && workCity.value=='0') {
-			$(this).siblings("div.tip_msg").addClass('tred').html("请选择具体工作地区。"+tip_msg_corner).show();
-		}else if(workProvince.value !='10101201' && workProvince.value !='10102000' && workProvince.value !='10103000' && workProvince.value !='10101002' && workProvince.value !='10104000' && workProvince.value !='10105000' && workProvince.value !='10132000' && workProvince.value !='10133000' && workProvince.value !='10134000'){
-			if(workCity.value=='0'){
-				$(this).parent('span').siblings('.tip_msg').addClass('tred').html("请选择具体工作地区。"+tip_msg_corner).show();
-			}else{
-				$(this).parent('span').siblings("div.tip_msg").hide();
-			}
 		}else{
-			$(this).parent('span').siblings("div.tip_msg").hide();
+			$(this).parents('#DistrictSelector').siblings("div.tip_msg").hide();
 		}
 
 	});
 	
-	$("#marriage1,#education1,#salary1").blur(function(){
-		var $this = $(this);
+	$(".education-selector,.marriage-selector,.salary-selector").click(function(){
+		var $this = $(this).find('input');
 		var id = $this.attr("id");
-		if($this.attr("value")=="-1"){
-			$(this).siblings("div.tip_msg").addClass("tred").html(errorTip[id][0] + tip_msg_corner).show();
+		if($this.attr("value")=="0" ||　$this.attr("value")==""){
+			$(this).parent().siblings("div.tip_msg").addClass("tred").html(errorTip[id][0] + tip_msg_corner).show();
 		}else{
-			$this.siblings("div.tip_msg").hide();
+			$(this).parent().siblings("div.tip_msg").hide();
 		}
 	});
 	

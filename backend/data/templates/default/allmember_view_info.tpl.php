@@ -358,7 +358,7 @@
                     </tr>
                     <tr>
                         <td class="desc">性　别:</td>
-                        <td class="desc2" colspan=2><?php if($member['gender']) { ?>女<?php } else { ?>男<?php } ?></td>
+                        <td class="desc2 gender" colspan=2><?php if($member['gender']) { ?>女<?php } else { ?>男<?php } ?></td>
                     </tr>
                     <tr>
                         <td class="desc">出生年月:</td>

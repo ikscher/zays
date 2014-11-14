@@ -12,8 +12,8 @@
 
 <body>
 
+<?php include MooTemplate('system/header','public'); ?>
 <div class="main">
-	<?php include MooTemplate('system/header','public'); ?>
 	<div class="content">
 	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=myaccount">诚信认证</a>&nbsp;&gt;&gt;&nbsp;身份认证</span></p>
 	<!--content-lift end-->

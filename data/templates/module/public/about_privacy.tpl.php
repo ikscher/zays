@@ -9,7 +9,7 @@
 </style>
 </head>
 <body>
-<div class="clear"></div>
+
 <?php include MooTemplate('system/header','public'); ?>
 <!--头部结束-->
 <div class="content">

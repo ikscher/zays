@@ -15,8 +15,8 @@ $(function(){
 });
 </script>
 <body>
-<div class="main">
-	{template system/header public}<!--head-search end-->
+{template system/header public}
+<div class="main"><!--head-search end-->
 	<div class="content">
 		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=story">成功故事</a>&nbsp;&gt;&gt;&nbsp;{$love_story['title']}</span></p>
 		<div class="clear"></div>
@@ -57,7 +57,7 @@ $(function(){
                                     <img src="module/story/templates/default/images/pic2.jpg" />
                                     {/if}
                                    </a>
-                                   <span>{$sta}纪念日：{php echo date("Y-n-j",$love_story['story_date']);}</span> 
+                                   <span>{$sta}纪念日：{php echo date("n月j日",$love_story['story_date']);}</span> 
 								</div>
 							</div>
 							<div class="clear"></div>

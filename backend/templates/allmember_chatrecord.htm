@@ -18,9 +18,10 @@ function del_chat_message(cid){
 <br/>
 <div style="border: 1px solid #1C3F80; margin:0 auto; width:100%;">
 <table width="100%" cellpadding="3" cellspacing="1" style="background:#FFF">
+    <thead>
 	<tr>	
 		<th>发送方</th>
-		<th>接收方发送方</th>
+		<th>接收方</th>
 		<th>聊天内容</th>
 		<th>时间</th>
 		<th>读取状态</th>
@@ -28,13 +29,16 @@ function del_chat_message(cid){
 		<th>是否客服模拟</th>
 		{if in_array($GLOBALS['groupid'],$GLOBALS['system_admin'])}<th>操作</th>{/if}
 		</tr>
+	</thead>
+	<tbody>
 	{loop $chats $v}
+
 	<tr id = "chat_{$v['s_id']}">
     	<td align="center"><a href="#" onclick="parent.addTab('{$v['s_fromid']}资料','index.php?action=allmember&h=view_info&uid={$v['s_fromid']}','icon')">
-		{if $v['is_server'] && $v['s_fromid'] != $uid}（红娘）{/if}
+		<span class="from_gender">{if $v['is_server'] && $v['s_fromid'] != $uid} （女）{else}（男）{/if}</span>
 		{$v['s_fromid']}</a></td>
 		<td align="center"><a href="#" onclick="parent.addTab('{$v['s_uid']}资料','index.php?action=allmember&h=view_info&uid={$v['s_uid']}','icon')">
-		{if $v['is_server'] && $v['s_uid'] != $uid}（红娘）{/if}
+		 <span class="to_gender"><!-- {if $v['is_server'] && $v['s_uid'] != $uid}（男）{else}（女）{/if}  -->{if $v['is_server'] && $v['s_fromid'] != $uid}（男）{else}（女）{/if} </span>
 		{$v['s_uid']}
 		</a></td>
 		<td>{$v['s_content']}</td>
@@ -45,8 +49,10 @@ function del_chat_message(cid){
 		{if in_array($GLOBALS['groupid'],$GLOBALS['system_admin'])}<td><a href="#" onclick="del_chat_message('"{php echo $v['s_id']}"')">删除</a></td>{/if}
 		</tr>
 	{/loop}
+	</tbody>
 </table>
 </div>
 <br/>
 {if $pages>=2}<div style="text-align:center">第&nbsp;{php for($i=1;$i<=$pages;$i++) echo '<a href="javascript:chatgopage('.$i.');">&nbsp;'.$i .'&nbsp;</a>';}&nbsp;页</div>{/if}
 </div>
+<script type="text/javascript"><!-- var gender =$('.gender').html();gender_reverse=gender=='男'?'女':'男';{if  $v['s_fromid'] == $uid} document.write(gender); {else}document.write(gender_reverse); {/if} --></script> 

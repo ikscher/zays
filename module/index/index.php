@@ -117,7 +117,7 @@ function login_submit() {
 		}
 		// MooSetCookie('auth','SDFSFGAFGD\AHFGHGHJ',86400);
 		$time = time();
-		$_MooClass['MooMySQL']->query("update {$dbTablePre}members_login set last_login_time = '{$time}',login_meb = login_meb+1,real_lastvisit='{$time}' where uid = '{$user['uid']}'");//更新最后登录时间
+		$_MooClass['MooMySQL']->query("update {$dbTablePre}members_login set last_login_time = '{$time}',login_meb = login_meb+1,lastvisit='{$time}' where uid = '{$user['uid']}'");//更新最后登录时间
 		//会员最后登录时间
 
         MooSetCookie('last_login_time', $time,86400);

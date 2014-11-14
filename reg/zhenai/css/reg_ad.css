@@ -1,0 +1,209 @@
+.newsite_layer1 { display:none; padding:20px 30px; width:500px; font-size:14px;}
+.newsite_layer1 p { text-indent:24px; padding-bottom:10px;}
+.newsite_layer1 .red { color:#f00;}
+.newsite_layer1 .action { padding-top:20px; text-align:center;}
+.newsite_layer2 { display:none; padding:20px 30px; width:500px; font-size:14px;}
+.newsite_layer2 p {  padding-bottom:10px;}
+.newsite_layer2 .red { color:#f00;}
+.newsite_layer2 .action { padding-top:20px; text-align:center;}
+.newsite_layer2 .action a { margin:0 10px; padding:0 20px;}
+body {
+    color: #333333;
+    font-family: 宋体;
+    font-size: 12px;
+    line-height: 20px;
+}
+a:link {
+    color: #0861A2;
+    text-decoration: none;
+}
+a:hover {
+    color: #0861A2;
+    text-decoration: underline;
+}
+/**main.css*/
+div, form, img, ul, ol, li, dl, dt, dd, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+/**picture**/
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.fl{float:left;}
+/*wrongTip*/
+.tred {
+    color: #FF6600;
+}
+
+.za-item-selector {
+font-size: 12px;
+height: 22px;
+line-height: 22px;
+}
+
+.za-item-selector dl {
+float: left;
+width: 50px;
+line-height: 20px;
+height: 22px;
+z-index: 10;
+}
+.za-item-selector dt {
+border: 1px solid #C9C9C9;
+height: 20px;
+padding-left: 5px;
+overflow: hidden;
+background-color: #fff;
+}
+
+.za-item-selector dd {
+width: 415px;
+border: 1px solid #C9C9C9;
+padding: 5px;
+position: absolute;
+left: 0;
+top: 25px;
+z-index: 1;
+box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+background: #fff;
+}
+
+.za-item-selector .month-selector dd {
+left: -104px;
+width: 276px;
+height: 122px;
+}
+
+.za-item-selector .day-selector dd {
+left: -208px;
+width: 276px;
+height: 122px;
+word-break: break-all;
+word-wrap: break-word;
+}
+
+
+.za-item-selector .marriage-selector dd {
+left: 0px;
+width: 190px;
+height: 32px;
+word-break: break-all;
+word-wrap: break-word;
+}
+
+.za-item-selector .education-selector dd {
+left: 0px;
+width: 290px;
+height: 55px;
+word-break: break-all;
+word-wrap: break-word;
+}
+
+.za-item-selector .city-selector dd {
+left: 0px;
+width: 500px;
+word-break: break-all;
+word-wrap: break-word;
+}
+
+
+.za-item-selector span {
+display: inline-block;
+height: 22px;
+float: left;
+padding: 0 5px;
+}
+
+.za-item-selector dd p {
+padding-left: 7px;
+text-align: justify;
+text-justify: inter-ideograph;
+line-height: 26px;
+}
+
+.za-item-selector dd p i {
+font-style: normal;
+font-weight: 700;
+}
+
+.za-item-selector .year-selector a {
+display: inline-block;
+width: 33px;
+}
+
+.za-item-selector .month-selector a {
+	display: inline-block;
+	width: 18px
+}
+
+.za-item-selector .day-selector a {
+display: inline-block;
+width: 22px;
+}
+
+.za-item-selector .marriage-selector a {
+display: inline-block;
+width: 30px;
+}
+
+.za-item-selector dd a {
+display: inline;
+border: 0;
+text-decoration: none;
+padding: 1px 2px;
+text-align: center;
+border-radius: 2px;
+white-space: nowrap;
+}
+.h{display:none;}
+
+
+.za-item-selector-hover dt {
+	position: relative;
+	border-bottom: 0;
+	z-index: 2;
+	height: 25px;
+	background: #FFFDFB
+}
+
+.za-item-selector-hover {
+	position: relative
+}
+
+.za-item-selector-hover dd {
+	display: block;
+	background: #FFFDFB
+}
+
+.za-item-selector dd a:hover {
+	background: #00A5DB;
+	text-decoration: none;
+	color: #fff
+}
+
+
+.za-item-selector .province-selector span {
+display: inline-block;
+width: 46px;
+text-align: left;
+}
+
+.za-item-selector .city-selector span {
+display: inline-block;
+width: 46px;
+text-align: left;
+}
+
+dl.province-selector{width:80px;}
+dl.city-selector{width:100px;margin-left:10px;}
+dl.marriage-selector{width:190px;}
+dl.education-selector{width:190px;}
+dl.salary-selector{width:190px;}
+.cp{cursor:pointer;}

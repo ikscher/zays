@@ -68,8 +68,8 @@ function save_skin(){
 }
 </script>
 <body>
+<?php include MooTemplate('system/header','public'); ?>
 <div class="main">
-    <?php include MooTemplate('system/header','public'); ?>
 	<div class="content">
 	<!-- <p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<?php if($uid != $userid) { ?><?php echo $user['nickname']?MooCutstr($user['nickname'], 12, ''):'ID:'.$user['uid']?><?php } else { ?>我<?php } ?>的个人主页</span><a href="#"></a></p> -->
 
@@ -86,11 +86,10 @@ function save_skin(){
 				<div class="skinlist-box">
 					<ul class="skinlist">
 					<?php foreach((array)$skin_style as $n=>$v) {?>
-						
-							<li>
-								 <img src="<?php echo $v['image'];?>" id="imgs<?php echo $n;?>" width="150" height="100" />
-								 <span><input name="skiname" type="radio" value="<?php echo $v['skin_style'];?>" id="skiname<?php echo $n;?>"/><label for="skiname<?php echo $n;?>"><?php echo $v['skiname'];?></label></span>
-							</li>
+						<li>
+							<img src="<?php echo $v['image'];?>" id="imgs<?php echo $n;?>" width="150" height="100" />
+							<span><input name="skiname" type="radio" value="<?php echo $v['skin_style'];?>" id="skiname<?php echo $n;?>"/><label for="skiname<?php echo $n;?>"><?php echo $v['skiname'];?></label></span>
+						</li>
 					<?php }?>
 					</ul>	
 					<div class="clear"></div>	

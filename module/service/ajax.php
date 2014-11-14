@@ -120,14 +120,14 @@ function getLeerInfo(){
 
 //发送秋波
 function sendLeer(){
-    global $_MooClass,$dbTablePre,$timestamp,$user_arr,$memcached;	
+    global $_MooClass,$dbTablePre,$timestamp,$user_arr,$memcached,$serverid;	
     $userid=$user_arr['uid'];
 	$sendtouid=MooGetGPC('uid','string','P');
 	$info = MooGetGPC('info','string','P');
 	if($userid==$sendtouid) exit('sameone');
 
 	
-	$serverid = Moo_is_kefu();
+	//$serverid = Moo_is_kefu();
 	if($serverid && $user_arr['usertype']!=3){//只能模拟全权会员
         exit('simulate');
     }
@@ -154,7 +154,7 @@ function sendLeer(){
 	    $sql="SELECT telphone FROM {$dbTablePre}certification WHERE uid='$userid'";
         $_R_ = $_MooClass['MooMySQL']->getOne($sql,true);
     }
-
+   
     if(empty($_R_['telphone']) && empty($serverid) ){ exit('telNo');}
 	
 	
@@ -768,6 +768,7 @@ if(!$userid && $h!='page') {
 }
 
 $serverid = Moo_is_kefu();
+
 
 switch ($h) {
 	//note 委托填号码

@@ -94,14 +94,14 @@
             <li> <a href="links.html">合作伙伴</a>|</li>
             <li><a href="advices.html">意见反馈</a>|</li>
             <li><a href="story.html">成功故事</a>|</li>
-            <li><a href="diamond.html">汇款信息</a>|</li>
-            <li><a href="payDetail.html">支付细则</a> | </li>
-            <li><?php if(!empty($user_arr['s_cid'])) { ?> <a href="index.php?n=index&h=add_vip&s_cid=<?php echo $user_arr['s_cid'];?>">其他信息</a><?php } else { ?><a href="othervip.html">其他信息</a><?php } ?>|</li>
-            <li><a href="cityStar.html">城市之星</a></li>
+            <!-- <li><a href="diamond.html">汇款信息</a>|</li> -->
+          <!--   <li><a href="payDetail.html">支付细则</a> | </li> -->
+            <li><?php if(!empty($user_arr['s_cid'])) { ?> <a href="index.php?n=index&h=add_vip&s_cid=<?php echo $user_arr['s_cid'];?>">其他信息</a><?php } else { ?><a href="othervip.html">其他信息</a><?php } ?></li>
+            <!-- <li><a href="cityStar.html">城市之星</a></li> -->
         </ul>
     </div>
 
-    <div class="bt">Copyright 2006-<?php echo date('Y');?> 真爱一生网.All Right Reserved.<a target="_blank" href="http://www.miitbeian.gov.cn" class="f-000-a">皖ICP备14002819</a><img src="public/default/images/police.jpg" /></div>
+    <div class="bt">Copyright@<?php echo date('Y');?> 真爱一生网.All Right Reserved.<a target="_blank" href="http://www.miitbeian.gov.cn" class="f-000-a">皖ICP备14002819</a><img src="public/default/images/police.jpg" /></div>
     <div class="cnet"><a href='index.php?n=safetyguide'><img src='public/default/images/safe.jpg' /></a><a href="#"><img src='public/default/images/360c.png' /></a><a href="#">  <img src='public/default/images/cnnic.png'  /> </a>
 	    <a href="http://www.hfaic.gov.cn/gongshang/public/index.html" title="" target="_blank"><img src='public/default/images/hficb.jpg' /></a>
 		<a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" title="" target="_blank"><img src='public/default/images/ICP.jpg' /></a>

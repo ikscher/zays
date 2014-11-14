@@ -2815,9 +2815,12 @@ function getSearchEngineName($hostname = null) {
     global $_MooCookie;
     //$kefu = $_COOKIE['web_kefu'];
     if (!isset($_MooCookie['kefu']))
+	   
         return 0;
     $kefu = MooAuthCode(urldecode($_MooCookie['kefu']), 'DECODE');
+
     if($kefu){
+	     
 	    list($check, $sid) = explode("\t", $kefu);
 	    if(($check=="hongniangwang"&&$sid)){
 	        return $sid;

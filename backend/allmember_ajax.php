@@ -1566,6 +1566,7 @@ function ajax_chatrecord(){
     $limit = 10;
     $offset = ($page-1)*$limit;
     
+	
     $data = getChatList($uid,false,0,$page,$limit);
     if(is_array($data) && !empty($data)){
 	    $chats = $data['data'];
@@ -1579,6 +1580,7 @@ function ajax_chatrecord(){
 		    	$chats2[$k]['s_status'] = $v['status'];
 		    	$chats2[$k]['is_server'] = $v['serverid'];
 		    	$chats2[$k]['dealstate'] = $v['isdeal'];
+
 		    }
 	    }
 	    $chats = $chats2;

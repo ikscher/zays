@@ -11,12 +11,28 @@
     <?php } ?>
     
 	<?php if(MooGetGPC('h','string','G')!='channel' && MooGetGPC('n','string','G')!='payment') { ?>
-    <div >
-	    <div class="showself"></div>
-		<span class="umember">  <a href="upgrade.html" id='paya'></a></span>
+    
+	    <!-- <div class="showself"></div> -->
+		<!--导航-->
+		
+	<div class="nav-center">
+		<ul>
+			<li><a href="index.html">首&nbsp;&nbsp;页</a><b></b></li>
+			<li><a href="service.html">我的真爱</a><b></b></li>
+			<li><a href="search.html">搜索</a><b></b></li>
+			<li><a href="material.html">我要征婚</a><b></b></li>
+			<li><a href="lovetest.html">爱情测评</a><b></b></li>
+			<li><a href="myaccount.html">信用认证</a><b></b></li>
+		   <!--  <li><a href="vote.html">E见钟情</a><b></b></li> -->
+			<!-- <li><a href="index.php?n=myaccount&h=videoindex">视频认证</a><b></b></li> -->
+			<li><a href="introduce.html">服务介绍</a></li>
+		</ul>
 	</div>
-	<!---下拉菜单-->
-	<div class="menu1">
+	
+	<span class="umember">  <a href="upgrade.html" id='paya'></a></span>
+	
+	
+	<!-- <div class="menu1">
 		<div class="menu2" style="display: block;">
 			<div class="menu3">
 				<div class="xtbkk">
@@ -39,24 +55,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<?php } ?>
-	<!--导航-->
-    <div class="nav">
-        <div class="nav-center">
-            <ul>
-                <li><a href="index.html">首&nbsp;&nbsp;页</a><b></b></li>
-                <li><a href="service.html">我的真爱</a><b></b></li>
-                <li><a href="search.html">搜索</a><b></b></li>
-                <li><a href="material.html">我要征婚</a><b></b></li>
-                <li><a href="lovetest.html">爱情测评</a><b></b></li>
-                <li><a href="myaccount.html">信用认证</a><b></b></li>
-                <li><a href="vote.html">E见钟情</a><b></b></li>
-                <!-- <li><a href="index.php?n=myaccount&h=videoindex">视频认证</a><b></b></li> -->
-                <li><a href="introduce.html">服务介绍</a></li>
-            </ul>
-        </div>
-    </div><!--nav end-->
+	
     <div class="clear"></div>
 	
 </div><!--top end-->
@@ -111,9 +112,9 @@
 	});
 </script>
 
-<?php if(MooGetGPC('n','string','G')=='search') { ?>
+
 <div class="head-search">
-    <p class="head-search-side h-s-left"></p>
+    <!-- <p class="head-search-side h-s-left"></p> -->
     <div class="head-search-center">
         <form action="index.php" method="get" onsubmit="return checkquicksearch();">
 		    <input type="hidden" name="n" value="search" />
@@ -142,7 +143,7 @@
         </form>
     </div>
 
-    <p class="head-search-side h-s-right"></p>
+    <!-- <p class="head-search-side h-s-right"></p> -->
     <div class="clear"></div>
 </div><!--head-search end-->
-<?php } ?>
+

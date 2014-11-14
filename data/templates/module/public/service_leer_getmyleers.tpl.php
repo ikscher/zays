@@ -30,8 +30,8 @@
     </head>
 
     <body>
-        <div class="main">
-            <?php include MooTemplate('system/header','public'); ?><!--top end-->	
+        <?php include MooTemplate('system/header','public'); ?>
+<div class="main"><!--top end-->	
             <div class="content">
                 <p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=service">我的真爱一生</a>&nbsp;&gt;&gt;&nbsp;我的秋波</span>
                     <a href="index.php?n=invite" target="_blank" class="loaction_right">邀请好友</a>

@@ -7,8 +7,9 @@
 <link href="module/lovestyle/templates/<?php echo $GLOBALS['style_name'];?>/lovestyle.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<?php include MooTemplate('system/header','public'); ?>
 <div class="main">
-	<?php include MooTemplate('system/header','public'); ?>
+	
 	<div class="content">
 		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;爱情测试</span></p><!--content-title end-->
 			<div class="c-center">

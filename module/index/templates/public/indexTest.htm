@@ -201,7 +201,7 @@
             </div>
         </div>
         <div class="story cf">
-            <div class="t"><span class="x"></span><span style="float:right;margin-right:10px;margin-top:10px;"><a style="text-decoration:none;" href="storyList.html">更多>></a></span></div>
+            <div class="t"><span class="x"></span><span style="float:right;margin-right:10px;margin-top:10px;"><!-- <a style="text-decoration:none;" href="storyList.html">更多>></a> --></span></div>
             {loop $story $k $s}
             <div class="s"> <a href="story{$s['sid']}.html" target="_blank"><img src="{php echo MooGetstoryphoto($s['sid'],$s['uid'],'medium');}" class="lazy"  data-original="{php echo MooGetstoryphoto($s['sid'],$s['uid'],'medium');}" /></a> <span>{$s['name1']}&{$s['name2']}</span>
                 <div class="line_"></div>
@@ -212,8 +212,8 @@
         </div>
     </div>
     <div class="footer">
-        <div class="g">品牌：8年专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
-        <div class="g">Copyright 2006-2014 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
+        <div class="g">品牌：专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
+        <div class="g">Copyright@<?php echo date('Y');?> 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
         <div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>
     </div>
 

@@ -8,8 +8,8 @@
 {template system/js_css public}
 <script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script>
 <body>
+{template system/header public}
 <div class="main">
-	{template system/header public}
 	<div class="content">
 		<p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=story">成功故事</a>&nbsp;&gt;&gt;&nbsp;故事列表</span></p>
 		<div class="clear"></div>
@@ -53,7 +53,7 @@
                                     {/if}
                                     </a>
 								</div>
-								<span>{$sta}纪念日：{php echo date("Y-n-j",$love_storys['story_date']);}</span> 
+								<span>{$sta}纪念日：{php echo date("n月j日",$love_storys['story_date']);}</span> 
 							</div>
 							<div class="clear"></div>
 						</div>
