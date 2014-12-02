@@ -44,7 +44,7 @@
 							<dd>这是您在真爱一生网公开展示的个人资料页面，所有会员都能看到。</dd> 
 						</dl>
 					</li>
-                    <li><i class="thenew"><img src="public/default/images/new-icon.gif"></i>
+                    <li>
 						<dl class="r-list11">
 							<dt><a href="index.php?n=material&h=skin" target="_blank">皮肤设置</a></dt>
 							<dd>给个人资料页设置皮肤</dd> 
@@ -56,6 +56,15 @@
 							<dd>更改您的头像，并且上传自己的照片。</dd>
 						</dl>
 					</li>
+					
+					<li><i class="thenew"><img src="public/default/images/new-icon.gif"></i>
+						<dl class="r-list12">
+							<dt><a href="index.php?n=material&h=music" target="_blank">添加/编辑音乐</a></dt>
+							<dd>更改您的背景音乐，并且上传自己的背景音乐。</dd>
+						</dl>
+					</li>
+					
+					
 					<li>
 						<dl class="r-list04">
 							<dt><a href="index.php?n=myaccount&h=videoindex" target="_blank">添加/编辑视频</a></dt>

@@ -25,20 +25,20 @@
 
 
    
-   //更改为全权会员，取消为全权会员
+   //更改为诚信会员，取消为诚信会员
    $(function(){
      $("#changeToAcq").click(function(){
         
         var value=$(this).val();
         var uid={$userinfo['uid']};
         var url="./allmember_ajax.php?n=changeAcq";
-        if(confirm('你确定'+uid+'会员更改为全权会员吗？')){
+        if(confirm('你确定'+uid+'会员更改为诚信会员吗？')){
 	       	$.post(url,{uid:uid,value:value},function(data){
 	               if(data=='update'){
-	                 alert("成功 更改为全权会员！");
+	                 alert("成功 更改为诚信会员！");
 	                 $("#changeToAcq").attr("disabled","disabled");
 	               }else if(data=="cancel"){
-	                 alert("成功取消 此会员 为全权会员！ ");
+	                 alert("成功取消 此会员 为诚信会员！ ");
 	               }else{
 	                 alert("您的操作失败!");
 	               }
@@ -56,7 +56,7 @@
 	   var select_usertype=$("select[name=usertype] option:selected").val();
 	   var usertype={$userinfo['usertype']};
 	   if (select_usertype==3 &&　usertype!=3){
-		   alert("不能这样修改全权会员,请点左边的更改复选框！");
+		   alert("不能这样修改诚信会员,请点左边的更改复选框！");
 		   return false;
 	   }
 
@@ -268,7 +268,7 @@
 		   <select name="usertype">
 	  			<option value="1" {if $userinfo['usertype'] == 1}selected{/if}>本站注册</option>
 	  			<option value="2" {if $userinfo['usertype'] == 2}selected{/if}>外站加入</option>
-	  			<option value="3" {if $userinfo['usertype'] == 3}selected{/if}>全权会员</option>
+	  			<option value="3" {if $userinfo['usertype'] == 3}selected{/if}>诚信会员</option>
 	  			<option value="4" {if $userinfo['usertype'] == 4}selected{/if}>联盟会员</option>
 				<option value="5" {if $userinfo['usertype'] == 5}selected{/if}>内部会员</option>
 	  		</select>{/if}
@@ -369,7 +369,7 @@
 <div style="margin:0 auto;margin-left:500px;">
 	<input name="uid" type="hidden" value="{$uid}" />
   	<input name="presex" type="hidden" value="{$userinfo['gender']}" />
-    {if $is_admin==0}{if $userinfo['s_cid']==40  && $userinfo['usertype']!=3 }<label><input type="checkbox" id="changeToAcq" value="noquanquan"   />更改为全权会员</label>{/if}{/if}
+    {if $is_admin==0}{if $userinfo['s_cid']==40  && $userinfo['usertype']!=3 }<label><input type="checkbox" id="changeToAcq" value="noquanquan"   />更改为诚信会员</label>{/if}{/if}
     <input type="submit" value="确定修改 " class="button" />
 </div>
 </div>

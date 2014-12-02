@@ -1622,7 +1622,7 @@ function MooMembersData($uid, $getfield=False){
 	}	
 	
 	if(MOOPHP_ALLOW_FASTDB){
-
+	       
 		$member_all[$uid] = MooFastdbGet('members_search','uid',$uid);		
 		if($member_base = MooFastdbGet('members_base','uid',$uid)){
 			$member_all[$uid] = array_merge($member_all[$uid], $member_base);

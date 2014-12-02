@@ -1210,15 +1210,19 @@ function will_expire_vip(){
 //	var_dump($expire_user);
 	
 	//转为普通会员
-	$sql = "UPDATE {$dbTablePre}members_search SET s_cid=40 WHERE endtime<'{$current_time}' AND s_cid IN(20,30) and (usertype='1' or usertype='3')";
+	$sql = "UPDATE {$dbTablePre}members_search SET s_cid=40 WHERE endtime<'{$current_time}' AND s_cid IN(10,20,30) and (usertype='1' or usertype='3')";
 	$GLOBALS['_MooClass']['MooMySQL']->query($sql);
-	$sql2 = "select uid from {$dbTablePre}members_search where endtime<'{$current_time}' AND s_cid IN(20,30) and (usertype='1' or usertype='3')";
-	$rs = $GLOBALS['_MooClass']['MooMySQL']->getOne($sql2);
+	$sql2 = "select uid from {$dbTablePre}members_search where endtime<'{$current_time}' AND s_cid IN(10,20,30) and (usertype='1' or usertype='3')";
+	$rs = $GLOBALS['_MooClass']['MooMySQL']->getAll($sql2);
 	if(is_array($rs) && !empty($rs)){
 		foreach($rs as $k=>$v){
 			$str_arr[$v['uid']] = array(40);
 		}
 		searchApi('members_man members_women')->updateAttr(array('s_cid'),$str_arr);
+		
+		//删除背景音乐
+		$upDir='data'.DIRECTORY_SEPARATOR.'music'.DIRECTORY_SEPARATOR.$v['uid'] ;
+		rmdir($upDir);
 	}
 	
 	//$sql = "SELECT uid FROM {$dbTablePre}members bgtime<$time WHERE s_cid IN(0,1)";

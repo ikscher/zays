@@ -1,26 +1,3 @@
-<?php if(!isset($member_admininfo['last_ip'])) { ?>
-<?php $member_admininfo['last_ip'] = '';?>
-<?php } ?>
-<?php if(!isset($member_admininfo['finally_ip'])) { ?>
-<?php $member_admininfo['finally_ip'] = '';?>
-<?php } ?>
-<?php if(!isset($member_admininfo['real_lastvisit'])) { ?>
-<?php $member_admininfo['real_lastvisit'] = '';?>
-<?php } ?>
-<?php if(!isset($member_admininfo['effect_contact'])) { ?>
-<?php $member_admininfo['effect_contact'] = '';?>
-<?php } ?>
-<?php if(!isset($member_admininfo['checkreason'])) { ?>
-<?php $member_admininfo['checkreason'] = '';?>
-<?php } ?>
-<?php if(!isset($danger_leval)) { ?>
-<?php $danger_leval = '0';?>
-<?php } ?>
-<?php if(!isset($member['uid'])) { ?>
-<?php $member['uid'] = '0';?>
-<?php } ?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,14 +7,13 @@
         <script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
         <script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
-        <script type="text/javascript" src="templates/js/mouse_tz.js"></script>
-        <script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
-        <link rel="stylesheet" type="text/css" href="templates/css/jquery.fancybox-1.2.5.css"/>
         <link href="templates/css/allmember_viewinfo.css" rel="stylesheet" type="text/css" />
-        <script>
+        <script type="text/javascript">
             //显示用户信息
             function userdetail(number,arrayobj) {
                 var arrname = arrayobj;
+				
+				if(!arrayobj) return;
                 for(i=0;i<arrayobj.length;i++) {
                     var valueArray  = arrayobj[i].split(",");
                     if(valueArray[0] == number) {
@@ -45,6 +21,23 @@
                             document.write("未选择");
                         } else {
                             document.write(valueArray[1]);
+                        }	
+                    }
+                }
+            }
+			
+			
+			function userdetail_(number,arrayobj) {
+                var arrname = arrayobj;
+				
+				if(!arrayobj) return;
+                for(i=0;i<arrayobj.length;i++) {
+                    var valueArray  = arrayobj[i].split(",");
+                    if(valueArray[0] == number) {
+                        if(valueArray[0] == '0') {
+                            return '';
+                        } else {
+                            return valueArray[1];
                         }	
                     }
                 }
@@ -279,15 +272,6 @@
                 <table width="150" border="0" cellspacing="0" cellpadding="0" class="allmember_funbtn">
                     <tr>
                         <td colspan="3" align="center">
-                            <!--
-                            <?php if($member['usertype']==1) { ?>
-                                <?php if((in_array($GLOBALS['groupid'],$GLOBALS['admin_channel']))) { ?>
-                                    <a onclick="thisLogin();return false;" href="#" target="_blank" style="background:none;border:none;color:#333; display:inline;">进入网站查看</a>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <a onclick="thisLogin();return false;" href="#" target="_blank" style="background:none;border:none;color:#333; display:inline;">进入网站查看</a>
-                            <?php } ?>
-                            -->
                             <a onclick="thisLogin();return false;" href="#" target="_blank" style="background:none;border:none;color:#333; display:inline;">进入网站查看</a>
 
                             <a href="#" class="modifyinfo" <?php if($GLOBALS['adminid']==52 || (in_array($GLOBALS['groupid'],$GLOBALS['general_service_pre']) && $member['usertype']==3) ) { ?> onclick="alert('无权修改！');return false;"<?php } else { ?>onclick="parent.addTab('修改会员<?php echo $member['uid'];?>资料','index.php?action=allmember&h=edit_info&uid=<?php echo $member['uid'];?>')"<?php } ?> style="background:none;border:none;color:#333;display:inline;">修改资料</a>				
@@ -306,25 +290,21 @@
                     </tr>
                     <tr>
                         <!-- <td width="50" height="35"><a href="javascript:<?php if($GLOBALS['ccid']) { ?>contact(1,0,<?php echo $uid;?>)<?php } else { ?>alert('你无权拨打电话')<?php } ?>;">拨打电话</a></td> -->
-                        <td width="50"><a href="javascript:contact(2,0,<?php echo $uid;?>);" <?php if($member['sid']==52 && !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82))) { ?> onclick="alert('无权操作');return false;" <?php } ?> >发送短信</a></td>
-                        <td width="50"><a href="javascript:contact(3,0,<?php echo $uid;?>);" <?php if($member['sid']==52 && !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)) ) { ?> onclick="alert('无权操作');return false;" <?php } ?>  >发站内信</a></td>
-                        <td width="50"><a href="javascript:contact(4,0,<?php echo $uid;?>);" <?php if($member['sid']==52 && !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)) ) { ?> onclick="alert('无权操作');return false;" <?php } ?>  >会员认证</a></td>
-				   </tr>
+                        <td width="50"><a href="javascript:contact(2,0,<?php echo $uid;?>);"  >发送短信</a></td>
+                        <td width="50"><a href="javascript:contact(3,0,<?php echo $uid;?>);"   >发站内信</a></td>
+                        <td width="50"><a href="javascript:contact(4,0,<?php echo $uid;?>);" >会员认证</a></td>
+                    </tr>
                     <tr>
                         <td width="50"><a href="javascript:enneagram()">九型人格</a></td>
                         <td width="50">
-                            <?php if($member['usertype']==3) { ?><a href="javascript:kfManage()" <?php if($member['sid']==52 && !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)) ) { ?> onclick="alert('无权操作');return false;" <?php } ?>  >客服操作</a><?php } ?>
+                            <?php if($member['usertype']==3) { ?><a href="javascript:kfManage()"  >客服操作</a><?php } ?>
                             <?php if(in_array($GLOBALS['groupid'],$GLOBALS['admin_aftersales'])) { ?>
                             <a href="#" onclick="view_transfer(event,<?php echo $member['uid'];?>);return false;">交接信息</a>
                             <?php } ?>
                         </td>
-						<td width="50" height="35"><a href="javascript:contact(5,0,<?php echo $uid;?>);" <?php if($member['sid']==52 && !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)) ) { ?> onclick="alert('无权操作');return false;" <?php } ?>  >发送彩信</a></td>
-                        
+                        <td width="50" height="35"><a href="javascript:contact(5,0,<?php echo $uid;?>);" onclick="alert('无权操作');return false;" >发送彩信</a></td>
+
                     </tr>
-                   <!--  <tr>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                    </tr>	 -->
                 </table>
             </div>
 
@@ -370,11 +350,11 @@
                     </tr>
                     <tr>
                         <td class="desc">生肖:</td>
-                        <td class="desc2" colspan=2><?php if(isset($star_sx[1])) { ?><?php echo $star_sx[1];?><?php } ?></td>
+                        <td id="zodiac" class="desc2" colspan=2></td>
                     </tr>
                     <tr>
                         <td class="desc">星座:</td>
-                        <td class="desc2" colspan=2><?php if(isset($star_sx[0])) { ?><?php echo $star_sx[0];?><?php } ?></td> 
+                        <td id="zodiac_" class="desc2" colspan=2></td> 
 
                     </tr>
                     <tr>
@@ -398,7 +378,7 @@
                     <tr>
                         <td class="desc">Q　Q:</td> 
                         <td class="desc2">
-                            <?php if($member['usertype']==3 || ($member['sid']==52  && !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)))) { ?>
+                            <?php if($member['usertype']==3 ) { ?>
                             ******
                             <?php } else { ?>
                             <?php if($is_look=='1') { ?> 
@@ -414,7 +394,7 @@
                     <tr>
                         <td class="desc">手　机:</td>
                         <td class="desc2" >
-                            <?php if($member['usertype']==3 || ($member['sid']==52  && !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)))) { ?>
+                            <?php if($member['usertype']==3 ) { ?>
                             ******
                             <?php } else { ?>
                             <?php if($is_look=='1') { ?>  
@@ -429,7 +409,7 @@
                     <tr>
                         <td class="desc">号码所在地:</td>
                         <td class="desc2" colspan=2 >
-                            <?php if($member['usertype']==3 || ($member['sid']==52  && !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)))) { ?>
+                            <?php if($member['usertype']==3 ) { ?>
                             ******
                             <?php } else { ?>
 
@@ -443,7 +423,7 @@
                         <td class="desc2" colspan=2>
                             <span id="byhm">
                                 <?php if($member['callno']) { ?>
-                                <?php if($member['usertype']==3 || ($member['sid']==52  &&  !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)))) { ?>
+                                <?php if($member['usertype']==3 ) { ?>
                                 ******
                                 <?php } else { ?>
                                 <?php if($is_look) { ?>  
@@ -464,7 +444,7 @@
                         <td class="desc">号码所在地:</td>
                         <td id="byhmszd_td" class="desc2" colspan=2>
                             <?php if($member['callno'] ) { ?>
-                            <?php if($member['usertype']==3 || ($member['sid']==52  &&  !in_array($GLOBALS['groupid'],array(60,61,76,75,77,62,63,68,69,70,78,79,81,82)))) { ?>
+                            <?php if($member['usertype']==3) { ?>
                             ******
                             <?php } else { ?>
                             <?php echo $teladdr2;?>
@@ -613,7 +593,7 @@
                     <?php } ?>
                     <tr>
                         <td class="desc">会员来源:</td>
-                        <td class="desc2 userfrom" colspan=2 data-usertype="<?php echo $member['usertype'];?>"><?php if($member['usertype']==1)echo "本站注册";if($member['usertype']==2)echo "外站加入";if($member['usertype']==3)echo "全权会员";if($member['usertype']==4) echo '联盟会员';?></td>
+                        <td class="desc2 userfrom" colspan=2 data-usertype="<?php echo $member['usertype'];?>"><?php if($member['usertype']==1)echo "本站注册";if($member['usertype']==2)echo "外站加入";if($member['usertype']==3)echo "诚信会员";if($member['usertype']==4) echo '联盟会员';?></td>
                     </tr>
                     <tr>
                         <td class="desc">所属客服:</td>
@@ -657,81 +637,74 @@
 
                 </table>	
             </div>
-
+            <!--择偶资料开始-->
             <div class="info1" style="width:18%;">
                 <div class="title"><span>择偶资料</span></div>
                 <table border="0" cellspacing="0" cellpadding="0">		
                     <tr>
                         <td class="desc">年　龄:</td>
-                        <td class="desc2"><?php if($choice['age1'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['age1'];?>",agebuxian);</script>~<script>userdetail("<?php echo $choice['age2'];?>",agebuxian);</script>岁 <?php } ?></td>
+                        <td id="spouseage" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">身　高:</td>
-                        <td class="desc2"><?php if($choice['height1'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['height1'];?>",height);</script>~<script>userdetail('<?php echo $choice['height2'];?>',height);</script>厘米<?php } ?></td>
+                        <td id="spouseheight" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">体　重:</td>
-                        <td class="desc2"><?php if($choice['weight1'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['weight1'];?>",weight);</script>~<script>userdetail('<?php echo $choice['weight2'];?>',weight);</script>公斤<?php } ?></td>
+                        <td id="spouseweight" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">体　型:</td>
-                        <td class="desc2"><?php if($choice['body'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['body'];?>",body1);</script><?php } ?></td>
+                        <td id="spousebodytype" class="desc2">不限</td>
                     </tr>	
                     <tr>
                         <td class="desc">民　族:</td>
-                        <td class="desc2"><?php if($choice['nation'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['nation'];?>",stockbuxian);</script><?php } ?></td>
+                        <td id="spousenational" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">职　业:</td>
-                        <td class="desc2"><?php if($choice['occupation'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['occupation'];?>",occupation);</script><?php } ?></td>
+                        <td id="spouseoccupation" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">月　薪:</td>
-                        <td class="desc2"><?php if($choice['salary'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['salary'];?>",salary1);</script><?php } ?></td>
+                        <td id="spousesalary" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">工作地址:</td>
-                        <td class="desc2"><?php if($choice['workprovince'] == '-1' || $choice['workcity'] == '-1') { ?>不限<?php } else { ?>
-                            <script>userdetail("<?php echo $choice['workprovince'];?>",provice);</script><script>userdetail("<?php echo $choice['workcity'];?>",city);</script><?php } ?></td>
+                        <td id="spouseaddress" class="desc2">不限</td>
                     </tr>
 
                     <tr>
                         <td class="desc">是否抽烟:</td>
-                        <td class="desc2"><?php if($choice['smoking'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['smoking'];?>",smoking);</script><?php } ?></td>
+                        <td id="spousesmoke" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">婚姻状况:</td>
-                        <td class="desc2"><?php if($choice['marriage'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['marriage'];?>",marriage);</script><?php } ?></td>
+                        <td id="spousemarriage" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">教育程度:</td>
-                        <td class="desc2"><?php if($choice['education'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['education'];?>",education);</script><?php } ?></td>
+                        <td id="spouseeducation" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">征友地区:</td>
-                        <td class="desc2">
-                            <?php if($choice['hometownprovince'] == '-1' || $choice['hometowncity'] == '-1') { ?>
-                            不限
-                            <?php } else { ?>
-                            <script>userdetail("<?php echo $choice['hometownprovince'];?>",provice);</script>
-                            <script>userdetail("<?php echo $choice['hometowncity'];?>",city);</script>
-                            <?php } ?>
-                        </td>
+                        <td id="spousefriendaddress" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">是否有孩子:</td>
-                        <td class="desc2"><?php if($choice['children'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['children'];?>",children);</script><?php } ?></td>
+                        <td id="spousehavechildren" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">是否想要孩子:</td>
-                        <td class="desc2"><script>userdetail("<?php echo $member2['wantchildren'];?>",wantchildren);</script></td>
+                        <td id="spousewantchildren" class="desc2">不限</td>
                     </tr>
                     <tr>
                         <td class="desc">喜欢的性格:</td>
-                        <td class="desc2"><?php if($choice['nature'] == '-1') { ?>不限<?php } else { ?><script>userdetail("<?php echo $choice['nature'];?>",naturebuxian);</script><?php } ?></td>
+                        <td id="spousenature" class="desc2">不限</td>
                     </tr>
                 </table>
             </div>
+			<!--择偶资料结束-->
             <div class="info1" style="width:18%">
                 <div class="title"><span>网站行为:</span></div>
                 <table border="0" cellspacing="0" cellpadding="0">
@@ -783,11 +756,11 @@
                     </tr>
                     <tr>
                         <td class="desc">上次登录IP:</td>
-                        <td class="desc2" <?php if($member['usertype']==3 && $GLOBALS['adminid']!=1 ) { ?>title="您无权查看此条信息"<?php } ?>><?php if($member['usertype']!=3 || $GLOBALS['adminid']==1) { ?><?php echo $member_admininfo['last_ip'];?>&nbsp;&nbsp;<?php if($member_admininfo['last_ip']) { ?>(<?php echo $last_ip;?>)<?php } ?>&nbsp;&nbsp;<a href="#" onclick="show_search(event,'<?php echo $member_admininfo['last_ip'];?>');"><img src="templates/images/sou-btn.gif" ></a><?php } else { ?>******<?php } ?></td>
+                        <td class="desc2" <?php if($member['usertype']==3 && $GLOBALS['adminid']!=1 ) { ?>title="您无权查看此条信息"<?php } ?>><?php if($member['usertype']!=3 || $GLOBALS['adminid']==1) { ?><?php echo $member_admininfo['last_ip'];?>&nbsp;&nbsp;<a href="#" onclick="show_search(event,'<?php echo $member_admininfo['last_ip'];?>');"><img src="templates/images/sou-btn.gif" ></a><?php } else { ?>******<?php } ?></td>
                     </tr>
 
                     <td class="desc">最后登录IP:</td>
-                    <td class="desc2" <?php if($member['usertype']==3 && $GLOBALS['adminid']!=1 ) { ?>title="您无权查看此条信息"<?php } ?>><?php if($member['usertype']!=3 || $GLOBALS['adminid']==1) { ?><?php echo $member_admininfo['finally_ip'];?>&nbsp;&nbsp;<?php if($member_admininfo['finally_ip']) { ?>(<?php echo $finally_ip;?>)<?php } ?>&nbsp;&nbsp;<a href="#" onclick="show_search(event,'<?php echo $member_admininfo['finally_ip'];?>');"><img src="templates/images/sou-btn.gif" ></a><?php } else { ?>******<?php } ?></td>
+                    <td class="desc2" <?php if($member['usertype']==3 && $GLOBALS['adminid']!=1 ) { ?>title="您无权查看此条信息"<?php } ?>><?php if($member['usertype']!=3 || $GLOBALS['adminid']==1) { ?><?php echo $member_admininfo['finally_ip'];?>&nbsp;&nbsp;<a href="#" onclick="show_search(event,'<?php echo $member_admininfo['finally_ip'];?>');"><img src="templates/images/sou-btn.gif" ></a><?php } else { ?>******<?php } ?></td>
                     </tr>
                     <tr>
                         <td class="desc">注册日期:</td>
@@ -806,7 +779,7 @@
                     </tr>
                     <tr>
                         <td class="desc">此手机号注册的会员数：</td>
-                        <td class="desc2" <?php if($member['usertype']==3 && $GLOBALS['adminid']!=1 ) { ?>title="您无权查看此条信息"<?php } ?>><?php if($member['usertype']!=3 || $GLOBALS['adminid']==1) { ?><a href="#" onclick="parent.addTab('<?php echo $member['telphone'];?>号注册会员','index.php?action=allmember&h=same_telphone&telphone=<?php echo $member['telphone'];?>','icon')" style="color:red;">(<?php echo $tel_count['c'];?>个)查看</a><?php } else { ?>******<?php } ?></td>
+                        <td class="desc2" <?php if($member['usertype']==3 && $GLOBALS['adminid']!=1 ) { ?>title="您无权查看此条信息"<?php } ?>><?php if($member['usertype']!=3 || $GLOBALS['adminid']==1) { ?><span id="mobileregcount"></span><?php } else { ?>******<?php } ?></td>
                     </tr>
                 </table>
             </div>
@@ -987,10 +960,6 @@
 
 
                                     <td  colspan="2" >是否有效联系：<input name="contact" type="radio" id="radio" value="1"<?php if($member_admininfo['effect_contact'] == 1) { ?> checked="checked"<?php } ?> />                    是                    <input type="radio" name="contact" id="radio2" value="0" />                   否(不计入联系量)&nbsp;                    <input name="master" type="checkbox" id="<?php echo $uid;?>"  <?php if($member_goon['uid']) { ?> checked="checked"   <?php } ?> onclick="javascript:updateMaster(this.id);"/>
-                                                                                                                                                                                                        重点会员  
-                                                                                                                                                                                                        <input name="isControl" type="checkbox" id="isControl" value="<?php echo $uid;?>"  <?php if($member_Control['flag']==1) { ?> checked="checked"   <?php } ?> onclick="javascript:updateControl(this.value,'control');"/> 可控
-                                                                                                                                                                                                        <input name="isForcast" type="checkbox" id="isForcast" value="<?php echo $uid;?>"  <?php if($member_Control['isforcast']==1) { ?> checked="checked"   <?php } ?> onclick="javascript:updateControl(this.value,'forcast');"/> 预测
-
                                                                                                                                                                                                         <input type="hidden"  id="isControl_<?php echo $uid;?>" value=<?php echo $member_Control['flag'];?> />
                                         <input type="hidden"  id="isForcast_<?php echo $uid;?>" value=<?php echo $member_Control['isforcast'];?> />
 
@@ -1160,12 +1129,104 @@
     </div>
     <script type="text/javascript" src="templates/js/allmember_view_info.js?v=20140831"></script>
     <script type="text/javascript">
-	    //加载动作数
+	    var uid="<?php echo $member['uid'];?>";
+		
+		var birth="<?php echo $member['birth'];?>";
+		var birthyear="<?php echo $member['birthyear'];?>";
+		$.ajax({
+		    url:'./allmember_ajax.php?n=czodiac',
+			data:{birthyear:birthyear,birth:birth},
+			type:'post',
+			datatype:'json',
+			success:function(json){
+			    var zodiac=json.toString().replace(/[\"\[\]]+/g,'').split(',');
+			    $('#zodiac_').html(zodiac[0]);
+				$('#zodiac').html(zodiac[1]);
+			}
+		});
+		
+		
+		var mobilereg="<?php echo $member['telphone'];?>";
+		$.ajax({
+		    url:'./allmember_ajax.php?n=mobileregcount',
+			data:{mobile:mobilereg},
+			type:'post',
+			datatype:'text',
+			success:function(regcount){
+			    var str="<a href=\"#\" onclick=\"parent.addTab('"+mobilereg+"手机号注册会员','index.php?action=allmember&h=same_telphone&telphone="+mobilereg+"','icon')\" >"+regcount+"个查看</a>";
+				$('#mobileregcount').html(str);
+			}
+		});
+		
+		//择偶资料异步加载
+        $.ajax({
+            url:'./allmember_ajax.php?n=spouse',
+            data:{uid:uid},
+            type:'POST',
+            dataType:'json',
+            success:function(json){
+			    //console.log(json);
+			    if (!json) return;
+				var age1= userdetail_(json['age1'],agebuxian);
+				var age2= userdetail_(json['age2'],agebuxian);
+				if(age1 && age2) $('#spouseage').html(age1+'至'+age2+'岁');
+			    
+				var height1= userdetail_(json['height1'],height);
+				var height2= userdetail_(json['height2'],height);
+				if(height1 && height2) $('#spouseheight').html(height1+'至'+height2+'厘米');
+				
+				var weight1= userdetail_(json['weight1'],weight);
+				var weight2= userdetail_(json['weight2'],weight);
+				if(weight1 && weight2) $('#spouseweight').html(weight1+'至'+weight2+'公斤');
+				
+				var body= userdetail_(json['body'],body1);
+				if(body) $('#spousebodytype').html(body);
+				
+				var nation=userdetail_(json['nation'],stockbuxian);
+				if(nation) $('#spousenational').html(nation);
+				
+				var occupation=userdetail_(json['occupation'],occupation);
+				if(occupation) $('#spouseoccupation').html(occupation);
+				
+				var salary=userdetail_(json['salary'],salary1);
+				if(salary) $('#spousesalary').html(salary);
+				
+				var workprovince=json['workprovince']>0?userdetail_(json['workprovince'],provice):'';
+				var workcity = json['workcity']>0?userdetail_(json['workcity'],city):'';
+				if(workcity) $('#spouseaddress').html(workprovince+workcity);
+				
+				var smoke=userdetail_(json['smoking'],smoking);
+				if(smoke) $('#spousesmoke').html(smoke);
+				
+				var marriage_=userdetail_(json['marriage'],marriage);
+				if(marriage_) $('#spousemarriage').html(marriage_);
+				
+				var education_=userdetail_(json['education'],education);
+				if(education_) $('#spouseeducation').html(education_);
+				
+				var hometownprovince=json['hometownprovince']>0?userdetail_(json['hometownprovince'],provice):'';
+				var hometowncity=json['hometowncity']>0?userdetail_(json['hometowncity'],city):'';				
+				if(hometownprovince && hometowncity) $('#spousefriendaddress').html(hometownprovince+hometowncity);
+				
+				var havechildren=userdetail_(json['children'],children);
+				if(havechildren) $('#spousehavechildren').html(havechildren);
+				
+				var wantchildren_=userdetail_(json['wantchildren'],wantchildren);
+				if(wantchildren_) $('#spousewantchildren').html(wantchildren_);
+				
+				
+				var nature=userdetail_(json['nature'],naturebuxian);
+				if(nature) $('#spousenature').html(nature);
+				
+			}
+		});
+	
+        //加载动作数
         function getLocalTime(nS) {   
             return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");    
         }     
 			  
-        var uid="<?php echo $member['uid'];?>";
+        //var uid="<?php echo $member['uid'];?>";
         $.ajax({
             url:'./allmember_ajax.php?n=total',
             data:{uid:uid},
@@ -1190,116 +1251,115 @@
             }
         });
 	    
-		//查看小记
+        //查看小记
         var newWin=null;
         $('#queryNotes').click(function(){
-            //var url = "./allmember_ajax.php?n=notes&uid="+uid;
-            //$.get(url,function(data){
-            //$("#kefuxiaoji").html(data);
-     
             newWin=window.open('./allmember_ajax.php?n=notes&uid='+uid,'newWin','height=550,width=810,top=300,left=200,menubar=no,status=no,scrollbars=1,resizable=yes,fullscreen=no','replace=true');
             newWin.focus();
-	 
-            //});
         });
 	
-	    var dclick=false;
-	    //action="index.php?action=allmember&h=note" method="post"
+        var dclick=false;
         //小记保存
-		$('#saveNotes').click(function(){
-		    if (dclick) return false;
+        $('#saveNotes').click(function(){
+            if (dclick) return false;
 			
 		   
-			var myDate = new Date();
-			var strtime=$('#time').val();
-			var nexttime=new Date(strtime.replace(/-/g, '/'));nexttime=nexttime.getTime()/1000;
-		    var curtime=Date.parse(myDate)/1000;
+            var myDate = new Date();
+            var strtime=$('#time').val();
+            var nexttime=new Date(strtime.replace(/-/g, '/'));nexttime=nexttime.getTime()/1000;
+            var curtime=Date.parse(myDate)/1000;
 			
-			var cookietime=getCookie('sn'+uid);
-			cookietime=cookietime?cookietime:0;
-			if((curtime - cookietime)<600) {alert('你已保存过！请 10分钟后再保存！');return false;}
-			
-			dclick=true;
+            var cookietime=getCookie('sn'+uid);
+            cookietime=cookietime?cookietime:0;
+            if((curtime - cookietime)<600) {alert('你已保存过！请 10分钟后再保存！');return false;}
 			
 			
-			var userfrom=$('.userfrom').attr('data-usertype');
-			var usersource=$('.userfrom').html().search(/全权/g);
-			var grade = $("#grade").val();
-			if(userfrom!=3 && usersource==-1){
-				if(!grade) { alert("请选择跟进步骤！");return false;}
-				var contact = $("input[name=contact]:checked").val();
-				if(!contact){alert("请确定是否有效联系! ");return false;}
-				var phonecall = $("input[id=phonecall]:checked").val();
-				if(!phonecall){alert("请确认是否打过电话! ");return false;}
-			}
 			
-			$.ajax({
-				url:'./allmember_ajax.php?n=saveNotes',
-				type:'POST',
-				data:$('#noteForm').serialize(),// 要提交的表单
-				dataType:'text',
-				error: function(jqXHR, exception) {
-					if (jqXHR.status === 0) {
-						alert('网络中断！！！请不要刷新个人资料页面，以免丢失小记！');
-					} else if (jqXHR.status == 404) {
-						alert('Requested page not found. [404]');
-					} else if (jqXHR.status == 500) {
-						alert('Internal Server Error [500].');
-					} else if (exception === 'parsererror') {
-						alert('Requested JSON parse failed.'); //dataType设置为json的时候
-					} else if (exception === 'timeout') {
-						alert('Time out error.');
-					} else if (exception === 'abort') {
-						alert('Ajax request aborted.');
-					} else {
-						alert('Uncaught Error.\n' + jqXHR.responseText);
-					}
-				},
-				success:function(data, textStatus, jqXHR) {
-					var str='';
-					//console.log(cookietime+'and'+nexttime+'and'+curtime);
-					var grade=$('select[name=grade]').val() ;
-					str='<ul><li><strong>【新增】</strong>'+myDate.toLocaleString()+'&nbsp;&nbsp;&nbsp;'+$('.customerservice').html()+'&nbsp;&nbsp;&nbsp;'+(grade-1)+'类</li>';
-					str+='<li>';
-					if ($("input[name=contact]:checked").val()==1){
-						str+='有效联系';
-					}else{
-						str+='无效联系';
-					}
-					str+='&nbsp;&nbsp;&nbsp;';
-					if($("input[name=master]").attr("checked")==true){
-						str+='重点会员';
-					}
+			
+            var userfrom=$('.userfrom').attr('data-usertype');
+            var usersource=$('.userfrom').html().search(/全权/g);
+            var grade = $("#grade").val();
+            if(userfrom!=3 && usersource==-1){
+                if(!grade) { alert("请选择跟进步骤！");return false;}
+                var contact = $("input[name=contact]:checked").val();
+                if(!contact){alert("请确定是否有效联系! ");return false;}
+                var phonecall = $("input[id=phonecall]:checked").val();
+                if(!phonecall){alert("请确认是否打过电话! ");return false;}
+            }
+			
+            dclick=true;
+			
+            $.ajax({
+                url:'./allmember_ajax.php?n=saveNotes',
+                type:'POST',
+                data:$('#noteForm').serialize(),// 要提交的表单
+                dataType:'text',
+                error: function(jqXHR, exception) {
+                    if (jqXHR.status === 0) {
+                        alert('网络中断！！！请不要刷新个人资料页面，以免丢失小记！');
+                    } else if (jqXHR.status == 404) {
+                        alert('Requested page not found. [404]');
+                    } else if (jqXHR.status == 500) {
+                        alert('Internal Server Error [500].');
+                    } else if (exception === 'parsererror') {
+                        alert('Requested JSON parse failed.'); //dataType设置为json的时候
+                    } else if (exception === 'timeout') {
+                        alert('Time out error.');
+                    } else if (exception === 'abort') {
+                        alert('Ajax request aborted.');
+                    } else {
+                        alert('Uncaught Error.\n' + jqXHR.responseText);
+                    }
+                },
+                success:function(data, textStatus, jqXHR) {
+                    var str='';
+                    //console.log(cookietime+'and'+nexttime+'and'+curtime);
+                    var grade=$('select[name=grade]').val() ;
+                    str='<ul><li><strong>【新增】</strong>'+myDate.toLocaleString()+'&nbsp;&nbsp;&nbsp;'+$('.customerservice').html()+'&nbsp;&nbsp;&nbsp;'+(grade-1)+'类</li>';
+                    str+='<li>';
+                    if ($("input[name=contact]:checked").val()==1){
+                        str+='有效联系';
+                    }else{
+                        str+='无效联系';
+                    }
+                    str+='&nbsp;&nbsp;&nbsp;';
+                    if($("input[name=master]").attr("checked")==true){
+                        str+='重点会员';
+                    }
 					
-					str+='</li><li>'+$('select[name=grade] option:selected').text()+'&nbsp;&nbsp;&nbsp;';
+                    str+='</li><li>'+$('select[name=grade] option:selected').text()+'&nbsp;&nbsp;&nbsp;';
 
-					if( !isNaN(nexttime) && nexttime>curtime){
-						str+='-&gt; &nbsp;下次联系时间:'+$('#time').val();
-					}
+                    if( !isNaN(nexttime) && nexttime>curtime){
+                        str+='-&gt; &nbsp;下次联系时间:'+$('#time').val();
+                    }
 					
-					var interest,different,service,desc,comment;
-					interest=$.trim($('#interest').val());
-					different=$.trim($('#different').val());
-					service=$.trim($('#service').val());
-					desc=$.trim($('#desc').val());
-					comment=$.trim($('#comment').val());
+                    var interest,different,service,desc,comment;
+                    interest=$.trim($('#interest').val());
+                    different=$.trim($('#different').val());
+                    service=$.trim($('#service').val());
+                    desc=$.trim($('#desc').val());
+                    comment=$.trim($('#comment').val());
 					
-					if (interest.length>0) str+='&nbsp;&nbsp;&nbsp;-> &nbsp;兴趣点：'+interest;
-					if (different.length>0) str+='&nbsp;&nbsp;&nbsp;-> &nbsp;异议点：'+different;
-					if (service.length>0)  str+='&nbsp;&nbsp;&nbsp;-> &nbsp;服务介绍：'+ service;
-					if (desc.length>0)     str+='&nbsp;&nbsp;&nbsp;-> &nbsp;下次跟进要点：'+desc;
-					if (comment.length>0)  str+='&nbsp;&nbsp;&nbsp;-> &nbsp;备注：'+comment;
-					str+='</li></ul>';
+                    if (interest.length>0) str+='&nbsp;&nbsp;&nbsp;-> &nbsp;兴趣点：'+interest;
+                    if (different.length>0) str+='&nbsp;&nbsp;&nbsp;-> &nbsp;异议点：'+different;
+                    if (service.length>0)  str+='&nbsp;&nbsp;&nbsp;-> &nbsp;服务介绍：'+ service;
+                    if (desc.length>0)     str+='&nbsp;&nbsp;&nbsp;-> &nbsp;下次跟进要点：'+desc;
+                    if (comment.length>0)  str+='&nbsp;&nbsp;&nbsp;-> &nbsp;备注：'+comment;
+                    str+='</li></ul>';
 
-					if (str.length>0) $('#notes').prepend(str);
+                    if (str.length>0) $('#notes').prepend(str);
 					
-					setCookie('sn'+uid,curtime);
-					alert('保存成功！');
-					dclick=false;
+                    setCookie('sn'+uid,curtime);
+                    alert('保存成功！');
+                    dclick=false;
 					
-				}
-			});
+                }
+            });
         });
     </script>
+
+    <!-- <script type="text/javascript" src="templates/js/mouse_tz.js"></script> -->
+    <script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="templates/css/jquery.fancybox-1.2.5.css"/>
 </body>
 </html>

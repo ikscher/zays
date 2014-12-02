@@ -36,7 +36,7 @@
                 {/loop}
             </select>
             <span class="margin10">委托本站ID: </span><input type="text" id="delegateid" maxlength="255"  size="35"  />&nbsp;&nbsp;
-            <span class="margin10">委托全权ID: </span><input type="text" name="" id="joinid"  maxlength="255" size="35" />
+            <span class="margin10">委托诚信ID: </span><input type="text" name="" id="joinid"  maxlength="255" size="35" />
             ID可以填写多个，用逗号隔开
             <!-- <span class="margin10">手机号: </span><input type="text" id="telephone" maxlength="11" />	 -->		
         </div>
@@ -103,14 +103,14 @@
         </p>
         <p>
             <span>委托本站ID: <span>{$v['mid']}</span></span>
-            <span>全权会员ID: <span>{$v['fid']}</span></span>
+            <span>诚信会员ID: <span>{$v['fid']}</span></span>
             <span>手机号: <span>{php echo MooMembersData($uid,'telphone');}</span></span>
             <span>升级时间: <span>{php echo date('Y-m-d H:i:s', $v['bgtime']);}</span></span>
             <span>分配时间: <span>{php echo date('Y-m-d H:i:s', MooMembersData($uid,'allotdate'));}</span></span>	
         </p>
         <p>
             <span><span>{php echo $v['isfake'] == 1 ? '有' : '没有';}</span> 网站模拟行为</span>
-            <span><span>{php echo $v['istalk'] == 1 ? '已经' : '没有';}</span> 和VIP(全权会员)交流过</span>
+            <span><span>{php echo $v['istalk'] == 1 ? '已经' : '没有';}</span> 和VIP(诚信会员)交流过</span>
             <span><span>{php echo $v['isnegative'] == 1 ? '有' : '没有';}</span> 见过负面</span>		
         </p>
         <div style="margin: 0;" class="info">

@@ -151,7 +151,7 @@ function space_viewpro() {
 	$search_url = MOOPHP_URL . "/index.php?n=search&h=quick&gender=" . $gender . "&age_start=" . $agebegin . "&age_end=" . $ageend . "&workprovince=" . $workprovince . "&workcity=" . $workcity . "&isphoto=1&imageField=&quick_search=搜索";
 	
 	//note 您可能喜欢的人，匹配相同地区
-	$able_like = $userid ? youAbleLike ($l,5 ) : array ();
+	$able_like = $userid ? youAbleLike ($l,0 ) : array ();
 	
 	//note 获取会员认证证件
 	$usercer = certification ( $uid );
@@ -201,9 +201,20 @@ function space_viewpro() {
 		$key = array_rand($urlArr);
 		$url=$urlArr[$key];
 	}
-    /* if(MooGetGPC('debug', 'integer', 'G' )){
-        var_dump($Template);
-    } */
+	
+	//是否存在音乐
+	if(in_array($user_arr['s_cid'],array(10,20,30))){
+		$isMusic=false;
+		$sql="select musicName from web_vipmusic where uid='{$uid}'";
+		$music=$_MooClass['MooMySQL']->getOne($sql);
+		if($music['musicName']){
+			$music_url="data/music/{$uid}/{$music['musicName']}";
+			if(file_exists($music_url)){
+				$isMusic=true;
+			}
+		}
+	}
+	
     require $Template;
 }
 

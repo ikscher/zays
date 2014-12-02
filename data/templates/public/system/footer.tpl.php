@@ -87,19 +87,17 @@
 
 
 <div class="footer">
-    <div class="foot-nav">
+   <div class="foot-nav">
         <ul>
             <li><a href="aboutus.html">关于我们</a>|</li>
             <li><a href="contact.html">联系我们</a>|</li>
             <li> <a href="links.html">合作伙伴</a>|</li>
             <li><a href="advices.html">意见反馈</a>|</li>
-            <li><a href="story.html">成功故事</a>|</li>
-            <!-- <li><a href="diamond.html">汇款信息</a>|</li> -->
-          <!--   <li><a href="payDetail.html">支付细则</a> | </li> -->
+            <li><a href="safetyguide.html">安全征婚</a>|</li>
             <li><?php if(!empty($user_arr['s_cid'])) { ?> <a href="index.php?n=index&h=add_vip&s_cid=<?php echo $user_arr['s_cid'];?>">其他信息</a><?php } else { ?><a href="othervip.html">其他信息</a><?php } ?></li>
-            <!-- <li><a href="cityStar.html">城市之星</a></li> -->
+           
         </ul>
-    </div>
+    </div> 
 
     <div class="bt">Copyright@<?php echo date('Y');?> 真爱一生网.All Right Reserved.<a target="_blank" href="http://www.miitbeian.gov.cn" class="f-000-a">皖ICP备14002819</a><img src="public/default/images/police.jpg" /></div>
     <div class="cnet"><a href='index.php?n=safetyguide'><img src='public/default/images/safe.jpg' /></a><a href="#"><img src='public/default/images/360c.png' /></a><a href="#">  <img src='public/default/images/cnnic.png'  /> </a>
@@ -121,7 +119,8 @@
     function openLogin(){
 		$('#myModal').modal({
 			backdrop: 'static',
-			keyboard: true
+			keyboard: true,
+			modal:true
 		})
 	}
 	

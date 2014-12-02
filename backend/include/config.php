@@ -11,7 +11,7 @@
 //note 定义加密所需Key，请修改此处为唯一
 // !defined('MOOPHP_AUTHKEY') && define('MOOPHP_AUTHKEY', '0051master');
 //note 定义COOKIE加密的密钥
-!defined('HLW_KEY') && define('HLW_KEY', 'e4r9O87dQfZdNdK3t5D4u9a038Edp8F6w684P8m9OcY5fdg801v76biehcr758Ja');
+define('zayskey', '_z_a_y_s%&%%@7dQfZdNdK3t5D4u9a038Edp8F6w684P8m9OcY5fdg801v76biehcr758Ja');
 
 //note 大图图片路径
 !defined('IMG_ROOT') && define("IMG_ROOT",dirname(__FILE__)."/../../data/upload/images/story/");

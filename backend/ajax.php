@@ -4,6 +4,7 @@
 *
 */
 
+
 define('FROMEWORK', true);
 //ini_set('error_log','error_log.log');
 //error_log('ajax.php---------------');
@@ -21,6 +22,26 @@ include './include/ajax_function.php';
 
 
 
+//允许的IP访问后台
+require 'include/allow_ip.php';
+$cur_ip = GetIP();
+if(!empty($allow_ip)){
+	if(!in_array($cur_ip,$allow_ip)){   
+		$token=$_MooCookie['token'];
+		if(empty($token) || $token!='vip999'){
+			$t=$_GET['token']?$_GET['token']:'';
+			MooSetCookie('token',$t,21600);
+		}
+		
+		$token=$_MooCookie['token'];
+	   
+		
+		if(empty($token) || $token!='vip999'){
+			echo '你当前的ip:  '.$cur_ip;
+			exit;
+		}
+	}
+}
 
 
 //note 删除指定管理员
@@ -80,7 +101,7 @@ function search_kefu(){
 
 //note 组添加会员，判断会员是否能被添加(已在其它组中不能被添加)
 function judge_member(){
-	$usercode = MooGetGPC('usercode','string','G');
+	$uid = MooGetGPC('uid','string','G');
 	$sql = "SELECT manage_list FROM {$GLOBALS['dbTablePre']}admin_manage where type=1";
 	$ret = $GLOBALS['_MooClass']['MooMySQL']->getAll($sql);
 	$user_list = '';
@@ -99,7 +120,7 @@ function judge_member(){
 		
 	}
 
-	if( in_array($usercode , $user_code_arr)){
+	if( in_array($uid , $user_code_arr)){
 		echo 1;
 	}else{
 		echo 0;
@@ -796,6 +817,31 @@ function del_comment(){
 
 }
 
+function lostContact(){
+    $file='include/allow_ip.php';
+    $handle = fopen("include/allow_ip.php", "rb");
+
+	$contents = '';
+	if($handle){
+		while (!feof($handle)) {
+		    $content = fgets($handle, 4096);
+			if(strpos($content,'<?php')!==false  ||  strpos($content,'?>')!==false || trim($content)=='') continue;
+			if(strpos($content,'#')!==false){
+			    $content=str_replace('#','',$content);
+			}else{
+			    $content='#  '.$content;
+			}
+			
+		    $contents .= $content;
+		    
+		}
+	}
+	fclose($handle);
+	$contents="<?php \r\n".$contents. "\r\n ?>";
+
+	file_put_contents($file, $contents);
+}
+
 /***************************************控制层(V)***********************************/
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // 过去的时间
@@ -812,6 +858,9 @@ if(empty($GLOBALS['adminid'])){
 switch($n){
 	case 'delAdminUser':
 		del_admin_user();
+		break;
+	case 'lostContact':
+	    lostContact();
 		break;
 	case 'deleteComment':
 	    del_comment();

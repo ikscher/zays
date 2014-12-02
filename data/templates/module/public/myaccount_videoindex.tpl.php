@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>诚信认证--视频认证——真爱一生网</title>
+<link href="module/myaccount/templates/default/myaccount.css" rel="stylesheet" type="text/css" />
+</head>
+<?php include MooTemplate('system/js_css','public'); ?>
+<script>
+//录制-->上传视频
+var val_video;
+function upload_video(){	
+	$("#upload_video_button").attr("class","video-button2");
+	$("#upload_video_button").val("");
+	var urls = 'ajax.php?n=myaccount&h=video&updates='+Math.random();
+	var vals = 1;
+	$.get(urls,{vals:vals},function(data){
+		if(data == 'ok'){
+			val_video = 'ok';
+			alert('视频上传成功！');
+		}else if(data == 'short'){
+			alert('视频录制时间太短了，或者视频录制质量太低！');	
+		}else if(data == 'error'){
+			alert('系统出错！');
+		}else if(data == 'error2'){
+			alert('临时文件没有存储成功！');
+		}else{
+			if(val_video == 'ok'){
+				alert('您已经上传视频了！');
+			}else{
+				alert('您还没有录制视频！');	
+			}
+		}
+		$("#upload_video_button").attr("class","video-button");
+		$("#upload_video_button").val("确定上传");
+	})
+}
+
+//录制-->上传录音
+function upload_voice(){
+	$("#upload_video_button").attr("class","video-button2");
+	$("#upload_video_button").val("");
+	var urls = 'ajax.php?n=myaccount&h=voice&updates='+Math.random();
+	var vals = 1;
+	$.get(urls,{vals:vals},function(data){
+		if(data == 'ok'){
+			alert('录音上传成功！');
+		}else if(data == 'short'){
+			alert('录音录制时间太短了，请重新录制！');	
+		}else if(data == 'error'){
+			alert('系统出错！');
+		}else if(data == 'error2'){
+			alert('临时文件没有存储成功！');
+		}else{
+			alert('您还没有录音！');	
+		}
+		$("#upload_video_button").attr("class","video-button");
+		$("#upload_video_button").val("确定上传");
+	})	
+}
+
+//控制切换视频选项卡
+function change_ajax(j){
+//	$('li a[id^=menu]').attr('class','');
+//	$('li a#menu'+j).attr('class','onthis');
+//	if(j == 1){
+//		$('#video_guide').html("<font class=\"right-title f-ed0a91\" style=\"font-size:12px\"><?php echo 20>$user_pic['c']?'【您当前还可以拍'.(20-$user_pic['c']).'张照片】': '【温馨提示：您已经上传20照片了,已经不可以在线拍照上传】';?></font>如不明白视频拍照流程，请点击  <a href=\"index.php?n=myaccount&h=phelp\" target=\"_blank\">查看拍照流程</a>");
+//	}else if(j == 2){
+//		$('#video_guide').html("如不明白录制视频流程，请点击  <a href=\"index.php?n=myaccount&h=vhelp\" target=\"_blank\">查看视频流程</a>");
+//	}else if(j == 3){
+//		$('#video_guide').html("如不明白录制录音流程，请点击  <a href=\"index.php?n=myaccount&h=rhelp\" target=\"_blank\">查看录音流程</a>");
+//	}
+
+	var url = "ajax.php?n=myaccount&h=video_show&update="+Math.random();
+	$.get(url,{val:j},function(data){
+		$('#show_video').html(data);			   
+	}); 
+}
+
+
+
+</script>
+<script>
+function ajax_pic(){
+	var num_pic = <?php echo isset($user_pic['c'])?$user_pic['c']:''?>;
+	var url = 'index.php?n=myaccount&h=arch&update='+Math.random();
+	if(num_pic == 20){
+		alert('您已经上传了20张图片！');
+	}else{
+		$.get(url,{pic:1},function(data){
+			if(data > 20){
+				alert('请您删除'+eval(data-20)+'张照片,再上传！');
+			}else{
+				window.location.href = 'index.php?n=myaccount&h=arch';	
+			}			 
+		})
+	}
+}
+</script>
+
+<body>
+<?php include MooTemplate('system/header','public'); ?>
+<div class="main">
+	<div class="content">
+	<p class="c-title"><span class="f-000"><a href="index.php?n=service">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=myaccount">诚信认证</a>&nbsp;&gt;&gt;&nbsp;视频认证</span><a href="#"></a></p>
+	<?php include MooTemplate('system/simp_left','public'); ?>
+    <!--content-lift end-->
+	<!--=====左边结束===-->
+	<div class="content-right">
+		<div class="c-right-content">
+			<div class="r-center-tilte">
+			<a href="index.php?n=material&h=show" class="r-title-black">&lt;&lt;返回我的相册</a>
+			<span class="right-title f-ed0a91">视频认证</span>
+			</div>
+			<div id="show_video" class="r-center-ccontent" style="padding:30px 0 60px;">
+				<div class="video-title-c">
+                        <!--选项卡-->
+                    <p id="video_guide" class="video-top-tips"><font class="right-title f-ed0a91" style="font-size:12px"><?php echo 20>$user_pic['c'] ?'【您当前还可以拍'.(20-$user_pic['c']).'张照片】': '【温馨提示：您已经上传20照片了,已经不可以在线拍照上传】';?></font>如不明白视频拍照流程，请点击  <a href="index.php?n=myaccount&h=phelp" target="_blank" class="f-ed0a91">查看拍照流程</a></p>
+                    <div class="myaccount-title">
+                        <ul>
+                            <li><a href="#" id="menu1" onclick="javascript:change_ajax(1);return false;" class="onthis"><span>视频拍照</span></a></li>
+                            <!-- <li><a href="#" id="menu2" onclick="javascript:change_ajax(2);return false;"><span>在线录制</span></a></li>
+                            <li><a href="#" id="menu3" onclick="javascript:change_ajax(3);return false;"><span>在线录音</span></a></li> -->
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                        <!--选项卡结束-->  
+                    <div class="clear"></div>
+				</div>
+                <div id="choose">
+                    <div class="video-windows">
+                        <!--放照片flash的开始-->
+                        <iframe src="index.php?n=myaccount&h=picflash" scrolling="no" frameborder="0" width="600" height="467"></iframe>
+                        <!--放照片flash的结束-->
+                    </div>
+                    <div class="video">
+                            <ul id="pic_flash">
+                                <?php if($flash_pic) { ?>
+                                    <?php foreach((array)$flash_pic as $r_pic) {?>
+                                         <li>
+										 
+                                           <img src="<?php echo thumbImgPath(2,$r_pic['pic_date'],$r_pic['pic_name'])?>" />
+                                           <?php if($acc_pic==$r_pic['pic_url']) { ?>
+                                                <p style="font-size:12px;"> 我的形象照</p>
+                                           <?php } else { ?>
+                                                <p><a href="index.php?n=myaccount&h=videoindex&pic_url=<?php echo $r_pic['pic_url'];?>&actio=u">设为形象照</a> <a href="index.php?n=myaccount&h=videoindex&tmp_id=<?php echo $r_pic['tmp_id'];?>&pic_url=<?php echo $r_pic['pic_url'];?>&actio=d">删除</a></p>
+                                           <?php } ?>  
+                                        </li>
+                                    <?php } ?> 
+                                <?php } ?>
+                            </ul> 
+                            <div class="clear"></div>
+                    </div>
+                    <p style="text-align:center; padding-left:120px;"> 
+                       <input type="button"  onclick="javascript:ajax_pic();" class="btn btn-primary" value="一键转到相册" style="float:right; margin-right:20px;"/>
+                        <div class="clear"></div>
+                    </p>
+                </div>
+				<div class="cer-line"></div>
+				<dl class="cer-video-faq">
+					<dt>视频拍照申明：</dt>
+					<dd>1. 您可以提交三张视频照片，但被客服审核通过后的视频照片在当月内不可删除。</dd>
+					<dd>2. 视频照片可以帮助用户提高交友诚信度，可以展示自我。</dd>
+					<dd>3. 我们会对用户上传的视频照片进行质量审核，因此请务必上传清晰的个人视频照片。</dd>
+				</dl>
+				<dl class="cer-video-faq">
+					<dt>视频拍照的前提条件 ：</dt>
+					<dd>1. 您的电脑必须有安装摄像头。</dd>
+					<dd>2. 请确认您的摄像头和电脑正确链接并且能够正常使用。</dd>
+					<dd>3.为保障视频拍照的正常进行，在申请视频拍照的时候，请不要用QQ等其他聊天软件与别人视频聊天，否则会造成视频拍照失败。</dd>
+				</dl>
+				<dl class="cer-video-faq">
+					<dt>视频拍照的注意事项 ：</dt>
+					<dd>1. 当网页弹出“是否允许FLASH使用您的摄像头和麦克风”时，请选择“允许”。</dd>
+                    <dd>2. 当视频拍照不可以拍照的时候，<a href='http://get.adobe.com/cn/flashplayer/' style="font-size:12px" target="_blank" class="f-ed0a91-a">请点击这里……</a>且下载并安装这个播放器组件。</dd>
+				</dl>
+				<div class="clear"></div>
+			</div>
+			<div class="r-center-bottom"></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!--content end-->
+	<?php include MooTemplate('system/footer','public'); ?>
+</div><!--main end-->
+
+
+</body>
+
+</html>

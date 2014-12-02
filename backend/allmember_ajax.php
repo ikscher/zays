@@ -1580,7 +1580,18 @@ function ajax_chatrecord(){
 		    	$chats2[$k]['s_status'] = $v['status'];
 		    	$chats2[$k]['is_server'] = $v['serverid'];
 		    	$chats2[$k]['dealstate'] = $v['isdeal'];
-
+				
+				/* $r=array();
+				$r_=array();
+				$sql="select gender from web_members_search where uid=$v['fromid']";
+	            $r=$GLOBALS['_MooClass']['MooMySQL']->getOne($sql);
+				$chats2[$k]['from_gender']=$r['gender'];
+				$sql="select gender from web_members_search where uid=$v['toid']";
+	            $r_=$GLOBALS['_MooClass']['MooMySQL']->getOne($sql);
+				$chats2[$k]['to_gender']=$r_['gender']; 
+				unset($r);unset($r_); */
+				
+				
 		    }
 	    }
 	    $chats = $chats2;
@@ -2728,12 +2739,6 @@ function ajax_join() {
 	include adminTemplate('allmember_join');
 }
 
-function letmesee(){
-	global $_SCONFIG, $_SGLOBAL;
-	var_dump($_SCONFIG);
-	echo '<br />';
-	var_dump($_SGLOBAL);
-}
 
 function ajax_total(){
     $uid=MooGetGPC('uid','string','P');
@@ -2884,6 +2889,42 @@ function saveNotes(){
 		//var_dump($e->getMessage());
 	}
 	
+}
+
+
+//配偶资料
+function ajax_spouse(){
+    $uid = MooGetGPC('uid','integer','P');
+    $slave_mysql =  $GLOBALS['_MooClass']['MooMySQL']; 
+	$sql = "select age1, age2, height1, height2, weight1, weight2, occupation,body, nation, education, salary, workprovince, workcity, smoking, smoking, marriage, education, hometownprovince, hometowncity, children,wantchildren, nature, i.introduce from {$GLOBALS['dbTablePre']}members_choice as c LEFT JOIN {$GLOBALS['dbTablePre']}members_introduce as i on c.uid=i.uid WHERE c.uid={$uid}"; // updated file
+	$choice = $slave_mysql->getOne($sql,true);
+	echo json_encode($choice);
+}
+
+//手机号注册的会员数
+function ajax_mobileregcount(){
+    $tel_count = 0;
+	$slave_mysql =  $GLOBALS['_MooClass']['MooMySQL']; 
+	$mobile=MooGetGPC('mobile','string','P');
+	if(!empty($mobile)){
+		$sql = "SELECT COUNT(1) c FROM {$GLOBALS['dbTablePre']}members_search WHERE telphone='{$mobile}' and is_lock=1";
+		$tel_count =  $slave_mysql->getOne($sql);
+	}
+	echo $tel_count['c'];exit;
+}
+
+//生肖属相
+function ajax_czodiac(){
+    $birth=MooGetGPC('birth','string','P');
+	$birthyear = MooGetGPC('birthyear','string','P');
+	
+	$czodiac=array();
+    if(!empty($birth)){
+    	list($y,$m,$d) = explode('-',date('Y-m-d',$birth));//birth modify
+		$y=$birthyear;
+		$czodiac = get_signs($y, $m,$d);
+    }
+	echo urldecode(json_encode($czodiac));exit;
 }
 /***************************************控制层(V)***********************************/
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
@@ -3058,8 +3099,17 @@ switch($n){
 	case 'total':
 	    ajax_total();
 		break;
+	case 'spouse':
+	    ajax_spouse();
+		break;
 	case 'notes':
 	    ajax_notes();
+		break;
+	case 'mobileregcount':
+	    ajax_mobileregcount();
+		break;
+	case 'czodiac':
+	    ajax_czodiac();
 		break;
     default:
         echo 'no method';exit;

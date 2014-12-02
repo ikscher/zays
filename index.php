@@ -7,11 +7,11 @@
 	header("Expires: Mon, 26 Jul 1970 05:00:00  GMT");  
 	header("Cache-Control:no-cache, must-revalidate");  
 	header("Pragma:no-cache");  */
-$name = isset($_GET['n']) ? $_GET['n'] : 'index';
-$_GET['h'] = isset($_GET['h']) ? $_GET['h'] : '';
+
 
 error_reporting(E_ALL ^ E_NOTICE);
-
+$name = isset($_GET['n']) ? $_GET['n'] : 'index';
+$name=htmlspecialchars($name);
 //note 加载框架配置参数
 require 'config.php';
 
@@ -68,6 +68,7 @@ if($uid){
 $style_uid = MooGetGPC('uid', 'integer', 'G');
 $skiname = MooGetGPC('skiname','string','G');
 //新邮件数
+
 
 if( !empty($style_uid) && $style_uid != $uid ){ //采用他人的样式
 	$style_user_arr = array();

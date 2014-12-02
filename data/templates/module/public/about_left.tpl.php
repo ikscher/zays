@@ -13,7 +13,8 @@
 				<li><a href="privacy.html" id="about_privacy">隐私保护</a></li>
 				<li><a href="copyright.html" id="about_copyright">版权声明</a></li>
 				<li><a href="advices.html" id="about_getsave">投诉建议</a></li>
-				<li><a href="recruit.html" id="about_recruit">诚聘英才</a></li>
+				
+				<li><a href="faq.html" id="about_faq">服务详情</a></li>
 				<!-- <li><a href="clinic" id="about_clinic">情感诊所</a></li> -->
 				<!-- <li><a href="index.php?n=activity&h=activity" id="about_activity">相亲活动</a></li> -->
                 <!-- 

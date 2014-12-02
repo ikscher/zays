@@ -113,6 +113,7 @@ function checkAuthMod($url){
 	$sql="select groupid from {$dbTablePre}admin_user where uid='{$serverid}'";
 	$result=$_MooClass['MooMySQL']->getOne($sql);
 	
+	if(empty($result)) return;
 	if(!in_array($result['groupid'],array(60,61,76,75,82,84,67,70)) && !empty($serverid)){
 	   MooMessage ( "sorry，您没有操作权限", $url );
 	   return ;

@@ -2090,7 +2090,6 @@ function allmember_view_info(){
 //	$slave_mysql->connect($slave_dbHost, $slave_dbUser, $slave_dbPasswd, $slave_dbName, $slave_dbPconnect, $slave_dbCharset);
 	$adminright='';
 	$uid = MooGetGPC('uid','integer','G');
-	
 
 	 
 	 
@@ -2102,9 +2101,7 @@ function allmember_view_info(){
 	}
 	
 	$member_admininfo=array();
-	//包含配置文件
-	//include_once("./include/membersinfo_config.php");
-	//include("./include/get_weather.php");
+
 	$re = $slave_mysql->getOne("SELECT groupid,member_count,allot_member,allot_time FROM {$GLOBALS['dbTablePre']}admin_user WHERE uid='{$GLOBALS['adminid']}'",true);
 	if(in_array($re['groupid'],array(70,76,77))) $salesAfter=1;
 	if($re['groupid']=='67'){//售前客服看不到本站注册的高级会员
@@ -2145,40 +2142,27 @@ function allmember_view_info(){
 	if(!is_array($member3)) $member3 = array();
 	$member = $member2 = array_merge($member, $member2, $member3);
 	
-	
-	
-	//生肖
-	//$member['birthyear'] = date('Y', $member['birth']);
-   /*  if(!empty($member['birth'])){
-    	list($y,$m,$d) = explode('-',date('Y-m-d',$member['birth']));//birth modify
-		$member['birthmonth'] = $m;
-		$member['birthday'] = $d;
-		$star_sx = get_signs($member['birthyear'], $member['birthmonth'],$member['birthday']);
-    } */
-    
-	
+
+	/*
 	if(!empty($member['birth'])){
     	list($y,$m,$d) = explode('-',$member['birth']);//birth modify
 		$member['birthmonth'] = $m;
 		$member['birthday'] = $d;
+		$y=$member['birthyear'];
 		$star_sx = get_signs($y, $m,$d);
-    }
-    
-	//择偶资料
-	$sql = "select age1, age2, height1, height2, weight1, weight2, occupation,body, nation, education, salary, workprovince, workcity, smoking, smoking, marriage, education, hometownprovince, hometowncity, children, nature, i.introduce from {$GLOBALS['dbTablePre']}members_choice as c LEFT JOIN {$GLOBALS['dbTablePre']}members_introduce as i on c.uid=i.uid WHERE c.uid={$uid}"; // updated file
-	$choice = $slave_mysql->getOne($sql,true);
-	
+    }*/
+
 	
 	//note 查询telphone归属地
 	$teladdr = getphone($member['telphone']);//iconv("gb2312","UTF-8",getphone($member['telphone']));
 	$teladdr2 = getphone($member['callno']);//iconv("gb2312","UTF-8",getphone($member['callno']));
 	
-	$tel_count = 0;
+	//$tel_count = 0;
 	//此手机号注册的会员数
-	if(!empty($member['telphone'])){
-		$sql = "SELECT COUNT(1) c FROM {$GLOBALS['dbTablePre']}members_search WHERE telphone='{$member['telphone']}' and is_lock=1";
-		$tel_count =  $slave_mysql->getOne($sql);
-	}
+	//if(!empty($member['telphone'])){
+	//	$sql = "SELECT COUNT(1) c FROM {$GLOBALS['dbTablePre']}members_search WHERE telphone='{$member['telphone']}' and is_lock=1";
+	//	$tel_count =  $slave_mysql->getOne($sql);
+	//}
 	
 	
 	//note 获得手机号是否验证
@@ -2210,16 +2194,7 @@ function allmember_view_info(){
 	
 	$member_Control=$slave_mysql->getOne($sql,true);
 	
-	
-	//判断当前采集会员是否可以操作
-	$member_admininfo['mid'] = isset($member_admininfo['mid']) ? $member_admininfo['mid'] : 0 ;
-	if($member_admininfo['mid'] == $GLOBALS['adminid']){
-		$own = 1;//所属于自己
-	}elseif($member_admininfo['mid'] == 999999999){
-		$own = 2;//被封锁
-	}elseif($member_admininfo['mid']){
-		$own = 3;//所属于别人
-	}
+
 	
 	MooPlugins('ipdata');
 	if(isset($member_admininfo['last_ip'])) $last_ip = convertIp($member_admininfo['last_ip']);
@@ -2261,9 +2236,6 @@ function allmember_view_info(){
 	if(in_array($admingroup,$GLOBALS['admin_aftersales'])){
 		$adminright = "sellpass";
 	}
-	
-	
-	
     
     //====参加活动的会员====
     //$activity = $slave_mysql->getOne("SELECT uid,username,regtime,channel FROM {$GLOBALS['dbTablePre']}ahtv_reguser where  uid='{$uid}' and  isattend=1");
@@ -2980,6 +2952,7 @@ function allmember_note(){
 }
 //note 高级搜索,fanglin
 function allmember_advancesearch(){
+    
 	//初始化
 	$member_list = array();
 	$qsh = array ('workcitycity1','workcityprovince1','province','city','uid','grade','height1','height2','weight1','weight2','username','allotdate1','allotdate2','truename','regdate1','regdate2','nickname','next_contact_time1','next_contact_time2','age1','age2', 'last_login_time1','last_login_time2','telphone','salary','gender','sid','nocontactdays', 's_cid','usertype','uploadpicnum','is_lock','recentloginnum','marriage','online','qq','action','allmember','debug');
@@ -3331,13 +3304,14 @@ function allmember_advancesearch(){
 		$kefu_list = $GLOBALS['_MooClass']['MooMySQL']->getAll($sql,0,0,0,true);
    } */
     $kefu_list = get_kefulist();
-	
+	require "data/kefulist_cache_.php";
 
 	require adminTemplate("allmember_advancesearch");
 }
 
 //note 高级搜索,fanglin
 function allmember_advancesearch_old(){
+    
 	$member_list = array();
 	$page_links  = '';
 	$arr = array('ismok'=>'smoking','idrink'=>'drinking','child'=>'children','wantchildren'=>'wantchildren','height1'=>'','height2'=>'',
@@ -3818,8 +3792,9 @@ function allmember_advancesearch_old(){
    		$sql = "SELECT * FROM {$GLOBALS['dbTablePre']}admin_user WHERE uid IN (".implode(',',$myservice_sid_arr).") ORDER BY uid ASC";
 		$kefu_list = $GLOBALS['_MooClass']['MooMySQL']->getAll($sql,0,0,0,true);
    } */
-	$kefu_list = get_kefulist();	 
-    
+	$kefu_list = get_kefulist();	
+    require "data/kefulist_cache_.php";
+
 	require adminTemplate("allmember_advancesearch");
 }
 

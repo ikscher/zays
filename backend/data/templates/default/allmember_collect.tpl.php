@@ -170,7 +170,7 @@ border:#cccccc solid 1px;
 <h1>
 <span class="action-span"><a href="<?php echo $currenturl;?>">刷新当前页</a></span>
 <span class="action-span"><a href="<?php if(isset($currenturl1)) { ?><?php echo $currenturl1;?><?php } ?>">刷新全部</a></span>
-<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - <?php echo $title;?> </span>
+<span class="action-span1"><a href="###">真爱一生网 管理中心</a> </span><span id="search_id" class="action-span1"> - 诚信会员</span>
 <div style="clear:both"></div>
 </h1>
 <div>
@@ -391,7 +391,7 @@ border:#cccccc solid 1px;
     </td>
 
 	<td align="center">
-		全权会员
+		诚信会员
 	</td>
     <td align="center"><?php echo $member['login_meb'];?></td>
 	

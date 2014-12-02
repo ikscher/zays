@@ -368,17 +368,19 @@ function sendSMS($uid,$pwd,$mobile,$content,$time='',$mid='')
 
 function SendMsg($mobile,$content,$type=0){
     //if($type==1){//只发验证码
-	//    $content.='【真爱一生网】';
-	//    $uid='55215';
+	 //   $content.='【真爱一生网】';
+	 //   $uid='55215';
 	//	$pwd='rfkda9';
 	//	if(is_array($mobile)) $mobile=implode(',',$mobile);
-	//    return sendSMS($uid,$pwd,$mobile,$content);
+	 //   return sendSMS($uid,$pwd,$mobile,$content);
 
 	//}else{
+	    //$uid = '55220';		//用户账号
+	    // $pwd = '8p6hri';		//密码
+		//SendMsg_gao($mobile,$content);
 		$content.='回N退订';
 		return sendSMS_mm($mobile,$content);
 	//}
-	
     //if(is_array($mobile)) $mobile=implode(',',$mobile);
     
 	//return sendSMS($uid,$pwd,$mobile,$content);
@@ -1662,18 +1664,30 @@ function youAbleLike(&$l,$num = 0) {
     $file = $age . "_" . $gender . "_" . $user1["province"] . "_" . $user1["city"];
 //     $cache_file = MOOPHP_DATA_DIR.'/cache/cache_' . $file . '.php';
     $data  = $memcached->get($file);
-    if (!$data) {
+	
+    if (!$data || !is_array($data)) {
+
         updateVoteFeel("","",$user1['province'],$user1['city'],$age,$gender);
         $data = $memcached->get($file);
     }
-    if(empty($data)) return $data;
+    if(empty($data)) return array();
 	
-	$l=count($data);
+	
+	
+	
+	if($data[0][1]) { 
+	   $data_=$data[0];
+	}else{
+	   $data_=$data;
+	}
+    
+	$l=count($data_);
+	
 	//shuffle($data);
-        $data=array_slice($data, $num , 5);
+        $data__=array_slice($data_, $num*5 , 5);
         for($j=0;$j<5;$j++){
             //if(MOOPHP_ALLOW_FASTDB){ 
-              if(isset($data[$j])) $able_like[$j] = MooMembersData($data[$j]);//MooFastdbGet('members_search','uid',$data[$j]);
+              if(isset($data__[$j])) $able_like[$j] = MooMembersData($data__[$j]);//MooFastdbGet('members_search','uid',$data[$j]);
             //}
         }
     //echo $cache_file.'<br>';
@@ -2815,12 +2829,9 @@ function getSearchEngineName($hostname = null) {
     global $_MooCookie;
     //$kefu = $_COOKIE['web_kefu'];
     if (!isset($_MooCookie['kefu']))
-	   
         return 0;
     $kefu = MooAuthCode(urldecode($_MooCookie['kefu']), 'DECODE');
-
     if($kefu){
-	     
 	    list($check, $sid) = explode("\t", $kefu);
 	    if(($check=="hongniangwang"&&$sid)){
 	        return $sid;

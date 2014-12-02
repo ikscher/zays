@@ -524,40 +524,32 @@ function get_chat_num($fromid,$toid){
 
 //得到生肖和星座
 function  get_signs($year,$month,$day){
-//程序从JS移值过来,仅是简单移值，没有做任何优化，在此感谢原作者!
-    $start = 1901;
-    $birthyear = $year;
-    $month = $month;
-    $date = $day;
+    
+	$value=array();
+    if($month && $day){
+		if   ($month   ==   1   &&   $day   >=20   ||   $month   ==   2   &&   $day   <=18)   {$value[0]   =   "水瓶座 ";}
+		if   ($month   ==   2   &&   $day   >=19   ||   $month   ==   3   &&   $day   <=20)   {$value[0]   =   "双鱼座 ";}
+		if   ($month   ==   3   &&   $day   >=21   ||   $month   ==   4   &&   $day   <=19)   {$value[0]   =   "白羊座 ";}
+		if   ($month   ==   4   &&   $day   >=20   ||   $month   ==   5   &&   $day   <=20)   {$value[0]   =   "金牛座 ";}
+		if   ($month   ==   5   &&   $day   >=21   ||   $month   ==   6   &&   $day   <=21)   {$value[0]   =   "双子座 ";}
+		if   ($month   ==   6   &&   $day   >=22   ||   $month   ==   7   &&   $day   <=22)   {$value[0]   =   "巨蟹座 ";}
+		if   ($month   ==   7   &&   $day   >=23   ||   $month   ==   8   &&   $day   <=22)   {$value[0]   =   "狮子座 ";}
+		if   ($month   ==   8   &&   $day   >=23   ||   $month   ==   9   &&   $day   <=22)   {$value[0]   =   "处女座 ";}
+		if   ($month   ==   9   &&   $day   >=23   ||   $month   ==   10   &&   $day   <=22)   {$value[0]   =   "天秤座 ";}
+		if   ($month   ==   10   &&   $day   >=23   ||   $month   ==   11   &&   $day   <=21)   {$value[0]   =   "天蝎座 ";}
+		if   ($month   ==   11   &&   $day   >=22   ||   $month   ==   12   &&   $day   <=21)   {$value[0]   =   "射手座 ";}
+		if   ($month   ==   12   &&   $day   >=22   ||   $month   ==   1   &&   $day   <=19)   {$value[0]   =   "摩羯座 ";}
+    }else{
+	    $value[0]='';
+	}
+	
+	$animals = array( '鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪');
+	$key= ($year - 1900) % 12;
+	
+	$value[0]=urlencode($value[0]);
+	$value[1]=urlencode($animals[$key]);
 
-    if   ($month   ==   1   &&   $date   >=20   ||   $month   ==   2   &&   $date   <=18)   {$value[0]   =   "水瓶座 ";}
-    if   ($month   ==   2   &&   $date   >=19   ||   $month   ==   3   &&   $date   <=20)   {$value[0]   =   "双鱼座 ";}
-    if   ($month   ==   3   &&   $date   >=21   ||   $month   ==   4   &&   $date   <=19)   {$value[0]   =   "白羊座 ";}
-    if   ($month   ==   4   &&   $date   >=20   ||   $month   ==   5   &&   $date   <=20)   {$value[0]   =   "金牛座 ";}
-    if   ($month   ==   5   &&   $date   >=21   ||   $month   ==   6   &&   $date   <=21)   {$value[0]   =   "双子座 ";}
-    if   ($month   ==   6   &&   $date   >=22   ||   $month   ==   7   &&   $date   <=22)   {$value[0]   =   "巨蟹座 ";}
-    if   ($month   ==   7   &&   $date   >=23   ||   $month   ==   8   &&   $date   <=22)   {$value[0]   =   "狮子座 ";}
-    if   ($month   ==   8   &&   $date   >=23   ||   $month   ==   9   &&   $date   <=22)   {$value[0]   =   "处女座 ";}
-    if   ($month   ==   9   &&   $date   >=23   ||   $month   ==   10   &&   $date   <=22)   {$value[0]   =   "天秤座 ";}
-    if   ($month   ==   10   &&   $date   >=23   ||   $month   ==   11   &&   $date   <=21)   {$value[0]   =   "天蝎座 ";}
-    if   ($month   ==   11   &&   $date   >=22   ||   $month   ==   12   &&   $date   <=21)   {$value[0]   =   "射手座 ";}
-    if   ($month   ==   12   &&   $date   >=22   ||   $month   ==   1   &&   $date   <=19)   {$value[0]   =   "摩羯座 ";}
-
-    $x   =   ($start   -   $birthyear)   %   12;
-    if   ($x   ==   1   ||   $x   ==   -11)   {$value[1]   =   "老鼠 ";}
-    if   ($x   ==   0)   {$value[1]   =   "牛 ";}
-    if   ($x   ==   11   ||   $x   ==   -1)   {$value[1]   =   "老虎 ";}
-    if   ($x   ==   10   ||   $x   ==   -2)   {$value[1]   =   "兔子 ";}
-    if   ($x   ==   9   ||   $x   ==   -3)     {$value[1]   =   "龙 ";}
-    if   ($x   ==   8   ||   $x   ==   -4)     {$value[1]   = "蛇 ";}
-    if   ($x   ==   7   ||   $x   ==   -5)     {$value[1]   =   "马 ";}
-    if   ($x   ==   6   ||   $x   ==   -6)     {$value[1]   =   "羊 ";}
-    if   ($x   ==   5   ||   $x   ==   -7)     {$value[1]   =   "猴子 ";}
-    if   ($x   ==   4   ||   $x   ==   -8)     {$value[1]   =   "鸡 ";}
-    if   ($x   ==   3   ||   $x   ==   -9)     {$value[1]   =   "狗 ";}
-    if   ($x   ==   2   ||   $x   ==   -10)     {$value[1]   =   "猪 ";}    
-
-     return   $value;//返回数组，0为星座,1为属相
+    return   $value;//返回数组，0为星座,1为属相
 } 
 
 

@@ -12,129 +12,7 @@
 <script type="text/javascript" src='./templates/js/outlook.js'></script>
 <script type="text/javascript" src="./templates/js/onmousemove_minutes.js"></script>
 <!-- {if {$GLOBALS['ccid']}}<script type="text/javascript" src="./templates/js/callcenter.js"></script>{/if} -->
-<script type="text/javascript">
-	 var _menus = {"menus":
-					[
-						{$str}
-					]
-				  };
-       
-	$(function() {
-		$('#loginOut').click(function() {
-			$.messager.confirm('系统提示', '您确定要退出本次登录吗?', function(r) {
-				if (r) {
-					location.href = 'index.php?action=login&h=logout';
-				}
-			});
-		})
-		
-		//三分钟没操作提醒
-		$("body").mousemove(function(){
-			mousemove_3minutes_remark();
-		})
-		
-		
-		
-		//删除我的会员-提示窗--开始start
-		openDelMyuser();
-		closeDelMyuser();
-		$('#btnEp').click(function(uid) {
-			var uid = $("#del_myuser_uid").val();
-			$('#btnEp').hide();
-			//document.getElementById('#btnEp').style.display= 'none';
 
-			var del_myuser_desc = $("#del_myuser_desc").val();
-			if(uid==''){
-				msgShow('系统提示', '您删除的用户不存在！', 'warning');
-				$('#btnEp').show();
-                return false;
-			}
-			if ($.trim(del_myuser_desc) == '') {
-                msgShow('系统提示', '请输入删除理由！', 'warning');
-				$('#btnEp').show();
-                return false;
-            }
-			$.post('myuser_ajax.php?n=delmyuser&uid='+uid+'&deldesc='+del_myuser_desc, function(msg) {
-			$('#btnEp').show();
-               if(msg == 'ok'){
-					msgShow('系统提示', '删除成功', 'info');
-					$("#del_myuser_desc").val('')
-					closeDelMyuser();
-					iframe_body.document.getElementById("myuser_"+uid).style.display = 'none';
-			   }
-            })
-			
-        })
-		$('#btnCancel').click(function(){
-			closeDelMyuser();
-		})
-		//结束end
-		
-		//note 登录CallCenter
-		<!-- {if {$GLOBALS['ccid']}} AgentLogin({$GLOBALS['ccid']},1); {/if} -->
-	});
-
-	//三分钟没操作提醒
-	time_3minutes = 0;
-	var timerId = 0;
-	function mousemove_3minutes_remark(){
-		time_3minutes = 0;
-		if(timerId == 0) timerId = setInterval('mousemove_3minutes_count()',180000);
-	}
-	//提醒计时
-	function mousemove_3minutes_count(){
-		time_3minutes++;
-		if(time_3minutes>=1800){
-			var ajaxUrl = "ajax.php?n=nooperation_remark&adminid={$GLOBALS['adminid']}&sec="+time_3minutes;
-			$.get(ajaxUrl,function(str){
-					clearInterval(timerId);
-					timerId = 0;
-			})
-			
-		}
-		//$("#ccc").html(time_3minutes);		
-	}
-	//timerId = setInterval('mousemove_3minutes_count()',1000);
-
-//note 每五分钟执行一次，检查当前客服所管辖会员的下次联系时间是否接近
-function next_contact_alert(){
-	var url = "ajax.php?n=check_next_contact";
-	$.get(url)
-}
-next_contact_alert();
-setInterval("next_contact_alert()",300000);
-
-var i=0
-function openChatWin(){
-	i++;
-	window.open('index.php?action=chat',i,'width=520,height=480,status=no,location=no');	
-}
-
-////////////////////////////////删除我的会员-提示窗////////////////////////////////////
-//关闭删除提示框
-function closeDelMyuser() {
-	$('#w').window('close');
-}
-	
- //设置登录窗口
-function openDelMyuser() {
-	$('#w').window({
-		title: '请输入删除(放弃)理由',
-		width: 300,
-		modal: true,
-		shadow: true,
-		closed: true,
-		height: 160,
-		resizable:false
-	});
-}
-
-//删除我的会员		
-function delmyuser(uid){
-	$("#del_myuser_uid").val(uid);
-	$('#w').window('open');
-}
-</script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden"  scroll="no">
 
@@ -163,7 +41,7 @@ function delmyuser(uid){
 		{/if}
 	
 	<!-- <span id="ccc"></span>秒 -->
-	当前登录客服：{$GLOBALS['username']}  ID：{$GLOBALS['usercode']}    身份：{$GLOBALS['groupname']} <a href="#" id="loginOut">安全退出</a> </span> <span style="padding-left:10px; font-size: 16px; font-family:微软雅黑,黑体"> <img src="./templates/images/top_logo.png" width="20" height="20" align="absmiddle" /> 真爱一生网客服管理系统 </span> 
+	当前登录客服：{$GLOBALS['username']}  ID：{$GLOBALS['usercode']}    身份：{$GLOBALS['groupname']} <a href="#" id="loginOut">安全退出</a> {if (in_array($GLOBALS['groupid'],$GLOBALS['system_admin']) ||  in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr']))}<a href='javascript:;' id="lostContact">失连</a> {/if}</span> <span style="padding-left:10px; font-size: 16px; font-family:微软雅黑,黑体"> <img src="./templates/images/top_logo.png" width="20" height="20" align="absmiddle" /> 真爱一生网客服管理系统 </span> 
 </div>
 <div region="south" split="true" style="height:1px;background:#D2E0F2;display:none;">
 	<!--<div class="footer">
@@ -240,5 +118,147 @@ function delmyuser(uid){
 		<div style="position:absolute;top:50px;left:130px;font-weight:bold;font-size:25px;color:red;" id="congratulate_sid"></div>
 		<img src="./templates/images/2.gif"  alt="fasdfasdf" /> </div>
 </div>
+<script type="text/javascript">
+  
+	 var _menus = {"menus":
+					[
+						{$str}
+					]
+				  };
+       
+	$(function() {
+		$('#loginOut').click(function() {
+			$.messager.confirm('系统提示', '您确定要退出本次登录吗?', function(r) {
+				if (r) {
+					location.href = 'index.php?action=login&h=logout';
+				}
+			});
+		})
+		
+		//三分钟没操作提醒
+		$("body").mousemove(function(){
+			mousemove_3minutes_remark();
+		})
+		
+		
+		
+		//删除我的会员-提示窗--开始start
+		openDelMyuser();
+		closeDelMyuser();
+		$('#btnEp').click(function(uid) {
+			var uid = $("#del_myuser_uid").val();
+			$('#btnEp').hide();
+			//document.getElementById('#btnEp').style.display= 'none';
+
+			var del_myuser_desc = $("#del_myuser_desc").val();
+			if(uid==''){
+				msgShow('系统提示', '您删除的用户不存在！', 'warning');
+				$('#btnEp').show();
+                return false;
+			}
+			if ($.trim(del_myuser_desc) == '') {
+                msgShow('系统提示', '请输入删除理由！', 'warning');
+				$('#btnEp').show();
+                return false;
+            }
+			$.post('myuser_ajax.php?n=delmyuser&uid='+uid+'&deldesc='+del_myuser_desc, function(msg) {
+			$('#btnEp').show();
+               if(msg == 'ok'){
+					msgShow('系统提示', '删除成功', 'info');
+					$("#del_myuser_desc").val('')
+					closeDelMyuser();
+					iframe_body.document.getElementById("myuser_"+uid).style.display = 'none';
+			   }
+            })
+			
+        })
+		$('#btnCancel').click(function(){
+			closeDelMyuser();
+		})
+		//结束end
+		
+		//note 登录CallCenter
+		<!-- {if {$GLOBALS['ccid']}} AgentLogin({$GLOBALS['ccid']},1); {/if} -->
+	});
+	
+	
+	////////////////////////////////删除我的会员-提示窗////////////////////////////////////
+	//关闭删除提示框
+	function closeDelMyuser() {
+		$('#w').window('close');
+	}
+		
+	 //设置登录窗口
+	function openDelMyuser() {
+		$('#w').window({
+			title: '请输入删除(放弃)理由',
+			width: 300,
+			modal: true,
+			shadow: true,
+			closed: true,
+			height: 160,
+			resizable:false
+		});
+	}
+
+	//删除我的会员		
+	function delmyuser(uid){
+		$("#del_myuser_uid").val(uid);
+		$('#w').window('open');
+	}
+		
+	
+
+	//三分钟没操作提醒
+	time_3minutes = 0;
+	var timerId = 0;
+	function mousemove_3minutes_remark(){
+		time_3minutes = 0;
+		if(timerId == 0) timerId = setInterval('mousemove_3minutes_count()',180000);
+	}
+	//提醒计时
+	function mousemove_3minutes_count(){
+		time_3minutes++;
+		if(time_3minutes>=1800){
+			var ajaxUrl = "ajax.php?n=nooperation_remark&adminid={$GLOBALS['adminid']}&sec="+time_3minutes;
+			$.get(ajaxUrl,function(str){
+					clearInterval(timerId);
+					timerId = 0;
+			})
+			
+		}
+		//$("#ccc").html(time_3minutes);		
+	}
+	//timerId = setInterval('mousemove_3minutes_count()',1000);
+
+	//note 每五分钟执行一次，检查当前客服所管辖会员的下次联系时间是否接近
+	function next_contact_alert(){
+		var url = "ajax.php?n=check_next_contact";
+		$.get(url)
+	}
+	next_contact_alert();
+	setInterval("next_contact_alert()",300000);
+
+	var i=0
+	function openChatWin(){
+		i++;
+		window.open('index.php?action=chat',i,'width=520,height=480,status=no,location=no');	
+	}
+
+		
+	
+	$('#lostContact').click(function(){
+		$.ajax({
+			url:'ajax.php?n=lostContact',
+			type:'get',
+			dataType:'text',
+			success:function(){
+				location.href=location.href;
+			}
+		});
+	});
+    
+
+</script>
 </body>
 </html>

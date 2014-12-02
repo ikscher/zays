@@ -453,7 +453,7 @@
   <div class="modal-dialog">
 	<div class="modal-content">
 	  <div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 		<h5 class="modal-title" id="myModalLabel">登录后，您将了解更多会员的征婚信息和吸引更多的异性会员关注 </h5>
 	  </div>
 	  <div class="modal-body">
@@ -484,8 +484,8 @@
 <!--登录模态框-->
 
 <div style="height: 100px;text-align: center;padding-top: 20px;border-top:1px solid #999;margin-top:3px;">
-	<div class="g">品牌：8年专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
-	<div class="g">Copyright 2006-2014 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
+	<div class="g">品牌：专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
+	<div class="g">Copyright@<?php echo date('Y');?> 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
 	<div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>
 </div>
 </body>
@@ -493,11 +493,12 @@
 <script src="public/system/js/jquery.modal.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="module/payment/templates/default/js/scrollDoor.js?v=1.0"></script>
 <script type="text/javascript">
-window.onload = function(){var SDmodel = new scrollDoor();SDmodel.sd(["vf_01","vf_02","vf_03","vf_04"],["vf_01_","vf_02_","vf_03_","vf_04_"],"t01","t02");}
+window.onload = function(){ var uid=<?php echo $uid;?>;if(!uid || typeof uid=='undefined'){ openLogin();}var SDmodel = new scrollDoor();SDmodel.sd(["vf_01","vf_02","vf_03","vf_04"],["vf_01_","vf_02_","vf_03_","vf_04_"],"t01","t02");}
  function openLogin(){
 		$('#myModal').modal({
 			backdrop: 'static',
-			keyboard: true
+			keyboard: true,
+			modal:true
 		})
 	}
 $('.upgradeHeigherMember').on('click',function(){

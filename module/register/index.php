@@ -506,7 +506,22 @@ switch ($h) {
 			$marriage =isset($marriage)?$marriage:1;
 			$education = MooGetGPC('education','integer');
 			$salary = MooGetGPC('salary','integer');
-    
+            
+			
+			$pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+			if(!preg_match($pattern,$telphone)){
+			    $sUrl=$_SERVER['HTTP_REFERER'];
+			    MooMessage ( '手机号码格式不正确！！！', $sUrl, '01' );
+			}
+			
+			
+			
+			$rs_=array();
+			$sql="select uid from web_members_search where telphone='{$telphone}'";
+			$rs_=$_MooClass ['MooMySQL']->getOne($sql);
+			if(!empty($rs_['uid'])){
+				 MooMessage ( '此手机号已经被注册过！', 'index.php?n=register', '01' );
+			}
 			
 			if (empty ( $istuiguang )) {
 				/* $seccode1 = strtolower ( MooGetGPC ( 'seccode', 'string', 'P' ) );
@@ -606,13 +621,7 @@ switch ($h) {
 				}
 				
 				
-				$rs_=array();
-			    $sql="select uid from web_members_search where telphone='{$telphone}'";
-				$rs_=$_MooClass ['MooMySQL']->getOne($sql);
-				if(!empty($rs_['uid'])){
-				     MooMessage ( '此手机号已经被注册过！', 'index.php?n=register', '01' );
-					 return;
-				}
+				
 				
 				//事务开始
 				$_MooClass ['MooMySQL']->query ( "begin;");

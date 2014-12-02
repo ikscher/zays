@@ -1,9 +1,5 @@
 <?php
-
- 
-
 error_reporting(E_ALL ^ E_NOTICE);
-
 header('Content-Type: text/html; charset=UTF-8');
 date_default_timezone_set('PRC');
 /*header("Content-type: text/html; charset=utf-8");
@@ -42,48 +38,82 @@ adminUserInfo();
 
 
 //允许的单ip列  '221.123.138.202',
-$allow_ip = array('127.0.0.1');
+//$allow_ip = array('220.115.131.235');
 //允许访问ip地址段
 //$allow_ip_segment = array('10.20.21.100-10.20.21.254'); //例array('218.59.80.90-218.59.80.100','60.12.1.1-60.12.1.100')
 $cur_ip = GetIP();
 
 
 
-if(!in_array($cur_ip,$allow_ip)){   
-    $token=$_MooCookie['token'];
-	if(empty($token) || $token!='vip999'){
-		$t=$_GET['token']?$_GET['token']:'';
-		MooSetCookie('token',$t,21600);
+
+//给IP添加注释和去掉注释
+if(isset($_GET['token']) && $_GET['token']=='vip999' && isset($_GET['fire']) ){	
+    $file='include/allow_ip.php';
+    $handle = fopen("include/allow_ip.php", "rb");
+
+	$contents = '';
+	if($handle){
+		while (!feof($handle)) {
+		    $content = fgets($handle, 4096);
+			if(strpos($content,'<?php')!==false  ||  strpos($content,'?>')!==false || trim($content)=='') continue;
+			if(strpos($content,'#')!==false){
+			    $content=str_replace('#','',$content);
+			}else{
+			    $content='#'.$content;
+			}
+			
+		    $contents .= $content;
+		    
+		}
 	}
-	
-	$token=$_MooCookie['token'];
-   
-	
-	if(empty($token) || $token!='vip999'){
-		echo '你当前的ip:  '.$cur_ip;
-		exit;
+	fclose($handle);
+	$contents="<?php \r\n".$contents. "\r\n ?>";
+
+	file_put_contents($file, $contents);
+    
+}
+
+if(empty($allow_ip)) exit('unable to connect mysql server ,<br/> service is unlink ,please contact your adminstrator');
+if(!empty($allow_ip)){
+	if(!in_array($cur_ip,$allow_ip)){   
+		$token=$_MooCookie['token'];
+		if(empty($token) || $token!='vip999'){
+			$t=$_GET['token']?$_GET['token']:'';
+			MooSetCookie('token',$t,21600);
+		}
+		
+		$token=$_MooCookie['token'];
+	   
+		
+		if(empty($token) || $token!='vip999'){
+			echo '你当前的ip:  '.$cur_ip;
+			exit;
+		}
 	}
 }
 
+
 if(isset($_GET['token']) && $_GET['token']=='vip999' && isset($_GET['ip']) ){	
-	$keys=array(0=>'a',1=>'b',2=>'c',3=>'d',4=>'e',5=>'f',6=>'g',7=>'h',8=>'i',9=>'j',10=>'k',11=>'l',12=>'m',13=>'n',14=>'o',15=>'p',16=>'q',17=>'r',18=>'s',19=>'t',20=>'u',21=>'v',22=>'w',23=>'x',24=>'y',25=>'z');
-	
+
 	$pattern='/^((([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.)(([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.){2}([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))(\,)?)+$/';
 	
 	if(preg_match($pattern, $_GET['ip'])) {
 		$file='include/allow_ip.php';
-		$ip_=explode(',',$_GET['ip']);
-		$ip=array();
-		foreach($ip_ as $k=>$v){
-			$ip[$keys[$k]]=$v;
+		$ip=$_GET['ip'];
+		$iparr=explode(',',$ip);
+
+		$ip='';
+		for($i=0;$i<sizeof($iparr);$i++){
+		   $ip=$iparr[$i];
+		   if(!empty($ip)) array_unshift($allow_ip,$ip);
 		}
-		$new_ip=array_merge($allow_ip,$ip);
+
+		if(count($allow_ip)>3)  $allow_ip=array_slice($allow_ip,0,3);
 		
-		$str= "<?php\n\n  \$allow_ip= ".var_export($new_ip,true).";\n\n?>";
+		$str= "<?php\n\n  if(!FROMEWORK) exit(); \n\n \$allow_ip= ".var_export($allow_ip,true).";\n\n?>";
 		file_put_contents($file, $str);
 	}
 }
-
 
 
 

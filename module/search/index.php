@@ -1,7 +1,7 @@
 <?php
 
 /* * ************************************* 逻辑层(M)/表现层(V) *************************************** */
-
+ob_start();
 include "./module/{$name}/function.php";
 include "./module/{$name}/advance_search.php";
 include "./module/{$name}/basic_search.php";
@@ -3913,25 +3913,25 @@ switch ($h){
 	    if (isset($_GET['quick_search'])) {
 	        //按ID搜索
 	        if (isset($_GET['search_type']) && $_GET['search_type'] == 2) {
-	            $search_uid = trim(MooGetGPC('search_uid', 'integer', 'G'));
+	            $search_uid = htmlspecialchars(trim(MooGetGPC('search_uid', 'integer', 'G')));
 	            header("Location:index.php?n=search&h=nickid&info=" . $search_uid);
 	            exit;
 	        }
 	        //note 性别
-	        $gender = isset($_GET['gender']) ? trim(MooGetGPC('gender', 'integer', 'G')) : 1;
+	        $gender = isset($_GET['gender']) ? htmlspecialchars(trim(MooGetGPC('gender', 'integer', 'G'))) : 1;
 	
 	        //note 年龄范围
-	        $age_start = isset($_GET['age_start']) ? trim(MooGetGPC('age_start', 'integer', 'G')) : 0;
-	        $age_end = isset($_GET['age_end']) ? trim(MooGetGPC('age_end', 'integer', 'G')) : 0;
+	        $age_start = isset($_GET['age_start']) ? htmlspecialchars(trim(MooGetGPC('age_start', 'integer', 'G'))) : 0;
+	        $age_end = isset($_GET['age_end']) ? htmlspecialchars(trim(MooGetGPC('age_end', 'integer', 'G'))) : 0;
 	
 	        //note 工作省、城市
-	        $work_province = isset($_GET['workprovince']) ? trim(MooGetGPC('workprovince', 'integer', 'G')) : 0;
-	        $work_city = isset($_GET['workcity']) ? trim(MooGetGPC('workcity', 'integer', 'G')) : 0;
+	        $work_province = isset($_GET['workprovince']) ? htmlspecialchars(trim(MooGetGPC('workprovince', 'integer', 'G'))) : 0;
+	        $work_city = isset($_GET['workcity']) ? htmlspecialchars(trim(MooGetGPC('workcity', 'integer', 'G'))) : 0;
 	        
 	      
 			
 	        //note 是否显示相片
-	        $photo = isset($_GET['photo']) ? trim(MooGetGPC('photo', 'integer', 'G')) : '0';
+	        $photo = isset($_GET['photo']) ? htmlspecialchars(trim(MooGetGPC('photo', 'integer', 'G'))) : '0';
 			//echo $gender,"<br />",$age_start,"<br />",$age_end,"<br />",$work_province,"<br />",$work_city,"<br />",$photo;die;
 			/**if(isset($_GET['searchid'])){
 				$search_id = trim(MooGetGPC('searchid', 'integer', 'G'));
@@ -3954,33 +3954,33 @@ switch ($h){
    //note	基本查询表单处理
 	    if (isset($_GET['basic_search'])) {
 	        //note 性别
-	        $gender = isset($_GET['gender']) ? trim(MooGetGPC('gender', 'integer', 'G')) : 0;
+	        $gender = isset($_GET['gender']) ? htmlspecialchars(trim(MooGetGPC('gender', 'integer', 'G'))) : 0;
 	
 	        //note 不超过年龄和不低于年龄
-			$age_start = isset($_GET['age_start']) ? trim(MooGetGPC('age_start', 'integer', 'G')) : 0;
-	        $age_end = isset($_GET['age_end']) ? trim(MooGetGPC('age_end', 'integer', 'G')) : 0;
+			$age_start = isset($_GET['age_start']) ? htmlspecialchars(trim(MooGetGPC('age_start', 'integer', 'G'))) : 0;
+	        $age_end = isset($_GET['age_end']) ? htmlspecialchars(trim(MooGetGPC('age_end', 'integer', 'G'))) : 0;
 	
 	        //note 工作省、市
-			$work_province = isset($_GET['workprovince']) ? trim(MooGetGPC('workprovince', 'integer', 'G')) : 0;
-	        $work_city = isset($_GET['workcity']) ? trim(MooGetGPC('workcity', 'integer', 'G')) : 0;
+			$work_province = isset($_GET['workprovince']) ? htmlspecialchars(trim(MooGetGPC('workprovince', 'integer', 'G'))) : 0;
+	        $work_city = isset($_GET['workcity']) ? htmlspecialchars(trim(MooGetGPC('workcity', 'integer', 'G'))) : 0;
 	
 	        //note 籍贯省市
-			$home_townprovince = isset($_GET['workcityprovince1']) ? trim(MooGetGPC('workcityprovince1', 'integer', 'G')) : 0;
-	        $home_towncity = isset($_GET['workcitycity1']) ? trim(MooGetGPC('workcitycity1', 'integer', 'G')) : 0;
+			$home_townprovince = isset($_GET['workcityprovince1']) ? htmlspecialchars(trim(MooGetGPC('workcityprovince1', 'integer', 'G'))) : 0;
+	        $home_towncity = isset($_GET['workcitycity1']) ? htmlspecialchars(trim(MooGetGPC('workcitycity1', 'integer', 'G'))) : 0;
 	
 	        //note 身高
-	        $height1 = isset($_GET['height1']) ? trim(MooGetGPC('height1', 'integer','G')) : 0;
-			$height2 = isset($_GET['height2']) ? trim(MooGetGPC('height2', 'integer','G')) : 0;
+	        $height1 = isset($_GET['height1']) ? htmlspecialchars(trim(MooGetGPC('height1', 'integer','G'))) : 0;
+			$height2 = isset($_GET['height2']) ? htmlspecialchars(trim(MooGetGPC('height2', 'integer','G'))) : 0;
 	        //note 是否搜索有照片的会员
-			$photo = isset($_GET['photo']) ? trim(MooGetGPC('photo', 'integer', 'G')) : 0;
+			$photo = isset($_GET['photo']) ? htmlspecialchars(trim(MooGetGPC('photo', 'integer', 'G'))) : 0;
 			
 	        //note 结婚，学历，教育，体型 中多选 有不限特殊处理
 	        $marriage = 0;
 	        $salary = 0;
 	        $education = 0;
-	        if(isset($_GET['marriage'])) $marriage = $_GET['marriage'] == '' ? 0 : $_GET['marriage'];
-	        if(isset($_GET['salary'])) $salary = $_GET['salary'] == '' ? 0 : $_GET['salary'];
-	        if(isset($_GET['education'])) $education = $_GET['education'] == '' ? 0 : $_GET['education'];
+	        if(isset($_GET['marriage'])) $marriage = $_GET['marriage'] == '' ? 0 : htmlspecialchars($_GET['marriage']);
+	        if(isset($_GET['salary'])) $salary = $_GET['salary'] == '' ? 0 : htmlspecialchars($_GET['salary']);
+	        if(isset($_GET['education'])) $education = $_GET['education'] == '' ? 0 : htmlspecialchars($_GET['education']);
 			
 	        if($work_province == -1) $work_province = 0;
 	        elseif($work_province == -2) $work_province = 2;
@@ -4175,15 +4175,15 @@ switch ($h){
 	//		echo "兄弟姐妹<br />";
 	
 			//note 性别
-	        $gender = isset($_GET['gender']) ? trim(MooGetGPC('gender', 'integer', 'G')) : 0;
+	        $gender = isset($_GET['gender']) ? htmlspecialchars(trim(MooGetGPC('gender', 'integer', 'G'))) : 0;
 	
 	        //note 不超过年龄和不低于年龄
-			$age_start = isset($_GET['age_start']) ? trim(MooGetGPC('age_start', 'integer', 'G')) : 0;
-	        $age_end = isset($_GET['age_end']) ? trim(MooGetGPC('age_end', 'integer', 'G')) : 0;
+			$age_start = isset($_GET['age_start']) ? htmlspecialchars(trim(MooGetGPC('age_start', 'integer', 'G'))) : 0;
+	        $age_end = isset($_GET['age_end']) ? htmlspecialchars(trim(MooGetGPC('age_end', 'integer', 'G'))) : 0;
 	
 	        //note 工作省、市
-			$work_province = isset($_GET['workprovince']) ? trim(MooGetGPC('workprovince', 'integer', 'G')) : 0;
-	        $work_city = isset($_GET['workcity']) ? trim(MooGetGPC('workcity', 'integer', 'G')) : 0;
+			$work_province = isset($_GET['workprovince']) ? htmlspecialchars(trim(MooGetGPC('workprovince', 'integer', 'G'))) : 0;
+	        $work_city = isset($_GET['workcity']) ? htmlspecialchars(trim(MooGetGPC('workcity', 'integer', 'G'))) : 0;
 			
 			//note 修正广东省深圳和广州的区域查询
 			if(in_array($work_province, array(10101201,10101002))) {
@@ -4191,8 +4191,8 @@ switch ($h){
 				$work_province = 10101000;
 			}
 	        //note 籍贯省市
-			$home_townprovince = isset($_GET['workcityprovince1']) ? trim(MooGetGPC('workcityprovince1', 'integer', 'G')) : 0;
-	        $home_towncity = isset($_GET['workcitycity1']) ? trim(MooGetGPC('workcitycity1', 'integer', 'G')) : 0;
+			$home_townprovince = isset($_GET['workcityprovince1']) ? htmlspecialchars(trim(MooGetGPC('workcityprovince1', 'integer', 'G'))) : 0;
+	        $home_towncity = isset($_GET['workcitycity1']) ? htmlspecialchars(trim(MooGetGPC('workcitycity1', 'integer', 'G'))) : 0;
 			
 			//note 修正广东省深圳和广州的区域查询
 			if(in_array($home_townprovince, array(10101201,10101002))) {
@@ -4201,29 +4201,29 @@ switch ($h){
 			}
 			
 	        //note 身高
-	        $height1 = isset($_GET['height1']) ? trim(MooGetGPC('height1', 'integer','G')) : 0;
-			$height2 = isset($_GET['height2']) ? trim(MooGetGPC('height2', 'integer','G')) : 0;
+	        $height1 = isset($_GET['height1']) ? htmlspecialchars(trim(MooGetGPC('height1', 'integer','G'))) : 0;
+			$height2 = isset($_GET['height2']) ? htmlspecialchars(trim(MooGetGPC('height2', 'integer','G'))) : 0;
 			//note 不超过和不低于体重
-	        $weight1 = isset($_GET['weight1']) ? trim(MooGetGPC('weight1', 'integer','G')) : 0;
-	        $weight2 = isset($_GET['weight2']) ? trim(MooGetGPC('weight2', 'integer','G')) : 0;
+	        $weight1 = isset($_GET['weight1']) ? htmlspecialchars(trim(MooGetGPC('weight1', 'integer','G'))) : 0;
+	        $weight2 = isset($_GET['weight2']) ? htmlspecialchars(trim(MooGetGPC('weight2', 'integer','G'))) : 0;
 	
 	        //note 是否搜索有照片的会员
-			$photo = isset($_GET['photo']) ? trim(MooGetGPC('photo', 'integer', 'G')) : 0;
+			$photo = isset($_GET['photo']) ? htmlspecialchars(trim(MooGetGPC('photo', 'integer', 'G'))) : 0;
 	
 	//		echo "性别$gender<br />年龄$age_start--$age_end<br />工作省市$work_province--$work_city<br />是否显示相片$photo<br />身高$height1--$height2<br />体重$weight1--$weight2<br />";
 	
 	        //note 民族
-	        $nation = isset($_GET['stock']) ? trim(MooGetGPC('stock', 'integer', 'G')) : 0;
+	        $nation = isset($_GET['stock']) ? htmlspecialchars(trim(MooGetGPC('stock', 'integer', 'G'))) : 0;
 	//		echo "籍贯省市$home_townprovince--$home_towncity<br />民族$nation";die;
 	        //note 保存搜索条件名称
-	        $searchname = isset($_GET['searchname']) ? trim(MooGetGPC('searchname', 'string', 'G')) : '';
+	        $searchname = isset($_GET['searchname']) ? htmlspecialchars(trim(MooGetGPC('searchname', 'string', 'G'))) : '';
 	
 	        //note 以前的搜索id
-	        $sid = isset($_GET['sid']) ? trim(MooGetGPC('sid', 'integer', 'G')) : '';
+	        $sid = isset($_GET['sid']) ? htmlspecialchars(trim(MooGetGPC('sid', 'integer', 'G'))) : '';
 	//        $condition = isset($_GET['condition']) ? trim(MooGetGPC('condition', 'integer', 'G')) : '2';
 	
 	        //note 是否确定保存搜索条件
-	        $issavesearchname = isset($_GET['issavesearchname']) ? MooGetGPC('issavesearchname', 'integer','G') : '';
+	        $issavesearchname = isset($_GET['issavesearchname']) ? htmlspecialchars(MooGetGPC('issavesearchname', 'integer','G')) : '';
 			//note 是否定期存到邮箱
 	        $is_commend = MooGetGPC('is_commend', 'integer','G');
 	

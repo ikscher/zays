@@ -805,14 +805,17 @@ function get_online_member_total($where){
 //生成后台客服名缓存文件
 function create_kefuuser_cachefile(){
 	//所有客服列表
-	$sql = "SELECT uid,username,name FROM {$GLOBALS['dbTablePre']}admin_user ORDER BY uid ASC";
+	$sql = "SELECT uid,usercode,username,name FROM {$GLOBALS['dbTablePre']}admin_user ORDER BY uid ASC";
 	$kefu_list = $GLOBALS['_MooClass']['MooMySQL']->getAll($sql);
 	$kefu_arr = array('无');
+	$kefu_arr_ = array('null');
 	foreach($kefu_list as $kefu){
 		$kefu_arr[$kefu['uid']] = $kefu['username'];
+		$kefu_arr_[$kefu['uid']] = $kefu['usercode'].','.$kefu['username'];
 	}
 	
-	file_put_contents('./data/kefulist_cache.php','<?php $kefu_arr=' .var_export($kefu_arr,true).'; ?>');
+	file_put_contents('./data/kefulist_cache.php','<?php  $kefu_arr=' .var_export($kefu_arr,true).'; ?>');
+	file_put_contents('./data/kefulist_cache_.php','<?php $kefu_arr_=' .var_export($kefu_arr_,true).'; ?>');
 	return true;
 }
 

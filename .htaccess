@@ -13,6 +13,8 @@ RewriteRule myaccount.html$         index.php?n=myaccount
 RewriteRule vote.html$         index.php?n=vote 
 
 RewriteRule introduce.html$    index.php?n=payment&h=introduce 
+RewriteRule faq.html$          index.php?n=about&h=faq 
+
 RewriteRule upgrade.html$      index.php?n=payment&h=upgrade
 RewriteRule platinum.html$     index.php?n=payment&h=platinum 
 RewriteRule diamond.html$      index.php?n=payment&h=diamond 

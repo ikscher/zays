@@ -90,7 +90,7 @@ tr.over td {
     <th width="%6"><a href="javascript:chang_order('uid','<?php echo $rsort_arr['uid'];?>')"  style="text-decoration:underline;">会员ID</a></th>
 	<th width="%8">昵称</th>
 	<th width="%5"><a href="javascript:chang_order('birthyear','<?php echo $rsort_arr['birthyear'];?>')"  style="text-decoration:underline;">年龄</a></th>
-	<th width="%8"><a href="javascript:chang_order('lastvisit','<?php echo $rsort_arr['lastvisit'];?>')"  style="text-decoration:underline;">最后登录时间</a></th>
+	<!-- <th width="%8"><a href="javascript:chang_order('lastvisit','<?php echo $rsort_arr['lastvisit'];?>')"  style="text-decoration:underline;">最后登录时间</a></th> -->
     <th width="%8"><a href="javascript:chang_order('allotdate','<?php echo $rsort_arr['allotdate'];?>')"  style="text-decoration:underline;">分配时间</a></th>
 	<?php if(in_array($_GET['h'],array('photo','image'))) { ?><th width="%8" ><a href="javascript:chang_order('pic_date','<?php echo $rsort_arr['pic_date'];?>')"  style="text-decoration:underline;">上传时间</a></th><?php } ?>
 	<th width="%40"><?php if($_GET['h'] == 'monolog') { ?>独白内容<?php } else { ?>类型<?php } ?></th>
@@ -108,7 +108,7 @@ tr.over td {
 		<a href="#" onclick="parent.addTab('查看<?php echo $v['uid'];?>资料','index.php?action=allmember&h=view_info&uid=<?php echo $v['uid'];?>','icon')"><?php echo $v['nickname'];?></a>
 	</td>
 	<td align="center"><?php if($v['birthyear'])echo date('Y')-$v['birthyear'];else echo "无";?></td>
-	<td align="center"><?php echo date('Y-m-d',$v['lastvisit']);?></td>
+	<!-- <td align="center"><?php echo date('Y-m-d',$v['lastvisit']);?></td> -->
     <td align="center"><?php echo $v['allotdate'] ? date('Y-m-d',$v['allotdate']) : '未分配';?></td>
 	
 	<?php if(in_array($_GET['h'] ,array('photo','image'))) { ?>

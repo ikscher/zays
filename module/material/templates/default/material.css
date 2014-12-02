@@ -1,5 +1,5 @@
 body{font-size:12px}
-.thenew{margin-top:-2px;*margin-top:-14px;margin-left:112px;position:absolute}
+.thenew{margin-top:-2px;*margin-top:-14px;margin-left:152px;position:absolute}
 .content-lift,.c-lift-content,.c-lift-title,.c-lift-content-in,.c-lift-bottom,.left-tips{width:220px;float:left}
 .c-lift-title,.c-lift-bottom{background:url(images/left-title.gif)}
 .c-lift-title{height:27px;text-align:center;font-size:14px;color:#F52;line-height:27px;font-weight:700}
@@ -52,6 +52,7 @@ body{font-size:12px}
 .set-mydata li dl.r-list09{background-position:0 -630px}
 .set-mydata li dl.r-list10{background-position:0 -710px}
 .set-mydata li dl.r-list11{background-position:0 -790px}
+.set-mydata li dl.r-list12{background-position:0 -870px}
 .set-mydata li dt a{color:#d73c90;font-weight:700}
 .set-mydata li p a:hover{text-decoration:underline}
 .right-bottom-tips{margin:-10px auto 40px;width:510px}

@@ -466,7 +466,7 @@ var tabtoggle2 = function(e,o){
 				<option value="" <?php if($_GET['usertype'] == '') { ?>selected<?php } ?>>请选择</option>
 	  			<option value="1" <?php if($_GET['usertype'] == 1) { ?>selected<?php } ?>>本站注册</option>
 	  			<option value="2" <?php if($_GET['usertype'] == 2) { ?>selected<?php } ?>>外站加入</option>
-	  			<option value="3" <?php if($_GET['usertype'] == 3) { ?>selected<?php } ?>>全权会员</option>
+	  			<option value="3" <?php if($_GET['usertype'] == 3) { ?>selected<?php } ?>>诚信会员</option>
 	  			<option value="4" <?php if($_GET['usertype'] == 4) { ?>selected<?php } ?>>联盟会员</option>
 				<option value="5" <?php if($_GET['usertype'] == 5) { ?>selected<?php } ?>>内部会员</option>
 	  		</select>
@@ -616,7 +616,7 @@ var tabtoggle2 = function(e,o){
 		<?php if(!in_array($GLOBALS['groupid'],$GLOBALS['general_service'])) { ?>
 			<input type="checkbox" value="<?php echo $member['uid'];?>" name="changesid[]" />
 		<?php } ?>
-		<?php echo $member['sid'];?></td>
+		<?php  echo substr($kefu_arr_[$member['sid']],0,strpos($kefu_arr_[$member['sid']],','));?></td>
     <td align="center">
     	<?php if($member['sid']!=''&&$member['sid']!=0&&isset($GLOBALS['kefu_arr'][$member['sid']])) echo $GLOBALS['kefu_arr'][$member['sid']];else echo "暂无";?>
     </td>

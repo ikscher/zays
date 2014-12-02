@@ -453,7 +453,7 @@
   <div class="modal-dialog">
 	<div class="modal-content">
 	  <div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 		<h5 class="modal-title" id="myModalLabel">登录后，您将了解更多会员的征婚信息和吸引更多的异性会员关注 </h5>
 	  </div>
 	  <div class="modal-body">
@@ -493,11 +493,12 @@
 <script src="public/system/js/jquery.modal.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="module/payment/templates/default/js/scrollDoor.js?v=1.0"></script>
 <script type="text/javascript">
-window.onload = function(){var SDmodel = new scrollDoor();SDmodel.sd(["vf_01","vf_02","vf_03","vf_04"],["vf_01_","vf_02_","vf_03_","vf_04_"],"t01","t02");}
+window.onload = function(){ var uid={$uid};if(!uid || typeof uid=='undefined'){ openLogin();}var SDmodel = new scrollDoor();SDmodel.sd(["vf_01","vf_02","vf_03","vf_04"],["vf_01_","vf_02_","vf_03_","vf_04_"],"t01","t02");}
  function openLogin(){
 		$('#myModal').modal({
 			backdrop: 'static',
-			keyboard: true
+			keyboard: true,
+			modal:true
 		})
 	}
 $('.upgradeHeigherMember').on('click',function(){

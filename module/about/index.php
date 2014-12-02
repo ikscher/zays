@@ -387,6 +387,13 @@ function recruit(){
     require MooTemplate('public/about_recruit', 'module');
 }
 
+
+//问答
+function about_faq(){
+    $left_menu = 'faq';
+    require MooTemplate('public/about_faq', 'module');
+}
+
 //隐私保护
 function about_privacy(){
     $left_menu = 'privacy';
@@ -458,6 +465,9 @@ switch($h){
 		die;
 	case "exec":
 	    require("about_exec.php");
+		break;
+	case "faq":
+	    about_faq();
 		break;
 	default :
 		about_us();

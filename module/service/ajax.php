@@ -171,7 +171,8 @@ function sendLeer(){
 		//note 发送新的秋波，写入数据库 发送者，接受者，发送时间
 		$_MooClass['MooMySQL']->query("INSERT INTO {$dbTablePre}service_leer SET sendtime = '$timestamp',receivetime = '$timestamp',receivenum = '1', num = '1', senduid  = '{$userid}',receiveuid = '$sendtouid'");
 	    //发送短信
-		if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"秋波","尊敬的会员您好！ID：{$userid}的{$gender}给您发送了秋波，{$info} 登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920。",$userid);
+		$pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+		if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1 && preg_match($pattern,$sendToUser['telphone'])) Push_message_intab($sendtouid,$sendToUser['telphone'],"秋波","尊敬的会员您好！ID：{$userid}的{$gender}给您发送了秋波，{$info} 登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920。",$userid);
 	}
 	
 	 //将新注册的会员更新为优质会员
@@ -264,8 +265,8 @@ function sendCommission(){
 	$sql_remark = "insert into {$dbTablePre}admin_remark set sid='{$sid}',title='委托',content='{$title}',awoketime='{$awoketime}',dateline='{$timestamp}'";
 	$res = $_MooClass['MooMySQL']->query($sql_remark);
 	
-	
-	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"委托","尊敬的会员您好！ID：{$userid}的{$gender}已委托红娘联系您，登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
+	$pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1 && preg_match($pattern,$sendToUser['telphone'])) Push_message_intab($sendtouid,$sendToUser['telphone'],"委托","尊敬的会员您好！ID：{$userid}的{$gender}已委托红娘联系您，登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
 
 	
 }
@@ -335,8 +336,9 @@ function addLiker(){
 	$awoketime = $timestamp+3600;
 	$sql_remark = "insert into {$dbTablePre}admin_remark set sid='{$sid}',title='意中人',content='{$title}',awoketime='{$awoketime}',dateline='{$timestamp}'";
 	$_MooClass['MooMySQL']->query($sql_remark);
-
-	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"意中人","尊敬的会员您好！ID：{$userid}的{$gender}加您为意中人,请及时登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
+    
+	$pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1 && preg_match($pattern,$sendToUser['telphone'])) Push_message_intab($sendtouid,$sendToUser['telphone'],"意中人","尊敬的会员您好！ID：{$userid}的{$gender}加您为意中人,请及时登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
 	
 }
 
@@ -430,7 +432,8 @@ function sendGift(){
 	$sql_remark = "insert into {$dbTablePre}admin_remark set sid='{$sid}',title='赠送礼物',content='{$title}',awoketime='{$awoketime}',dateline='{$timestamp}'";
 	$_MooClass['MooMySQL']->query($sql_remark);
     
-	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"鲜花","尊敬的会员您好！ID：{$userid}的{$gender}向您赠送了礼物,登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
+	$pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1 && preg_match($pattern,$sendToUser['telphone'])) Push_message_intab($sendtouid,$sendToUser['telphone'],"鲜花","尊敬的会员您好！ID：{$userid}的{$gender}向您赠送了礼物,登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
 }
 
 
@@ -505,8 +508,8 @@ function sendEstimate(){
 	$sql_remark = "insert into {$dbTablePre}admin_remark set sid='{$sid}',title='评价',content='{$title}',awoketime='{$awoketime}',dateline='{$timestamp}'";
 	$res = $_MooClass['MooMySQL']->query($sql_remark);
 	
-	
-	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"评价人","尊敬的会员您好！ID：{$userid}的{$gender}评价了您,登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);  
+	$pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1 && preg_match($pattern,$sendToUser['telphone'])) Push_message_intab($sendtouid,$sendToUser['telphone'],"评价人","尊敬的会员您好！ID：{$userid}的{$gender}评价了您,登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);  
 
 }
 
@@ -587,9 +590,8 @@ function getSMS(){
     $sql_remark = "insert into {$dbTablePre}admin_remark set sid='{$sid}',title='获取身份信息',content='{$title}',awoketime='{$awoketime}',dateline='{$timestamp}'";
     $res = $_MooClass['MooMySQL']->query($sql_remark);
     
-
-      //fanglin暂时屏蔽  
-    if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"索取身份","尊敬的会员您好！ID：{$userid}的{$gender}请求查看您的身份信息，登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
+    $pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+    if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1 && preg_match($pattern,$sendToUser['telphone'])) Push_message_intab($sendtouid,$sendToUser['telphone'],"索取身份","尊敬的会员您好！ID：{$userid}的{$gender}请求查看您的身份信息，登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
 
 }
 
@@ -665,8 +667,9 @@ function applyBind(){
 	$awoketime = $timestamp+3600;
 	$sql_remark = "insert into {$dbTablePre}admin_remark set sid='{$sid}',title='绑定',content='{$title}',awoketime='{$awoketime}',dateline='{$timestamp}'";
 	$res = $_MooClass['MooMySQL']->query($sql_remark);
-   
-    if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"绑定","尊敬的会员您好！ID：{$userid}的{$gender}已给委托红娘绑定您,登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
+    
+	$pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+    if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1 && preg_match($pattern,$sendToUser['telphone'])) Push_message_intab($sendtouid,$sendToUser['telphone'],"绑定","尊敬的会员您好！ID：{$userid}的{$gender}已给委托红娘绑定您,登录www.zhenaiyisheng.cc收获缘分！幸福热线：4008787920",$userid);
 
 }
 //发送邮件
@@ -747,8 +750,8 @@ function sendEmail(){
 	$sql_remark = "insert into {$dbTablePre}admin_remark set sid='{$sid}',title='发邮件',content='{$title}',awoketime='{$awoketime}',dateline='{$timestamp}'";
 	$res = $_MooClass['MooMySQL']->query($sql_remark);
 	
-	
-	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1) Push_message_intab($sendtouid,$sendToUser['telphone'],"站内信","尊敬的会员您好！ID：{$userid}给您发送了邮件！幸福热线：4008787920",$userid);  
+	$pattern='/^((1[345]\d{9})|(18[0-9]\d{8}))$/';
+	if(isset($sendToUser['usertype']) && $sendToUser['usertype']==1 && preg_match($pattern,$sendToUser['telphone'])) Push_message_intab($sendtouid,$sendToUser['telphone'],"站内信","尊敬的会员您好！ID：{$userid}给您发送了邮件！幸福热线：4008787920",$userid);  
 
 }
 
@@ -768,7 +771,6 @@ if(!$userid && $h!='page') {
 }
 
 $serverid = Moo_is_kefu();
-
 
 switch ($h) {
 	//note 委托填号码

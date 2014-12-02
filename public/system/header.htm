@@ -25,7 +25,14 @@
 			<li><a href="myaccount.html">信用认证</a><b></b></li>
 		   <!--  <li><a href="vote.html">E见钟情</a><b></b></li> -->
 			<!-- <li><a href="index.php?n=myaccount&h=videoindex">视频认证</a><b></b></li> -->
-			<li><a href="introduce.html">服务介绍</a></li>
+			<li class="dropdown">
+			    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">服务介绍<span class="caret"></span></a>
+			    <ul class="dropdown-menu" role="menu">
+				    <li><a href="faq.html">服务详情</a></li>
+					<!-- <li class="divider"></li> -->
+					<li><a href="introduce.html">VIP服务</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 	
@@ -80,9 +87,6 @@
 		})
 	});
 
-
-</script>
-<script type="text/javascript">
     function checkquicksearch(){
         if($("#s2").attr("checked") == true) {
             if($("#search_uid").val() == '') {
@@ -110,6 +114,7 @@
 	$('.menu1').mouseleave(function(){
 	    $('.menu1').hide();
 	});
+	
 </script>
 
 

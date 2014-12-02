@@ -1,5 +1,5 @@
 .story{font-size:12px;height:auto;width:982px}
-.marry_top{height:138px;background:url(images/story-top.gif) no-repeat;position:relative;}
+.marry_top{height:138px;background:url(images/story-top.gif) no-repeat;position:relative;margin-top:8px;}
 .marry_top .float{background:url(images/float.gif) no-repeat;position:absolute;width: 230px;height: 164px;z-index: 1;margin: -9px 0px 0px -9px;}
 .up_top{height:138px;background:url("images/up-data-bg.gif") no-repeat}
 .updata-box{float:right;padding-right:30px;padding-top:40px}

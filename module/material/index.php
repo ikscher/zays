@@ -393,7 +393,6 @@ function material_photo_upload() {
 		if($filesize < $minfilesize) {
 			$notice = "请上传大于20KB的照片。";
 			MooMessage($notice,'index.php?n=material&h=show');
-			exit();
 		}
 		
 		//note 判断文件类型
@@ -427,7 +426,6 @@ function material_photo_upload() {
 		if($flag != 1) {
 			$notice = "请上传JPEG，JPG，PNG或GIF格式";
 			MooMessage($notice,'index.php?n=material&h=show');
-			exit();
 		}
 		
 		
@@ -449,7 +447,6 @@ function material_photo_upload() {
 				$notice .= '请在相册中选一张作为形象照。';
 			}
 			MooMessage($notice,'index.php?n=material&h=show');
-			exit();
 		}
 
 		//note 设定相册名
@@ -492,6 +489,7 @@ function material_photo_upload() {
 		$pic_name = $files[0]['name'].".".$files[0]['extension'];
 		$pic_name2 = $files[0]['name']."_nowater.".$files[0]['extension'];
 		
+		//$imgurl=$_SERVER['DOCUMENT_ROOT'] .'/'.$imgurl;
 		$first = new Imagick($imgurl);//写入水印
 		$second = new Imagick('public/system/images/logo_original.png');
 
@@ -614,13 +612,87 @@ function material_photo_upload() {
 		//提交会员动态makui
 		UpdateMembersSNS($userid,'修改了相册');
 
-		header("Location:index.php?n=material&h=show");
-	}else {
-		$user1 = $user_arr;
-		include MooTemplate('public/material_upload', 'module');
+		
 	}
+	header("Location:index.php?n=material&h=show");
 }
 
+//note 上传音乐
+function material_music(){
+    global $_MooClass,$dbTablePre,$userid,$user,$user_arr,$timestamp;    
+    
+	$user_rank_id=get_userrank($userid);
+	if(MOOPHP_ALLOW_FASTDB){
+		$usercer = MooFastdbGet('certification','uid',$userid);
+	}else{
+		$usercer = $_MooClass['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}certification WHERE uid='$userid' LIMIT 1 ",true);
+	}
+	$uid = $userid;
+
+	$isupload=MooGetGPC('isupload','int','P');
+	if($isupload == '1') {
+	    if(!in_array($user_arr['s_cid'],array(10,20,30))){
+			MooMessage('必须是VIP会员才能上传背景音乐！','upgrade.html');
+		}
+
+		$minfilesize = 1024000;
+		$maxfilesize = 8192000;
+		$filesize = $_FILES['userfile']['size'];
+		if($filesize > $maxfilesize ) {
+			$notice = "请上传小于8MB的音乐。";
+			MooMessage($notice,'index.php?n=material&h=music');
+		}
+		if($filesize < $minfilesize) {
+			$notice = "请上传大于1MB的音乐。";
+			MooMessage($notice,'index.php?n=material&h=music');
+		}
+		
+		//note 判断文件类型
+		$flag = '';
+		
+		$extname = strtolower(substr($_FILES['userfile']['name'],(strrpos($_FILES['userfile']['name'],'.')+1)));
+		$mfs = array('/mp3/', '/wav/', '/ogg/');
+		if(in_array('/'.$extname.'/',$mfs)){
+			$file_content = file_get_contents($_FILES['userfile']['tmp_name']);
+			$low_file_content = strtolower($file_content);
+			$pos = strpos($low_file_content, '<?php');
+			$pos_= strpos($low_file_content, '#!/bin/');
+			if($pos || $pos_){
+				$notice = "音乐中含有不安全信息请重新上传";
+				MooMessage($notice,'index.php?n=material&h=music');
+			}else{
+			   $flag = 1;
+			}	
+			
+		}
+		
+		if($flag != 1) {
+			$notice = "请上传MP3，WAV，OGG的格式";
+			MooMessage($notice,'index.php?n=material&h=music');
+		}
+		
+		$musicName=$userid.".{$extname}";
+		
+		$sql="replace into web_vipmusic set uid={$uid},`musicName`='{$musicName}',`uploadTime`='{$timestamp}'";
+		$_MooClass['MooMySQL']->query($sql);
+	    
+		if ($_FILES['userfile']['error']==0){ 
+            $_FILES['userfile']['tmp_name'] = str_replace('\\\\', '\\', $_FILES['userfile']['tmp_name']); 
+	       
+		    $upDir='data'.DIRECTORY_SEPARATOR.'music'.DIRECTORY_SEPARATOR.$uid.DIRECTORY_SEPARATOR ;
+		    $upUrl='data'.DIRECTORY_SEPARATOR.'music'.DIRECTORY_SEPARATOR.$uid.DIRECTORY_SEPARATOR . $musicName;
+            
+			if(!file_exists($upUrl)) mkdir($upDir,0777,true);
+            if(!move_uploaded_file($_FILES["userfile"]["tmp_name"],$upUrl)){
+			    MooMessage('上传音乐失败！','index.php?n=material&h=music');
+			}else{
+			    MooMessage('上传音乐成功！','index.php?n=material&h=music');
+			}
+		}
+	}
+	
+    include MooTemplate('public/material_music', 'module');
+}
 
 //note 显示会员的相册和形象照
 function material_photo_show() {
@@ -1245,6 +1317,9 @@ switch ($h) {
 	case "show" :         //*********************************
 		material_photo_show();
 		break;
+	case "music":
+	    material_music();
+		break;
 	case "del" :           //************************************
 		material_photo_del();
 		break;
@@ -1451,6 +1526,5 @@ switch ($h) {
 		break;
 	default :
 		material_index();
-		break;
 }
 ?>

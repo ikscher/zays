@@ -129,14 +129,14 @@ $masterConf = array(
      "db"    => "caiji"
      );
 $slaveConf = array(
-     "host"    => "127.0.0.1",
+     "host"    => "127.0.0.1:3306",
      "user"    => "root",
      "pwd"    => "666666",
      "db"    => "caiji"
      );
 
 $slaveConf_ework = array(
-     "host"    => "127.0.0.1",
+     "host"    => "127.0.0.1:3306",
      "user"    => "root",
     "pwd"    => "666666",
      "db"    => "caiji"

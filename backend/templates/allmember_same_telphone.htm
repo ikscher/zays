@@ -121,7 +121,7 @@ tr.over td {
 			未通过
 		 {/if}
 	</td>
-	<td align="center"><a href="index.php?action=allmember&h=del_same_telphone&uid={$member['uid']}&telphone={$telphone}" onclick="return confirm('此删除将不可恢复，确定删除吗？')">删除</a></td>
+	<td align="center">{if in_array($GLOBALS['groupid'],$GLOBALS['admin_service_arr'])}<a href="index.php?action=allmember&h=del_same_telphone&uid={$member['uid']}&telphone={$telphone}" onclick="return confirm('此删除将不可恢复，确定删除吗？')">删除</a>{/if}</td>
   </tr>
   {/loop}
  </table>
