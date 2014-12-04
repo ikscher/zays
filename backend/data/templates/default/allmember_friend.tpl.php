@@ -82,7 +82,7 @@ function fgopage(p){
 			<td align="center"><?php echo get_friend_num($uid,$v['uid']);?></td>
 			<td align="center"><?php echo date("Y-m-d H:i",$v['sendtime']);?></td>
 			<td align="center"><?php if(isset($provice_list[$v['province']])) { ?><?php echo $provice_list[$v['province']]?><?php } ?><?php if(isset($city_list[$v['city']])) { ?><?php echo $city_list[$v['city']]?><?php } ?></td>
-			<td align="center"><?php if($v['usertype']==1)echo "本站注册";if($v['usertype']==2)echo "外站加入";if($v['usertype']==3)echo "全权会员";?></td>
+			<td align="center"><?php if($v['usertype']==1)echo "本站注册";if($v['usertype']==2)echo "外站加入";if($v['usertype']==3)echo "诚信会员";?></td>
 			<td align="center">站内信：<?php echo get_letter_num($v['uid'],$uid);?>&nbsp;&nbsp;委托：<?php echo get_commission_num($v['uid'],$uid);?>&nbsp;&nbsp;秋波：<?php echo get_leer_num($v['uid'],$uid);?>&nbsp;&nbsp;鲜花：<?php echo get_rose_num($v['uid'],$uid);?>&nbsp;&nbsp;聊天：<?php echo get_chat_num($v['uid'],$uid);?></td>
 			<td align="center"><a style="display:none" href="javascript:contact(3,<?php echo $uid;?>,<?php echo $v['uid'];?>);">回信</a> | <span id="friend_commission_<?php echo $v['uid'];?>"><a href="javascript:sendActive('friend','commission',<?php echo $v['uid'];?>,<?php echo $uid;?>);">委托</a></span> | <span id="friend_leer_<?php echo $v['uid'];?>"><a href="javascript:sendActive('friend','leer',<?php echo $v['uid'];?>,<?php echo $uid;?>);">秋波</a></span> | <span id="friend_rose_<?php echo $v['uid'];?>"><a href="javascript:sendActive('friend','rose',<?php echo $v['uid'];?>,<?php echo $uid;?>);">鲜花</a></span> | <a href="javascript:delActive('friend',<?php echo $v['fid'];?>);">删除</a></td>
 			</tr>
@@ -129,7 +129,7 @@ function fgopage(p){
 			<td align="center"><?php echo get_friend_num($v['uid'],$uid);?></td>
 			<td align="center"><?php echo date("Y-m-d H:i",$v['sendtime']);?></td>
 			<td align="center"><?php if(isset($provice_list[$v['province']])) { ?><?php echo $provice_list[$v['province']]?><?php } ?><?php if(isset($city_list[$v['city']])) { ?><?php echo $city_list[$v['city']]?><?php } ?></td>
-			<td align="center"><?php if($v['usertype']==1)echo "本站注册";if($v['usertype']==2)echo "外站加入";if($v['usertype']==3)echo "全权会员";?></td>
+			<td align="center"><?php if($v['usertype']==1)echo "本站注册";if($v['usertype']==2)echo "外站加入";if($v['usertype']==3)echo "诚信会员";?></td>
 			<td align="center">站内信：<?php echo get_letter_num($uid,$v['uid']);?>&nbsp;&nbsp;委托：<?php echo get_commission_num($uid,$v['uid']);?>&nbsp;&nbsp;秋波：<?php echo get_leer_num($uid,$v['uid']);?>&nbsp;&nbsp;鲜花：<?php echo get_rose_num($uid,$v['uid']);?>&nbsp;&nbsp;聊天：<?php echo get_chat_num($uid,$v['uid']);?></td>
 			<td align="center"><a href="javascript:contact(3,<?php echo $uid;?>,<?php echo $v['uid'];?>);">回信</a> | <span id="friend_commission_<?php echo $v['uid'];?>"><a href="javascript:sendActive('friend','commission',<?php echo $uid;?>,<?php echo $v['uid'];?>);">委托</a></span> | <span id="friend_leer_<?php echo $v['uid'];?>"><a href="javascript:sendActive('friend','leer',<?php echo $uid;?>,<?php echo $v['uid'];?>);">秋波</a></span> | <span id="friend_rose_<?php echo $v['uid'];?>"><a href="javascript:sendActive('friend','rose',<?php echo $uid;?>,<?php echo $v['uid'];?>);">鲜花</a></span> | <a href="javascript:delActive('friend',<?php echo $v['fid'];?>);">删除</a></td>
 			</tr>

@@ -2926,6 +2926,37 @@ function ajax_czodiac(){
     }
 	echo urldecode(json_encode($czodiac));exit;
 }
+
+//手机归属地
+function ajax_addbytel(){
+   $telphone=MooGetGPC('telphone','string','P');
+   $callno = MooGetGPC('callno','string','P');
+   
+   $json=array();
+   
+   $json[]=urlencode(getAddressByPhone($telphone));
+   $json[]=urlencode(getAddressByPhone($callno));
+   
+   echo urldecode(json_encode($json));exit;
+}
+
+//初始加载小记
+function ajax_initnotes(){
+    $slave_mysql =  $GLOBALS['_MooClass']['MooMySQL']; 
+    $uid=MooGetGPC('uid','string','P');
+    $notes=array();
+    $sql = "SELECT dateline, mid, manager, effect_grade, effect_contact, master_member, next_contact_time, interest, different, service_intro, next_contact_desc, comment FROM web_member_backinfo WHERE uid = {$uid} ORDER BY id DESC limit 10"; // updated file
+    $notes = $slave_mysql->getAll($sql,true);	
+	if(!$notes)  {echo json_encode($notes);exit;}
+    foreach($notes as $k=>$v){
+        if(!empty($v['interest'])) $notes[$k]['interest']=$v['interest'];
+		if(!empty($v['different'])) $notes[$k]['different']=$v['different'];
+		if(!empty($v['service_intro'])) $notes[$k]['service_intro']=$v['service_intro'];
+		if(!empty($v['next_contact_desc'])) $notes[$k]['next_contact_desc']=$v['next_contact_desc'];
+		if(!empty($v['comment'])) $notes[$k]['comment']=$v['comment'];
+    }
+    echo json_encode($notes);exit;
+}
 /***************************************控制层(V)***********************************/
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // 过去的时间
@@ -3105,11 +3136,17 @@ switch($n){
 	case 'notes':
 	    ajax_notes();
 		break;
+	case 'initnotes':
+	    ajax_initnotes();
+		break;
 	case 'mobileregcount':
 	    ajax_mobileregcount();
 		break;
 	case 'czodiac':
 	    ajax_czodiac();
+		break;
+	case 'addbytel':
+	    ajax_addbytel();
 		break;
     default:
         echo 'no method';exit;

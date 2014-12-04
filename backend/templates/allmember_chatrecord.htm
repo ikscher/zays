@@ -13,7 +13,7 @@ function del_chat_message(cid){
 	});
 }
 </script>
-<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<!-- <script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script> -->
 <div id="chat_showarea">
 <br/>
 <div style="border: 1px solid #1C3F80; margin:0 auto; width:100%;">
@@ -55,4 +55,3 @@ function del_chat_message(cid){
 <br/>
 {if $pages>=2}<div style="text-align:center">第&nbsp;{php for($i=1;$i<=$pages;$i++) echo '<a href="javascript:chatgopage('.$i.');">&nbsp;'.$i .'&nbsp;</a>';}&nbsp;页</div>{/if}
 </div>
-<script type="text/javascript"><!-- var gender =$('.gender').html();gender_reverse=gender=='男'?'女':'男';{if  $v['s_fromid'] == $uid} document.write(gender); {else}document.write(gender_reverse); {/if} --></script> 

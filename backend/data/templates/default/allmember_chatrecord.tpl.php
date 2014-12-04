@@ -13,14 +13,15 @@ function del_chat_message(cid){
 	});
 }
 </script>
-<script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script>
+<!-- <script type="text/javascript" src="templates/js/onmousemove_minutes.js"></script> -->
 <div id="chat_showarea">
 <br/>
 <div style="border: 1px solid #1C3F80; margin:0 auto; width:100%;">
 <table width="100%" cellpadding="3" cellspacing="1" style="background:#FFF">
+    <thead>
 	<tr>	
 		<th>发送方</th>
-		<th>接收方发送方</th>
+		<th>接收方</th>
 		<th>聊天内容</th>
 		<th>时间</th>
 		<th>读取状态</th>
@@ -28,13 +29,16 @@ function del_chat_message(cid){
 		<th>是否客服模拟</th>
 		<?php if(in_array($GLOBALS['groupid'],$GLOBALS['system_admin'])) { ?><th>操作</th><?php } ?>
 		</tr>
+	</thead>
+	<tbody>
 	<?php foreach((array)$chats as $v) {?>
+
 	<tr id = "chat_<?php echo $v['s_id'];?>">
     	<td align="center"><a href="#" onclick="parent.addTab('<?php echo $v['s_fromid'];?>资料','index.php?action=allmember&h=view_info&uid=<?php echo $v['s_fromid'];?>','icon')">
-		<?php if($v['is_server'] && $v['s_fromid'] != $uid) { ?>（红娘）<?php } ?>
+		<span class="from_gender"><?php if($v['is_server'] && $v['s_fromid'] != $uid) { ?> （女）<?php } else { ?>（男）<?php } ?></span>
 		<?php echo $v['s_fromid'];?></a></td>
 		<td align="center"><a href="#" onclick="parent.addTab('<?php echo $v['s_uid'];?>资料','index.php?action=allmember&h=view_info&uid=<?php echo $v['s_uid'];?>','icon')">
-		<?php if($v['is_server'] && $v['s_uid'] != $uid) { ?>（红娘）<?php } ?>
+		 <span class="to_gender"><!-- <?php if($v['is_server'] && $v['s_uid'] != $uid) { ?>（男）<?php } else { ?>（女）<?php } ?>  --><?php if($v['is_server'] && $v['s_fromid'] != $uid) { ?>（男）<?php } else { ?>（女）<?php } ?> </span>
 		<?php echo $v['s_uid'];?>
 		</a></td>
 		<td><?php echo $v['s_content'];?></td>
@@ -45,6 +49,7 @@ function del_chat_message(cid){
 		<?php if(in_array($GLOBALS['groupid'],$GLOBALS['system_admin'])) { ?><td><a href="#" onclick="del_chat_message('"<?php echo $v['s_id']?>"')">删除</a></td><?php } ?>
 		</tr>
 	<?php } ?>
+	</tbody>
 </table>
 </div>
 <br/>

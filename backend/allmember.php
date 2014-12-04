@@ -2091,7 +2091,12 @@ function allmember_view_info(){
 	$adminright='';
 	$uid = MooGetGPC('uid','integer','G');
 
-	 
+	$json_grade=array();
+	foreach($grade as $k=>$v){
+	    $json_grade[$k]=urlencode($v);
+		
+	}
+	$json_grade=urldecode(json_encode($json_grade));
 	 
 	//显示聊天历史记录
 	$chathistory = MooGetGPC('type','string','G');
@@ -2102,18 +2107,18 @@ function allmember_view_info(){
 	
 	$member_admininfo=array();
 
-	$re = $slave_mysql->getOne("SELECT groupid,member_count,allot_member,allot_time FROM {$GLOBALS['dbTablePre']}admin_user WHERE uid='{$GLOBALS['adminid']}'",true);
+	$re = $slave_mysql->getOne("SELECT groupid,member_count,allot_member,allot_time FROM web_admin_user WHERE uid='{$GLOBALS['adminid']}'",true);
 	if(in_array($re['groupid'],array(70,76,77))) $salesAfter=1;
-	if($re['groupid']=='67'){//售前客服看不到本站注册的高级会员
-		$sql = "SELECT s_cid,usertype FROM {$GLOBALS['dbTablePre']}members_search WHERE uid={$uid}";
-		$user_type = $slave_mysql->getOne($sql,true);
-		if($user_type['s_cid'] ==40||$user_type['usertype']!=1){
-			$sql = "SELECT * FROM {$GLOBALS['dbTablePre']}members_search WHERE uid={$uid}";
-			$member = $slave_mysql->getOne($sql,true);
-		}else{ salert('你没有权限查看此会员！');exit;}
-	}else{
-	    $sql = "SELECT * FROM {$GLOBALS['dbTablePre']}members_search WHERE uid={$uid}";
-	    $member = $slave_mysql->getOne($sql,true);
+	
+	$search_fields='`uid`,  `nickname`,  `username`,  `nickname2` ,  `telphone`,  `password`,  `truename`,  `gender`,  `birthyear`,  `province` ,  `city` ,  `marriage`,  `education` ,  `salary`,  `house` ,  `children` ,  `height` ,  `bgtime`,  `s_cid`,  `images_ischeck` ,  `is_lock` ,  `pic_num` ,  `city_star` ,  `certification` ,  `weight`,  `body`,  `animalyear` ,  `constellation`  ,  `bloodtype` ,  `hometownprovince` ,  `hometowncity` ,  `nation`  ,  `religion`,  `family` ,  `language` ,  `smoking` ,  `drinking` ,  `occupation` ,  `vehicle` ,  `corptype` ,  `wantchildren`,  `usertype` ,  `regdate` ,  `sid`,  `is_well_user` ,  `is_vote` ,  `showinformation` ,  `endtime` ,  `updatetime` ';
+	$sql = "SELECT {$search_fields} FROM web_members_search WHERE uid={$uid}";
+	$member = $slave_mysql->getOne($sql,true);
+	
+	
+	if(in_array($re['groupid'],$GLOBALS['general_service_pre'])){//售前客服看不到本站注册的高级会员
+		if(($member['s_cid'] ==10  || $member['s_cid'] ==20  || $member['s_cid'] ==30 ) &&  $member['usertype']==1){
+	        salert('你没有权限查看此会员！');exit;
+		}
 	}
     
     //售后普通客服不能查看售前4、5类会员
@@ -2131,11 +2136,12 @@ function allmember_view_info(){
 
 
 	
-
-	$sql = "SELECT * FROM {$GLOBALS['dbTablePre']}members_base WHERE uid={$uid}"; // updated file
+    $base_fields='`uid`,  `nature`,  `callno`,  `regip`,  `tastetime`,  `birth`,  `oldsex`,  `mainimg` ,  `rosenumber`,  `contact_num` ,  `contact_time`,  `pic_date` ,  `pic_name` ,  `automatic`,  `showinformation_val`,  `grade`,  `puid`,  `website`,  `is_phone`,  `is_awoke`,  `source`,  `allotdate` ,  `bind_id` ,  `isbind`,  `userGrade`,  `finishschool` ,  `isschool`,  `fondfood`,  `fondplace`,  `fondactivity`,  `fondsport` ,  `fondmusic`,  `fondprogram` ,  `blacklist`,  `qq`,  `msn`,  `currentprovince` ,  `currentcity`,  `friendprovince`,  `skin` ';
+	$sql = "SELECT {$base_fields} FROM web_members_base WHERE uid={$uid}"; // updated file
 	$member2 = $slave_mysql->getOne($sql,true);
-
-	$sql = "SELECT * FROM {$GLOBALS['dbTablePre']}members_login WHERE uid={$uid}"; // updated file
+    
+	
+	$sql = "SELECT   `uid` ,  `lastip` ,  `lastvisit`,  `last_login_time`,  `login_meb` FROM  web_members_login WHERE uid={$uid}"; // updated file
 	$member3 = $slave_mysql->getOne($sql,true);
 	if(!is_array($member)) $member = array();
 	if(!is_array($member2)) $member2 = array();
@@ -2154,8 +2160,8 @@ function allmember_view_info(){
 
 	
 	//note 查询telphone归属地
-	$teladdr = getphone($member['telphone']);//iconv("gb2312","UTF-8",getphone($member['telphone']));
-	$teladdr2 = getphone($member['callno']);//iconv("gb2312","UTF-8",getphone($member['callno']));
+	//$teladdr = getphone($member['telphone']);//iconv("gb2312","UTF-8",getphone($member['telphone']));
+	//$teladdr2 = getphone($member['callno']);//iconv("gb2312","UTF-8",getphone($member['callno']));
 	
 	//$tel_count = 0;
 	//此手机号注册的会员数
@@ -2196,9 +2202,9 @@ function allmember_view_info(){
 	
 
 	
-	MooPlugins('ipdata');
-	if(isset($member_admininfo['last_ip'])) $last_ip = convertIp($member_admininfo['last_ip']);
-	if(isset($member_admininfo['finally_ip'])) $finally_ip = convertIp($member_admininfo['finally_ip']);
+	//MooPlugins('ipdata');
+	//if(isset($member_admininfo['last_ip'])) $last_ip = convertIp($member_admininfo['last_ip']);
+	//if(isset($member_admininfo['finally_ip'])) $finally_ip = convertIp($member_admininfo['finally_ip']);
 	
 	//危险等级
 	if(isset($member_admininfo['danger_leval'])) $danger_leval = $member_admininfo['danger_leval'];
@@ -2216,8 +2222,9 @@ function allmember_view_info(){
 
 	$currenturl = "index.php?action=allmember&h=view_info&uid={$uid}";
    	$pages = multipage( $total, $limit, $page, $currenturl ); */
-    $sql = "SELECT dateline, mid, manager, effect_grade, effect_contact, master_member, next_contact_time, interest, different, service_intro, next_contact_desc, comment FROM {$GLOBALS['dbTablePre']}member_backinfo WHERE uid = {$uid} ORDER BY id DESC limit 10"; // updated file
-	$notes = $slave_mysql->getAll($sql,0,0,0,true);	
+    //初始化显示10条小记
+   //$sql = "SELECT dateline, mid, manager, effect_grade, effect_contact, master_member, next_contact_time, interest, different, service_intro, next_contact_desc, comment FROM {$GLOBALS['dbTablePre']}member_backinfo WHERE uid = {$uid} ORDER BY id DESC limit 10"; // updated file
+	//$notes = $slave_mysql->getAll($sql,0,0,0,true);	
 	
 	
 	//note 查询所属九型性格

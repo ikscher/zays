@@ -408,7 +408,7 @@
                     </tr>
                     <tr>
                         <td class="desc">号码所在地:</td>
-                        <td class="desc2" colspan=2 >
+                        <td class="desc2" colspan='2' id="teladdress" >
                             <?php if($member['usertype']==3 ) { ?>
                             ******
                             <?php } else { ?>
@@ -442,7 +442,7 @@
                     </tr>
                     <tr id="byhmszd" >
                         <td class="desc">号码所在地:</td>
-                        <td id="byhmszd_td" class="desc2" colspan=2>
+                        <td id="byhmszd_td" class="desc2" colspan=2 id='teladdress_'> 
                             <?php if($member['callno'] ) { ?>
                             <?php if($member['usertype']==3) { ?>
                             ******
@@ -453,10 +453,7 @@
                             <?php } ?>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="desc">短信提醒状态</td>
-                        <td colspan=2><?php if($member['is_phone']) { ?>提醒---[<a href="javascript:subitnotice('<?php echo $member['uid'];?>',0);">关闭</a>]<?php } else { ?>不提醒--- [<a href="javascript:subitnotice('<?php echo $member['uid'];?>',1);">开启</a>]<?php } ?><span id='open_isphone'></span></td>
-                    </tr>
+                   
                 </table>
 
             </div>
@@ -487,50 +484,7 @@
                     </tr>
 
 
-                    <tr>
-                        <td class="desc">喜欢的运动:</td>
-                        <td class="desc2" colspan=2>
-                            <?php $fda = explode(",",$member['fondsport']);?>
-                            <?php foreach((array)$fda as $v) {?>
-                            <?php if($v == '0') { ?><span >保密</span><?php } else { ?>
-                            <script>userdetail('<?php echo $v;?>',fondsports)</script>
-                            <?php } ?>
-                            <?php } ?></td>
-                    </tr>
-
-                    <tr>
-                        <td class="desc">喜欢的活动:</td>
-                        <td class="desc2" colspan=2>
-                            <?php $fda = explode(",",$member['fondactivity']);?>
-                            <?php foreach((array)$fda as $v) {?>
-                            <?php if($v == '0') { ?><span >保密</span><?php } else { ?>
-                            <script>userdetail('<?php echo $v;?>',fondactions)</script>
-                            <?php } ?>
-                            <?php } ?></td>
-                    </tr>
-
-                    <tr>
-                        <td class="desc">喜欢的音乐:</td>
-                        <td class="desc2" colspan=2>
-                            <?php $fda = explode(",",$member['fondmusic']);?>
-                            <?php foreach((array)$fda as $v) {?>
-                            <?php if($v == '0') { ?><span >保密</span><?php } else { ?>
-                            <script>userdetail('<?php echo $v;?>',fondmusics)</script>
-                            <?php } ?>
-                            <?php } ?></td>
-                    </tr>
-
-                    <tr>
-                        <td class="desc">喜欢的影视:</td>
-                        <td class="desc2" colspan=2>
-                            <?php $fda = explode(",",$member['fondprogram']);?>
-                            <?php foreach((array)$fda as $v) {?>
-                            <?php if($v == '0') { ?><span >保密</span><?php } else { ?>
-                            <script>userdetail('<?php echo $v;?>',fondprograms)</script>
-                            <?php } ?>
-                            <?php } ?></td>
-                    </tr>
-
+                   
                     <!--  <tr>
                          <td class="desc">工作地天气</td>
                          <td class="desc2" colspan=2><div id='workcity_weather_today'></div><div id='workcity_weather_tomorrow'></div><div id='workcity_weather_after'></div></td></tr>
@@ -588,7 +542,7 @@
                     <?php if(!empty($member['bgtime']) && !empty($member['endtime'])) { ?>
                     <tr>
                         <td class="desc">服务起至时间:</td>
-                        <td class="desc2" colspan=2><?php echo date('Y-m-d H:i:s',$member['bgtime']).'--'.date('Y-m-d H:i:s',$member['endtime']);?></td>
+                        <td class="desc2" colspan=2><?php echo date('Y-m-d',$member['bgtime']).'至'.date('Y-m-d',$member['endtime']);?></td>
                     </tr>
                     <?php } ?>
                     <tr>
@@ -634,7 +588,10 @@
 
                         </td>
                     </tr>
-
+                     <tr>
+                        <td class="desc">短信提醒状态</td>
+                        <td colspan=2><?php if($member['is_phone']) { ?>提醒---[<a href="javascript:subitnotice('<?php echo $member['uid'];?>',0);">关闭</a>]<?php } else { ?>不提醒--- [<a href="javascript:subitnotice('<?php echo $member['uid'];?>',1);">开启</a>]<?php } ?><span id='open_isphone'></span></td>
+                    </tr>
                 </table>	
             </div>
             <!--择偶资料开始-->
@@ -784,9 +741,47 @@
                 </table>
             </div>
             <div style="clear:both"></div>
+			<div style="margin-left:280px;margin-bottom:5px;" >
+			    <?php if(!empty($member['fondsport'])) { ?><span style="font-weight:bold;">喜欢的运动：</span>
+					<?php $fda = explode(",",$member['fondsport']);?>
+					<?php foreach((array)$fda as $v) {?>
+					<?php if($v == '0') { ?><span >保密</span><?php } else { ?>
+					<script>userdetail('<?php echo $v;?>',fondsports)</script>
+					<?php } ?>
+					<?php } ?>
+				<?php } ?>
+				<?php if(!empty($member['fondactivity'])) { ?><span style="font-weight:bold;">喜欢的活动：</span>  
+					<?php $fda = explode(",",$member['fondactivity']);?>
+					<?php foreach((array)$fda as $v) {?>
+					<?php if($v == '0') { ?><span >保密</span><?php } else { ?>
+					<script>userdetail('<?php echo $v;?>',fondactions)</script>
+					<?php } ?>
+					<?php } ?>
+				<?php } ?>
+				<?php if($member['fondmusic']) { ?>
+                    <span style="font-weight:bold;">喜欢的音乐：</span>
+				            
+					<?php $fda = explode(",",$member['fondmusic']);?>
+					<?php foreach((array)$fda as $v) {?>
+					<?php if($v == '0') { ?><span >保密</span><?php } else { ?>
+					<script>userdetail('<?php echo $v;?>',fondmusics)</script>
+					<?php } ?>
+					<?php } ?>
+				<?php } ?>
+				
+				<?php if($member['fondprogram']) { ?>
+				    <span style="font-weight:bold">喜欢的影视:</span>    
+					<?php $fda = explode(",",$member['fondprogram']);?>
+					<?php foreach((array)$fda as $v) {?>
+					<?php if($v == '0') { ?><span >保密</span><?php } else { ?>
+					<script>userdetail('<?php echo $v;?>',fondprograms)</script>
+					<?php } ?>
+					<?php } ?>
+				<?php } ?>
+			</div>
             <div style="margin-left: 280px;">
                 <span style="font-weight:bold;">内心独白：</span>
-                <?php echo $choice['introduce'];?>
+                <span id="introduce"></span>
             </div>
             <div class="userOtherFun" style="display:none;border:1px solid #7F99BE;" id="enneagram_list">
                 <table> 
@@ -1019,7 +1014,7 @@
                                 </tr>
                                 <tr>
                                 <input type="hidden" name="telphone" value="<?php echo $member['telphone'];?>">
-                                <td ><input type="button" name="saveNotes" id="saveNotes" value="保存小记"  class="sysbtn"/>&nbsp;&nbsp;&nbsp;&nbsp;<?php if(count($notes)>0) { ?><input type="button" name="queryNotes" id="queryNotes" value="查看所有小记"  class="sysbtn"/><?php } ?></td>
+                                <td ><input type="button" name="saveNotes" id="saveNotes" value="保存小记"  class="sysbtn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="queryNotes" id="queryNotes" value="查看所有小记"  class="sysbtn"/></td>
                                 <td align="center"><input type="hidden" name="uid" id="uid" value="<?php echo $member['uid'];?>"/><input type="hidden" name="ispost" id="ispost" value="1"/><input type="hidden" id="usertype" name="usertype" value="<?php echo $member['usertype'];?>"></td>
                                 <td align="center">&nbsp;</td>
                                 <td align="center">&nbsp;</td>
@@ -1029,46 +1024,22 @@
                         </form>
                     </div>
                     <!--小记end-->
-                    <!--委托begin-->
-                    <div id="item3"></div>
-                    <!--委托end-->
-                    <!--秋波begin-->
-                    <div id="item4"></div>
-                    <!--秋波end-->
-                    <!--鲜花begin-->
-                    <div id="item2"></div>
-                    <!--鲜花end-->
-                    <!--意中人begin-->
-                    <div id="item5"></div>
-                    <!--意中人end-->
-                    <!--匹配搜索begin-->
-                    <div id="item6"></div>
-                    <!--匹配搜索end-->
-                    <!--心理测试begin-->
-                    <div id="item7"></div>
-                    <!--心理测试end-->
-                    <!--短信记录begin-->
-                    <div id="item8"></div>
-                    <!--短信记录end-->
-                    <!--信箱记录begin-->
-                    <div id="item9"></div>
-                    <!--信箱记录end-->
-                    <!--聊天记录begin-->
-                    <div id="item_a"></div>
-                    <!--聊天记录end-->
-                    <!--电话流程begin-->
-                    <div id="item_b"></div>
-                    <!--电话流程end-->
+                    <!--委托begin--><div id="item3"></div><!--委托end-->
+                    <!--秋波begin--><div id="item4"></div><!--秋波end-->
+                    <!--鲜花begin--><div id="item2"></div><!--鲜花end-->
+                    <!--意中人begin--><div id="item5"></div><!--意中人end-->
+                    <!--匹配搜索begin--><div id="item6"></div><!--匹配搜索end-->
+                    <!--心理测试begin--><div id="item7"></div><!--心理测试end-->
+                    <!--短信记录begin--><div id="item8"></div><!--短信记录end-->
+                    <!--信箱记录begin--><div id="item9"></div><!--信箱记录end-->
+                    <!--聊天记录begin--><div id="item_a"></div><!--聊天记录end-->
+                    <!--电话流程begin--><div id="item_b"></div><!--电话流程end-->
                     <div id="item_c"></div>
-                    <!-- 售后begin -->
-                    <div id="item_d"></div>
-                    <!-- 售后end -->
+                    <!-- 售后begin --><div id="item_d"></div><!-- 售后end -->
                     <!-- 参加的活动begin -->
                     <!-- <div id="item_10"></div> -->
                     <!-- 参加的活动end -->
-                    <!-- 会员交接begin -->
-                    <div id="item_j"></div>
-                    <!-- 会员交接end -->
+                    <!-- 会员交接begin --><div id="item_j"></div><!-- 会员交接end -->
                 </div>
             </div>
             <div class="table_list" id="item_d_d">
@@ -1086,20 +1057,7 @@
 
             <div class="table_list" id="kefuxiaoji">
                 <div id="notes">
-                    <?php if(count($notes)>0) { ?>
-                    <?php foreach((array)$notes as $k=>$v) {?>
-                    <ul>
-                        <li><strong>【<?php echo ($k+1);?>】</strong> <?php echo date("Y-m-d H:i:s",$v['dateline']);?>&nbsp;&nbsp;&nbsp;<?php echo $v['mid'];?>号客服<?php echo $v['manager'];?>&nbsp;&nbsp;&nbsp;<?php echo $v['effect_grade']-1;?>类</li>
-                        <li><?php if($v['effect_contact'] != 2) { ?><?php if($v['effect_contact']) { ?>有效联系<?php } else { ?>无效联系<?php } ?>&nbsp;&nbsp;&nbsp;<?php if($v['master_member']) { ?>重点会员<?php } ?><?php } ?></li>
-                        <li><?php if(isset($v['effect_grade']) && isset($grade[$v['effect_grade']])) echo $grade[$v['effect_grade']];?>&nbsp;&nbsp;&nbsp;
-                            <?php $time = time();?>
-                            <?php if($v['next_contact_time'] > $time ) { ?>
-                            -&gt; &nbsp;下次联系时间：<?php echo date("Y-m-d H:i:s",$v['next_contact_time']);?>
-                            <?php } ?>
-                            <?php if($v['interest']) { ?>&nbsp;&nbsp;&nbsp;-> &nbsp;兴趣点：<?php echo $v['interest'];?><?php } ?><?php if($v['different']) { ?>&nbsp;&nbsp;&nbsp;-> &nbsp;异议点：<?php echo $v['different'];?><?php } ?><?php if($v['service_intro']) { ?>&nbsp;&nbsp;&nbsp;-> &nbsp;服务介绍：<?php echo $v['service_intro'];?><?php } ?><?php if($v['next_contact_desc']) { ?>&nbsp;&nbsp;&nbsp;-> &nbsp;下次跟进要点：<?php echo $v['next_contact_desc'];?><?php } ?><?php if($v['comment']) { ?>&nbsp;&nbsp;&nbsp;-> &nbsp;备注：<?php echo $v['comment'];?><?php } ?></li>
-                    </ul> 
-                    <?php }?>	 
-                    <?php } ?>
+                    
                 </div>	   
                 <!-- <div id="pages" style=" text-align:center"></div>  -->
             </div>
@@ -1145,6 +1103,23 @@
 			}
 		});
 		
+		var telphone="<?php echo $member['telphone'];?>";
+		var callno = "<?php echo $member['callno'];?>";
+		$.ajax({
+		    url:'./allmember_ajax.php?n=addbytel',
+			data:{telphone:telphone,callno:callno},
+			type:'post',
+			datatype:'json',
+			beforeSend:function(){
+			    if(telphone) $('#teladdress').html('正在加载...');
+				if(callno) $('#teladdress_').html('正在加载...');
+			},
+			success:function(json){
+			    var tela=json.toString().replace(/[\"\[\]]+/g,'').split(',');
+			    $('#teladdress').html(tela[0]);
+				$('#teladdress_').html(tela[1]);
+			}
+		});
 		
 		var mobilereg="<?php echo $member['telphone'];?>";
 		$.ajax({
@@ -1218,6 +1193,9 @@
 				var nature=userdetail_(json['nature'],naturebuxian);
 				if(nature) $('#spousenature').html(nature);
 				
+				var introduce=json['introduce'];
+				$('#introduce').html(introduce);
+				
 			}
 		});
 	
@@ -1250,6 +1228,70 @@
                 $('#fqcount').html(json.fqcount);
             }
         });
+		
+		var _elements=<?php echo $json_grade;?>;
+		var grade=[];
+		for (var i in _elements) {
+			grade.push(_elements[i]);
+		}     
+
+		//初始小记
+		$.ajax({
+		    url:'./allmember_ajax.php?n=initnotes',
+			data:{uid:uid},
+			type:'POST',
+			dataType:'json',
+			beforeSend:function(){
+			    $('#notes').html('<span style="font-size:20px;">小记正在加载...</span>');
+			},
+			success:function(json){
+			    console.log(json);
+				var html_notes='';
+				if(!json) {  $('#notes').html('');return ;}
+				if (json.length>0){
+				    
+                    for(var i=0;i<json.length;i++){
+                        html_notes+='<ul>';
+						var dateline= new Date(json[i]['dateline']*1000);
+                        html_notes+='<li><strong>【'+(i+1)+'】</strong> '+dateline.toLocaleString()+'&nbsp;&nbsp;'+json[i]['mid']+'号客服'+json[i]['manager']+'&nbsp;&nbsp;&nbsp;'+(json[i]['effect_grade']-1)+'类</li>';
+                        html_notes+='<li>';
+						if (json[i]['effect_contact'] != 2){
+						    if (json[i]['effect_contact']){
+							    html_notes+='有效联系';
+							}else{
+							    html_notes+='无效联系';
+							}
+							
+							html_notes+='&nbsp;&nbsp;&nbsp;';
+							if (json[i]['master_member']==1) html_notes+='重点会员';
+						}
+						html_notes+='</li>';
+                        html_notes+='<li>';
+						if(json[i]['effect_grade'] &&  grade[json[i]['effect_grade']]) {
+						    var _x_=grade[json[i]['effect_grade']-1];
+						    html_notes+= _x_+'&nbsp;&nbsp;&nbsp;';
+						}
+						var myDate = new Date();
+						var curtime=Date.parse(myDate)/1000;
+						
+                        var next_contact_time=new Date(json[i]['next_contact_time']*1000);
+                        if (json[i]['next_contact_time'] > curtime){
+                            html_notes+='-&gt; &nbsp;下次联系时间：'+ next_contact_time.toLocaleString();
+                        }
+						
+                        if (json[i]['interest']) html_notes+='&nbsp;&nbsp;&nbsp;-> &nbsp;兴趣点：'+json[i]['interest'];
+						if (json[i]['different']) html_notes+='&nbsp;&nbsp;&nbsp;-> &nbsp;异议点：'+json[i]['different'];
+						if (json[i]['service_intro']) html_notes+='&nbsp;&nbsp;&nbsp;-> &nbsp;服务介绍：'+json[i]['service_intro'];
+						if (json[i]['next_contact_desc']) html_notes+='&nbsp;&nbsp;&nbsp;-> &nbsp;下次跟进要点：'+ json[i]['next_contact_desc'];
+						if (json[i]['comment']) html_notes+='&nbsp;&nbsp;&nbsp;-> &nbsp;备注：'+ json[i]['comment'];
+						html_notes+='</li>';
+                        html_notes+='</ul>'; 
+                    }
+					
+                }
+				$('#notes').html(html_notes);
+			}
+		});
 	    
         //查看小记
         var newWin=null;

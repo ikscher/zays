@@ -279,8 +279,8 @@ function getcount($tablename, $where, $get='COUNT(*)') {
 function getphone($phone){
 	$dbpath="xiaolin/";
 	$len=strlen($phone);
-	if ( $len < 7 ){
-		return "手机号码最低7位哦";
+	if ( $len != 11 ){
+		return "手机号码11位";
 	}
 	//$par="[0-9]";
 	$par = "/^[0-9]{1}$/";
@@ -305,6 +305,53 @@ function getphone($phone){
 	}else{
 		return "暂不支持$sub";
 	}
+}
+
+function getAddressByPhone($phone){
+	$len=strlen($phone);
+	if ( $len != 11 ){
+		return "手机号码必须11位";
+	}
+
+	$par = "/^[0-9]{1}$/";
+	for ($i=0;$i<$len;$i++){
+		if(!preg_match($par,substr($phone,$i,1) ) ){
+			return "手机号码只能为数字";
+		}
+	}
+	
+    $dir = "alibaba/";
+
+	// Open a known directory, and proceed to read its contents   
+	if (is_dir($dir)) {   
+	   if ($dh = opendir($dir)) {   
+		   while (($file = readdir($dh)) !== false) {   
+			    if ($file!="." && $file!="..") {   
+				    //ob_start();
+			        //echo "<a href=file/".$file.">".$file."</a><br>";  
+                    $handle = fopen($dir.'/'.$file, "r");
+					$str='';
+					if ($handle) {
+						while (($buffer = fgets($handle, 4096)) !== false) {
+							
+							$str=explode('=',$buffer);
+							$pattern="/{$file}{$str[0]}/i";
+							
+							if(preg_match($pattern,$phone)){
+							    return $str[1];
+							}
+						}
+						if (!feof($handle)) {
+							exit( "Error: unexpected fgets() fail\n");
+						}
+					}
+					fclose($handle);
+                    //ob_end_clean();				
+			    }   
+		   }   
+		   closedir($dh);   
+	   }   
+    }   
 }
 
 //是否是utf8编码
