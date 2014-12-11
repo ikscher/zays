@@ -1,0 +1,42 @@
+.liquid {
+	/* background:#313b31 url(images/bodybackground.png) repeat-y scroll 50% 0; */
+	/* border:2px solid #19301C; */
+	-moz-border-radius:10px 10px 10px 10px;
+	-webkit-border-radius:10px 10px 10px 10px;
+	border-radius:10px 10px 10px 10px;
+	padding:10px 0;
+}
+#liquid span {
+	display:block;
+	height:100px;
+	width:50px;
+	background-image:url(images/nph.png);
+	float:left;
+	margin:0;
+	padding:0;
+	cursor:pointer;
+}
+
+.liquid .previous {
+	background-position:0 0;
+}
+.liquid .previous:hover {
+	background-position:-100px 0;
+}
+.liquid .next {
+	background-position:-50px 0;
+}
+.liquid .next:hover {
+	background-position:-150px 0;
+}
+.liquid ul li {
+	width:126px;
+	padding:0 2px;
+	margin:0;
+}
+.liquid ul li a img {
+	-moz-box-shadow: 5px 5px 3px #222;
+	border:1px solid #ddd;
+   	/* -webkit-box-shadow: 5px 5px 3px #222;
+   	box-shadow: 5px 5px 3px #222; */
+}

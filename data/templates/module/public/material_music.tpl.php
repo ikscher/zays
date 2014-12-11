@@ -62,7 +62,7 @@
                                 <img src="module/material/templates/default/images/mp3.png" /></li>
 								<br/>
 								<li>
-                                2：必须为VIP会员，上传音乐后您的个人资料员将会以此音乐作为背景音乐。</li></ul>
+                                2：必须为VIP会员，上传音乐后您的个人主页将会以此音乐作为背景音乐。</li></ul>
                             </div>
                             <div class="clear"></div>
                         </div>

@@ -443,7 +443,13 @@ function checkquicksearch(){
 					<div class="clear"></div>
 				</div>
 			</div>
-           
+            
+			{if $isMusic}
+			<div class="c-rightbox"> 
+				<div class="right-title">{if $userid == $uid}<a href="index.php?n=material&h=music" >修改</a>{/if}<span class="r-title">音乐</span></div>
+				<div class="rightbox-in"><audio autoplay controls loop src="{php echo MOOPHP_HOST.'/'.$music_url;}">您的浏览器不支持播放</audio></div>						
+			</div>
+			{/if}
 			
 		</div><!--c-right end-->
 		

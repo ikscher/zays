@@ -2232,8 +2232,8 @@ function allmember_view_info(){
 	$enneagram_row = $slave_mysql->getOne($sql);
 		
 	//note_显示相册中的普通照片
-	$sql = "SELECT imgurl,pic_date,pic_name FROM {$GLOBALS['dbTablePre']}pic WHERE syscheck=1 and isimage='0' and uid='$uid'";
-	$user_pic = $slave_mysql->getAll($sql);
+	//$sql = "SELECT imgurl,pic_date,pic_name FROM {$GLOBALS['dbTablePre']}pic WHERE syscheck=1 and isimage='0' and uid='$uid'";
+	//$user_pic = $slave_mysql->getAll($sql);
 	
 	$adminid = $GLOBALS['adminid'];
 	$admingroup = $GLOBALS['groupid'];

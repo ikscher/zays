@@ -35,10 +35,10 @@ function del_chat_message(cid){
 
 	<tr id = "chat_{$v['s_id']}">
     	<td align="center"><a href="#" onclick="parent.addTab('{$v['s_fromid']}资料','index.php?action=allmember&h=view_info&uid={$v['s_fromid']}','icon')">
-		<span class="from_gender">{if $v['is_server'] && $v['s_fromid'] != $uid} （女）{else}（男）{/if}</span>
+		<span class="from_gender"><!-- <script> var gender=$('#gender').val(); var reversegender; if (gender=='1'){ gender='女';reversegender='男';} else{ reversegender='女';gender='男';} var sfromid={$v['s_fromid']}; var uid={$uid}; if (sfromid== uid) {$('.from_gender').html(gender);}else{  $('.from_gender').html(reversegender);}</script> --></span>
 		{$v['s_fromid']}</a></td>
 		<td align="center"><a href="#" onclick="parent.addTab('{$v['s_uid']}资料','index.php?action=allmember&h=view_info&uid={$v['s_uid']}','icon')">
-		 <span class="to_gender"><!-- {if $v['is_server'] && $v['s_uid'] != $uid}（男）{else}（女）{/if}  -->{if $v['is_server'] && $v['s_fromid'] != $uid}（男）{else}（女）{/if} </span>
+		 <span class="to_gender"><!-- {if $v['is_server'] && $v['s_fromid'] != $uid}（男）{else}（女）{/if} --> </span>
 		{$v['s_uid']}
 		</a></td>
 		<td>{$v['s_content']}</td>

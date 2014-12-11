@@ -2957,6 +2957,16 @@ function ajax_initnotes(){
     }
     echo json_encode($notes);exit;
 }
+
+//会员相册
+function ajax_album(){
+    $slave_mysql =  $GLOBALS['_MooClass']['MooMySQL']; 
+    $uid=MooGetGPC('uid','string','P');
+    $sql = "SELECT imgurl,pic_date,pic_name FROM web_pic WHERE syscheck=1 and isimage='0' and uid='$uid'";
+	$user_pic = $slave_mysql->getAll($sql);
+	echo json_encode($user_pic);exit;
+
+}
 /***************************************控制层(V)***********************************/
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // 过去的时间
@@ -3148,8 +3158,10 @@ switch($n){
 	case 'addbytel':
 	    ajax_addbytel();
 		break;
+	case 'mAlbum':
+	    ajax_album();
+		break;
     default:
         echo 'no method';exit;
-        break;
 }
 ?>

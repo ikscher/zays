@@ -102,3 +102,5 @@ h4 a{float:right;padding-right:15px;padding-left:20px;background:url(images/th-i
 .youableliker{margin-left:20px;cursor:pointer;color:#f52;}
 .youableliker:hover{color:#000;}
 .pInfo{width:753px;}
+.bgmusic{background: url(images/bgmusic.gif) 0 0 no-repeat;display: block;overflow: hidden;height: 45px;padding-left: 50px;line-height: 45px;font-size: 14px;color: #666;}
+.bgmusic:hover{background-position:0px -45px;}

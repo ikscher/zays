@@ -382,10 +382,20 @@
 
                         </div>
                         <!-- <div style="margin-top:10px;"><img src="module/space/templates/default/images/mediumfestival.jpg" /></div> -->
-                        {if $isMusic}
+                        
+						{if in_array($user_arr['s_cid'],array(10,20,30)) }
                         <div class="right-base-data"> 
                             <h4>{if $userid == $uid}<a href="index.php?n=material&h=music" class="f-ed0a91-a">修改</a>{/if}音乐</h4>	
-                            <div style="margin-left:20px;"><audio autoplay controls loop src="{php echo MOOPHP_HOST.'/'.$music_url;}">您的浏览器不支持播放</audio>	</div>						
+							{if $isMusic}
+                                 <div style="margin-left:20px;"><audio autoplay controls loop src="{php echo MOOPHP_HOST.'/'.$music_url;}">您的浏览器不支持播放，请升级高版本浏览器（如IE9、Firefox3.5、Chrome4以上）</audio>	</div>	
+                            {else}
+                                 <div style="margin:0px 0px 10px 20px;"><a class="bgmusic" href="index.php?n=material&h=music">设置背景音乐</a></div>	
+                            {/if}							
+						</div>
+						{else}
+						<div class="right-base-data"> 
+                            <h4>音乐</h4>	
+                            <div style="margin:0px 0px 10px 20px;"><a href="upgrade.html" class="bgmusic" title="请升级为高级会员">音乐背景只对VIP会员支持，如果您想设置征婚页有音乐背景，请先升级为VIP会员或充值！</a></div>						
 						</div>
 						{/if}
                     </div>
@@ -398,7 +408,7 @@
             {template public/space_leftmenu_new module}
             <div class="clear"></div>
             <!--content end-->
-            {template system/footer public}
+            {template system/footer_profile public}
         </div><!--main end-->
 
         <script type="text/javascript" src="module/payment/templates/default/js/scrollDoor.js?v=1.0"></script>

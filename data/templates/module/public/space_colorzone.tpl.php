@@ -130,7 +130,7 @@ function checkquicksearch(){
 					<li><a href="material.html">我要征婚</a><b></b></li>
 					<li><a href="lovetest.html">爱情测评</a><b></b></li>
 					<li><a href="myaccount.html">信用认证</a><b></b></li>
-					<li><a href="vote.html">E见钟情</a><b></b></li>
+					<!-- <li><a href="vote.html">E见钟情</a><b></b></li> -->
 					<li><a href="introduce.html">服务介绍</a></li>
 				</ul>
 				<a class="upgrade" href="upgrade.html" title="升级成高级、钻石、铂金会员"></a>
@@ -447,6 +447,13 @@ function checkquicksearch(){
 						<div class="clear"></div>
 					</div>
 				</div>
+				
+				<?php if($isMusic) { ?>
+				<div class="c-rightbox"> 
+					<div class="right-title"><?php if($userid == $uid) { ?><a href="index.php?n=material&h=music" >修改</a><?php } ?><span class="r-title">音乐</span></div>
+					<div class="rightbox-in"><audio autoplay controls loop src="<?php echo MOOPHP_HOST.'/'.$music_url;?>">您的浏览器不支持播放</audio></div>						
+				</div>
+				<?php } ?>
 
 			</div><!--c-right end-->
 			

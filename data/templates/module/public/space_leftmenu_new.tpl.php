@@ -802,7 +802,6 @@ function pop(){
 			success:function(str){
 			    //console.log(str);
 				that.parent().next('.leftbox-in').html(str);
-
 			}
 		});
 		offset++;

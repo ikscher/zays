@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="templates/css/general.css" rel="stylesheet" type="text/css" />
         <link href="templates/css/main.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="templates/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="templates/js/jquery-1.8.3.min.js"></script>
         <script type="text/javascript" src="../public/system/js/sys1.js?v=1"></script>
         <script type="text/javascript" src="templates/js/My97DatePicker/WdatePicker.js"></script>
         <link href="templates/css/allmember_viewinfo.css" rel="stylesheet" type="text/css" />
@@ -271,20 +271,12 @@
                 </div>
                 <table width="150" border="0" cellspacing="0" cellpadding="0" class="allmember_funbtn">
                     <tr>
-                        <td colspan="3" align="center">
+                        <td colspan="3" align="center" id="mAlbum">
                             <a onclick="thisLogin();return false;" href="#" target="_blank" style="background:none;border:none;color:#333; display:inline;">进入网站查看</a>
 
                             <a href="#" class="modifyinfo" <?php if($GLOBALS['adminid']==52 || (in_array($GLOBALS['groupid'],$GLOBALS['general_service_pre']) && $member['usertype']==3) ) { ?> onclick="alert('无权修改！');return false;"<?php } else { ?>onclick="parent.addTab('修改会员<?php echo $member['uid'];?>资料','index.php?action=allmember&h=edit_info&uid=<?php echo $member['uid'];?>')"<?php } ?> style="background:none;border:none;color:#333;display:inline;">修改资料</a>				
                             <!-- 相册开始 -->
-                            <?php if($user_pic) { ?>
-                            <?php foreach((array)$user_pic as $k=>$user_pics) {?>
-                            <?php if($k==0) { ?>
-                            <a class="zoom" rel="group" href="<?php echo IMG_SITE.$user_pics['imgurl']?>" style="background:none;border:none;color:#333; display:inline;">查看相册(<?php echo count($user_pic)?>)</a>
-                            <?php } else { ?>
-                            <a class="zoom" rel="group" href="<?php echo IMG_SITE.$user_pics['imgurl']?>" style="display:none;"></a>
-                            <?php } ?>
-                            <?php }?>
-                            <?php } ?>
+                           
                             <!-- 结束 -->
                         </td>
                     </tr>
@@ -338,7 +330,7 @@
                     </tr>
                     <tr>
                         <td class="desc">性　别:</td>
-                        <td class="desc2 gender" colspan=2><?php if($member['gender']) { ?>女<?php } else { ?>男<?php } ?></td>
+                        <td class="desc2" colspan=2><?php if($member['gender']) { ?>女<?php } else { ?>男<?php } ?><input type="hidden" id="gender" value="<?php echo $member['gender'];?>" /></td>
                     </tr>
                     <tr>
                         <td class="desc">出生年月:</td>
@@ -541,7 +533,7 @@
                     </tr>
                     <?php if(!empty($member['bgtime']) && !empty($member['endtime'])) { ?>
                     <tr>
-                        <td class="desc">服务起至时间:</td>
+                        <td class="desc">服务期:</td>
                         <td class="desc2" colspan=2><?php echo date('Y-m-d',$member['bgtime']).'至'.date('Y-m-d',$member['endtime']);?></td>
                     </tr>
                     <?php } ?>
@@ -1086,6 +1078,12 @@
         </div>
     </div>
     <script type="text/javascript" src="templates/js/allmember_view_info.js?v=20140831"></script>
+	<link rel="stylesheet" type="text/css" href="templates/css/jquery.fancybox.css?v=2.1.5" media="screen" />
+	<link rel="stylesheet" type="text/css" href="templates/css/jquery.fancybox-buttons.css?v=1.0.5" />
+
+	<script type="text/javascript" src="templates/js/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+	<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+	<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-buttons.js?v=1.0.5"></script>
     <script type="text/javascript">
 	    var uid="<?php echo $member['uid'];?>";
 		
@@ -1245,7 +1243,7 @@
 			    $('#notes').html('<span style="font-size:20px;">小记正在加载...</span>');
 			},
 			success:function(json){
-			    console.log(json);
+			    //console.log(json);
 				var html_notes='';
 				if(!json) {  $('#notes').html('');return ;}
 				if (json.length>0){
@@ -1398,10 +1396,61 @@
                 }
             });
         });
-    </script>
+		
+		
+		$.ajax({
+		    url:'./allmember_ajax.php?n=mAlbum',
+			data:{uid:uid},
+			type:'POST',
+			dataType:'json',
+			beforeSend:function(){
+			    //$('#notes').html('<span style="font-size:20px;">正在加载...</span>');
+			},
+			success:function(json){
+			    //console.log(json);
+				//console.log(json.length);
+                if(!json) return;
+				var html_album='';
+				var imgSite="<?php echo IMG_SITE?>";
+				for(var i=0;i<json.length;i++){  
+					if (i==0){
+						html_album+='<a class="fancybox-buttons" data-fancybox-group="button" href="'+imgSite+json[i]['imgurl']+'" style="background:none;border:none;color:#333; display:inline;">查看相册('+json.length+')</a>';
+					}else{
+						html_album+='<a class="fancybox-buttons" data-fancybox-group="button" href="'+imgSite+json[i]['imgurl']+'" style="display:none" /></a>';
+					}
+				}		
+			    $('#mAlbum').append(html_album);
+			}
+		});
+		
+		
+		$(document).ready(function() {
+            $('.fancybox-buttons').fancybox({
+                openEffect  : 'none',
+                closeEffect : 'none',
 
-    <!-- <script type="text/javascript" src="templates/js/mouse_tz.js"></script> -->
-    <script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
-    <link rel="stylesheet" type="text/css" href="templates/css/jquery.fancybox-1.2.5.css"/>
+                prevEffect : 'none',
+                nextEffect : 'none',
+
+                closeBtn  : false,
+
+                helpers : {
+                    title : {
+                        type : 'inside'
+                    },
+                    buttons	: {}
+                },
+
+                afterLoad : function() {
+                    //this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+                    this.title = '第 ' + (this.index + 1) + ' 张， 共' + this.group.length +'张'+ (this.title ? ' - ' + this.title : '');
+                }
+            });
+        });
+    </script>
+     
+    <!-- <script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.2.5.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="templates/css/jquery.fancybox-1.2.5.css"/> -->
+	
 </body>
 </html>

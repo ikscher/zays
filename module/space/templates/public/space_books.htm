@@ -445,6 +445,14 @@ function checkquicksearch(){
 						<div class="clear"></div>
 					</div>
 				</div>
+				
+				
+				{if $isMusic}
+				<div class="c-rightbox"> 
+					<div class="right-title" style="width:740px; height:31px; background:url(module/space/templates/books/images/right-title-bg.gif) repeat-x 0 0; line-height:31px; margin:10px 0 0 3px; padding:0 0 0 10px; color:#000">{if $userid == $uid}<a  class="fright f-ed0a91-a" href="index.php?n=material&h=music" class="fright f-ed0a91-a">修改</a>{/if}<span class="r-title">音乐</span></div>
+					<div class="rightbox-in"><audio autoplay controls loop src="{php echo MOOPHP_HOST.'/'.$music_url;}">您的浏览器不支持播放</audio></div>						
+				</div>
+				{/if}
 			  </div>
 			</div><!--c-right end-->
 			
