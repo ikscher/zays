@@ -131,7 +131,7 @@
 		</div>
 		{/if}
 
-		<div class="right-happyway">
+		<!-- <div class="right-happyway">
 			<div class="r-center-tilte">
 			<span class="right-title">幸福之路动态</span>
 			</div>
@@ -154,7 +154,9 @@
 			</div>
 			<div class="r-center-bottom">
 			</div>
-		</div>
+		</div> -->
+		
+		
 		<div class="clear"></div>
 		<div class="r-like fleft" style="margin-top:8px;">
 			<div class="r-like-title">
@@ -166,7 +168,7 @@
 				{loop $able_like $able_likes}
 					<li>
 						<dl class="r-like-c-data">
-							<dt><div><a style="display:block;" href="index.php?n=space&h=viewpro&uid={$able_likes['uid']}" target="_blank">
+							<dt><div><a style="display:block;" href="space_{$able_likes['uid']}.html" target="_blank">
 							{if $able_likes['mainimg'] && $able_likes['images_ischeck']==1}       
                        <img src="  {php if(MooGetphoto($able_likes[uid],'medium')) echo IMG_SITE.MooGetphoto($able_likes[uid],'medium');
                       elseif($able_likes['gender'] == '1')echo 'public/system/images/woman_100.gif';
@@ -186,7 +188,7 @@
           					<img src="public/system/images/nopic_man_100.gif" />
           				{/if}
          		{/if}</a></div></dt>
-							<dd>{if  $able_likes['s_cid'] ==20}<a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a>{elseif  $able_likes['s_cid'] == 30}<a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>{else}{/if}{if $able_likes['nickname']}{php echo MooCutstr($able_likes['nickname'],'10','');}{else}会员{php echo MooCutstr($able_likes['uid'],'10','');}{/if}</dd>
+							<dd>{if  $able_likes['s_cid'] ==20}<img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/>{elseif  $able_likes['s_cid'] == 30}<img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/>{else}{/if}{if $able_likes['nickname']}{php echo MooCutstr($able_likes['nickname'],'10','');}{else}会员{php echo MooCutstr($able_likes['uid'],'10','');}{/if}</dd>
 							<dd>{if $able_likes['birthyear']}{php echo (gmdate('Y', time()) - $able_likes['birthyear']);}岁{else}年龄保密{/if}</dd>
 						</dl>
 					</li>
@@ -198,7 +200,7 @@
                   {php $send_user1 = leer_send_user1($visitors['visitorid']); }
 					<li>
 						<dl class="r-like-c-data">
-							<dt><div><a style="display:block;" href="index.php?n=space&h=viewpro&uid={$visitors['visitorid']}" target="_blank">
+							<dt><div><a style="display:block;" href="space_{$visitors['visitorid']}.html" target="_blank">
 							 {if $send_user1['mainimg'] &&  $send_user1['images_ischeck']=='1' }
 							  <img class="_photo_ fixphoto" src=" {php if(MooGetphoto($send_user1[uid],'mid')) echo IMG_SITE.MooGetphoto($send_user1[uid],'mid');elseif( $send_user1['gender'] == '1')echo 'public/system/images/woman_100.gif';else  echo 'public/system/images/man_100.gif';}"   />
 							 {elseif $send_user1['mainimg']}

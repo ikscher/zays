@@ -68,6 +68,7 @@
 
         });
              */
+		$(function(){ $('.carousel').carousel();});
         </script>
     </head>
     <body>
@@ -122,7 +123,24 @@
         </div>
         
         <div class="main">
-           
+		    <!--轮播-->
+            <div id="myCarousel" class="carousel slide">
+				  <ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<!--<li data-target="#myCarousel" data-slide-to="2"></li> -->
+				  </ol>
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+					<div class="active item"><a href="upgrade.html"><img  alt="Third slide" src="module/index/templates/default/images/vution/diamond.jpg" /></a></div>
+					<div class="item"><img  alt="Third slide" src="module/index/templates/default/images/vution/christmas.jpg" /></div>
+				  </div>
+				  <!-- Carousel nav -->
+				  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+				  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			</div>
+			<!--结束-->
+			
             <div>
                 <a href="#" class="logo" ></a>
                 <span class="top-tel"></span>
@@ -212,6 +230,7 @@
         </div>
     </div>
     <div class="footer">
+	    <div style="position:fixed;top:200px;right:20px;"><img src="module/index/templates/default/images/vution/Animated_Xmas-tree-animation.gif" /></div>
         <div class="g">品牌：专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
         <div class="g">Copyright@<?php echo date('Y');?> 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
         <div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>

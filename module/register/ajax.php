@@ -86,10 +86,8 @@ function setVcode(){
 
 //读取验证码是否填写正确
 function reg_seccode(){
-	global $memcached;
 	$seccode1 = strtolower(MooGetGPC('seccode','string','G'));
-	$seccode2 = MooGetGPC('seccode','string','C');
-	$session_seccode = $memcached->get($seccode2);
+	$seccode2 = strtolower(MooGetGPC('MooCode','string','C'));
 	//echo $session_seccode;
 	//if($seccode == ''){
 	//	echo '1';
@@ -98,9 +96,9 @@ function reg_seccode(){
 	//	exit;
 	//}elseif($session_seccode != $seccode){
 		
-	if($session_seccode != $seccode1){
+	if($seccode2 != $seccode1){
 		echo '2';
-	}else if($session_seccode != '' && $seccode1 && $session_seccode == $seccode1){
+	}else if($seccode2 && $seccode1 && $seccode2 == $seccode1){
 		echo '1';	
 	}
 }

@@ -133,12 +133,14 @@ class MooSeccode {
 	 * @param string $sessionName
 	 */
 	function writeSession($sessionName) {
+	   
 		//session_start();
 //		session_register($sessionName);
 //		$_SESSION[$sessionName] = md5($this->cecCode);
-		global $memcached;
-		$seccode = MooGetGPC('seccode','string','C');
-		$memcached->replace($seccode,strtolower($this->cecCode),0,600);//×¢²áÂë´æcookie
+		//global $memcached;
+		//$seccode = MooGetGPC('seccode','string','C');
+		//$memcached->replace($seccode,strtolower($this->cecCode),0,600);//×¢²áÂë´æcookie
+		setcookie($sessionName,$this->cecCode, time()+10*60);
 	}
 
 	/**

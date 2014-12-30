@@ -146,12 +146,36 @@ function checkForm() {
 	}
 	
 	
-	if(seccode == ""){
-		arr[9] = '验证码不能为空';	
-	}
+	
 	*/
+	if(seccode == ""){
+		arr[5] = '验证码不能为空';	
+	}else{
 	
 	
+	//检测验证码是否正确
+	//$('#seccode').blur(function(){
+	//	var seccode = $('#seccode').val();
+		var url = 'ajax.php?n=register&h=seccode&updates='+Math.random();
+		//$(this).removeClass('public');
+		
+		$.ajax({
+		    url:url,
+			dataType:'text',
+			type:'get',
+			data:{seccode:seccode},
+			async:false,
+			success:function(data){	
+				console.log(data);		
+				if(data == '2'){
+					arr[5] = '验证码输入不正确';
+				}else{
+					arr[5] = '';	
+				}	
+            }				
+		});			  
+	//});	   		   
+    }
 	
 	
 	if(arr){
@@ -260,45 +284,7 @@ function left_window(vble){
 }
 
 
-//检测验证码是否正确
-/*
-$(function(){
-	$('#seccode').click(function(){$(this).addClass('public')})
-	.blur(function(){
-		var seccode = $('#seccode').val();
-		var url = 'ajax.php?n=register&h=seccode&updates='+Math.random();
-		$(this).removeClass('public');
-		
-		$.get(url,{seccode:seccode},function(data){							
-			if(data == '2'){
-				arr[0] = '验证码输入不正确';
-			}else{
-				arr[0] = '';	
-			}							
-		});			  
-	});	   		   
-});
-
-$(function(){
-	$('img#code,a.next-yz').click(function(){
-		var seccode_2s = $('#seccode').val();
-		var url = 'ajax.php?n=register&h=seccode&updates='+Math.random();
-		$.get(url,{seccode:seccode_2s},function(data){	
-			if(data == '2'){
-				arr[0] = '验证码输入不正确';
-			}else{
-				arr[0] = '';	
-			}							
-		});					   
-	});
-})
-function secode(){
-	var sec_url = 'index.php?n=register&h=seccode&updataks='+Math.random();
-	$('#code').attr('src',sec_url);	
-}
-*/
 </script>
-<!-- <body onload="secode()"> -->
 <body>
 <div class="main">
     <div class="top">
@@ -318,26 +304,26 @@ function secode(){
 			<FORM name="register_stepone" action="./index.php?n=register&h=stepone" method="post" >
             <div class="c-center">
 			<dl class="c-center-data">
-				<!-- <dt><span class="f-ed0a91">*</span> 验 证 码：</dt>
-				<dd><p style="width:160px;"><input name="seccode" type="text" id="seccode" class="c-center-data-text" value="<?php echo isset($arr2['seccode'])?$arr2['seccode']:''?>"/></p><p id="show_seccode"><img id="code" src="index.php?n=register&h=seccode" border="0" onclick="javascript:this.src='index.php?n=register&h=seccode&update=' + Math.random();" style="margin-top:2px;cursor:pointer;" /></p>
-					<p><a class="next-yz" onclick="javascript:$('#code').attr('src','index.php?n=register&h=seccode&updatak='+Math.random())" style="cursor:pointer;">&larr; 看不清</a></p>
-				</dd> -->
+				<dt><span class="f-ed0a91">*</span> 验 证 码：</dt>
+				<dd><p style="width:160px;"><input name="seccode" type="text" id="seccode" class="c-center-data-text" value=""/></p><p id="show_seccode"><img id="code" src="index.php?n=register&h=seccode" border="0" style="margin-top:2px;cursor:pointer;" /></p>
+					<p><a class="yzm" href="#" onclick="javascript:$('#code').attr('src','index.php?n=register&h=seccode&updatak='+Math.random())" >看不清，换一张</a></p>
+				</dd>
 				
 				<dt><span class="f-ed0a91">*</span> 注册邮箱：</dt>
-				<dd><p style="width:160px;"><input type="text" name="username" id="username" class="c-center-data-text" onfocus="show_username();"  value="<?php echo isset($arr2['username'])?$arr2['username']:''?>"/></p><p id="validateemailID" class="register-clue" style="display:none"></p></dd>
+				<dd><p style="width:160px;"><input type="text" name="username" id="username" class="c-center-data-text" onfocus="show_username();"  value=""/></p><p id="validateemailID" class="register-clue" style="display:none"></p></dd>
 				<dt><span class="f-ed0a91">*</span> 真爱一生密码：</dt>
-				<dd><p style="width:160px;"><input type="password" name="password" id="password" class="c-center-data-text" onfocus="show_password();"  value="<?php echo isset($arr2['password'])?$arr2['password']:''?>"/></p><p id="pwdtip" class="register-clue-w" style="display:none"></p></dd>
+				<dd><p style="width:160px;"><input type="password" name="password" id="password" class="c-center-data-text" onfocus="show_password();"  value=""/></p><p id="pwdtip" class="register-clue-w" style="display:none"></p></dd>
 				<dt><span class="f-ed0a91">*</span> 确认密码：</dt>
-				<dd><p style="width:160px;"><input type="password" name="password2" id="password2" class="c-center-data-text" onfocus="show_password2();"  value="<?php echo isset($arr2['password2'])?$arr2['password2']:''?>"/></p><p id="pwdtip2" class="register-clue" style="display:none"></p></dd>
+				<dd><p style="width:160px;"><input type="password" name="password2" id="password2" class="c-center-data-text" onfocus="show_password2();"  value=""/></p><p id="pwdtip2" class="register-clue" style="display:none"></p></dd>
 				<dt><span class="f-ed0a91">*</span> 性&nbsp;&nbsp;&nbsp;&nbsp;别：</dt>
 				<dd><p style="width:160px;margin-top:10px;">
-				<span style="width:80px;display:inline-block"><input type="radio" class="fn_left" name="gender" value="0" checked="checked" id="mysex1" onfocus="javascript:$('#radio_mysex').css('display','');" onblur="javascript:$('#radio_mysex').css('display','none');" <?php if(isset($arr2['gender'])) { ?><?php if($arr2['gender']==0) { ?>checked="checked"<?php } ?><?php } ?> /><label for="mysex1" class="gender male fn_left">男</label></span>
+				<span style="width:80px;display:inline-block"><input type="radio" class="fn_left" name="gender" value="0" checked="checked" id="mysex1" onfocus="javascript:$('#radio_mysex').css('display','');" onblur="javascript:$('#radio_mysex').css('display','none');"  /><label for="mysex1" class="gender male fn_left">男</label></span>
 				
-				<span style="width:70px;display:inline-block"><input type="radio" class="fn_left" name="gender" value="1" id="mysex2" onfocus="javascript:$('#radio_mysex').css('display','');" onblur="javascript:$('#radio_mysex').css('display','none');" <?php if(isset($arr2['gender'])) { ?><?php if($arr2['gender']==1) { ?>checked="checked"<?php } ?><?php } ?>/><label for="mysex2" class="gender female fn_left">女</label></span>
+				<span style="width:70px;display:inline-block"><input type="radio" class="fn_left" name="gender" value="1" id="mysex2" onfocus="javascript:$('#radio_mysex').css('display','');" onblur="javascript:$('#radio_mysex').css('display','none');" /><label for="mysex2" class="gender female fn_left">女</label></span>
 				</p><p id="radio_mysex" class="register-clue" style="display:none;font-size:14px">此项注册后不可更改，请谨慎填写.</p></dd>
 				<dt><span class="f-ed0a91">*</span> 手&nbsp;&nbsp;&nbsp;&nbsp;机：</dt>
 				<dd><p style="width:160px;">
-				  <input name="telphone" id="telphone" type="text" maxlength="11" class="c-center-data-text" onfocus="show_telphone();"  value="<?php echo isset($arr2['telphone'])?$arr2['telphone']:''?>"/>
+				  <input name="telphone" id="telphone" type="text" maxlength="11" class="c-center-data-text" onfocus="show_telphone();"  value=""/>
 				  <input name="mustphone" type="hidden" id="mustphone" value="1" />
                 <!--<input name="telphonecheck" type="hidden" value="1" />-->
                 </p>
@@ -422,12 +408,12 @@ function secode(){
 			<!--content-bottom end-->
 		</div><!--centent-lift end-->
 		<!--左边结束-->
-		<div class="centent-right">
-			<div class="centent-right-side"></div>
+		<div class="centent-right fdc">
+			<!-- <div class="centent-right-side"></div> -->
 			<div class="centent-center">
 			    <dl>
 					<dt>更专业的婚恋网</dt>
-					<dd>800多名专业红娘<br>为您牵线支招</dd>
+					<dd>专业红娘为您牵线支招</dd>
 					<dt>更真诚的交友环境</dt>
 					<dd>多重认证体系<br>您的真诚，Ta也感受得到</dd>
 					<dt>更精准的线上推荐</dt>
@@ -439,7 +425,7 @@ function secode(){
 					<dd>2、委托红娘帮您联系对方</dd>
 					<dd>3、请等待红娘接受委托帮助双方牵线</dd>
 					<dd>4、红娘安排您与对方见面约会</dd>
-					<dd>注册后您就能够免费从真爱一生网3000多万会员中搜索您中意的对象</dd>
+					<!-- <dd>注册后您就能够免费从真爱一生网3000多万会员中搜索您中意的对象</dd> -->
 				</dl>
 				<!-- <p class="centent-right-title">更专业、更真诚的婚恋网</p>
 				<dl class="c-r-content">
@@ -489,13 +475,13 @@ function secode(){
 					<dd>4、红娘安排您与对方见面约会</dd>
 				</dl> -->
 			</div>
-			<div class="centent-right-side" style="background-position:bottom;"></div>
+			<!-- <div class="centent-right-side" style="background-position:bottom;"></div> -->
 		</div><!--centent-right end-->
 		<div class="clear"></div>
 	</div><!--content end-->
 	<div class="footer">
-	  <div class="g">品牌：8年专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
-	  <div class="g">Copyright 2006-2014 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
+	  <div class="g">品牌：专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
+	  <div class="g">Copyright@<?php echo date('Y');?> 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
 	  <div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>
 	</div>
 </div><!--main end-->

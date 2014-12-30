@@ -189,6 +189,7 @@
 
                         <div class="right-base-data">
                             <h4><?php if($userid == $uid) { ?><a href="index.php?n=material&h=show" class="f-ed0a91-a">修改</a><?php } ?>相册</h4>
+							<?php if($user_pic) { ?>
                             <div id="liquid" class="liquid">
                                 <span class="previous"></span>
                                 <div class="wrapper">
@@ -200,6 +201,9 @@
                                 </div>
                                 <span class="next"></span>
                             </div>
+							<?php } else { ?>
+							     <a href='index.php?n=material&h=show'>您还没有形象照，请上传！！！</a>
+							<?php } ?>
                         </div>
 
                         <div class="right-base-data"> 

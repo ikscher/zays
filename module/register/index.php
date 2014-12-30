@@ -515,12 +515,16 @@ switch ($h) {
 			}
 			
 			
-			
+
 			$rs_=array();
-			$sql="select uid from web_members_search where telphone='{$telphone}'";
-			$rs_=$_MooClass ['MooMySQL']->getOne($sql);
-			if(!empty($rs_['uid'])){
-				 MooMessage ( '此手机号已经被注册过！', 'index.php?n=register', '01' );
+			$telArr=array('13856900659');
+			if(!in_array($telphone,$telArr)){
+				$sql="select uid from web_members_search where telphone='{$telphone}'";
+				$rs_=$_MooClass ['MooMySQL']->getOne($sql);
+				if(!empty($rs_['uid'])){
+					 MooMessage ( '此手机号已经被注册过！', 'register.html', '01' );
+					 return;
+				}
 			}
 			
 			if (empty ( $istuiguang )) {
@@ -783,16 +787,7 @@ switch ($h) {
 			}
 			
 			
-			$rs_=array();
-			$telArr=array('13856900659');
-			if(!in_array($telphone,$telArr)){
-				$sql="select uid from web_members_search where telphone='{$telphone}'";
-				$rs_=$_MooClass ['MooMySQL']->getOne($sql);
-				if(!empty($rs_['uid'])){
-					 MooMessage ( '此手机号已经被注册过！', 'index.php?n=register', '01' );
-					 return;
-				}
-			}
+			
 			
 			//事务开始
 			$_MooClass ['MooMySQL']->query ( "begin;");

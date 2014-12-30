@@ -240,18 +240,18 @@ border:medium none;
 	
 		$.ajax({
 			url:'./active_ajax.php?n=sendLeer',
-			type:'post',
+			type:'get',
 			data:{sendfrom:sendfrom,sendto:sendto,sendtime:sendtime},
 			dataType:'text',
 			success:function(str){
-			    //console.log(str);
-			    if(str==0){
+			    console.log(str);
+			    if(str=='shield'){
 				    document.getElementById('tipMsg').innerText='对方已屏蔽';
-				}else if(str==1){
+				}else if(str=='sender'){
 				    document.getElementById('tipMsg').innerText='只能模拟全权发送（发送者只能是非本站注册会员）';
-				}else if(str==3){
+				}else if(str=='receiver'){
 				    document.getElementById('tipMsg').innerText='不能发送秋波给全权会员';
-				}else if(str==10){
+				}else if(str=='gender'){
 				    document.getElementById('tipMsg').innerText='同性别不能发送';
 				}else{
 				    alert('发送成功！');

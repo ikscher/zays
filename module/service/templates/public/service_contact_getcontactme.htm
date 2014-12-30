@@ -15,7 +15,7 @@
         {template system/header public}
 <div class="main"><!--top end--><!--head-search end-->
             <div class="content">
-                <p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=service">我的真爱一生</a>&nbsp;&gt;&gt;&nbsp;我的委托</span><a href="index.php?n=invite" target="_blank" class="loaction_right">邀请好友</a></p>
+                <!-- <p class="c-title"><span class="f-000"><a href="index.php">真爱一生首页</a>&nbsp;&gt;&gt;&nbsp;<a href="index.php?n=service">我的真爱一生</a>&nbsp;&gt;&gt;&nbsp;我的委托</span><a href="index.php?n=invite" target="_blank" class="loaction_right">邀请好友</a></p> -->
                 <div class="content-lift">
                     {template public/service_left module}
                 </div>
@@ -23,15 +23,15 @@
                 <div class="content-right">
                     <div class="c-right-content">
                         <div class="r-center-tilte">
-                            <a href="index.php?n=service" class="r-title-black">&lt;&lt;返回我的真爱一生</a>
+                            <a href="service.html" class="r-title-black">&lt;&lt;返回我的真爱一生</a>
                             <span class="right-title f-ed0a91">我的委托</span>			
                         </div>
                         <div class="r-center-ccontent" style="padding:20px 0 60px; width:753px;">
                             <!--=======公共头部=====-->
                             <div class="service-title">
                                 <ul>
-                                    <li><a href="#" id="two1" class="onthis"><span>TA委托真爱一生联系我</span></a></li>
-                                    <li><a id="two2" href="#" onclick="javascript:location.href='index.php?n=service&h=commission&t=getmycontact'"><span>我委托真爱一生联系TA</span></a></li>
+                                    <li><a href="#" id="two1" class="onthis"><span>TA委托红娘联系我</span></a></li>
+                                    <li><a id="two2" href="#" onclick="javascript:location.href='index.php?n=service&h=commission&t=getmycontact'"><span>我委托红娘联系TA</span></a></li>
                                 </ul>
                                 <div class="clear"></div>
                             </div>
@@ -48,7 +48,7 @@
                                 <div id="con_one_1" style="display:block">
                                     {if $total == 0} 
                                     <div class="norequest">
-                                        目前您没有要回应的委托<br />立即 <a href="index.php?n=search" class="f-ed0a91-a">搜索意中人</a>，委托真爱一生帮您联系对方 </div>
+                                        目前您没有要回应的委托<br />立即 <a href="search.html" class="f-ed0a91-a">搜索意中人</a>，委托红娘帮您联系对方 </div>
                                     {else}
                                     {loop $contacts $contact}
 
@@ -60,7 +60,7 @@
                                                 {if !empty($contact['s']['city_star'])}<a class="citystar2"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
                                                 <div class="r-s-img-in">
                                                     <p style="width:105px;">
-                                                        <a style="display:block;" href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}">
+                                                        <a style="display:block;" href="space_{$contact['l']['other_contact_you']}.html">
                                                             {if $contact['s']['images_ischeck']=='1'&& $contact['s']['mainimg']}
                                                             <img src="
                                                                  {php if(MooGetphoto($contact['s'][uid],'mid')) echo MooGetphoto($contact['s'][uid],'mid');
@@ -92,9 +92,9 @@
                                                         <a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
                                                         {else}
                                                         {/if}
-                                                        <a href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}">
+                                                        <a target="_blank"   href="space_{$contact['l']['other_contact_you']}.html">
                                                             {php echo $contact['s']['nickname']?$contact['s']['nickname']:'ID:'.$contact['s']['uid']}</a></strong></li>
-                                                <li><a href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}" class="f-ed0a91">等待我的回应</a></li>
+                                                <li><a target="_blank"   href="space_{$contact['l']['other_contact_you']}.html" class="f-ed0a91">等待我的回应</a></li>
                                                 <li>年龄：{if $contact['s']['birthyear']}{php echo (gmdate('Y', time()) - $contact['s']['birthyear']);}岁{else}保密{/if}</li>
                                                 <li>身高：<script>userdetail("{$contact['s'][height]}",height);</script></li>
                                                 <li>学历：<script>userdetail("{$contact['s'][education]}",education);</script></li>
@@ -116,7 +116,7 @@
                                 <div id="con_one_2" style="display:none">
                                     {if $total2 == 0}
                                     <div class="norequest">
-                                        目前您没有接受的联系请求<br />立即 <a href="index.php?n=search" class="f-ed0a91-a">搜索意中人</a>，委托真爱一生帮您联系对方 </div>
+                                        目前您没有接受的联系请求<br />立即 <a href="search.html" class="f-ed0a91-a">搜索意中人</a>，委托红娘帮您联系对方 </div>
                                     {else}
                                     {loop $contacts2 $contact}				
                                     <div class="r-conter-box">
@@ -127,7 +127,7 @@
                                                 {if !empty($contact['s']['city_star'])}<a class="citystar2"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
                                                 <div class="r-s-img-in">
                                                     <p style="width:105px;">
-                                                        <a style="display:block;" href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}">
+                                                        <a style="display:block;" href="space_{$contact['l']['other_contact_you']}.html">
                                                             {if $contact['s']['images_ischeck']=='1'&& $contact['s']['mainimg']}
                                                             <img src="
                                                                  {php if(MooGetphoto($contact['s'][uid],'mid')) echo MooGetphoto($contact['s'][uid],'mid');
@@ -160,9 +160,9 @@
                                                         <a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
                                                         {else}
                                                         {/if}
-                                                        <a href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}">
+                                                        <a target="_blank"   href="space_{$contact['l']['other_contact_you']}.html">
                                                             {php echo $contact['s']['nickname']?$contact['s']['nickname']:'ID:'.$contact['s']['uid']}</a></strong></li>
-                                                <li><a href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}" class="f-ed0a91">等待我的回应</a></li>
+                                                <li><a target="_blank"   href="space_{$contact['l']['other_contact_you']}.html" class="f-ed0a91">等待我的回应</a></li>
                                                 <li>年龄：{if $contact['s']['birthyear']}{php echo (gmdate('Y', time()) - $contact['s']['birthyear']);}岁{else}保密{/if}</li>
                                                 <li>身高：<script>userdetail("{$contact['s'][height]}",height);</script></li>
                                                 <li>学历：<script>userdetail("{$contact['s'][education]}",education);</script></li>
@@ -188,7 +188,7 @@
                                 <div id="con_one_3" style="display:none">
                                     {if $total3 == 0} 
                                     <div class="norequest">
-                                        目前您没有考虑中的联系请求<br />立即 <a href="index.php?n=search" class="f-ed0a91-a">搜索意中人</a>，委托真爱一生帮您联系对方 </div>
+                                        目前您没有考虑中的联系请求<br />立即 <a href="search.html" class="f-ed0a91-a">搜索意中人</a>，委托红娘帮您联系对方 </div>
                                     {else}
                                     {loop $contacts3 $contact}
 
@@ -200,7 +200,7 @@
                                                 {if !empty($contact['s']['city_star'])}<a class="citystar2"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
                                                 <div class="r-s-img-in">
                                                     <p style="width:105px;">
-                                                        <a style="display:block;" href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}">
+                                                        <a style="display:block;" href="space_{$contact['l']['other_contact_you']}.html">
                                                             {if $contact['s']['images_ischeck']=='1'&& $contact['s']['mainimg']}
                                                             <img src="{php if(MooGetphoto($contact['s'][uid],'mid')) echo MooGetphoto($contact['s'][uid],'mid');
                                                                  elseif(MooGetphoto($contact['s'][uid],'medium')) echo MooGetphoto($contact['s'][uid],'medium');
@@ -231,9 +231,9 @@
                                                         <a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a>
                                                         {else}
                                                         {/if}
-                                                        <a href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}">
+                                                        <a target="_blank"   href="space_{$contact['l']['other_contact_you']}.html">
                                                             {php echo $contact['s']['nickname']?$contact['s']['nickname']:'ID:'.$contact['s']['uid']}</a></strong></li>
-                                                <li><a href="index.php?n=service&h=commission&t=getcontactdata1&uid={$contact['l']['other_contact_you']}" class="f-ed0a91">等待我的回应</a></li>
+                                                <li><a target="_blank"   href="space_{$contact['l']['other_contact_you']}.html" class="f-ed0a91">等待我的回应</a></li>
                                                 <li>年龄：{if $contact['s']['birthyear']}{php echo (gmdate('Y', time()) - $contact['s']['birthyear']);}岁{else}保密{/if}</li>
                                                 <li>身高：<script>userdetail("{$contact['s'][height]}",height);</script></li>
                                                 <li>学历：<script>userdetail("{$contact['s'][education]}",education);</script></li>

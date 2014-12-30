@@ -38,3 +38,5 @@
 .login-box-right span{margin-left:20px;font-size:15px;font-family:'微软雅黑';position:absolute;left:300px;top:50px;width:200px;}
 .fakeuname{position:absolute;left:16px;top:5px;color:#67afd8;}
 .fakepwd{position:absolute;left:16px;top:55px;color:#67afd8;}
+.errorTips{color: #f00;z-index:10;padding-left:3px;}
+.errorTips_{color: #f00;z-index:10;padding-left:3px;}

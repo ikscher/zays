@@ -8,6 +8,37 @@
             jQuery("#floatTools").stop().animate({right:'-116px'},200,function(){jQuery("#floatL").removeClass("fImg2").addClass("fImg1");});
         })	
     })
+	
+	function checkForm(){
+		var username = $('input[name=username]').val();
+	
+		if(!username || username=='ID，手机号，邮箱 都 可以作为账号'){
+			$('input[name=username]').focus();
+			$('.errorTips').html('请输入账号！');
+			$('.errorTips').css('display','block');
+			$('.fakeuname').css('display','none');
+			$('.errorTips_').css('display','none');
+			return false;
+		}
+		if (!checkPhone(username) &&  !CheckEmail(username) && !/^\d{8,8}$/.test(username)){
+			$('.errorTips').html('账号格式错误！');
+			$('.errorTips').css('display','block');
+			$('.fakeuname').css('display','none');
+			$('.errorTips_').css('display','none');
+			return false;
+		}
+	
+		var pwd = $.trim($('input[name=password]').val());
+		if(!pwd || pwd=='密码'){
+			$('.errorTips_').html('请输入密码！');
+			$('.errorTips_').css('display','block');
+			return false;
+		}else{
+			$('.errorTips_').css('display','none');
+		}
+		
+		return true;
+	}
 </script>
 
 <!--右侧边栏-->
@@ -60,16 +91,19 @@
 	  </div>
 	  <div class="modal-body">
 	        <div class="login-box">
-				<form id="loginform" name="loginform" action="index.php?n=index&h=submit" method="post" onsubmit="return checkLoginForm();">
+				<form id="loginform" name="loginform" action="index.php?n=index&h=submit" method="post" onSubmit="return checkForm();" >
 					<p><input type="text" name="username" id="username"   class="form-control" value=""  class="login-text" /></p>
 					<p><input type="password" name="password" id="password" class="form-control"   class="login-text"/></p>
 					<p><span class="userTips h"></span><span class="pwdTips h"></span></p>
 					<p><input style="width:20px;" name="remember" type="checkbox" id="remember" value="1"  /><label for="remember">记住账号</label>
 						<a href="#"  onclick="javascript:location.href='index.php?n=login&h=backpassword'" class="f-ed0a91-a">忘记密码？</a>
 						<a href='register.html' class="f-ed0a91-a">我要成为会员</a></p> 
+					<p> <span class="errorTips" style="display:none"></span>
+                        <span class="errorTips_" style="display:none"></span></p>
 					<p><input type="submit"  name="btnLogin" class="btn btn-success ft" value="登 录" />
 					<span class="fakeuname" >ID，手机号，邮箱 都 可以作为账号</span> 
 			        <span class="fakepwd" >密码</span> 
+					
 					<input type="hidden" name="returnurl" value="" />
 				</form>
 			</div>
@@ -127,11 +161,38 @@
 	$(document).ready(function(){
 	    var url=location.href;
 		$("input[name='returnurl']").val(url);
+	
+
+	
+		/*登录验证提示*/
+		$('.fakeuname').on('click',function(){
+			$('input[name=username]').trigger('focus');
+		});
+
+		$('input[name=username]').focus(function(){
+			$('.errorTips').css('display','none');
+			$('.fakeuname').css('display','none');
+		}).blur(function(){
+			var username = $.trim($(this).val());
+			if(!username) $('.fakeuname').css('display','');
+		});
+
+
+		$('.fakepwd').on('click',function(){
+			$('input[name=password]').trigger('focus');
+		});
+		$('input[name=password]').focus(function(){
+			$('.fakepwd').css('display','none');
+			$('.errorTips_').css('display','none');
+		}).blur(function(){
+			var pwd = $.trim($(this).val());
+			if(!pwd) $('.fakepwd').css('display','');
+		});
+		
+		
+		
+
 	});
-
-	
-	
-
 	
     function initGoToTop(){
         var b=jQuery(".float0831").position().top - jQuery(window).height()-200;

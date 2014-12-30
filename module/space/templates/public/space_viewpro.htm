@@ -189,6 +189,7 @@
 
                         <div class="right-base-data">
                             <h4>{if $userid == $uid}<a href="index.php?n=material&h=show" class="f-ed0a91-a">修改</a>{/if}相册</h4>
+							{if $user_pic}
                             <div id="liquid" class="liquid">
                                 <span class="previous"></span>
                                 <div class="wrapper">
@@ -200,6 +201,9 @@
                                 </div>
                                 <span class="next"></span>
                             </div>
+							{else}
+							     <div style="margin-left:20px;"><a href='index.php?n=material&h=show'>您还没有相册，请上传！！！</a></div>
+							{/if}
                         </div>
 
                         <div class="right-base-data"> 

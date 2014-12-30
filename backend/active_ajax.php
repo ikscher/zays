@@ -44,16 +44,16 @@ function ajax_sendLeer(){
 
 
     if($sendfrom['usertype']!=3){
-        exit(1);
+        exit('sender');
 	}
 
 	if($sendto['usertype']==3){
-	    exit(3);
+	    exit('receiver');
 	}
 	
-	if(MooGetScreen($sendfromuid,$sendtouid)) exit(0);
+	if(MooGetScreen($sendfromuid,$sendtouid)==1) exit('shield');
 
-	if($sendfrom['gender']==$sendto['gender']) exit(10);
+	if($sendfrom['gender']==$sendto['gender']) exit('gender');
 	
 	$is_first_send=true;
 	$leer = $GLOBALS['_MooClass']['MooMySQL']->getOne("SELECT * FROM {$dbTablePre}service_leer WHERE receiveuid = '$sendtouid' AND senduid = '$sendfromuid' ",true);
@@ -73,7 +73,7 @@ function ajax_sendLeer(){
 	$gender=$sendfrom['gender']==1?'女':'男';
 
 	if($is_first_send && $sendto['is_phone'] && $sendto['telphone']) {
-	    Push_message_intab($sendtouid,$sendto['telphone'],"秋波","真爱一生网 用户ID：".$sendfromuid.",".$gender.",已给您发送秋波, 请及时把握您的缘分！4008787920【真爱一生网】",$sendfromuid,$sendtime);
+	    Push_message_intab($sendtouid,$sendto['telphone'],"秋波","会员ID：".$sendfromuid.",已给您发送秋波, 请及时把握您的缘分！400-8787-920",$sendfromuid,$sendtime);
 	}
 }	
 
