@@ -93,8 +93,9 @@ function get_receive_rose() {
 	global $_MooClass,$dbTablePre,$userid,$pagesize,$user_arr;
 	
 	//note 获取删除提交的变量
-	$delrose = MooGetGPC('delrose','string');
-	$delroseid = MooGetGPC('delroseid','array');
+	$delrose = MooGetGPC('delrose','string','POST');
+	$delroseid = MooGetGPC('delroseid','string','POST');
+
 	//note 删除提交的数据
 	if($delrose && count($delroseid)) {
 		$ids = "'".implode( "','", $delroseid )."'";

@@ -691,6 +691,27 @@ function material_music(){
 		}
 	}
 	
+	
+	//是否存在音乐
+	if(in_array($user_arr['s_cid'],array(10,20,30))){
+		$isMusic=false;
+		$sql="select musicName from web_vipmusic where uid='{$uid}'";
+		$music=$_MooClass['MooMySQL']->getOne($sql);
+		if($music['musicName']){
+			$music_url="data/music/{$uid}/{$music['musicName']}";
+			if(file_exists($music_url)){
+				$isMusic=true;
+			}
+			$del=MooGetGPC('del','string','G');
+			if($del=='delete') {  
+			    $sql="delete from web_vipmusic where uid='{$uid}'";
+				$_MooClass['MooMySQL']->query($sql);
+			    unlink($music_url) ;
+				exit('ok');
+		    }   
+		}
+	}
+	
     include MooTemplate('public/material_music', 'module');
 }
 

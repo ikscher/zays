@@ -170,7 +170,115 @@
 		$result=file_get_contents($url);
 		echo $result;
 	}
+	
+	//模拟发送
+	function simulateSend(){
+		global $userid,$_MooClass,$timestamp;
+		$user = array_merge(MooGetData('members_login', 'uid', $userid), MooMembersData($userid));
+        //ob_clean();
+		$json = array();
+		//=======================模拟发送秋波，关注，鲜花===========================
+		//男女匹配
+		if($user['gender']==1){
+			// 年龄段分析
+			$start_year= $user['birthyear']-2;
+			$end_year  = $user['birthyear']+10;
+			$index = 'members_man';
+		}else{
+			// 年龄段分析
+		    $start_year= $user['birthyear'] - 10;
+			$end_year  = $user['birthyear'] +2;
+            $index = 'members_women';
+		}
+		//在sphinx中搜索
+		$sp = searchApi($index);
+		//满足省市
+		$sp->getResultOfReset(
+				array(
+					array("is_lock",1),
+					array("images_ischeck",1),
+					array("province",$user['province']),
+					array("city",$user['city']),
+					array("usertype",3),
+					array("birthyear", array($start_year,$end_year))
+				),
+				array("offset"=>0,"limit"=>20)
+			
+				);
+		$member_list = $sp->getIds();
+		$member_key=array_rand($member_list,rand(1,5));
+        $member_list_=array();
+		foreach($member_key as $v){
+			$member_list_[]=$member_list[$v];
+		}
+		
+		$last_login_time = $user['last_login_time']?$user['last_login_time']:$timestamp;
+		$opaction = array('1'=>'礼物','2'=>'秋波','3'=>'关注');
+		
+		$_uidlist_='';
+		$_result_=array();
+		$_uidlist_=implode(',',$member_list_);
+		if($_uidlist_){
+			$_result_ = $_MooClass['MooMySQL']->getAll("SELECT screenid FROM web_screen WHERE mid='{$userid}' and uid in ({$_uidlist_})");
+		}
+		if(count($_result_)>0) exit();
+		
+		foreach($member_list_ as $senduid){
+
+			$key=array_rand($opaction,1);
+			$sendtime = $last_login_time - rand(1000,259200);
+			$json[$senduid]=$key.','.$opaction[$key];
+          
+			if($key=='1'){	
+					//$rosenum_check =  $_MooClass['MooMySQL']->getOne("SELECT rosenumber FROM web_members_base  WHERE `uid`='{$userid}'  LIMIT 1",true);
+
+					//if($rosenum_check['rosenumber'] > 0) {	
+						$rose = $_MooClass['MooMySQL']->getOne("SELECT rid FROM web_service_rose WHERE receiveuid = '$userid' AND senduid = '$senduid' ORDER BY rid DESC LIMIT 1");
+						if(isset($rose['rid'])) {
+							$rid = $rose['rid'];
+							//note 如果已经发送过玫瑰，就增加发送玫瑰的次数
+							$_MooClass['MooMySQL']->query("UPDATE web_service_rose SET  receivenum = receivenum + 1,sendtime = '$sendtime',receivetime='$timestamp',receive_del=0,send_del=0 WHERE rid = '$rid'");
+						}else {
+							//note 发送新的玫瑰，写入数据库 发送者，接受者，发送时间
+							$_MooClass['MooMySQL']->query("INSERT INTO web_service_rose SET receivenum = 1, sendtime = '$sendtime',receivetime='$timestamp',senduid  = '{$senduid}',receiveuid = '$userid' ");
+						}
+							
+						//note 发送一朵玫瑰，自己就要减少一朵玫瑰
+						//$_MooClass['MooMySQL']->query("UPDATE web_members_base SET rosenumber = rosenumber - 1 WHERE uid = '{$userid}'");
+						//if(MOOPHP_ALLOW_FASTDB){
+						//	$user_rosenum =  $_MooClass['MooMySQL']->getOne("SELECT rosenumber FROM web_members_base  WHERE `uid`='{$userid}'  LIMIT 1",true);
+						//	$value['rosenumber']= $user_rosenum['rosenumber'];
+						//	MooFastdbUpdate('members_base','uid',$userid,$value);
+						//}
+					//}
+					
+			}elseif($key=='2'){
+					$leer = $_MooClass['MooMySQL']->getOne("SELECT lid FROM web_service_leer WHERE receiveuid = '$userid' AND senduid = '$senduid' ",true);
+					if(isset($leer['lid'])) { //已经发送过秋波
+						$lid = $leer['lid'];
+						//增加发送秋波的次数
+						$_MooClass['MooMySQL']->query("UPDATE web_service_leer SET receivenum = receivenum + 1,`stat`='0',sendtime = '{$sendtime}',receivetime = '$timestamp',receive_del =0,is_read=0 WHERE lid = '$lid'");     
+					}else {
+						//note 发送新的秋波，写入数据库 发送者，接受者，发送时间
+						$_MooClass['MooMySQL']->query("INSERT INTO web_service_leer SET sendtime = '{$sendtime}',receivetime = '$timestamp',receivenum = '1', num = '1', senduid  = '{$senduid}',receiveuid = '$userid'");
+					}
+
+			}elseif($key=='3'){
+				    //note 加为意中人，新插入一行记录
+					$friend= $_MooClass['MooMySQL']->getOne("SELECT fid FROM web_service_friend WHERE friendid = '$userid' AND  uid= '$senduid' ",true);
+					if(isset($friend['fid'])){
+						$fid = $friend['fid'];
+						$_MooClass['MooMySQL']->query("update web_service_friend SET friendid  = '{$userid}',uid = '{$senduid}',sendtime='{$sendtime}' where fid='{$fid}'");
+					}else{
+                        $_MooClass['MooMySQL']->query("Insert INTO web_service_friend SET friendid  = '{$userid}',uid = '{$senduid}',sendtime='{$sendtime}'");
+	                }
+			}
+		}
+		//$json=array('30000027'=>'2,秋波','30000007'=>'1,鲜花','30000008'=>'3,关注');
+		echo json_encode($json);exit;
+	}
     
+	//==============================control route=============================================
     $h=MooGetGPC('h','string','G');
     switch($h){
         case 'login_qq':
@@ -181,6 +289,10 @@
             break;	
         case 'getuserinfo':
             getUserInfo();
-            break;			
+            break;
+        case 'showBrowser':
+            simulateSend();
+            break;
+        default:break;			
     }
 ?>

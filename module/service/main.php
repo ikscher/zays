@@ -1,9 +1,4 @@
 <?php
-////////////////////////////////////M层/////////////////////////////////
-
-////////////////////////////////////控制层///////////////////////////////
-//mark 己改  by chuzx
-//note 您最近留意的人
 $visitor  = $_MooClass['MooMySQL']->getAll("SELECT * FROM {$dbTablePre}service_visitor WHERE uid = '$userid' ORDER BY vid  DESC LIMIT 0,5",false,false,true,3600*3);
 $certification =$_MooClass['MooMySQL']->getOne("SELECT sms,telphone FROM {$dbTablePre}certification where uid = '$userid'",true);
 //查看更多喜欢的人sql条件

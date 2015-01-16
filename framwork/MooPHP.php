@@ -1281,6 +1281,7 @@ function MooLogin(){
 */
 function MooSetCookie($var, $value, $life=0, $prefix = 1) {
     global  $_SERVER;
+	ob_clean();
    	setcookie(($prefix ? MOOPHP_COOKIE_PRE : '').$var, $value, $life?time()+$life:0, MOOPHP_COOKIE_PATH, MOOPHP_COOKIE_DOMAIN, $_SERVER['SERVER_PORT'] == 443 ? 1 : 0);
 }
 

@@ -40,7 +40,7 @@
 					</li>
 					<li>
 						<dl class="r-list02">
-                            <dt><a href="index.php?n=space&uid=<?php echo $userid;?>" target="_blank">预览个人资料页</a></dt>
+                            <dt><a href="space_<?php echo $userid;?>.html" target="_blank">预览个人资料页</a></dt>
 							<dd>这是您在真爱一生网公开展示的个人资料页面，所有会员都能看到。</dd> 
 						</dl>
 					</li>

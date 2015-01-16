@@ -72,12 +72,25 @@ function whoismyfriend() {
 function whoaddme(){
 	global $_MooClass,$dbTablePre,$userid,$pagesize,$user_arr;
 	
+	
+	//note 获取删除提交的变量
+	$delfriend = MooGetGPC('delfriend','string','P');
+	$delfriendid = MooGetGPC('delfriendid','array','P');
+	
+	//note 删除提交的数据
+	if($delfriend) {
+		$ids=implode(',',$delfriendid);
+		//foreach($delfriendid as $v) {
+			$_MooClass['MooMySQL']->query("DELETE FROM {$dbTablePre}service_friend WHERE fid  in  ({$ids})");
+		//}
+		MooMessage("删除意中人成功",'index.php?n=service&h=liker','05');
+	}
+	
 	$pagesize = 4;
 	//note 获得当前url
 	$currenturl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; 
 	$currenturl2 = preg_replace("/(&page=\d+)/","",$currenturl);
-	$currenturl2 = preg_replace("/7651/","7652",$currenturl2);
-		
+	
 	//note 获得第几页
 	$page = empty($_GET['page']) ? 1 : $_GET['page'];
 		
@@ -123,6 +136,6 @@ switch ($_GET['t']) {
 		whoaddme();
 		break;
 	default :
-		whoismyfriend();
+		whoaddme();
 }
 

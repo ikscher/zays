@@ -1,0 +1,87 @@
+*{margin:0;padding:0}
+body{font-family:'微软雅黑';font-size:12px}
+.clearfix:before,.clearfix:after{content:"";display:table}
+.clearfix:after{clear:both}
+.clearfix{zoom:1}
+img{border:0;}
+.f666{color:#666}
+.ffff{color:#fff}
+.mt10{margin-top:10px}
+.pl15{margin-left:15px}
+a{text-decoration:none}
+li{list-style:none}
+.main{margin:0 auto;width:980px}
+.header{height:80px;position:relative}
+.nav{position:relative;width:980px;margin:0 auto}
+.logo{background:url(../images/index2015/logo.png) 0 0 no-repeat;width:178px;height:80px;float:left;margin-right:50px}
+.nav_bgc{background-color:#459bd2}
+.nav ul li{height:80px;line-height:80px;width:100px;text-align:center;float:left}
+.nav li a{color:#fff;display:block;font-size:16px}
+.nav li a:hover{background-color:#c90;display:block;height:80px;width:100px;color:#000;font-size:18px}
+.container,.login{float:left}
+.container{width:688px}
+.login{width:290px;background:#fff;height:258px;border:1px solid #e5e5e5;color:#666;position:relative}
+.login_c0{padding:15px 0 0 20px;height:30px;line-height:30px}
+.login_c1{padding:15px 0 0 20px;height:45px;line-height:45px}
+.login_header{width:290px;height:48px;display:block;text-align:center;height:48px;line-height:48px;border-bottom:1px solid #e5e5e5}
+.za_input{width:180px;border:1px solid #c3c3c3;height:20px;line-height:20px;padding:5px 0 5px 0;color:#666}
+.loginbtn{background-color:#459bd2;width:248px;height:45px;border:0;cursor:pointer;font-family:'微软雅黑'}
+.searchbtn{background-color:#459bd2;width:81px;height:35px;border:0;cursor:pointer;font-family:'微软雅黑'}
+.recommendMember{width:980px;height:380px}
+.story{width:980px;height:200px}
+.samecity,.successfulstory{width:980px;height:60px}
+.samecity_,.successfulstory_{heihgt:60px;line-height:60px;padding:20px 0 10px 10px;font-size:16px;font-weight:bold;color:#ed3939}
+.search{background:url(../images/index2015/search.png) no-repeat 0 0;width:980px;height:45px}
+.isearch{margin-left:50px;height:45px;line-height:45px}
+.footer{height:100px;text-align:center;padding-top:20px;background:#e8cfcf;margin:0 auto;width:980px;border:}
+.g,.g a{color:#666;margin-top:5px;font-size:12px}
+.slidesjs-pagination{position:absolute;right:5px;bottom:5px;float:right;list-style:none;z-index:99999}
+.slidesjs-pagination li{float:left;margin:0 1px}
+.slidesjs-pagination li a{display:block;width:13px;height:0;padding-top:13px;background-image:url(../images/index2015/pagination.png);background-position:0 0;float:left;overflow:hidden}
+.slidesjs-pagination li a.active,.slidesjs-pagination li a:hover.active{background-position:0 -13px}
+.slidesjs-pagination li a:hover{background-position:0 -26px}
+#slides a:link,#slides a:visited{color:#333}
+#slides a:hover,#slides a:active{color:#9e2020}
+.vipMember,.bulltinboard,.samecityMember{float:left}
+.vipMember,.samecityMember{width:688px}
+.bulltinboard,.upgradeMember{width:290px;height:314px;border:1px solid #e5e5e5}
+/* .vipMember ul li{margin:0 8px 0 0;float:left} */
+.bulltinboard,.upgradeMember{height:303px;overflow:hidden}
+.bulltinboard li{height:23px;line-height:23px;padding:10px 0 0 10px;list-style-type:disc;}
+.upgradeMember li{height:35px;line-height:35px;padding:0 0 0 43px}
+.upgradeMember li {background: url(../images/index2015/voice.png) no-repeat 10px 3px;}
+.advanceSearch{margin-left:10px}
+.tel400{float:right;margin-top:15px}
+.loginqq{margin:0 5px 0 5px}
+.samecityMember ul li,.vipMember ul li{position:relative}
+.samecityMember ul li,.vipMember ul li{width:126px;height:152px}
+.samecityMember ul li span,.vipMember ul li span{position:absolute;top:0;left:0;display:none}
+.story ul li{float:left;position:relative;width:190px;height:125px;overflow:hidden;margin-right:6px;}
+.ShadowA-HoverBg{width:209px;height:40px;position:absolute;left:0;bottom:0;background:#000;filter:alpha(opacity=50);opacity:.5}
+.mosaic-overlay{position:absolute;left:0;bottom:-40px;_bottom:-41px}
+.ShadowA-Hover{width:120px;height:40px;z-index:10;display:none}
+.ShadowA-Hover-p{position:absolute;left:5px;bottom:2px;color:#fff;text-align:center}
+.ShadowA-Hover-p p{width:209px;height:18px;overflow:hidden}
+.colorccc{color:#ccc}
+.ShadowA{position:relative;width:209px;height:125px;overflow:hidden}
+.samecityMember ul li,.vipMember ul li{position:relative;background:#fff;overflow:hidden;zoom:1;margin:0 8px 2px 0;float:left}
+.samecityMemeber ul li:hover .flipcard .front.face,.flipcard:hover .front.face{transform:rotateY(180deg);-webkit-transform:rotateY(180deg);-moz-transform:rotateY(180deg)}
+.samecityMemeber ul li:hover .flipcard .back.face,.flipcard:hover .back.face{transform:rotateY(0deg);-webkit-transform:rotateY(0deg);-moz-transform:rotateY(0deg)}
+.vipMemeber ul li:hover .flipcard .front.face,.flipcard:hover .front.face{transform:rotateY(180deg);-webkit-transform:rotateY(180deg);-moz-transform:rotateY(180deg)}
+.vipMemeber ul li:hover .flipcard .back.face,.flipcard:hover .back.face{transform:rotateY(0deg);-webkit-transform:rotateY(0deg);-moz-transform:rotateY(0deg)}
+.flipcard .face{position:absolute;width:125px;height:155px;backface-visibility:hidden;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-webkit-box-shadow:0 #fff;-webkit-transform:rotateY(0deg);-webkit-transition:all .25s linear 0s;-webkit-transform-style:preserve-3d;-moz-transform-style:preserve-3d;-moz-transform:rotateY(0deg);-moz-transition:all .25s linear 0s;-ms-transform-style:preserve-3d;-ms-transform:rotateY(0deg);-ms-transition:all .25s linear 0s}
+.flipcard .face.back{transform:rotateY(-180deg) translateZ(1px);-webkit-transform:rotateY(-180deg) translateZ(1px);-moz-transform:rotateY(-180deg);-ms-transform:rotateY(180deg)}
+.flipcard{position:relative;width:100%;height:155px}
+.flipcard .front.face{overflow:hidden}
+.flipcard .back.face{position:absolute;color:white;overflow:hidden}
+.flipcard .back.face .proIntro{width:125px;height:155px;background:#f60;line-height:18px;color:#fff}
+.flipcard .back.face h5{display:block;height:32px;padding:0 7px;margin:0 0 10px 0;background:#e05a00;font:18px/32px 微软雅黑;overflow:hidden}
+.flipcard .back.face .text{padding:0 0 0 7px;color:#ffe5d5}
+.flipcard .face.front{background:#fff;background:#fff;opacity:.99}
+.logined{padding:20px 10px 20px 10px}
+.logined p{margin:15px 0 15px 0}
+.logined div{float:left}
+.fakeuname{position:absolute;left:90px;top:66px;color:#67afd8}
+.fakepwd{position:absolute;left:90px;top:112px;color:#67afd8}
+.errorTips{position:absolute;left:83px;top:34px;color:#f00;z-index:10;background-color:#000;color:#fff;padding-left:3px}
+.errorTips_{position:absolute;left:83px;top:79px;color:#f00;z-index:10;background-color:#000;color:#fff;padding-left:3px}

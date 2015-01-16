@@ -285,8 +285,8 @@ foreach($collection_data_array as $collection_data){
 			
             if($key==0){
 			    $db->query("update `web_members_base` set `mainimg`='$imgurl',`pic_date` = '$thumb_datedir',`pic_name` = '$pic_name' where `uid` = '$uid'");
-				//$db->query("update `web_members_search` set images_ischeck='2'  where `uid` = '$uid'");
-			   $db->query("update `web_members_search` set images_ischeck=1 where `uid` = '$uid'");
+				$db->query("update `web_members_search` set images_ischeck='2'  where `uid` = '$uid'");
+			   //$db->query("update `web_members_search` set images_ischeck=1 where `uid` = '$uid'");
 		    }
             $sql_pic="insert into `web_pic` set `uid`='$uid',`imgurl` = '$imgurl',`pic_date` = '$thumb_datedir',`syscheck`=1,album='',`pic_name` = '$pic_name'";//`isimage`='$value[img]',
             $db->query($sql_pic);

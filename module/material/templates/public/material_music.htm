@@ -7,14 +7,34 @@
         <link href="module/material/templates/default/left.css" rel="stylesheet" type="text/css" />
         <link href="module/material/templates/default/material.css" rel="stylesheet" type="text/css" />
         <script language="javascript">
-            function checkPicForm(){
-                pic = document.uppic.userfile.value;
-                if(!pic){
-                    alert('请选择要上传的音乐文件');
-                    return false;
-                }
-                return true;
-            }
+		    window.onload=function(){
+				function checkPicForm(){
+					pic = document.uppic.userfile.value;
+					if(!pic){
+						alert('请选择要上传的音乐文件');
+						return false;
+					}
+					return true;
+				}
+				
+				$('#deleteMusic').on('click',function(){
+				    var that =$(this);
+					if(confirm('您确定删除吗?')){
+					    $.ajax({
+						    url:'index.php?n=material&h=music',
+							type:'get',
+							data:{del:'delete'},
+							dataType:'text',
+							success:function(str){
+							    if(str=='ok'){
+								   alert('删除成功');
+								   that.parent().remove();
+								}
+							}
+						});
+					}
+				});
+			};
         </script>
     </head>
     <!-- <script src="module/search/templates/default/js/syscode.js?v=1" type="text/javascript"></script> -->
@@ -38,7 +58,7 @@
                                 
                                 <div class="up-photo-right">
                                     <p><strong>温馨提示：</strong>点击“浏览”从您的计算机中选择您想要上传的音乐。</p>
-                                   
+                                    {if $isMusic}<p>您当前已经上传了音乐<a href="javascript:;" id="deleteMusic">删除</a></p>{/if}
                                     <p style="padding:25px 0;">
                                     
                                         <form action="index.php?n=material&h=music" method="POST" enctype="multipart/form-data" name="uppic" id="uppic" onsubmit="return checkPicForm();">

@@ -3,7 +3,7 @@ function checkMobile(obj){
 	 //var reg0 = /^13\d{9}$/;   //130--139。至少7位
 	 //var reg1 = /^15[0-35-9]\d{8}$/;  //150-159(154除外)。至少7位
 	 //var reg2 = /^18\d{9}$/;   //180--189。至少7位
-	 var reg2 = /^1[3|5|8]\d{9}$/;   //180--189。至少7位
+	 var reg2 = /^1[3|4|5|7|8]\d{9}$/;   //180--189。至少7位
 	 var my=false;
 	 //if (reg0.test(obj.value))my=true;
 	 //if (reg1.test(obj.value))my=true;
@@ -150,7 +150,7 @@ function chk_phone(phone){
 	 if (reg1.test(phone))my=true;
 	 if (reg2.test(phone))my=true;
 	 */
-	 var reg0 = /^((1[345]\d{9})|(18[0-9]\d{8}))$/;
+	 var reg0 = /^((1[3457]\d{9})|(18[0-9]\d{8}))$/;
 	 var my=false;
 	 if (reg0.test(phone))my=true;
 	 return my;

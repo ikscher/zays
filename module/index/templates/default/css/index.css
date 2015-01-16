@@ -21,7 +21,7 @@ i{margin-right:5px;}
 .s span{color:#00CC33;padding-top:5px;display:inline-block;font-size:12px;}
 .line_{border:1px dotted #ccc;width:209px;margin-top:5px;}
 .detail{font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#00CC33;padding-top:5px;}
-.footer{height:100px;text-align:center;padding-top:20px;}
+.footer{height:100px;text-align:center;padding-top:20px;background-color: #1f2326;}
 .g{color:#999999;margin-top:5px;font-size:12px;}
 .g a{color:#999;text-decoration:none;}
 .loginform{position:relative;margin:0 auto;width:960px;}

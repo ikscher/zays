@@ -5,7 +5,7 @@ include "module/index/function.php";
  * 描述：
  */
 function login_submit() {
-	global $_MooClass,$dbTablePre,$_MooCookie;
+	global $_MooClass,$dbTablePre,$_MooCookie,$timestamp;
 	//noet 对提交的数据过滤
 	if(MooGetGPC('btnLogin','string','P') || MooGetGPC('loginsubmit','string','P')) {
 	    $username=MooGetGPC('username','string','P');
@@ -50,18 +50,7 @@ function login_submit() {
 			if($user_one = $_MooClass['MooMySQL']->getOne("SELECT uid from `{$dbTablePre}members_base` where qq='{$username}'",true))
 				$userid = $user_one['uid'];
 		}
-		/*if(strlen($username)==11){
-		   $sql_where = " s.telphone='{$username}'";
-           $user = $_MooClass['MooMySQL']->getOne("SELECT s.uid,s.username,s.password,s.birthyear,s.gender,s.province,s.city,b.automatic,s.is_lock,b.is_awoke,s.sid,l.last_login_time,l.lastip FROM `{$dbTablePre}members_search` as s left join `{$dbTablePre}members_base` as b on s.uid=b.uid left join `{$dbTablePre}members_login` as l on s.uid=l.uid   WHERE $sql_where");
-		}else{
-			$sql_where = " s.uid = '{$username}'";
-			$user = $_MooClass['MooMySQL']->getOne("SELECT s.uid,s.username,s.password,s.birthyear,s.gender,s.province,s.city,b.automatic,s.is_lock,b.is_awoke,s.sid,l.last_login_time,l.lastip FROM `{$dbTablePre}members_search` as s left join `{$dbTablePre}members_base` as b on s.uid=b.uid left join `{$dbTablePre}members_login` as l on s.uid=l.uid   WHERE $sql_where");
-			if(empty($user)){
-			   $sql_where = "b.qq='{$username}'";
-			   //$user = $_MooClass['MooMySQL']->getOne("SELECT a.uid,username,password,birthyear,gender,province,city,automatic,is_lock,is_awoke,sid,last_login_time,lastip FROM `{$dbTablePre}members` a ,`{$dbTablePre}memberfield` b WHERE a.uid=b.uid and $sql_where");
-				$user = $_MooClass['MooMySQL']->getOne("SELECT s.uid,s.username,s.password,s.birthyear,s.gender,s.province,s.city,b.automatic,s.is_lock,b.is_awoke,s.sid,l.last_login_time,l.lastip FROM `{$dbTablePre}members_search` as s left join `{$dbTablePre}members_base` as b on s.uid=b.uid left join `{$dbTablePre}members_login` as l on s.uid=l.uid   WHERE $sql_where");
-			}
-		}*/
+
 	}else{
 
 		$filter = array();
@@ -70,9 +59,7 @@ function login_submit() {
 			$ids = $sp->getIds();
 			if(isset($ids[0])) $userid = $ids[0];
 		}
-		/*$sql_where = "s.username = '{$username}'";
-		//$user = $_MooClass['MooMySQL']->getOne("SELECT uid,username,password,birthyear,gender,province,city,automatic,is_lock,is_awoke,sid,last_login_time,lastip FROM `{$dbTablePre}members` WHERE $sql_where");
-		$user = $_MooClass['MooMySQL']->getOne("SELECT s.uid,s.username,s.password,s.birthyear,s.gender,s.province,s.city,b.automatic,s.is_lock,b.is_awoke,s.sid,l.last_login_time,l.lastip FROM `{$dbTablePre}members_search` as s left join `{$dbTablePre}members_base` as b on s.uid=b.uid left join `{$dbTablePre}members_login` as l on s.uid=l.uid   WHERE $sql_where");*/
+	
 	}
 	//note 用户名找不到
 	if(!$userid) {
@@ -134,7 +121,6 @@ function login_submit() {
 		}else{
 			MooSetCookie('username',$username,-1200);
 		}
-//		echo print_r($_MooCookie);die;
 
 		MooPlugins('ipdata');
 		$online_ip = GetIP();
@@ -210,7 +196,10 @@ function login_submit() {
 			$sql_ip = "INSERT INTO {$GLOBALS['dbTablePre']}member_admininfo SET finally_ip='{$online_ip}',uid='{$uid}',real_lastvisit='{$lastactive}'";
 		}
 		$GLOBALS['_MooClass']['MooMySQL']->query($sql_ip);
-
+        
+		
+		
+		
 
 		//note 先删除表里面已存在对应用户的session
 		//$_MooClass['MooMySQL']->query("DELETE FROM `{$dbTablePre}membersession` WHERE `uid` = '$uid'");
@@ -240,9 +229,11 @@ function login_submit() {
 
 
 		if($returnurl){
-			header("Location:".$returnurl);
+			//header("Location:".$returnurl);
+			echo "<script>location.href='{$returnurl}';</script>";
 		}else{
-			header("Location:index.php");
+			//header("Location:service.html");
+			echo "<script>location.href='service.html';</script>";
 		}
 		exit();
 	}
@@ -253,7 +244,7 @@ function login_submit() {
  * 描述：
  *
  */
-function index_index() {
+function index_index_() {
 	global $_MooClass,$dbTablePre,$userid,$user_arr,$memcached;
 	$sql_condition_province=$sql_condition_city=$province='';
 	$currentdistrict = '0';$arr_diamond_female=$arr_diamond_male=null;
@@ -264,7 +255,6 @@ function index_index() {
     MooSetCookie('where_from',$url,300);
 
 	//note 先初始化用户信息
-	//MooUserInfo();
 	//-------会员推荐------//
 	$sex = !MooGetGPC('h','integer','G') ? 0 : 1;//note 性别
 	$workprovince = MooGetGPC('workprovince','integer','G');//工作省份
@@ -302,6 +292,13 @@ function index_index() {
 	$date_time=date('d');
 	$month_time=date('m');
 	$reguser_num=30000+$month_time*1100+$date_time*191;
+	
+	if($userid){
+		$sql="select mainimg from web_members_base where uid='{$userid}'";
+		$um=$_MooClass['MooMySQL']->getOne($sql);
+		$mainimg=$um['mainimg'];
+		if(empty($mainimg)) { $mainimg=$user_arr['gender']?'public/default/images/nopic_male.gif':'public/default/images/nopic_female.gif';}
+	}
    
     /*
 	if(isset($workprovince) && isset($workcity) && isset($age1) && $age2){
@@ -838,6 +835,7 @@ function index_index() {
 	$sql="SELECT  content from `{$dbTablePre}text_show` where start_time<{$time} and end_time>={$time} and `show`=1 order by `order` asc";
 	$textInfo=$_MooClass['MooMySQL']->getAll($sql);
 	//if(MooGetGPC('t','integer','G')==1){
+	
 	    require MooTemplate('public/indexTest', 'module');
 	//}else{
 	//    require MooTemplate('public/index', 'module');
@@ -846,6 +844,94 @@ function index_index() {
 
 }
 
+function index_index(){
+	global $_MooClass,$dbTablePre,$userid,$user_arr,$memcached;
+
+	$url=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    MooSetCookie('where_from',$url,300);
+
+	//note 先初始化用户信息
+	//-------会员推荐------//
+	/* $workprovince = MooGetGPC('workprovince','integer','G');//工作省份
+
+	$workcity =  MooGetGPC('workcity','integer','G');//工作城市
+
+	if(in_array( $workprovince, array(10101201,10101002)))
+	{
+		//note 修正广东省深圳和广州的区域查询
+		$workcity = $workprovince;
+		$workprovince = 10101000;
+	}
+
+	$age1 = MooGetGPC('age1','integer','G');//最小年龄
+	$age2 = MooGetGPC('age2','integer','G');//最大年龄 */
+
+
+
+    
+
+	//登录首页后用户的形象照
+	if($userid){
+		$sql="select mainimg from web_members_base where uid='{$userid}'";
+		$um=$_MooClass['MooMySQL']->getOne($sql);
+		$mainimg=$um['mainimg'];
+		if(empty($mainimg)) { $mainimg=$user_arr['gender']?'public/default/images/nopic_male.gif':'public/default/images/nopic_female.gif';}
+	}
+	
+	$gender=$user_arr['gender']?0:1;
+	
+	//包含配置文件
+	include_once("./module/crontab/crontab_config.php");
+	$cur_ip = GetIP();
+    //$cur_ip='202.115.131.250';
+	MooPlugins('ipdata');
+	$ip_arr = convertIp($cur_ip);
+    
+	
+	//得到省份对应的数值，查库
+	$province = $city = 0;
+	foreach($provice_list as $key => $val){
+		if(strstr($ip_arr,$val)){
+			$province = $key;
+			break;
+		}
+	}
+
+	
+	//得到市对应的城市代号
+	foreach($city_list as $city_key => $city_val){
+		if(strstr($ip_arr,$city_val)){
+			$city = $city_key;
+			break;
+		}
+	}
+    
+	
+	$sql="SELECT s.uid,s.nickname,s.gender,s.education,s.occupation,s.province,s.city,s.birthyear,s.s_cid,s.city_star,s.salary,b.mainimg,s.pic_num FROM web_members_search s left join web_members_base b on s.uid=b.uid where s.images_ischeck=1 and s.gender={$gender} order by  s.province<>'{$province}' , s.city<>'{$city}' ,s.city desc,s.province desc limit 0,10";
+	$userList = $_MooClass['MooMySQL']->getAll($sql);
+ 
+	
+    $sql="SELECT s.uid,s.nickname,s.gender,s.education,s.occupation,s.province,s.city,s.birthyear,s.s_cid,s.city_star,s.salary,b.mainimg,s.pic_num FROM web_members_search s left join web_members_base b on s.uid=b.uid where s.images_ischeck=1 and  s.s_cid in(10,20,30) order by  s.province<>'{$province}' , s.city<>'{$city}' ,s.city desc,s.province desc limit 0,10";
+	$vipuser = $_MooClass['MooMySQL']->getAll($sql);
+	
+
+	//成功案例
+	$sql = "select s.sid,s.uid,s.title,s.content,s.name1,s.name2,sp.img,s.story_date from `web_story` as s left join  `web_story_pic` as sp  on s.sid=sp.sid where s.syscheck=1 and s.recommand= '1'  GROUP BY sp.sid order by s.submit_date desc limit 0, 5";
+	$storys = $_MooClass['MooMySQL']->getAll($sql);
+	
+	
+	//滚动文字
+	$time=time();$textInfo=$textInfo_=array();
+	$sql="select content from web_admin_remark where title in ('秋波','赠送礼物','意中人','委托','升级') order by dateline desc limit 500";
+	$textInfo_=$_MooClass['MooMySQL']->getAll($sql);
+	
+	
+	$sql="SELECT  content from `{$dbTablePre}text_show` where start_time<{$time} and end_time>={$time} and `show`=1 order by `order` asc";
+	$textInfo=$_MooClass['MooMySQL']->getAll($sql);
+	
+	require MooTemplate('public/index2015', 'module');
+	
+}
 
 
 /**
@@ -912,6 +998,9 @@ switch ($_GET['h']) {
 		break;
 	case "add_vip" :
 		index_add_vip();
+		break;
+	case 'test':
+	    index_index_();
 		break;
 	default :
 		index_index();

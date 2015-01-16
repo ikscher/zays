@@ -343,8 +343,8 @@ function check_photo(){
                 
             }elseif($is_pass){      
                 $userphoto=MooGetGPC('userphoto','string','P');
-                $incoduce=MooGetGPC('incoduce','string','P');
-                $contentincoduce=MooGetGPC('contentincoduce','string','P');
+                //$incoduce=MooGetGPC('incoduce','string','P');
+                //$contentincoduce=MooGetGPC('contentincoduce','string','P');
                 if($userphoto){
                     //保存形象照
                     savePhoto($uid);

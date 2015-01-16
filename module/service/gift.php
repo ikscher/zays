@@ -31,16 +31,17 @@ function get_send_rose() {
 	$time = time(); 
 	//note 删除提交的数据
 	if($delrose && count($delroseid)) {
-		foreach($delroseid as $v) {
-			$_MooClass['MooMySQL']->query("UPDATE  {$dbTablePre}service_rose SET send_del=1,send_deltime='{$time}' WHERE rid = '$v'");
-		}
+		//foreach($delroseid as $v) {
+		$ids=implode(',',$delroseid);
+			$_MooClass['MooMySQL']->query("UPDATE  {$dbTablePre}service_rose SET send_del=1,send_deltime='{$time}' WHERE rid  in ({$ids})");
+		//}
 		MooMessage("鲜花删除成功",'index.php?n=service&h=gift&t=isendrose','05');
 	}
 	//note 如果提交的数据不存在，或者是提交的时候没有选中
-	if($delrose && !count($delroseid)) {
-		MooMessage('请选择要删除的鲜花','index.php?n=service&h=gift&t=isendrose','01');
-		exit;
-	}
+	//if($delrose && !count($delroseid)) {
+	//	MooMessage('请选择要删除的鲜花','index.php?n=service&h=gift&t=isendrose','01');
+	//	exit;
+	//}
 	
 	
 	//分页
@@ -93,20 +94,21 @@ function get_receive_rose() {
 	global $_MooClass,$dbTablePre,$userid,$pagesize,$user_arr;
 	
 	//note 获取删除提交的变量
-	$delrose = MooGetGPC('delrose','string');
-	$delroseid = MooGetGPC('delroseid','array');
+	$delrose = MooGetGPC('delrose','string','P');
+	$delroseid = MooGetGPC('delroseid','array','P');
+
 	//note 删除提交的数据
-	if($delrose && count($delroseid)) {
-		$ids = "'".implode( "','", $delroseid )."'";
+	if($delrose) {
+		$ids = implode( ',', $delroseid );
 		$time = time();
 		$_MooClass['MooMySQL']->query("UPDATE  {$dbTablePre}service_rose SET receive_del=1,receive_deltime='{$time}', receivenum = 0 WHERE rid  IN ( $ids )");
 		MooMessage("鲜花删除成功",'index.php?n=service&h=gift&t=igetrose','05');
 	}
 	//note 如果提交的数据不存在，或者是提交的时候没有选中
-	if($delrose && !count($delroseid)) {
-		MooMessage('请选择要删除的鲜花','index.php?n=service&h=gift&t=igetrose','01');
-		exit;
-	}
+	//if($delrose && !count($delroseid)) {
+	//	MooMessage('请选择要删除的鲜花','index.php?n=service&h=gift&t=igetrose','01');
+	//	exit;
+	//}
 	
 	//分页
 	$page_per = 4;
@@ -138,7 +140,7 @@ function get_receive_rose() {
 		$roses[$k]=$rose;
 	}
 	
-	
+
 	
 	//note 已收到的玫瑰总数
 	$temp = $_MooClass['MooMySQL']->getOne("SELECT sum(case when receivenum>=1 then 1 else 0 end) as num FROM {$dbTablePre}service_rose WHERE receiveuid = '$userid' and receive_del=0");

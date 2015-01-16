@@ -21,7 +21,7 @@ function convertIp($ip) {
 		} elseif ($iparray[0] > 255 || $iparray[1] > 255 || $iparray[2] > 255 || $iparray[3] > 255) {
 			$return = 'Invalid IP Address';
 		} else {
-			$ipfile = MOOPHP_ROOT.'plugins/ipdata/wry.dat';
+			$ipfile = MOOPHP_ROOT.'plugins/ipdata/17monipdb.dat';
 			if(@file_exists($ipfile)) {
 				$return = convertIpFull($ip, $ipfile);
 			}

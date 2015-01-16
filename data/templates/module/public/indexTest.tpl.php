@@ -5,7 +5,7 @@
         <meta  name="viewport"  content="width=device-width,initial-scale=1,user-scalable=0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="keywords" content="红娘,征婚,征婚网,婚介,婚恋,婚姻,交友,交友网,相亲,征婚,姻缘,牵线,寻爱">
-        <meta name="description" content="红娘是由专业的红娘团队以及情感专家组成的严肃正规的婚恋网站, 针对城市白领提供专业的婚恋服务，帮助单身会员组成美满幸福家庭。">
+        <meta name="description" content="真爱一生由专业的红娘团队以及情感专家组成的严肃正规的婚恋网站, 针对城市白领提供专业的婚恋服务，帮助单身会员组成美满幸福家庭。">
         <title>真爱一生网</title>
         <link rel="shortcut icon" href="public/default/images/favicon.ico" type="image/x-icon"/>
         <link rel="icon" href="public/default/images/favicon.ico" type="image/x-icon">
@@ -133,7 +133,7 @@
 				  <!-- Carousel items -->
 				  <div class="carousel-inner">
 					<div class="active item"><a href="upgrade.html"><img  alt="Third slide" src="module/index/templates/default/images/vution/diamond.jpg" /></a></div>
-					<div class="item"><img  alt="Third slide" src="module/index/templates/default/images/vution/christmas.jpg" /></div>
+					<div class="item"><a href="upgrade.html"><img  alt="Third slide" src="module/index/templates/default/images/vution/janfirst.jpg" /></a></div>
 				  </div>
 				  <!-- Carousel nav -->
 				  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
@@ -230,7 +230,7 @@
         </div>
     </div>
     <div class="footer">
-	    <div style="position:fixed;top:200px;right:20px;"><img src="module/index/templates/default/images/vution/Animated_Xmas-tree-animation.gif" /></div>
+	    <!-- <div style="position:fixed;top:300px;right:20px;"><img src="module/index/templates/default/images/vution/Animated_Xmas-tree-animation.gif" /></div> -->
         <div class="g">品牌：专业婚恋服务&nbsp; 专业：庞大的资深红娘队伍&nbsp; 真实：诚信会员验证体系&nbsp; </div>
         <div class="g">Copyright@<?php echo date('Y');?> 真爱一生网.All Right Reserved.<a  href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备14002819号</a> </div>
         <div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>

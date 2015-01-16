@@ -29,10 +29,34 @@
 		$('#closeDiv').click(function(){
 		$('#unfbox').css("display","none");
 		var date=new Date();
-		date.setTime(date.getTime()+24*3600*1000);
+		date.setTime(date.getTime()+4*3600*1000);
 		document.cookie = "ServerCenter-26244589=1;expires=" + date.toGMTString() + ";";
 		})
 	});
+	
+	
+	function setCookie(name,value){
+		var never = new Date();
+		//设置never的时间为当前时间加上1天的毫秒值
+		never.setTime(never.getTime()+4*3600*1000);    
+		var expString = "expires="+ never.toGMTString()+";";
+		 document.cookie = name + "="+ escape (value) + ";expires=" + expString+ 'path=/;';
+		
+	}
+	
+	
+	function getCookie(name) {
+		var arr = document.cookie.split('; ');
+		var i = 0;
+		for(i=0; i<arr.length; i++) {
+			var arr2 = arr[i].split('=');
+			if(arr2[0] == name) {return arr2[1];}
+		}
+		return '';
+	}
+	function removeCookie(name) {
+		setCookie(name,'',-1);
+	}
 	
 </script>
 
@@ -131,7 +155,7 @@
 		</div>
 		<?php } ?>
 
-		<div class="right-happyway">
+		<!-- <div class="right-happyway">
 			<div class="r-center-tilte">
 			<span class="right-title">幸福之路动态</span>
 			</div>
@@ -154,7 +178,9 @@
 			</div>
 			<div class="r-center-bottom">
 			</div>
-		</div>
+		</div> -->
+		
+		
 		<div class="clear"></div>
 		<div class="r-like fleft" style="margin-top:8px;">
 			<div class="r-like-title">
@@ -166,7 +192,7 @@
 				<?php foreach((array)$able_like as $able_likes) {?>
 					<li>
 						<dl class="r-like-c-data">
-							<dt><div><a style="display:block;" href="index.php?n=space&h=viewpro&uid=<?php echo $able_likes['uid'];?>" target="_blank">
+							<dt><div><a style="display:block;" href="space_<?php echo $able_likes['uid'];?>.html" target="_blank">
 							<?php if($able_likes['mainimg'] && $able_likes['images_ischeck']==1) { ?>       
                        <img src="  <?php if(MooGetphoto($able_likes['uid'],'medium')) echo IMG_SITE.MooGetphoto($able_likes['uid'],'medium');
                       elseif($able_likes['gender'] == '1')echo 'public/system/images/woman_100.gif';
@@ -186,7 +212,7 @@
           					<img src="public/system/images/nopic_man_100.gif" />
           				<?php } ?>
          		<?php } ?></a></div></dt>
-							<dd><?php if($able_likes['s_cid'] ==20) { ?><a href="index.php?n=payment&h=diamond" target="_blank"><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/></a><?php } elseif ($able_likes['s_cid'] == 30) { ?><a href="index.php?n=payment" target="_blank"><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/></a><?php } else { ?><?php } ?><?php if($able_likes['nickname']) { ?><?php echo MooCutstr($able_likes['nickname'],'10','');?><?php } else { ?>会员<?php echo MooCutstr($able_likes['uid'],'10','');?><?php } ?></dd>
+							<dd><?php if($able_likes['s_cid'] ==20) { ?><img src="module/index/templates/default/images/zuan0.gif" title="钻石会员" alt="钻石会员"/><?php } elseif ($able_likes['s_cid'] == 30) { ?><img src="module/index/templates/default/images/zuan1.gif" title="高级会员" alt="高级会员"/><?php } else { ?><?php } ?><?php if($able_likes['nickname']) { ?><?php echo MooCutstr($able_likes['nickname'],'10','');?><?php } else { ?>会员<?php echo MooCutstr($able_likes['uid'],'10','');?><?php } ?></dd>
 							<dd><?php if($able_likes['birthyear']) { ?><?php echo (gmdate('Y', time()) - $able_likes['birthyear']);?>岁<?php } else { ?>年龄保密<?php } ?></dd>
 						</dl>
 					</li>
@@ -198,7 +224,7 @@
                   <?php $send_user1 = leer_send_user1($visitors['visitorid']); ?>
 					<li>
 						<dl class="r-like-c-data">
-							<dt><div><a style="display:block;" href="index.php?n=space&h=viewpro&uid=<?php echo $visitors['visitorid'];?>" target="_blank">
+							<dt><div><a style="display:block;" href="space_<?php echo $visitors['visitorid'];?>.html" target="_blank">
 							 <?php if($send_user1['mainimg'] &&  $send_user1['images_ischeck']=='1' ) { ?>
 							  <img class="_photo_ fixphoto" src=" <?php if(MooGetphoto($send_user1['uid'],'mid')) echo IMG_SITE.MooGetphoto($send_user1['uid'],'mid');elseif( $send_user1['gender'] == '1')echo 'public/system/images/woman_100.gif';else  echo 'public/system/images/man_100.gif';?>"   />
 							 <?php } elseif ($send_user1['mainimg']) { ?>
@@ -238,7 +264,17 @@
 	<?php include MooTemplate('system/footer','public'); ?><!--foot end-->
 </div><!--main end-->
 
-
+<!-- Modal -->
+<div id="myModals" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">系统提示</h3>
+  </div>
+  <div class="modal-body" style="background:url(module/service/templates/default/images/flower.png) right 100px no-repeat;">
+    
+  </div>
+  
+</div>
 
 <script>
 	function setTab(name,cursel,n){
@@ -250,6 +286,43 @@
 		}
 	}
 	
+	(function(){
+		var last_refresh_time,last_login_time;
+		var timestamp=parseInt((new Date().getTime())/1000);
+		last_refresh_time=getCookie('refresh_myindex');
+		last_login_time = getCookie('Moo_last_login_time');
+		last_login_time=last_refresh_time?last_refresh_time:last_login_time;
+		
+		//console.log(last_login_time);
+		if(!last_refresh_time || timestamp-last_login_time>14400){
+			$.ajax({
+				url:'ajax.php?n=login&h=showBrowser',
+				dataType:'json',
+				success:function(json){
+					if(json.length<=0) return false;
+					$('#myModals').modal({show:true})
+					var html_str='';				
+					for(var uid in json){
+						var content=[];
+						content=json[uid].split(',');
+						var posY=-(content[0]-1)*35;
+						html_str+='<p style="font-size:14px;margin-bottom:10px;background:url(module/service/templates/default/images/qlj.png) no-repeat 0 '+ posY+'px;height:35px;line-height:35px;padding-left:40px;">';
+						var url;
+						if(content[0]==1) { url='gift.html';}else if (content[0]==2) { url='leer.html';} else if(content[0]==3) {url='liker.html';}
+						html_str+= uid +'已经向你发送了'+content[1]+'，<a href="'+url+'">点击查看</a>';
+						html_str+='</p>';
+						
+					}
+					
+					html_str+='<p style="margin-top:30px;">【提示】上传形象照，您将获得更多异性会员的关注    <a href="index.php?n=material&h=show">我要上传照片>></a></p>';
+					
+					$('#myModals .modal-body').append(html_str);
+				}
+			});
+			setCookie('refresh_myindex',timestamp);
+			
+		}
+    })();
 
 </script>
 

@@ -48,7 +48,7 @@
                                     {loop $friends $friend}
                                    
                                     <ul class="service-liker-list">
-                                        <li><input type="checkbox" name="delfriendid[]" value="{$friends['fid']}"/></li>
+                                        <li><input type="checkbox" name="delfriendid[]" value="{$friend['l']['fid']}"/></li>
                                         <li>
                                             <div class="r-service-img">
                                                 {if !empty($friend['s']['city_star'])}<a class="citystar2"><img src="module/service/templates/default/images/citystar.gif" /></a>{/if}
@@ -109,7 +109,7 @@
                                     {/loop}
 
                                     <div class="clear"></div>
-                                    <div class="pages"><span class="fleft" style="padding-left:40px;"><input name="" type="checkbox" onclick="checkAll(this)"  value="" />&nbsp;全选&nbsp;<input name="" type="submit" class="btn btn-default" value="删除信息" /><input type="hidden"  name="delfriend"  value="删除秋波"></span>{php echo multimail($total,$pagesize,$page,$currenturl2)}<input name="" id="pageGo" type="text" size="3" />&nbsp;<input name=""  type="button" class="go-page" value="GO" onclick="gotoPage()" style="float:none"/>
+                                    <div class="pages"><span class="fleft" style="padding-left:40px;"><input name="" type="checkbox" onclick="checkAll(this)"  value="" />&nbsp;全选&nbsp;<input name="" type="submit" class="btn btn-default" value="删除信息" /><input type="hidden"  name="delfriend"  value="1"></span>{php echo multimail($total,$pagesize,$page,$currenturl2)}<input name="" id="pageGo" type="text" size="3" />&nbsp;<input name=""  type="button" class="go-page" value="GO" onclick="gotoPage()" style="float:none"/>
                                         <div class="clear"></div>
                                     </div>{/if}
                                 </div>
