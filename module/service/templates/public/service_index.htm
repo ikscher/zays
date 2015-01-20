@@ -96,9 +96,9 @@
 						
 						{else}
 								{if $user1['gender'] == '1'}
-									<img src="public/system/images/service_nopic_woman.gif"  />
+									<img width="110" height="138" src="public/default/images/nopic_female.gif"  />
 								{else}
-									<img src="public/system/images/service_nopic_man.gif"  />
+									<img width="110" height="138" src="public/default/images/nopic_male.gif"  />
 								{/if}
 						{/if}
 				</div>
@@ -226,7 +226,7 @@
 						<dl class="r-like-c-data">
 							<dt><div><a style="display:block;" href="space_{$visitors['visitorid']}.html" target="_blank">
 							 {if $send_user1['mainimg'] &&  $send_user1['images_ischeck']=='1' }
-							  <img class="_photo_ fixphoto" src=" {php if(MooGetphoto($send_user1[uid],'mid')) echo IMG_SITE.MooGetphoto($send_user1[uid],'mid');elseif( $send_user1['gender'] == '1')echo 'public/system/images/woman_100.gif';else  echo 'public/system/images/man_100.gif';}"   />
+							  <img  src=" {php if(MooGetphoto($send_user1[uid],'mid')) echo IMG_SITE.MooGetphoto($send_user1[uid],'mid');elseif( $send_user1['gender'] == '1')echo 'public/system/images/woman_100.gif';else  echo 'public/system/images/man_100.gif';}"   />
 							 {elseif $send_user1['mainimg']}
 										{if $send_user1['gender'] == '1'}
 											<img src="public/system/images/woman_100.gif" />
@@ -327,21 +327,6 @@
 </script>
 
 
-<!--图像修正-->
-<script type="text/javascript">
-    $(document).ready(function(){
-        var theImage = new Image();
-		
-        $("._photo_").each(function(i,w){
-            theImage.src = $(w).attr("src");
-            var imageWidth = theImage.width;
-            var imageHeight = theImage.height;
-            if(imageHeight>170){
-                $(w).removeClass('fixphoto');
-            }
-        })
-    });
-</script> 
 </body>
 </html>
 

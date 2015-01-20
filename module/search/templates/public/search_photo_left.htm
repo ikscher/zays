@@ -30,7 +30,7 @@ $(".search-photo-img").mouseenter(function(){
 			  elseif(MooGetphoto($users['uid'],'index')) echo MooGetphoto($users['uid'],'index');
 			  elseif($users['gender'] == '1') echo 'public/system/images/se_woman.jpg';
 			  else  echo 'public/system/images/se_man.jpg';
-			}"  class="personalphoto fixphoto"  />
+			}"  />
 			{else}
 			 <img src="public/system/images/se_man.jpg" />					             
 			{/if}
@@ -42,7 +42,7 @@ $(".search-photo-img").mouseenter(function(){
 			  elseif(MooGetphoto($users['uid'],'index')) echo MooGetphoto($users['uid'],'index');
 			  elseif($users['gender'] == '1') echo 'public/system/images/se_woman.jpg';
 			  else  echo 'public/system/images/se_man.jpg';
-			}"  class="personalphoto fixphoto"  />
+			}"  />
 			{else}
 			 <img src="public/system/images/se_woman.jpg" />					             
 			{/if}
@@ -100,19 +100,3 @@ $multi_pages = multipage($total,$pagesize,$page,$currenturl4); }
 </div>
 <div class="clear" style="clear:both;"></div>
 </div>
-<!--图像修正-->
-<script type="text/javascript">
-    $(document).ready(function(){
-        var theImage = new Image();
-		
-        $(".personalphoto").each(function(i,w){
-            theImage.src = $(w).attr("src");
-            var imageWidth = theImage.width;
-            var imageHeight = theImage.height;
-            if(imageHeight>=130){
-                $(w).removeClass('fixphoto');
-                $(w).addClass('fixphoto_');
-            }
-        })
-    });
-</script> 

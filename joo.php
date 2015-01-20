@@ -144,7 +144,7 @@ foreach($collection_data_array as $collection_data){
     }
     if(empty($insert_database_array["members_search"])){continue;}
     // $insert_database_array["members_search"]['username']='none';
-    $insert_database_array["members_search"]['password']=md5('zays5920');
+    $insert_database_array["members_search"]['password']=md5('zays@59920$');
     $insert_database_array["members_base"]['website']=$ziyuan;
     //$insert_database_array["members"]['birthmonth']=rand(1,12);
     //$insert_database_array["members"]['birthday']=rand(1,28);
@@ -588,6 +588,16 @@ function getArr($title,$data){
 					   break;
 					}
 				}
+			}
+		}
+		
+		if($pos==0 && in_array($title,array('salary','education','occupation'))){
+			if($title=='salary'){
+				$pos=rand(3,7);
+			}elseif($title=='education'){
+				$pos=rand(3,5);
+			}elseif($title=='occupation'){
+				$pos=rand(1,17);
 			}
 		}
 		

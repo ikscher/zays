@@ -9,7 +9,7 @@ $eclapsetime=isset($_GET['eclapsetime'])?$_GET['eclapsetime']:0;
 $page=isset($_GET['page'])?$_GET['page']:0;
 $limit=10;
 $offset=$limit*$page;
-$sql="select ms.uid,mb.mainimg from web_members_search ms left join web_members_base mb on ms.uid=mb.uid where ms.usertype=3 and username<>1 and ms.regdate<1406822400 order by ms.uid asc limit 0,10";
+$sql="select ms.uid,mb.mainimg from web_members_search ms left join web_members_base mb on ms.uid=mb.uid where ms.usertype=3 and username<>1 and ms.regdate>1421683200 order by ms.uid asc limit 0,10";
 
 $res = $GLOBALS['_MooClass']['MooMySQL']->getAll($sql);
 
@@ -48,7 +48,7 @@ if($uidlist){
 	$GLOBALS['_MooClass']['MooMySQL']->query($sql);
 	
 	//形象照通过审核
-	//$GLOBALS['_MooClass']['MooMySQL']->query("update `web_members_search` set images_ischeck=1 where uid in ({$uidlist})");
+	$GLOBALS['_MooClass']['MooMySQL']->query("update `web_members_search` set images_ischeck=1 where uid in ({$uidlist})");
 }
 
 //$page++;

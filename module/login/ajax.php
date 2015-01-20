@@ -184,12 +184,15 @@
 			$start_year= $user['birthyear']-2;
 			$end_year  = $user['birthyear']+10;
 			$index = 'members_man';
+			$gender=0;
 		}else{
 			// 年龄段分析
 		    $start_year= $user['birthyear'] - 10;
 			$end_year  = $user['birthyear'] +2;
             $index = 'members_women';
+			$gender=1;
 		}
+		
 		//在sphinx中搜索
 		$sp = searchApi($index);
 		//满足省市
@@ -199,6 +202,7 @@
 					array("images_ischeck",1),
 					array("province",$user['province']),
 					array("city",$user['city']),
+					array("gender",$gender),
 					array("usertype",3),
 					array("birthyear", array($start_year,$end_year))
 				),

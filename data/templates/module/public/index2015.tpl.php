@@ -9,7 +9,7 @@
 <link rel="icon" href="public/default/images/favicon.ico" type="image/x-icon">
 <title>真爱一生网</title>
 <link href="module/index/templates/default/css/index2015.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="module/index/templates/default/js/sys.js"></script>
+<script type="text/javascript" src="module/index/templates/default/js/sys.min.js"></script>
 <script type="text/javascript">
    window.onload=function(){
 		  $('#slides').slidesjs({
@@ -231,8 +231,8 @@
   <div class="g">客服热线：400-8787-920 （周一至周日：9：00-21：00）客服信箱：kefu@zhenaiyisheng.cc</div>
 </div>
 <script type="text/javascript" src="public/system/js/jquery-1.8.3.min.js" ></script>
-<script type="text/javascript" src="module/index/templates/default/js/jquery.slides.js"></script>
-<script type="text/javascript" src="module/index/templates/default/js/json2.js"></script>
+<script type="text/javascript" src="module/index/templates/default/js/jquery.slides.min.js"></script>
+<script type="text/javascript" src="module/index/templates/default/js/json2.min.js"></script>
 <script type="text/javascript" src="module/register/templates/public/js/commonValidate.js?v=2015"></script>
 <script type="text/javascript">
     $(function(){sys.init(21,45,<?php echo $province;?>,<?php echo $city;?>);sys.change();});

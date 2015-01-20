@@ -875,7 +875,7 @@ function index_index(){
 		$sql="select mainimg from web_members_base where uid='{$userid}'";
 		$um=$_MooClass['MooMySQL']->getOne($sql);
 		$mainimg=$um['mainimg'];
-		if(empty($mainimg)) { $mainimg=$user_arr['gender']?'public/default/images/nopic_male.gif':'public/default/images/nopic_female.gif';}
+		if(empty($mainimg)) { $mainimg=$user_arr['gender']?'public/default/images/nopic_female.gif':'public/default/images/nopic_male.gif';}
 	}
 	
 	$gender=$user_arr['gender']?0:1;
@@ -921,10 +921,21 @@ function index_index(){
 	
 	
 	//滚动文字
+	$textInfo_=array();
 	$time=time();$textInfo=$textInfo_=array();
-	$sql="select content from web_admin_remark where title in ('秋波','赠送礼物','意中人','委托','升级') order by dateline desc limit 500";
+	$sql="select content from web_admin_remark where title in ('秋波','赠送礼物','意中人','委托') order by dateline desc limit 60";
 	$textInfo_=$_MooClass['MooMySQL']->getAll($sql);
 	
+	$sql="select uid,apply_note from web_payment_new where status=3  order by pay_time desc limit 20";
+	$result_=$_MooClass['MooMySQL']->getAll($sql);
+	foreach($result_ as $k_=>$v_){
+		if(!empty($v_['uid'])){
+			$xyz['content']='恭喜'.$v_['uid'].'成功升级为'.$v_['apply_note'];
+		    array_push($textInfo_,$xyz);
+		}
+	}
+	
+	shuffle($textInfo_);
 	
 	$sql="SELECT  content from `{$dbTablePre}text_show` where start_time<{$time} and end_time>={$time} and `show`=1 order by `order` asc";
 	$textInfo=$_MooClass['MooMySQL']->getAll($sql);
