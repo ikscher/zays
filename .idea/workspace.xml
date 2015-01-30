@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6d1fd141-8fc1-404a-9409-4bb9d9f67d8b" name="Default" comment="" />
+    <ignored path="zays.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="zays" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Global.function.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/framwork/Global.function.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3335" max-vertical-offset="40020">
+              <caret line="150" column="37" selection-start-line="150" selection-start-column="37" selection-end-line="150" selection-end-column="37" />
+              <folding>
+                <marker date="1417339126000" expanded="true" signature="13581:13664" placeholder="select sys_u..system_user..." />
+                <marker date="1417339126000" expanded="true" signature="13760:13914" placeholder="insert into ..." />
+                <marker date="1417339126000" expanded="true" signature="17734:17957" placeholder="select count..." />
+                <marker date="1417339126000" expanded="true" signature="24340:24452" placeholder="SELECT MAX(r..." />
+                <marker date="1417339126000" expanded="true" signature="24673:24784" placeholder="SELECT MAX(r..." />
+                <marker date="1417339126000" expanded="true" signature="26224:26351" placeholder="SELECT * FRO.._dbTablePre_service_visitor &#10;&#9;&#9;WHERE..." />
+                <marker date="1417339126000" expanded="true" signature="26737:26857" placeholder="SELECT uid F.._dbTablePre_members_search WHERE..." />
+                <marker date="1417339126000" expanded="true" signature="27300:27399" placeholder="SELECT `uid`..." />
+                <marker date="1417339126000" expanded="true" signature="27751:27869" placeholder="INSERT INTO ..." />
+                <marker date="1417339126000" expanded="true" signature="28154:28253" placeholder="SELECT rid,s.._dbTablePre_service_rose WHERE..." />
+                <marker date="1417339126000" expanded="true" signature="28377:28542" placeholder="UPDATE :_dbT..." />
+                <marker date="1417339126000" expanded="true" signature="28742:28923" placeholder="INSERT INTO ..." />
+                <marker date="1417339126000" expanded="true" signature="29146:29245" placeholder="SELECT lid,s.._dbTablePre_service_leer WHERE..." />
+                <marker date="1417339126000" expanded="true" signature="29369:29534" placeholder="UPDATE :_dbT..." />
+                <marker date="1417339126000" expanded="true" signature="29734:29917" placeholder="INSERT INTO ..." />
+                <marker date="1417339126000" expanded="true" signature="30083:30132" placeholder="SELECT * FRO.._dbTablePre_members_bind WHERE..." />
+                <marker date="1417339126000" expanded="true" signature="30326:30439" placeholder="UPDATE :_dbT..." />
+                <marker date="1417339126000" expanded="true" signature="30716:30769" placeholder="UPDATE :_dbT..." />
+                <marker date="1417339126000" expanded="true" signature="31599:31666" placeholder="select `love..." />
+                <marker date="1417339126000" expanded="true" signature="31923:31980" placeholder="select * fro.._dbTablePre_certification where..." />
+                <marker date="1417339126000" expanded="true" signature="32535:32619" placeholder="UPDATE :_dbT..." />
+                <marker date="1417339126000" expanded="true" signature="48987:49130" placeholder="select conte..web_text_show..." />
+                <marker date="1417339126000" expanded="true" signature="50025:50062" placeholder="select uid f..web_members_blacklist..." />
+                <marker date="1417339126000" expanded="true" signature="51125:51187" placeholder="select s_cid.._dbTablePremembers_search where..." />
+                <marker date="1417339126000" expanded="true" signature="51359:51417" placeholder="select * fro.._dbTablePremembers_search where..." />
+                <marker date="1417339126000" expanded="true" signature="51485:51541" placeholder="select * fro.._dbTablePremembers_base where..." />
+                <marker date="1417339126000" expanded="true" signature="52288:52368" placeholder="SELECT :_get..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MooPHP.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/framwork/MooPHP.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.30612245" vertical-offset="4090" max-vertical-offset="70495">
+              <caret line="190" column="42" selection-start-line="190" selection-start-column="42" selection-end-line="190" selection-end-column="42" />
+              <folding>
+                <marker date="1422608380402" expanded="true" signature="17732:17837" placeholder="select scree.._dbTablePre_screen where..." />
+                <marker date="1422608380402" expanded="true" signature="22737:22834" placeholder="select * fro.._dbTablePremail_queue where..." />
+                <marker date="1422608380402" expanded="true" signature="54275:54391" placeholder="select count.._dbTablePre_members_search where..." />
+                <marker date="1422608380402" expanded="true" signature="57036:57249" placeholder="SELECT s.uid.._dbTablePre_members_search s..." />
+                <marker date="1422608380402" expanded="true" signature="65078:65178" placeholder="update :_dbT..." />
+                <marker date="1422608380402" expanded="true" signature="65774:65897" placeholder="select count.._dbTablePre_services where..." />
+                <marker date="1422608380402" expanded="true" signature="67568:67660" placeholder="select * fro.._dbTablePreaccount where..." />
+                <marker date="1422608380402" expanded="true" signature="68454:68695" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="69135:69366" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="69706:69874" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="70159:70405" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="70752:70988" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="71311:71484" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="71860:72007" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="72443:72480" placeholder="select * fro..dbTablePresite..." />
+                <marker date="1422608380402" expanded="true" signature="72808:72921" placeholder="select * fro.._dbTablePreday where..." />
+                <marker date="1422608380402" expanded="true" signature="79353:79602" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="80542:80793" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="81415:81626" placeholder="select count..." />
+                <marker date="1422608380402" expanded="true" signature="83202:83277" placeholder="SELECT lastv..." />
+                <marker date="1422608380402" expanded="true" signature="83606:83954" placeholder="SELECT uid,m.._dbTablePre_admin_user &#10;                WHERE..." />
+                <marker date="1422608380402" expanded="true" signature="84150:84236" placeholder="UPDATE :_dbT..." />
+                <marker date="1422608380402" expanded="true" signature="84418:84498" placeholder="UPDATE :_dbT..." />
+                <marker date="1422608380402" expanded="true" signature="84636:84711" placeholder="SELECT uid F.._GLOBALS_dbTablePre_member_admininfo WHERE..." />
+                <marker date="1422608380402" expanded="true" signature="84863:84947" placeholder="INSERT INTO ..." />
+                <marker date="1422608380402" expanded="true" signature="85090:85241" placeholder="UPDATE :_dbT..." />
+                <marker date="1422608380402" expanded="true" signature="91481:91588" placeholder="select count.._dbTablePrecertification where..." />
+                <marker date="1422608380402" expanded="true" signature="93643:93706" placeholder="select is_ph.._dbTablePre_members_base where..." />
+                <marker date="1422608380402" expanded="true" signature="94772:94831" placeholder="select md5 f.._dbTablePre_sendmsg_tmp where..." />
+                <marker date="1422608380402" expanded="true" signature="94974:95131" placeholder="INSERT INTO ..." />
+                <marker date="1422608380402" expanded="true" signature="95676:95791" placeholder="INSERT INTO ..." />
+                <marker date="1422608380402" expanded="true" signature="96177:96190" placeholder="..." />
+                <marker date="1422608380402" expanded="true" signature="96317:96385" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+                <marker date="1422608380402" expanded="true" signature="96559:96627" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+                <marker date="1422608380402" expanded="true" signature="97401:97469" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+                <marker date="1422608380402" expanded="true" signature="97942:98010" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+                <marker date="1422608380402" expanded="true" signature="98650:98743" placeholder="insert into ..." />
+                <marker date="1422608380402" expanded="true" signature="98781:98884" placeholder="INSERT INTO ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/framwork/MooPHP.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promotion2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="vcs.Git" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RunManager">
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d1fd141-8fc1-404a-9409-4bb9d9f67d8b" name="Default" comment="" />
+      <created>1422601120179</created>
+      <option name="number" value="Default" />
+      <updated>1422601120179</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26096824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/framwork/Global.function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3335" max-vertical-offset="40020">
+          <caret line="150" column="37" selection-start-line="150" selection-start-column="37" selection-end-line="150" selection-end-column="37" />
+          <folding>
+            <marker date="1417339126000" expanded="true" signature="13581:13664" placeholder="select sys_u..system_user..." />
+            <marker date="1417339126000" expanded="true" signature="13760:13914" placeholder="insert into ..." />
+            <marker date="1417339126000" expanded="true" signature="17734:17957" placeholder="select count..." />
+            <marker date="1417339126000" expanded="true" signature="24340:24452" placeholder="SELECT MAX(r..." />
+            <marker date="1417339126000" expanded="true" signature="24673:24784" placeholder="SELECT MAX(r..." />
+            <marker date="1417339126000" expanded="true" signature="26224:26351" placeholder="SELECT * FRO.._dbTablePre_service_visitor &#10;&#9;&#9;WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="26737:26857" placeholder="SELECT uid F.._dbTablePre_members_search WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="27300:27399" placeholder="SELECT `uid`..." />
+            <marker date="1417339126000" expanded="true" signature="27751:27869" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="28154:28253" placeholder="SELECT rid,s.._dbTablePre_service_rose WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="28377:28542" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="28742:28923" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="29146:29245" placeholder="SELECT lid,s.._dbTablePre_service_leer WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="29369:29534" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="29734:29917" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="30083:30132" placeholder="SELECT * FRO.._dbTablePre_members_bind WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="30326:30439" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="30716:30769" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="31599:31666" placeholder="select `love..." />
+            <marker date="1417339126000" expanded="true" signature="31923:31980" placeholder="select * fro.._dbTablePre_certification where..." />
+            <marker date="1417339126000" expanded="true" signature="32535:32619" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="48987:49130" placeholder="select conte..web_text_show..." />
+            <marker date="1417339126000" expanded="true" signature="50025:50062" placeholder="select uid f..web_members_blacklist..." />
+            <marker date="1417339126000" expanded="true" signature="51125:51187" placeholder="select s_cid.._dbTablePremembers_search where..." />
+            <marker date="1417339126000" expanded="true" signature="51359:51417" placeholder="select * fro.._dbTablePremembers_search where..." />
+            <marker date="1417339126000" expanded="true" signature="51485:51541" placeholder="select * fro.._dbTablePremembers_base where..." />
+            <marker date="1417339126000" expanded="true" signature="52288:52368" placeholder="SELECT :_get..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framwork/MooPHP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="70495">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1422608380402" expanded="true" signature="17732:17837" placeholder="select scree.._dbTablePre_screen where..." />
+            <marker date="1422608380402" expanded="true" signature="22737:22834" placeholder="select * fro.._dbTablePremail_queue where..." />
+            <marker date="1422608380402" expanded="true" signature="54275:54391" placeholder="select count.._dbTablePre_members_search where..." />
+            <marker date="1422608380402" expanded="true" signature="57036:57249" placeholder="SELECT s.uid.._dbTablePre_members_search s..." />
+            <marker date="1422608380402" expanded="true" signature="65078:65178" placeholder="update :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="65774:65897" placeholder="select count.._dbTablePre_services where..." />
+            <marker date="1422608380402" expanded="true" signature="67568:67660" placeholder="select * fro.._dbTablePreaccount where..." />
+            <marker date="1422608380402" expanded="true" signature="68454:68695" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="69135:69366" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="69706:69874" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="70159:70405" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="70752:70988" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="71311:71484" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="71860:72007" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="72443:72480" placeholder="select * fro..dbTablePresite..." />
+            <marker date="1422608380402" expanded="true" signature="72808:72921" placeholder="select * fro.._dbTablePreday where..." />
+            <marker date="1422608380402" expanded="true" signature="79353:79602" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="80542:80793" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="81415:81626" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="83202:83277" placeholder="SELECT lastv..." />
+            <marker date="1422608380402" expanded="true" signature="83606:83954" placeholder="SELECT uid,m.._dbTablePre_admin_user &#10;                WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="84150:84236" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="84418:84498" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="84636:84711" placeholder="SELECT uid F.._GLOBALS_dbTablePre_member_admininfo WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="84863:84947" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="85090:85241" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="91481:91588" placeholder="select count.._dbTablePrecertification where..." />
+            <marker date="1422608380402" expanded="true" signature="93643:93706" placeholder="select is_ph.._dbTablePre_members_base where..." />
+            <marker date="1422608380402" expanded="true" signature="94772:94831" placeholder="select md5 f.._dbTablePre_sendmsg_tmp where..." />
+            <marker date="1422608380402" expanded="true" signature="94974:95131" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="95676:95791" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="96177:96190" placeholder="..." />
+            <marker date="1422608380402" expanded="true" signature="96317:96385" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="96559:96627" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="97401:97469" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="97942:98010" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="98650:98743" placeholder="insert into ..." />
+            <marker date="1422608380402" expanded="true" signature="98781:98884" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framwork/Global.function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3335" max-vertical-offset="40020">
+          <caret line="150" column="37" selection-start-line="150" selection-start-column="37" selection-end-line="150" selection-end-column="37" />
+          <folding>
+            <marker date="1417339126000" expanded="true" signature="13581:13664" placeholder="select sys_u..system_user..." />
+            <marker date="1417339126000" expanded="true" signature="13760:13914" placeholder="insert into ..." />
+            <marker date="1417339126000" expanded="true" signature="17734:17957" placeholder="select count..." />
+            <marker date="1417339126000" expanded="true" signature="24340:24452" placeholder="SELECT MAX(r..." />
+            <marker date="1417339126000" expanded="true" signature="24673:24784" placeholder="SELECT MAX(r..." />
+            <marker date="1417339126000" expanded="true" signature="26224:26351" placeholder="SELECT * FRO.._dbTablePre_service_visitor &#10;&#9;&#9;WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="26737:26857" placeholder="SELECT uid F.._dbTablePre_members_search WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="27300:27399" placeholder="SELECT `uid`..." />
+            <marker date="1417339126000" expanded="true" signature="27751:27869" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="28154:28253" placeholder="SELECT rid,s.._dbTablePre_service_rose WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="28377:28542" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="28742:28923" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="29146:29245" placeholder="SELECT lid,s.._dbTablePre_service_leer WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="29369:29534" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="29734:29917" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="30083:30132" placeholder="SELECT * FRO.._dbTablePre_members_bind WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="30326:30439" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="30716:30769" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="31599:31666" placeholder="select `love..." />
+            <marker date="1417339126000" expanded="true" signature="31923:31980" placeholder="select * fro.._dbTablePre_certification where..." />
+            <marker date="1417339126000" expanded="true" signature="32535:32619" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="48987:49130" placeholder="select conte..web_text_show..." />
+            <marker date="1417339126000" expanded="true" signature="50025:50062" placeholder="select uid f..web_members_blacklist..." />
+            <marker date="1417339126000" expanded="true" signature="51125:51187" placeholder="select s_cid.._dbTablePremembers_search where..." />
+            <marker date="1417339126000" expanded="true" signature="51359:51417" placeholder="select * fro.._dbTablePremembers_search where..." />
+            <marker date="1417339126000" expanded="true" signature="51485:51541" placeholder="select * fro.._dbTablePremembers_base where..." />
+            <marker date="1417339126000" expanded="true" signature="52288:52368" placeholder="SELECT :_get..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framwork/MooPHP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="70495">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1422608380402" expanded="true" signature="17732:17837" placeholder="select scree.._dbTablePre_screen where..." />
+            <marker date="1422608380402" expanded="true" signature="22737:22834" placeholder="select * fro.._dbTablePremail_queue where..." />
+            <marker date="1422608380402" expanded="true" signature="54275:54391" placeholder="select count.._dbTablePre_members_search where..." />
+            <marker date="1422608380402" expanded="true" signature="57036:57249" placeholder="SELECT s.uid.._dbTablePre_members_search s..." />
+            <marker date="1422608380402" expanded="true" signature="65078:65178" placeholder="update :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="65774:65897" placeholder="select count.._dbTablePre_services where..." />
+            <marker date="1422608380402" expanded="true" signature="67568:67660" placeholder="select * fro.._dbTablePreaccount where..." />
+            <marker date="1422608380402" expanded="true" signature="68454:68695" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="69135:69366" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="69706:69874" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="70159:70405" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="70752:70988" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="71311:71484" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="71860:72007" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="72443:72480" placeholder="select * fro..dbTablePresite..." />
+            <marker date="1422608380402" expanded="true" signature="72808:72921" placeholder="select * fro.._dbTablePreday where..." />
+            <marker date="1422608380402" expanded="true" signature="79353:79602" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="80542:80793" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="81415:81626" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="83202:83277" placeholder="SELECT lastv..." />
+            <marker date="1422608380402" expanded="true" signature="83606:83954" placeholder="SELECT uid,m.._dbTablePre_admin_user &#10;                WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="84150:84236" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="84418:84498" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="84636:84711" placeholder="SELECT uid F.._GLOBALS_dbTablePre_member_admininfo WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="84863:84947" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="85090:85241" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="91481:91588" placeholder="select count.._dbTablePrecertification where..." />
+            <marker date="1422608380402" expanded="true" signature="93643:93706" placeholder="select is_ph.._dbTablePre_members_base where..." />
+            <marker date="1422608380402" expanded="true" signature="94772:94831" placeholder="select md5 f.._dbTablePre_sendmsg_tmp where..." />
+            <marker date="1422608380402" expanded="true" signature="94974:95131" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="95676:95791" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="96177:96190" placeholder="..." />
+            <marker date="1422608380402" expanded="true" signature="96317:96385" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="96559:96627" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="97401:97469" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="97942:98010" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="98650:98743" placeholder="insert into ..." />
+            <marker date="1422608380402" expanded="true" signature="98781:98884" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framwork/Global.function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3335" max-vertical-offset="40020">
+          <caret line="150" column="37" selection-start-line="150" selection-start-column="37" selection-end-line="150" selection-end-column="37" />
+          <folding>
+            <marker date="1417339126000" expanded="true" signature="13581:13664" placeholder="select sys_u..system_user..." />
+            <marker date="1417339126000" expanded="true" signature="13760:13914" placeholder="insert into ..." />
+            <marker date="1417339126000" expanded="true" signature="17734:17957" placeholder="select count..." />
+            <marker date="1417339126000" expanded="true" signature="24340:24452" placeholder="SELECT MAX(r..." />
+            <marker date="1417339126000" expanded="true" signature="24673:24784" placeholder="SELECT MAX(r..." />
+            <marker date="1417339126000" expanded="true" signature="26224:26351" placeholder="SELECT * FRO.._dbTablePre_service_visitor &#10;&#9;&#9;WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="26737:26857" placeholder="SELECT uid F.._dbTablePre_members_search WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="27300:27399" placeholder="SELECT `uid`..." />
+            <marker date="1417339126000" expanded="true" signature="27751:27869" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="28154:28253" placeholder="SELECT rid,s.._dbTablePre_service_rose WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="28377:28542" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="28742:28923" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="29146:29245" placeholder="SELECT lid,s.._dbTablePre_service_leer WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="29369:29534" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="29734:29917" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="30083:30132" placeholder="SELECT * FRO.._dbTablePre_members_bind WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="30326:30439" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="30716:30769" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="31599:31666" placeholder="select `love..." />
+            <marker date="1417339126000" expanded="true" signature="31923:31980" placeholder="select * fro.._dbTablePre_certification where..." />
+            <marker date="1417339126000" expanded="true" signature="32535:32619" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="48987:49130" placeholder="select conte..web_text_show..." />
+            <marker date="1417339126000" expanded="true" signature="50025:50062" placeholder="select uid f..web_members_blacklist..." />
+            <marker date="1417339126000" expanded="true" signature="51125:51187" placeholder="select s_cid.._dbTablePremembers_search where..." />
+            <marker date="1417339126000" expanded="true" signature="51359:51417" placeholder="select * fro.._dbTablePremembers_search where..." />
+            <marker date="1417339126000" expanded="true" signature="51485:51541" placeholder="select * fro.._dbTablePremembers_base where..." />
+            <marker date="1417339126000" expanded="true" signature="52288:52368" placeholder="SELECT :_get..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framwork/MooPHP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="70495">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1422608380402" expanded="true" signature="17732:17837" placeholder="select scree.._dbTablePre_screen where..." />
+            <marker date="1422608380402" expanded="true" signature="22737:22834" placeholder="select * fro.._dbTablePremail_queue where..." />
+            <marker date="1422608380402" expanded="true" signature="54275:54391" placeholder="select count.._dbTablePre_members_search where..." />
+            <marker date="1422608380402" expanded="true" signature="57036:57249" placeholder="SELECT s.uid.._dbTablePre_members_search s..." />
+            <marker date="1422608380402" expanded="true" signature="65078:65178" placeholder="update :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="65774:65897" placeholder="select count.._dbTablePre_services where..." />
+            <marker date="1422608380402" expanded="true" signature="67568:67660" placeholder="select * fro.._dbTablePreaccount where..." />
+            <marker date="1422608380402" expanded="true" signature="68454:68695" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="69135:69366" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="69706:69874" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="70159:70405" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="70752:70988" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="71311:71484" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="71860:72007" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="72443:72480" placeholder="select * fro..dbTablePresite..." />
+            <marker date="1422608380402" expanded="true" signature="72808:72921" placeholder="select * fro.._dbTablePreday where..." />
+            <marker date="1422608380402" expanded="true" signature="79353:79602" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="80542:80793" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="81415:81626" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="83202:83277" placeholder="SELECT lastv..." />
+            <marker date="1422608380402" expanded="true" signature="83606:83954" placeholder="SELECT uid,m.._dbTablePre_admin_user &#10;                WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="84150:84236" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="84418:84498" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="84636:84711" placeholder="SELECT uid F.._GLOBALS_dbTablePre_member_admininfo WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="84863:84947" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="85090:85241" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="91481:91588" placeholder="select count.._dbTablePrecertification where..." />
+            <marker date="1422608380402" expanded="true" signature="93643:93706" placeholder="select is_ph.._dbTablePre_members_base where..." />
+            <marker date="1422608380402" expanded="true" signature="94772:94831" placeholder="select md5 f.._dbTablePre_sendmsg_tmp where..." />
+            <marker date="1422608380402" expanded="true" signature="94974:95131" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="95676:95791" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="96177:96190" placeholder="..." />
+            <marker date="1422608380402" expanded="true" signature="96317:96385" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="96559:96627" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="97401:97469" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="97942:98010" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="98650:98743" placeholder="insert into ..." />
+            <marker date="1422608380402" expanded="true" signature="98781:98884" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framwork/Global.function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3335" max-vertical-offset="40020">
+          <caret line="150" column="37" selection-start-line="150" selection-start-column="37" selection-end-line="150" selection-end-column="37" />
+          <folding>
+            <marker date="1417339126000" expanded="true" signature="13581:13664" placeholder="select sys_u..system_user..." />
+            <marker date="1417339126000" expanded="true" signature="13760:13914" placeholder="insert into ..." />
+            <marker date="1417339126000" expanded="true" signature="17734:17957" placeholder="select count..." />
+            <marker date="1417339126000" expanded="true" signature="24340:24452" placeholder="SELECT MAX(r..." />
+            <marker date="1417339126000" expanded="true" signature="24673:24784" placeholder="SELECT MAX(r..." />
+            <marker date="1417339126000" expanded="true" signature="26224:26351" placeholder="SELECT * FRO.._dbTablePre_service_visitor &#10;&#9;&#9;WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="26737:26857" placeholder="SELECT uid F.._dbTablePre_members_search WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="27300:27399" placeholder="SELECT `uid`..." />
+            <marker date="1417339126000" expanded="true" signature="27751:27869" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="28154:28253" placeholder="SELECT rid,s.._dbTablePre_service_rose WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="28377:28542" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="28742:28923" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="29146:29245" placeholder="SELECT lid,s.._dbTablePre_service_leer WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="29369:29534" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="29734:29917" placeholder="INSERT INTO ..." />
+            <marker date="1417339126000" expanded="true" signature="30083:30132" placeholder="SELECT * FRO.._dbTablePre_members_bind WHERE..." />
+            <marker date="1417339126000" expanded="true" signature="30326:30439" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="30716:30769" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="31599:31666" placeholder="select `love..." />
+            <marker date="1417339126000" expanded="true" signature="31923:31980" placeholder="select * fro.._dbTablePre_certification where..." />
+            <marker date="1417339126000" expanded="true" signature="32535:32619" placeholder="UPDATE :_dbT..." />
+            <marker date="1417339126000" expanded="true" signature="48987:49130" placeholder="select conte..web_text_show..." />
+            <marker date="1417339126000" expanded="true" signature="50025:50062" placeholder="select uid f..web_members_blacklist..." />
+            <marker date="1417339126000" expanded="true" signature="51125:51187" placeholder="select s_cid.._dbTablePremembers_search where..." />
+            <marker date="1417339126000" expanded="true" signature="51359:51417" placeholder="select * fro.._dbTablePremembers_search where..." />
+            <marker date="1417339126000" expanded="true" signature="51485:51541" placeholder="select * fro.._dbTablePremembers_base where..." />
+            <marker date="1417339126000" expanded="true" signature="52288:52368" placeholder="SELECT :_get..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framwork/MooPHP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30612245" vertical-offset="4090" max-vertical-offset="70495">
+          <caret line="190" column="42" selection-start-line="190" selection-start-column="42" selection-end-line="190" selection-end-column="42" />
+          <folding>
+            <marker date="1422608380402" expanded="true" signature="17732:17837" placeholder="select scree.._dbTablePre_screen where..." />
+            <marker date="1422608380402" expanded="true" signature="22737:22834" placeholder="select * fro.._dbTablePremail_queue where..." />
+            <marker date="1422608380402" expanded="true" signature="54275:54391" placeholder="select count.._dbTablePre_members_search where..." />
+            <marker date="1422608380402" expanded="true" signature="57036:57249" placeholder="SELECT s.uid.._dbTablePre_members_search s..." />
+            <marker date="1422608380402" expanded="true" signature="65078:65178" placeholder="update :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="65774:65897" placeholder="select count.._dbTablePre_services where..." />
+            <marker date="1422608380402" expanded="true" signature="67568:67660" placeholder="select * fro.._dbTablePreaccount where..." />
+            <marker date="1422608380402" expanded="true" signature="68454:68695" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="69135:69366" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="69706:69874" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="70159:70405" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="70752:70988" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="71311:71484" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="71860:72007" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="72443:72480" placeholder="select * fro..dbTablePresite..." />
+            <marker date="1422608380402" expanded="true" signature="72808:72921" placeholder="select * fro.._dbTablePreday where..." />
+            <marker date="1422608380402" expanded="true" signature="79353:79602" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="80542:80793" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="81415:81626" placeholder="select count..." />
+            <marker date="1422608380402" expanded="true" signature="83202:83277" placeholder="SELECT lastv..." />
+            <marker date="1422608380402" expanded="true" signature="83606:83954" placeholder="SELECT uid,m.._dbTablePre_admin_user &#10;                WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="84150:84236" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="84418:84498" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="84636:84711" placeholder="SELECT uid F.._GLOBALS_dbTablePre_member_admininfo WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="84863:84947" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="85090:85241" placeholder="UPDATE :_dbT..." />
+            <marker date="1422608380402" expanded="true" signature="91481:91588" placeholder="select count.._dbTablePrecertification where..." />
+            <marker date="1422608380402" expanded="true" signature="93643:93706" placeholder="select is_ph.._dbTablePre_members_base where..." />
+            <marker date="1422608380402" expanded="true" signature="94772:94831" placeholder="select md5 f.._dbTablePre_sendmsg_tmp where..." />
+            <marker date="1422608380402" expanded="true" signature="94974:95131" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="95676:95791" placeholder="INSERT INTO ..." />
+            <marker date="1422608380402" expanded="true" signature="96177:96190" placeholder="..." />
+            <marker date="1422608380402" expanded="true" signature="96317:96385" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="96559:96627" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="97401:97469" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="97942:98010" placeholder="SELECT * FRO.._dbTablePre_ WHERE..." />
+            <marker date="1422608380402" expanded="true" signature="98650:98743" placeholder="insert into ..." />
+            <marker date="1422608380402" expanded="true" signature="98781:98884" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

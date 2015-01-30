@@ -8,7 +8,9 @@
 <link rel="shortcut icon" href="public/default/images/favicon.ico" type="image/x-icon"/>
 <link rel="icon" href="public/default/images/favicon.ico" type="image/x-icon">
 <title>真爱一生网</title>
+
 <link href="module/index/templates/default/css/index2015.css" type="text/css" rel="stylesheet" />
+<link href="module/index/templates/default/css/jquery.vector.map.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="module/index/templates/default/js/sys.min.js"></script>
 <script type="text/javascript">
    window.onload=function(){
@@ -70,7 +72,11 @@
       <li><a href="search.html">搜索</a></li>
       <li><a href="upgrade.html">服务</a></li>
       <li><a href="material.html">征婚</a></li>
+	  <li><a href="http://m.zhenaiyisheng.cc">手机版</a></li>
     </ul>
+	<div class="showmap"></div>
+	<div id="container" class="map">
+    </div>
   </div>
 </div>
 <div class="main">
@@ -122,18 +128,21 @@
       <ul>
 	    {loop $userList $k $u}
         <li>
+		  <a href="space_{$u['uid']}.html" class="fff">
           <div class="flipcard">
             <div class="back face" style="left:100%">
+			  
               <div class="proIntro">
                 <h5>{$u['nickname']}</h5>
                 <div class="text"> 学历： <script>sys.getEducation({$u['education']});</script> <br>
                   <nobr>职业：<script>sys.getOccupation({$u['occupation']});</script></nobr> <br>
                   月薪：<script>sys.getSalary({$u['salary']});</script><br>
-                  地区：<script>sys.getProvinceValue({$u['province']});sys.getCityValue({$u['city']});</script> <p class="mt10"><a  class=" ffff" uid="{$u['uid']}" href="space_{$u['uid']}.html" target="_blank">认识 {php echo $u['gender']?'她':'他';} >></a> </p></div>
+                  地区：<script>sys.getProvinceValue({$u['province']});sys.getCityValue({$u['city']});</script> <p class="mt10">认识 {php echo $u['gender']?'她':'他';} >></p></div>
               </div>
             </div>
-            <div class="front face" style="left: 0px;"><a href="#"><img src="{php  echo IMG_SITE.MooGetphoto($u['uid'],'mid');}" width="120" height="150"></a></div>
+            <div class="front face" style="left: 0px;"><img src="{php  echo IMG_SITE.MooGetphoto($u['uid'],'mid');}" width="120" height="150"></div>
           </div>
+		  </a>
         </li>
         {/loop}
       </ul>
@@ -141,7 +150,7 @@
     <div class="upgradeMember">
       <ul>
 	    {loop $textInfo_ $k_ $v_}
-        <li><span>{php echo str_replace('您的','',$v_['content'])}<span></li>
+        <li><span>{php echo MooCutstr(str_replace('您的','',$v_['content']),40,'');}</span></li>
         {/loop}
       </ul>
     </div>
@@ -174,6 +183,7 @@
       <ul>
 	    {loop $vipuser $k $vu}
         <li>
+		  <a  class=" ffff" uid="57088748" href="space_{$vu['uid']}.html" target="_blank">
           <div class="flipcard">
             <div class="back face" style="left:100%">
               <div class="proIntro">
@@ -181,11 +191,12 @@
                 <div class="text"> 学历：<script>sys.getEducation({$vu['education']});</script><br>
                   <nobr>职业：<script>sys.getOccupation({$vu['occupation']});</script></nobr> <br>
                   月薪：<script>sys.getSalary({$vu['salary']});</script><br>
-                  地区：<script>sys.getProvinceValue({$vu['province']});sys.getCityValue({$vu['city']});</script><p class="mt10"><a  class=" ffff" uid="57088748" href="space_{$vu['uid']}.html" target="_blank">认识 {php echo $vu['gender']?'她':'他';}>></a> </p></div>
+                  地区：<script>sys.getProvinceValue({$vu['province']});sys.getCityValue({$vu['city']});</script><p class="mt10">认识 {php echo $vu['gender']?'她':'他';}>></p></div>
               </div>
             </div>
             <div class="front face" style="left: 0px;"><a href="#"><img src="{php  echo IMG_SITE.MooGetphoto($vu['uid'],'mid');}" width="120" height="150"></a></div>
           </div>
+		  </a>
         </li>
 		{/loop}
         
@@ -196,10 +207,10 @@
         <li>你们网站和其他网站有什么区别呢？<a href="faq.html">点击查看</a></li>
 		<li>通过你们的网站一定能找到对象吗？<a href="faq.html">点击查看</a></li>
 		<li>为什么要在你们网站上找对象呢？<a href="faq.html">点击查看</a></li>
-		<li>升级之后，我还需要支付其他的费用吗？<a href="faq.html">点击查看</a></li>
+		<li>升级后我还需要支付其他的费用吗？<a href="faq.html">点击查看</a></li>
 		<li>我能不能先见面再升级会员？<a href="faq.html">点击查看</a></li>
 		<li>我怎么得到女孩子的联系方式？<a href="faq.html">点击查看</a></li>
-		<li>我给你们去电话，为什么有时候打不通呢？<a href="faq.html">点击查看</a></li>
+		<li>给你们去电话，为什么有时候打不通？<a href="faq.html">点击查看</a></li>
 		<li>为什么你们网站有负面的信息？<a href="faq.html">点击查看</a></li>
 		<li>网站会员是不是真实的？<a href="faq.html">点击查看</a></li>
 		<li>升级VIP会员后你们是怎么服务的？<a href="faq.html">点击查看</a></li>
@@ -234,6 +245,8 @@
 <script type="text/javascript" src="module/index/templates/default/js/jquery.slides.min.js"></script>
 <script type="text/javascript" src="module/index/templates/default/js/json2.min.js"></script>
 <script type="text/javascript" src="module/register/templates/public/js/commonValidate.js?v=2015"></script>
+<script type="text/javascript" src="module/index/templates/default/js/jquery.vector.map.js"></script>
+<script type="text/javascript" src="module/index/templates/default/js/china.map.js"></script>
 <script type="text/javascript">
     $(function(){sys.init(21,45,{$province},{$city});sys.change();});
     $('.loginbtn,.searchbtn').mouseover(function(){
@@ -353,7 +366,73 @@
 	});
 	
 	
-	
+
+	$(function () {
+		//数据可以动态生成，格式自己定义，cha对应china-zh.js中省份的简称
+		var dataStatus = [{ cha: 'HKG', name: '香港', des: '' },
+						 { cha: 'HAI', name: '海南', des: '' },
+						 { cha: 'YUN', name: '云南', des: '' },
+						 { cha: 'BEJ', name: '北京', des: 'cp' },
+						 { cha: 'TAJ', name: '天津', des: '' },
+						 { cha: 'XIN', name: '新疆', des: '' },
+						 { cha: 'TIB', name: '西藏', des: '' },
+						 { cha: 'QIH', name: '青海', des: '' },
+						 { cha: 'GAN', name: '甘肃', des: '' },
+						 { cha: 'NMG', name: '内蒙古', des: '' },
+						 { cha: 'NXA', name: '宁夏', des: '' },
+						 { cha: 'SHX', name: '山西', des: '' },
+						 { cha: 'LIA', name: '辽宁', des: '' },
+						 { cha: 'JIL', name: '吉林', des: '' },
+						 { cha: 'HLJ', name: '黑龙江', des: '' },
+						 { cha: 'HEB', name: '河北', des: '' },
+						 { cha: 'SHD', name: '山东', des: '' },
+						 { cha: 'HEN', name: '河南', des: '' },
+						 { cha: 'SHA', name: '陕西', des: '' },
+						 { cha: 'SCH', name: '四川', des: '' },
+						 { cha: 'CHQ', name: '重庆', des: '' },
+						 { cha: 'HUB', name: '湖北', des: '' },
+						 { cha: 'ANH', name: '安徽', des: '' },
+						 { cha: 'JSU', name: '江苏', des: '' },
+						 { cha: 'SHH', name: '上海', des: '' },
+						 { cha: 'ZHJ', name: '浙江', des: '' },
+						 { cha: 'FUJ', name: '福建', des: '' },
+						 { cha: 'TAI', name: '台湾', des: '' },
+						 { cha: 'JXI', name: '江西', des: '' },
+						 { cha: 'HUN', name: '湖南', des: '' },
+						 { cha: 'GUI', name: '贵州', des: '' },
+						 { cha: 'GXI', name: '广西', des: '' }, 
+						 { cha: 'GUD', name: '广东', des: ''}];
+		$('#container').vectorMap({ map: 'china_zh',
+			color: "#df3b3b", //地图颜色
+			onLabelShow: function (event, label, code) {//动态显示内容
+				$.each(dataStatus, function (i, items) {
+					if (code == items.cha) {
+						//label.html(items.name + items.des);
+						label.html(items.name);
+					}
+				});
+			}
+		})
+		$.each(dataStatus, function (i, items) {
+			if (items.des.indexOf('cp') != -1) {//动态设定颜色，此处用了自定义简单的判断
+				var josnStr = "{" + items.cha + ":'#00FF00'}";
+				$('#container').vectorMap('set', 'colors', eval('(' + josnStr + ')'));
+			}
+		});
+		$('.jvectormap-zoomin').click(); //放大
+		
+		
+		$('.showmap,#container').mouseover(function(){
+		     document.getElementById('container').style.display='block';
+		    
+		});
+		
+		$('#container').mouseout(function(){
+		      document.getElementById('container').style.display='none';
+		});
+		
+	});
+  
 </script>
 <div style="display:none">
 	<script src="http://s22.cnzz.com/z_stat.php?id=1000262469&web_id=1000262469" language="JavaScript"></script>

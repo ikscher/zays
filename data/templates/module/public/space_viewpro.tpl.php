@@ -109,7 +109,7 @@
                                 <div class="myself">
                                     <p style="width:110px;height:138px;overflow:hidden;padding-top:5px;margin-left:8px;">
                                         <?php if($user['images_ischeck']=='1'&& $user['mainimg']) { ?>
-                                        <img id="show_pic_1"  class="fixphoto_" src="<?php   
+                                        <img id="show_pic_1"   src="<?php   
                                              if(MooGetphoto($user['uid'],'mid')) echo IMG_SITE.MooGetphoto($user['uid'],'mid');
                                              elseif($user['gender'] == '1')echo 'public/system/images/woman_1.gif';
                                              else  echo 'public/system/images/man_1.gif';
@@ -123,9 +123,9 @@
                                         </a>
                                         <?php } else { ?>                                        
                                         <?php if($user['gender'] == '1') { ?>
-                                        <img id="show_pic_1" src="public/system/images/service_nopic_woman.gif"/>
+                                        <img id="show_pic_1" src="public/default/images/nopic_female.gif"/>
                                         <?php } else { ?>
-                                        <img  id="show_pic_1" src="public/system/images/service_nopic_man.gif"/>
+                                        <img  id="show_pic_1" src="public/default/images/nopic_male.gif"/>
                                         <?php } ?>
                                         </a>
                                         <?php } ?> 
@@ -202,7 +202,7 @@
                                 <span class="next"></span>
                             </div>
 							<?php } else { ?>
-							     <a href='index.php?n=material&h=show'>您还没有形象照，请上传！！！</a>
+							     <div style="margin-left:20px;"><a href='index.php?n=material&h=show'>您还没有相册，请上传！！！</a></div>
 							<?php } ?>
                         </div>
 

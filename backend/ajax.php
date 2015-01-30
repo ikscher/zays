@@ -27,13 +27,13 @@ require 'include/allow_ip.php';
 $cur_ip = GetIP();
 if(!empty($allow_ip)){
 	if(!in_array($cur_ip,$allow_ip)){   
-		$token=$_MooCookie['token'];
+		$token=isset($_MooCookie['token'])?$_MooCookie['token']:'';
 		if(empty($token) || $token!='vip999'){
-			$t=$_GET['token']?$_GET['token']:'';
+			$t=isset($_GET['token'])?$_GET['token']:'';
 			MooSetCookie('token',$t,21600);
 		}
 		
-		$token=$_MooCookie['token'];
+		$token=isset($_MooCookie['token'])?$_MooCookie['token']:'';
 	   
 		
 		if(empty($token) || $token!='vip999'){

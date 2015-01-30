@@ -36,7 +36,7 @@
                          elseif(MooGetphoto($users['uid'],'medium')) echo IMG_SITE.MooGetphoto($users['uid'],'medium');	  
                          elseif($users['gender'] == '1') echo 'public/system/images/se_woman.jpg';
                          else  echo 'public/system/images/se_man.jpg';
-                         ?>"  class="personalphoto fixphoto"  />
+                         ?>"   />
                     <?php } else { ?>
                     <img src="public/system/images/se_man.jpg" />					             
                     <?php } ?>
@@ -47,7 +47,7 @@
                          elseif(MooGetphoto($users['uid'],'medium')) echo IMG_SITE.MooGetphoto($users['uid'],'medium');	  
                          elseif($users['gender'] == '1') echo 'public/system/images/se_woman.jpg';
                          else  echo 'public/system/images/se_man.jpg';
-                         ?>"  class="personalphoto fixphoto" />
+                         ?>"   />
                     <?php } else { ?>
                     <img src="public/system/images/se_woman.jpg" />					             
                     <?php } ?>
@@ -208,20 +208,6 @@
 <?php if($GLOBALS['MooUid']) { ?><script src="public/system/js/jquery.modal.site.js" type="text/javascript"></script><?php } ?>
 <!--图像修正-->
 <script type="text/javascript">
-    $(document).ready(function(){
-        var theImage = new Image();
-        $(".personalphoto").each(function(i,w){
-            theImage.src = $(w).attr("src");
-            var imageWidth = theImage.width;
-            var imageHeight = theImage.height;
-            if(imageHeight>=130){
-                $(w).removeClass('fixphoto');
-                $(w).addClass('fixphoto_');
-            }
-        })
-    });
-	
-
 	//发送秋波
 	$('a[class^=leerConfirm]').click(function(){
 	    var l=$('input[name=leerinfo]:checked').val();
@@ -369,7 +355,7 @@
 	$('a[href="#modalLeer"]').on('click',function(){
 	    <?php if($GLOBALS['MooUid']) { ?>
 			var img=$(this).parents('li').siblings('li:eq(0)').find('.s-img-box p').html();
-			$('.zp_tp').html('<p style="width:110px;height:138px;overflow:hidden;padding-top:10px;">'+img+'</p>');
+			$('.zp_tp').html('<p style="width:110px;height:138px;overflow:hidden;">'+img+'</p>');
 			var nickname=$(this).parents('li').find('dt span:eq(0)').html();
 			$('.nickname').html($.trim(nickname));
 			$('.uinfo .name').html($.trim(nickname));
